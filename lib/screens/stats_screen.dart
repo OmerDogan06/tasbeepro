@@ -686,14 +686,19 @@ class _StatsScreenState extends State<StatsScreen>
               1,
             );
 
-            // En çok kullanılan zikirler (top 5)
-            final sortedZikrs = allZikrs
-              ..sort(
-                (a, b) => controller
-                    .getZikrCount(b.id)
-                    .compareTo(controller.getZikrCount(a.id)),
-              );
-            final topZikrs = sortedZikrs.take(5).toList();
+            // En çok kullanılan zikirler (aktif olanlar - max 5)
+            final sortedZikrs =
+                allZikrs
+                    .where(
+                      (zikr) => controller.getZikrCount(zikr.id) > 0,
+                    ) // Sadece aktif zikirler
+                    .toList()
+                  ..sort(
+                    (a, b) => controller
+                        .getZikrCount(b.id)
+                        .compareTo(controller.getZikrCount(a.id)),
+                  );
+            final topZikrs = sortedZikrs.take(5).toList(); // Max 5 zikir göster
 
             return pw.Column(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -717,7 +722,7 @@ class _StatsScreenState extends State<StatsScreen>
                       pw.Row(
                         mainAxisAlignment: pw.MainAxisAlignment.center,
                         children: [
-                         pw.Container(
+                          pw.Container(
                             width: 75,
                             height: 75,
                             alignment: pw.Alignment.center,
@@ -744,7 +749,7 @@ class _StatsScreenState extends State<StatsScreen>
                             ),
                           ),
                           pw.SizedBox(width: 16),
-                           pw.Container(
+                          pw.Container(
                             width: 75,
                             height: 75,
                             alignment: pw.Alignment.center,
@@ -847,63 +852,71 @@ class _StatsScreenState extends State<StatsScreen>
                       ),
                       pw.SizedBox(height: 12),
 
-                      // Grafik benzeri çubuklar
-                      ...topZikrs.map((zikr) {
-                        final count = controller.getZikrCount(zikr.id).toInt();
-                        final maxCount = topZikrs.isEmpty
-                            ? 1
-                            : controller.getZikrCount(topZikrs.first.id);
-                        final percentage = maxCount > 0
-                            ? (count / maxCount) * 100
-                            : 0;
+                      // Grafik benzeri çubuklar - sadece aktif zikirler gösterilir
+                      if (topZikrs.isNotEmpty) ...[
+                        ...topZikrs.map((zikr) {
+                          final count = controller
+                              .getZikrCount(zikr.id)
+                              .toInt();
+                          final maxCount = topZikrs.isEmpty
+                              ? 1
+                              : controller
+                                    .getZikrCount(topZikrs.first.id)
+                                    .toDouble();
+                          final percentage = maxCount > 0
+                              ? (count / maxCount) * 100
+                              : 0;
 
-                        return pw.Container(
-                          margin: const pw.EdgeInsets.only(bottom: 8),
-                          child: pw.Column(
-                            crossAxisAlignment: pw.CrossAxisAlignment.start,
-                            children: [
-                              pw.Row(
-                                mainAxisAlignment:
-                                    pw.MainAxisAlignment.spaceBetween,
-                                children: [
-                                  pw.Expanded(
-                                    child: pw.Text(
-                                      zikr.name,
+                          return pw.Container(
+                            margin: const pw.EdgeInsets.only(bottom: 8),
+                            child: pw.Column(
+                              crossAxisAlignment: pw.CrossAxisAlignment.start,
+                              children: [
+                                pw.Row(
+                                  mainAxisAlignment:
+                                      pw.MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    pw.Expanded(
+                                      child: pw.Text(
+                                        zikr.name,
+                                        style: pw.TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: pw.FontWeight.bold,
+                                          color: PdfColor.fromHex('#2D5016'),
+                                          font: regularFont,
+                                        ),
+                                      ),
+                                    ),
+                                    pw.Text(
+                                      count.toString(),
                                       style: pw.TextStyle(
                                         fontSize: 11,
                                         fontWeight: pw.FontWeight.bold,
-                                        color: PdfColor.fromHex('#2D5016'),
-                                        font: regularFont,
+                                        color: PdfColor.fromHex('#D4AF37'),
+                                        font: boldFont,
                                       ),
                                     ),
-                                  ),
-                                  pw.Text(
-                                    count.toString(),
-                                    style: pw.TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: pw.FontWeight.bold,
-                                      color: PdfColor.fromHex('#D4AF37'),
-                                      font: boldFont,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              pw.SizedBox(height: 4),
-                              // Progress bar
-                              pw.Container(
-                                height: 8,
-                                width: double.infinity,
-                                decoration: pw.BoxDecoration(
-                                  color: PdfColor.fromHex('#E8E0C7'),
-                                  borderRadius: pw.BorderRadius.circular(4),
+                                  ],
                                 ),
-                                child: pw.Row(
+                                pw.SizedBox(height: 4),
+                                // Progress bar - dinamik genişlik
+                                pw.Stack(
                                   children: [
+                                    pw.Container(
+                                      height: 8,
+                                      width: double.infinity,
+                                      decoration: pw.BoxDecoration(
+                                        color: PdfColor.fromHex('#E8E0C7'),
+                                        borderRadius: pw.BorderRadius.circular(
+                                          4,
+                                        ),
+                                      ),
+                                    ),
                                     pw.Container(
                                       height: 8,
                                       width:
                                           (percentage / 100) *
-                                          200, // 200 is approximate max width
+                                          300, // 300 points max width
                                       decoration: pw.BoxDecoration(
                                         gradient: pw.LinearGradient(
                                           colors: [
@@ -918,135 +931,26 @@ class _StatsScreenState extends State<StatsScreen>
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }).toList(),
-                    ],
-                  ),
-                ),
-
-                pw.SizedBox(height: 20),
-
-                // Detaylı Zikir Listesi - Tablo
-                pw.Container(
-                  width: double.infinity,
-                  decoration: pw.BoxDecoration(
-                    border: pw.Border.all(
-                      color: PdfColor.fromHex('#D4AF37'),
-                      width: 1,
-                    ),
-                    borderRadius: pw.BorderRadius.circular(12),
-                  ),
-                  child: pw.Column(
-                    children: [
-                      // Tablo başlığı
-                      pw.Container(
-                        width: double.infinity,
-                        padding: const pw.EdgeInsets.all(12),
-                        decoration: pw.BoxDecoration(
-                          color: PdfColor.fromHex('#2D5016'),
-                          borderRadius: const pw.BorderRadius.only(
-                            topLeft: pw.Radius.circular(12),
-                            topRight: pw.Radius.circular(12),
-                          ),
-                        ),
-                        child: pw.Text(
-                          '= Tum Zikirler Detayi =',
-                          textAlign: pw.TextAlign.center,
+                              ],
+                            ),
+                          );
+                        }).toList(),
+                      ] else ...[
+                        pw.Text(
+                          'Henuz hic zikir cekilmemis.',
                           style: pw.TextStyle(
-                            fontSize: 14,
-                            fontWeight: pw.FontWeight.bold,
-                            color: PdfColors.white,
-                            font: boldFont,
+                            fontSize: 12,
+                            color: PdfColor.fromHex('#2D5016'),
+                            font: regularFont,
+                            fontStyle: pw.FontStyle.italic,
                           ),
                         ),
-                      ),
-
-                      // Tablo içeriği
-                      ...allZikrs.asMap().entries.map((entry) {
-                        final index = entry.key;
-                        final zikr = entry.value;
-                        final count = controller.getZikrCount(zikr.id).toInt();
-                        final isEven = index % 2 == 0;
-
-                        return pw.Container(
-                          width: double.infinity,
-                          padding: const pw.EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 8,
-                          ),
-                          decoration: pw.BoxDecoration(
-                            color: isEven
-                                ? PdfColor.fromHex('#F8F6F0')
-                                : PdfColors.white,
-                          ),
-                          child: pw.Row(
-                            children: [
-                              pw.Container(
-                                width: 24,
-                                height: 24,
-                                decoration: pw.BoxDecoration(
-                                  color: count > 0
-                                      ? PdfColor.fromHex('#D4AF37')
-                                      : PdfColor.fromHex('#E8E0C7'),
-                                  shape: pw.BoxShape.circle,
-                                ),
-                                child: pw.Center(
-                                  child: pw.Text(
-                                    count > 0 ? 'V' : 'O',
-                                    style: pw.TextStyle(
-                                      fontSize: 12,
-                                      color: count > 0
-                                          ? PdfColors.white
-                                          : PdfColor.fromHex('#2D5016'),
-                                      fontWeight: pw.FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              pw.SizedBox(width: 12),
-                              pw.Expanded(
-                                child: pw.Text(
-                                  zikr.name,
-                                  style: pw.TextStyle(
-                                    fontSize: 11,
-                                    color: PdfColor.fromHex('#2D5016'),
-                                    font: regularFont,
-                                  ),
-                                ),
-                              ),
-                              pw.Container(
-                                padding: const pw.EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                  vertical: 4,
-                                ),
-                                decoration: pw.BoxDecoration(
-                                  color: count > 0
-                                      ? PdfColor.fromHex('#F5E6A8')
-                                      : PdfColor.fromHex('#F0E9D2'),
-                                  borderRadius: pw.BorderRadius.circular(8),
-                                ),
-                                child: pw.Text(
-                                  count.toString(),
-                                  style: pw.TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: pw.FontWeight.bold,
-                                    color: PdfColor.fromHex('#2D5016'),
-                                    font: boldFont,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }).toList(),
+                      ],
                     ],
                   ),
                 ),
 
-                pw.Spacer(),
+                pw.SizedBox(height: 16),
 
                 // İslami alt bilgi
                 pw.Container(
@@ -1069,26 +973,17 @@ class _StatsScreenState extends State<StatsScreen>
                           borderRadius: pw.BorderRadius.circular(8),
                         ),
                         child: pw.Text(
-                          'Ve zkuru llaha kasiran la\'allekum tuflihun',
+                          'وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ',
                           textAlign: pw.TextAlign.center,
-                          style: pw.TextStyle(
-                            fontSize: 12,
-                            color: PdfColor.fromHex('#F5E6A8'),
-                            font: regularFont,
-                            fontStyle: pw.FontStyle.italic,
-                          ),
+                          textDirection: pw.TextDirection.rtl,
+                          style: pw.TextStyle(fontSize: 12, font: amiriFont,color: PdfColor.fromHex('#FFFFFF')),
                         ),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
-                        '"Allah\'i cok zikredin ki kurtulusu ereseyez" (Enfal: 45)',
+                        '"Allah’ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
                         textAlign: pw.TextAlign.center,
-                        style: pw.TextStyle(
-                          fontSize: 10,
-                          color: PdfColor.fromHex('#2D5016'),
-                          fontStyle: pw.FontStyle.italic,
-                          font: regularFont,
-                        ),
+                        style: pw.TextStyle(fontSize: 10, font: regularFont),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
