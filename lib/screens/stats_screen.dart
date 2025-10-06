@@ -18,10 +18,11 @@ class StatsScreen extends StatefulWidget {
   State<StatsScreen> createState() => _StatsScreenState();
 }
 
-class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStateMixin {
+class _StatsScreenState extends State<StatsScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   bool _isExportingPDF = false; // PDF export loading state
-  
+
   // İslami renk paleti
   static const emeraldGreen = Color(0xFF2D5016);
   static const goldColor = Color(0xFFD4AF37);
@@ -43,7 +44,7 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<CounterController>();
-    
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Color(0xFF2D5016),
@@ -126,16 +127,20 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                   padding: WidgetStateProperty.all(EdgeInsets.zero),
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
                 ),
-                icon: _isExportingPDF 
-                  ? SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
+                icon: _isExportingPDF
+                    ? SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          color: emeraldGreen,
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : const Icon(
+                        Icons.picture_as_pdf,
                         color: emeraldGreen,
-                        strokeWidth: 2,
+                        size: 20,
                       ),
-                    )
-                  : const Icon(Icons.picture_as_pdf, color: emeraldGreen, size: 20),
                 onPressed: _isExportingPDF ? null : () => _exportToPDF(),
               ),
             ),
@@ -147,8 +152,14 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
             unselectedLabelColor: emeraldGreen.withOpacity(0.6),
             indicatorColor: goldColor,
             indicatorWeight: 3,
-            labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontSize: 13),
+            labelStyle: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+            unselectedLabelStyle: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 13,
+            ),
             tabs: const [
               Tab(text: 'Günlük'),
               Tab(text: 'Haftalık'),
@@ -178,11 +189,11 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
           // Özet Kartı
           _buildSummaryCard(period, controller),
           const SizedBox(height: 20),
-          
+
           // Grafik Kartı
           _buildChartCard(period, controller),
           const SizedBox(height: 20),
-          
+
           // Zikir Listesi
           _buildZikrList(period, controller),
         ],
@@ -192,7 +203,7 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
 
   Widget _buildSummaryCard(String period, CounterController controller) {
     final stats = _calculatePeriodStats(period, controller);
-    
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -301,7 +312,7 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
 
   Widget _buildChartCard(String period, CounterController controller) {
     final chartData = _getChartData(period, controller);
-    
+
     return Container(
       height: 300,
       padding: const EdgeInsets.all(20),
@@ -357,10 +368,15 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                 : BarChart(
                     BarChartData(
                       alignment: BarChartAlignment.spaceAround,
-                      maxY: chartData.map((e) => e.y).reduce((a, b) => a > b ? a : b) + 10,
+                      maxY:
+                          chartData
+                              .map((e) => e.y)
+                              .reduce((a, b) => a > b ? a : b) +
+                          10,
                       barTouchData: BarTouchData(
                         touchTooltipData: BarTouchTooltipData(
-                          getTooltipColor: (group) => emeraldGreen.withOpacity(0.9),
+                          getTooltipColor: (group) =>
+                              emeraldGreen.withOpacity(0.9),
                           getTooltipItem: (group, groupIndex, rod, rodIndex) {
                             return BarTooltipItem(
                               '${rod.toY.round()}',
@@ -378,7 +394,8 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                           sideTitles: SideTitles(
                             showTitles: true,
                             getTitlesWidget: (double value, TitleMeta meta) {
-                              if (value.toInt() >= 0 && value.toInt() < chartData.length) {
+                              if (value.toInt() >= 0 &&
+                                  value.toInt() < chartData.length) {
                                 return Padding(
                                   padding: const EdgeInsets.only(top: 8),
                                   child: Text(
@@ -410,8 +427,12 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                             },
                           ),
                         ),
-                        topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                        rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                        topTitles: const AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
+                        ),
+                        rightTitles: const AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
+                        ),
                       ),
                       borderData: FlBorderData(show: false),
                       barGroups: chartData.asMap().entries.map((entry) {
@@ -524,7 +545,10 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         colors: [goldColor, lightGold],
@@ -549,7 +573,10 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
     );
   }
 
-  Map<String, dynamic> _calculatePeriodStats(String period, CounterController controller) {
+  Map<String, dynamic> _calculatePeriodStats(
+    String period,
+    CounterController controller,
+  ) {
     final allZikrs = controller.getAllZikrs();
     double totalCount = 0;
     int activeZikrs = 0;
@@ -586,12 +613,14 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
       final zikr = allZikrs[i];
       final count = controller.getZikrCount(zikr.id);
       if (count > 0) {
-        chartData.add(ChartData(
-          label: zikr.name.length > 8 
-              ? '${zikr.name.substring(0, 8)}...' 
-              : zikr.name,
-          y: count.toDouble(),
-        ));
+        chartData.add(
+          ChartData(
+            label: zikr.name.length > 8
+                ? '${zikr.name.substring(0, 8)}...'
+                : zikr.name,
+            y: count.toDouble(),
+          ),
+        );
       }
     }
 
@@ -606,18 +635,31 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
 
     try {
       final controller = Get.find<CounterController>();
+
+      final moonBytes = await rootBundle.load('assets/image/islam.png');
+      final moonImage = pw.MemoryImage(moonBytes.buffer.asUint8List());
       final pdf = pw.Document();
 
       // Unicode destekli Poppins fontunu yükle
       pw.Font? regularFont;
       pw.Font? boldFont;
-      
+      pw.Font? amiriFont;
+
       try {
-        final regularFontData = await rootBundle.load('assets/fonts/Poppins-Regular.ttf');
+        final regularFontData = await rootBundle.load(
+          'assets/fonts/Poppins-Regular.ttf',
+        );
         regularFont = pw.Font.ttf(regularFontData);
-        
-        final boldFontData = await rootBundle.load('assets/fonts/Poppins-Bold.ttf');
+
+        final boldFontData = await rootBundle.load(
+          'assets/fonts/Poppins-Bold.ttf',
+        );
         boldFont = pw.Font.ttf(boldFontData);
+
+        final amiriFontData = await rootBundle.load(
+          'assets/fonts/Amiri-Regular.ttf',
+        );
+        amiriFont = pw.Font.ttf(amiriFontData);
       } catch (fontError) {
         print('Font yüklenemedi: $fontError');
         // Font yüklenemezse varsayılan font kullanılacak
@@ -627,179 +669,438 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
       pdf.addPage(
         pw.Page(
           pageFormat: PdfPageFormat.a4,
+          margin: const pw.EdgeInsets.all(16),
           build: (pw.Context context) {
+            final allZikrs = controller.getAllZikrs();
+            final totalCount = allZikrs.fold<int>(
+              0,
+              (sum, zikr) => sum + controller.getZikrCount(zikr.id).toInt(),
+            );
+            final activeZikrs = allZikrs
+                .where((zikr) => controller.getZikrCount(zikr.id) > 0)
+                .length;
+            final now = DateTime.now();
+            final firstDate = DateTime(2024, 1, 1);
+            final daysSinceStart = now.difference(firstDate).inDays + 1;
+            final dailyAverage = (totalCount / daysSinceStart).toStringAsFixed(
+              1,
+            );
+
+            // En çok kullanılan zikirler (top 5)
+            final sortedZikrs = allZikrs
+              ..sort(
+                (a, b) => controller
+                    .getZikrCount(b.id)
+                    .compareTo(controller.getZikrCount(a.id)),
+              );
+            final topZikrs = sortedZikrs.take(5).toList();
+
             return pw.Column(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
               children: [
-                // Başlık
+                // İslami Başlık - Daha şık tasarım
                 pw.Container(
                   width: double.infinity,
-                  padding: const pw.EdgeInsets.all(20),
+                  padding: const pw.EdgeInsets.all(16),
                   decoration: pw.BoxDecoration(
-                    color: PdfColors.green100,
-                    borderRadius: pw.BorderRadius.circular(10),
+                    gradient: pw.LinearGradient(
+                      colors: [
+                        PdfColor.fromHex('#2D5016'), // emerald green
+                        PdfColor.fromHex('#1A3409'), // dark green
+                      ],
+                    ),
+                    borderRadius: pw.BorderRadius.circular(12),
                   ),
                   child: pw.Column(
                     children: [
+                      // İslami simgeler ve dekorasyon
+                      pw.Row(
+                        mainAxisAlignment: pw.MainAxisAlignment.center,
+                        children: [
+                         pw.Container(
+                            width: 75,
+                            height: 75,
+                            alignment: pw.Alignment.center,
+                            decoration: pw.BoxDecoration(
+                              color: PdfColor.fromHex('#D4AF37'),
+                              shape: pw.BoxShape.circle,
+                            ),
+                            child: pw.Center(
+                              child: pw.Image(moonImage, width: 65, height: 65),
+                            ),
+                          ),
+                          pw.SizedBox(width: 16),
+                          pw.Expanded(
+                            child: pw.Text(
+                              'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم',
+                              textAlign: pw.TextAlign.center,
+                              textDirection: pw.TextDirection.rtl,
+                              style: pw.TextStyle(
+                                fontSize: 20,
+                                color: PdfColor.fromHex('#F5E6A8'),
+                                font: amiriFont,
+                                fontWeight: pw.FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          pw.SizedBox(width: 16),
+                           pw.Container(
+                            width: 75,
+                            height: 75,
+                            alignment: pw.Alignment.center,
+                            decoration: pw.BoxDecoration(
+                              color: PdfColor.fromHex('#D4AF37'),
+                              shape: pw.BoxShape.circle,
+                            ),
+                            child: pw.Center(
+                              child: pw.Image(moonImage, width: 65, height: 65),
+                            ),
+                          ),
+                        ],
+                      ),
+                      pw.SizedBox(height: 12),
                       pw.Text(
-                        'Tasbee Pro - İstatistik Raporu',
+                        'Tasbee Pro - Detaylı İstatistik Raporu',
+                        textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(
-                          fontSize: 24,
+                          fontSize: 22,
                           fontWeight: pw.FontWeight.bold,
+                          color: PdfColors.white,
                           font: boldFont,
                         ),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
-                        'Tarih: ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
-                        style: pw.TextStyle(fontSize: 14, font: regularFont),
+                        'Tarih: ${now.day}/${now.month}/${now.year} - ${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}',
+                        style: pw.TextStyle(
+                          fontSize: 12,
+                          color: PdfColor.fromHex('#F5E6A8'),
+                          font: regularFont,
+                        ),
                       ),
                     ],
                   ),
                 ),
-                
-                pw.SizedBox(height: 30),
-                
-                // Özet istatistikler
-                pw.Text(
-                  'Genel İstatistikler',
-                  style: pw.TextStyle(
-                    fontSize: 18,
-                    fontWeight: pw.FontWeight.bold,
-                    font: boldFont,
-                  ),
-                ),
-                
-                pw.SizedBox(height: 15),
 
-                // İstatistik özeti
+                pw.SizedBox(height: 16),
+
+                // Ana İstatistikler - Kartlar halinde
+                pw.Row(
+                  children: [
+                    pw.Expanded(
+                      child: _buildStatCard(
+                        'Toplam Zikir',
+                        totalCount.toString(),
+                        'O',
+                        regularFont,
+                        boldFont,
+                      ),
+                    ),
+                    pw.SizedBox(width: 12),
+                    pw.Expanded(
+                      child: _buildStatCard(
+                        'Günlük Ortalama',
+                        dailyAverage,
+                        '#',
+                        regularFont,
+                        boldFont,
+                      ),
+                    ),
+                    pw.SizedBox(width: 12),
+                    pw.Expanded(
+                      child: _buildStatCard(
+                        'Aktif Zikir',
+                        '$activeZikrs/${allZikrs.length}',
+                        '+',
+                        regularFont,
+                        boldFont,
+                      ),
+                    ),
+                  ],
+                ),
+
+                pw.SizedBox(height: 16),
+
+                // En Çok Kullanılan Zikirler - Grafik benzeri görünüm
                 pw.Container(
-                  padding: const pw.EdgeInsets.all(15),
+                  width: double.infinity,
+                  padding: const pw.EdgeInsets.all(12),
                   decoration: pw.BoxDecoration(
-                    border: pw.Border.all(color: PdfColors.grey300),
+                    color: PdfColor.fromHex('#F8F6F0'),
+                    border: pw.Border.all(
+                      color: PdfColor.fromHex('#D4AF37'),
+                      width: 1,
+                    ),
                     borderRadius: pw.BorderRadius.circular(8),
                   ),
                   child: pw.Column(
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
-                      // Toplam istatistikler hesapla
-                      pw.Builder(builder: (context) {
-                        final allZikrs = controller.getAllZikrs();
-                        final totalCount = allZikrs.fold<int>(0, (sum, zikr) => sum + controller.getZikrCount(zikr.id).toInt());
-                        final activeZikrs = allZikrs.where((zikr) => controller.getZikrCount(zikr.id) > 0).length;
-                        final now = DateTime.now();
-                        final firstDate = DateTime(2024, 1, 1); // Varsayılan başlangıç tarihi
-                        final daysSinceStart = now.difference(firstDate).inDays + 1;
-                        final dailyAverage = (totalCount / daysSinceStart).toStringAsFixed(1);
+                      pw.Text(
+                        '>> En Cok Kullanilan Zikirler',
+                        style: pw.TextStyle(
+                          fontSize: 16,
+                          fontWeight: pw.FontWeight.bold,
+                          color: PdfColor.fromHex('#2D5016'),
+                          font: boldFont,
+                        ),
+                      ),
+                      pw.SizedBox(height: 12),
 
-                        return pw.Column(
-                          crossAxisAlignment: pw.CrossAxisAlignment.start,
-                          children: [
-                            pw.Text(
-                              'Toplam Zikir: $totalCount',
-                              style: pw.TextStyle(font: regularFont, fontSize: 12),
-                            ),
-                            pw.SizedBox(height: 5),
-                            pw.Text(
-                              'Günlük Ortalama: $dailyAverage',
-                              style: pw.TextStyle(font: regularFont, fontSize: 12),
-                            ),
-                            pw.SizedBox(height: 5),
-                            pw.Text(
-                              'Aktif Zikir Türleri: $activeZikrs/${allZikrs.length}',
-                              style: pw.TextStyle(font: regularFont, fontSize: 12),
-                            ),
-                          ],
+                      // Grafik benzeri çubuklar
+                      ...topZikrs.map((zikr) {
+                        final count = controller.getZikrCount(zikr.id).toInt();
+                        final maxCount = topZikrs.isEmpty
+                            ? 1
+                            : controller.getZikrCount(topZikrs.first.id);
+                        final percentage = maxCount > 0
+                            ? (count / maxCount) * 100
+                            : 0;
+
+                        return pw.Container(
+                          margin: const pw.EdgeInsets.only(bottom: 8),
+                          child: pw.Column(
+                            crossAxisAlignment: pw.CrossAxisAlignment.start,
+                            children: [
+                              pw.Row(
+                                mainAxisAlignment:
+                                    pw.MainAxisAlignment.spaceBetween,
+                                children: [
+                                  pw.Expanded(
+                                    child: pw.Text(
+                                      zikr.name,
+                                      style: pw.TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: pw.FontWeight.bold,
+                                        color: PdfColor.fromHex('#2D5016'),
+                                        font: regularFont,
+                                      ),
+                                    ),
+                                  ),
+                                  pw.Text(
+                                    count.toString(),
+                                    style: pw.TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: pw.FontWeight.bold,
+                                      color: PdfColor.fromHex('#D4AF37'),
+                                      font: boldFont,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              pw.SizedBox(height: 4),
+                              // Progress bar
+                              pw.Container(
+                                height: 8,
+                                width: double.infinity,
+                                decoration: pw.BoxDecoration(
+                                  color: PdfColor.fromHex('#E8E0C7'),
+                                  borderRadius: pw.BorderRadius.circular(4),
+                                ),
+                                child: pw.Row(
+                                  children: [
+                                    pw.Container(
+                                      height: 8,
+                                      width:
+                                          (percentage / 100) *
+                                          200, // 200 is approximate max width
+                                      decoration: pw.BoxDecoration(
+                                        gradient: pw.LinearGradient(
+                                          colors: [
+                                            PdfColor.fromHex('#D4AF37'),
+                                            PdfColor.fromHex('#F5E6A8'),
+                                          ],
+                                        ),
+                                        borderRadius: pw.BorderRadius.circular(
+                                          4,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         );
-                      }),
+                      }).toList(),
                     ],
                   ),
                 ),
-                
+
                 pw.SizedBox(height: 20),
-                
-                // Tablo
-                pw.Table(
-                  border: pw.TableBorder.all(),
-                  children: [
-                    // Başlık satırı
-                    pw.TableRow(
-                      decoration: pw.BoxDecoration(color: PdfColors.green50),
-                      children: [
-                        pw.Padding(
-                          padding: const pw.EdgeInsets.all(8),
-                          child: pw.Text(
-                            'Zikir Adı',
-                            style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold,
-                              font: boldFont,
-                            ),
-                          ),
-                        ),
-                        pw.Padding(
-                          padding: const pw.EdgeInsets.all(8),
-                          child: pw.Text(
-                            'Sayı',
-                            style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold,
-                              font: boldFont,
-                            ),
-                          ),
-                        ),
-                        pw.Padding(
-                          padding: const pw.EdgeInsets.all(8),
-                          child: pw.Text(
-                            'Durum',
-                            style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold,
-                              font: boldFont,
-                            ),
-                          ),
-                        ),
-                      ],
+
+                // Detaylı Zikir Listesi - Tablo
+                pw.Container(
+                  width: double.infinity,
+                  decoration: pw.BoxDecoration(
+                    border: pw.Border.all(
+                      color: PdfColor.fromHex('#D4AF37'),
+                      width: 1,
                     ),
-                    
-                    // Veri satırları
-                    ...controller.getAllZikrs().map((zikr) {
-                      final count = controller.getZikrCount(zikr.id);
-                      return pw.TableRow(
-                        children: [
-                          pw.Padding(
-                            padding: const pw.EdgeInsets.all(8),
-                            child: pw.Text(
-                              zikr.name,
-                              style: pw.TextStyle(font: regularFont),
-                            ),
+                    borderRadius: pw.BorderRadius.circular(12),
+                  ),
+                  child: pw.Column(
+                    children: [
+                      // Tablo başlığı
+                      pw.Container(
+                        width: double.infinity,
+                        padding: const pw.EdgeInsets.all(12),
+                        decoration: pw.BoxDecoration(
+                          color: PdfColor.fromHex('#2D5016'),
+                          borderRadius: const pw.BorderRadius.only(
+                            topLeft: pw.Radius.circular(12),
+                            topRight: pw.Radius.circular(12),
                           ),
-                          pw.Padding(
-                            padding: const pw.EdgeInsets.all(8),
-                            child: pw.Text(
-                              count.toString(),
-                              style: pw.TextStyle(font: regularFont),
-                            ),
+                        ),
+                        child: pw.Text(
+                          '= Tum Zikirler Detayi =',
+                          textAlign: pw.TextAlign.center,
+                          style: pw.TextStyle(
+                            fontSize: 14,
+                            fontWeight: pw.FontWeight.bold,
+                            color: PdfColors.white,
+                            font: boldFont,
                           ),
-                          pw.Padding(
-                            padding: const pw.EdgeInsets.all(8),
-                            child: pw.Text(
-                              count > 0 ? 'Aktif' : 'Kullanılmadı',
-                              style: pw.TextStyle(font: regularFont),
-                            ),
+                        ),
+                      ),
+
+                      // Tablo içeriği
+                      ...allZikrs.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final zikr = entry.value;
+                        final count = controller.getZikrCount(zikr.id).toInt();
+                        final isEven = index % 2 == 0;
+
+                        return pw.Container(
+                          width: double.infinity,
+                          padding: const pw.EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
                           ),
-                        ],
-                      );
-                    }).toList(),
-                  ],
+                          decoration: pw.BoxDecoration(
+                            color: isEven
+                                ? PdfColor.fromHex('#F8F6F0')
+                                : PdfColors.white,
+                          ),
+                          child: pw.Row(
+                            children: [
+                              pw.Container(
+                                width: 24,
+                                height: 24,
+                                decoration: pw.BoxDecoration(
+                                  color: count > 0
+                                      ? PdfColor.fromHex('#D4AF37')
+                                      : PdfColor.fromHex('#E8E0C7'),
+                                  shape: pw.BoxShape.circle,
+                                ),
+                                child: pw.Center(
+                                  child: pw.Text(
+                                    count > 0 ? 'V' : 'O',
+                                    style: pw.TextStyle(
+                                      fontSize: 12,
+                                      color: count > 0
+                                          ? PdfColors.white
+                                          : PdfColor.fromHex('#2D5016'),
+                                      fontWeight: pw.FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              pw.SizedBox(width: 12),
+                              pw.Expanded(
+                                child: pw.Text(
+                                  zikr.name,
+                                  style: pw.TextStyle(
+                                    fontSize: 11,
+                                    color: PdfColor.fromHex('#2D5016'),
+                                    font: regularFont,
+                                  ),
+                                ),
+                              ),
+                              pw.Container(
+                                padding: const pw.EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 4,
+                                ),
+                                decoration: pw.BoxDecoration(
+                                  color: count > 0
+                                      ? PdfColor.fromHex('#F5E6A8')
+                                      : PdfColor.fromHex('#F0E9D2'),
+                                  borderRadius: pw.BorderRadius.circular(8),
+                                ),
+                                child: pw.Text(
+                                  count.toString(),
+                                  style: pw.TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: pw.FontWeight.bold,
+                                    color: PdfColor.fromHex('#2D5016'),
+                                    font: boldFont,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ],
+                  ),
                 ),
-                
-                pw.SizedBox(height: 30),
-                
-                // Alt bilgi
-                pw.Text(
-                  'Bu rapor Tasbee Pro uygulaması tarafından otomatik oluşturulmuştur.',
-                  style: pw.TextStyle(
-                    fontSize: 10,
-                    fontStyle: pw.FontStyle.italic,
-                    font: regularFont,
+
+                pw.Spacer(),
+
+                // İslami alt bilgi
+                pw.Container(
+                  width: double.infinity,
+                  padding: const pw.EdgeInsets.all(16),
+                  decoration: pw.BoxDecoration(
+                    color: PdfColor.fromHex('#F0E9D2'),
+                    borderRadius: pw.BorderRadius.circular(10),
+                    border: pw.Border.all(
+                      color: PdfColor.fromHex('#D4AF37'),
+                      width: 1,
+                    ),
+                  ),
+                  child: pw.Column(
+                    children: [
+                      pw.Container(
+                        padding: const pw.EdgeInsets.all(8),
+                        decoration: pw.BoxDecoration(
+                          color: PdfColor.fromHex('#2D5016'),
+                          borderRadius: pw.BorderRadius.circular(8),
+                        ),
+                        child: pw.Text(
+                          'Ve zkuru llaha kasiran la\'allekum tuflihun',
+                          textAlign: pw.TextAlign.center,
+                          style: pw.TextStyle(
+                            fontSize: 12,
+                            color: PdfColor.fromHex('#F5E6A8'),
+                            font: regularFont,
+                            fontStyle: pw.FontStyle.italic,
+                          ),
+                        ),
+                      ),
+                      pw.SizedBox(height: 8),
+                      pw.Text(
+                        '"Allah\'i cok zikredin ki kurtulusu ereseyez" (Enfal: 45)',
+                        textAlign: pw.TextAlign.center,
+                        style: pw.TextStyle(
+                          fontSize: 10,
+                          color: PdfColor.fromHex('#2D5016'),
+                          fontStyle: pw.FontStyle.italic,
+                          font: regularFont,
+                        ),
+                      ),
+                      pw.SizedBox(height: 8),
+                      pw.Text(
+                        'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.',
+                        textAlign: pw.TextAlign.center,
+                        style: pw.TextStyle(
+                          fontSize: 9,
+                          color: PdfColor.fromHex('#2D5016'),
+                          font: regularFont,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -811,7 +1112,7 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
       // PDF'i kaydet - External storage (izin gerektirmez)
       Directory saveDir;
       String saveLocation;
-      
+
       try {
         // Android external storage directory (app-specific, izin gerektirmez)
         final externalDir = await getExternalStorageDirectory();
@@ -821,7 +1122,7 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
           final mainPath = externalDir.path.split('/Android/data/')[0];
           saveDir = Directory('$mainPath/TasbeePro');
           saveLocation = "Ana depolama/TasbeePro";
-          
+
           // Klasör yoksa oluştur
           if (!await saveDir.exists()) {
             await saveDir.create(recursive: true);
@@ -829,14 +1130,13 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
         } else {
           throw Exception('External storage not available');
         }
-        
       } catch (e) {
         // Fallback - App-specific external directory
         final externalDir = await getExternalStorageDirectory();
         if (externalDir != null) {
           saveDir = Directory('${externalDir.path}/TasbeePro_Reports');
           saveLocation = "Uygulamaya özel klasör/TasbeePro_Reports";
-          
+
           if (!await saveDir.exists()) {
             await saveDir.create(recursive: true);
           }
@@ -846,22 +1146,19 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
           saveLocation = "Uygulama belgeler klasörü";
         }
       }
-      
-      final fileName = 'Tasbee_Pro_Istatistik_${DateTime.now().day}_${DateTime.now().month}_${DateTime.now().year}_${DateTime.now().hour}_${DateTime.now().minute}.pdf';
+
+      final fileName =
+          'Tasbee_Pro_Istatistik_${DateTime.now().day}_${DateTime.now().month}_${DateTime.now().year}_${DateTime.now().hour}_${DateTime.now().minute}.pdf';
       final file = File('${saveDir.path}/$fileName');
-      
+
       try {
         await file.writeAsBytes(await pdf.save());
-        
+
         // PDF başarıyla kaydedildikten sonra kullanıcıya seçenekler sun
         await _showPdfOptionsDialog(file.path, fileName, saveLocation);
-        
       } catch (pdfError) {
         print('PDF kaydetme hatası: $pdfError');
-        IslamicSnackbar.showError(
-          'PDF Hatası',
-          'PDF kaydedilemedi: $pdfError',
-        );
+        IslamicSnackbar.showError('PDF Hatası', 'PDF kaydedilemedi: $pdfError');
       }
     } catch (e) {
       IslamicSnackbar.showError(
@@ -878,9 +1175,12 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
 
   // Depolama izni kontrolü ve isteği
 
-
   // PDF seçenekleri dialog'u
-  Future<void> _showPdfOptionsDialog(String filePath, String fileName, String saveLocation) async {
+  Future<void> _showPdfOptionsDialog(
+    String filePath,
+    String fileName,
+    String saveLocation,
+  ) async {
     Get.dialog(
       Dialog(
         backgroundColor: Colors.transparent,
@@ -894,10 +1194,7 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
               colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: goldColor.withOpacity(0.4),
-              width: 1.5,
-            ),
+            border: Border.all(color: goldColor.withOpacity(0.4), width: 1.5),
             boxShadow: [
               BoxShadow(
                 color: darkGreen.withOpacity(0.2),
@@ -942,7 +1239,7 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                   ],
                 ),
               ),
-              
+
               // Divider
               Container(
                 height: 1,
@@ -957,7 +1254,7 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                   ),
                 ),
               ),
-              
+
               // Content
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -981,8 +1278,11 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                         children: [
                           Row(
                             children: [
-                              Icon(Icons.description, 
-                                color: emeraldGreen, size: 16),
+                              Icon(
+                                Icons.description,
+                                color: emeraldGreen,
+                                size: 16,
+                              ),
                               const SizedBox(width: 6),
                               Expanded(
                                 child: Text(
@@ -999,8 +1299,11 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                           const SizedBox(height: 6),
                           Row(
                             children: [
-                              Icon(Icons.folder, 
-                                color: emeraldGreen.withOpacity(0.7), size: 16),
+                              Icon(
+                                Icons.folder,
+                                color: emeraldGreen.withOpacity(0.7),
+                                size: 16,
+                              ),
                               const SizedBox(width: 6),
                               Expanded(
                                 child: Text(
@@ -1016,9 +1319,9 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                         ],
                       ),
                     ),
-                    
+
                     const SizedBox(height: 16),
-                    
+
                     // Action buttons
                     Row(
                       children: [
@@ -1046,9 +1349,9 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
                         ),
                       ],
                     ),
-                    
+
                     const SizedBox(height: 8),
-                    
+
                     // Close button
                     SizedBox(
                       width: double.infinity,
@@ -1086,30 +1389,26 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
           decoration: BoxDecoration(
-            gradient: isPrimary 
-              ? const LinearGradient(
-                  colors: [lightGold, goldColor],
-                )
-              : null,
-            color: isSecondary 
-              ? lightGold.withOpacity(0.3) 
-              : isPrimary ? null : goldColor.withOpacity(0.1),
+            gradient: isPrimary
+                ? const LinearGradient(colors: [lightGold, goldColor])
+                : null,
+            color: isSecondary
+                ? lightGold.withOpacity(0.3)
+                : isPrimary
+                ? null
+                : goldColor.withOpacity(0.1),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: isPrimary 
-                ? emeraldGreen.withOpacity(0.3)
-                : goldColor.withOpacity(0.4),
+              color: isPrimary
+                  ? emeraldGreen.withOpacity(0.3)
+                  : goldColor.withOpacity(0.4),
               width: 1,
             ),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                icon, 
-                color: emeraldGreen, 
-                size: 16,
-              ),
+              Icon(icon, color: emeraldGreen, size: 16),
               const SizedBox(width: 6),
               Text(
                 label,
@@ -1137,10 +1436,7 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
         );
       }
     } catch (e) {
-      IslamicSnackbar.showError(
-        'Hata',
-        'PDF açılırken bir hata oluştu: $e',
-      );
+      IslamicSnackbar.showError('Hata', 'PDF açılırken bir hata oluştu: $e');
     }
   }
 
@@ -1158,6 +1454,54 @@ class _StatsScreenState extends State<StatsScreen> with SingleTickerProviderStat
         'PDF paylaşılırken bir hata oluştu: $e',
       );
     }
+  }
+
+  // PDF için stat card builder
+  pw.Widget _buildStatCard(
+    String title,
+    String value,
+    String icon,
+    pw.Font? regularFont,
+    pw.Font? boldFont,
+  ) {
+    return pw.Container(
+      padding: const pw.EdgeInsets.all(8),
+      decoration: pw.BoxDecoration(
+        gradient: pw.LinearGradient(
+          colors: [
+            PdfColor.fromHex('#F5E6A8'), // light gold
+            PdfColor.fromHex('#E8E0C7'), // lighter
+          ],
+        ),
+        borderRadius: pw.BorderRadius.circular(8),
+        border: pw.Border.all(color: PdfColor.fromHex('#D4AF37'), width: 1),
+      ),
+      child: pw.Column(
+        children: [
+          pw.Text(icon, style: pw.TextStyle(fontSize: 24)),
+          pw.SizedBox(height: 8),
+          pw.Text(
+            value,
+            style: pw.TextStyle(
+              fontSize: 20,
+              fontWeight: pw.FontWeight.bold,
+              color: PdfColor.fromHex('#2D5016'),
+              font: boldFont,
+            ),
+          ),
+          pw.SizedBox(height: 4),
+          pw.Text(
+            title,
+            textAlign: pw.TextAlign.center,
+            style: pw.TextStyle(
+              fontSize: 10,
+              color: PdfColor.fromHex('#2D5016'),
+              font: regularFont,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
