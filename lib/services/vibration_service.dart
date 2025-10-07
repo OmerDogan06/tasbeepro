@@ -29,6 +29,11 @@ class VibrationService extends GetxService {
           Vibration.vibrate(duration: 100);
         }
         break;
+      case 3: // High
+        if (await Vibration.hasVibrator()) {
+          Vibration.vibrate(duration: 200);
+        }
+        break;
     }
   }
   
@@ -47,6 +52,8 @@ class VibrationService extends GetxService {
         return 'Hafif';
       case 2:
         return 'Orta';
+      case 3:
+        return 'Yüksek';
       default:
         return 'Hafif';
     }

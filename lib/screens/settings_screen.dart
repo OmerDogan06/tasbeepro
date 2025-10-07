@@ -160,16 +160,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
               
               const SizedBox(height: 24),
               
-              // Widget İstatistikleri
-              _buildSectionHeader(context, 'Widget İstatistikleri 📱'),
+              // Widget
+              _buildSectionHeader(context, 'Widget 📱'),
               _buildIslamicCard([
                 _buildIslamicListTile(
                   icon: Icons.widgets,
-                  title: 'Widget Zikirlerim',
+                  title: 'Widget İstatistikleri',
                   subtitle: 'Widget\'tan yapılan tüm zikirlerinizi görün',
                   onTap: () => Get.to(() => const WidgetStatsScreen(),
                     transition: Transition.rightToLeft,
                     duration: const Duration(milliseconds: 300)),
+                ),
+                _buildDivider(),
+                _buildIslamicListTile(
+                  icon: Icons.info_outline,
+                  title: 'Widget Hakkında',
+                  subtitle: 'Widget nasıl kullanılır ve ana ekrana eklenir',
+                  onTap: () => _showWidgetInfoDialog(context),
                 ),
               ]),
               
@@ -503,6 +510,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     _buildVibrationOption(service, 0, 'Kapalı'),
                     _buildVibrationOption(service, 1, 'Hafif'),
                     _buildVibrationOption(service, 2, 'Orta'),
+                    _buildVibrationOption(service, 3, 'Yüksek'),
                     
                     const SizedBox(height: 8),
                     
@@ -604,6 +612,259 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
   
+  void _showWidgetInfoDialog(BuildContext context) {
+    Get.dialog(
+      Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(20),
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 400),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+            ),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: goldColor.withOpacity(0.4), width: 1.5),
+            boxShadow: [
+              BoxShadow(
+                color: darkGreen.withOpacity(0.2),
+                blurRadius: 15,
+                offset: const Offset(0, 8),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: const RadialGradient(
+                          colors: [lightGold, goldColor],
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(
+                        Icons.widgets,
+                        color: emeraldGreen,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    const Expanded(
+                      child: Text(
+                        'Tasbee Widget Hakkında 📱',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: emeraldGreen,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Divider
+              Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      goldColor.withOpacity(0.3),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+
+              // Content
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Widget açıklaması
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: lightGold.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: goldColor.withOpacity(0.4),
+                          width: 1,
+                        ),
+                      ),
+                      child: const Text(
+                        'Ana ekranınıza widget ekleyerek uygulamayı açmadan hızlıca zikir çekebilirsiniz. Widget\'ınızda seçtiğiniz zikir türünü görebilir, sayaç ile takip edebilir ve tüm zikirleriniz otomatik olarak kaydedilir.',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: emeraldGreen,
+                          height: 1.4,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // Widget bilgileri
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: lightGold.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: goldColor.withOpacity(0.3),
+                          width: 1,
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            '✨ Widget Özellikleri:',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: emeraldGreen,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          _buildWidgetFeature('📱', 'Ana ekranınızda kolayca zikir çekebilirsiniz'),
+                          _buildWidgetFeature('💾', 'Tüm zikirleriniz kalıcı olarak kaydedilir'),
+                          _buildWidgetFeature('📊', 'Widget istatistiklerini takip edebilirsiniz'),
+                          _buildWidgetFeature('🎯', 'Hedef sayısı belirleyebilirsiniz'),
+                          _buildWidgetFeature('🔄', 'Farklı zikir türleri seçebilirsiniz'),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // Widget ekleme butonu
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          _addWidgetToHomeScreen();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: goldColor,
+                          foregroundColor: emeraldGreen,
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          elevation: 4,
+                        ),
+                        icon: const Icon(Icons.add_to_home_screen, size: 20),
+                        label: const Text(
+                          'Widget Ekle',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 8),
+
+                    // Kapat butonu
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        style: TextButton.styleFrom(
+                          backgroundColor: lightGold.withOpacity(0.3),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            side: BorderSide(
+                              color: goldColor.withOpacity(0.3),
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                        child: const Text(
+                          'Kapat',
+                          style: TextStyle(
+                            color: emeraldGreen,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWidgetFeature(String emoji, String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            emoji,
+            style: const TextStyle(fontSize: 12),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 11,
+                color: emeraldGreen.withOpacity(0.8),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _addWidgetToHomeScreen() async {
+    try {
+      HapticFeedback.lightImpact();
+      
+      // Android widget picker'ını açmak için platform channel kullanıyoruz
+      const platform = MethodChannel('com.example.tasbeepro/widget');
+      await platform.invokeMethod('openWidgetPicker');
+      
+    
+    } catch (e) {
+      // Platform channel başarısız olursa manual talimatlar göster
+      HapticFeedback.lightImpact();
+      
+      IslamicSnackbar.showSuccess(
+        'Widget Ekleme',
+        'Ana ekranınızda boş bir alana uzun basın ve "Widget\'lar" seçeneğini seçin. Ardından "Tasbee Pro" widget\'ını bulup ekleyin.',
+        duration: const Duration(seconds: 5),
+      );
+    }
+  }
+
   void _showAboutDialog(BuildContext context) {
     Get.dialog(
       Dialog(

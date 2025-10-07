@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
@@ -548,13 +549,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                               ],
                             ),
                           )
-                        : Text(
-                            'Grafik yakında eklenecek',
-                            style: TextStyle(
-                              color: emeraldGreen.withOpacity(0.7),
-                              fontSize: 14,
-                            ),
-                          ),
+                        : _buildChart(snapshot.data!),
               ),
             ],
           ),
@@ -1450,4 +1445,139 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
       ),
     );
   }
+
+  // Chart build methods
+  Widget _buildChart(List<Map<String, dynamic>> data) {
+    final chartData = _convertToChartData(data);
+    
+    return Row(
+      children: [
+        // Pie Chart
+        Expanded(
+          flex: 3,
+          child: PieChart(
+            PieChartData(
+              sectionsSpace: 2,
+              centerSpaceRadius: 40,
+              sections: chartData.asMap().entries.map((entry) {
+                final index = entry.key;
+                final data = entry.value;
+                return PieChartSectionData(
+                  color: _getChartColor(index),
+                  value: data.y,
+                  title: '${data.y.toInt()}',
+                  radius: 45,
+                  titleStyle: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                );
+              }).toList(),
+              pieTouchData: PieTouchData(
+                touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                  // Touch işlemleri
+                },
+              ),
+            ),
+          ),
+        ),
+        
+        const SizedBox(width: 16),
+        
+        // Legend
+        Expanded(
+          flex: 2,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: chartData.asMap().entries.map((entry) {
+                final index = entry.key;
+                final data = entry.value;
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 12,
+                        height: 12,
+                        decoration: BoxDecoration(
+                          color: _getChartColor(index),
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          data.label,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w500,
+                            color: emeraldGreen,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  List<ChartData> _convertToChartData(List<Map<String, dynamic>> data) {
+    final List<ChartData> chartData = [];
+    
+    // Sadece count > 0 olan zikirler
+    final activeData = data.where((item) => (item['count'] ?? 0) > 0).toList();
+    
+    // Count'a göre sırala (büyükten küçüğe)
+    activeData.sort((a, b) => (b['count'] ?? 0).compareTo(a['count'] ?? 0));
+    
+    for (final item in activeData) {
+      chartData.add(
+        ChartData(
+          label: item['zikr_name'] ?? 'Bilinmeyen',
+          y: (item['count'] ?? 0).toDouble(),
+        ),
+      );
+    }
+    
+    return chartData;
+  }
+
+  // Grafik renkleri için metod
+  Color _getChartColor(int index) {
+    final colors = [
+      const Color(0xFFD4AF37), // goldColor
+      const Color(0xFF2D5016), // emeraldGreen
+      const Color(0xFFF5E6A8), // lightGold
+      const Color(0xFF1A3409), // darkGreen
+      const Color(0xFFE8B931), // darker gold
+      const Color(0xFF4A6B2A), // lighter green
+      const Color(0xFFF0D65C), // light yellow
+      const Color(0xFF3E5C1E), // medium green
+      const Color(0xFFDDA94B), // orange gold
+      const Color(0xFF5A7D34), // forest green
+      const Color(0xFFF7E89A), // pale gold
+      const Color(0xFF2F4A17), // deep green
+      const Color(0xFFE1C547), // mustard
+      const Color(0xFF657F3A), // olive green
+      const Color(0xFFF4E2B7), // cream
+      const Color(0xFF3C5B1F), // pine green
+    ];
+    return colors[index % colors.length];
+  }
+}
+
+class ChartData {
+  final String label;
+  final double y;
+
+  ChartData({required this.label, required this.y});
 }
