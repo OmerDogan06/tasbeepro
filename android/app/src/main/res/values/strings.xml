@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
+    <string name="widget_description">Zikir sayacı ana ekran widget\'ı</string>
+    <string name="add_widget">Widget Ekle</string>
+    <string name="zikr_counter">Zikir Sayacı</string>
+    <string name="target">Hedef</string>
+    <string name="current">Yapılan</string>
+    <string name="progress">İlerleme</string>
+    <string name="reset">Sıfırla</string>
+    <string name="settings">Ayarlar</string>
+    <string name="widget_settings">Widget Ayarları</string>
+    <string name="zikr_type">Zikir Türü</string>
+    <string name="target_count">Hedef Sayısı</string>
+    <string name="preview">Önizleme</string>
+    <string name="save">Kaydet</string>
+    <string name="cancel">İptal</string>
+</resources>
