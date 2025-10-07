@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../services/notification_service.dart';
 import '../widgets/islamic_snackbar.dart';
+import 'add_reminder_screen.dart';
 
 class ReminderScreen extends StatefulWidget {
   const ReminderScreen({super.key});
@@ -159,7 +160,11 @@ class _ReminderScreenState extends State<ReminderScreen> {
           ),
         ),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: _showAddReminderDialog,
+          onPressed: () => Get.to(
+            () => const AddReminderScreen(),
+            transition: Transition.rightToLeft,
+            duration: const Duration(milliseconds: 300),
+          )?.then((_) => _loadReminders()), // Geri dönünce liste yenile
           backgroundColor: emeraldGreen,
           foregroundColor: Colors.white,
           elevation: 6,
@@ -295,235 +300,6 @@ class _ReminderScreenState extends State<ReminderScreen> {
               ),
             ),
           ],
-        ],
-      ),
-    );
-  }
-
-  void _showAddReminderDialog() {
-    final titleController = TextEditingController();
-    final messageController = TextEditingController();
-    DateTime selectedDateTime = DateTime.now().add(const Duration(hours: 1));
-
-    showDialog(
-      context: context,
-      builder: (context) => StatefulBuilder(
-        builder: (context, setDialogState) => AlertDialog(
-          backgroundColor: const Color(0xFFF8F6F0),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          title: const Text(
-            'Yeni Hatırlatıcı',
-            style: TextStyle(color: emeraldGreen, fontWeight: FontWeight.bold),
-          ),
-          content: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // Title
-                TextField(
-                  controller: titleController,
-                  decoration: InputDecoration(
-                    labelText: 'Başlık',
-                    hintText: 'Zikir Zamanı',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: emeraldGreen),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                
-                // Message
-                TextField(
-                  controller: messageController,
-                  maxLines: 2,
-                  decoration: InputDecoration(
-                    labelText: 'Mesaj (Opsiyonel)',
-                    hintText: 'Zikir yapma zamanı geldi',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: emeraldGreen),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                
-                // Date & Time
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: goldColor.withOpacity(0.3)),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.calendar_today, color: emeraldGreen),
-                          const SizedBox(width: 8),
-                          const Text('Tarih ve Saat:', style: TextStyle(fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        '${selectedDateTime.day}/${selectedDateTime.month}/${selectedDateTime.year} - ${selectedDateTime.hour.toString().padLeft(2, '0')}:${selectedDateTime.minute.toString().padLeft(2, '0')}',
-                        style: const TextStyle(fontSize: 16, color: emeraldGreen),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              onPressed: () async {
-                                final date = await showDatePicker(
-                                  context: context,
-                                  initialDate: selectedDateTime,
-                                  firstDate: DateTime.now(),
-                                  lastDate: DateTime.now().add(const Duration(days: 365)),
-                                );
-                                if (date != null) {
-                                  setDialogState(() {
-                                    selectedDateTime = DateTime(
-                                      date.year,
-                                      date.month,
-                                      date.day,
-                                      selectedDateTime.hour,
-                                      selectedDateTime.minute,
-                                    );
-                                  });
-                                }
-                              },
-                              icon: const Icon(Icons.calendar_today, size: 16),
-                              label: const Text('Tarih'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: goldColor,
-                                foregroundColor: emeraldGreen,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              onPressed: () async {
-                                final time = await showTimePicker(
-                                  context: context,
-                                  initialTime: TimeOfDay.fromDateTime(selectedDateTime),
-                                );
-                                if (time != null) {
-                                  setDialogState(() {
-                                    selectedDateTime = DateTime(
-                                      selectedDateTime.year,
-                                      selectedDateTime.month,
-                                      selectedDateTime.day,
-                                      time.hour,
-                                      time.minute,
-                                    );
-                                  });
-                                }
-                              },
-                              icon: const Icon(Icons.access_time, size: 16),
-                              label: const Text('Saat'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: goldColor,
-                                foregroundColor: emeraldGreen,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('İptal'),
-            ),
-            ElevatedButton(
-              onPressed: () => _addReminder(
-                selectedDateTime,
-                titleController.text.trim(),
-                messageController.text.trim(),
-              ),
-              style: ElevatedButton.styleFrom(backgroundColor: emeraldGreen),
-              child: const Text('Ekle', style: TextStyle(color: Colors.white)),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _addReminder(DateTime dateTime, String title, String message) async {
-    if (dateTime.isBefore(DateTime.now())) {
-      IslamicSnackbar.showWarning(
-        'Geçersiz Tarih',
-        'Geçmiş bir tarih seçemezsiniz',
-      );
-      return;
-    }
-
-    // Permission kontrolü
-    final hasPermission = await _notificationService.checkNotificationPermission();
-    if (!hasPermission) {
-      _showPermissionDialog();
-      return;
-    }
-
-    final reminderTitle = title.isEmpty ? 'Zikir Zamanı 🕌' : title;
-    final reminderMessage = message.isEmpty ? 'Zikir yapma zamanı geldi!' : message;
-
-    await _notificationService.scheduleCustomReminder(
-      scheduledDateTime: dateTime,
-      title: reminderTitle,
-      message: reminderMessage,
-    );
-
-    Navigator.pop(context);
-    _loadReminders();
-
-    IslamicSnackbar.showSuccess(
-      'Hatırlatıcı Eklendi 🔔',
-      'Belirlenen zamanda bildirim gelecek',
-    );
-  }
-
-  void _showPermissionDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFFF8F6F0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        title: const Text(
-          'Bildirim İzni Gerekli',
-          style: TextStyle(color: emeraldGreen, fontWeight: FontWeight.bold),
-        ),
-        content: const Text(
-          'Hatırlatıcıların çalışması için bildirim izni vermeniz gerekiyor.',
-          style: TextStyle(color: emeraldGreen),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('İptal'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              _notificationService.openNotificationSettings();
-            },
-            style: ElevatedButton.styleFrom(backgroundColor: emeraldGreen),
-            child: const Text('Ayarlara Git', style: TextStyle(color: Colors.white)),
-          ),
         ],
       ),
     );

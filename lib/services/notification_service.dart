@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:timezone/timezone.dart' as tz;
@@ -54,14 +55,31 @@ class NotificationService extends GetxService {
       'zikr_reminders',
       'Zikir Hatırlatıcıları',
       description: 'Zikir yapmayı hatırlatır',
-      importance: Importance.high,
+      importance: Importance.max, // Max seviye
       enableVibration: true,
       playSound: true,
+      enableLights: true,
+      ledColor: Color.fromARGB(255, 255, 0, 0),
+      showBadge: true,
     );
 
-    await _notifications
-        .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(channel);
+    const AndroidNotificationChannel dailyChannel = AndroidNotificationChannel(
+      'daily_reminders',
+      'Günlük Hatırlatıcılar',
+      description: 'Belirlenen saatlerde günlük zikir hatırlatıcıları',
+      importance: Importance.max, // Max seviye
+      enableVibration: true,
+      playSound: true,
+      enableLights: true,
+      ledColor: Color.fromARGB(255, 255, 0, 0),
+      showBadge: true,
+    );
+
+    final androidPlugin = _notifications
+        .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    
+    await androidPlugin?.createNotificationChannel(channel);
+    await androidPlugin?.createNotificationChannel(dailyChannel);
   }
   
   void _onNotificationTapped(NotificationResponse response) {
@@ -85,28 +103,44 @@ class NotificationService extends GetxService {
       title,
       body,
       tz.TZDateTime.from(scheduledTime, tz.local),
-      const NotificationDetails(
+      NotificationDetails(
         android: AndroidNotificationDetails(
           'zikr_reminders',
           'Zikir Hatırlatıcıları',
           channelDescription: 'Zikir yapmayı hatırlatır',
-          importance: Importance.high,
-          priority: Priority.high,
+          importance: Importance.max,
+          priority: Priority.max,
           icon: '@mipmap/ic_launcher',
           enableVibration: true,
           playSound: true,
           autoCancel: true,
           ongoing: false,
-          category: AndroidNotificationCategory.reminder,
+          category: AndroidNotificationCategory.alarm,
           visibility: NotificationVisibility.public,
           showWhen: true,
-          fullScreenIntent: false,
+          fullScreenIntent: true, // Ekranı uyandırır
+          enableLights: true,
+          ledColor: const Color.fromARGB(255, 255, 0, 0),
+          ledOnMs: 1000,
+          ledOffMs: 500,
+          ticker: 'Zikir Hatırlatıcısı',
+          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+          styleInformation: BigTextStyleInformation(
+            body,
+            htmlFormatBigText: false,
+            contentTitle: title,
+            htmlFormatContentTitle: false,
+            summaryText: 'Tasbee Pro',
+            htmlFormatSummaryText: false,
+          ),
+          // Flag'leri kaldırdık
         ),
-        iOS: DarwinNotificationDetails(
+        iOS: const DarwinNotificationDetails(
           presentAlert: true,
           presentBadge: true,
           presentSound: true,
           badgeNumber: 1,
+          interruptionLevel: InterruptionLevel.critical,
         ),
       ),
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
@@ -220,5 +254,84 @@ class NotificationService extends GetxService {
   // Ayarlar sayfasına yönlendir (permission reddedilirse)
   Future<void> openNotificationSettings() async {
     await openAppSettings();
+  }
+  
+  // Özel saatler için günlük hatırlatıcı planla
+  Future<void> scheduleCustomTimeReminder({
+    required int hour,
+    required int minute,
+  }) async {
+    final id = hour * 100 + minute; // Unique ID for time-based reminders
+    
+    // Her gün aynı saatte tekrarlanacak notification planla
+    final now = DateTime.now();
+    var scheduledDate = DateTime(now.year, now.month, now.day, hour, minute);
+    
+    // Eğer bugün için saat geçmişse, yarın için planla
+    if (scheduledDate.isBefore(now)) {
+      scheduledDate = scheduledDate.add(const Duration(days: 1));
+    }
+    
+    await _notifications.zonedSchedule(
+      id,
+      'Zikir Zamanı 🕌',
+      'Günlük zikir yapma zamanı geldi!',
+      tz.TZDateTime.from(scheduledDate, tz.local),
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          'daily_reminders',
+          'Günlük Hatırlatıcılar',
+          channelDescription: 'Belirlenen saatlerde günlük zikir hatırlatıcıları',
+          importance: Importance.max,
+          priority: Priority.max,
+          icon: '@mipmap/ic_launcher',
+          enableVibration: true,
+          playSound: true,
+          autoCancel: true,
+          ongoing: false,
+          category: AndroidNotificationCategory.alarm,
+          fullScreenIntent: true, // Bu ekranı uyandırır ama uygulama açmaz
+          channelShowBadge: true,
+          visibility: NotificationVisibility.public,
+          enableLights: true,
+          ledColor: const Color.fromARGB(255, 255, 0, 0),
+          ledOnMs: 1000,
+          ledOffMs: 500,
+          ticker: 'Zikir Zamanı!',
+          when: null,
+          usesChronometer: false,
+          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+          styleInformation: const BigTextStyleInformation(
+            'Günlük zikir yapma zamanı geldi! SubhanAllah, Alhamdulillah, Allahu Akbar',
+            htmlFormatBigText: false,
+            contentTitle: 'Zikir Zamanı 🕌',
+            htmlFormatContentTitle: false,
+            summaryText: 'Tasbee Pro',
+            htmlFormatSummaryText: false,
+          ),
+          // Flag'leri kaldırdık - sürekli ses sorunu buradandı
+        ),
+        iOS: const DarwinNotificationDetails(
+          presentAlert: true,
+          presentBadge: true,
+          presentSound: true,
+          categoryIdentifier: 'daily_reminder',
+          interruptionLevel: InterruptionLevel.critical,
+        ),
+      ),
+      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+      matchDateTimeComponents: DateTimeComponents.time,
+    );
+  }
+  
+  // Özel saat bildirimlerini iptal et
+  Future<void> cancelCustomTimeNotifications() async {
+    // Custom time notification ID'leri 0-2359 arasında (hour*100 + minute)
+    for (int hour = 0; hour < 24; hour++) {
+      for (int minute = 0; minute < 60; minute++) {
+        final id = hour * 100 + minute;
+        await _notifications.cancel(id);
+      }
+    }
   }
 }

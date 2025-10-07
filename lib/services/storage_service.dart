@@ -148,4 +148,19 @@ class StorageService extends GetxService {
       'exportFormat': 'pdf',
     };
   }
+  
+  // Custom reminder times
+  Future<void> saveCustomReminderTimes(List<Map<String, dynamic>> times) async {
+    final jsonString = jsonEncode(times);
+    await _prefs.setString('custom_reminder_times', jsonString);
+  }
+  
+  List<Map<String, dynamic>> getCustomReminderTimes() {
+    final jsonString = _prefs.getString('custom_reminder_times');
+    if (jsonString != null) {
+      final List<dynamic> decoded = jsonDecode(jsonString);
+      return decoded.map((e) => Map<String, dynamic>.from(e)).toList();
+    }
+    return [];
+  }
 }

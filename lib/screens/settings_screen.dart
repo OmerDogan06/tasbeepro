@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../services/sound_service.dart';
 import '../services/vibration_service.dart';
-import '../services/notification_service.dart';
 import '../widgets/islamic_snackbar.dart';
 import 'reminder_screen.dart';
+import 'custom_reminder_times_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -47,7 +47,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     final soundService = Get.find<SoundService>();
     final vibrationService = Get.find<VibrationService>();
-    final notificationService = Get.find<NotificationService>();
 
     return PopScope(
       canPop: true,
@@ -142,7 +141,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 _buildIslamicListTile(
                   icon: Icons.notifications,
                   title: 'Zikir Hatırlatıcısı',
-                  subtitle: 'Günlük zikir hatırlatması ayarla',
+                  subtitle: 'Hatırlatıcıları görüntüle ve yönet',
                   onTap: () => Get.to(() => const ReminderScreen(),
                     transition: Transition.rightToLeft,
                     duration: const Duration(milliseconds: 300)),
@@ -151,8 +150,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 _buildIslamicListTile(
                   icon: Icons.schedule,
                   title: 'Hatırlatma Saatleri',
-                  subtitle: 'Özel saatler belirle',
-                  onTap: () => _showCustomReminderTimes(context),
+                  subtitle: 'Günlük tekrarlanan bildirimler',
+                  onTap: () => Get.to(() => const CustomReminderTimesScreen(),
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(milliseconds: 300)),
                 ),
               ]),
               
@@ -740,10 +741,4 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
   
 
-  void _showCustomReminderTimes(BuildContext context) {
-    IslamicSnackbar.showInfo(
-      'Özel Hatırlatmalar 🕐',
-      'Özel zaman dilimlerinde hatırlatıcı kurabilirsiniz',
-    );
-  }
 }
