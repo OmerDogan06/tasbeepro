@@ -6,50 +6,53 @@ import 'package:permission_handler/permission_handler.dart';
 import 'storage_service.dart';
 
 class NotificationService extends GetxService {
-  final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin _notifications =
+      FlutterLocalNotificationsPlugin();
   final StorageService _storage = Get.find<StorageService>();
-  
+
   @override
   Future<void> onInit() async {
     super.onInit();
     await _initializeNotifications();
     await _requestPermissions();
   }
-  
+
   Future<void> _requestPermissions() async {
     // Android 13+ için notification permission iste
     if (await Permission.notification.isDenied) {
       await Permission.notification.request();
     }
-    
+
     // Exact alarm permission (Android 12+)
     if (await Permission.scheduleExactAlarm.isDenied) {
       await Permission.scheduleExactAlarm.request();
     }
   }
-  
+
   Future<void> _initializeNotifications() async {
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidSettings = AndroidInitializationSettings(
+      '@mipmap/ic_launcher',
+    );
     const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
       requestSoundPermission: true,
     );
-    
+
     const initSettings = InitializationSettings(
       android: androidSettings,
       iOS: iosSettings,
     );
-    
+
     await _notifications.initialize(
       initSettings,
       onDidReceiveNotificationResponse: _onNotificationTapped,
     );
-    
+
     // Android notification channel oluştur
     await _createNotificationChannel();
   }
-  
+
   Future<void> _createNotificationChannel() async {
     const AndroidNotificationChannel channel = AndroidNotificationChannel(
       'zikr_reminders',
@@ -76,17 +79,19 @@ class NotificationService extends GetxService {
     );
 
     final androidPlugin = _notifications
-        .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
-    
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
+
     await androidPlugin?.createNotificationChannel(channel);
     await androidPlugin?.createNotificationChannel(dailyChannel);
   }
-  
+
   void _onNotificationTapped(NotificationResponse response) {
     // Notification'a tıklandığında yapılacak işlemler
     // Ana ekrana yönlendir
   }
-  
+
   Future<void> scheduleZikrReminder({
     required int id,
     required String title,
@@ -97,7 +102,7 @@ class NotificationService extends GetxService {
     if (!await _hasNotificationPermission()) {
       throw Exception('Bildirim izni gerekli');
     }
-    
+
     await _notifications.zonedSchedule(
       id,
       title,
@@ -118,7 +123,7 @@ class NotificationService extends GetxService {
           category: AndroidNotificationCategory.alarm,
           visibility: NotificationVisibility.public,
           showWhen: true,
-          fullScreenIntent: true, // Ekranı uyandırır
+          fullScreenIntent: false, // Ekranı uyandırır
           enableLights: true,
           ledColor: const Color.fromARGB(255, 255, 0, 0),
           ledOnMs: 1000,
@@ -143,10 +148,10 @@ class NotificationService extends GetxService {
           interruptionLevel: InterruptionLevel.critical,
         ),
       ),
-      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
   }
-  
+
   // Kullanıcının belirlediği tarih ve saatte hatırlatıcı ayarla
   Future<void> scheduleCustomReminder({
     required DateTime scheduledDateTime,
@@ -154,22 +159,27 @@ class NotificationService extends GetxService {
     required String message,
   }) async {
     final id = scheduledDateTime.millisecondsSinceEpoch ~/ 1000; // Unique ID
-    
+
     await scheduleZikrReminder(
       id: id,
       title: title,
       body: message,
       scheduledTime: scheduledDateTime,
     );
-    
+
     // Hatırlatıcıyı storage'a kaydet
     await _saveReminderToStorage(id, scheduledDateTime, title, message);
   }
-  
+
   // Storage'a hatırlatıcı kaydet
-  Future<void> _saveReminderToStorage(int id, DateTime dateTime, String title, String message) async {
+  Future<void> _saveReminderToStorage(
+    int id,
+    DateTime dateTime,
+    String title,
+    String message,
+  ) async {
     final reminders = _storage.getReminders();
-    
+
     reminders.add({
       'id': id,
       'dateTime': dateTime.toIso8601String(),
@@ -177,10 +187,10 @@ class NotificationService extends GetxService {
       'message': message,
       'isActive': true,
     });
-    
+
     await _storage.saveReminders(reminders);
   }
-  
+
   Future<void> scheduleDailyReminder({
     required int hour,
     required int minute,
@@ -198,20 +208,20 @@ class NotificationService extends GetxService {
       ),
     );
   }
-  
+
   Future<void> cancelAllNotifications() async {
     await _notifications.cancelAll();
   }
-  
+
   Future<void> cancelNotification(int id) async {
     await _notifications.cancel(id);
   }
-  
+
   // Hatırlatıcıları listele
   List<Map<String, dynamic>> getActiveReminders() {
     final reminders = _storage.getReminders();
     final now = DateTime.now();
-    
+
     // Geçmiş tarihleri filtrele ve sadece aktif olanları döndür
     return reminders.where((reminder) {
       final dateTime = DateTime.parse(reminder['dateTime']);
@@ -219,59 +229,59 @@ class NotificationService extends GetxService {
       return dateTime.isAfter(now) && isActive;
     }).toList();
   }
-  
+
   // Hatırlatıcıyı sil
   Future<void> deleteReminder(int id) async {
     await cancelNotification(id);
-    
+
     final reminders = _storage.getReminders();
     reminders.removeWhere((reminder) => reminder['id'] == id);
     await _storage.saveReminders(reminders);
   }
-  
+
   // Tüm geçmiş hatırlatıcıları temizle
   Future<void> cleanupOldReminders() async {
     final reminders = _storage.getReminders();
     final now = DateTime.now();
-    
+
     final activeReminders = reminders.where((reminder) {
       final dateTime = DateTime.parse(reminder['dateTime']);
       return dateTime.isAfter(now);
     }).toList();
-    
+
     await _storage.saveReminders(activeReminders);
   }
-  
+
   // Permission durumunu kontrol et
   Future<bool> checkNotificationPermission() async {
     return await Permission.notification.isGranted;
   }
-  
+
   Future<bool> _hasNotificationPermission() async {
     return await Permission.notification.isGranted;
   }
-  
+
   // Ayarlar sayfasına yönlendir (permission reddedilirse)
   Future<void> openNotificationSettings() async {
     await openAppSettings();
   }
-  
+
   // Özel saatler için günlük hatırlatıcı planla
   Future<void> scheduleCustomTimeReminder({
     required int hour,
     required int minute,
   }) async {
     final id = hour * 100 + minute; // Unique ID for time-based reminders
-    
+
     // Her gün aynı saatte tekrarlanacak notification planla
     final now = DateTime.now();
     var scheduledDate = DateTime(now.year, now.month, now.day, hour, minute);
-    
+
     // Eğer bugün için saat geçmişse, yarın için planla
     if (scheduledDate.isBefore(now)) {
       scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
-    
+
     await _notifications.zonedSchedule(
       id,
       'Zikir Zamanı 🕌',
@@ -281,7 +291,8 @@ class NotificationService extends GetxService {
         android: AndroidNotificationDetails(
           'daily_reminders',
           'Günlük Hatırlatıcılar',
-          channelDescription: 'Belirlenen saatlerde günlük zikir hatırlatıcıları',
+          channelDescription:
+              'Belirlenen saatlerde günlük zikir hatırlatıcıları',
           importance: Importance.max,
           priority: Priority.max,
           icon: '@mipmap/ic_launcher',
@@ -290,7 +301,7 @@ class NotificationService extends GetxService {
           autoCancel: true,
           ongoing: false,
           category: AndroidNotificationCategory.alarm,
-          fullScreenIntent: true, // Bu ekranı uyandırır ama uygulama açmaz
+          fullScreenIntent: false, // Bu ekranı uyandırır ama uygulama açmaz
           channelShowBadge: true,
           visibility: NotificationVisibility.public,
           enableLights: true,
@@ -319,11 +330,12 @@ class NotificationService extends GetxService {
           interruptionLevel: InterruptionLevel.critical,
         ),
       ),
-      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+
       matchDateTimeComponents: DateTimeComponents.time,
     );
   }
-  
+
   // Özel saat bildirimlerini iptal et
   Future<void> cancelCustomTimeNotifications() async {
     // Custom time notification ID'leri 0-2359 arasında (hour*100 + minute)

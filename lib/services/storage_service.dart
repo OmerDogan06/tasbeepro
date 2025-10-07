@@ -148,6 +148,62 @@ class StorageService extends GetxService {
       'exportFormat': 'pdf',
     };
   }
+
+  // Tarihe göre zikir sayısı al
+  int getZikrCountForDate(String zikrId, DateTime date) {
+    final dateKey = date.toIso8601String().split('T')[0];
+    return _prefs.getInt('daily_${zikrId}_$dateKey') ?? 0;
+  }
+
+  // Belirli bir tarih aralığındaki zikir sayısını al
+  int getZikrCountForDateRange(String zikrId, DateTime startDate, DateTime endDate) {
+    int total = 0;
+    DateTime current = DateTime(startDate.year, startDate.month, startDate.day);
+    final end = DateTime(endDate.year, endDate.month, endDate.day);
+    
+    while (current.isBefore(end) || current.isAtSameMomentAs(end)) {
+      total += getZikrCountForDate(zikrId, current);
+      current = current.add(const Duration(days: 1));
+    }
+    
+    return total;
+  }
+
+  // Günlük istatistik (bugün)
+  int getTodayZikrCount(String zikrId) {
+    final today = DateTime.now();
+    return getZikrCountForDate(zikrId, today);
+  }
+
+  // Haftalık istatistik (bu hafta - Pazartesi'den başlayarak)
+  int getWeeklyZikrCount(String zikrId) {
+    final now = DateTime.now();
+    final monday = now.subtract(Duration(days: now.weekday - 1));
+    final startOfWeek = DateTime(monday.year, monday.month, monday.day);
+    final endOfWeek = startOfWeek.add(const Duration(days: 6));
+    
+    return getZikrCountForDateRange(zikrId, startOfWeek, endOfWeek);
+  }
+
+  // Aylık istatistik (bu ay)
+  int getMonthlyZikrCount(String zikrId) {
+    final now = DateTime.now();
+    final startOfMonth = DateTime(now.year, now.month, 1);
+    final endOfMonth = DateTime(now.year, now.month + 1, 0);
+    
+    return getZikrCountForDateRange(zikrId, startOfMonth, endOfMonth);
+  }
+
+  // Yıllık istatistik (bu yıl)
+  int getYearlyZikrCount(String zikrId) {
+    final now = DateTime.now();
+    final startOfYear = DateTime(now.year, 1, 1);
+    final endOfYear = DateTime(now.year, 12, 31);
+    
+    return getZikrCountForDateRange(zikrId, startOfYear, endOfYear);
+  }
+
+
   
   // Custom reminder times
   Future<void> saveCustomReminderTimes(List<Map<String, dynamic>> times) async {

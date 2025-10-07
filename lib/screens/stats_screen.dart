@@ -22,6 +22,7 @@ class _StatsScreenState extends State<StatsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   bool _isExportingPDF = false; // PDF export loading state
+  String _selectedPeriod = 'Günlük';
 
   // İslami renk paleti
   static const emeraldGreen = Color(0xFF2D5016);
@@ -33,6 +34,26 @@ class _StatsScreenState extends State<StatsScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
+    _tabController.addListener(() {
+      if (_tabController.indexIsChanging) {
+        setState(() {
+          switch (_tabController.index) {
+            case 0:
+              _selectedPeriod = 'Günlük';
+              break;
+            case 1:
+              _selectedPeriod = 'Haftalık';
+              break;
+            case 2:
+              _selectedPeriod = 'Aylık';
+              break;
+            case 3:
+              _selectedPeriod = 'Yıllık';
+              break;
+          }
+        });
+      }
+    });
   }
 
   @override
@@ -141,7 +162,7 @@ class _StatsScreenState extends State<StatsScreen>
                         color: emeraldGreen,
                         size: 20,
                       ),
-                onPressed: _isExportingPDF ? null : () => _exportToPDF(),
+                onPressed: _isExportingPDF ? null : () => _exportToPDF(_selectedPeriod),
               ),
             ),
           ],
@@ -186,6 +207,10 @@ class _StatsScreenState extends State<StatsScreen>
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
+          // Bilgi Kartı - Dönemsel açıklama
+          _buildPeriodInfoCard(period),
+          const SizedBox(height: 16),
+
           // Özet Kartı
           _buildSummaryCard(period, controller),
           const SizedBox(height: 20),
@@ -196,6 +221,93 @@ class _StatsScreenState extends State<StatsScreen>
 
           // Zikir Listesi
           _buildZikrList(period, controller),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPeriodInfoCard(String period) {
+    String info;
+    String emoji;
+    
+    switch (period) {
+      case 'Günlük':
+        info = 'Bugün çekilen zikirlerinizin detayları';
+        emoji = '📅';
+        break;
+      case 'Haftalık':
+        info = 'Bu hafta çekilen zikirlerinizin detayları';
+        emoji = '📊';
+        break;
+      case 'Aylık':
+        info = 'Bu ay çekilen zikirlerinizin detayları';
+        emoji = '📈';
+        break;
+      case 'Yıllık':
+        info = 'Bu yıl çekilen zikirlerinizin detayları';
+        emoji = '🏆';
+        break;
+      default:
+        info = 'Zikir istatistikleriniz';
+        emoji = '📋';
+    }
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [lightGold, Color(0xFFF0E9D2)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: goldColor.withOpacity(0.3), width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: darkGreen.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: goldColor,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              emoji,
+              style: const TextStyle(fontSize: 20),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '$period İstatistikler',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: emeraldGreen,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  info,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: emeraldGreen.withOpacity(0.8),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -314,7 +426,7 @@ class _StatsScreenState extends State<StatsScreen>
     final chartData = _getChartData(period, controller);
 
     return Container(
-      height: 300,
+      height: 350, // Biraz daha yüksek yapalım
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
@@ -335,7 +447,7 @@ class _StatsScreenState extends State<StatsScreen>
       child: Column(
         children: [
           Text(
-            '$period Zikir Grafiği',
+            '$period Zikir Dağılımı',
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -350,7 +462,7 @@ class _StatsScreenState extends State<StatsScreen>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.bar_chart,
+                          Icons.pie_chart,
                           size: 48,
                           color: emeraldGreen.withOpacity(0.5),
                         ),
@@ -365,95 +477,83 @@ class _StatsScreenState extends State<StatsScreen>
                       ],
                     ),
                   )
-                : BarChart(
-                    BarChartData(
-                      alignment: BarChartAlignment.spaceAround,
-                      maxY:
-                          chartData
-                              .map((e) => e.y)
-                              .reduce((a, b) => a > b ? a : b) +
-                          10,
-                      barTouchData: BarTouchData(
-                        touchTooltipData: BarTouchTooltipData(
-                          getTooltipColor: (group) =>
-                              emeraldGreen.withOpacity(0.9),
-                          getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                            return BarTooltipItem(
-                              '${rod.toY.round()}',
-                              const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      titlesData: FlTitlesData(
-                        show: true,
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            getTitlesWidget: (double value, TitleMeta meta) {
-                              if (value.toInt() >= 0 &&
-                                  value.toInt() < chartData.length) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(top: 8),
-                                  child: Text(
-                                    chartData[value.toInt()].label,
-                                    style: TextStyle(
-                                      color: emeraldGreen.withOpacity(0.8),
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                );
-                              }
-                              return const Text('');
-                            },
-                          ),
-                        ),
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            reservedSize: 40,
-                            getTitlesWidget: (double value, TitleMeta meta) {
-                              return Text(
-                                value.toInt().toString(),
-                                style: TextStyle(
-                                  color: emeraldGreen.withOpacity(0.8),
-                                  fontSize: 10,
+                : Row(
+                    children: [
+                      // Pie Chart
+                      Expanded(
+                        flex: 3,
+                        child: PieChart(
+                          PieChartData(
+                            sectionsSpace: 2,
+                            centerSpaceRadius: 40,
+                            sections: chartData.asMap().entries.map((entry) {
+                              final index = entry.key;
+                              final data = entry.value;
+                              return PieChartSectionData(
+                                color: _getChartColor(index),
+                                value: data.y,
+                                title: '${data.y.toInt()}',
+                                radius: 45,
+                                titleStyle: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
                                 ),
                               );
-                            },
+                            }).toList(),
+                            pieTouchData: PieTouchData(
+                              touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                                // Touch işlemleri
+                              },
+                            ),
                           ),
                         ),
-                        topTitles: const AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                        rightTitles: const AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
+                      ),
+                      
+                      const SizedBox(width: 16),
+                      
+                      // Legend
+                      Expanded(
+                        flex: 2,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: chartData.asMap().entries.map((entry) {
+                              final index = entry.key;
+                              final data = entry.value;
+                              return Container(
+                                margin: const EdgeInsets.only(bottom: 8),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 12,
+                                      height: 12,
+                                      decoration: BoxDecoration(
+                                        color: _getChartColor(index),
+                                        shape: BoxShape.circle,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Expanded(
+                                      child: Text(
+                                        data.label,
+                                        style: const TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w500,
+                                          color: emeraldGreen,
+                                        ),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
+                          ),
                         ),
                       ),
-                      borderData: FlBorderData(show: false),
-                      barGroups: chartData.asMap().entries.map((entry) {
-                        return BarChartGroupData(
-                          x: entry.key,
-                          barRods: [
-                            BarChartRodData(
-                              toY: entry.value.y,
-                              color: goldColor,
-                              width: 16,
-                              borderRadius: BorderRadius.circular(4),
-                              gradient: LinearGradient(
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                                colors: [goldColor, lightGold],
-                              ),
-                            ),
-                          ],
-                        );
-                      }).toList(),
-                    ),
+                    ],
                   ),
           ),
         ],
@@ -493,7 +593,7 @@ class _StatsScreenState extends State<StatsScreen>
           ),
           const SizedBox(height: 16),
           ...controller.getAllZikrs().map((zikr) {
-            final count = controller.getZikrCount(zikr.id);
+            final count = controller.getZikrCountForPeriod(zikr.id, period);
             return Container(
               margin: const EdgeInsets.only(bottom: 8),
               padding: const EdgeInsets.all(12),
@@ -556,7 +656,7 @@ class _StatsScreenState extends State<StatsScreen>
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Text(
-                      count.toString(),
+                      count.toString(), // Zaten int
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: emeraldGreen,
@@ -578,13 +678,14 @@ class _StatsScreenState extends State<StatsScreen>
     CounterController controller,
   ) {
     final allZikrs = controller.getAllZikrs();
-    double totalCount = 0;
+    int totalCount = 0;
     int activeZikrs = 0;
     String? mostUsed;
-    double mostUsedCount = 0;
+    int mostUsedCount = 0;
 
     for (final zikr in allZikrs) {
-      final count = controller.getZikrCount(zikr.id);
+      // Tarihe göre zikir sayısını al
+      final count = controller.getZikrCountForPeriod(zikr.id, period);
       totalCount += count;
       if (count > 0) {
         activeZikrs++;
@@ -598,7 +699,7 @@ class _StatsScreenState extends State<StatsScreen>
     final average = activeZikrs > 0 ? (totalCount / activeZikrs).round() : 0;
 
     return {
-      'totalCount': totalCount.round(),
+      'totalCount': totalCount,
       'activeZikrs': activeZikrs,
       'mostUsed': mostUsed,
       'average': average,
@@ -609,25 +710,57 @@ class _StatsScreenState extends State<StatsScreen>
     final allZikrs = controller.getAllZikrs();
     final List<ChartData> chartData = [];
 
-    for (int i = 0; i < allZikrs.length && i < 8; i++) {
-      final zikr = allZikrs[i];
-      final count = controller.getZikrCount(zikr.id);
-      if (count > 0) {
-        chartData.add(
-          ChartData(
-            label: zikr.name.length > 8
-                ? '${zikr.name.substring(0, 8)}...'
-                : zikr.name,
-            y: count.toDouble(),
-          ),
-        );
-      }
+    // Tüm zikirleri al ve sırala (count'a göre)
+    final sortedZikrs = allZikrs.where((zikr) {
+      final count = controller.getZikrCountForPeriod(zikr.id, period);
+      return count > 0; // Sadece kullanılan zikirler
+    }).toList();
+
+    // Count'a göre sırala (büyükten küçüğe)
+    sortedZikrs.sort((a, b) {
+      final countA = controller.getZikrCountForPeriod(a.id, period);
+      final countB = controller.getZikrCountForPeriod(b.id, period);
+      return countB.compareTo(countA);
+    });
+
+    // Tüm aktif zikirleri ekle (16 zikir de dahil)
+    for (final zikr in sortedZikrs) {
+      final count = controller.getZikrCountForPeriod(zikr.id, period);
+      chartData.add(
+        ChartData(
+          label: zikr.name,
+          y: count.toDouble(),
+        ),
+      );
     }
 
     return chartData;
   }
 
-  Future<void> _exportToPDF() async {
+  // Grafik renkleri için metod
+  Color _getChartColor(int index) {
+    final colors = [
+      const Color(0xFFD4AF37), // goldColor
+      const Color(0xFF2D5016), // emeraldGreen
+      const Color(0xFFF5E6A8), // lightGold
+      const Color(0xFF1A3409), // darkGreen
+      const Color(0xFFE8B931), // darker gold
+      const Color(0xFF4A6B2A), // lighter green
+      const Color(0xFFF0D65C), // light yellow
+      const Color(0xFF3E5C1E), // medium green
+      const Color(0xFFDDA94B), // orange gold
+      const Color(0xFF5A7D34), // forest green
+      const Color(0xFFF7E89A), // pale gold
+      const Color(0xFF2F4A17), // deep green
+      const Color(0xFFE1C547), // mustard
+      const Color(0xFF657F3A), // olive green
+      const Color(0xFFF4E2B7), // cream
+      const Color(0xFF3C5B1F), // pine green
+    ];
+    return colors[index % colors.length];
+  }
+
+  Future<void> _exportToPDF(String period) async {
     // Loading state'ini başlat
     setState(() {
       _isExportingPDF = true;
@@ -674,10 +807,10 @@ class _StatsScreenState extends State<StatsScreen>
             final allZikrs = controller.getAllZikrs();
             final totalCount = allZikrs.fold<int>(
               0,
-              (sum, zikr) => sum + controller.getZikrCount(zikr.id).toInt(),
+              (sum, zikr) => sum + controller.getZikrCountForPeriod(zikr.id, period),
             );
             final activeZikrs = allZikrs
-                .where((zikr) => controller.getZikrCount(zikr.id) > 0)
+                .where((zikr) => controller.getZikrCountForPeriod(zikr.id, period) > 0)
                 .length;
             final now = DateTime.now();
             final firstDate = DateTime(2024, 1, 1);
@@ -690,13 +823,13 @@ class _StatsScreenState extends State<StatsScreen>
             final sortedZikrs =
                 allZikrs
                     .where(
-                      (zikr) => controller.getZikrCount(zikr.id) > 0,
+                      (zikr) => controller.getZikrCountForPeriod(zikr.id, period) > 0,
                     ) // Sadece aktif zikirler
                     .toList()
                   ..sort(
                     (a, b) => controller
-                        .getZikrCount(b.id)
-                        .compareTo(controller.getZikrCount(a.id)),
+                        .getZikrCountForPeriod(b.id, period)
+                        .compareTo(controller.getZikrCountForPeriod(a.id, period)),
                   );
             final topZikrs = sortedZikrs.take(5).toList(); // Max 5 zikir göster
 
@@ -856,13 +989,11 @@ class _StatsScreenState extends State<StatsScreen>
                       if (topZikrs.isNotEmpty) ...[
                         ...topZikrs.map((zikr) {
                           final count = controller
-                              .getZikrCount(zikr.id)
-                              .toInt();
+                              .getZikrCountForPeriod(zikr.id, period);
                           final maxCount = topZikrs.isEmpty
                               ? 1
                               : controller
-                                    .getZikrCount(topZikrs.first.id)
-                                    .toDouble();
+                                    .getZikrCountForPeriod(topZikrs.first.id, period);
                           final percentage = maxCount > 0
                               ? (count / maxCount) * 100
                               : 0;

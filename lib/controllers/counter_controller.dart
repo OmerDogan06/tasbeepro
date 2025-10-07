@@ -194,4 +194,22 @@ class CounterController extends GetxController {
     final counterData = _storage.getCounterData(zikrId);
     return counterData?.count.toDouble() ?? 0.0;
   }
+
+  // Tarihe göre zikir sayılarını al
+  int getZikrCountForPeriod(String zikrId, String period) {
+    switch (period) {
+      case 'Günlük':
+        return _storage.getTodayZikrCount(zikrId);
+      case 'Haftalık':
+        return _storage.getWeeklyZikrCount(zikrId);
+      case 'Aylık':
+        return _storage.getMonthlyZikrCount(zikrId);
+      case 'Yıllık':
+        return _storage.getYearlyZikrCount(zikrId);
+      default:
+        return getZikrCount(zikrId).toInt(); // Toplam
+    }
+  }
+
+
 }
