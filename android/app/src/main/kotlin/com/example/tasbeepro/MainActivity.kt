@@ -15,5 +15,12 @@ class MainActivity : FlutterActivity() {
             flutterEngine.dartExecutor.binaryMessenger,
             WidgetUpdateChannel.CHANNEL_NAME
         ).setMethodCallHandler(widgetChannel)
+        
+        // Widget database channel'ını kaydet
+        val widgetDatabaseChannel = WidgetDatabaseChannel(this)
+        MethodChannel(
+            flutterEngine.dartExecutor.binaryMessenger,
+            "widget_database"
+        ).setMethodCallHandler(widgetDatabaseChannel)
     }
 }

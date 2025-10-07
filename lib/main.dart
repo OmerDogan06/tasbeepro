@@ -6,10 +6,12 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'screens/home_screen.dart';
 import 'controllers/theme_controller.dart';
 import 'controllers/counter_controller.dart';
+import 'controllers/widget_stats_controller.dart';
 import 'services/storage_service.dart';
 import 'services/sound_service.dart';
 import 'services/vibration_service.dart';
 import 'services/notification_service.dart';
+import 'services/widget_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,10 +38,12 @@ void main() async {
   Get.put(SoundService());
   Get.put(VibrationService());
   Get.put(NotificationService());
+  Get.put(WidgetService());
 
   // Controllers'ları başlat
   Get.put(ThemeController());
   Get.put(CounterController());
+  Get.put(WidgetStatsController());
 
   runApp(const TasbeeApp());
 }

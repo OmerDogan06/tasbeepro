@@ -7,6 +7,7 @@ import '../services/vibration_service.dart';
 import '../widgets/islamic_snackbar.dart';
 import 'reminder_screen.dart';
 import 'custom_reminder_times_screen.dart';
+import 'widget_stats_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -152,6 +153,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: 'Hatırlatma Saatleri',
                   subtitle: 'Günlük tekrarlanan bildirimler',
                   onTap: () => Get.to(() => const CustomReminderTimesScreen(),
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(milliseconds: 300)),
+                ),
+              ]),
+              
+              const SizedBox(height: 24),
+              
+              // Widget İstatistikleri
+              _buildSectionHeader(context, 'Widget İstatistikleri 📱'),
+              _buildIslamicCard([
+                _buildIslamicListTile(
+                  icon: Icons.widgets,
+                  title: 'Widget Zikirlerim',
+                  subtitle: 'Widget\'tan yapılan tüm zikirlerinizi görün',
+                  onTap: () => Get.to(() => const WidgetStatsScreen(),
                     transition: Transition.rightToLeft,
                     duration: const Duration(milliseconds: 300)),
                 ),

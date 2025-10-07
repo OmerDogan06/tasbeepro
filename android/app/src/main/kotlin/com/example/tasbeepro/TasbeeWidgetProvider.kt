@@ -11,11 +11,13 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
+import android.util.Log
 import com.example.tasbeepro.R
 
 class TasbeeWidgetProvider : AppWidgetProvider() {
 
     companion object {
+        private const val TAG = "TasbeeWidget"
         private const val ACTION_COUNTER_CLICK = "ACTION_COUNTER_CLICK"
         private const val ACTION_RESET_CLICK = "ACTION_RESET_CLICK"
         private const val ACTION_SETTINGS_CLICK = "ACTION_SETTINGS_CLICK"
@@ -24,13 +26,18 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         private const val KEY_TARGET = "target_"
         private const val KEY_ZIKR_NAME = "zikr_name_"
         private const val KEY_ZIKR_MEANING = "zikr_meaning_"
+        private const val KEY_ZIKR_ID = "zikr_id_"
     }
+
+    private lateinit var database: WidgetZikrDatabase
 
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
+        database = WidgetZikrDatabase(context)
+        
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId)
         }
@@ -38,6 +45,8 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
 
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
+        
+        database = WidgetZikrDatabase(context)
         
         when (intent.action) {
             ACTION_COUNTER_CLICK -> {
@@ -74,6 +83,7 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         val target = prefs.getInt(KEY_TARGET + appWidgetId, 33)
         val zikrName = prefs.getString(KEY_ZIKR_NAME + appWidgetId, "Subhanallah") ?: "Subhanallah"
         val zikrMeaning = prefs.getString(KEY_ZIKR_MEANING + appWidgetId, "Allah'tan münezzeh ve mukaddestir") ?: ""
+        val zikrId = prefs.getString(KEY_ZIKR_ID + appWidgetId, "subhanallah") ?: "subhanallah"
 
         // UI güncelle
         views.setTextViewText(R.id.zikr_name, zikrName)
@@ -143,11 +153,21 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val currentCount = prefs.getInt(KEY_COUNT + appWidgetId, 0)
         val target = prefs.getInt(KEY_TARGET + appWidgetId, 33)
+        val zikrName = prefs.getString(KEY_ZIKR_NAME + appWidgetId, "Subhanallah") ?: "Subhanallah"
+        val zikrId = prefs.getString(KEY_ZIKR_ID + appWidgetId, "subhanallah") ?: "subhanallah"
         
         // Sayaç her zaman artırılabilir - hedef sınırlaması yok
         val newCount = currentCount + 1
         
         prefs.edit().putInt(KEY_COUNT + appWidgetId, newCount).apply()
+        
+        // **ÖNEMLİ: Widget'tan yapılan zikri veritabanına kaydet (kalıcı kayıt)**
+        try {
+            val recordId = database.addWidgetZikrRecord(zikrId, zikrName, 1)
+            Log.d(TAG, "Widget zikir kaydedildi: $zikrName (ID: $zikrId) - Record ID: $recordId")
+        } catch (e: Exception) {
+            Log.e(TAG, "Veritabanına kaydetme hatası: ${e.message}")
+        }
         
         // Widget'ı güncelle
         val appWidgetManager = AppWidgetManager.getInstance(context)
@@ -166,7 +186,11 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
 
     private fun resetCounter(context: Context, appWidgetId: Int) {
         val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        
+        // **ÖNEMLİ: Sadece widget'taki sayacı sıfırla, veritabanındaki kayıtları ASLA silme!**
         prefs.edit().putInt(KEY_COUNT + appWidgetId, 0).apply()
+        
+        Log.d(TAG, "Widget sayacı sıfırlandı (veritabanı kayıtları korundu)")
         
         // Widget'ı güncelle
         val appWidgetManager = AppWidgetManager.getInstance(context)
@@ -259,6 +283,7 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
 
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {
         // Widget silindiğinde preferences'ları temizle
+        // **ÖNEMLİ: Veritabanındaki kayıtları silme! Sadece widget ayarlarını temizle**
         val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val editor = prefs.edit()
         
@@ -267,21 +292,37 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             editor.remove(KEY_TARGET + appWidgetId)
             editor.remove(KEY_ZIKR_NAME + appWidgetId)
             editor.remove(KEY_ZIKR_MEANING + appWidgetId)
+            editor.remove(KEY_ZIKR_ID + appWidgetId)
         }
         
         editor.apply()
+        Log.d(TAG, "Widget ayarları temizlendi (veritabanı kayıtları korundu)")
+    }
+
+    override fun onEnabled(context: Context) {
+        // İlk widget eklendiğinde
+        database = WidgetZikrDatabase(context)
+        Log.d(TAG, "Widget etkinleştirildi, veritabanı hazır")
+    }
+
+    override fun onDisabled(context: Context) {
+        // Son widget kaldırıldığında
+        // **ÖNEMLİ: Veritabanını silme! Sadece log yaz**
+        Log.d(TAG, "Widget devre dışı bırakıldı (veritabanı korundu)")
     }
 
     // Flutter uygulamasından çağrılabilecek yardımcı metodlar
     fun updateWidgetFromFlutter(
         context: Context,
         appWidgetId: Int,
+        zikrId: String,
         zikrName: String,
         zikrMeaning: String,
         target: Int
     ) {
         val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         prefs.edit()
+            .putString(KEY_ZIKR_ID + appWidgetId, zikrId)
             .putString(KEY_ZIKR_NAME + appWidgetId, zikrName)
             .putString(KEY_ZIKR_MEANING + appWidgetId, zikrMeaning)
             .putInt(KEY_TARGET + appWidgetId, target)

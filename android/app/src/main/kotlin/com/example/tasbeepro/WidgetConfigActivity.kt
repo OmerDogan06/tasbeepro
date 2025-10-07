@@ -133,11 +133,23 @@ class WidgetConfigActivity : Activity() {
         val selectedZikr = zikrList[zikrSpinner.selectedItemPosition]
         val selectedTarget = targetOptions[targetSpinner.selectedItemPosition]
 
+        // Zikir ID'sini oluştur (Türkçe karakterleri normalize et)
+        val zikrId = selectedZikr.first.lowercase()
+            .replace("ı", "i")
+            .replace("ğ", "g")
+            .replace("ü", "u")
+            .replace("ş", "s")
+            .replace("ö", "o")
+            .replace("ç", "c")
+            .replace(" ", "_")
+            .replace("-", "_")
+
         // SharedPreferences'a kaydet
         val prefs: SharedPreferences = getSharedPreferences("TasbeeWidgetPrefs", Context.MODE_PRIVATE)
         val editor = prefs.edit()
         editor.putString("zikr_name_$appWidgetId", selectedZikr.first)
         editor.putString("zikr_meaning_$appWidgetId", selectedZikr.second)
+        editor.putString("zikr_id_$appWidgetId", zikrId) // Zikir ID'sini de kaydet
         editor.putInt("target_$appWidgetId", selectedTarget)
         editor.putInt("count_$appWidgetId", 0) // Başlangıç sayısı 0
         editor.apply()
