@@ -105,13 +105,13 @@ class _SplashScreenState extends State<SplashScreen>
 
     // Navigate to home after all animations
     await Future.delayed(const Duration(milliseconds: 3200));
-    // if (mounted) {
-    //   Get.offAll(
-    //     () => const HomeScreen(),
-    //     transition: Transition.fadeIn,
-    //     duration: const Duration(milliseconds: 800),
-    //   );
-    // }
+    if (mounted) {
+      Get.offAll(
+        () => const HomeScreen(),
+        transition: Transition.fadeIn,
+        duration: const Duration(milliseconds: 800),
+      );
+    }
   }
 
   @override
