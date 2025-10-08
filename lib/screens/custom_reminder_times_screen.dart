@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../services/notification_service.dart';
 import '../services/storage_service.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../widgets/custom_bottom_picker.dart';
 
 class CustomReminderTimesScreen extends StatefulWidget {
   const CustomReminderTimesScreen({super.key});
@@ -103,7 +104,8 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           backgroundColor: emeraldGreen,
           foregroundColor: Colors.white,
           icon: const Icon(Icons.add),
-          label: const Text('Saat Ekle'),
+          elevation: 6,
+          label: const Text('Saat Ekle',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),),
         ),
         body: SafeArea(
           child: Column(
@@ -346,53 +348,76 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
   }
 
   Future<void> _addCustomTime() async {
-    final time = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: const ColorScheme.light(
-              primary: emeraldGreen,
-              onPrimary: Colors.white,
-              surface: Color(0xFFF8F6F0),
-              onSurface: emeraldGreen,
-            ),
-          ),
-          child: child!,
+    CustomBottomPicker.time(
+      backgroundColor: Colors.white,
+      buttonSingleColor: emeraldGreen,
+      onSubmit: (time) {
+        final hour = time.hour;
+        final minute = time.minute;
+        
+        // Aynı saatin eklenip eklenmediğini kontrol et
+        final existingTime = _customTimes.any((t) => 
+            t['hour'] == hour && t['minute'] == minute);
+        
+        if (existingTime) {
+          IslamicSnackbar.showWarning(
+            'Zaten Mevcut',
+            'Bu saat zaten eklenmiş',
+          );
+          return;
+        }
+
+        setState(() {
+          _customTimes.add({
+            'hour': hour,
+            'minute': minute,
+            'isActive': true,
+          });
+        });
+
+        _saveCustomTimes();
+        _scheduleTimeNotifications();
+
+        IslamicSnackbar.showSuccess(
+          'Saat Eklendi 🕐',
+          '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')} saatinde günlük hatırlatıcı aktif',
         );
       },
-    );
-
-    if (time != null) {
-      // Aynı saatin eklenip eklenmediğini kontrol et
-      final existingTime = _customTimes.any((t) => 
-          t['hour'] == time.hour && t['minute'] == time.minute);
-      
-      if (existingTime) {
-        IslamicSnackbar.showWarning(
-          'Zaten Mevcut',
-          'Bu saat zaten eklenmiş',
-        );
-        return;
-      }
-
-      setState(() {
-        _customTimes.add({
-          'hour': time.hour,
-          'minute': time.minute,
-          'isActive': true,
-        });
-      });
-
-      await _saveCustomTimes();
-      await _scheduleTimeNotifications();
-
-      IslamicSnackbar.showSuccess(
-        'Saat Eklendi 🕐',
-        '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')} saatinde günlük hatırlatıcı aktif',
-      );
-    }
+      initialTime: CustomTime(
+        hours: TimeOfDay.now().hour,
+        minutes: TimeOfDay.now().minute,
+      ),
+      displaySubmitButton: true,
+      use24hFormat: true,
+       headerBuilder: (context) => Container(
+        padding: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(12),
+            topRight: Radius.circular(12),
+          ),
+        ),
+        child: Row(
+          children: [
+            const Expanded(
+              child: Text(
+                'Saat Seçin',
+                style: TextStyle(
+                  color:emeraldGreen ,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.close, color: emeraldGreen),
+            ),
+          ],
+        ),
+      ),
+    ).show(context);
   }
 
   Future<void> _toggleTime(int index, bool isActive) async {
@@ -413,30 +438,157 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
     final timeData = _customTimes[index];
     final timeString = '${timeData['hour'].toString().padLeft(2, '0')}:${timeData['minute'].toString().padLeft(2, '0')}';
 
-    // Onay dialog'u
+    // Onay dialog'u - settings_screen.dart tarzında minimal ve İslami
     final confirmed = await Get.dialog<bool>(
-      AlertDialog(
-        backgroundColor: const Color(0xFFF8F6F0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        title: const Text(
-          'Saati Sil?',
-          style: TextStyle(color: emeraldGreen, fontWeight: FontWeight.bold),
-        ),
-        content: Text(
-          '$timeString saatindeki hatırlatıcıyı silmek istediğinizden emin misiniz?',
-          style: const TextStyle(color: emeraldGreen),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(result: false),
-            child: const Text('İptal'),
+      Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(20),
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 300),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+            ),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: goldColor.withOpacity(0.4),
+              width: 1.5,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: darkGreen.withOpacity(0.2),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
           ),
-          ElevatedButton(
-            onPressed: () => Get.back(result: true),
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            child: const Text('Sil', style: TextStyle(color: Colors.white)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: const RadialGradient(
+                          colors: [lightGold, goldColor],
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(
+                        Icons.delete_outline,
+                        color: emeraldGreen,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    const Expanded(
+                      child: Text(
+                        'Saati Sil?',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: emeraldGreen,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              
+              // Divider
+              Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      goldColor.withOpacity(0.3),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+              
+              // Content
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    Text(
+                      '$timeString saatindeki hatırlatıcıyı silmek istediğinizden emin misiniz?',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: emeraldGreen,
+                        height: 1.4,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 16),
+                    
+                    // Buttons
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextButton(
+                            onPressed: () => Get.back(result: false),
+                            style: TextButton.styleFrom(
+                              backgroundColor: lightGold.withOpacity(0.3),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                side: BorderSide(
+                                  color: goldColor.withOpacity(0.3),
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: const Text(
+                              'İptal',
+                              style: TextStyle(
+                                color: emeraldGreen,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () => Get.back(result: true),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red.shade400,
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              elevation: 2,
+                            ),
+                            child: const Text(
+                              'Sil',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
 
