@@ -78,6 +78,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
+              fontSize: 18,
             ),
           ),
           centerTitle: true,
@@ -109,15 +110,15 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             children: [
               // Info Card
               Container(
-                padding: const EdgeInsets.all(16),
-                margin: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [lightGold, Colors.white],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: goldColor, width: 1),
                   boxShadow: [
                     BoxShadow(
@@ -130,10 +131,12 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                 child: Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(8),
+                      width: 35,
+                      height: 35,
+                      padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
                         color: goldColor,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       child: const Icon(
                         Icons.schedule,
@@ -141,12 +144,12 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                         size: 20,
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 8),
                     const Expanded(
                       child: Text(
                         'Özel saatlerde günlük zikir hatırlatıcıları alın. Eklediğiniz saatler her gün tekrarlanır.',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 13,
                           color: emeraldGreen,
                           fontWeight: FontWeight.w500,
                         ),
@@ -161,7 +164,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                 child: _customTimes.isEmpty
                     ? _buildEmptyState()
                     : ListView.builder(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                         itemCount: _customTimes.length,
                         itemBuilder: (context, index) {
                           final timeData = _customTimes[index];
@@ -234,7 +237,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
     final timeString = '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: const EdgeInsets.only(bottom: 6),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -244,7 +247,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             isActive ? Color(0xFFF5F3E8) : Color(0xFFF0F0F0),
           ],
         ),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: isActive ? goldColor.withOpacity(0.3) : Colors.grey.withOpacity(0.3),
           width: 1.5,
@@ -258,9 +261,9 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
         ],
       ),
       child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
         leading: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             gradient: RadialGradient(
               colors: isActive 
@@ -280,7 +283,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           child: Icon(
             Icons.access_time,
             color: isActive ? emeraldGreen : Colors.grey.shade600,
-            size: 22,
+            size: 20,
           ),
         ),
         title: Text(
@@ -288,14 +291,14 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           style: TextStyle(
             color: isActive ? emeraldGreen : Colors.grey.shade600,
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 17,
           ),
         ),
         subtitle: Text(
           isActive ? 'Günlük hatırlatıcı aktif' : 'Devre dışı',
           style: TextStyle(
             color: isActive ? emeraldGreen.withOpacity(0.7) : Colors.grey.shade500,
-            fontSize: 12,
+            fontSize: 11,
           ),
         ),
         trailing: Row(
