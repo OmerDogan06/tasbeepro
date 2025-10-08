@@ -12,6 +12,8 @@ import android.os.Build
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import android.util.Log
+import android.media.AudioManager
+import android.media.ToneGenerator
 import com.example.tasbeepro.R
 
 class TasbeeWidgetProvider : AppWidgetProvider() {
@@ -155,6 +157,9 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         val target = prefs.getInt(KEY_TARGET + appWidgetId, 33)
         val zikrName = prefs.getString(KEY_ZIKR_NAME + appWidgetId, "Subhanallah") ?: "Subhanallah"
         val zikrId = prefs.getString(KEY_ZIKR_ID + appWidgetId, "subhanallah") ?: "subhanallah"
+        
+        // Widget'ın kendi ayarlarını kontrol et ve ses/titreşim efekti uygula
+        playWidgetFeedback(context)
         
         // Sayaç her zaman artırılabilir - hedef sınırlaması yok
         val newCount = currentCount + 1
@@ -310,7 +315,41 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         // **ÖNEMLİ: Veritabanını silme! Sadece log yaz**
         Log.d(TAG, "Widget devre dışı bırakıldı (veritabanı korundu)")
     }
-
+    
+    // Widget'ın kendi ayarlarını okuyarak ses efekti uygula
+    private fun playWidgetFeedback(context: Context) {
+        try {
+            // Flutter'dan bağımsız - Widget'ın kendi SharedPreferences'larını al
+            val widgetPrefs = context.getSharedPreferences("TasbeeWidgetSettings", Context.MODE_PRIVATE)
+            
+            // Ses ayarını kontrol et (varsayılan: açık)
+            val soundEnabled = widgetPrefs.getBoolean("widget_sound_enabled", true)
+            Log.d(TAG, "Widget sound enabled: $soundEnabled")
+            if (soundEnabled) {
+                playClickSound(context)
+            }
+            
+        } catch (e: Exception) {
+            // Hata durumunda ses çalmayı atla
+            Log.e(TAG, "Widget ayarları okunamadı: ${e.message}")
+        }
+    }
+    
+    // Ses efekti çal
+    private fun playClickSound(context: Context) {
+        try {
+            val toneGenerator = ToneGenerator(AudioManager.STREAM_NOTIFICATION, 30) // Düşük ses seviyesi
+            toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 50) // 50ms süre
+            
+            // Ton generator'ı temizle
+            android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+                toneGenerator.release()
+            }, 100)
+        } catch (e: Exception) {
+            Log.e(TAG, "Ses çalınamadı: ${e.message}")
+        }
+    }
+    
     // Flutter uygulamasından çağrılabilecek yardımcı metodlar
     fun updateWidgetFromFlutter(
         context: Context,

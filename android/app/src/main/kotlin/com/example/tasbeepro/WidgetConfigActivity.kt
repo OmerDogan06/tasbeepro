@@ -1,7 +1,6 @@
 package com.example.tasbeepro
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
@@ -10,6 +9,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import android.media.AudioManager
+import android.media.ToneGenerator
 
 class WidgetConfigActivity : Activity() {
 
@@ -20,6 +21,15 @@ class WidgetConfigActivity : Activity() {
     private lateinit var previewTarget: TextView
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
+    
+    // Ses kontrolü
+    private lateinit var soundSwitch: Switch
+    
+    // SharedPreferences
+    private lateinit var prefs: SharedPreferences
+    
+    // Ses ayarı
+    private var soundEnabled = true
 
     // 16 Zikir türü
     private val zikrList = listOf(
@@ -51,6 +61,9 @@ class WidgetConfigActivity : Activity() {
         // Result'u başta CANCELED olarak ayarla
         setResult(RESULT_CANCELED)
 
+        // SharedPreferences'ı başlat
+        prefs = getSharedPreferences("TasbeeWidgetPrefs", Context.MODE_PRIVATE)
+
         // Intent'ten widget ID'sini al
         val intent = intent
         val extras = intent.extras
@@ -68,6 +81,7 @@ class WidgetConfigActivity : Activity() {
         }
 
         findViews()
+        loadSettings()
         setupSpinners()
         setupClickListeners()
         updatePreview()
@@ -80,6 +94,20 @@ class WidgetConfigActivity : Activity() {
         previewTarget = findViewById(R.id.preview_target)
         saveButton = findViewById(R.id.save_button)
         cancelButton = findViewById(R.id.cancel_button)
+        
+        // Ses kontrolü
+        soundSwitch = findViewById(R.id.sound_switch)
+    }
+    
+    private fun loadSettings() {
+        // Flutter'dan bağımsız olarak widget'ın kendi ayarlarını yükle
+        val widgetPrefs = getSharedPreferences("TasbeeWidgetSettings", Context.MODE_PRIVATE)
+        soundEnabled = widgetPrefs.getBoolean("widget_sound_enabled", true) // varsayılan: açık
+        
+        android.util.Log.d("TasbeeWidget", "Widget ayarları yüklendi - Ses: $soundEnabled")
+        
+        // UI'yi güncelle
+        soundSwitch.isChecked = soundEnabled
     }
 
     private fun setupSpinners() {
@@ -103,6 +131,15 @@ class WidgetConfigActivity : Activity() {
 
         cancelButton.setOnClickListener {
             finish()
+        }
+        
+        // Ses switch'i
+        soundSwitch.setOnCheckedChangeListener { _, isChecked ->
+            soundEnabled = isChecked
+            saveSettings()
+            if (isChecked) {
+                playTestSound()
+            }
         }
         
         // Spinner değişiklik dinleyicileri
@@ -164,5 +201,29 @@ class WidgetConfigActivity : Activity() {
         resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
         setResult(RESULT_OK, resultValue)
         finish()
+    }
+    
+    // Ses ayarları metodları
+    private fun saveSettings() {
+        // Flutter'dan bağımsız olarak widget'ın kendi ayarlarını sakla
+        val widgetPrefs = getSharedPreferences("TasbeeWidgetSettings", Context.MODE_PRIVATE)
+        val editor = widgetPrefs.edit()
+        editor.putBoolean("widget_sound_enabled", soundEnabled)
+        editor.apply()
+        
+        android.util.Log.d("TasbeeWidget", "Widget ayarları kaydedildi - Ses: $soundEnabled")
+    }
+    
+    private fun playTestSound() {
+        try {
+            val toneGenerator = ToneGenerator(AudioManager.STREAM_NOTIFICATION, 30)
+            toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 50)
+            
+            android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+                toneGenerator.release()
+            }, 100)
+        } catch (e: Exception) {
+            // Ses çalınamazsa sessizce devam et
+        }
     }
 }
