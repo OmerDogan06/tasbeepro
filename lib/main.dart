@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timezone/data/latest.dart' as tz;
-import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
 import 'controllers/theme_controller.dart';
 import 'controllers/counter_controller.dart';
 import 'controllers/widget_stats_controller.dart';
@@ -74,7 +74,7 @@ class TasbeeApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
       ),
       themeMode: Get.find<ThemeController>().themeMode,
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
