@@ -172,6 +172,9 @@ class _StatsScreenState extends State<StatsScreen>
             labelColor: emeraldGreen,
             unselectedLabelColor: emeraldGreen.withOpacity(0.6),
             indicatorColor: goldColor,
+            indicatorSize: TabBarIndicatorSize.label,
+            tabAlignment: TabAlignment.center,
+            overlayColor: MaterialStateProperty.all(Colors.transparent),
             indicatorWeight: 3,
             labelStyle: const TextStyle(
               fontWeight: FontWeight.bold,
@@ -204,20 +207,20 @@ class _StatsScreenState extends State<StatsScreen>
 
   Widget _buildPeriodStats(String period, CounterController controller) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(8),
       child: Column(
         children: [
           // Bilgi Kartı - Dönemsel açıklama
           _buildPeriodInfoCard(period),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
 
           // Özet Kartı
           _buildSummaryCard(period, controller),
-          const SizedBox(height: 20),
+          const SizedBox(height: 15),
 
           // Grafik Kartı
           _buildChartCard(period, controller),
-          const SizedBox(height: 20),
+          const SizedBox(height: 15),
 
           // Zikir Listesi
           _buildZikrList(period, controller),
@@ -254,14 +257,14 @@ class _StatsScreenState extends State<StatsScreen>
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [lightGold, Color(0xFFF0E9D2)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(color: goldColor.withOpacity(0.3), width: 1),
         boxShadow: [
           BoxShadow(
@@ -274,17 +277,18 @@ class _StatsScreenState extends State<StatsScreen>
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
+            width: 40,
+            padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
               color: goldColor,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(6),
             ),
             child: Text(
               emoji,
               style: const TextStyle(fontSize: 20),
             ),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 6),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -292,7 +296,7 @@ class _StatsScreenState extends State<StatsScreen>
                 Text(
                   '$period İstatistikler',
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: emeraldGreen,
                   ),
@@ -318,14 +322,14 @@ class _StatsScreenState extends State<StatsScreen>
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
         boxShadow: [
           BoxShadow(
@@ -340,12 +344,12 @@ class _StatsScreenState extends State<StatsScreen>
           Text(
             '$period İstatistikler',
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           Row(
             children: [
               Expanded(
@@ -358,7 +362,7 @@ class _StatsScreenState extends State<StatsScreen>
               Expanded(
                 child: _buildStatItem(
                   'En Çok Çekilen',
-                  stats['mostUsed'] ?? 'Yok',
+                  stats['mostUsed'] ?? '',
                   Icons.star,
                 ),
               ),
@@ -391,7 +395,7 @@ class _StatsScreenState extends State<StatsScreen>
   Widget _buildStatItem(String title, String value, IconData icon) {
     return Container(
       margin: const EdgeInsets.all(4),
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
         color: lightGold.withOpacity(0.3),
         borderRadius: BorderRadius.circular(12),
@@ -404,7 +408,7 @@ class _StatsScreenState extends State<StatsScreen>
           Text(
             value,
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
             ),
@@ -412,7 +416,7 @@ class _StatsScreenState extends State<StatsScreen>
           Text(
             title,
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 11,
               color: emeraldGreen.withOpacity(0.7),
             ),
             textAlign: TextAlign.center,
@@ -427,14 +431,14 @@ class _StatsScreenState extends State<StatsScreen>
 
     return Container(
       height: 350, // Biraz daha yüksek yapalım
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
         boxShadow: [
           BoxShadow(
@@ -449,7 +453,7 @@ class _StatsScreenState extends State<StatsScreen>
           Text(
             '$period Zikir Dağılımı',
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
             ),
@@ -563,14 +567,14 @@ class _StatsScreenState extends State<StatsScreen>
 
   Widget _buildZikrList(String period, CounterController controller) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
         boxShadow: [
           BoxShadow(
@@ -586,12 +590,12 @@ class _StatsScreenState extends State<StatsScreen>
           Text(
             '$period Zikir Detayları',
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           ...controller.getAllZikrs().map((zikr) {
             final count = controller.getZikrCountForPeriod(zikr.id, period);
             return Container(

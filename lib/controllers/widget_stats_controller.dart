@@ -74,7 +74,7 @@ class WidgetStatsController extends GetxController {
     return {
       'totalCount': totalCount,
       'activeZikrs': activeZikrs,
-      'mostUsed': mostUsedZikrName ?? 'Henüz zikir yok',
+      'mostUsed': mostUsedZikrName ?? '',
       'records': records.length,
     };
   }

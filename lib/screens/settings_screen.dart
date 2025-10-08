@@ -640,11 +640,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
             children: [
               // Header
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(8),
                 child: Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         gradient: const RadialGradient(
                           colors: [lightGold, goldColor],
@@ -657,7 +657,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         size: 20,
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 6),
                     const Expanded(
                       child: Text(
                         'Tasbee Widget Hakkında 📱',
@@ -693,30 +693,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Widget açıklaması
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: lightGold.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: goldColor.withOpacity(0.4),
-                          width: 1,
-                        ),
-                      ),
-                      child: const Text(
-                        'Ana ekranınıza widget ekleyerek uygulamayı açmadan hızlıca zikir çekebilirsiniz. Widget\'ınızda seçtiğiniz zikir türünü görebilir, sayaç ile takip edebilir ve tüm zikirleriniz otomatik olarak kaydedilir.',
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: emeraldGreen,
-                          height: 1.4,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-
-                    const SizedBox(height: 16),
+                   
 
                     // Widget bilgileri
                     Container(

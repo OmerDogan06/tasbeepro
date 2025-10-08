@@ -92,10 +92,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [
-                  Color(0xFFFFFDF7),
-                  Color(0xFFF8F6F0),
-                ],
+                colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
               ),
             ),
           ),
@@ -165,7 +162,9 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         color: emeraldGreen,
                         size: 20,
                       ),
-                onPressed: _isExportingPDF ? null : () => _exportToPDF(_selectedPeriod),
+                onPressed: _isExportingPDF
+                    ? null
+                    : () => _exportToPDF(_selectedPeriod),
               ),
             ),
           ],
@@ -175,6 +174,10 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
             labelColor: emeraldGreen,
             unselectedLabelColor: emeraldGreen.withOpacity(0.6),
             indicatorColor: goldColor,
+            indicatorSize: TabBarIndicatorSize.label,
+            tabAlignment: TabAlignment.center,
+            overlayColor: MaterialStateProperty.all(Colors.transparent),
+
             indicatorWeight: 3,
             labelStyle: const TextStyle(
               fontWeight: FontWeight.bold,
@@ -241,20 +244,20 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         }
 
         return SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(8),
           child: Column(
             children: [
               // Bilgi Kartı - Widget'a özel açıklama
               _buildPeriodInfoCard(period),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
 
               // Özet Kartı
               _buildSummaryCard(period, controller),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
 
               // Grafik Kartı
               _buildChartCard(period, controller),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
 
               // Zikir Listesi
               _buildZikrList(period, controller),
@@ -268,7 +271,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
   Widget _buildPeriodInfoCard(String period) {
     String info;
     String emoji;
-    
+
     switch (period) {
       case 'Günlük':
         info = 'Bugün widget\'tan yapılan zikirlerinizin detayları';
@@ -293,14 +296,14 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [lightGold, Color(0xFFF0E9D2)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(color: goldColor.withOpacity(0.3), width: 1),
         boxShadow: [
           BoxShadow(
@@ -313,17 +316,16 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
+            alignment:  Alignment.center,
+            width: 40,
+            padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.3),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(6),
             ),
-            child: Text(
-              emoji,
-              style: const TextStyle(fontSize: 20),
-            ),
+            child: Text(emoji, style: const TextStyle(fontSize: 20)),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 6),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -365,7 +367,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                 end: Alignment.bottomRight,
                 colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
               ),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
             ),
             child: const Center(
@@ -380,14 +382,14 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
 
         return Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
             ),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(10),
             border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
             boxShadow: [
               BoxShadow(
@@ -402,12 +404,12 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
               Text(
                 '$period Widget İstatistikleri',
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: emeraldGreen,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
               Row(
                 children: [
                   Expanded(
@@ -432,7 +434,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                   Expanded(
                     child: _buildStatItem(
                       'En Çok Yapılan',
-                      stats['mostUsed']?.toString() ?? 'Henüz yok',
+                      stats['mostUsed']?.toString() ?? '',
                       Icons.star,
                     ),
                   ),
@@ -455,7 +457,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
   Widget _buildStatItem(String title, String value, IconData icon) {
     return Container(
       margin: const EdgeInsets.all(4),
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
         color: lightGold.withOpacity(0.3),
         borderRadius: BorderRadius.circular(12),
@@ -493,14 +495,14 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
       builder: (context, snapshot) {
         return Container(
           height: 350,
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
             ),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(10),
             border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
             boxShadow: [
               BoxShadow(
@@ -515,7 +517,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
               Text(
                 '$period Widget Zikir Dağılımı',
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: emeraldGreen,
                 ),
@@ -525,31 +527,33 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                 child: snapshot.connectionState == ConnectionState.waiting
                     ? const Center(
                         child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(emeraldGreen),
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            emeraldGreen,
+                          ),
                         ),
                       )
                     : (snapshot.data?.isEmpty ?? true)
-                        ? Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.pie_chart,
-                                  size: 48,
-                                  color: emeraldGreen.withOpacity(0.5),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Henüz $period widget verisi yok',
-                                  style: TextStyle(
-                                    color: emeraldGreen.withOpacity(0.7),
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
+                    ? Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.pie_chart,
+                              size: 48,
+                              color: emeraldGreen.withOpacity(0.5),
                             ),
-                          )
-                        : _buildChart(snapshot.data!),
+                            const SizedBox(height: 8),
+                            Text(
+                              'Henüz $period widget verisi yok',
+                              style: TextStyle(
+                                color: emeraldGreen.withOpacity(0.7),
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : _buildChart(snapshot.data!),
               ),
             ],
           ),
@@ -565,14 +569,14 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         final chartData = snapshot.data ?? [];
 
         return Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
             ),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(10),
             border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
             boxShadow: [
               BoxShadow(
@@ -588,12 +592,12 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
               Text(
                 '$period Widget Zikir Detayları',
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: emeraldGreen,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
               if (snapshot.connectionState == ConnectionState.waiting)
                 const Center(
                   child: CircularProgressIndicator(
@@ -603,7 +607,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
               else if (chartData.isEmpty)
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: lightGold.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(12),
@@ -612,7 +616,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                     children: [
                       Icon(
                         Icons.widgets,
-                        size: 48,
+                        size: 25,
                         color: emeraldGreen.withOpacity(0.5),
                       ),
                       const SizedBox(height: 8),
@@ -620,7 +624,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         'Henüz widget\'tan $period zikir yapılmamış',
                         style: TextStyle(
                           color: emeraldGreen.withOpacity(0.7),
-                          fontSize: 14,
+                          fontSize: 13,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -1025,7 +1029,11 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                           'وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ',
                           textAlign: pw.TextAlign.center,
                           textDirection: pw.TextDirection.rtl,
-                          style: pw.TextStyle(fontSize: 12, font: amiriFont,color: PdfColor.fromHex('#FFFFFF')),
+                          style: pw.TextStyle(
+                            fontSize: 12,
+                            font: amiriFont,
+                            color: PdfColor.fromHex('#FFFFFF'),
+                          ),
                         ),
                       ),
                       pw.SizedBox(height: 8),
@@ -1449,7 +1457,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
   // Chart build methods
   Widget _buildChart(List<Map<String, dynamic>> data) {
     final chartData = _convertToChartData(data);
-    
+
     return Row(
       children: [
         // Pie Chart
@@ -1482,9 +1490,9 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
             ),
           ),
         ),
-        
+
         const SizedBox(width: 16),
-        
+
         // Legend
         Expanded(
           flex: 2,
@@ -1532,13 +1540,13 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
 
   List<ChartData> _convertToChartData(List<Map<String, dynamic>> data) {
     final List<ChartData> chartData = [];
-    
+
     // Sadece count > 0 olan zikirler
     final activeData = data.where((item) => (item['count'] ?? 0) > 0).toList();
-    
+
     // Count'a göre sırala (büyükten küçüğe)
     activeData.sort((a, b) => (b['count'] ?? 0).compareTo(a['count'] ?? 0));
-    
+
     for (final item in activeData) {
       chartData.add(
         ChartData(
@@ -1547,7 +1555,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         ),
       );
     }
-    
+
     return chartData;
   }
 
