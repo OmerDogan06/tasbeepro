@@ -74,6 +74,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
           title: const Text(
             'Zikir Hatırlatıcıları',
             style: TextStyle(
+              fontSize: 18,
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
             ),
@@ -96,15 +97,15 @@ class _ReminderScreenState extends State<ReminderScreen> {
             children: [
               // Header Info
               Container(
-                margin: const EdgeInsets.all(16),
-                padding: const EdgeInsets.all(16),
+                margin: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [lightGold, Colors.white],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: goldColor, width: 1),
                   boxShadow: [
                     BoxShadow(
@@ -120,7 +121,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: goldColor,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       child: const Icon(
                         Icons.notifications_active,
@@ -128,12 +129,12 @@ class _ReminderScreenState extends State<ReminderScreen> {
                         size: 20,
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 8),
                     const Expanded(
                       child: Text(
                         'Belirlediğiniz tarih ve saatte zikir yapmayı hatırlatan bildirimler alın',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 12,
                           color: emeraldGreen,
                           fontWeight: FontWeight.w500,
                         ),
@@ -148,7 +149,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                 child: _reminders.isEmpty
                     ? _buildEmptyState()
                     : ListView.builder(
-                        padding: const EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(8),
                         itemCount: _reminders.length,
                         itemBuilder: (context, index) {
                           final reminder = _reminders[index];
@@ -171,7 +172,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
           icon: const Icon(Icons.add_alarm),
           label: const Text(
             'Hatırlatıcı Ekle',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
           ),
         ),
       ),
@@ -225,11 +226,11 @@ class _ReminderScreenState extends State<ReminderScreen> {
     final id = reminder['id'];
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 6),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(color: goldColor.withOpacity(0.3)),
         boxShadow: [
           BoxShadow(
@@ -256,7 +257,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                   size: 16,
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 10),
               Expanded(
                 child: Text(
                   title,
@@ -269,13 +270,17 @@ class _ReminderScreenState extends State<ReminderScreen> {
               ),
               IconButton(
                 onPressed: () => _deleteReminder(id),
-                icon: const Icon(Icons.delete_outline, color: Colors.red),
-                padding: EdgeInsets.zero,
+                icon: const Icon(Icons.delete_outline, color: Colors.redAccent),
+                padding: EdgeInsets.all(8),
+                style: ButtonStyle(
+                  
+                  backgroundColor: MaterialStateProperty.all(Colors.redAccent.withOpacity(0.1)),
+                ),
                 constraints: const BoxConstraints(),
               ),
             ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 5),
           Row(
             children: [
               const Icon(Icons.schedule, size: 16, color: emeraldGreen),

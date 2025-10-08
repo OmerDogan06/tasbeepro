@@ -74,6 +74,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
+              fontSize: 18,
             ),
           ),
           centerTitle: true,
@@ -94,13 +95,14 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
           ),
         ),
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(8),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Info Card
                 Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(10),
                   margin: const EdgeInsets.only(bottom: 24),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
@@ -108,7 +110,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: goldColor, width: 1),
                     boxShadow: [
                       BoxShadow(
@@ -124,7 +126,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           color: goldColor,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                         ),
                         child: const Icon(
                           Icons.notifications_active,
@@ -132,12 +134,12 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                           size: 20,
                         ),
                       ),
-                      const SizedBox(width: 12),
+                      const SizedBox(width: 8),
                       const Expanded(
                         child: Text(
                           'Belirlediğiniz tarih ve saatte zikir yapmayı hatırlatan bildirim alın',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 13,
                             color: emeraldGreen,
                             fontWeight: FontWeight.w500,
                           ),
@@ -148,127 +150,117 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                 ),
                 
                 // Form
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Title Input
-                        _buildSectionHeader('Başlık'),
-                        _buildInputCard(
-                          child: TextField(
-                            controller: _titleController,
-                            decoration: const InputDecoration(
-                              hintText: 'Zikir Zamanı',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.all(16),
-                            ),
-                            style: const TextStyle(
-                              color: emeraldGreen,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                        
-                        const SizedBox(height: 24),
-                        
-                        // Message Input
-                        _buildSectionHeader('Mesaj (Opsiyonel)'),
-                        _buildInputCard(
-                          child: TextField(
-                            controller: _messageController,
-                            maxLines: 3,
-                            decoration: const InputDecoration(
-                              hintText: 'Zikir yapma zamanı geldi!',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.all(16),
-                            ),
-                            style: const TextStyle(
-                              color: emeraldGreen,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                        
-                        const SizedBox(height: 24),
-                        
-                        // Date & Time Selection
-                        _buildSectionHeader('Tarih ve Saat'),
-                        _buildInputCard(
-                          child: Column(
-                            children: [
-                              // Selected DateTime Display
-                              Container(
-                                padding: const EdgeInsets.all(16),
-                                decoration: BoxDecoration(
-                                  color: lightGold.withOpacity(0.3),
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(color: goldColor.withOpacity(0.3)),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.event,
-                                      color: emeraldGreen,
-                                      size: 20,
-                                    ),
-                                    const SizedBox(width: 12),
-                                    Expanded(
-                                      child: Text(
-                                        '${_selectedDateTime.day.toString().padLeft(2, '0')}/${_selectedDateTime.month.toString().padLeft(2, '0')}/${_selectedDateTime.year} - ${_selectedDateTime.hour.toString().padLeft(2, '0')}:${_selectedDateTime.minute.toString().padLeft(2, '0')}',
-                                        style: const TextStyle(
-                                          color: emeraldGreen,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              
-                              const SizedBox(height: 16),
-                              
-                              // Date & Time Buttons
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: _buildDateTimeButton(
-                                      icon: Icons.calendar_today,
-                                      label: 'Tarih Seç',
-                                      onPressed: _selectDate,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                    child: _buildDateTimeButton(
-                                      icon: Icons.access_time,
-                                      label: 'Saat Seç',
-                                      onPressed: _selectTime,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                _buildSectionHeader('Başlık'),
+                _buildInputCard(
+                  child: TextField(
+                    controller: _titleController,
+                    decoration: const InputDecoration(
+                      hintText: 'Zikir Zamanı',
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(8),
                     ),
+                    style: const TextStyle(
+                      color: emeraldGreen,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+                
+                const SizedBox(height: 16),
+                
+                // Message Input
+                _buildSectionHeader('Mesaj (Opsiyonel)'),
+                _buildInputCard(
+                  child: TextField(
+                    controller: _messageController,
+                    maxLines: 5,
+                    decoration: const InputDecoration(
+                      hintText: 'Zikir yapma zamanı geldi!',
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.all(8),
+                    ),
+                    style: const TextStyle(
+                      color: emeraldGreen,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+                
+                const SizedBox(height: 16),
+                
+                // Date & Time Selection
+                _buildSectionHeader('Tarih ve Saat'),
+                _buildInputCard(
+                  child: Column(
+                    children: [
+                      // Selected DateTime Display
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: lightGold.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: goldColor.withOpacity(0.3)),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.event,
+                              color: emeraldGreen,
+                              size: 18,
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                '${_selectedDateTime.day.toString().padLeft(2, '0')}/${_selectedDateTime.month.toString().padLeft(2, '0')}/${_selectedDateTime.year} - ${_selectedDateTime.hour.toString().padLeft(2, '0')}:${_selectedDateTime.minute.toString().padLeft(2, '0')}',
+                                style: const TextStyle(
+                                  color: emeraldGreen,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      
+                      const SizedBox(height: 12),
+                      
+                      // Date & Time Buttons
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _buildDateTimeButton(
+                              icon: Icons.calendar_today,
+                              label: 'Tarih Seç',
+                              onPressed: _selectDate,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: _buildDateTimeButton(
+                              icon: Icons.access_time,
+                              label: 'Saat Seç',
+                              onPressed: _selectTime,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
                 
                 // Add Button
                 Container(
                   width: double.infinity,
-                  margin: const EdgeInsets.only(top: 16),
+                  margin: const EdgeInsets.only(top: 10),
                   child: ElevatedButton(
                     onPressed: _isLoading ? null : _addReminder,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: emeraldGreen,
                       foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       elevation: 3,
                     ),
@@ -300,12 +292,12 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
 
   Widget _buildSectionHeader(String title) {
     return Container(
-      margin: const EdgeInsets.only(left: 4, bottom: 8),
+      margin: const EdgeInsets.only(left: 4, bottom: 6),
       child: Text(
         title,
         style: const TextStyle(
           color: emeraldGreen,
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -323,7 +315,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
             Color(0xFFF5F3E8),
           ],
         ),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: goldColor.withOpacity(0.3),
           width: 1.5,
@@ -347,14 +339,14 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
   }) {
     return ElevatedButton.icon(
       onPressed: onPressed,
-      icon: Icon(icon, size: 18),
-      label: Text(label),
+      icon: Icon(icon, size: 18, color: emeraldGreen),
+      label: Text(label, style: const TextStyle(color: emeraldGreen, fontSize: 14, fontWeight: FontWeight.bold)),
       style: ElevatedButton.styleFrom(
         backgroundColor: goldColor,
         foregroundColor: emeraldGreen,
         padding: const EdgeInsets.symmetric(vertical: 12),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(5),
         ),
       ),
     );
