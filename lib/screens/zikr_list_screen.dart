@@ -34,7 +34,7 @@ class ZikrListScreen extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
-              fontSize: 20,
+              fontSize: 18,
             ),
           ),
           centerTitle: true,
@@ -85,7 +85,7 @@ class ZikrListScreen extends StatelessWidget {
                 // Başlık bölümü - İslami tasarım
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       begin: Alignment.topLeft,
@@ -117,11 +117,11 @@ class ZikrListScreen extends StatelessWidget {
                           size: 24,
                         ),
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 8),
                       const Text(
                         'Pro Zikir Seçimi',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: lightGold,
                           shadows: [
@@ -138,7 +138,7 @@ class ZikrListScreen extends StatelessWidget {
                         'Geniş zikir koleksiyonu ve özel zikir oluşturma',
                         style: TextStyle(
                           color: lightGold,
-                          fontSize: 14,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                         ),
                         textAlign: TextAlign.center,
@@ -147,12 +147,12 @@ class ZikrListScreen extends StatelessWidget {
                   ),
                 ),
                 
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 
                 // Custom Zikr Ekleme Butonu
                 Container(
                   width: double.infinity,
-                  margin: const EdgeInsets.only(bottom: 20),
+                  margin: const EdgeInsets.only(bottom: 10),
                   child: ElevatedButton.icon(
                     onPressed: () => Get.to(() => const AddCustomZikrScreen(),
                       transition: Transition.rightToLeft,
@@ -189,28 +189,25 @@ class ZikrListScreen extends StatelessWidget {
                         final zikr = allZikrs[index];
                         final isSelected = controller.currentZikr.id == zikr.id;
                         
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 12),
-                          child: ZikrCard(
-                            zikr: zikr,
-                            isSelected: isSelected,
-                            onTap: () async {
-                              await controller.selectZikr(zikr);
-                              Navigator.of(context).pop();
-                              IslamicSnackbar.showSuccess(
-                                'Başarılı',
-                                '${zikr.name} seçildi',
-                                duration: const Duration(seconds: 1),
-                              );
-                            },
-                          ),
+                        return ZikrCard(
+                          zikr: zikr,
+                          isSelected: isSelected,
+                          onTap: () async {
+                            await controller.selectZikr(zikr);
+                            Navigator.of(context).pop();
+                            IslamicSnackbar.showSuccess(
+                              'Başarılı',
+                              '${zikr.name} seçildi',
+                              duration: const Duration(seconds: 1),
+                            );
+                          },
                         );
                       },
                     );
                   },
                 ),
                 
-                const SizedBox(height: 30),
+                
               ],
             ),
           ),

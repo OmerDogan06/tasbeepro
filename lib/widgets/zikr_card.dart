@@ -35,7 +35,7 @@ class ZikrCard extends StatelessWidget {
                 end: Alignment.bottomRight,
                 colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
               ),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: isSelected 
               ? emeraldGreen.withOpacity(0.5)
@@ -56,10 +56,10 @@ class ZikrCard extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(10),
           child: Container(
-            height: 100,
-            padding: const EdgeInsets.all(16),
+            height: 80,
+            padding: const EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -111,12 +111,12 @@ class ZikrCard extends StatelessWidget {
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(0),
                     decoration: BoxDecoration(
                       color: isSelected 
                           ? emeraldGreen.withOpacity(0.1)
                           : lightGold.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(4),
                       border: Border.all(
                         color: isSelected 
                             ? emeraldGreen.withOpacity(0.3)
