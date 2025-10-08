@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../services/notification_service.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../widgets/custom_bottom_picker.dart';
 
 class AddReminderScreen extends StatefulWidget {
   const AddReminderScreen({super.key});
@@ -353,69 +354,105 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
   }
 
   Future<void> _selectDate() async {
-    final date = await showDatePicker(
-      context: context,
-      initialDate: _selectedDateTime,
-      firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(const Duration(days: 365)),
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: const ColorScheme.light(
-              primary: emeraldGreen,
-              onPrimary: Colors.white,
-              surface: Color(0xFFF8F6F0),
-              onSurface: emeraldGreen,
-            ),
-          ),
-          child: child!,
-        );
+    CustomBottomPicker.date(
+      backgroundColor: Colors.white,
+      buttonSingleColor: emeraldGreen,
+      onSubmit: (date) {
+        setState(() {
+          _selectedDateTime = DateTime(
+            date.year,
+            date.month,
+            date.day,
+            _selectedDateTime.hour,
+            _selectedDateTime.minute,
+          );
+        });
       },
-    );
-
-    if (date != null) {
-      setState(() {
-        _selectedDateTime = DateTime(
-          date.year,
-          date.month,
-          date.day,
-          _selectedDateTime.hour,
-          _selectedDateTime.minute,
-        );
-      });
-    }
+      initialDateTime: _selectedDateTime,
+      minDateTime: DateTime.now(),
+      maxDateTime: DateTime.now().add(const Duration(days: 365)),
+      displaySubmitButton: true,
+      headerBuilder: (context) => Container(
+        padding: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(12),
+            topRight: Radius.circular(12),
+          ),
+        ),
+        child: Row(
+          children: [
+            const Expanded(
+              child: Text(
+                'Tarih Seçin',
+                style: TextStyle(
+                  color:emeraldGreen ,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.close, color: emeraldGreen),
+            ),
+          ],
+        ),
+      ),
+    ).show(context);
   }
 
   Future<void> _selectTime() async {
-    final time = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.fromDateTime(_selectedDateTime),
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: const ColorScheme.light(
-              primary: emeraldGreen,
-              onPrimary: Colors.white,
-              surface: Color(0xFFF8F6F0),
-              onSurface: emeraldGreen,
-            ),
-          ),
-          child: child!,
-        );
+    CustomBottomPicker.time(
+      backgroundColor: Colors.white,
+      buttonSingleColor: emeraldGreen,
+      onSubmit: (time) {
+        setState(() {
+          _selectedDateTime = DateTime(
+            _selectedDateTime.year,
+            _selectedDateTime.month,
+            _selectedDateTime.day,
+            time.hour,
+            time.minute,
+          );
+        });
       },
-    );
-
-    if (time != null) {
-      setState(() {
-        _selectedDateTime = DateTime(
-          _selectedDateTime.year,
-          _selectedDateTime.month,
-          _selectedDateTime.day,
-          time.hour,
-          time.minute,
-        );
-      });
-    }
+      initialTime: CustomTime(
+        hours: _selectedDateTime.hour,
+        minutes: _selectedDateTime.minute,
+      ),
+      displaySubmitButton: true,
+      use24hFormat: true,
+       headerBuilder: (context) => Container(
+        padding: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(12),
+            topRight: Radius.circular(12),
+          ),
+        ),
+        child: Row(
+          children: [
+            const Expanded(
+              child: Text(
+                'Saat Seçin',
+                style: TextStyle(
+                  color:emeraldGreen ,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.close, color: emeraldGreen),
+            ),
+          ],
+        ),
+      ),
+    ).show(context);
   }
 
   Future<void> _addReminder() async {
