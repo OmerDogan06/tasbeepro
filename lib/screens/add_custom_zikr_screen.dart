@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../controllers/counter_controller.dart';
 import '../models/zikr.dart';
-import '../widgets/islamic_snackbar.dart';
 
 class AddCustomZikrScreen extends StatefulWidget {
   const AddCustomZikrScreen({super.key});

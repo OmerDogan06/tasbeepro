@@ -509,7 +509,7 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 40),
+            SizedBox(height: 20),
             Text(':', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           ],
         ),
@@ -572,7 +572,7 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
           child: Column(
             children: [
               const Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(0),
                 child: Text(
                   '',
                   style: TextStyle(

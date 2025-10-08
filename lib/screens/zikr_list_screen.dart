@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../controllers/counter_controller.dart';
-import '../models/zikr.dart';
 import '../widgets/zikr_card.dart';
 import '../widgets/islamic_snackbar.dart';
 import 'add_custom_zikr_screen.dart';

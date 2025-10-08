@@ -407,6 +407,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
     CustomBottomPicker.time(
       backgroundColor: Colors.white,
       buttonSingleColor: emeraldGreen,
+      
       onSubmit: (time) {
         setState(() {
           _selectedDateTime = DateTime(
