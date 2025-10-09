@@ -332,4 +332,33 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get zikirMashallahMeaning => 'Allah\'ın dilediği oldu';
+
+  @override
+  String get addCustomZikirTitle => 'Özel Zikir Ekle';
+
+  @override
+  String get addCustomZikirDescription =>
+      'Kendi özel zikirlerinizi oluşturun ve listeye ekleyin';
+
+  @override
+  String get addCustomZikirNameLabel => 'Zikir Adı';
+
+  @override
+  String get addCustomZikirNameHint => 'Örn: Allahu Akbar';
+
+  @override
+  String get addCustomZikirMeaningLabel => 'Anlamı (Opsiyonel)';
+
+  @override
+  String get addCustomZikirMeaningHint => 'Zikrin anlamını yazabilirsiniz';
+
+  @override
+  String get addCustomZikirButton => 'Zikir Ekle';
+
+  @override
+  String get addCustomZikirNameRequired => 'Zikir adı gereklidir';
+
+  @override
+  String get addCustomZikirNameMinLength =>
+      'Zikir adı en az 2 karakter olmalıdır';
 }

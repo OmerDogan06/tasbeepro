@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../controllers/counter_controller.dart';
 import '../models/zikr.dart';
+import '../l10n/app_localizations.dart';
 
 class AddCustomZikrScreen extends StatefulWidget {
   const AddCustomZikrScreen({super.key});
@@ -65,9 +66,9 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
               onPressed: () => Get.back(),
             ),
           ),
-          title: const Text(
-            'Özel Zikir Ekle',
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)?.addCustomZikirTitle ?? 'Özel Zikir Ekle',
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
             ),
@@ -127,10 +128,10 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                           ),
                         ),
                         const SizedBox(width: 12),
-                        const Expanded(
+                        Expanded(
                           child: Text(
-                            'Kendi özel zikirlerinizi oluşturun ve listeye ekleyin',
-                            style: TextStyle(
+                            AppLocalizations.of(context)?.addCustomZikirDescription ?? 'Kendi özel zikirlerinizi oluşturun ve listeye ekleyin',
+                            style: const TextStyle(
                               fontSize: 14,
                               color: emeraldGreen,
                               fontWeight: FontWeight.w500,
@@ -159,9 +160,9 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                     child: TextFormField(
                       controller: _nameController,
                       decoration: InputDecoration(
-                        labelText: 'Zikir Adı',
-                        hintText: 'Örn: Allahu Akbar',
-                        prefixIcon: Icon(Icons.mosque, color: emeraldGreen),
+                        labelText: AppLocalizations.of(context)?.addCustomZikirNameLabel ?? 'Zikir Adı',
+                        hintText: AppLocalizations.of(context)?.addCustomZikirNameHint ?? 'Örn: Allahu Akbar',
+                        prefixIcon: const Icon(Icons.mosque, color: emeraldGreen),
                         labelStyle: const TextStyle(color: emeraldGreen),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
@@ -180,10 +181,10 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                       ),
                       validator: (value) {
                         if (value == null || value.trim().isEmpty) {
-                          return 'Zikir adı gereklidir';
+                          return AppLocalizations.of(context)?.addCustomZikirNameRequired ?? 'Zikir adı gereklidir';
                         }
                         if (value.trim().length < 2) {
-                          return 'Zikir adı en az 2 karakter olmalıdır';
+                          return AppLocalizations.of(context)?.addCustomZikirNameMinLength ?? 'Zikir adı en az 2 karakter olmalıdır';
                         }
                         return null;
                       },
@@ -209,9 +210,9 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                       controller: _meaningController,
                       maxLines: 3,
                       decoration: InputDecoration(
-                        labelText: 'Anlamı (Opsiyonel)',
-                        hintText: 'Zikrin anlamını yazabilirsiniz',
-                        prefixIcon: Icon(Icons.description, color: emeraldGreen),
+                        labelText: AppLocalizations.of(context)?.addCustomZikirMeaningLabel ?? 'Anlamı (Opsiyonel)',
+                        hintText: AppLocalizations.of(context)?.addCustomZikirMeaningHint ?? 'Zikrin anlamını yazabilirsiniz',
+                        prefixIcon: const Icon(Icons.description, color: emeraldGreen),
                         labelStyle: const TextStyle(color: emeraldGreen),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
@@ -248,14 +249,14 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                           borderRadius: BorderRadius.circular(15),
                         ),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.add_circle_outline, size: 24),
-                          SizedBox(width: 8),
+                          const Icon(Icons.add_circle_outline, size: 24),
+                          const SizedBox(width: 8),
                           Text(
-                            'Zikir Ekle',
-                            style: TextStyle(
+                            AppLocalizations.of(context)?.addCustomZikirButton ?? 'Zikir Ekle',
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),

@@ -104,5 +104,14 @@
   "zikirTabarakAllah": "Tabarak Allah",
   "zikirTabarakAllahMeaning": "Allah mübarektir",
   "zikirMashallah": "Maşallah",
-  "zikirMashallahMeaning": "Allah'ın dilediği oldu"
+  "zikirMashallahMeaning": "Allah'ın dilediği oldu",
+  "addCustomZikirTitle": "Özel Zikir Ekle",
+  "addCustomZikirDescription": "Kendi özel zikirlerinizi oluşturun ve listeye ekleyin",
+  "addCustomZikirNameLabel": "Zikir Adı",
+  "addCustomZikirNameHint": "Örn: Allahu Akbar",
+  "addCustomZikirMeaningLabel": "Anlamı (Opsiyonel)",
+  "addCustomZikirMeaningHint": "Zikrin anlamını yazabilirsiniz",
+  "addCustomZikirButton": "Zikir Ekle",
+  "addCustomZikirNameRequired": "Zikir adı gereklidir",
+  "addCustomZikirNameMinLength": "Zikir adı en az 2 karakter olmalıdır"
 }

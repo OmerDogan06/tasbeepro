@@ -332,4 +332,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get zikirMashallahMeaning => 'What Allah has willed has happened';
+
+  @override
+  String get addCustomZikirTitle => 'Add Custom Zikr';
+
+  @override
+  String get addCustomZikirDescription =>
+      'Create your own custom zikrs and add them to the list';
+
+  @override
+  String get addCustomZikirNameLabel => 'Zikr Name';
+
+  @override
+  String get addCustomZikirNameHint => 'e.g. Allahu Akbar';
+
+  @override
+  String get addCustomZikirMeaningLabel => 'Meaning (Optional)';
+
+  @override
+  String get addCustomZikirMeaningHint =>
+      'You can write the meaning of the zikr';
+
+  @override
+  String get addCustomZikirButton => 'Add Zikr';
+
+  @override
+  String get addCustomZikirNameRequired => 'Zikr name is required';
+
+  @override
+  String get addCustomZikirNameMinLength =>
+      'Zikr name must be at least 2 characters';
 }

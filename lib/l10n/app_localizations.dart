@@ -727,6 +727,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'What Allah has willed has happened'**
   String get zikirMashallahMeaning;
+
+  /// Add custom zikr screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Add Custom Zikr'**
+  String get addCustomZikirTitle;
+
+  /// Add custom zikr screen description
+  ///
+  /// In en, this message translates to:
+  /// **'Create your own custom zikrs and add them to the list'**
+  String get addCustomZikirDescription;
+
+  /// Zikr name input label
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr Name'**
+  String get addCustomZikirNameLabel;
+
+  /// Zikr name input hint
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Allahu Akbar'**
+  String get addCustomZikirNameHint;
+
+  /// Zikr meaning input label
+  ///
+  /// In en, this message translates to:
+  /// **'Meaning (Optional)'**
+  String get addCustomZikirMeaningLabel;
+
+  /// Zikr meaning input hint
+  ///
+  /// In en, this message translates to:
+  /// **'You can write the meaning of the zikr'**
+  String get addCustomZikirMeaningHint;
+
+  /// Add zikr button text
+  ///
+  /// In en, this message translates to:
+  /// **'Add Zikr'**
+  String get addCustomZikirButton;
+
+  /// Zikr name required validation message
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr name is required'**
+  String get addCustomZikirNameRequired;
+
+  /// Zikr name minimum length validation message
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr name must be at least 2 characters'**
+  String get addCustomZikirNameMinLength;
 }
 
 class _AppLocalizationsDelegate

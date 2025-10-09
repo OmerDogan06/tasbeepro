@@ -419,5 +419,41 @@
   "zikirMashallahMeaning": "What Allah has willed has happened",
   "@zikirMashallahMeaning": {
     "description": "Maşallah zikr meaning"
+  },
+  "addCustomZikirTitle": "Add Custom Zikr",
+  "@addCustomZikirTitle": {
+    "description": "Add custom zikr screen title"
+  },
+  "addCustomZikirDescription": "Create your own custom zikrs and add them to the list",
+  "@addCustomZikirDescription": {
+    "description": "Add custom zikr screen description"
+  },
+  "addCustomZikirNameLabel": "Zikr Name",
+  "@addCustomZikirNameLabel": {
+    "description": "Zikr name input label"
+  },
+  "addCustomZikirNameHint": "e.g. Allahu Akbar",
+  "@addCustomZikirNameHint": {
+    "description": "Zikr name input hint"
+  },
+  "addCustomZikirMeaningLabel": "Meaning (Optional)",
+  "@addCustomZikirMeaningLabel": {
+    "description": "Zikr meaning input label"
+  },
+  "addCustomZikirMeaningHint": "You can write the meaning of the zikr",
+  "@addCustomZikirMeaningHint": {
+    "description": "Zikr meaning input hint"
+  },
+  "addCustomZikirButton": "Add Zikr",
+  "@addCustomZikirButton": {
+    "description": "Add zikr button text"
+  },
+  "addCustomZikirNameRequired": "Zikr name is required",
+  "@addCustomZikirNameRequired": {
+    "description": "Zikr name required validation message"
+  },
+  "addCustomZikirNameMinLength": "Zikr name must be at least 2 characters",
+  "@addCustomZikirNameMinLength": {
+    "description": "Zikr name minimum length validation message"
   }
 }
