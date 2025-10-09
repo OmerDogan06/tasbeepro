@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../services/notification_service.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../l10n/app_localizations.dart';
 import 'add_reminder_screen.dart';
 
 class ReminderScreen extends StatefulWidget {
@@ -70,9 +71,9 @@ class _ReminderScreenState extends State<ReminderScreen> {
               onPressed: () => Get.back(),
             ),
           ),
-          title: const Text(
-            'Zikir Hatırlatıcıları',
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)?.reminderScreenTitle ?? 'Zikir Hatırlatıcıları',
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
@@ -129,10 +130,10 @@ class _ReminderScreenState extends State<ReminderScreen> {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Belirlediğiniz tarih ve saatte zikir yapmayı hatırlatan bildirimler alın',
-                        style: TextStyle(
+                        AppLocalizations.of(context)?.reminderScreenDescription ?? 'Belirlediğiniz tarih ve saatte zikir yapmayı hatırlatan bildirimler alın',
+                        style: const TextStyle(
                           fontSize: 12,
                           color: emeraldGreen,
                           fontWeight: FontWeight.w500,
@@ -169,9 +170,9 @@ class _ReminderScreenState extends State<ReminderScreen> {
           foregroundColor: Colors.white,
           elevation: 6,
           icon: const Icon(Icons.add_alarm),
-          label: const Text(
-            'Hatırlatıcı Ekle',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+          label: Text(
+            AppLocalizations.of(context)?.reminderScreenAddButton ?? 'Hatırlatıcı Ekle',
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
           ),
         ),
       ),
@@ -196,18 +197,18 @@ class _ReminderScreenState extends State<ReminderScreen> {
             ),
           ),
           const SizedBox(height: 24),
-          const Text(
-            'Henüz hatırlatıcı yok',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)?.reminderScreenEmpty ?? 'Henüz hatırlatıcı yok',
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Zikir yapmayı unutmamak için hatırlatıcı ekleyin',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)?.reminderScreenEmptyMessage ?? 'Zikir yapmayı unutmamak için hatırlatıcı ekleyin',
+            style: const TextStyle(
               fontSize: 14,
               color: emeraldGreen,
             ),
@@ -220,7 +221,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
 
   Widget _buildReminderCard(Map<String, dynamic> reminder) {
     final dateTime = DateTime.parse(reminder['dateTime']);
-    final title = reminder['title'] ?? 'Zikir Zamanı';
+    final title = reminder['title'] ?? (AppLocalizations.of(context)?.reminderDefaultTitle ?? 'Zikir Zamanı');
     final message = reminder['message'] ?? '';
     final id = reminder['id'];
 
@@ -309,11 +310,14 @@ class _ReminderScreenState extends State<ReminderScreen> {
   }
 
   void _deleteReminder(int id) async {
+    final successTitle = AppLocalizations.of(context)?.reminderDeleteSuccess ?? 'Silindi 🗑️';
+    final successMessage = AppLocalizations.of(context)?.reminderDeleteMessage ?? 'Hatırlatıcı başarıyla silindi';
+    
     await _notificationService.deleteReminder(id);
     _loadReminders();
     IslamicSnackbar.showSuccess(
-      'Silindi 🗑️',
-      'Hatırlatıcı başarıyla silindi',
+      successTitle,
+      successMessage,
     );
   }
 }

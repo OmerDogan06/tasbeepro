@@ -491,7 +491,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get widgetStatsNoData => 'Henüz widget verisi yok';
 
   @override
-  String get widgetStatsNoZikr => 'Henüz widget zikir yapılmamış';
+  String get widgetStatsNoZikr => 'Henüz widget\'tan zikir yapılmamış';
 
   @override
   String get widgetStatsNoPeriodData =>
@@ -621,4 +621,102 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get pdfWidgetInfoText =>
       'Widget üzerinden yapılan zikirler kalıcı olarak kaydedilir ve asla silinmez. Bu sayede widget zikirlerinizin geçmişini takip edebilirsiniz';
+
+  @override
+  String get reminderScreenTitle => 'Zikir Hatırlatıcıları';
+
+  @override
+  String get reminderScreenDescription =>
+      'Belirlediğiniz tarih ve saatte zikir yapmayı hatırlatan bildirimler alın';
+
+  @override
+  String get reminderScreenAddButton => 'Hatırlatıcı Ekle';
+
+  @override
+  String get reminderScreenEmpty => 'Henüz hatırlatıcı yok';
+
+  @override
+  String get reminderScreenEmptyMessage =>
+      'Zikir yapmayı unutmamak için hatırlatıcı ekleyin';
+
+  @override
+  String get reminderDeleteSuccess => 'Silindi 🗑️';
+
+  @override
+  String get reminderDeleteMessage => 'Hatırlatıcı başarıyla silindi';
+
+  @override
+  String get reminderDefaultTitle => 'Zikir Zamanı';
+
+  @override
+  String get addReminderTitle => 'Yeni Hatırlatıcı';
+
+  @override
+  String get addReminderDescription =>
+      'Belirlediğiniz tarih ve saatte zikir yapmayı hatırlatan bildirim alın';
+
+  @override
+  String get addReminderTitleLabel => 'Başlık';
+
+  @override
+  String get addReminderTitleHint => 'Zikir Zamanı';
+
+  @override
+  String get addReminderMessageLabel => 'Mesaj (Opsiyonel)';
+
+  @override
+  String get addReminderMessageHint => 'Zikir yapma zamanı geldi!';
+
+  @override
+  String get addReminderDateTimeLabel => 'Tarih ve Saat';
+
+  @override
+  String get addReminderSelectDate => 'Tarih Seç';
+
+  @override
+  String get addReminderSelectTime => 'Saat Seç';
+
+  @override
+  String get addReminderDatePickerTitle => 'Tarih Seçin';
+
+  @override
+  String get addReminderTimePickerTitle => 'Saat Seçin';
+
+  @override
+  String get addReminderSubmitButton => 'Hatırlatıcı Ekle';
+
+  @override
+  String get addReminderInvalidDate => 'Geçersiz Tarih';
+
+  @override
+  String get addReminderInvalidDateMessage => 'Geçmiş bir tarih seçemezsiniz';
+
+  @override
+  String get addReminderDefaultMessage => 'Zikir yapma zamanı geldi!';
+
+  @override
+  String get addReminderSuccess => 'Hatırlatıcı Eklendi 🔔';
+
+  @override
+  String get addReminderSuccessMessage => 'Belirlenen zamanda bildirim gelecek';
+
+  @override
+  String get addReminderError => 'Hata';
+
+  @override
+  String get addReminderErrorMessage =>
+      'Hatırlatıcı eklenirken bir hata oluştu';
+
+  @override
+  String get addReminderPermissionTitle => 'Bildirim İzni Gerekli';
+
+  @override
+  String get addReminderPermissionMessage =>
+      'Hatırlatıcıların çalışması için bildirim izni vermeniz gerekiyor.';
+
+  @override
+  String get addReminderPermissionCancel => 'İptal';
+
+  @override
+  String get addReminderPermissionSettings => 'Ayarlara Git';
 }

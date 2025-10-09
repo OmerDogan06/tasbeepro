@@ -624,4 +624,103 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get pdfWidgetInfoText =>
       'Zikr performed through the widget are permanently saved and never deleted. This way you can track the history of your widget zikr';
+
+  @override
+  String get reminderScreenTitle => 'Zikr Reminders';
+
+  @override
+  String get reminderScreenDescription =>
+      'Receive reminder notifications to remember zikr at your specified date and time';
+
+  @override
+  String get reminderScreenAddButton => 'Add Reminder';
+
+  @override
+  String get reminderScreenEmpty => 'No reminders yet';
+
+  @override
+  String get reminderScreenEmptyMessage =>
+      'Add reminders so you don\'t forget to do zikr';
+
+  @override
+  String get reminderDeleteSuccess => 'Deleted 🗑️';
+
+  @override
+  String get reminderDeleteMessage => 'Reminder deleted successfully';
+
+  @override
+  String get reminderDefaultTitle => 'Zikr Time';
+
+  @override
+  String get addReminderTitle => 'New Reminder';
+
+  @override
+  String get addReminderDescription =>
+      'Receive reminder notifications to remember zikr at your specified date and time';
+
+  @override
+  String get addReminderTitleLabel => 'Title';
+
+  @override
+  String get addReminderTitleHint => 'Zikr Time';
+
+  @override
+  String get addReminderMessageLabel => 'Message (Optional)';
+
+  @override
+  String get addReminderMessageHint => 'Time for zikr!';
+
+  @override
+  String get addReminderDateTimeLabel => 'Date and Time';
+
+  @override
+  String get addReminderSelectDate => 'Select Date';
+
+  @override
+  String get addReminderSelectTime => 'Select Time';
+
+  @override
+  String get addReminderDatePickerTitle => 'Select Date';
+
+  @override
+  String get addReminderTimePickerTitle => 'Select Time';
+
+  @override
+  String get addReminderSubmitButton => 'Add Reminder';
+
+  @override
+  String get addReminderInvalidDate => 'Invalid Date';
+
+  @override
+  String get addReminderInvalidDateMessage => 'You cannot select a past date';
+
+  @override
+  String get addReminderDefaultMessage => 'Time for zikr!';
+
+  @override
+  String get addReminderSuccess => 'Reminder Added 🔔';
+
+  @override
+  String get addReminderSuccessMessage =>
+      'Notification will come at the specified time';
+
+  @override
+  String get addReminderError => 'Error';
+
+  @override
+  String get addReminderErrorMessage =>
+      'An error occurred while adding reminder';
+
+  @override
+  String get addReminderPermissionTitle => 'Notification Permission Required';
+
+  @override
+  String get addReminderPermissionMessage =>
+      'You need to grant notification permission for reminders to work.';
+
+  @override
+  String get addReminderPermissionCancel => 'Cancel';
+
+  @override
+  String get addReminderPermissionSettings => 'Go to Settings';
 }

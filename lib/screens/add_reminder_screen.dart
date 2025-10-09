@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../services/notification_service.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../widgets/custom_bottom_picker.dart';
+import '../l10n/app_localizations.dart';
 
 class AddReminderScreen extends StatefulWidget {
   const AddReminderScreen({super.key});
@@ -69,9 +70,9 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
               onPressed: () => Get.back(),
             ),
           ),
-          title: const Text(
-            'Yeni Hatırlatıcı',
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)?.addReminderTitle ?? 'Yeni Hatırlatıcı',
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
               fontSize: 18,
@@ -135,10 +136,10 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                         ),
                       ),
                       const SizedBox(width: 8),
-                      const Expanded(
+                      Expanded(
                         child: Text(
-                          'Belirlediğiniz tarih ve saatte zikir yapmayı hatırlatan bildirim alın',
-                          style: TextStyle(
+                          AppLocalizations.of(context)?.addReminderDescription ?? 'Belirlediğiniz tarih ve saatte zikir yapmayı hatırlatan bildirim alın',
+                          style: const TextStyle(
                             fontSize: 13,
                             color: emeraldGreen,
                             fontWeight: FontWeight.w500,
@@ -150,14 +151,14 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                 ),
                 
                 // Form
-                _buildSectionHeader('Başlık'),
+                _buildSectionHeader(AppLocalizations.of(context)?.addReminderTitleLabel ?? 'Başlık'),
                 _buildInputCard(
                   child: TextField(
                     controller: _titleController,
-                    decoration: const InputDecoration(
-                      hintText: 'Zikir Zamanı',
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context)?.addReminderTitleHint ?? 'Zikir Zamanı',
                       border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(8),
+                      contentPadding: const EdgeInsets.all(8),
                     ),
                     style: const TextStyle(
                       color: emeraldGreen,
@@ -169,15 +170,15 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                 const SizedBox(height: 16),
                 
                 // Message Input
-                _buildSectionHeader('Mesaj (Opsiyonel)'),
+                _buildSectionHeader(AppLocalizations.of(context)?.addReminderMessageLabel ?? 'Mesaj (Opsiyonel)'),
                 _buildInputCard(
                   child: TextField(
                     controller: _messageController,
                     maxLines: 5,
-                    decoration: const InputDecoration(
-                      hintText: 'Zikir yapma zamanı geldi!',
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context)?.addReminderMessageHint ?? 'Zikir yapma zamanı geldi!',
                       border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(8),
+                      contentPadding: const EdgeInsets.all(8),
                     ),
                     style: const TextStyle(
                       color: emeraldGreen,
@@ -189,7 +190,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                 const SizedBox(height: 16),
                 
                 // Date & Time Selection
-                _buildSectionHeader('Tarih ve Saat'),
+                _buildSectionHeader(AppLocalizations.of(context)?.addReminderDateTimeLabel ?? 'Tarih ve Saat'),
                 _buildInputCard(
                   child: Column(
                     children: [
@@ -231,7 +232,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                           Expanded(
                             child: _buildDateTimeButton(
                               icon: Icons.calendar_today,
-                              label: 'Tarih Seç',
+                              label: AppLocalizations.of(context)?.addReminderSelectDate ?? 'Tarih Seç',
                               onPressed: _selectDate,
                             ),
                           ),
@@ -239,7 +240,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                           Expanded(
                             child: _buildDateTimeButton(
                               icon: Icons.access_time,
-                              label: 'Saat Seç',
+                              label: AppLocalizations.of(context)?.addReminderSelectTime ?? 'Saat Seç',
                               onPressed: _selectTime,
                             ),
                           ),
@@ -273,9 +274,9 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                               strokeWidth: 2,
                             ),
                           )
-                        : const Text(
-                            'Hatırlatıcı Ekle',
-                            style: TextStyle(
+                        : Text(
+                            AppLocalizations.of(context)?.addReminderSubmitButton ?? 'Hatırlatıcı Ekle',
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
@@ -382,10 +383,10 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
         ),
         child: Row(
           children: [
-            const Expanded(
+            Expanded(
               child: Text(
-                'Tarih Seçin',
-                style: TextStyle(
+                AppLocalizations.of(context)?.addReminderDatePickerTitle ?? 'Tarih Seçin',
+                style: const TextStyle(
                   color:emeraldGreen ,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -435,10 +436,10 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
         ),
         child: Row(
           children: [
-            const Expanded(
+            Expanded(
               child: Text(
-                'Saat Seçin',
-                style: TextStyle(
+                AppLocalizations.of(context)?.addReminderTimePickerTitle ?? 'Saat Seçin',
+                style: const TextStyle(
                   color:emeraldGreen ,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -458,8 +459,8 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
   Future<void> _addReminder() async {
     if (_selectedDateTime.isBefore(DateTime.now())) {
       IslamicSnackbar.showWarning(
-        'Geçersiz Tarih',
-        'Geçmiş bir tarih seçemezsiniz',
+        AppLocalizations.of(context)?.addReminderInvalidDate ?? 'Geçersiz Tarih',
+        AppLocalizations.of(context)?.addReminderInvalidDateMessage ?? 'Geçmiş bir tarih seçemezsiniz',
       );
       return;
     }
@@ -467,6 +468,14 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
     setState(() {
       _isLoading = true;
     });
+
+    // Store localized strings before async operations
+    final titleHint = AppLocalizations.of(context)?.addReminderTitleHint ?? 'Zikir Zamanı 🕌';
+    final defaultMessage = AppLocalizations.of(context)?.addReminderDefaultMessage ?? 'Zikir yapma zamanı geldi!';
+    final successTitle = AppLocalizations.of(context)?.addReminderSuccess ?? 'Hatırlatıcı Eklendi 🔔';
+    final successMessage = AppLocalizations.of(context)?.addReminderSuccessMessage ?? 'Belirlenen zamanda bildirim gelecek';
+    final errorTitle = AppLocalizations.of(context)?.addReminderError ?? 'Hata';
+    final errorMessage = AppLocalizations.of(context)?.addReminderErrorMessage ?? 'Hatırlatıcı eklenirken bir hata oluştu';
 
     try {
       // Permission kontrolü
@@ -477,10 +486,10 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
       }
 
       final reminderTitle = _titleController.text.trim().isEmpty 
-          ? 'Zikir Zamanı 🕌' 
+          ? titleHint
           : _titleController.text.trim();
       final reminderMessage = _messageController.text.trim().isEmpty 
-          ? 'Zikir yapma zamanı geldi!' 
+          ? defaultMessage
           : _messageController.text.trim();
 
       await _notificationService.scheduleCustomReminder(
@@ -489,17 +498,11 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
         message: reminderMessage,
       );
 
-      IslamicSnackbar.showSuccess(
-        'Hatırlatıcı Eklendi 🔔',
-        'Belirlenen zamanda bildirim gelecek',
-      );
+      IslamicSnackbar.showSuccess(successTitle, successMessage);
 
       Get.back(); // Geri dön
     } catch (e) {
-      IslamicSnackbar.showError(
-        'Hata',
-        'Hatırlatıcı eklenirken bir hata oluştu',
-      );
+      IslamicSnackbar.showError(errorTitle, errorMessage);
     } finally {
       setState(() {
         _isLoading = false;
@@ -508,23 +511,24 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
   }
 
   void _showPermissionDialog() {
+    final context = this.context;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: const Color(0xFFF8F6F0),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        title: const Text(
-          'Bildirim İzni Gerekli',
-          style: TextStyle(color: emeraldGreen, fontWeight: FontWeight.bold),
+        title: Text(
+          AppLocalizations.of(context)?.addReminderPermissionTitle ?? 'Bildirim İzni Gerekli',
+          style: const TextStyle(color: emeraldGreen, fontWeight: FontWeight.bold),
         ),
-        content: const Text(
-          'Hatırlatıcıların çalışması için bildirim izni vermeniz gerekiyor.',
-          style: TextStyle(color: emeraldGreen),
+        content: Text(
+          AppLocalizations.of(context)?.addReminderPermissionMessage ?? 'Hatırlatıcıların çalışması için bildirim izni vermeniz gerekiyor.',
+          style: const TextStyle(color: emeraldGreen),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('İptal'),
+            child: Text(AppLocalizations.of(context)?.addReminderPermissionCancel ?? 'İptal'),
           ),
           ElevatedButton(
             onPressed: () {
@@ -532,7 +536,10 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
               _notificationService.openNotificationSettings();
             },
             style: ElevatedButton.styleFrom(backgroundColor: emeraldGreen),
-            child: const Text('Ayarlara Git', style: TextStyle(color: Colors.white)),
+            child: Text(
+              AppLocalizations.of(context)?.addReminderPermissionSettings ?? 'Ayarlara Git', 
+              style: const TextStyle(color: Colors.white)
+            ),
           ),
         ],
       ),

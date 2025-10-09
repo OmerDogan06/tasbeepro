@@ -790,5 +790,129 @@
   "pdfWidgetInfoText": "Zikr performed through the widget are permanently saved and never deleted. This way you can track the history of your widget zikr",
   "@pdfWidgetInfoText": {
     "description": "Widget info description text in PDF"
+  },
+  "reminderScreenTitle": "Zikr Reminders",
+  "@reminderScreenTitle": {
+    "description": "Reminder screen title"
+  },
+  "reminderScreenDescription": "Receive reminder notifications to remember zikr at your specified date and time",
+  "@reminderScreenDescription": {
+    "description": "Reminder screen description"
+  },
+  "reminderScreenAddButton": "Add Reminder",
+  "@reminderScreenAddButton": {
+    "description": "Add reminder button text"
+  },
+  "reminderScreenEmpty": "No reminders yet",
+  "@reminderScreenEmpty": {
+    "description": "Empty state title for reminders"
+  },
+  "reminderScreenEmptyMessage": "Add reminders so you don't forget to do zikr",
+  "@reminderScreenEmptyMessage": {
+    "description": "Empty state message for reminders"
+  },
+  "reminderDeleteSuccess": "Deleted 🗑️",
+  "@reminderDeleteSuccess": {
+    "description": "Reminder delete success title"
+  },
+  "reminderDeleteMessage": "Reminder deleted successfully",
+  "@reminderDeleteMessage": {
+    "description": "Reminder delete success message"
+  },
+  "reminderDefaultTitle": "Zikr Time",
+  "@reminderDefaultTitle": {
+    "description": "Default reminder title"
+  },
+  "addReminderTitle": "New Reminder",
+  "@addReminderTitle": {
+    "description": "Add reminder screen title"
+  },
+  "addReminderDescription": "Receive reminder notifications to remember zikr at your specified date and time",
+  "@addReminderDescription": {
+    "description": "Add reminder screen description"
+  },
+  "addReminderTitleLabel": "Title",
+  "@addReminderTitleLabel": {
+    "description": "Title input label"
+  },
+  "addReminderTitleHint": "Zikr Time",
+  "@addReminderTitleHint": {
+    "description": "Title input hint"
+  },
+  "addReminderMessageLabel": "Message (Optional)",
+  "@addReminderMessageLabel": {
+    "description": "Message input label"
+  },
+  "addReminderMessageHint": "Time for zikr!",
+  "@addReminderMessageHint": {
+    "description": "Message input hint"
+  },
+  "addReminderDateTimeLabel": "Date and Time",
+  "@addReminderDateTimeLabel": {
+    "description": "Date time section label"
+  },
+  "addReminderSelectDate": "Select Date",
+  "@addReminderSelectDate": {
+    "description": "Select date button text"
+  },
+  "addReminderSelectTime": "Select Time",
+  "@addReminderSelectTime": {
+    "description": "Select time button text"
+  },
+  "addReminderDatePickerTitle": "Select Date",
+  "@addReminderDatePickerTitle": {
+    "description": "Date picker title"
+  },
+  "addReminderTimePickerTitle": "Select Time",
+  "@addReminderTimePickerTitle": {
+    "description": "Time picker title"
+  },
+  "addReminderSubmitButton": "Add Reminder",
+  "@addReminderSubmitButton": {
+    "description": "Submit button text"
+  },
+  "addReminderInvalidDate": "Invalid Date",
+  "@addReminderInvalidDate": {
+    "description": "Invalid date error title"
+  },
+  "addReminderInvalidDateMessage": "You cannot select a past date",
+  "@addReminderInvalidDateMessage": {
+    "description": "Invalid date error message"
+  },
+  "addReminderDefaultMessage": "Time for zikr!",
+  "@addReminderDefaultMessage": {
+    "description": "Default reminder message"
+  },
+  "addReminderSuccess": "Reminder Added 🔔",
+  "@addReminderSuccess": {
+    "description": "Success notification title"
+  },
+  "addReminderSuccessMessage": "Notification will come at the specified time",
+  "@addReminderSuccessMessage": {
+    "description": "Success notification message"
+  },
+  "addReminderError": "Error",
+  "@addReminderError": {
+    "description": "Error notification title"
+  },
+  "addReminderErrorMessage": "An error occurred while adding reminder",
+  "@addReminderErrorMessage": {
+    "description": "Error notification message"
+  },
+  "addReminderPermissionTitle": "Notification Permission Required",
+  "@addReminderPermissionTitle": {
+    "description": "Permission dialog title"
+  },
+  "addReminderPermissionMessage": "You need to grant notification permission for reminders to work.",
+  "@addReminderPermissionMessage": {
+    "description": "Permission dialog message"
+  },
+  "addReminderPermissionCancel": "Cancel",
+  "@addReminderPermissionCancel": {
+    "description": "Permission dialog cancel button"
+  },
+  "addReminderPermissionSettings": "Go to Settings",
+  "@addReminderPermissionSettings": {
+    "description": "Permission dialog settings button"
   }
 }

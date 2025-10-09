@@ -1261,6 +1261,192 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Zikr performed through the widget are permanently saved and never deleted. This way you can track the history of your widget zikr'**
   String get pdfWidgetInfoText;
+
+  /// Reminder screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr Reminders'**
+  String get reminderScreenTitle;
+
+  /// Reminder screen description
+  ///
+  /// In en, this message translates to:
+  /// **'Receive reminder notifications to remember zikr at your specified date and time'**
+  String get reminderScreenDescription;
+
+  /// Add reminder button text
+  ///
+  /// In en, this message translates to:
+  /// **'Add Reminder'**
+  String get reminderScreenAddButton;
+
+  /// Empty state title for reminders
+  ///
+  /// In en, this message translates to:
+  /// **'No reminders yet'**
+  String get reminderScreenEmpty;
+
+  /// Empty state message for reminders
+  ///
+  /// In en, this message translates to:
+  /// **'Add reminders so you don\'t forget to do zikr'**
+  String get reminderScreenEmptyMessage;
+
+  /// Reminder delete success title
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted 🗑️'**
+  String get reminderDeleteSuccess;
+
+  /// Reminder delete success message
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder deleted successfully'**
+  String get reminderDeleteMessage;
+
+  /// Default reminder title
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr Time'**
+  String get reminderDefaultTitle;
+
+  /// Add reminder screen title
+  ///
+  /// In en, this message translates to:
+  /// **'New Reminder'**
+  String get addReminderTitle;
+
+  /// Add reminder screen description
+  ///
+  /// In en, this message translates to:
+  /// **'Receive reminder notifications to remember zikr at your specified date and time'**
+  String get addReminderDescription;
+
+  /// Title input label
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get addReminderTitleLabel;
+
+  /// Title input hint
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr Time'**
+  String get addReminderTitleHint;
+
+  /// Message input label
+  ///
+  /// In en, this message translates to:
+  /// **'Message (Optional)'**
+  String get addReminderMessageLabel;
+
+  /// Message input hint
+  ///
+  /// In en, this message translates to:
+  /// **'Time for zikr!'**
+  String get addReminderMessageHint;
+
+  /// Date time section label
+  ///
+  /// In en, this message translates to:
+  /// **'Date and Time'**
+  String get addReminderDateTimeLabel;
+
+  /// Select date button text
+  ///
+  /// In en, this message translates to:
+  /// **'Select Date'**
+  String get addReminderSelectDate;
+
+  /// Select time button text
+  ///
+  /// In en, this message translates to:
+  /// **'Select Time'**
+  String get addReminderSelectTime;
+
+  /// Date picker title
+  ///
+  /// In en, this message translates to:
+  /// **'Select Date'**
+  String get addReminderDatePickerTitle;
+
+  /// Time picker title
+  ///
+  /// In en, this message translates to:
+  /// **'Select Time'**
+  String get addReminderTimePickerTitle;
+
+  /// Submit button text
+  ///
+  /// In en, this message translates to:
+  /// **'Add Reminder'**
+  String get addReminderSubmitButton;
+
+  /// Invalid date error title
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Date'**
+  String get addReminderInvalidDate;
+
+  /// Invalid date error message
+  ///
+  /// In en, this message translates to:
+  /// **'You cannot select a past date'**
+  String get addReminderInvalidDateMessage;
+
+  /// Default reminder message
+  ///
+  /// In en, this message translates to:
+  /// **'Time for zikr!'**
+  String get addReminderDefaultMessage;
+
+  /// Success notification title
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder Added 🔔'**
+  String get addReminderSuccess;
+
+  /// Success notification message
+  ///
+  /// In en, this message translates to:
+  /// **'Notification will come at the specified time'**
+  String get addReminderSuccessMessage;
+
+  /// Error notification title
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get addReminderError;
+
+  /// Error notification message
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while adding reminder'**
+  String get addReminderErrorMessage;
+
+  /// Permission dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Permission Required'**
+  String get addReminderPermissionTitle;
+
+  /// Permission dialog message
+  ///
+  /// In en, this message translates to:
+  /// **'You need to grant notification permission for reminders to work.'**
+  String get addReminderPermissionMessage;
+
+  /// Permission dialog cancel button
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get addReminderPermissionCancel;
+
+  /// Permission dialog settings button
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Settings'**
+  String get addReminderPermissionSettings;
 }
 
 class _AppLocalizationsDelegate

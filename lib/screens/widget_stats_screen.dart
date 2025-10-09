@@ -604,7 +604,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '$period Widget Zikir Detayları',
+                '$period ${AppLocalizations.of(context)?.widgetStatsDetails ?? 'Widget Zikir Detayları'}',
                 style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -685,14 +685,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                                   fontSize: 14,
                                 ),
                               ),
-                              const SizedBox(height: 2),
-                              Text(
-                                'Widget\'tan yapılan',
-                                style: TextStyle(
-                                  color: emeraldGreen.withAlpha(179),
-                                  fontSize: 11,
-                                ),
-                              ),
+                            
                             ],
                           ),
                         ),
@@ -1578,7 +1571,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
     for (final item in activeData) {
       chartData.add(
         ChartData(
-          label: item['zikr_name'] ?? 'Bilinmeyen',
+          label: item['zikrName'] ?? '',
           y: (item['count'] ?? 0).toDouble(),
         ),
       );
