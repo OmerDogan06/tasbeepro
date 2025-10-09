@@ -867,4 +867,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pickerMonthDecember => 'December';
+
+  @override
+  String get notificationChannelTitle => 'Zikr Reminders';
+
+  @override
+  String get notificationChannelDescription => 'Reminds you to do zikr';
+
+  @override
+  String get notificationDailyChannelTitle => 'Daily Reminders';
+
+  @override
+  String get notificationDailyChannelDescription =>
+      'Daily zikr reminders at set times';
+
+  @override
+  String get notificationPermissionRequired =>
+      'Notification permission required';
+
+  @override
+  String get notificationZikirTime => 'Zikr Time 🕌';
+
+  @override
+  String get notificationDailyZikirMessage => 'Daily zikr time has come!';
+
+  @override
+  String get notificationZikirReminder => 'Zikr Reminder';
+
+  @override
+  String get notificationDetailedMessage =>
+      'Daily zikr time has come! SubhanAllah, Alhamdulillah, Allahu Akbar';
 }

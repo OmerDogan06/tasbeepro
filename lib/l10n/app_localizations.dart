@@ -1717,6 +1717,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'December'**
   String get pickerMonthDecember;
+
+  /// Notification channel title for zikr reminders
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr Reminders'**
+  String get notificationChannelTitle;
+
+  /// Notification channel description for zikr reminders
+  ///
+  /// In en, this message translates to:
+  /// **'Reminds you to do zikr'**
+  String get notificationChannelDescription;
+
+  /// Notification channel title for daily reminders
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Reminders'**
+  String get notificationDailyChannelTitle;
+
+  /// Notification channel description for daily reminders
+  ///
+  /// In en, this message translates to:
+  /// **'Daily zikr reminders at set times'**
+  String get notificationDailyChannelDescription;
+
+  /// Error message when notification permission is required
+  ///
+  /// In en, this message translates to:
+  /// **'Notification permission required'**
+  String get notificationPermissionRequired;
+
+  /// Notification title for zikr time
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr Time 🕌'**
+  String get notificationZikirTime;
+
+  /// Daily zikr notification message
+  ///
+  /// In en, this message translates to:
+  /// **'Daily zikr time has come!'**
+  String get notificationDailyZikirMessage;
+
+  /// Zikr reminder notification ticker text
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr Reminder'**
+  String get notificationZikirReminder;
+
+  /// Detailed zikr reminder notification message
+  ///
+  /// In en, this message translates to:
+  /// **'Daily zikr time has come! SubhanAllah, Alhamdulillah, Allahu Akbar'**
+  String get notificationDetailedMessage;
 }
 
 class _AppLocalizationsDelegate

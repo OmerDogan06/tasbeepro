@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:permission_handler/permission_handler.dart';
 import 'storage_service.dart';
+import '../l10n/app_localizations.dart';
 
 class NotificationService extends GetxService {
   final FlutterLocalNotificationsPlugin _notifications =
@@ -54,10 +55,16 @@ class NotificationService extends GetxService {
   }
 
   Future<void> _createNotificationChannel() async {
-    const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    final context = Get.context;
+    
+    final AndroidNotificationChannel channel = AndroidNotificationChannel(
       'zikr_reminders',
-      'Zikir Hatırlatıcıları',
-      description: 'Zikir yapmayı hatırlatır',
+      context != null 
+          ? (AppLocalizations.of(context)?.notificationChannelTitle ?? 'Zikir Hatırlatıcıları')
+          : 'Zikir Hatırlatıcıları',
+      description: context != null 
+          ? (AppLocalizations.of(context)?.notificationChannelDescription ?? 'Zikir yapmayı hatırlatır')
+          : 'Zikir yapmayı hatırlatır',
       importance: Importance.max, // Max seviye
       enableVibration: true,
       playSound: true,
@@ -66,10 +73,14 @@ class NotificationService extends GetxService {
       showBadge: true,
     );
 
-    const AndroidNotificationChannel dailyChannel = AndroidNotificationChannel(
+    final AndroidNotificationChannel dailyChannel = AndroidNotificationChannel(
       'daily_reminders',
-      'Günlük Hatırlatıcılar',
-      description: 'Belirlenen saatlerde günlük zikir hatırlatıcıları',
+      context != null 
+          ? (AppLocalizations.of(context)?.notificationDailyChannelTitle ?? 'Günlük Hatırlatıcılar')
+          : 'Günlük Hatırlatıcılar',
+      description: context != null 
+          ? (AppLocalizations.of(context)?.notificationDailyChannelDescription ?? 'Belirlenen saatlerde günlük zikir hatırlatıcıları')
+          : 'Belirlenen saatlerde günlük zikir hatırlatıcıları',
       importance: Importance.max, // Max seviye
       enableVibration: true,
       playSound: true,
@@ -98,9 +109,13 @@ class NotificationService extends GetxService {
     required String body,
     required DateTime scheduledTime,
   }) async {
+    final context = Get.context;
+    
     // Permission kontrolü
     if (!await _hasNotificationPermission()) {
-      throw Exception('Bildirim izni gerekli');
+      throw Exception(context != null 
+          ? (AppLocalizations.of(context)?.notificationPermissionRequired ?? 'Bildirim izni gerekli')
+          : 'Bildirim izni gerekli');
     }
 
     await _notifications.zonedSchedule(
@@ -111,8 +126,12 @@ class NotificationService extends GetxService {
       NotificationDetails(
         android: AndroidNotificationDetails(
           'zikr_reminders',
-          'Zikir Hatırlatıcıları',
-          channelDescription: 'Zikir yapmayı hatırlatır',
+          context != null 
+              ? (AppLocalizations.of(context)?.notificationChannelTitle ?? 'Zikir Hatırlatıcıları')
+              : 'Zikir Hatırlatıcıları',
+          channelDescription: context != null 
+              ? (AppLocalizations.of(context)?.notificationChannelDescription ?? 'Zikir yapmayı hatırlatır')
+              : 'Zikir yapmayı hatırlatır',
           importance: Importance.max,
           priority: Priority.max,
           icon: '@mipmap/ic_launcher',
@@ -128,7 +147,9 @@ class NotificationService extends GetxService {
           ledColor: const Color.fromARGB(255, 255, 0, 0),
           ledOnMs: 1000,
           ledOffMs: 500,
-          ticker: 'Zikir Hatırlatıcısı',
+          ticker: context != null 
+              ? (AppLocalizations.of(context)?.notificationZikirReminder ?? 'Zikir Hatırlatıcısı')
+              : 'Zikir Hatırlatıcısı',
           largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
           styleInformation: BigTextStyleInformation(
             body,
@@ -196,9 +217,13 @@ class NotificationService extends GetxService {
     required int minute,
     required String message,
   }) async {
+    final context = Get.context;
+    
     await scheduleZikrReminder(
       id: 1,
-      title: 'Zikir Zamanı 🕌',
+      title: context != null 
+          ? (AppLocalizations.of(context)?.notificationZikirTime ?? 'Zikir Zamanı 🕌')
+          : 'Zikir Zamanı 🕌',
       body: message,
       scheduledTime: DateTime.now().copyWith(
         hour: hour,
@@ -271,6 +296,7 @@ class NotificationService extends GetxService {
     required int hour,
     required int minute,
   }) async {
+    final context = Get.context;
     final id = hour * 100 + minute; // Unique ID for time-based reminders
 
     // Her gün aynı saatte tekrarlanacak notification planla
@@ -284,15 +310,22 @@ class NotificationService extends GetxService {
 
     await _notifications.zonedSchedule(
       id,
-      'Zikir Zamanı 🕌',
-      'Günlük zikir yapma zamanı geldi!',
+      context != null 
+          ? (AppLocalizations.of(context)?.notificationZikirTime ?? 'Zikir Zamanı 🕌')
+          : 'Zikir Zamanı 🕌',
+      context != null 
+          ? (AppLocalizations.of(context)?.notificationDailyZikirMessage ?? 'Günlük zikir yapma zamanı geldi!')
+          : 'Günlük zikir yapma zamanı geldi!',
       tz.TZDateTime.from(scheduledDate, tz.local),
       NotificationDetails(
         android: AndroidNotificationDetails(
           'daily_reminders',
-          'Günlük Hatırlatıcılar',
-          channelDescription:
-              'Belirlenen saatlerde günlük zikir hatırlatıcıları',
+          context != null 
+              ? (AppLocalizations.of(context)?.notificationDailyChannelTitle ?? 'Günlük Hatırlatıcılar')
+              : 'Günlük Hatırlatıcılar',
+          channelDescription: context != null 
+              ? (AppLocalizations.of(context)?.notificationDailyChannelDescription ?? 'Belirlenen saatlerde günlük zikir hatırlatıcıları')
+              : 'Belirlenen saatlerde günlük zikir hatırlatıcıları',
           importance: Importance.max,
           priority: Priority.max,
           icon: '@mipmap/ic_launcher',
@@ -308,14 +341,20 @@ class NotificationService extends GetxService {
           ledColor: const Color.fromARGB(255, 255, 0, 0),
           ledOnMs: 1000,
           ledOffMs: 500,
-          ticker: 'Zikir Zamanı!',
+          ticker: context != null 
+              ? (AppLocalizations.of(context)?.notificationZikirTime ?? 'Zikir Zamanı!')
+              : 'Zikir Zamanı!',
           when: null,
           usesChronometer: false,
           largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
-          styleInformation: const BigTextStyleInformation(
-            'Günlük zikir yapma zamanı geldi! SubhanAllah, Alhamdulillah, Allahu Akbar',
+          styleInformation: BigTextStyleInformation(
+            context != null 
+                ? (AppLocalizations.of(context)?.notificationDetailedMessage ?? 'Günlük zikir yapma zamanı geldi! SubhanAllah, Alhamdulillah, Allahu Akbar')
+                : 'Günlük zikir yapma zamanı geldi! SubhanAllah, Alhamdulillah, Allahu Akbar',
             htmlFormatBigText: false,
-            contentTitle: 'Zikir Zamanı 🕌',
+            contentTitle: context != null 
+                ? (AppLocalizations.of(context)?.notificationZikirTime ?? 'Zikir Zamanı 🕌')
+                : 'Zikir Zamanı 🕌',
             htmlFormatContentTitle: false,
             summaryText: 'Tasbee Pro',
             htmlFormatSummaryText: false,

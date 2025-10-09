@@ -1109,5 +1109,41 @@
   "pickerMonthDecember": "December",
   "@pickerMonthDecember": {
     "description": "December month name"
+  },
+  "notificationChannelTitle": "Zikr Reminders",
+  "@notificationChannelTitle": {
+    "description": "Notification channel title for zikr reminders"
+  },
+  "notificationChannelDescription": "Reminds you to do zikr",
+  "@notificationChannelDescription": {
+    "description": "Notification channel description for zikr reminders"
+  },
+  "notificationDailyChannelTitle": "Daily Reminders",
+  "@notificationDailyChannelTitle": {
+    "description": "Notification channel title for daily reminders"
+  },
+  "notificationDailyChannelDescription": "Daily zikr reminders at set times",
+  "@notificationDailyChannelDescription": {
+    "description": "Notification channel description for daily reminders"
+  },
+  "notificationPermissionRequired": "Notification permission required",
+  "@notificationPermissionRequired": {
+    "description": "Error message when notification permission is required"
+  },
+  "notificationZikirTime": "Zikr Time 🕌",
+  "@notificationZikirTime": {
+    "description": "Notification title for zikr time"
+  },
+  "notificationDailyZikirMessage": "Daily zikr time has come!",
+  "@notificationDailyZikirMessage": {
+    "description": "Daily zikr notification message"
+  },
+  "notificationZikirReminder": "Zikr Reminder",
+  "@notificationZikirReminder": {
+    "description": "Zikr reminder notification ticker text"
+  },
+  "notificationDetailedMessage": "Daily zikr time has come! SubhanAllah, Alhamdulillah, Allahu Akbar",
+  "@notificationDetailedMessage": {
+    "description": "Detailed zikr reminder notification message"
   }
 }

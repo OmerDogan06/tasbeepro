@@ -269,5 +269,14 @@
   "pickerMonthSeptember": "Eylül",
   "pickerMonthOctober": "Ekim",
   "pickerMonthNovember": "Kasım",
-  "pickerMonthDecember": "Aralık"
+  "pickerMonthDecember": "Aralık",
+  "notificationChannelTitle": "Zikir Hatırlatıcıları",
+  "notificationChannelDescription": "Zikir yapmayı hatırlatır",
+  "notificationDailyChannelTitle": "Günlük Hatırlatıcılar",
+  "notificationDailyChannelDescription": "Belirlenen saatlerde günlük zikir hatırlatıcıları",
+  "notificationPermissionRequired": "Bildirim izni gerekli",
+  "notificationZikirTime": "Zikir Zamanı 🕌",
+  "notificationDailyZikirMessage": "Günlük zikir yapma zamanı geldi!",
+  "notificationZikirReminder": "Zikir Hatırlatıcısı",
+  "notificationDetailedMessage": "Günlük zikir yapma zamanı geldi! SubhanAllah, Alhamdulillah, Allahu Akbar"
 }

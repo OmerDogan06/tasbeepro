@@ -862,4 +862,34 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pickerMonthDecember => 'Aralık';
+
+  @override
+  String get notificationChannelTitle => 'Zikir Hatırlatıcıları';
+
+  @override
+  String get notificationChannelDescription => 'Zikir yapmayı hatırlatır';
+
+  @override
+  String get notificationDailyChannelTitle => 'Günlük Hatırlatıcılar';
+
+  @override
+  String get notificationDailyChannelDescription =>
+      'Belirlenen saatlerde günlük zikir hatırlatıcıları';
+
+  @override
+  String get notificationPermissionRequired => 'Bildirim izni gerekli';
+
+  @override
+  String get notificationZikirTime => 'Zikir Zamanı 🕌';
+
+  @override
+  String get notificationDailyZikirMessage =>
+      'Günlük zikir yapma zamanı geldi!';
+
+  @override
+  String get notificationZikirReminder => 'Zikir Hatırlatıcısı';
+
+  @override
+  String get notificationDetailedMessage =>
+      'Günlük zikir yapma zamanı geldi! SubhanAllah, Alhamdulillah, Allahu Akbar';
 }
