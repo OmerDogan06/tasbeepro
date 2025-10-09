@@ -164,7 +164,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Long press on an empty area on your home screen and select \"Widgets\". Then find and add the \"Tasbee Pro\" widget.';
 
   @override
-  String get appInfoTitle => 'Tasbee Free';
+  String get appInfoTitle => 'Tasbee Pro';
 
   @override
   String get appInfoDescription => 'Offline digital prayer counter app.';

@@ -204,7 +204,7 @@
   "@widgetAddInstructions": {
     "description": "Widget add instructions"
   },
-  "appInfoTitle": "Tasbee Free",
+  "appInfoTitle": "Tasbee Pro",
   "@appInfoTitle": {
     "description": "About app dialog title"
   },

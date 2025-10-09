@@ -407,7 +407,7 @@ abstract class AppLocalizations {
   /// About app dialog title
   ///
   /// In en, this message translates to:
-  /// **'Tasbee Free'**
+  /// **'Tasbee Pro'**
   String get appInfoTitle;
 
   /// App description in about dialog

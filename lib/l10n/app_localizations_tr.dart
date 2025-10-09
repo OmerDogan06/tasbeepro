@@ -165,7 +165,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Ana ekranınızda boş bir alana uzun basın ve \"Widget\'lar\" seçeneğini seçin. Ardından \"Tasbee Pro\" widget\'ını bulup ekleyin.';
 
   @override
-  String get appInfoTitle => 'Tasbee Free';
+  String get appInfoTitle => 'Tasbee Pro';
 
   @override
   String get appInfoDescription => 'Offline çalışan dijital tesbih uygulaması.';
