@@ -2,13 +2,21 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F6F0">
+    android:background="#F8F6F0"
+    android:fitsSystemWindows="false"
+    android:fillViewport="true"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="32dp"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true">
 
         <!-- Header -->
         <LinearLayout
@@ -17,8 +25,13 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:background="@drawable/header_background"
-            android:padding="16dp"
-            android:layout_marginBottom="20dp">
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -45,6 +58,8 @@
             android:orientation="vertical"
             android:background="@drawable/setting_card_background"
             android:padding="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp">
 
             <TextView
@@ -95,6 +110,8 @@
             android:orientation="vertical"
             android:background="@drawable/setting_card_background"
             android:padding="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp">
 
             <TextView
@@ -145,6 +162,8 @@
             android:orientation="vertical"
             android:background="@drawable/setting_card_background"
             android:padding="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp">
 
             <TextView
@@ -192,6 +211,8 @@
             android:orientation="vertical"
             android:background="@drawable/setting_card_background"
             android:padding="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="20dp">
 
             <TextView
@@ -238,7 +259,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp">
 
             <Button
                 android:id="@+id/cancel_button"

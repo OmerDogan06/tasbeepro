@@ -11,6 +11,10 @@ import android.view.View
 import android.widget.*
 import android.media.AudioManager
 import android.media.ToneGenerator
+import android.os.Build
+import android.graphics.Color
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 
 class WidgetConfigActivity : Activity() {
 
@@ -56,7 +60,24 @@ class WidgetConfigActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Edge-to-edge modu aktif et
+        enableEdgeToEdge()
+        
         setContentView(R.layout.widget_config_activity)
+        
+        // Status bar'ı şeffaf yap ve içeriği altına kaydır
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        
+        // Status bar ikonlarını koyu yap (açık arkaplan için)
+        WindowInsetsControllerCompat(window, window.decorView).apply {
+            isAppearanceLightStatusBars = true
+            isAppearanceLightNavigationBars = true
+        }
+        
+        // Status bar rengini ayarla (opsiyonel - şeffaf yapmak için)
+        window.statusBarColor = Color.TRANSPARENT
+        window.navigationBarColor = Color.TRANSPARENT
 
         // Result'u başta CANCELED olarak ayarla
         setResult(RESULT_CANCELED)
@@ -224,6 +245,13 @@ class WidgetConfigActivity : Activity() {
             }, 100)
         } catch (e: Exception) {
             // Ses çalınamazsa sessizce devam et
+        }
+    }
+    
+    // Edge-to-edge fonksiyonu
+    private fun enableEdgeToEdge() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.setDecorFitsSystemWindows(false)
         }
     }
 }
