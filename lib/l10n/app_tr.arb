@@ -246,5 +246,6 @@
   "customTimesDeleteCancel": "İptal",
   "customTimesDeleteConfirm": "Sil",
   "customTimesDeleteSuccess": "Silindi 🗑️",
-  "customTimesDeleteSuccessMessage": "{time} saati başarıyla silindi"
+  "customTimesDeleteSuccessMessage": "{time} saati başarıyla silindi",
+  "counterButtonText": "Dokun"
 }

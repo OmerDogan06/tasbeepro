@@ -1579,6 +1579,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{time} time deleted successfully'**
   String customTimesDeleteSuccessMessage(String time);
+
+  /// Counter button tap text
+  ///
+  /// In en, this message translates to:
+  /// **'Tap'**
+  String get counterButtonText;
 }
 
 class _AppLocalizationsDelegate

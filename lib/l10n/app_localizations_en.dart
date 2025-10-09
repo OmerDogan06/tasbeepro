@@ -798,4 +798,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String customTimesDeleteSuccessMessage(String time) {
     return '$time time deleted successfully';
   }
+
+  @override
+  String get counterButtonText => 'Tap';
 }

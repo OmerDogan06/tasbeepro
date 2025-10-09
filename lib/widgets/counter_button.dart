@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
 import '../controllers/counter_controller.dart';
+import '../l10n/app_localizations.dart';
 
 class CounterButton extends StatefulWidget {
   const CounterButton({super.key});
@@ -143,7 +144,7 @@ class _CounterButtonState extends State<CounterButton>
                           ),
                           SizedBox(height: buttonSize * 0.04),
                           Text(
-                            'Dokun',
+                            AppLocalizations.of(context)?.counterButtonText ?? 'Dokun',
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: const Color(0xFFF5E6A8), // Açık altın
                               fontSize: (buttonSize * 0.08).clamp(12.0, 18.0), // Responsive font

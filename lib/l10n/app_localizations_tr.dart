@@ -793,4 +793,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String customTimesDeleteSuccessMessage(String time) {
     return '$time saati başarıyla silindi';
   }
+
+  @override
+  String get counterButtonText => 'Dokun';
 }

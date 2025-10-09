@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'screens/splash_screen.dart';
-import 'controllers/theme_controller.dart';
 import 'controllers/counter_controller.dart';
 import 'controllers/widget_stats_controller.dart';
 import 'services/storage_service.dart';
@@ -45,7 +44,6 @@ void main() async {
   Get.put(WidgetService());
 
   // Controllers'ları başlat
-  Get.put(ThemeController());
   Get.put(CounterController());
   Get.put(WidgetStatsController());
 
@@ -89,7 +87,7 @@ class TasbeeApp extends StatelessWidget {
 
         textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
       ),
-      themeMode: Get.find<ThemeController>().themeMode,
+      themeMode: ThemeMode.light, 
       home: const SplashScreen(),
     ));
   }

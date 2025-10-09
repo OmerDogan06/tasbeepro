@@ -1017,5 +1017,9 @@
         "type": "String"
       }
     }
+  },
+  "counterButtonText": "Tap",
+  "@counterButtonText": {
+    "description": "Counter button tap text"
   }
 }
