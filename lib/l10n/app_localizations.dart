@@ -1447,6 +1447,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Go to Settings'**
   String get addReminderPermissionSettings;
+
+  /// Custom reminder times screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder Times'**
+  String get customTimesTitle;
+
+  /// Add time button text
+  ///
+  /// In en, this message translates to:
+  /// **'Add Time'**
+  String get customTimesAddButton;
+
+  /// Custom times screen description
+  ///
+  /// In en, this message translates to:
+  /// **'Receive daily zikr reminders at custom times. Added times repeat every day.'**
+  String get customTimesDescription;
+
+  /// Empty state title for custom times
+  ///
+  /// In en, this message translates to:
+  /// **'No custom times added yet'**
+  String get customTimesEmptyTitle;
+
+  /// Empty state message for custom times
+  ///
+  /// In en, this message translates to:
+  /// **'You can add custom times for daily reminders'**
+  String get customTimesEmptyMessage;
+
+  /// Active time status text
+  ///
+  /// In en, this message translates to:
+  /// **'Daily reminder active'**
+  String get customTimesActiveStatus;
+
+  /// Inactive time status text
+  ///
+  /// In en, this message translates to:
+  /// **'Disabled'**
+  String get customTimesInactiveStatus;
+
+  /// Time picker title
+  ///
+  /// In en, this message translates to:
+  /// **'Select Time'**
+  String get customTimesPickerTitle;
+
+  /// Duplicate time error title
+  ///
+  /// In en, this message translates to:
+  /// **'Already Exists'**
+  String get customTimesAlreadyExists;
+
+  /// Duplicate time error message
+  ///
+  /// In en, this message translates to:
+  /// **'This time has already been added'**
+  String get customTimesAlreadyExistsMessage;
+
+  /// Add time success title
+  ///
+  /// In en, this message translates to:
+  /// **'Time Added 🕐'**
+  String get customTimesAddSuccess;
+
+  /// Add time success message
+  ///
+  /// In en, this message translates to:
+  /// **'Daily reminder active at {time}'**
+  String customTimesAddSuccessMessage(String time);
+
+  /// Time activation title
+  ///
+  /// In en, this message translates to:
+  /// **'Activated'**
+  String get customTimesToggleActive;
+
+  /// Time deactivation title
+  ///
+  /// In en, this message translates to:
+  /// **'Disabled'**
+  String get customTimesToggleInactive;
+
+  /// Time activation message
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder active'**
+  String get customTimesToggleActiveMessage;
+
+  /// Time deactivation message
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder disabled'**
+  String get customTimesToggleInactiveMessage;
+
+  /// Delete time dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Time?'**
+  String get customTimesDeleteTitle;
+
+  /// Delete time dialog message
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete the reminder at {time}?'**
+  String customTimesDeleteMessage(String time);
+
+  /// Delete dialog cancel button
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get customTimesDeleteCancel;
+
+  /// Delete dialog confirm button
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get customTimesDeleteConfirm;
+
+  /// Delete success title
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted 🗑️'**
+  String get customTimesDeleteSuccess;
+
+  /// Delete success message
+  ///
+  /// In en, this message translates to:
+  /// **'{time} time deleted successfully'**
+  String customTimesDeleteSuccessMessage(String time);
 }
 
 class _AppLocalizationsDelegate

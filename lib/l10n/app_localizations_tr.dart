@@ -719,4 +719,78 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get addReminderPermissionSettings => 'Ayarlara Git';
+
+  @override
+  String get customTimesTitle => 'Hatırlatma Saatleri';
+
+  @override
+  String get customTimesAddButton => 'Saat Ekle';
+
+  @override
+  String get customTimesDescription =>
+      'Özel saatlerde günlük zikir hatırlatıcıları alın. Eklediğiniz saatler her gün tekrarlanır.';
+
+  @override
+  String get customTimesEmptyTitle => 'Henüz özel saat eklenmemiş';
+
+  @override
+  String get customTimesEmptyMessage =>
+      'Günlük hatırlatıcılar için özel saatler ekleyebilirsiniz';
+
+  @override
+  String get customTimesActiveStatus => 'Günlük hatırlatıcı aktif';
+
+  @override
+  String get customTimesInactiveStatus => 'Devre dışı';
+
+  @override
+  String get customTimesPickerTitle => 'Saat Seçin';
+
+  @override
+  String get customTimesAlreadyExists => 'Zaten Mevcut';
+
+  @override
+  String get customTimesAlreadyExistsMessage => 'Bu saat zaten eklenmiş';
+
+  @override
+  String get customTimesAddSuccess => 'Saat Eklendi 🕐';
+
+  @override
+  String customTimesAddSuccessMessage(String time) {
+    return '$time saatinde günlük hatırlatıcı aktif';
+  }
+
+  @override
+  String get customTimesToggleActive => 'Aktif Edildi';
+
+  @override
+  String get customTimesToggleInactive => 'Devre Dışı';
+
+  @override
+  String get customTimesToggleActiveMessage => 'Hatırlatıcı aktif';
+
+  @override
+  String get customTimesToggleInactiveMessage => 'Hatırlatıcı devre dışı';
+
+  @override
+  String get customTimesDeleteTitle => 'Saati Sil?';
+
+  @override
+  String customTimesDeleteMessage(String time) {
+    return '$time saatindeki hatırlatıcıyı silmek istediğinizden emin misiniz?';
+  }
+
+  @override
+  String get customTimesDeleteCancel => 'İptal';
+
+  @override
+  String get customTimesDeleteConfirm => 'Sil';
+
+  @override
+  String get customTimesDeleteSuccess => 'Silindi 🗑️';
+
+  @override
+  String customTimesDeleteSuccessMessage(String time) {
+    return '$time saati başarıyla silindi';
+  }
 }

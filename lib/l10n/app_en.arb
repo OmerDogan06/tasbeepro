@@ -914,5 +914,108 @@
   "addReminderPermissionSettings": "Go to Settings",
   "@addReminderPermissionSettings": {
     "description": "Permission dialog settings button"
+  },
+  "customTimesTitle": "Reminder Times",
+  "@customTimesTitle": {
+    "description": "Custom reminder times screen title"
+  },
+  "customTimesAddButton": "Add Time",
+  "@customTimesAddButton": {
+    "description": "Add time button text"
+  },
+  "customTimesDescription": "Receive daily zikr reminders at custom times. Added times repeat every day.",
+  "@customTimesDescription": {
+    "description": "Custom times screen description"
+  },
+  "customTimesEmptyTitle": "No custom times added yet",
+  "@customTimesEmptyTitle": {
+    "description": "Empty state title for custom times"
+  },
+  "customTimesEmptyMessage": "You can add custom times for daily reminders",
+  "@customTimesEmptyMessage": {
+    "description": "Empty state message for custom times"
+  },
+  "customTimesActiveStatus": "Daily reminder active",
+  "@customTimesActiveStatus": {
+    "description": "Active time status text"
+  },
+  "customTimesInactiveStatus": "Disabled",
+  "@customTimesInactiveStatus": {
+    "description": "Inactive time status text"
+  },
+  "customTimesPickerTitle": "Select Time",
+  "@customTimesPickerTitle": {
+    "description": "Time picker title"
+  },
+  "customTimesAlreadyExists": "Already Exists",
+  "@customTimesAlreadyExists": {
+    "description": "Duplicate time error title"
+  },
+  "customTimesAlreadyExistsMessage": "This time has already been added",
+  "@customTimesAlreadyExistsMessage": {
+    "description": "Duplicate time error message"
+  },
+  "customTimesAddSuccess": "Time Added 🕐",
+  "@customTimesAddSuccess": {
+    "description": "Add time success title"
+  },
+  "customTimesAddSuccessMessage": "Daily reminder active at {time}",
+  "@customTimesAddSuccessMessage": {
+    "description": "Add time success message",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "customTimesToggleActive": "Activated",
+  "@customTimesToggleActive": {
+    "description": "Time activation title"
+  },
+  "customTimesToggleInactive": "Disabled",
+  "@customTimesToggleInactive": {
+    "description": "Time deactivation title"
+  },
+  "customTimesToggleActiveMessage": "Reminder active",
+  "@customTimesToggleActiveMessage": {
+    "description": "Time activation message"
+  },
+  "customTimesToggleInactiveMessage": "Reminder disabled",
+  "@customTimesToggleInactiveMessage": {
+    "description": "Time deactivation message"
+  },
+  "customTimesDeleteTitle": "Delete Time?",
+  "@customTimesDeleteTitle": {
+    "description": "Delete time dialog title"
+  },
+  "customTimesDeleteMessage": "Are you sure you want to delete the reminder at {time}?",
+  "@customTimesDeleteMessage": {
+    "description": "Delete time dialog message",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "customTimesDeleteCancel": "Cancel",
+  "@customTimesDeleteCancel": {
+    "description": "Delete dialog cancel button"
+  },
+  "customTimesDeleteConfirm": "Delete",
+  "@customTimesDeleteConfirm": {
+    "description": "Delete dialog confirm button"
+  },
+  "customTimesDeleteSuccess": "Deleted 🗑️",
+  "@customTimesDeleteSuccess": {
+    "description": "Delete success title"
+  },
+  "customTimesDeleteSuccessMessage": "{time} time deleted successfully",
+  "@customTimesDeleteSuccessMessage": {
+    "description": "Delete success message",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
   }
 }

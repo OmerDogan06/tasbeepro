@@ -5,6 +5,7 @@ import '../services/notification_service.dart';
 import '../services/storage_service.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../widgets/custom_bottom_picker.dart';
+import '../l10n/app_localizations.dart';
 
 class CustomReminderTimesScreen extends StatefulWidget {
   const CustomReminderTimesScreen({super.key});
@@ -73,9 +74,9 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
               onPressed: () => Get.back(),
             ),
           ),
-          title: const Text(
-            'Hatırlatma Saatleri',
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)?.customTimesTitle ?? 'Hatırlatma Saatleri',
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
               fontSize: 18,
@@ -104,7 +105,10 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           foregroundColor: Colors.white,
           icon: const Icon(Icons.add),
           elevation: 6,
-          label: const Text('Saat Ekle',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),),
+          label: Text(
+            AppLocalizations.of(context)?.customTimesAddButton ?? 'Saat Ekle',
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+          ),
         ),
         body: SafeArea(
           child: Column(
@@ -146,10 +150,10 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Özel saatlerde günlük zikir hatırlatıcıları alın. Eklediğiniz saatler her gün tekrarlanır.',
-                        style: TextStyle(
+                        AppLocalizations.of(context)?.customTimesDescription ?? 'Özel saatlerde günlük zikir hatırlatıcıları alın. Eklediğiniz saatler her gün tekrarlanır.',
+                        style: const TextStyle(
                           fontSize: 13,
                           color: emeraldGreen,
                           fontWeight: FontWeight.w500,
@@ -208,9 +212,9 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          const Text(
-            'Henüz özel saat eklenmemiş',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)?.customTimesEmptyTitle ?? 'Henüz özel saat eklenmemiş',
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
@@ -218,9 +222,9 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Günlük hatırlatıcılar için özel saatler ekleyebilirsiniz',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)?.customTimesEmptyMessage ?? 'Günlük hatırlatıcılar için özel saatler ekleyebilirsiniz',
+            style: const TextStyle(
               fontSize: 14,
               color: emeraldGreen,
             ),
@@ -296,7 +300,9 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           ),
         ),
         subtitle: Text(
-          isActive ? 'Günlük hatırlatıcı aktif' : 'Devre dışı',
+          isActive 
+              ? (AppLocalizations.of(context)?.customTimesActiveStatus ?? 'Günlük hatırlatıcı aktif')
+              : (AppLocalizations.of(context)?.customTimesInactiveStatus ?? 'Devre dışı'),
           style: TextStyle(
             color: isActive ? emeraldGreen.withAlpha(179) : Colors.grey.shade500,
             fontSize: 11,
@@ -360,8 +366,8 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
         
         if (existingTime) {
           IslamicSnackbar.showWarning(
-            'Zaten Mevcut',
-            'Bu saat zaten eklenmiş',
+            AppLocalizations.of(context)?.customTimesAlreadyExists ?? 'Zaten Mevcut',
+            AppLocalizations.of(context)?.customTimesAlreadyExistsMessage ?? 'Bu saat zaten eklenmiş',
           );
           return;
         }
@@ -377,9 +383,11 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
         _saveCustomTimes();
         _scheduleTimeNotifications();
 
+        final timeString = '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
+        final successMessage = AppLocalizations.of(context)?.customTimesAddSuccessMessage(timeString) ?? '$timeString saatinde günlük hatırlatıcı aktif';
         IslamicSnackbar.showSuccess(
-          'Saat Eklendi 🕐',
-          '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')} saatinde günlük hatırlatıcı aktif',
+          AppLocalizations.of(context)?.customTimesAddSuccess ?? 'Saat Eklendi 🕐',
+          successMessage.replaceAll('{time}', timeString),
         );
       },
       initialTime: CustomTime(
@@ -399,10 +407,10 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
         ),
         child: Row(
           children: [
-            const Expanded(
+            Expanded(
               child: Text(
-                'Saat Seçin',
-                style: TextStyle(
+                AppLocalizations.of(context)?.customTimesPickerTitle ?? 'Saat Seçin',
+                style: const TextStyle(
                   color:emeraldGreen ,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -420,6 +428,12 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
   }
 
   Future<void> _toggleTime(int index, bool isActive) async {
+    // Store localized strings before async operations
+    final activeTitle = AppLocalizations.of(context)?.customTimesToggleActive ?? 'Aktif Edildi';
+    final inactiveTitle = AppLocalizations.of(context)?.customTimesToggleInactive ?? 'Devre Dışı';
+    final activeMessage = AppLocalizations.of(context)?.customTimesToggleActiveMessage ?? 'Hatırlatıcı aktif';
+    final inactiveMessage = AppLocalizations.of(context)?.customTimesToggleInactiveMessage ?? 'Hatırlatıcı devre dışı';
+
     setState(() {
       _customTimes[index]['isActive'] = isActive;
     });
@@ -428,14 +442,23 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
     await _scheduleTimeNotifications();
 
     IslamicSnackbar.showInfo(
-      isActive ? 'Aktif Edildi' : 'Devre Dışı',
-      isActive ? 'Hatırlatıcı aktif' : 'Hatırlatıcı devre dışı',
+      isActive ? activeTitle : inactiveTitle,
+      isActive ? activeMessage : inactiveMessage,
     );
   }
 
   Future<void> _deleteTime(int index) async {
     final timeData = _customTimes[index];
     final timeString = '${timeData['hour'].toString().padLeft(2, '0')}:${timeData['minute'].toString().padLeft(2, '0')}';
+
+    // Store localized strings
+    final deleteTitle = AppLocalizations.of(context)?.customTimesDeleteTitle ?? 'Saati Sil?';
+    final deleteMessageTemplate = AppLocalizations.of(context)?.customTimesDeleteMessage(timeString) ?? ' $timeString saatindeki hatırlatıcıyı silmek istediğinizden emin misiniz?';
+    
+    final cancelText = AppLocalizations.of(context)?.customTimesDeleteCancel ?? 'İptal';
+    final confirmText = AppLocalizations.of(context)?.customTimesDeleteConfirm ?? 'Sil';
+    final successTitle = AppLocalizations.of(context)?.customTimesDeleteSuccess ?? 'Silindi 🗑️';
+    final successMessageTemplate = AppLocalizations.of(context)?.customTimesDeleteSuccessMessage(timeString) ?? '$timeString saati başarıyla silindi';
 
     // Onay dialog'u - settings_screen.dart tarzında minimal ve İslami
     final confirmed = await Get.dialog<bool>(
@@ -486,10 +509,10 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Saati Sil?',
-                        style: TextStyle(
+                        deleteTitle,
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: emeraldGreen,
@@ -521,7 +544,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                 child: Column(
                   children: [
                     Text(
-                      '$timeString saatindeki hatırlatıcıyı silmek istediğinizden emin misiniz?',
+                      deleteMessageTemplate,
                       style: const TextStyle(
                         fontSize: 14,
                         color: emeraldGreen,
@@ -548,9 +571,9 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                                 ),
                               ),
                             ),
-                            child: const Text(
-                              'İptal',
-                              style: TextStyle(
+                            child: Text(
+                              cancelText,
+                              style: const TextStyle(
                                 color: emeraldGreen,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14,
@@ -570,9 +593,9 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                               ),
                               elevation: 2,
                             ),
-                            child: const Text(
-                              'Sil',
-                              style: TextStyle(
+                            child: Text(
+                              confirmText,
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
@@ -599,10 +622,8 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
       await _saveCustomTimes();
       await _scheduleTimeNotifications();
 
-      IslamicSnackbar.showSuccess(
-        'Silindi 🗑️',
-        '$timeString saati başarıyla silindi',
-      );
+     
+      IslamicSnackbar.showSuccess(successTitle, successMessageTemplate);
     }
   }
 

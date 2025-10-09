@@ -723,4 +723,79 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addReminderPermissionSettings => 'Go to Settings';
+
+  @override
+  String get customTimesTitle => 'Reminder Times';
+
+  @override
+  String get customTimesAddButton => 'Add Time';
+
+  @override
+  String get customTimesDescription =>
+      'Receive daily zikr reminders at custom times. Added times repeat every day.';
+
+  @override
+  String get customTimesEmptyTitle => 'No custom times added yet';
+
+  @override
+  String get customTimesEmptyMessage =>
+      'You can add custom times for daily reminders';
+
+  @override
+  String get customTimesActiveStatus => 'Daily reminder active';
+
+  @override
+  String get customTimesInactiveStatus => 'Disabled';
+
+  @override
+  String get customTimesPickerTitle => 'Select Time';
+
+  @override
+  String get customTimesAlreadyExists => 'Already Exists';
+
+  @override
+  String get customTimesAlreadyExistsMessage =>
+      'This time has already been added';
+
+  @override
+  String get customTimesAddSuccess => 'Time Added 🕐';
+
+  @override
+  String customTimesAddSuccessMessage(String time) {
+    return 'Daily reminder active at $time';
+  }
+
+  @override
+  String get customTimesToggleActive => 'Activated';
+
+  @override
+  String get customTimesToggleInactive => 'Disabled';
+
+  @override
+  String get customTimesToggleActiveMessage => 'Reminder active';
+
+  @override
+  String get customTimesToggleInactiveMessage => 'Reminder disabled';
+
+  @override
+  String get customTimesDeleteTitle => 'Delete Time?';
+
+  @override
+  String customTimesDeleteMessage(String time) {
+    return 'Are you sure you want to delete the reminder at $time?';
+  }
+
+  @override
+  String get customTimesDeleteCancel => 'Cancel';
+
+  @override
+  String get customTimesDeleteConfirm => 'Delete';
+
+  @override
+  String get customTimesDeleteSuccess => 'Deleted 🗑️';
+
+  @override
+  String customTimesDeleteSuccessMessage(String time) {
+    return '$time time deleted successfully';
+  }
 }
