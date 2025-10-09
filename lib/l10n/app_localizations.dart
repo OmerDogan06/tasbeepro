@@ -1585,6 +1585,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tap'**
   String get counterButtonText;
+
+  /// Message shown when the zikr target is reached
+  ///
+  /// In en, this message translates to:
+  /// **'Masha\'Allah! Goal Completed'**
+  String get progressBarCompleted;
+
+  /// Text shown in zikr card when no meaning is available
+  ///
+  /// In en, this message translates to:
+  /// **'Select Zikr'**
+  String get zikirCardSelectText;
+
+  /// Picker select button text
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get pickerSelectButton;
+
+  /// Date picker title
+  ///
+  /// In en, this message translates to:
+  /// **'Select Date'**
+  String get pickerDateTitle;
+
+  /// Time picker title
+  ///
+  /// In en, this message translates to:
+  /// **'Select Time'**
+  String get pickerTimeTitle;
+
+  /// Day picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get pickerDay;
+
+  /// Month picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get pickerMonth;
+
+  /// Year picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get pickerYear;
+
+  /// Hour picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Hour'**
+  String get pickerHour;
+
+  /// Minute picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Minute'**
+  String get pickerMinute;
+
+  /// January month name
+  ///
+  /// In en, this message translates to:
+  /// **'January'**
+  String get pickerMonthJanuary;
+
+  /// February month name
+  ///
+  /// In en, this message translates to:
+  /// **'February'**
+  String get pickerMonthFebruary;
+
+  /// March month name
+  ///
+  /// In en, this message translates to:
+  /// **'March'**
+  String get pickerMonthMarch;
+
+  /// April month name
+  ///
+  /// In en, this message translates to:
+  /// **'April'**
+  String get pickerMonthApril;
+
+  /// May month name
+  ///
+  /// In en, this message translates to:
+  /// **'May'**
+  String get pickerMonthMay;
+
+  /// June month name
+  ///
+  /// In en, this message translates to:
+  /// **'June'**
+  String get pickerMonthJune;
+
+  /// July month name
+  ///
+  /// In en, this message translates to:
+  /// **'July'**
+  String get pickerMonthJuly;
+
+  /// August month name
+  ///
+  /// In en, this message translates to:
+  /// **'August'**
+  String get pickerMonthAugust;
+
+  /// September month name
+  ///
+  /// In en, this message translates to:
+  /// **'September'**
+  String get pickerMonthSeptember;
+
+  /// October month name
+  ///
+  /// In en, this message translates to:
+  /// **'October'**
+  String get pickerMonthOctober;
+
+  /// November month name
+  ///
+  /// In en, this message translates to:
+  /// **'November'**
+  String get pickerMonthNovember;
+
+  /// December month name
+  ///
+  /// In en, this message translates to:
+  /// **'December'**
+  String get pickerMonthDecember;
 }
 
 class _AppLocalizationsDelegate

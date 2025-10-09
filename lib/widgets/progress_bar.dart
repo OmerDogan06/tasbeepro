@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/counter_controller.dart';
+import '../l10n/app_localizations.dart';
 
 class ProgressBar extends StatelessWidget {
   const ProgressBar({super.key});
@@ -155,9 +156,9 @@ class ProgressBar extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 6),
-                    const Text(
-                      'Masha\'Allah! Hedef Tamamlandı',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.progressBarCompleted,
+                      style: const TextStyle(
                         color: emeraldGreen,
                         fontWeight: FontWeight.bold,
                         fontSize: 11,

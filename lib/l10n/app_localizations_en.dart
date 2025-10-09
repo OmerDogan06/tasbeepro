@@ -801,4 +801,70 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get counterButtonText => 'Tap';
+
+  @override
+  String get progressBarCompleted => 'Masha\'Allah! Goal Completed';
+
+  @override
+  String get zikirCardSelectText => 'Select Zikr';
+
+  @override
+  String get pickerSelectButton => 'Select';
+
+  @override
+  String get pickerDateTitle => 'Select Date';
+
+  @override
+  String get pickerTimeTitle => 'Select Time';
+
+  @override
+  String get pickerDay => 'Day';
+
+  @override
+  String get pickerMonth => 'Month';
+
+  @override
+  String get pickerYear => 'Year';
+
+  @override
+  String get pickerHour => 'Hour';
+
+  @override
+  String get pickerMinute => 'Minute';
+
+  @override
+  String get pickerMonthJanuary => 'January';
+
+  @override
+  String get pickerMonthFebruary => 'February';
+
+  @override
+  String get pickerMonthMarch => 'March';
+
+  @override
+  String get pickerMonthApril => 'April';
+
+  @override
+  String get pickerMonthMay => 'May';
+
+  @override
+  String get pickerMonthJune => 'June';
+
+  @override
+  String get pickerMonthJuly => 'July';
+
+  @override
+  String get pickerMonthAugust => 'August';
+
+  @override
+  String get pickerMonthSeptember => 'September';
+
+  @override
+  String get pickerMonthOctober => 'October';
+
+  @override
+  String get pickerMonthNovember => 'November';
+
+  @override
+  String get pickerMonthDecember => 'December';
 }

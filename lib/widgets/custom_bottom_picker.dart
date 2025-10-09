@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import '../l10n/app_localizations.dart';
 
 /// Custom Bottom Picker Widget
 /// Replicates the functionality of bottom_picker package
@@ -78,7 +81,7 @@ class CustomBottomPicker extends StatefulWidget {
     Color buttonSingleColor = Colors.blue,
     Widget Function(BuildContext)? headerBuilder,
     bool displaySubmitButton = true,
-    bool use24hFormat = false,
+    bool? use24hFormat, // Made nullable for auto-detection
     int minuteInterval = 1,
   }) {
     return CustomBottomPicker(
@@ -92,9 +95,30 @@ class CustomBottomPicker extends StatefulWidget {
       buttonColor: buttonSingleColor,
       headerBuilder: headerBuilder,
       displaySubmitButton: displaySubmitButton,
-      use24hFormat: use24hFormat,
+      use24hFormat: use24hFormat ?? _getSystemUse24hFormat(), // Auto-detect if null
       minuteInterval: minuteInterval,
     );
+  }
+
+  /// Detects if the system uses 24-hour format
+  static bool _getSystemUse24hFormat() {
+    // First try MediaQuery approach (works when context is available)
+    try {
+      if (Get.context != null) {
+        return MediaQuery.of(Get.context!).alwaysUse24HourFormat;
+      }
+    } catch (e) {
+      // If Get.context is not available, fall back to Intl approach
+    }
+    
+    // Fallback: Use Intl package to detect locale-based time format
+    final timeFormat = DateFormat.jm(); // Gets the locale-appropriate time format
+    final sampleTime = DateTime(2024, 1, 1, 15, 30); // 3:30 PM
+    final formattedTime = timeFormat.format(sampleTime);
+    
+    // If the formatted time contains "15" (hour in 24h format), it's 24h format
+    // If it contains AM/PM indicators, it's 12h format
+    return formattedTime.contains('15') || (!formattedTime.toLowerCase().contains('pm') && !formattedTime.toLowerCase().contains('am'));
   }
 
   /// Shows the picker as a modal bottom sheet
@@ -242,9 +266,9 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
                       ),
                       elevation: 2,
                     ),
-                    child: const Text(
-                      'Seç',
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.pickerSelectButton,
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -272,7 +296,9 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
         children: [
           Expanded(
             child: Text(
-              widget.title ?? (widget.type == CustomBottomPickerType.date ? 'Tarih Seçin' : 'Saat Seçin'),
+              widget.title ?? (widget.type == CustomBottomPickerType.date 
+                ? AppLocalizations.of(context)!.pickerDateTitle 
+                : AppLocalizations.of(context)!.pickerTimeTitle),
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -296,11 +322,11 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
         Expanded(
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.all(0.0),
+              Padding(
+                padding: const EdgeInsets.all(0.0),
                 child: Text(
-                  'Gün',
-                  style: TextStyle(
+                  AppLocalizations.of(context)!.pickerDay,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey,
@@ -342,11 +368,11 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
         Expanded(
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.all(0.0),
+              Padding(
+                padding: const EdgeInsets.all(0.0),
                 child: Text(
-                  'Ay',
-                  style: TextStyle(
+                  AppLocalizations.of(context)!.pickerMonth,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey,
@@ -371,9 +397,20 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
                     _updateSelectedDate(month: index + 1);
                   },
                   children: List.generate(12, (index) {
+                    final appLocalizations = AppLocalizations.of(context)!;
                     final monthNames = [
-                      'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
-                      'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
+                      appLocalizations.pickerMonthJanuary,
+                      appLocalizations.pickerMonthFebruary,
+                      appLocalizations.pickerMonthMarch,
+                      appLocalizations.pickerMonthApril,
+                      appLocalizations.pickerMonthMay,
+                      appLocalizations.pickerMonthJune,
+                      appLocalizations.pickerMonthJuly,
+                      appLocalizations.pickerMonthAugust,
+                      appLocalizations.pickerMonthSeptember,
+                      appLocalizations.pickerMonthOctober,
+                      appLocalizations.pickerMonthNovember,
+                      appLocalizations.pickerMonthDecember,
                     ];
                     return Center(
                       child: Text(
@@ -392,11 +429,11 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
         Expanded(
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.all(0.0),
+              Padding(
+                padding: const EdgeInsets.all(0.0),
                 child: Text(
-                  'Yıl',
-                  style: TextStyle(
+                  AppLocalizations.of(context)!.pickerYear,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey,
@@ -448,11 +485,11 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
       Expanded(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(0.0),
+            Padding(
+              padding: const EdgeInsets.all(0.0),
               child: Text(
-                'Saat',
-                style: TextStyle(
+                AppLocalizations.of(context)!.pickerHour,
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey,
@@ -521,11 +558,11 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
       Expanded(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(0),
+            Padding(
+              padding: const EdgeInsets.all(0),
               child: Text(
-                'Dakika',
-                style: TextStyle(
+                AppLocalizations.of(context)!.pickerMinute,
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey,

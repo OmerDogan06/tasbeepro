@@ -1021,5 +1021,93 @@
   "counterButtonText": "Tap",
   "@counterButtonText": {
     "description": "Counter button tap text"
+  },
+  "progressBarCompleted": "Masha'Allah! Goal Completed",
+  "@progressBarCompleted": {
+    "description": "Message shown when the zikr target is reached"
+  },
+  "zikirCardSelectText": "Select Zikr",
+  "@zikirCardSelectText": {
+    "description": "Text shown in zikr card when no meaning is available"
+  },
+  "pickerSelectButton": "Select",
+  "@pickerSelectButton": {
+    "description": "Picker select button text"
+  },
+  "pickerDateTitle": "Select Date",
+  "@pickerDateTitle": {
+    "description": "Date picker title"
+  },
+  "pickerTimeTitle": "Select Time",
+  "@pickerTimeTitle": {
+    "description": "Time picker title"
+  },
+  "pickerDay": "Day",
+  "@pickerDay": {
+    "description": "Day picker label"
+  },
+  "pickerMonth": "Month",
+  "@pickerMonth": {
+    "description": "Month picker label"
+  },
+  "pickerYear": "Year",
+  "@pickerYear": {
+    "description": "Year picker label"
+  },
+  "pickerHour": "Hour",
+  "@pickerHour": {
+    "description": "Hour picker label"
+  },
+  "pickerMinute": "Minute",
+  "@pickerMinute": {
+    "description": "Minute picker label"
+  },
+  "pickerMonthJanuary": "January",
+  "@pickerMonthJanuary": {
+    "description": "January month name"
+  },
+  "pickerMonthFebruary": "February",
+  "@pickerMonthFebruary": {
+    "description": "February month name"
+  },
+  "pickerMonthMarch": "March",
+  "@pickerMonthMarch": {
+    "description": "March month name"
+  },
+  "pickerMonthApril": "April",
+  "@pickerMonthApril": {
+    "description": "April month name"
+  },
+  "pickerMonthMay": "May",
+  "@pickerMonthMay": {
+    "description": "May month name"
+  },
+  "pickerMonthJune": "June",
+  "@pickerMonthJune": {
+    "description": "June month name"
+  },
+  "pickerMonthJuly": "July",
+  "@pickerMonthJuly": {
+    "description": "July month name"
+  },
+  "pickerMonthAugust": "August",
+  "@pickerMonthAugust": {
+    "description": "August month name"
+  },
+  "pickerMonthSeptember": "September",
+  "@pickerMonthSeptember": {
+    "description": "September month name"
+  },
+  "pickerMonthOctober": "October",
+  "@pickerMonthOctober": {
+    "description": "October month name"
+  },
+  "pickerMonthNovember": "November",
+  "@pickerMonthNovember": {
+    "description": "November month name"
+  },
+  "pickerMonthDecember": "December",
+  "@pickerMonthDecember": {
+    "description": "December month name"
   }
 }

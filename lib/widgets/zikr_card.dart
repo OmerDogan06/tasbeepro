@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/zikr.dart';
+import '../l10n/app_localizations.dart';
 
 class ZikrCard extends StatelessWidget {
   final Zikr zikr;
@@ -147,7 +148,7 @@ class ZikrCard extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'Zikir Seç',
+                                  AppLocalizations.of(context)!.zikirCardSelectText,
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: emeraldGreen.withAlpha(179),

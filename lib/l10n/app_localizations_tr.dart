@@ -796,4 +796,70 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get counterButtonText => 'Dokun';
+
+  @override
+  String get progressBarCompleted => 'Masha\'Allah! Hedef Tamamlandı';
+
+  @override
+  String get zikirCardSelectText => 'Zikir Seç';
+
+  @override
+  String get pickerSelectButton => 'Seç';
+
+  @override
+  String get pickerDateTitle => 'Tarih Seçin';
+
+  @override
+  String get pickerTimeTitle => 'Saat Seçin';
+
+  @override
+  String get pickerDay => 'Gün';
+
+  @override
+  String get pickerMonth => 'Ay';
+
+  @override
+  String get pickerYear => 'Yıl';
+
+  @override
+  String get pickerHour => 'Saat';
+
+  @override
+  String get pickerMinute => 'Dakika';
+
+  @override
+  String get pickerMonthJanuary => 'Ocak';
+
+  @override
+  String get pickerMonthFebruary => 'Şubat';
+
+  @override
+  String get pickerMonthMarch => 'Mart';
+
+  @override
+  String get pickerMonthApril => 'Nisan';
+
+  @override
+  String get pickerMonthMay => 'Mayıs';
+
+  @override
+  String get pickerMonthJune => 'Haziran';
+
+  @override
+  String get pickerMonthJuly => 'Temmuz';
+
+  @override
+  String get pickerMonthAugust => 'Ağustos';
+
+  @override
+  String get pickerMonthSeptember => 'Eylül';
+
+  @override
+  String get pickerMonthOctober => 'Ekim';
+
+  @override
+  String get pickerMonthNovember => 'Kasım';
+
+  @override
+  String get pickerMonthDecember => 'Aralık';
 }

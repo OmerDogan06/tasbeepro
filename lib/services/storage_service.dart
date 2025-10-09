@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/counter_data.dart';
+import '../models/zikr.dart';
 
 class StorageService extends GetxService {
   late SharedPreferences _prefs;
@@ -64,14 +65,31 @@ class StorageService extends GetxService {
     return _prefs.getInt('daily_count_$today') ?? 0;
   }
   
+  // Tüm mevcut zikir ID'lerini al (varsayılan + özel)
+  List<String> _getAllZikrIds() {
+    // Varsayılan zikir ID'leri
+    final defaultZikrIds = Zikr.defaultZikrs.map((zikr) => zikr.id).toList();
+    
+    // Özel zikir ID'leri
+    final customZikrs = getCustomZikrs();
+    final customZikrIds = customZikrs
+        .map((customZikr) => customZikr['id'] as String?)
+        .where((id) => id != null)
+        .cast<String>()
+        .toList();
+    
+    return [...defaultZikrIds, ...customZikrIds];
+  }
+
   // Tüm zikirlerden bugünkü toplam sayı hesapla
   int getTotalDailyCount() {
     final today = DateTime.now().toIso8601String().split('T')[0];
     int total = 0;
     
     // Tüm zikir ID'leri için bugünkü sayıları topla
-    final zikrIds = ['subhanallah', 'alhamdulillah', 'allahu_akbar', 'la_ilahe_illallah', 'estaghfirullah'];
-    for (String zikrId in zikrIds) {
+    final allZikrIds = _getAllZikrIds();
+    
+    for (String zikrId in allZikrIds) {
       final dailyKey = 'daily_${zikrId}_$today';
       total += _prefs.getInt(dailyKey) ?? 0;
     }
