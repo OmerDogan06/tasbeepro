@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
 import 'home_screen.dart';
+import '../l10n/app_localizations.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -295,9 +296,9 @@ class _SplashScreenState extends State<SplashScreen>
           stops: const [0.0, 0.5, 1.0],
         ).createShader(bounds);
       },
-      child: const Text(
-        'Tasbee Pro',
-        style: TextStyle(
+      child: Text(
+        AppLocalizations.of(context)?.splashAppTitle ?? 'Tasbee Pro',
+        style: const TextStyle(
           fontSize: 35,
           fontWeight: FontWeight.bold,
           color: Colors.white,
@@ -315,11 +316,11 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Widget _buildSubtitle() {
-    return const Column(
+    return Column(
       children: [
         Text(
-          'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ',
-          style: TextStyle(
+          AppLocalizations.of(context)?.splashSubtitleArabic ?? 'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ',
+          style: const TextStyle(
             fontSize: 16,
             color: lightGold,
             fontWeight: FontWeight.w500,
@@ -327,10 +328,10 @@ class _SplashScreenState extends State<SplashScreen>
           ),
           textAlign: TextAlign.center,
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
-          'Dijital Tesbih Uygulaması',
-          style: TextStyle(
+          AppLocalizations.of(context)?.splashSubtitleTurkish ?? 'Dijital Tesbih Uygulaması',
+          style: const TextStyle(
             fontSize: 12,
             color: lightGold,
             fontWeight: FontWeight.w400,
@@ -355,9 +356,9 @@ class _SplashScreenState extends State<SplashScreen>
           ),
         ),
         const SizedBox(height: 10),
-        const Text(
-          'Yükleniyor...',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)?.splashLoading ?? 'Yükleniyor...',
+          style: const TextStyle(
             fontSize: 14,
             color: lightGold,
             fontWeight: FontWeight.w500,

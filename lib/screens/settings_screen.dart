@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../services/sound_service.dart';
 import '../services/vibration_service.dart';
+import '../services/language_service.dart';
+import '../l10n/app_localizations.dart';
 import '../widgets/islamic_snackbar.dart';
 import 'reminder_screen.dart';
 import 'custom_reminder_times_screen.dart';
@@ -18,13 +20,13 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   String appVersion = '';
-  
+
   @override
   void initState() {
     super.initState();
     _getAppVersion();
   }
-  
+
   Future<void> _getAppVersion() async {
     try {
       PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -52,168 +54,253 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return PopScope(
       canPop: true,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
-             statusBarColor: Color(0xFF2D5016),
-      statusBarIconBrightness: Brightness.light,
-      systemNavigationBarColor: Color(0xFF2D5016),
-      systemNavigationBarIconBrightness: Brightness.light,
-      ),
-      child: Scaffold(
-        backgroundColor: const Color(0xFFF8F6F0),
-        appBar: AppBar(
-          leading:  Container(
-            margin: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              gradient: const RadialGradient(
-                colors: [lightGold, goldColor],
-                center: Alignment(-0.2, -0.2),
-              ),
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: darkGreen.withOpacity(0.15),
-                  blurRadius: 6,
-                  offset: const Offset(0, 2),
+        value: SystemUiOverlayStyle(
+          statusBarColor: Color(0xFF2D5016),
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: Color(0xFF2D5016),
+          systemNavigationBarIconBrightness: Brightness.light,
+        ),
+        child: Scaffold(
+          backgroundColor: const Color(0xFFF8F6F0),
+          appBar: AppBar(
+            leading: Container(
+              margin: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                gradient: const RadialGradient(
+                  colors: [lightGold, goldColor],
+                  center: Alignment(-0.2, -0.2),
                 ),
-              ],
-            ),
-            child: IconButton(
-              padding: EdgeInsets.zero,
-               style: ButtonStyle(
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: darkGreen.withOpacity(0.15),
+                    blurRadius: 6,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                style: ButtonStyle(
                   padding: WidgetStateProperty.all(EdgeInsets.zero),
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
                 ),
-              icon: const Icon(Icons.arrow_back, color: emeraldGreen, size: 20),
-              onPressed: () => Get.back(),
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: emeraldGreen,
+                  size: 20,
+                ),
+                onPressed: () => Get.back(),
+              ),
             ),
-          ),
-          title: const Text(
-            'Ayarlar',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: emeraldGreen,
+            title: Text(
+              AppLocalizations.of(context)?.settingsTitle ?? 'Ayarlar',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: emeraldGreen,
+              ),
             ),
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          iconTheme: const IconThemeData(color: emeraldGreen),
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Color(0xFFFFFDF7),
-                  Color(0xFFF8F6F0),
-                ],
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            iconTheme: const IconThemeData(color: emeraldGreen),
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+                ),
               ),
             ),
           ),
-        ),
-        body: SafeArea(
-          child: ListView(
-            padding: const EdgeInsets.all(10),
-            children: [
-              // Ses ve Titreşim Ayarları
-              _buildSectionHeader(context, 'Ses ve Titreşim'),
-              _buildIslamicCard([
-                Obx(() => _buildIslamicSwitchTile(
-                  icon: Icons.volume_up,
-                  title: 'Ses Efekti',
-                  subtitle: 'Dokunma sesini aç/kapat',
-                  value: soundService.isSoundEnabled,
-                  onChanged: (value) => soundService.toggleSound(),
-                )),
-                _buildDivider(),
-                Obx(() => _buildIslamicListTile(
-                  icon: Icons.vibration,
-                  title: 'Titreşim',
-                  subtitle: vibrationService.vibrationLevelText,
-                  onTap: () => _showVibrationDialog(context, vibrationService),
-                )),
-              ]),
-              
-              const SizedBox(height: 24),
-              
-              // Hatırlatıcılar (Pro Özelliği)
-              _buildSectionHeader(context, 'Hatırlatıcılar 💎'),
-              _buildIslamicCard([
-                _buildIslamicListTile(
-                  icon: Icons.notifications,
-                  title: 'Zikir Hatırlatıcısı',
-                  subtitle: 'Hatırlatıcıları görüntüle ve yönet',
-                  onTap: () => Get.to(() => const ReminderScreen(),
-                    transition: Transition.rightToLeft,
-                    duration: const Duration(milliseconds: 300)),
+          body: SafeArea(
+            child: ListView(
+              padding: const EdgeInsets.all(10),
+              children: [
+                // Ses ve Titreşim Ayarları
+                _buildSectionHeader(
+                  context,
+                  AppLocalizations.of(context)?.settingsSoundVibration ??
+                      'Ses ve Titreşim',
                 ),
-                _buildDivider(),
-                _buildIslamicListTile(
-                  icon: Icons.schedule,
-                  title: 'Hatırlatma Saatleri',
-                  subtitle: 'Günlük tekrarlanan bildirimler',
-                  onTap: () => Get.to(() => const CustomReminderTimesScreen(),
-                    transition: Transition.rightToLeft,
-                    duration: const Duration(milliseconds: 300)),
+                _buildIslamicCard([
+                  Obx(
+                    () => _buildIslamicSwitchTile(
+                      icon: Icons.volume_up,
+                      title:
+                          AppLocalizations.of(context)?.settingsSoundEffect ??
+                          'Ses Efekti',
+                      subtitle:
+                          AppLocalizations.of(context)?.settingsSoundSubtitle ??
+                          'Dokunma sesini aç/kapat',
+                      value: soundService.isSoundEnabled,
+                      onChanged: (value) => soundService.toggleSound(),
+                    ),
+                  ),
+                  _buildDivider(),
+                  Obx(
+                    () => _buildIslamicListTile(
+                      icon: Icons.vibration,
+                      title:
+                          AppLocalizations.of(context)?.settingsVibration ??
+                          'Titreşim',
+                      subtitle: vibrationService.vibrationLevelText,
+                      onTap: () =>
+                          _showVibrationDialog(context, vibrationService),
+                    ),
+                  ),
+                ]),
+
+                const SizedBox(height: 24),
+
+                // Dil Ayarları
+                _buildSectionHeader(
+                  context,
+                  AppLocalizations.of(context)?.settingsLanguage ?? 'Dil',
                 ),
-              ]),
-              
-              const SizedBox(height: 24),
-              
-              // Widget
-              _buildSectionHeader(context, 'Widget 📱'),
-              _buildIslamicCard([
-                _buildIslamicListTile(
-                  icon: Icons.widgets,
-                  title: 'Widget İstatistikleri',
-                  subtitle: 'Widget\'tan yapılan tüm zikirlerinizi görün',
-                  onTap: () => Get.to(() => const WidgetStatsScreen(),
-                    transition: Transition.rightToLeft,
-                    duration: const Duration(milliseconds: 300)),
+                _buildIslamicCard([
+                  _buildIslamicListTile(
+                    icon: Icons.language,
+                    title:
+                        AppLocalizations.of(context)?.settingsLanguage ?? 'Dil',
+                    subtitle:
+                        AppLocalizations.of(
+                          context,
+                        )?.settingsLanguageSubtitle ??
+                        'Uygulama dilini değiştir',
+                    onTap: () => _showLanguageDialog(context),
+                  ),
+                ]),
+
+                const SizedBox(height: 24),
+
+                // Hatırlatıcılar (Pro Özelliği)
+                _buildSectionHeader(
+                  context,
+                  AppLocalizations.of(context)?.settingsReminders ??
+                      'Hatırlatıcılar 💎',
                 ),
-                _buildDivider(),
-                _buildIslamicListTile(
-                  icon: Icons.info_outline,
-                  title: 'Widget Hakkında',
-                  subtitle: 'Widget nasıl kullanılır ve ana ekrana eklenir',
-                  onTap: () => _showWidgetInfoDialog(context),
+                _buildIslamicCard([
+                  _buildIslamicListTile(
+                    icon: Icons.notifications,
+                    title:
+                        AppLocalizations.of(context)?.settingsZikirReminder ??
+                        'Zikir Hatırlatıcısı',
+                    subtitle:
+                        AppLocalizations.of(
+                          context,
+                        )?.settingsReminderSubtitle ??
+                        'Hatırlatıcıları görüntüle ve yönet',
+                    onTap: () => Get.to(
+                      () => const ReminderScreen(),
+                      transition: Transition.rightToLeft,
+                      duration: const Duration(milliseconds: 300),
+                    ),
+                  ),
+                  _buildDivider(),
+                  _buildIslamicListTile(
+                    icon: Icons.schedule,
+                    title:
+                        AppLocalizations.of(context)?.settingsReminderTimes ??
+                        'Hatırlatma Saatleri',
+                    subtitle:
+                        AppLocalizations.of(
+                          context,
+                        )?.settingsReminderTimesSubtitle ??
+                        'Günlük tekrarlanan bildirimler',
+                    onTap: () => Get.to(
+                      () => const CustomReminderTimesScreen(),
+                      transition: Transition.rightToLeft,
+                      duration: const Duration(milliseconds: 300),
+                    ),
+                  ),
+                ]),
+
+                const SizedBox(height: 24),
+
+                // Widget
+                _buildSectionHeader(
+                  context,
+                  AppLocalizations.of(context)?.settingsWidget ?? 'Widget 📱',
                 ),
-              ]),
-              
-              const SizedBox(height: 24),
-              
-              // Hakkında
-              _buildSectionHeader(context, 'Hakkında'),
-              _buildIslamicCard([
-                _buildIslamicListTile(
-                  icon: Icons.info,
-                  title: 'Uygulama Hakkında',
-                  subtitle: 'Tasbee Pro v${appVersion.isNotEmpty ? appVersion : "1.0.0"}',
-                  onTap: () => _showAboutDialog(context),
+                _buildIslamicCard([
+                  _buildIslamicListTile(
+                    icon: Icons.widgets,
+                    title:
+                        AppLocalizations.of(context)?.settingsWidgetStats ??
+                        'Widget İstatistikleri',
+                    subtitle:
+                        AppLocalizations.of(
+                          context,
+                        )?.settingsWidgetStatsSubtitle ??
+                        'Widget\'tan yapılan tüm zikirlerinizi görün',
+                    onTap: () => Get.to(
+                      () => const WidgetStatsScreen(),
+                      transition: Transition.rightToLeft,
+                      duration: const Duration(milliseconds: 300),
+                    ),
+                  ),
+                  _buildDivider(),
+                  _buildIslamicListTile(
+                    icon: Icons.info_outline,
+                    title:
+                        AppLocalizations.of(context)?.settingsWidgetInfo ??
+                        'Widget Hakkında',
+                    subtitle:
+                        AppLocalizations.of(
+                          context,
+                        )?.settingsWidgetInfoSubtitle ??
+                        'Widget nasıl kullanılır ve ana ekrana eklenir',
+                    onTap: () => _showWidgetInfoDialog(context),
+                  ),
+                ]),
+
+                const SizedBox(height: 24),
+
+                // Hakkında
+                _buildSectionHeader(
+                  context,
+                  AppLocalizations.of(context)?.settingsAbout ?? 'Hakkında',
                 ),
-                _buildDivider(),
-                _buildIslamicListTile(
-                  icon: Icons.star,
-                  title: 'Uygulamayı Değerlendir',
-                  subtitle: 'Play Store\'da değerlendir',
-                  onTap: () {
-                    IslamicSnackbar.showInfo(
-                      'Teşekkürler',
-                      'Değerlendirmeniz bizim için çok önemli!',
-                      duration: const Duration(seconds: 2),
-                    );
-                  },
-                ),
-                _buildDivider(),
-              ]),
-            ],
+                _buildIslamicCard([
+                  _buildIslamicListTile(
+                    icon: Icons.info,
+                    title:
+                        AppLocalizations.of(context)?.settingsAppInfo ??
+                        'Uygulama Hakkında',
+                    subtitle:
+                        '${AppLocalizations.of(context)?.appInfoTitle ?? "Tasbee Pro"} v${appVersion.isNotEmpty ? appVersion : "1.0.0"}',
+                    onTap: () => _showAboutDialog(context),
+                  ),
+                  _buildDivider(),
+                  _buildIslamicListTile(
+                    icon: Icons.star,
+                    title:
+                        AppLocalizations.of(context)?.settingsRateApp ??
+                        'Uygulamayı Değerlendir',
+                    subtitle:
+                        AppLocalizations.of(context)?.settingsRateSubtitle ??
+                        'Play Store\'da değerlendir',
+                    onTap: () {
+                      IslamicSnackbar.showInfo(
+                        AppLocalizations.of(context)?.thanks ?? 'Teşekkürler',
+                        AppLocalizations.of(context)?.rateAppMessage ??
+                            'Değerlendirmeniz bizim için çok önemli!',
+                        duration: const Duration(seconds: 2),
+                      );
+                    },
+                  ),
+                  _buildDivider(),
+                ]),
+              ],
+            ),
           ),
         ),
       ),
-      ),
     );
   }
-  
+
   Widget _buildSectionHeader(BuildContext context, String title) {
     return Container(
       margin: const EdgeInsets.only(left: 0, bottom: 6),
@@ -223,9 +310,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             width: 4,
             height: 20,
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [goldColor, lightGold],
-              ),
+              gradient: const LinearGradient(colors: [goldColor, lightGold]),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -249,16 +334,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFFFFDF7),
-            Color(0xFFF5F3E8),
-          ],
+          colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
         ),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: goldColor.withOpacity(0.3),
-          width: 1.5,
-        ),
+        border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
         boxShadow: [
           BoxShadow(
             color: darkGreen.withOpacity(0.1),
@@ -307,10 +386,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(
-          color: emeraldGreen.withOpacity(0.7),
-          fontSize: 12,
-        ),
+        style: TextStyle(color: emeraldGreen.withOpacity(0.7), fontSize: 12),
       ),
       trailing: Container(
         padding: const EdgeInsets.all(8),
@@ -365,48 +441,45 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(
-          color: emeraldGreen.withOpacity(0.7),
-          fontSize: 12,
-        ),
+        style: TextStyle(color: emeraldGreen.withOpacity(0.7), fontSize: 12),
       ),
       value: value,
       onChanged: onChanged,
-      thumbColor: MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.selected)) {
-            return goldColor;
-          }
-          return emeraldGreen;
-        },
-      ),
-      tileColor: Colors.transparent,
-      overlayColor: WidgetStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.pressed)) {
-            return goldColor.withOpacity(0.1);
-          }
-          return null;
-        },
-      ),
-      trackOutlineColor: MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.selected)) {
-            return  goldColor;
-          }
+      thumbColor: MaterialStateProperty.resolveWith<Color?>((
+        Set<MaterialState> states,
+      ) {
+        if (states.contains(MaterialState.selected)) {
           return goldColor;
-        },
-      ),
-      
-      trackColor: MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.selected)) {
-            return Colors.transparent;
-          }
+        }
+        return emeraldGreen;
+      }),
+      tileColor: Colors.transparent,
+      overlayColor: WidgetStateProperty.resolveWith<Color?>((
+        Set<MaterialState> states,
+      ) {
+        if (states.contains(MaterialState.pressed)) {
+          return goldColor.withOpacity(0.1);
+        }
+        return null;
+      }),
+      trackOutlineColor: MaterialStateProperty.resolveWith<Color?>((
+        Set<MaterialState> states,
+      ) {
+        if (states.contains(MaterialState.selected)) {
+          return goldColor;
+        }
+        return goldColor;
+      }),
+
+      trackColor: MaterialStateProperty.resolveWith<Color?>((
+        Set<MaterialState> states,
+      ) {
+        if (states.contains(MaterialState.selected)) {
           return Colors.transparent;
-        },
-      
-    ));
+        }
+        return Colors.transparent;
+      }),
+    );
   }
 
   Widget _buildDivider() {
@@ -424,7 +497,208 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
-  
+
+  void _showLanguageDialog(BuildContext context) {
+    final languageService = Get.find<LanguageService>();
+
+    Get.dialog(
+      Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(20),
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 280),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+            ),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: goldColor.withOpacity(0.4), width: 1.5),
+            boxShadow: [
+              BoxShadow(
+                color: darkGreen.withOpacity(0.2),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: const RadialGradient(
+                          colors: [lightGold, goldColor],
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Icon(
+                        Icons.language,
+                        color: emeraldGreen,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        AppLocalizations.of(context)?.languageSelectionTitle ??
+                            'Dil Seçimi',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: emeraldGreen,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Subtitle
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  AppLocalizations.of(context)?.languageSelectionSubtitle ??
+                      'Uygulama dilini seçin',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: emeraldGreen.withOpacity(0.7),
+                  ),
+                ),
+              ),
+
+              // Divider
+              Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      goldColor.withOpacity(0.3),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+
+              // Language options
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    for (var language in languageService.supportedLanguages)
+                      _buildLanguageOption(languageService, language),
+
+                    const SizedBox(height: 16),
+
+                    // Close button
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        style: TextButton.styleFrom(
+                          backgroundColor: lightGold.withOpacity(0.3),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            side: BorderSide(
+                              color: goldColor.withOpacity(0.3),
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          AppLocalizations.of(context)?.close ?? 'Kapat',
+                          style: const TextStyle(
+                            color: emeraldGreen,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLanguageOption(
+    LanguageService service,
+    Map<String, String> language,
+  ) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      decoration: BoxDecoration(
+        color: service.currentLanguage == language['code']
+            ? goldColor.withOpacity(0.15)
+            : Colors.transparent,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: service.currentLanguage == language['code']
+              ? goldColor.withOpacity(0.5)
+              : goldColor.withOpacity(0.2),
+          width: 1.5,
+        ),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(10),
+          onTap: () async {
+            await service.changeLanguage(language['code']!);
+            Navigator.of(context).pop();
+            IslamicSnackbar.showSuccess(
+              AppLocalizations.of(context)?.languageChanged ??
+                  'Dil Değiştirildi',
+              AppLocalizations.of(context)?.languageChangedMessage ??
+                  'Uygulama dili başarıyla değiştirildi',
+              duration: const Duration(seconds: 2),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                Text(language['flag']!, style: const TextStyle(fontSize: 20)),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    language['name']!,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: service.currentLanguage == language['code']
+                          ? FontWeight.bold
+                          : FontWeight.w500,
+                      color: emeraldGreen,
+                    ),
+                  ),
+                ),
+                if (service.currentLanguage == language['code'])
+                  Icon(Icons.check_circle, color: goldColor, size: 20),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   void _showVibrationDialog(BuildContext context, VibrationService service) {
     Get.dialog(
       Dialog(
@@ -439,10 +713,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: goldColor.withOpacity(0.4),
-              width: 1.5,
-            ),
+            border: Border.all(color: goldColor.withOpacity(0.4), width: 1.5),
             boxShadow: [
               BoxShadow(
                 color: darkGreen.withOpacity(0.2),
@@ -475,9 +746,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      'Titreşim',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)?.vibrationTitle ??
+                          'Titreşim',
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: emeraldGreen,
@@ -486,7 +758,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ],
                 ),
               ),
-              
+
               // Mini divider
               Container(
                 height: 1,
@@ -501,19 +773,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
               ),
-              
+
               // Tiny options
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: Column(
                   children: [
-                    _buildVibrationOption(service, 0, 'Kapalı'),
-                    _buildVibrationOption(service, 1, 'Hafif'),
-                    _buildVibrationOption(service, 2, 'Orta'),
-                    _buildVibrationOption(service, 3, 'Yüksek'),
-                    
+                    _buildVibrationOption(
+                      service,
+                      0,
+                      AppLocalizations.of(context)?.vibrationOff ?? 'Kapalı',
+                    ),
+                    _buildVibrationOption(
+                      service,
+                      1,
+                      AppLocalizations.of(context)?.vibrationLight ?? 'Hafif',
+                    ),
+                    _buildVibrationOption(
+                      service,
+                      2,
+                      AppLocalizations.of(context)?.vibrationMedium ?? 'Orta',
+                    ),
+                    _buildVibrationOption(
+                      service,
+                      3,
+                      AppLocalizations.of(context)?.vibrationHigh ?? 'Yüksek',
+                    ),
+
                     const SizedBox(height: 8),
-                    
+
                     // Mini close button
                     SizedBox(
                       width: double.infinity,
@@ -531,8 +819,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ),
                           ),
                         ),
-                        child: const Text(
-                          'Tamam',
+                        child: Text(
+                          AppLocalizations.of(context)?.vibrationOk ?? 'Tamam',
                           style: TextStyle(
                             color: emeraldGreen,
                             fontWeight: FontWeight.w600,
@@ -550,17 +838,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
-  
-  Widget _buildVibrationOption(VibrationService service, int level, String title) {
+
+  Widget _buildVibrationOption(
+    VibrationService service,
+    int level,
+    String title,
+  ) {
     return Container(
       margin: const EdgeInsets.only(bottom: 4),
       decoration: BoxDecoration(
-        color: service.vibrationLevel == level 
+        color: service.vibrationLevel == level
             ? goldColor.withOpacity(0.15)
             : Colors.transparent,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: service.vibrationLevel == level 
+          color: service.vibrationLevel == level
               ? goldColor.withOpacity(0.5)
               : goldColor.withOpacity(0.2),
           width: 1,
@@ -569,41 +861,44 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          overlayColor: WidgetStateProperty.all(Color(0xFFD4AF37).withOpacity(0.1)),
+          overlayColor: WidgetStateProperty.all(
+            Color(0xFFD4AF37).withOpacity(0.1),
+          ),
           borderRadius: BorderRadius.circular(8),
-          onTap: () => service.setVibrationLevel(level).then((_) => Navigator.of(context).pop()),
+          onTap: () => service
+              .setVibrationLevel(level)
+              .then((_) => Navigator.of(context).pop()),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8,
-              vertical: 6,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             child: Row(
               children: [
                 Container(
                   width: 4,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: service.vibrationLevel == level ? goldColor : emeraldGreen.withOpacity(0.4),
+                    color: service.vibrationLevel == level
+                        ? goldColor
+                        : emeraldGreen.withOpacity(0.4),
                     shape: BoxShape.circle,
                   ),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
-                  child: Obx(() => Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: service.vibrationLevel == level ? FontWeight.bold : FontWeight.w500,
-                      color: emeraldGreen,
+                  child: Obx(
+                    () => Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: service.vibrationLevel == level
+                            ? FontWeight.bold
+                            : FontWeight.w500,
+                        color: emeraldGreen,
+                      ),
                     ),
-                  )),
+                  ),
                 ),
                 if (service.vibrationLevel == level)
-                 Icon(
-                    Icons.check_circle,
-                    color: goldColor,
-                    size: 12,
-                  ),
+                  Icon(Icons.check_circle, color: goldColor, size: 12),
               ],
             ),
           ),
@@ -611,7 +906,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
-  
+
   void _showWidgetInfoDialog(BuildContext context) {
     Get.dialog(
       Dialog(
@@ -658,9 +953,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     ),
                     const SizedBox(width: 6),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Tasbee Widget Hakkında 📱',
+                        AppLocalizations.of(context)?.widgetInfoTitle ??
+                            'Tasbee Widget Hakkında 📱',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -693,8 +989,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                   
-
                     // Widget bilgileri
                     Container(
                       width: double.infinity,
@@ -710,8 +1004,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            '✨ Widget Özellikleri:',
+                           Text(
+                           AppLocalizations.of(context)?.widgetFeatures ??  '✨ Widget Özellikleri:',
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -719,11 +1013,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          _buildWidgetFeature('📱', 'Ana ekranınızda kolayca zikir çekebilirsiniz'),
-                          _buildWidgetFeature('💾', 'Tüm zikirleriniz kalıcı olarak kaydedilir'),
-                          _buildWidgetFeature('📊', 'Widget istatistiklerini takip edebilirsiniz'),
-                          _buildWidgetFeature('🎯', 'Hedef sayısı belirleyebilirsiniz'),
-                          _buildWidgetFeature('🔄', 'Farklı zikir türleri seçebilirsiniz'),
+                          _buildWidgetFeature(
+                            '📱',
+                        AppLocalizations.of(context)?.widgetFeature1 ??    'Ana ekranınızda kolayca zikir çekebilirsiniz',
+                          ),
+                          _buildWidgetFeature(
+                            '💾',
+                          AppLocalizations.of(context)?.widgetFeature2 ??   'Tüm zikirleriniz kalıcı olarak kaydedilir',
+                          ),
+                          _buildWidgetFeature(
+                            '📊',
+                            AppLocalizations.of(context)?.widgetFeature3 ??   'Widget istatistiklerini takip edebilirsiniz',
+                          ),
+                          _buildWidgetFeature(
+                            '🎯',
+                            AppLocalizations.of(context)?.widgetFeature4 ??   'Hedef sayısı belirleyebilirsiniz',
+                          ),
+                          _buildWidgetFeature(
+                            '🔄',
+                            AppLocalizations.of(context)?.widgetFeature5 ??   'Farklı zikir türleri seçebilirsiniz',
+                          ),
                         ],
                       ),
                     ),
@@ -748,8 +1057,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           elevation: 4,
                         ),
                         icon: const Icon(Icons.add_to_home_screen, size: 20),
-                        label: const Text(
-                          'Widget Ekle',
+                        label:  Text(
+                          AppLocalizations.of(context)?.widgetAddTitle ?? 'Widget Ekle',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
@@ -776,8 +1085,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ),
                           ),
                         ),
-                        child: const Text(
-                          'Kapat',
+                        child: Text(
+                          AppLocalizations.of(context)?.close ??  'Kapat',
                           style: TextStyle(
                             color: emeraldGreen,
                             fontWeight: FontWeight.w600,
@@ -802,10 +1111,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            emoji,
-            style: const TextStyle(fontSize: 12),
-          ),
+          Text(emoji, style: const TextStyle(fontSize: 12)),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
@@ -824,19 +1130,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void _addWidgetToHomeScreen() async {
     try {
       HapticFeedback.lightImpact();
-      
+
       // Android widget picker'ını açmak için platform channel kullanıyoruz
       const platform = MethodChannel('com.example.tasbeepro/widget');
       await platform.invokeMethod('openWidgetPicker');
-      
-    
     } catch (e) {
       // Platform channel başarısız olursa manual talimatlar göster
       HapticFeedback.lightImpact();
-      
+
       IslamicSnackbar.showSuccess(
-        'Widget Ekleme',
-        'Ana ekranınızda boş bir alana uzun basın ve "Widget\'lar" seçeneğini seçin. Ardından "Tasbee Pro" widget\'ını bulup ekleyin.',
+        AppLocalizations.of(context)?.widgetAddSuccess ?? 'Widget Ekleme',
+        AppLocalizations.of(context)?.widgetAddSuccessMessage ?? 'Ana ekranınızda boş bir alana uzun basın ve "Widget\'lar" seçeneğini seçin. Ardından "Tasbee Pro" widget\'ını bulup ekleyin.',
         duration: const Duration(seconds: 5),
       );
     }
@@ -856,10 +1160,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: goldColor.withOpacity(0.4),
-              width: 1.5,
-            ),
+            border: Border.all(color: goldColor.withOpacity(0.4), width: 1.5),
             boxShadow: [
               BoxShadow(
                 color: darkGreen.withOpacity(0.2),
@@ -885,11 +1186,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Icon(Icons.info, color: emeraldGreen, size: 14),
+                      child: const Icon(
+                        Icons.info,
+                        color: emeraldGreen,
+                        size: 14,
+                      ),
                     ),
                     const SizedBox(width: 8),
-                    const Text(
-                      'Tasbee Free',
+                     Text(
+                    AppLocalizations.of(context)?.appInfoTitle ??  'Tasbee Free',
                       style: TextStyle(
                         color: emeraldGreen,
                         fontWeight: FontWeight.bold,
@@ -899,7 +1204,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ],
                 ),
               ),
-              
+
               // Mini divider
               Container(
                 height: 1,
@@ -914,7 +1219,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
               ),
-              
+
               // Tiny content
               Padding(
                 padding: const EdgeInsets.all(8),
@@ -924,10 +1229,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [
-                            Color(0xFFFFFDF7),
-                            Color(0xFFF5F3E8),
-                          ],
+                          colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
                         ),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(color: goldColor.withOpacity(0.2)),
@@ -936,7 +1238,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Versiyon: ${appVersion.isNotEmpty ? appVersion : "1.0.0"}',
+                            '${AppLocalizations.of(context)?.appInfoVersionLabel ?? ''} ${appVersion.isNotEmpty ? appVersion : "1.0.0"}',
                             style: const TextStyle(
                               color: emeraldGreen,
                               fontWeight: FontWeight.w600,
@@ -944,19 +1246,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ),
                           ),
                           const SizedBox(height: 4),
-                          const Text(
-                            'Offline çalışan dijital tesbih uygulaması.',
-                            style: TextStyle(
-                              color: emeraldGreen,
-                              fontSize: 10,
-                            ),
+                           Text(
+                          AppLocalizations.of(context)?.appInfoDescription ??  'Offline çalışan dijital tesbih uygulaması.',
+                            style: TextStyle(color: emeraldGreen, fontSize: 10),
                           ),
                         ],
                       ),
                     ),
-                    
+
                     const SizedBox(height: 8),
-                    
+
                     // Mini close button
                     SizedBox(
                       width: double.infinity,
@@ -974,8 +1273,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ),
                           ),
                         ),
-                        child: const Text(
-                          'Tamam',
+                        child:  Text(
+                       AppLocalizations.of(context)?.ok ??'Tamam',
                           style: TextStyle(
                             color: emeraldGreen,
                             fontWeight: FontWeight.w600,
@@ -993,6 +1292,4 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
-  
-
 }

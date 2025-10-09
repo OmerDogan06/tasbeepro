@@ -1,0 +1,231 @@
+{
+  "@@locale": "en",
+  "splashAppTitle": "Tasbee Pro",
+  "@splashAppTitle": {
+    "description": "The title of the application shown on splash screen"
+  },
+  "splashSubtitleArabic": "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+  "@splashSubtitleArabic": {
+    "description": "Arabic Bismillah text on splash screen"
+  },
+  "splashSubtitleTurkish": "Digital Prayer Counter App",
+  "@splashSubtitleTurkish": {
+    "description": "App description on splash screen"
+  },
+  "splashLoading": "Loading...",
+  "@splashLoading": {
+    "description": "Loading text on splash screen"
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Settings screen title"
+  },
+  "settingsSoundVibration": "Sound & Vibration",
+  "@settingsSoundVibration": {
+    "description": "Sound and vibration section header"
+  },
+  "settingsSoundEffect": "Sound Effect",
+  "@settingsSoundEffect": {
+    "description": "Sound effect setting title"
+  },
+  "settingsSoundSubtitle": "Turn on/off touch sound",
+  "@settingsSoundSubtitle": {
+    "description": "Sound effect setting subtitle"
+  },
+  "settingsVibration": "Vibration",
+  "@settingsVibration": {
+    "description": "Vibration setting title"
+  },
+  "settingsReminders": "Reminders 💎",
+  "@settingsReminders": {
+    "description": "Reminders section header"
+  },
+  "settingsZikirReminder": "Zikr Reminder",
+  "@settingsZikirReminder": {
+    "description": "Zikr reminder setting title"
+  },
+  "settingsReminderSubtitle": "View and manage reminders",
+  "@settingsReminderSubtitle": {
+    "description": "Reminder setting subtitle"
+  },
+  "settingsReminderTimes": "Reminder Times",
+  "@settingsReminderTimes": {
+    "description": "Reminder times setting title"
+  },
+  "settingsReminderTimesSubtitle": "Daily recurring notifications",
+  "@settingsReminderTimesSubtitle": {
+    "description": "Reminder times setting subtitle"
+  },
+  "settingsWidget": "Widget 📱",
+  "@settingsWidget": {
+    "description": "Widget section header"
+  },
+  "settingsWidgetStats": "Widget Statistics",
+  "@settingsWidgetStats": {
+    "description": "Widget statistics setting title"
+  },
+  "settingsWidgetStatsSubtitle": "View all your zikrs from widget",
+  "@settingsWidgetStatsSubtitle": {
+    "description": "Widget statistics setting subtitle"
+  },
+  "settingsWidgetInfo": "About Widget",
+  "@settingsWidgetInfo": {
+    "description": "Widget info setting title"
+  },
+  "settingsWidgetInfoSubtitle": "How to use widget and add to home screen",
+  "@settingsWidgetInfoSubtitle": {
+    "description": "Widget info setting subtitle"
+  },
+  "settingsAbout": "About",
+  "@settingsAbout": {
+    "description": "About section header"
+  },
+  "settingsAppInfo": "About App",
+  "@settingsAppInfo": {
+    "description": "App info setting title"
+  },
+  "settingsRateApp": "Rate App",
+  "@settingsRateApp": {
+    "description": "Rate app setting title"
+  },
+  "settingsRateSubtitle": "Rate on Play Store",
+  "@settingsRateSubtitle": {
+    "description": "Rate app setting subtitle"
+  },
+  "settingsLanguage": "Language",
+  "@settingsLanguage": {
+    "description": "Language setting title"
+  },
+  "settingsLanguageSubtitle": "Change app language",
+  "@settingsLanguageSubtitle": {
+    "description": "Language setting subtitle"
+  },
+  "vibrationOff": "Off",
+  "@vibrationOff": {
+    "description": "Vibration off option"
+  },
+  "vibrationLight": "Light",
+  "@vibrationLight": {
+    "description": "Light vibration option"
+  },
+  "vibrationMedium": "Medium",
+  "@vibrationMedium": {
+    "description": "Medium vibration option"
+  },
+  "vibrationHigh": "High",
+  "@vibrationHigh": {
+    "description": "High vibration option"
+  },
+  "vibrationTitle": "Vibration",
+  "@vibrationTitle": {
+    "description": "Vibration dialog title"
+  },
+  "vibrationOk": "OK",
+  "@vibrationOk": {
+    "description": "OK button in vibration dialog"
+  },
+  "languageSelectionTitle": "Language Selection",
+  "@languageSelectionTitle": {
+    "description": "Language selection dialog title"
+  },
+  "languageSelectionSubtitle": "Select app language",
+  "@languageSelectionSubtitle": {
+    "description": "Language selection dialog subtitle"
+  },
+  "languageChanged": "Language Changed",
+  "@languageChanged": {
+    "description": "Language changed notification title"
+  },
+  "languageChangedMessage": "App language changed successfully",
+  "@languageChangedMessage": {
+    "description": "Language changed notification message"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "OK button"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "close": "Close",
+  "@close": {
+    "description": "Close button"
+  },
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Loading text"
+  },
+  "thanks": "Thanks",
+  "@thanks": {
+    "description": "Thanks text"
+  },
+  "success": "Success",
+  "@success": {
+    "description": "Success text"
+  },
+  "rateAppMessage": "Your review is very important to us!",
+  "@rateAppMessage": {
+    "description": "Rate app snackbar message"
+  },
+  "widgetAddTitle": "Add Widget",
+  "@widgetAddTitle": {
+    "description": "Add widget button text"
+  },
+  "widgetInfoTitle": "Tasbee Widget Info 📱",
+  "@widgetInfoTitle": {
+    "description": "Widget info dialog title"
+  },
+  "widgetFeatures": "✨ Widget Features:",
+  "@widgetFeatures": {
+    "description": "Widget features section title"
+  },
+  "widgetFeature1": "Easily count zikr on your home screen",
+  "@widgetFeature1": {
+    "description": "Widget feature 1"
+  },
+  "widgetFeature2": "All your zikrs are permanently saved",
+  "@widgetFeature2": {
+    "description": "Widget feature 2"
+  },
+  "widgetFeature3": "You can track widget statistics",
+  "@widgetFeature3": {
+    "description": "Widget feature 3"
+  },
+  "widgetFeature4": "You can set target numbers",
+  "@widgetFeature4": {
+    "description": "Widget feature 4"
+  },
+  "widgetFeature5": "You can choose different zikr types",
+  "@widgetFeature5": {
+    "description": "Widget feature 5"
+  },
+  "widgetAddInstructions": "Long press on an empty area on your home screen and select \"Widgets\". Then find and add the \"Tasbee Pro\" widget.",
+  "@widgetAddInstructions": {
+    "description": "Widget add instructions"
+  },
+  "appInfoTitle": "Tasbee Free",
+  "@appInfoTitle": {
+    "description": "About app dialog title"
+  },
+  "appInfoDescription": "Offline digital prayer counter app.",
+  "@appInfoDescription": {
+    "description": "App description in about dialog"
+  },
+  "version": "Version",
+  "@version": {
+    "description": "Version label"
+  },
+  "widgetAddSuccess": "Widget Added",
+  "@widgetAddSuccess": {
+    "description": "Widget add success message title"
+  },
+  "widgetAddSuccessMessage": "Long press on an empty area on your home screen and select 'Widgets'. Then find and add the 'Tasbee Pro' widget.",
+  "@widgetAddSuccessMessage": {
+    "description": "Widget add success message"
+  },
+  "appInfoVersionLabel": "Version: ",
+  "@appInfoVersionLabel": {
+    "description": "Version label in about dialog"
+  }
+}

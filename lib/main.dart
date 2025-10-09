@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timezone/data/latest.dart' as tz;
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'screens/splash_screen.dart';
 import 'controllers/theme_controller.dart';
 import 'controllers/counter_controller.dart';
@@ -12,6 +13,8 @@ import 'services/sound_service.dart';
 import 'services/vibration_service.dart';
 import 'services/notification_service.dart';
 import 'services/widget_service.dart';
+import 'services/language_service.dart';
+import 'l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +38,7 @@ void main() async {
 
   // Services'leri başlat
   await Get.putAsync(() => StorageService().init());
+  await Get.putAsync(() => LanguageService().init());
   Get.put(SoundService());
   Get.put(VibrationService());
   Get.put(NotificationService());
@@ -53,9 +57,22 @@ class TasbeeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    final languageService = Get.find<LanguageService>();
+    
+    return Obx(() => GetMaterialApp(
       title: 'Tasbee Pro',
       debugShowCheckedModeBanner: false,
+      locale: languageService.currentLocale,
+      supportedLocales: const [
+        Locale('tr', 'TR'),
+        Locale('en', 'US'),
+      ],
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       theme: ThemeData(
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
@@ -75,6 +92,6 @@ class TasbeeApp extends StatelessWidget {
       ),
       themeMode: Get.find<ThemeController>().themeMode,
       home: const SplashScreen(),
-    );
+    ));
   }
 }
