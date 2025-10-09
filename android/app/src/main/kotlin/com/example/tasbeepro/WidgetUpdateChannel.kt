@@ -25,7 +25,7 @@ class WidgetUpdateChannel(private val context: Context) : MethodCallHandler {
                     updateAllWidgets(zikrName, zikrMeaning, target, count)
                     result.success(true)
                 } catch (e: Exception) {
-                    result.error("UPDATE_ERROR", "Widget güncellenirken hata oluştu: ${e.message}", null)
+                    result.error("UPDATE_ERROR", context.getString(R.string.error_widget_update, e.message), null)
                 }
             }
             "getWidgetIds" -> {
@@ -33,7 +33,7 @@ class WidgetUpdateChannel(private val context: Context) : MethodCallHandler {
                     val widgetIds = getWidgetIds()
                     result.success(widgetIds)
                 } catch (e: Exception) {
-                    result.error("GET_IDS_ERROR", "Widget ID'leri alınırken hata oluştu: ${e.message}", null)
+                    result.error("GET_IDS_ERROR", context.getString(R.string.error_widget_ids, e.message), null)
                 }
             }
             else -> {

@@ -33,7 +33,7 @@
             android:src="@drawable/ic_settings"
             android:scaleType="centerInside"
             android:padding="2dp"
-            android:contentDescription="Ayarlar" />
+            android:contentDescription="@string/widget_settings_desc" />
 
     </LinearLayout>
 
@@ -81,7 +81,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hedef"
+                android:text="@string/target"
                 android:textSize="10sp"
                 android:textColor="#B8965A"
                 android:gravity="center" />
@@ -112,7 +112,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Yapılan"
+                android:text="@string/current"
                 android:textSize="10sp"
                 android:textColor="#6B7B50"
                 android:gravity="center" />
@@ -147,7 +147,7 @@
             android:background="@drawable/widget_new_counter_button"
             android:clickable="true"
             android:focusable="true"
-            android:contentDescription="Zikir sayacı">
+            android:contentDescription="@string/widget_counter_desc">
 
             <!-- Türk Bayrağı Hilal (Background) -->
             <ImageView
@@ -181,7 +181,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="15dp"
-                android:text="DOKUN"
+                android:text="@string/widget_tap_text"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#2D5016"
@@ -212,7 +212,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="İlerleme"
+                android:text="@string/progress"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#2D5016" />
@@ -257,7 +257,7 @@
                 android:src="@drawable/ic_refresh"
                 android:scaleType="centerInside"
                 android:padding="4dp"
-                android:contentDescription="Sayacı sıfırla" />
+                android:contentDescription="@string/widget_reset_desc" />
 
         </LinearLayout>
 

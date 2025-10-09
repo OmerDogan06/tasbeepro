@@ -163,7 +163,7 @@ class WidgetConfigActivity : Activity() {
         val selectedTarget = targetOptions[targetSpinner.selectedItemPosition]
 
         previewZikrName.text = selectedZikr
-        previewTarget.text = "Hedef: $selectedTarget"
+        previewTarget.text = getString(R.string.preview_target_text, selectedTarget)
     }
 
     private fun saveWidgetConfiguration() {

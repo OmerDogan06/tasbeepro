@@ -215,7 +215,7 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             // Toast göster
             val toast = android.widget.Toast.makeText(
                 context, 
-                "🎉 Maşallah! $target zikrini tamamladınız!", 
+                context.getString(R.string.target_completed_toast_main, target), 
                 android.widget.Toast.LENGTH_LONG
             )
             toast.show()
@@ -223,8 +223,8 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             // Notification da göster
             showNotification(
                 context, 
-                "Hedef Tamamlandı! 🎉", 
-                "Maşallah! $target zikir sayısına ulaştınız. Allah kabul etsin!",
+                context.getString(R.string.target_completed_title), 
+                context.getString(R.string.target_completed_message, target),
                 1
             )
         } catch (e: Exception) {
@@ -236,7 +236,7 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         try {
             val toast = android.widget.Toast.makeText(
                 context, 
-                "✨ Hedefi aştınız! ($target+) Devam edin!", 
+                context.getString(R.string.target_completed_toast, target), 
                 android.widget.Toast.LENGTH_SHORT
             )
             toast.show()
@@ -244,8 +244,8 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             // Notification da göster
             showNotification(
                 context, 
-                "Hedef Aşıldı! ✨", 
-                "Maşallah! $target hedefini aştınız. Zikirleriniz devam ediyor!",
+                context.getString(R.string.target_exceeded_title), 
+                context.getString(R.string.target_exceeded_message, target),
                 2
             )
         } catch (e: Exception) {
@@ -262,10 +262,10 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val channel = NotificationChannel(
                     channelId,
-                    "Tasbee Bildirimleri",
+                    context.getString(R.string.notification_channel_name),
                     NotificationManager.IMPORTANCE_DEFAULT
                 ).apply {
-                    description = "Zikir hedefi bildirimlerini gösterir"
+                    description = context.getString(R.string.notification_channel_description)
                 }
                 notificationManager.createNotificationChannel(channel)
             }

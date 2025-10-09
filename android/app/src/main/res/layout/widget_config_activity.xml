@@ -24,7 +24,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Widget Ayarları"
+                android:text="@string/widget_config_title"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
@@ -50,7 +50,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Zikir Türü"
+                android:text="@string/zikr_type"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#2D5016"
@@ -59,7 +59,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Widget'ta gösterilecek zikir türünü seçin"
+                android:text="@string/zikr_type_description"
                 android:textSize="12sp"
                 android:textColor="#5D6B3D"
                 android:layout_marginBottom="12dp" />
@@ -100,7 +100,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hedef Sayısı"
+                android:text="@string/target_count"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#2D5016"
@@ -109,7 +109,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Günlük hedef zikir sayısını belirleyin"
+                android:text="@string/target_count_description"
                 android:textSize="12sp"
                 android:textColor="#5D6B3D"
                 android:layout_marginBottom="12dp" />
@@ -150,7 +150,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🔊 Ses Ayarları"
+                android:text="@string/sound_settings_title"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#2D5016"
@@ -170,7 +170,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Ses Efekti"
+                    android:text="@string/sound_effect"
                     android:textSize="14sp"
                     android:textColor="#2D5016"
                     android:textStyle="bold" />
@@ -197,7 +197,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="👁️ Widget Önizleme"
+                android:text="@string/widget_preview_title"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#2D5016"
@@ -225,7 +225,7 @@
                     android:id="@+id/preview_target"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hedef: 33"
+                    android:text="@string/preview_target_text"
                     android:textSize="14sp"
                     android:textColor="#5D6B3D" />
 
@@ -247,7 +247,7 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/cancel_button_background"
-                android:text="İptal"
+                android:text="@string/cancel"
                 android:textColor="#666666"
                 android:textStyle="bold" />
 
@@ -258,7 +258,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/save_button_background"
-                android:text="Kaydet"
+                android:text="@string/save"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
