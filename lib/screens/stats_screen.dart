@@ -446,7 +446,6 @@ class _StatsScreenState extends State<StatsScreen>
     final chartData = _getChartData(period, controller);
 
     return Container(
-      height: 350, // Biraz daha yüksek yapalım
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
@@ -475,107 +474,157 @@ class _StatsScreenState extends State<StatsScreen>
             ),
           ),
           const SizedBox(height: 20),
-          Expanded(
-            child: chartData.isEmpty
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.pie_chart,
-                          size: 48,
-                          color: emeraldGreen.withAlpha(128),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          AppLocalizations.of(context)?.statsNoData ?? 'Henüz $period veri yok',
-                          style: TextStyle(
-                            color: emeraldGreen.withAlpha(179),
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                : Row(
+          chartData.isEmpty
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Pie Chart
-                      Expanded(
-                        flex: 3,
-                        child: PieChart(
-                          PieChartData(
-                            sectionsSpace: 2,
-                            centerSpaceRadius: 40,
-                            sections: chartData.asMap().entries.map((entry) {
-                              final index = entry.key;
-                              final data = entry.value;
-                              return PieChartSectionData(
-                                color: _getChartColor(index),
-                                value: data.y,
-                                title: '${data.y.toInt()}',
-                                radius: 45,
-                                titleStyle: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              );
-                            }).toList(),
-                            pieTouchData: PieTouchData(
-                              touchCallback: (FlTouchEvent event, pieTouchResponse) {
-                                // Touch işlemleri
-                              },
-                            ),
-                          ),
-                        ),
+                      Icon(
+                        Icons.pie_chart,
+                        size: 48,
+                        color: emeraldGreen.withAlpha(128),
                       ),
-                      
-                      const SizedBox(width: 16),
-                      
-                      // Legend
-                      Expanded(
-                        flex: 2,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: chartData.asMap().entries.map((entry) {
-                              final index = entry.key;
-                              final data = entry.value;
-                              return Container(
-                                margin: const EdgeInsets.only(bottom: 8),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 12,
-                                      height: 12,
-                                      decoration: BoxDecoration(
-                                        color: _getChartColor(index),
-                                        shape: BoxShape.circle,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Expanded(
-                                      child: Text(
-                                        data.label,
-                                        style: const TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w500,
-                                          color: emeraldGreen,
-                                        ),
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }).toList(),
-                          ),
+                      const SizedBox(height: 8),
+                      Text(
+                        AppLocalizations.of(context)?.statsNoData ?? 'Henüz $period veri yok',
+                        style: TextStyle(
+                          color: emeraldGreen.withAlpha(179),
+                          fontSize: 14,
                         ),
                       ),
                     ],
                   ),
-          ),
+                )
+              : Column(
+                  children: [
+                    // Pie Chart - Tam genişlik
+                    SizedBox(
+                      height: 325,
+                      child: PieChart(
+                        PieChartData(
+                          sectionsSpace: 2,
+                          centerSpaceRadius: 95,
+                          sections: chartData.asMap().entries.map((entry) {
+                            final index = entry.key;
+                            final data = entry.value;
+                            final total = chartData.fold<double>(0, (sum, item) => sum + item.y);
+                            final percentage = total > 0 ? (data.y / total * 100) : 0;
+                            
+                            return PieChartSectionData(
+                              color: _getChartColor(index),
+                              value: data.y,
+                              title: percentage > 5 ? '${percentage.toStringAsFixed(0)}%' : '', // Sadece %5'ten büyükse yüzde göster
+                              radius: 65,
+                              titleStyle: const TextStyle(
+                                fontSize: 9,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black54,
+                                    offset: Offset(0.5, 0.5),
+                                    blurRadius: 1,
+                                  ),
+                                ],
+                              ),
+                              titlePositionPercentageOffset: 0.6,
+                            );
+                          }).toList(),
+                          pieTouchData: PieTouchData(
+                            enabled: true,
+                            touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                              // Touch feedback eklenebilir
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    
+                    const SizedBox(height: 16),
+                    
+                    // Legend - Kompakt grid layout
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 3,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
+                      ),
+                      itemCount: chartData.length,
+                      itemBuilder: (context, index) {
+                        final data = chartData[index];
+                        final total = chartData.fold<double>(0, (sum, item) => sum + item.y);
+                        final percentage = total > 0 ? (data.y / total * 100) : 0;
+                        
+                        return Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: _getChartColor(index).withAlpha(26),
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(
+                              color: _getChartColor(index).withAlpha(77),
+                              width: 1,
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 10,
+                                height: 10,
+                                decoration: BoxDecoration(
+                                  color: _getChartColor(index),
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              const SizedBox(width: 6),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      data.label,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
+                                        color: emeraldGreen,
+                                      ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          _formatNumber(data.y.toInt()),
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                            color: _getChartColor(index),
+                                          ),
+                                        ),
+                                        Text(
+                                          '${percentage.toStringAsFixed(0)}%',
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w500,
+                                            color: emeraldGreen.withAlpha(179),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
         ],
       ),
     );
@@ -658,7 +707,7 @@ class _StatsScreenState extends State<StatsScreen>
                               color: emeraldGreen.withAlpha(179),
                               fontSize: 11,
                             ),
-                            maxLines: 1,
+                            maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),
                       ],
@@ -778,6 +827,17 @@ class _StatsScreenState extends State<StatsScreen>
       const Color(0xFF3C5B1F), // pine green
     ];
     return colors[index % colors.length];
+  }
+
+  // Sayıları formatlamak için metod (büyük sayılar için K, M gibi kısaltmalar)
+  String _formatNumber(int number) {
+    if (number >= 1000000) {
+      return '${(number / 1000000).toStringAsFixed(1)}M';
+    } else if (number >= 1000) {
+      return '${(number / 1000).toStringAsFixed(1)}K';
+    } else {
+      return number.toString();
+    }
   }
 
   Future<void> _exportToPDF(String period, BuildContext buildContext) async {
