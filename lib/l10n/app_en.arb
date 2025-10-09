@@ -227,5 +227,197 @@
   "appInfoVersionLabel": "Version: ",
   "@appInfoVersionLabel": {
     "description": "Version label in about dialog"
+  },
+  "homeTitle": "Tasbee Pro",
+  "@homeTitle": {
+    "description": "Home screen title"
+  },
+  "homeDailyTotal": "Today's Total Zikr",
+  "@homeDailyTotal": {
+    "description": "Daily total counter label"
+  },
+  "homeTarget": "Target",
+  "@homeTarget": {
+    "description": "Target button label"
+  },
+  "homeReset": "Reset",
+  "@homeReset": {
+    "description": "Reset button label"
+  },
+  "homeStatistics": "Statistics",
+  "@homeStatistics": {
+    "description": "Statistics button label"
+  },
+  "homeResetConfirmTitle": "Reset",
+  "@homeResetConfirmTitle": {
+    "description": "Reset confirmation dialog title"
+  },
+  "homeResetConfirmMessage": "Are you sure you want to reset the counter?",
+  "@homeResetConfirmMessage": {
+    "description": "Reset confirmation dialog message"
+  },
+  "homeResetSuccess": "Success",
+  "@homeResetSuccess": {
+    "description": "Reset success message title"
+  },
+  "homeResetSuccessMessage": "Counter has been reset",
+  "@homeResetSuccessMessage": {
+    "description": "Reset success message"
+  },
+  "homeTargetDialogTitle": "Select Target",
+  "@homeTargetDialogTitle": {
+    "description": "Target selection dialog title"
+  },
+  "zikirListTitle": "Select Zikr",
+  "@zikirListTitle": {
+    "description": "Zikr list screen title"
+  },
+  "zikirListProSelection": "Pro Zikr Selection",
+  "@zikirListProSelection": {
+    "description": "Pro zikr selection header title"
+  },
+  "zikirListDescription": "Wide zikr collection and custom zikr creation",
+  "@zikirListDescription": {
+    "description": "Zikr list screen description"
+  },
+  "zikirListAddCustom": "Add Custom Zikr",
+  "@zikirListAddCustom": {
+    "description": "Add custom zikr button text"
+  },
+  "zikirListSelectionSuccess": "Success",
+  "@zikirListSelectionSuccess": {
+    "description": "Zikr selection success message title"
+  },
+  "zikirListSelected": "selected",
+  "@zikirListSelected": {
+    "description": "Zikr selected message"
+  },
+  "zikirSubhanallah": "Subhanallah",
+  "@zikirSubhanallah": {
+    "description": "Subhanallah zikr name"
+  },
+  "zikirSubhanallahMeaning": "Glory be to Allah",
+  "@zikirSubhanallahMeaning": {
+    "description": "Subhanallah zikr meaning"
+  },
+  "zikirAlhamdulillah": "Alhamdulillah",
+  "@zikirAlhamdulillah": {
+    "description": "Alhamdulillah zikr name"
+  },
+  "zikirAlhamdulillahMeaning": "All praise belongs to Allah",
+  "@zikirAlhamdulillahMeaning": {
+    "description": "Alhamdulillah zikr meaning"
+  },
+  "zikirAllahuAkbar": "Allahu Akbar",
+  "@zikirAllahuAkbar": {
+    "description": "Allahu Akbar zikr name"
+  },
+  "zikirAllahuAkbarMeaning": "Allah is the Greatest",
+  "@zikirAllahuAkbarMeaning": {
+    "description": "Allahu Akbar zikr meaning"
+  },
+  "zikirLaIlaheIllallah": "La ilahe illallah",
+  "@zikirLaIlaheIllallah": {
+    "description": "La ilahe illallah zikr name"
+  },
+  "zikirLaIlaheIllallahMeaning": "There is no deity but Allah",
+  "@zikirLaIlaheIllallahMeaning": {
+    "description": "La ilahe illallah zikr meaning"
+  },
+  "zikirEstaghfirullah": "Estağfirullah",
+  "@zikirEstaghfirullah": {
+    "description": "Estağfirullah zikr name"
+  },
+  "zikirEstaghfirullahMeaning": "I seek forgiveness from Allah",
+  "@zikirEstaghfirullahMeaning": {
+    "description": "Estağfirullah zikr meaning"
+  },
+  "zikirLaHawleWelaKuvvete": "La hawle vela kuvvete",
+  "@zikirLaHawleWelaKuvvete": {
+    "description": "La hawle vela kuvvete zikr name"
+  },
+  "zikirLaHawleWelaKuvveteMeaning": "There is no power except with Allah",
+  "@zikirLaHawleWelaKuvveteMeaning": {
+    "description": "La hawle vela kuvvete zikr meaning"
+  },
+  "zikirHasbiyallahu": "Hasbiyallahu",
+  "@zikirHasbiyallahu": {
+    "description": "Hasbiyallahu zikr name"
+  },
+  "zikirHasbiyallahuMeaning": "Allah is sufficient for me, and He is the best Disposer of affairs",
+  "@zikirHasbiyallahuMeaning": {
+    "description": "Hasbiyallahu zikr meaning"
+  },
+  "zikirRabbenaAtina": "Rabbena Atina",
+  "@zikirRabbenaAtina": {
+    "description": "Rabbena Atina zikr name"
+  },
+  "zikirRabbenaAtinaMeaning": "Our Lord! Give us good in this world",
+  "@zikirRabbenaAtinaMeaning": {
+    "description": "Rabbena Atina zikr meaning"
+  },
+  "zikirAllahummeSalli": "Allahumme Salli",
+  "@zikirAllahummeSalli": {
+    "description": "Allahumme Salli zikr name"
+  },
+  "zikirAllahummeCalliMeaning": "O Allah, send blessings upon Muhammad",
+  "@zikirAllahummeCalliMeaning": {
+    "description": "Allahumme Salli zikr meaning"
+  },
+  "zikirRabbiZidniIlmen": "Rabbi Zidni İlmen",
+  "@zikirRabbiZidniIlmen": {
+    "description": "Rabbi Zidni İlmen zikr name"
+  },
+  "zikirRabbiZidniIlmenMeaning": "My Lord! Increase me in knowledge",
+  "@zikirRabbiZidniIlmenMeaning": {
+    "description": "Rabbi Zidni İlmen zikr meaning"
+  },
+  "zikirBismillah": "Bismillah",
+  "@zikirBismillah": {
+    "description": "Bismillah zikr name"
+  },
+  "zikirBismillahMeaning": "In the name of Allah, the Most Gracious, the Most Merciful",
+  "@zikirBismillahMeaning": {
+    "description": "Bismillah zikr meaning"
+  },
+  "zikirInnallahaMaasSabirin": "İnnallaha maas sabirin",
+  "@zikirInnallahaMaasSabirin": {
+    "description": "İnnallaha maas sabirin zikr name"
+  },
+  "zikirInnallahaMaasSabirinMeaning": "Indeed, Allah is with the patient",
+  "@zikirInnallahaMaasSabirinMeaning": {
+    "description": "İnnallaha maas sabirin zikr meaning"
+  },
+  "zikirAllahuLatif": "Allahu Latif",
+  "@zikirAllahuLatif": {
+    "description": "Allahu Latif zikr name"
+  },
+  "zikirAllahuLatifMeaning": "Allah is Kind to His servants",
+  "@zikirAllahuLatifMeaning": {
+    "description": "Allahu Latif zikr meaning"
+  },
+  "zikirYaRahman": "Ya Rahman Ya Rahim",
+  "@zikirYaRahman": {
+    "description": "Ya Rahman Ya Rahim zikr name"
+  },
+  "zikirYaRahmanMeaning": "O Most Gracious, O Most Merciful",
+  "@zikirYaRahmanMeaning": {
+    "description": "Ya Rahman Ya Rahim zikr meaning"
+  },
+  "zikirTabarakAllah": "Tabarak Allah",
+  "@zikirTabarakAllah": {
+    "description": "Tabarak Allah zikr name"
+  },
+  "zikirTabarakAllahMeaning": "Blessed is Allah",
+  "@zikirTabarakAllahMeaning": {
+    "description": "Tabarak Allah zikr meaning"
+  },
+  "zikirMashallah": "Maşallah",
+  "@zikirMashallah": {
+    "description": "Maşallah zikr name"
+  },
+  "zikirMashallahMeaning": "What Allah has willed has happened",
+  "@zikirMashallahMeaning": {
+    "description": "Maşallah zikr meaning"
   }
 }

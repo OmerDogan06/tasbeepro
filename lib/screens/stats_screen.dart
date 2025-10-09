@@ -68,8 +68,7 @@ class _StatsScreenState extends State<StatsScreen>
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-        statusBarColor: Color(0xFF2D5016),
-        statusBarIconBrightness: Brightness.light,
+        
         systemNavigationBarColor: Color(0xFF2D5016),
         systemNavigationBarIconBrightness: Brightness.light,
       ),
@@ -192,14 +191,16 @@ class _StatsScreenState extends State<StatsScreen>
             ],
           ),
         ),
-        body: TabBarView(
-          controller: _tabController,
-          children: [
-            _buildPeriodStats('Günlük', controller),
-            _buildPeriodStats('Haftalık', controller),
-            _buildPeriodStats('Aylık', controller),
-            _buildPeriodStats('Yıllık', controller),
-          ],
+        body: SafeArea(
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              _buildPeriodStats('Günlük', controller),
+              _buildPeriodStats('Haftalık', controller),
+              _buildPeriodStats('Aylık', controller),
+              _buildPeriodStats('Yıllık', controller),
+            ],
+          ),
         ),
       ),
     );

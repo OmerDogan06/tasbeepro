@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _scaleController;
   late AnimationController _rotationController;
   late AnimationController _shimmerController;
-  
+
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
   late Animation<double> _rotationAnimation;
@@ -33,60 +33,44 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    
+
     // Animation controllers
     _fadeController = AnimationController(
       duration: const Duration(milliseconds: 1500),
       vsync: this,
     );
-    
+
     _scaleController = AnimationController(
       duration: const Duration(milliseconds: 2000),
       vsync: this,
     );
-    
+
     _rotationController = AnimationController(
       duration: const Duration(milliseconds: 3000),
       vsync: this,
     );
-    
+
     _shimmerController = AnimationController(
       duration: const Duration(milliseconds: 2000),
       vsync: this,
     );
 
     // Animations
-    _fadeAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _fadeController,
-      curve: Curves.easeInOut,
-    ));
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _fadeController, curve: Curves.easeInOut),
+    );
 
-    _scaleAnimation = Tween<double>(
-      begin: 0.5,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _scaleController,
-      curve: Curves.elasticOut,
-    ));
+    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
+      CurvedAnimation(parent: _scaleController, curve: Curves.elasticOut),
+    );
 
-    _rotationAnimation = Tween<double>(
-      begin: 0.0,
-      end: 2 * math.pi,
-    ).animate(CurvedAnimation(
-      parent: _rotationController,
-      curve: Curves.easeInOut,
-    ));
+    _rotationAnimation = Tween<double>(begin: 0.0, end: 2 * math.pi).animate(
+      CurvedAnimation(parent: _rotationController, curve: Curves.easeInOut),
+    );
 
-    _shimmerAnimation = Tween<double>(
-      begin: -1.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _shimmerController,
-      curve: Curves.easeInOut,
-    ));
+    _shimmerAnimation = Tween<double>(begin: -1.0, end: 1.0).animate(
+      CurvedAnimation(parent: _shimmerController, curve: Curves.easeInOut),
+    );
 
     _startAnimations();
   }
@@ -94,13 +78,13 @@ class _SplashScreenState extends State<SplashScreen>
   void _startAnimations() async {
     // Start animations with delays
     _fadeController.forward();
-    
+
     await Future.delayed(const Duration(milliseconds: 300));
     _scaleController.forward();
-    
+
     await Future.delayed(const Duration(milliseconds: 500));
     _rotationController.forward();
-    
+
     await Future.delayed(const Duration(milliseconds: 800));
     _shimmerController.repeat(reverse: true);
 
@@ -128,107 +112,107 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light,
         systemNavigationBarColor: emeraldGreen,
         systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: RadialGradient(
-              center: Alignment(0, -0.3),
-              radius: 1.2,
-              colors: [
-                Color(0xFF3D6B1F), // Açık emerald
-                Color(0xFF2D5016), // Ana emerald
-                Color(0xFF1A3409), // Koyu emerald
-              ],
-              stops: [0.0, 0.6, 1.0],
+        body: SafeArea(
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              gradient: RadialGradient(
+                center: Alignment(0, -0.3),
+                radius: 1.2,
+                colors: [
+                  Color(0xFF3D6B1F), // Açık emerald
+                  Color(0xFF2D5016), // Ana emerald
+                  Color(0xFF1A3409), // Koyu emerald
+                ],
+                stops: [0.0, 0.6, 1.0],
+              ),
             ),
-          ),
-          child: SafeArea(
-            child: Stack(
-              children: [
-                // İslami pattern background
-                // _buildIslamicPattern(),
-                
-                // Main content
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Spacer(flex: 2),
-                      
-                      // Logo/Icon section
-                      AnimatedBuilder(
-                        animation: Listenable.merge([
-                          _fadeAnimation,
-                          _scaleAnimation,
-                          _rotationAnimation,
-                        ]),
-                        builder: (context, child) {
-                          return Transform.scale(
-                            scale: _scaleAnimation.value,
-                            child: Opacity(
-                              opacity: _fadeAnimation.value,
-                              child: _buildLogo(),
-                            ),
-                          );
-                        },
-                      ),
-                      
-                      const SizedBox(height: 40),
-                      
-                      // App name with shimmer effect
-                      AnimatedBuilder(
-                        animation: _shimmerAnimation,
-                        builder: (context, child) {
-                          return AnimatedBuilder(
-                            animation: _fadeAnimation,
-                            builder: (context, child) {
-                              return Opacity(
+            child: SafeArea(
+              child: Stack(
+                children: [
+                  // İslami pattern background
+                  // _buildIslamicPattern(),
+
+                  // Main content
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Spacer(flex: 2),
+
+                        // Logo/Icon section
+                        AnimatedBuilder(
+                          animation: Listenable.merge([
+                            _fadeAnimation,
+                            _scaleAnimation,
+                            _rotationAnimation,
+                          ]),
+                          builder: (context, child) {
+                            return Transform.scale(
+                              scale: _scaleAnimation.value,
+                              child: Opacity(
                                 opacity: _fadeAnimation.value,
-                                child: _buildAppTitle(),
-                              );
-                            },
-                          );
-                        },
-                      ),
-                      
-                      const SizedBox(height: 20),
-                      
-                      // Subtitle
-                      AnimatedBuilder(
-                        animation: _fadeAnimation,
-                        builder: (context, child) {
-                          return Opacity(
-                            opacity: _fadeAnimation.value * 0.8,
-                            child: _buildSubtitle(),
-                          );
-                        },
-                      ),
-                      
-                      const Spacer(flex: 3),
-                      
-                      // Loading indicator
-                      AnimatedBuilder(
-                        animation: _fadeAnimation,
-                        builder: (context, child) {
-                          return Opacity(
-                            opacity: _fadeAnimation.value,
-                            child: _buildLoadingIndicator(),
-                          );
-                        },
-                      ),
-                      
-                      const SizedBox(height: 60),
-                    ],
+                                child: _buildLogo(),
+                              ),
+                            );
+                          },
+                        ),
+
+                        const SizedBox(height: 40),
+
+                        // App name with shimmer effect
+                        AnimatedBuilder(
+                          animation: _shimmerAnimation,
+                          builder: (context, child) {
+                            return AnimatedBuilder(
+                              animation: _fadeAnimation,
+                              builder: (context, child) {
+                                return Opacity(
+                                  opacity: _fadeAnimation.value,
+                                  child: _buildAppTitle(),
+                                );
+                              },
+                            );
+                          },
+                        ),
+
+                        const SizedBox(height: 20),
+
+                        // Subtitle
+                        AnimatedBuilder(
+                          animation: _fadeAnimation,
+                          builder: (context, child) {
+                            return Opacity(
+                              opacity: _fadeAnimation.value * 0.8,
+                              child: _buildSubtitle(),
+                            );
+                          },
+                        ),
+
+                        const Spacer(flex: 3),
+
+                        // Loading indicator
+                        AnimatedBuilder(
+                          animation: _fadeAnimation,
+                          builder: (context, child) {
+                            return Opacity(
+                              opacity: _fadeAnimation.value,
+                              child: _buildLoadingIndicator(),
+                            );
+                          },
+                        ),
+
+                        const SizedBox(height: 60),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -275,9 +259,7 @@ class _SplashScreenState extends State<SplashScreen>
       ),
       child: CustomPaint(
         size: const Size(140, 140),
-        painter: LogoPainter(
-          rotationAnimation: _rotationAnimation,
-        ),
+        painter: LogoPainter(rotationAnimation: _rotationAnimation),
       ),
     );
   }
@@ -304,11 +286,7 @@ class _SplashScreenState extends State<SplashScreen>
           color: Colors.white,
           letterSpacing: 2.0,
           shadows: [
-            Shadow(
-              color: Colors.black38,
-              offset: Offset(0, 4),
-              blurRadius: 8,
-            ),
+            Shadow(color: Colors.black38, offset: Offset(0, 4), blurRadius: 8),
           ],
         ),
       ),
@@ -319,7 +297,8 @@ class _SplashScreenState extends State<SplashScreen>
     return Column(
       children: [
         Text(
-          AppLocalizations.of(context)?.splashSubtitleArabic ?? 'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ',
+          AppLocalizations.of(context)?.splashSubtitleArabic ??
+              'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ',
           style: const TextStyle(
             fontSize: 16,
             color: lightGold,
@@ -330,7 +309,8 @@ class _SplashScreenState extends State<SplashScreen>
         ),
         const SizedBox(height: 8),
         Text(
-          AppLocalizations.of(context)?.splashSubtitleTurkish ?? 'Dijital Tesbih Uygulaması',
+          AppLocalizations.of(context)?.splashSubtitleTurkish ??
+              'Dijital Tesbih Uygulaması',
           style: const TextStyle(
             fontSize: 12,
             color: lightGold,
@@ -384,11 +364,7 @@ class IslamicPatternPainter extends CustomPainter {
 
     // Draw concentric circles
     for (int i = 1; i <= 4; i++) {
-      canvas.drawCircle(
-        Offset(centerX, centerY),
-        radius * (i / 4),
-        paint,
-      );
+      canvas.drawCircle(Offset(centerX, centerY), radius * (i / 4), paint);
     }
 
     // Draw radiating lines
@@ -399,11 +375,7 @@ class IslamicPatternPainter extends CustomPainter {
       final endX = centerX + radius * math.cos(angle);
       final endY = centerY + radius * math.sin(angle);
 
-      canvas.drawLine(
-        Offset(startX, startY),
-        Offset(endX, endY),
-        paint,
-      );
+      canvas.drawLine(Offset(startX, startY), Offset(endX, endY), paint);
     }
 
     // Small decorative circles
@@ -412,11 +384,7 @@ class IslamicPatternPainter extends CustomPainter {
       final x = centerX + (radius * 0.8) * math.cos(angle);
       final y = centerY + (radius * 0.8) * math.sin(angle);
 
-      canvas.drawCircle(
-        Offset(x, y),
-        8,
-        paint,
-      );
+      canvas.drawCircle(Offset(x, y), 8, paint);
     }
   }
 
@@ -436,7 +404,7 @@ class LogoPainter extends CustomPainter {
 
     // Save canvas state
     canvas.save();
-    
+
     // Rotate canvas
     canvas.translate(center.dx, center.dy);
     canvas.rotate(rotationAnimation.value);
@@ -448,19 +416,18 @@ class LogoPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     final crescentRadius = radius * 0.6;
-    
+
     // Ayı eğimli konumlandır (Türk bayrağındaki gibi - yukarı bakacak)
     final crescentCenter = Offset(
-      center.dx - crescentRadius * -0.15, 
-      center.dy + crescentRadius * -0.05  // Yukarı bakması için + değeri
+      center.dx - crescentRadius * -0.15,
+      center.dy + crescentRadius * -0.05, // Yukarı bakması için + değeri
     );
 
     // Outer circle
     final outerCircle = Path()
-      ..addOval(Rect.fromCircle(
-        center: crescentCenter,
-        radius: crescentRadius,
-      ));
+      ..addOval(
+        Rect.fromCircle(center: crescentCenter, radius: crescentRadius),
+      );
 
     // Inner circle to create crescent - yukarı bakan hilal için
     final innerCircleCenter = Offset(
@@ -468,10 +435,12 @@ class LogoPainter extends CustomPainter {
       crescentCenter.dy - crescentRadius * 0.3, // Yukarı bakması için - değeri
     );
     final innerCircle = Path()
-      ..addOval(Rect.fromCircle(
-        center: innerCircleCenter,
-        radius: crescentRadius * 0.8, // Daha ince hilal için
-      ));
+      ..addOval(
+        Rect.fromCircle(
+          center: innerCircleCenter,
+          radius: crescentRadius * 0.8, // Daha ince hilal için
+        ),
+      );
 
     // Create crescent shape
     final crescentPath = Path.combine(
@@ -495,14 +464,8 @@ class LogoPainter extends CustomPainter {
       final beadX = center.dx + (radius * 0.85) * math.cos(angle);
       final beadY = center.dy + (radius * 0.85) * math.sin(angle);
 
-      canvas.drawCircle(
-        Offset(beadX, beadY),
-        3,
-        beadPaint,
-      );
+      canvas.drawCircle(Offset(beadX, beadY), 3, beadPaint);
     }
-
-  
   }
 
   @override

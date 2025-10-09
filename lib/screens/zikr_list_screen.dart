@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../controllers/counter_controller.dart';
 import '../widgets/zikr_card.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../l10n/app_localizations.dart';
 import 'add_custom_zikr_screen.dart';
 
 class ZikrListScreen extends StatelessWidget {
@@ -21,17 +22,16 @@ class ZikrListScreen extends StatelessWidget {
     
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-             statusBarColor: Color(0xFF2D5016),
-      statusBarIconBrightness: Brightness.light,
+             
       systemNavigationBarColor: Color(0xFF2D5016),
       systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
         backgroundColor: const Color(0xFFF8F6F0), // Açık krem arka plan
         appBar: AppBar(
-          title: const Text(
-            'Zikir Seç',
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)?.zikirListTitle ?? 'Zikir Seç',
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
               fontSize: 18,
@@ -118,9 +118,9 @@ class ZikrListScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Text(
-                        'Pro Zikir Seçimi',
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)?.zikirListProSelection ?? 'Pro Zikir Seçimi',
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: lightGold,
@@ -134,9 +134,9 @@ class ZikrListScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 6),
-                      const Text(
-                        'Geniş zikir koleksiyonu ve özel zikir oluşturma',
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)?.zikirListDescription ?? 'Geniş zikir koleksiyonu ve özel zikir oluşturma',
+                        style: const TextStyle(
                           color: lightGold,
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
@@ -167,9 +167,9 @@ class ZikrListScreen extends StatelessWidget {
                       elevation: 4,
                     ),
                     icon: const Icon(Icons.add_circle_outline, size: 20),
-                    label: const Text(
-                      'Özel Zikir Ekle',
-                      style: TextStyle(
+                    label: Text(
+                      AppLocalizations.of(context)?.zikirListAddCustom ?? 'Özel Zikir Ekle',
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -194,12 +194,14 @@ class ZikrListScreen extends StatelessWidget {
                           isSelected: isSelected,
                           onTap: () async {
                             await controller.selectZikr(zikr);
-                            Navigator.of(context).pop();
-                            IslamicSnackbar.showSuccess(
-                              'Başarılı',
-                              '${zikr.name} seçildi',
-                              duration: const Duration(seconds: 1),
-                            );
+                            if (context.mounted) {
+                              Navigator.of(context).pop();
+                              IslamicSnackbar.showSuccess(
+                                AppLocalizations.of(context)?.zikirListSelectionSuccess ?? 'Başarılı',
+                                '${zikr.name} ${AppLocalizations.of(context)?.zikirListSelected ?? 'seçildi'}',
+                                duration: const Duration(seconds: 1),
+                              );
+                            }
                           },
                         );
                       },

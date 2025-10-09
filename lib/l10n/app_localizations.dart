@@ -439,6 +439,294 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Version: '**
   String get appInfoVersionLabel;
+
+  /// Home screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbee Pro'**
+  String get homeTitle;
+
+  /// Daily total counter label
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Total Zikr'**
+  String get homeDailyTotal;
+
+  /// Target button label
+  ///
+  /// In en, this message translates to:
+  /// **'Target'**
+  String get homeTarget;
+
+  /// Reset button label
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get homeReset;
+
+  /// Statistics button label
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics'**
+  String get homeStatistics;
+
+  /// Reset confirmation dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get homeResetConfirmTitle;
+
+  /// Reset confirmation dialog message
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to reset the counter?'**
+  String get homeResetConfirmMessage;
+
+  /// Reset success message title
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get homeResetSuccess;
+
+  /// Reset success message
+  ///
+  /// In en, this message translates to:
+  /// **'Counter has been reset'**
+  String get homeResetSuccessMessage;
+
+  /// Target selection dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Select Target'**
+  String get homeTargetDialogTitle;
+
+  /// Zikr list screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Select Zikr'**
+  String get zikirListTitle;
+
+  /// Pro zikr selection header title
+  ///
+  /// In en, this message translates to:
+  /// **'Pro Zikr Selection'**
+  String get zikirListProSelection;
+
+  /// Zikr list screen description
+  ///
+  /// In en, this message translates to:
+  /// **'Wide zikr collection and custom zikr creation'**
+  String get zikirListDescription;
+
+  /// Add custom zikr button text
+  ///
+  /// In en, this message translates to:
+  /// **'Add Custom Zikr'**
+  String get zikirListAddCustom;
+
+  /// Zikr selection success message title
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get zikirListSelectionSuccess;
+
+  /// Zikr selected message
+  ///
+  /// In en, this message translates to:
+  /// **'selected'**
+  String get zikirListSelected;
+
+  /// Subhanallah zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Subhanallah'**
+  String get zikirSubhanallah;
+
+  /// Subhanallah zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'Glory be to Allah'**
+  String get zikirSubhanallahMeaning;
+
+  /// Alhamdulillah zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Alhamdulillah'**
+  String get zikirAlhamdulillah;
+
+  /// Alhamdulillah zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'All praise belongs to Allah'**
+  String get zikirAlhamdulillahMeaning;
+
+  /// Allahu Akbar zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Allahu Akbar'**
+  String get zikirAllahuAkbar;
+
+  /// Allahu Akbar zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'Allah is the Greatest'**
+  String get zikirAllahuAkbarMeaning;
+
+  /// La ilahe illallah zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'La ilahe illallah'**
+  String get zikirLaIlaheIllallah;
+
+  /// La ilahe illallah zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'There is no deity but Allah'**
+  String get zikirLaIlaheIllallahMeaning;
+
+  /// Estağfirullah zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Estağfirullah'**
+  String get zikirEstaghfirullah;
+
+  /// Estağfirullah zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'I seek forgiveness from Allah'**
+  String get zikirEstaghfirullahMeaning;
+
+  /// La hawle vela kuvvete zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'La hawle vela kuvvete'**
+  String get zikirLaHawleWelaKuvvete;
+
+  /// La hawle vela kuvvete zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'There is no power except with Allah'**
+  String get zikirLaHawleWelaKuvveteMeaning;
+
+  /// Hasbiyallahu zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Hasbiyallahu'**
+  String get zikirHasbiyallahu;
+
+  /// Hasbiyallahu zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'Allah is sufficient for me, and He is the best Disposer of affairs'**
+  String get zikirHasbiyallahuMeaning;
+
+  /// Rabbena Atina zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Rabbena Atina'**
+  String get zikirRabbenaAtina;
+
+  /// Rabbena Atina zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'Our Lord! Give us good in this world'**
+  String get zikirRabbenaAtinaMeaning;
+
+  /// Allahumme Salli zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Allahumme Salli'**
+  String get zikirAllahummeSalli;
+
+  /// Allahumme Salli zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'O Allah, send blessings upon Muhammad'**
+  String get zikirAllahummeCalliMeaning;
+
+  /// Rabbi Zidni İlmen zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Rabbi Zidni İlmen'**
+  String get zikirRabbiZidniIlmen;
+
+  /// Rabbi Zidni İlmen zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'My Lord! Increase me in knowledge'**
+  String get zikirRabbiZidniIlmenMeaning;
+
+  /// Bismillah zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Bismillah'**
+  String get zikirBismillah;
+
+  /// Bismillah zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'In the name of Allah, the Most Gracious, the Most Merciful'**
+  String get zikirBismillahMeaning;
+
+  /// İnnallaha maas sabirin zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'İnnallaha maas sabirin'**
+  String get zikirInnallahaMaasSabirin;
+
+  /// İnnallaha maas sabirin zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'Indeed, Allah is with the patient'**
+  String get zikirInnallahaMaasSabirinMeaning;
+
+  /// Allahu Latif zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Allahu Latif'**
+  String get zikirAllahuLatif;
+
+  /// Allahu Latif zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'Allah is Kind to His servants'**
+  String get zikirAllahuLatifMeaning;
+
+  /// Ya Rahman Ya Rahim zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Ya Rahman Ya Rahim'**
+  String get zikirYaRahman;
+
+  /// Ya Rahman Ya Rahim zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'O Most Gracious, O Most Merciful'**
+  String get zikirYaRahmanMeaning;
+
+  /// Tabarak Allah zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Tabarak Allah'**
+  String get zikirTabarakAllah;
+
+  /// Tabarak Allah zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'Blessed is Allah'**
+  String get zikirTabarakAllahMeaning;
+
+  /// Maşallah zikr name
+  ///
+  /// In en, this message translates to:
+  /// **'Maşallah'**
+  String get zikirMashallah;
+
+  /// Maşallah zikr meaning
+  ///
+  /// In en, this message translates to:
+  /// **'What Allah has willed has happened'**
+  String get zikirMashallahMeaning;
 }
 
 class _AppLocalizationsDelegate

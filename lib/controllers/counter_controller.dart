@@ -42,9 +42,10 @@ class CounterController extends GetxController {
   void _loadData() {
     // Load current zikr
     final currentZikrId = _storage.getCurrentZikr();
-    final zikr = Zikr.defaultZikrs.firstWhere(
+    final localizedZikrs = Zikr.getLocalizedDefaultZikrs();
+    final zikr = localizedZikrs.firstWhere(
       (z) => z.id == currentZikrId,
-      orElse: () => Zikr.defaultZikrs.first,
+      orElse: () => localizedZikrs.first,
     );
     _currentZikr.value = zikr;
     
@@ -177,8 +178,8 @@ class CounterController extends GetxController {
   List<Zikr> getAllZikrs() {
     final allZikrs = <Zikr>[];
     
-    // Varsayılan zikirler
-    allZikrs.addAll(Zikr.defaultZikrs);
+    // Varsayılan zikirler (localized)
+    allZikrs.addAll(Zikr.getLocalizedDefaultZikrs());
     
     // Custom zikirler
     final customZikrs = _storage.getCustomZikrs();

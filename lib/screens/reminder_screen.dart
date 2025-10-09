@@ -37,8 +37,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
-        statusBarColor: Color(0xFF2D5016),
-        statusBarIconBrightness: Brightness.light,
+        
         systemNavigationBarColor: Color(0xFF2D5016),
         systemNavigationBarIconBrightness: Brightness.light,
       ),

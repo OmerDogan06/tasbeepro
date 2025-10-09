@@ -5,6 +5,7 @@ import '../controllers/counter_controller.dart';
 import '../widgets/counter_button.dart';
 import '../widgets/progress_bar.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../l10n/app_localizations.dart';
 import 'zikr_list_screen.dart';
 import 'settings_screen.dart';
 import 'stats_screen.dart';
@@ -24,17 +25,16 @@ class HomeScreen extends StatelessWidget {
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-         statusBarColor: Color(0xFF2D5016),
-      statusBarIconBrightness: Brightness.light,
+         
       systemNavigationBarColor: Color(0xFF2D5016),
       systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
         backgroundColor: const Color(0xFFF8F6F0), // Açık krem arka plan
         appBar: AppBar(
-          title: const Text(
-            'Tasbee Pro',
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)?.homeTitle ?? 'Tasbee Pro',
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
               fontSize: 20,
@@ -129,9 +129,9 @@ class HomeScreen extends StatelessWidget {
                                   const SizedBox(width: 10),
                                   Expanded(
                                     child: Text(
-                                      'Bugünkü Toplam Zikir',
+                                      AppLocalizations.of(context)?.homeDailyTotal ?? 'Bugünkü Toplam Zikir',
                                       maxLines:2,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: emeraldGreen,
                                         fontSize: 14,
                                         
@@ -288,8 +288,9 @@ class HomeScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: _buildActionButton(
+                  context,
                   icon: Icons.flag,
-                  label: 'Hedef: ${controller.target}',
+                  label: '${AppLocalizations.of(context)?.homeTarget ?? 'Hedef'}: ${controller.target}',
                   onTap: () => _showTargetDialog(context, controller),
                   isObx: true,
                   controller: controller,
@@ -298,16 +299,18 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(width: 12),
               Expanded(
                 child: _buildActionButton(
+                  context,
                   icon: Icons.refresh,
-                  label: 'Sıfırla',
+                  label: AppLocalizations.of(context)?.homeReset ?? 'Sıfırla',
                   onTap: () => _showResetDialog(context, controller),
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _buildActionButton(
+                  context,
                   icon: Icons.bar_chart,
-                  label: 'İstatistik',
+                  label: AppLocalizations.of(context)?.homeStatistics ?? 'İstatistik',
                   onTap: () => Get.to (() => const StatsScreen(), transition: Transition.rightToLeft,duration: Duration(milliseconds: 300)),
                 ),
               ),
@@ -321,8 +324,9 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: _buildActionButton(
+                      context,
                       icon: Icons.flag,
-                      label: 'Hedef: ${controller.target}',
+                      label: '${AppLocalizations.of(context)?.homeTarget ?? 'Hedef'}: ${controller.target}',
                       onTap: () => _showTargetDialog(context, controller),
                       isObx: true,
                       controller: controller,
@@ -331,8 +335,9 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: _buildActionButton(
+                      context,
                       icon: Icons.refresh,
-                      label: 'Sıfırla',
+                      label: AppLocalizations.of(context)?.homeReset ?? 'Sıfırla',
                       onTap: () => _showResetDialog(context, controller),
                     ),
                   ),
@@ -342,8 +347,9 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: _buildActionButton(
+                  context,
                   icon: Icons.bar_chart,
-                  label: 'İstatistikler',
+                  label: AppLocalizations.of(context)?.homeStatistics ?? 'İstatistikler',
                   onTap: () => Get.to (() => const StatsScreen(), transition: Transition.rightToLeft,duration: Duration(milliseconds: 300)),
                 ),
               ),
@@ -354,7 +360,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButton({
+  Widget _buildActionButton(
+    BuildContext context, {
     required IconData icon,
     required String label,
     required VoidCallback onTap,
@@ -426,7 +433,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(width: 8),
               Flexible(
                 child: Text(
-                  'Hedef: ${controller.target}',
+                  '${AppLocalizations.of(context)?.homeTarget ?? 'Hedef'}: ${controller.target}',
                   style: const TextStyle(
                     color: emeraldGreen,
                     fontSize: 13,
@@ -493,9 +500,9 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    const Text(
-                      'Hedef Seç',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)?.homeTargetDialogTitle ?? 'Hedef Seç',
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: emeraldGreen,
@@ -609,9 +616,9 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        child: const Text(
-                          'Kapat',
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)?.close ?? 'Kapat',
+                          style: const TextStyle(
                             color: emeraldGreen,
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
@@ -648,18 +655,18 @@ class HomeScreen extends StatelessWidget {
               child: const Icon(Icons.refresh, color: emeraldGreen, size: 20),
             ),
             const SizedBox(width: 12),
-            const Text(
-              'Sıfırla',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)?.homeResetConfirmTitle ?? 'Sıfırla',
+              style: const TextStyle(
                 color: emeraldGreen,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ],
         ),
-        content: const Text(
-          'Sayacı sıfırlamak istediğinizden emin misiniz?',
-          style: TextStyle(color: emeraldGreen),
+        content: Text(
+          AppLocalizations.of(context)?.homeResetConfirmMessage ?? 'Sayacı sıfırlamak istediğinizden emin misiniz?',
+          style: const TextStyle(color: emeraldGreen),
         ),
         actions: [
           Container(
@@ -669,7 +676,7 @@ class HomeScreen extends StatelessWidget {
             ),
             child: TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('İptal', style: TextStyle(color: emeraldGreen)),
+              child: Text(AppLocalizations.of(context)?.cancel ?? 'İptal', style: const TextStyle(color: emeraldGreen)),
             ),
           ),
           Container(
@@ -682,14 +689,14 @@ class HomeScreen extends StatelessWidget {
                 controller.reset();
                 Navigator.of(context).pop();
                 IslamicSnackbar.showSuccess(
-                  'Başarılı',
-                  'Sayaç sıfırlandı',
+                  AppLocalizations.of(context)?.homeResetSuccess ?? 'Başarılı',
+                  AppLocalizations.of(context)?.homeResetSuccessMessage ?? 'Sayaç sıfırlandı',
                   duration: const Duration(seconds: 1),
                 );
               },
-              child: const Text(
-                'Sıfırla',
-                style: TextStyle(
+              child: Text(
+                AppLocalizations.of(context)?.homeReset ?? 'Sıfırla',
+                style: const TextStyle(
                   color: emeraldGreen,
                   fontWeight: FontWeight.w600,
                 ),

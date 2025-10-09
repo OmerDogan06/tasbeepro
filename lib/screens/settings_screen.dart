@@ -55,8 +55,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       canPop: true,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
-          statusBarColor: Color(0xFF2D5016),
-          statusBarIconBrightness: Brightness.light,
+          
           systemNavigationBarColor: Color(0xFF2D5016),
           systemNavigationBarIconBrightness: Brightness.light,
         ),

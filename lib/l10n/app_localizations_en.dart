@@ -181,4 +181,155 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appInfoVersionLabel => 'Version: ';
+
+  @override
+  String get homeTitle => 'Tasbee Pro';
+
+  @override
+  String get homeDailyTotal => 'Today\'s Total Zikr';
+
+  @override
+  String get homeTarget => 'Target';
+
+  @override
+  String get homeReset => 'Reset';
+
+  @override
+  String get homeStatistics => 'Statistics';
+
+  @override
+  String get homeResetConfirmTitle => 'Reset';
+
+  @override
+  String get homeResetConfirmMessage =>
+      'Are you sure you want to reset the counter?';
+
+  @override
+  String get homeResetSuccess => 'Success';
+
+  @override
+  String get homeResetSuccessMessage => 'Counter has been reset';
+
+  @override
+  String get homeTargetDialogTitle => 'Select Target';
+
+  @override
+  String get zikirListTitle => 'Select Zikr';
+
+  @override
+  String get zikirListProSelection => 'Pro Zikr Selection';
+
+  @override
+  String get zikirListDescription =>
+      'Wide zikr collection and custom zikr creation';
+
+  @override
+  String get zikirListAddCustom => 'Add Custom Zikr';
+
+  @override
+  String get zikirListSelectionSuccess => 'Success';
+
+  @override
+  String get zikirListSelected => 'selected';
+
+  @override
+  String get zikirSubhanallah => 'Subhanallah';
+
+  @override
+  String get zikirSubhanallahMeaning => 'Glory be to Allah';
+
+  @override
+  String get zikirAlhamdulillah => 'Alhamdulillah';
+
+  @override
+  String get zikirAlhamdulillahMeaning => 'All praise belongs to Allah';
+
+  @override
+  String get zikirAllahuAkbar => 'Allahu Akbar';
+
+  @override
+  String get zikirAllahuAkbarMeaning => 'Allah is the Greatest';
+
+  @override
+  String get zikirLaIlaheIllallah => 'La ilahe illallah';
+
+  @override
+  String get zikirLaIlaheIllallahMeaning => 'There is no deity but Allah';
+
+  @override
+  String get zikirEstaghfirullah => 'Estağfirullah';
+
+  @override
+  String get zikirEstaghfirullahMeaning => 'I seek forgiveness from Allah';
+
+  @override
+  String get zikirLaHawleWelaKuvvete => 'La hawle vela kuvvete';
+
+  @override
+  String get zikirLaHawleWelaKuvveteMeaning =>
+      'There is no power except with Allah';
+
+  @override
+  String get zikirHasbiyallahu => 'Hasbiyallahu';
+
+  @override
+  String get zikirHasbiyallahuMeaning =>
+      'Allah is sufficient for me, and He is the best Disposer of affairs';
+
+  @override
+  String get zikirRabbenaAtina => 'Rabbena Atina';
+
+  @override
+  String get zikirRabbenaAtinaMeaning => 'Our Lord! Give us good in this world';
+
+  @override
+  String get zikirAllahummeSalli => 'Allahumme Salli';
+
+  @override
+  String get zikirAllahummeCalliMeaning =>
+      'O Allah, send blessings upon Muhammad';
+
+  @override
+  String get zikirRabbiZidniIlmen => 'Rabbi Zidni İlmen';
+
+  @override
+  String get zikirRabbiZidniIlmenMeaning => 'My Lord! Increase me in knowledge';
+
+  @override
+  String get zikirBismillah => 'Bismillah';
+
+  @override
+  String get zikirBismillahMeaning =>
+      'In the name of Allah, the Most Gracious, the Most Merciful';
+
+  @override
+  String get zikirInnallahaMaasSabirin => 'İnnallaha maas sabirin';
+
+  @override
+  String get zikirInnallahaMaasSabirinMeaning =>
+      'Indeed, Allah is with the patient';
+
+  @override
+  String get zikirAllahuLatif => 'Allahu Latif';
+
+  @override
+  String get zikirAllahuLatifMeaning => 'Allah is Kind to His servants';
+
+  @override
+  String get zikirYaRahman => 'Ya Rahman Ya Rahim';
+
+  @override
+  String get zikirYaRahmanMeaning => 'O Most Gracious, O Most Merciful';
+
+  @override
+  String get zikirTabarakAllah => 'Tabarak Allah';
+
+  @override
+  String get zikirTabarakAllahMeaning => 'Blessed is Allah';
+
+  @override
+  String get zikirMashallah => 'Maşallah';
+
+  @override
+  String get zikirMashallahMeaning => 'What Allah has willed has happened';
 }

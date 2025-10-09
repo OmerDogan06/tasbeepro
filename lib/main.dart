@@ -18,6 +18,7 @@ import 'l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   
   // Initialize timezone
   tz.initializeTimeZones();
@@ -29,8 +30,7 @@ void main() async {
 
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-          statusBarColor: Color(0xFF2D5016),
-      statusBarIconBrightness: Brightness.light,
+      
       systemNavigationBarColor: Color(0xFF2D5016),
       systemNavigationBarIconBrightness: Brightness.light,
     ),
@@ -77,8 +77,7 @@ class TasbeeApp extends StatelessWidget {
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
           systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: Color(0xFF2D5016),
-      statusBarIconBrightness: Brightness.light,
+             
       systemNavigationBarColor: Color(0xFF2D5016),
       systemNavigationBarIconBrightness: Brightness.light,
           ),
