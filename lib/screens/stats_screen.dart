@@ -10,6 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import 'dart:io';
 import '../controllers/counter_controller.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../l10n/app_localizations.dart';
 
 class StatsScreen extends StatefulWidget {
   const StatsScreen({super.key});
@@ -39,16 +40,16 @@ class _StatsScreenState extends State<StatsScreen>
         setState(() {
           switch (_tabController.index) {
             case 0:
-              _selectedPeriod = 'Günlük';
+              _selectedPeriod = AppLocalizations.of(context)?.statsDaily ?? 'Günlük';
               break;
             case 1:
-              _selectedPeriod = 'Haftalık';
+              _selectedPeriod = AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık';
               break;
             case 2:
-              _selectedPeriod = 'Aylık';
+              _selectedPeriod = AppLocalizations.of(context)?.statsMonthly ?? 'Aylık';
               break;
             case 3:
-              _selectedPeriod = 'Yıllık';
+              _selectedPeriod = AppLocalizations.of(context)?.statsYearly ?? 'Yıllık';
               break;
           }
         });
@@ -75,9 +76,9 @@ class _StatsScreenState extends State<StatsScreen>
       child: Scaffold(
         backgroundColor: const Color(0xFFF8F6F0),
         appBar: AppBar(
-          title: const Text(
-            'Detaylı İstatistikler 💎',
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)?.statsTitle ?? 'Detaylı İstatistikler 💎',
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: emeraldGreen,
               fontSize: 18,
@@ -161,7 +162,7 @@ class _StatsScreenState extends State<StatsScreen>
                         color: emeraldGreen,
                         size: 20,
                       ),
-                onPressed: _isExportingPDF ? null : () => _exportToPDF(_selectedPeriod),
+                onPressed: _isExportingPDF ? null : () => _exportToPDF(_selectedPeriod, context),
               ),
             ),
           ],
@@ -183,11 +184,11 @@ class _StatsScreenState extends State<StatsScreen>
               fontWeight: FontWeight.normal,
               fontSize: 13,
             ),
-            tabs: const [
-              Tab(text: 'Günlük'),
-              Tab(text: 'Haftalık'),
-              Tab(text: 'Aylık'),
-              Tab(text: 'Yıllık'),
+            tabs: [
+              Tab(text: AppLocalizations.of(context)?.statsDaily ?? 'Günlük'),
+              Tab(text: AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık'),
+              Tab(text: AppLocalizations.of(context)?.statsMonthly ?? 'Aylık'),
+              Tab(text: AppLocalizations.of(context)?.statsYearly ?? 'Yıllık'),
             ],
           ),
         ),
@@ -195,10 +196,10 @@ class _StatsScreenState extends State<StatsScreen>
           child: TabBarView(
             controller: _tabController,
             children: [
-              _buildPeriodStats('Günlük', controller),
-              _buildPeriodStats('Haftalık', controller),
-              _buildPeriodStats('Aylık', controller),
-              _buildPeriodStats('Yıllık', controller),
+              _buildPeriodStats(AppLocalizations.of(context)?.statsDaily ?? 'Günlük', controller),
+              _buildPeriodStats(AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık', controller),
+              _buildPeriodStats(AppLocalizations.of(context)?.statsMonthly ?? 'Aylık', controller),
+              _buildPeriodStats(AppLocalizations.of(context)?.statsYearly ?? 'Yıllık', controller),
             ],
           ),
         ),
@@ -234,21 +235,28 @@ class _StatsScreenState extends State<StatsScreen>
     String info;
     String emoji;
     
-    switch (period) {
+    // Map English period names to Turkish for comparison
+    String periodKey = period;
+    if (period == 'Daily') periodKey = 'Günlük';
+    else if (period == 'Weekly') periodKey = 'Haftalık';
+    else if (period == 'Monthly') periodKey = 'Aylık';
+    else if (period == 'Yearly') periodKey = 'Yıllık';
+    
+    switch (periodKey) {
       case 'Günlük':
-        info = 'Bugün çekilen zikirlerinizin detayları';
+        info = AppLocalizations.of(context)?.statsDailyInfo ?? 'Bugün çekilen zikirlerinizin detayları';
         emoji = '📅';
         break;
       case 'Haftalık':
-        info = 'Bu hafta çekilen zikirlerinizin detayları';
+        info = AppLocalizations.of(context)?.statsWeeklyInfo ?? 'Bu hafta çekilen zikirlerinizin detayları';
         emoji = '📊';
         break;
       case 'Aylık':
-        info = 'Bu ay çekilen zikirlerinizin detayları';
+        info = AppLocalizations.of(context)?.statsMonthlyInfo ?? 'Bu ay çekilen zikirlerinizin detayları';
         emoji = '📈';
         break;
       case 'Yıllık':
-        info = 'Bu yıl çekilen zikirlerinizin detayları';
+        info = AppLocalizations.of(context)?.statsYearlyInfo ?? 'Bu yıl çekilen zikirlerinizin detayları';
         emoji = '🏆';
         break;
       default:
@@ -295,7 +303,7 @@ class _StatsScreenState extends State<StatsScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '$period İstatistikler',
+                AppLocalizations.of(context)?.statsPeriodStatsFor(period) ?? '$period İstatistikler',
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -343,7 +351,7 @@ class _StatsScreenState extends State<StatsScreen>
       child: Column(
         children: [
           Text(
-            '$period İstatistikler',
+            AppLocalizations.of(context)?.statsPeriodStatsFor(period) ?? '$period İstatistikler',
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -355,14 +363,14 @@ class _StatsScreenState extends State<StatsScreen>
             children: [
               Expanded(
                 child: _buildStatItem(
-                  'Toplam Zikir',
+                  AppLocalizations.of(context)?.statsTotal ?? 'Toplam Zikir',
                   '${stats['totalCount']}',
                   Icons.numbers,
                 ),
               ),
               Expanded(
                 child: _buildStatItem(
-                  'En Çok Çekilen',
+                  AppLocalizations.of(context)?.statsMostUsed ?? 'En Çok Çekilen',
                   stats['mostUsed'] ?? '',
                   Icons.star,
                 ),
@@ -374,14 +382,14 @@ class _StatsScreenState extends State<StatsScreen>
             children: [
               Expanded(
                 child: _buildStatItem(
-                  'Aktif Zikir',
+                  AppLocalizations.of(context)?.statsActiveZikrs ?? 'Aktif Zikir',
                   '${stats['activeZikrs']}',
                   Icons.list,
                 ),
               ),
               Expanded(
                 child: _buildStatItem(
-                  'Ortalama',
+                  AppLocalizations.of(context)?.statsAverage ?? 'Ortalama',
                   '${stats['average']}',
                   Icons.trending_up,
                 ),
@@ -452,7 +460,7 @@ class _StatsScreenState extends State<StatsScreen>
       child: Column(
         children: [
           Text(
-            '$period Zikir Dağılımı',
+            '$period ${AppLocalizations.of(context)?.statsDistribution ?? 'Zikir Dağılımı'}',
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
@@ -473,7 +481,7 @@ class _StatsScreenState extends State<StatsScreen>
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'Henüz $period veri yok',
+                          AppLocalizations.of(context)?.statsNoData ?? 'Henüz $period veri yok',
                           style: TextStyle(
                             color: emeraldGreen.withOpacity(0.7),
                             fontSize: 14,
@@ -589,7 +597,7 @@ class _StatsScreenState extends State<StatsScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '$period Zikir Detayları',
+            '$period ${AppLocalizations.of(context)?.statsDetails ?? 'Zikir Detayları'}',
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
@@ -765,7 +773,7 @@ class _StatsScreenState extends State<StatsScreen>
     return colors[index % colors.length];
   }
 
-  Future<void> _exportToPDF(String period) async {
+  Future<void> _exportToPDF(String period, BuildContext buildContext) async {
     // Loading state'ini başlat
     setState(() {
       _isExportingPDF = true;
@@ -875,7 +883,7 @@ class _StatsScreenState extends State<StatsScreen>
                           pw.SizedBox(width: 16),
                           pw.Expanded(
                             child: pw.Text(
-                              'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم',
+                              AppLocalizations.of(buildContext)?.pdfBismillah ?? 'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم',
                               textAlign: pw.TextAlign.center,
                               textDirection: pw.TextDirection.rtl,
                               style: pw.TextStyle(
@@ -903,7 +911,7 @@ class _StatsScreenState extends State<StatsScreen>
                       ),
                       pw.SizedBox(height: 12),
                       pw.Text(
-                        'Tasbee Pro - Detaylı İstatistik Raporu',
+                        AppLocalizations.of(buildContext)?.pdfReportTitle ?? 'Tasbee Pro - Detaylı İstatistik Raporu',
                         textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(
                           fontSize: 22,
@@ -914,7 +922,7 @@ class _StatsScreenState extends State<StatsScreen>
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
-                        'Tarih: ${now.day}/${now.month}/${now.year} - ${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}',
+                        '${AppLocalizations.of(buildContext)?.pdfDate ?? 'Tarih'}: ${now.day}/${now.month}/${now.year} - ${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}',
                         style: pw.TextStyle(
                           fontSize: 12,
                           color: PdfColor.fromHex('#F5E6A8'),
@@ -932,7 +940,7 @@ class _StatsScreenState extends State<StatsScreen>
                   children: [
                     pw.Expanded(
                       child: _buildStatCard(
-                        'Toplam Zikir',
+                        AppLocalizations.of(buildContext)?.pdfTotalZikrCard ?? 'Toplam Zikir',
                         totalCount.toString(),
                         'O',
                         regularFont,
@@ -942,7 +950,7 @@ class _StatsScreenState extends State<StatsScreen>
                     pw.SizedBox(width: 12),
                     pw.Expanded(
                       child: _buildStatCard(
-                        'Günlük Ortalama',
+                        AppLocalizations.of(buildContext)?.pdfDailyAverage ?? 'Günlük Ortalama',
                         dailyAverage,
                         '#',
                         regularFont,
@@ -952,7 +960,7 @@ class _StatsScreenState extends State<StatsScreen>
                     pw.SizedBox(width: 12),
                     pw.Expanded(
                       child: _buildStatCard(
-                        'Aktif Zikir',
+                        AppLocalizations.of(buildContext)?.pdfActiveZikrRatio ?? 'Aktif Zikir',
                         '$activeZikrs/${allZikrs.length}',
                         '+',
                         regularFont,
@@ -980,7 +988,7 @@ class _StatsScreenState extends State<StatsScreen>
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
                       pw.Text(
-                        '>> En Cok Kullanilan Zikirler',
+                        '>> ${AppLocalizations.of(buildContext)?.pdfMostUsedZikrs ?? 'En Cok Kullanilan Zikirler'}',
                         style: pw.TextStyle(
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
@@ -1073,7 +1081,7 @@ class _StatsScreenState extends State<StatsScreen>
                         }).toList(),
                       ] else ...[
                         pw.Text(
-                          'Henuz hic zikir cekilmemis.',
+                          AppLocalizations.of(buildContext)?.pdfNoZikrYet ?? 'Henuz hic zikir cekilmemis.',
                           style: pw.TextStyle(
                             fontSize: 12,
                             color: PdfColor.fromHex('#2D5016'),
@@ -1109,7 +1117,7 @@ class _StatsScreenState extends State<StatsScreen>
                           borderRadius: pw.BorderRadius.circular(8),
                         ),
                         child: pw.Text(
-                          'وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ',
+                          AppLocalizations.of(buildContext)?.pdfQuranVerse ?? 'وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ',
                           textAlign: pw.TextAlign.center,
                           textDirection: pw.TextDirection.rtl,
                           style: pw.TextStyle(fontSize: 12, font: amiriFont,color: PdfColor.fromHex('#FFFFFF')),
@@ -1117,13 +1125,13 @@ class _StatsScreenState extends State<StatsScreen>
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
-                        '"Allah’ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
+                        AppLocalizations.of(buildContext)?.pdfQuranTranslation ?? '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
                         textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(fontSize: 10, font: regularFont),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
-                        'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.',
+                        AppLocalizations.of(buildContext)?.pdfAppCredit ?? 'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.',
                         textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(
                           fontSize: 9,
@@ -1152,21 +1160,21 @@ class _StatsScreenState extends State<StatsScreen>
           // Buradan ana directory'ye çıkalım (/storage/emulated/0)
           final mainPath = externalDir.path.split('/Android/data/')[0];
           saveDir = Directory('$mainPath/TasbeePro');
-          saveLocation = "Ana depolama/TasbeePro";
+          saveLocation = AppLocalizations.of(buildContext)?.pdfMainStoragePath ?? "Ana depolama/TasbeePro";
 
           // Klasör yoksa oluştur
           if (!await saveDir.exists()) {
             await saveDir.create(recursive: true);
           }
         } else {
-          throw Exception('External storage not available');
+          throw Exception(AppLocalizations.of(buildContext)?.pdfExternalStorageError ?? 'External storage not available');
         }
       } catch (e) {
         // Fallback - App-specific external directory
         final externalDir = await getExternalStorageDirectory();
         if (externalDir != null) {
           saveDir = Directory('${externalDir.path}/TasbeePro_Reports');
-          saveLocation = "Uygulamaya özel klasör/TasbeePro_Reports";
+          saveLocation = AppLocalizations.of(buildContext)?.pdfAppSpecificPath ?? "Uygulamaya özel klasör/TasbeePro_Reports";
 
           if (!await saveDir.exists()) {
             await saveDir.create(recursive: true);
@@ -1174,7 +1182,7 @@ class _StatsScreenState extends State<StatsScreen>
         } else {
           // Son fallback - Documents directory
           saveDir = await getApplicationDocumentsDirectory();
-          saveLocation = "Uygulama belgeler klasörü";
+          saveLocation = AppLocalizations.of(buildContext)?.pdfDocumentsPath ?? "Uygulama belgeler klasörü";
         }
       }
 
@@ -1189,12 +1197,15 @@ class _StatsScreenState extends State<StatsScreen>
         await _showPdfOptionsDialog(file.path, fileName, saveLocation);
       } catch (pdfError) {
         print('PDF kaydetme hatası: $pdfError');
-        IslamicSnackbar.showError('PDF Hatası', 'PDF kaydedilemedi: $pdfError');
+        IslamicSnackbar.showError(
+          AppLocalizations.of(context)?.statsPdfError ?? 'PDF Hatası', 
+          '${AppLocalizations.of(context)?.statsPdfSaveError ?? 'PDF kaydedilemedi'}: $pdfError'
+        );
       }
     } catch (e) {
       IslamicSnackbar.showError(
-        'Hata',
-        'PDF oluşturulurken bir hata oluştu: $e',
+        AppLocalizations.of(context)?.statsError ?? 'Hata',
+        '${AppLocalizations.of(context)?.statsPdfCreateError ?? 'PDF oluşturulurken bir hata oluştu'}: $e',
       );
     } finally {
       // Loading state'ini sonlandır
@@ -1257,10 +1268,10 @@ class _StatsScreenState extends State<StatsScreen>
                       ),
                     ),
                     const SizedBox(width: 12),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'PDF Başarıyla Oluşturuldu! 📄',
-                        style: TextStyle(
+                        AppLocalizations.of(context)?.pdfSuccessTitle ?? 'PDF Başarıyla Oluşturuldu! 📄',
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: emeraldGreen,
@@ -1359,10 +1370,10 @@ class _StatsScreenState extends State<StatsScreen>
                         Expanded(
                           child: _buildDialogButton(
                             icon: Icons.open_in_new,
-                            label: 'Aç',
+                            label: AppLocalizations.of(context)?.pdfButtonOpen ?? 'Aç',
                             onTap: () async {
                               Get.back();
-                              await _openPdf(filePath);
+                              await _openPdf(filePath, context);
                             },
                             isPrimary: true,
                           ),
@@ -1371,10 +1382,10 @@ class _StatsScreenState extends State<StatsScreen>
                         Expanded(
                           child: _buildDialogButton(
                             icon: Icons.share,
-                            label: 'Paylaş',
+                            label: AppLocalizations.of(context)?.pdfButtonShare ?? 'Paylaş',
                             onTap: () async {
                               Get.back();
-                              await _sharePdf(filePath);
+                              await _sharePdf(filePath, context);
                             },
                           ),
                         ),
@@ -1388,7 +1399,7 @@ class _StatsScreenState extends State<StatsScreen>
                       width: double.infinity,
                       child: _buildDialogButton(
                         icon: Icons.close,
-                        label: 'Kapat',
+                        label: AppLocalizations.of(context)?.pdfButtonClose ?? 'Kapat',
                         onTap: () => Get.back(),
                         isSecondary: true,
                       ),
@@ -1457,32 +1468,35 @@ class _StatsScreenState extends State<StatsScreen>
   }
 
   // PDF'i aç
-  Future<void> _openPdf(String filePath) async {
+  Future<void> _openPdf(String filePath, BuildContext buildContext) async {
     try {
       final result = await OpenFile.open(filePath);
       if (result.type != ResultType.done) {
         IslamicSnackbar.showError(
-          'Dosya Açılamadı',
-          'PDF dosyası açılamadı. PDF okuyucu uygulaması yüklü olduğundan emin olun.',
+          AppLocalizations.of(buildContext)?.pdfFileCannotOpen ?? 'Dosya Açılamadı',
+          AppLocalizations.of(buildContext)?.pdfFileNotOpen ?? 'PDF dosyası açılamadı. PDF okuyucu uygulaması yüklü olduğundan emin olun.',
         );
       }
     } catch (e) {
-      IslamicSnackbar.showError('Hata', 'PDF açılırken bir hata oluştu: $e');
+      IslamicSnackbar.showError(
+        AppLocalizations.of(buildContext)?.statsError ?? 'Hata', 
+        '${AppLocalizations.of(buildContext)?.statsPdfOpenError ?? 'PDF açılırken bir hata oluştu'}: $e'
+      );
     }
   }
 
   // PDF'i paylaş
-  Future<void> _sharePdf(String filePath) async {
+  Future<void> _sharePdf(String filePath, BuildContext buildContext) async {
     try {
       await Share.shareXFiles(
         [XFile(filePath)],
-        text: 'Tasbee Pro İstatistik Raporum',
-        subject: 'Tasbee Pro - İstatistik Raporu',
+        text: AppLocalizations.of(buildContext)?.statsPdfShareText ?? 'Tasbee Pro İstatistik Raporum',
+        subject: AppLocalizations.of(buildContext)?.statsPdfShareSubject ?? 'Tasbee Pro - İstatistik Raporu',
       );
     } catch (e) {
       IslamicSnackbar.showError(
-        'Hata',
-        'PDF paylaşılırken bir hata oluştu: $e',
+        AppLocalizations.of(buildContext)?.statsError ?? 'Hata',
+        '${AppLocalizations.of(buildContext)?.statsPdfShareError ?? 'PDF paylaşılırken bir hata oluştu'}: $e',
       );
     }
   }

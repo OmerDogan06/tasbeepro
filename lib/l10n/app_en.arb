@@ -455,5 +455,340 @@
   "addCustomZikirNameMinLength": "Zikr name must be at least 2 characters",
   "@addCustomZikirNameMinLength": {
     "description": "Zikr name minimum length validation message"
+  },
+  "statsTitle": "Detailed Statistics 💎",
+  "@statsTitle": {
+    "description": "Stats screen title"
+  },
+  "widgetStatsTitle": "Widget Statistics 📱",
+  "@widgetStatsTitle": {
+    "description": "Widget stats screen title"
+  },
+  "statsDaily": "Daily",
+  "@statsDaily": {
+    "description": "Daily tab label"
+  },
+  "statsWeekly": "Weekly",
+  "@statsWeekly": {
+    "description": "Weekly tab label"
+  },
+  "statsMonthly": "Monthly",
+  "@statsMonthly": {
+    "description": "Monthly tab label"
+  },
+  "statsYearly": "Yearly",
+  "@statsYearly": {
+    "description": "Yearly tab label"
+  },
+  "statsDailyInfo": "Details of zikrs performed today",
+  "@statsDailyInfo": {
+    "description": "Daily stats info"
+  },
+  "statsWeeklyInfo": "Details of zikrs performed this week",
+  "@statsWeeklyInfo": {
+    "description": "Weekly stats info"
+  },
+  "statsMonthlyInfo": "Details of zikrs performed this month",
+  "@statsMonthlyInfo": {
+    "description": "Monthly stats info"
+  },
+  "statsYearlyInfo": "Details of zikrs performed this year",
+  "@statsYearlyInfo": {
+    "description": "Yearly stats info"
+  },
+  "widgetStatsDailyInfo": "Details of zikrs performed from widget today",
+  "@widgetStatsDailyInfo": {
+    "description": "Widget daily stats info"
+  },
+  "widgetStatsWeeklyInfo": "Details of zikrs performed from widget this week",
+  "@widgetStatsWeeklyInfo": {
+    "description": "Widget weekly stats info"
+  },
+  "widgetStatsMonthlyInfo": "Details of zikrs performed from widget this month",
+  "@widgetStatsMonthlyInfo": {
+    "description": "Widget monthly stats info"
+  },
+  "widgetStatsYearlyInfo": "Details of zikrs performed from widget this year",
+  "@widgetStatsYearlyInfo": {
+    "description": "Widget yearly stats info"
+  },
+  "statsTotal": "Total Zikr",
+  "@statsTotal": {
+    "description": "Total zikr stat label"
+  },
+  "statsMostUsed": "Most Used",
+  "@statsMostUsed": {
+    "description": "Most used zikr stat label"
+  },
+  "statsActiveZikrs": "Active Zikrs",
+  "@statsActiveZikrs": {
+    "description": "Active zikrs stat label"
+  },
+  "statsAverage": "Average",
+  "@statsAverage": {
+    "description": "Average stat label"
+  },
+  "statsDistribution": "Zikr Distribution",
+  "@statsDistribution": {
+    "description": "Zikr distribution chart title"
+  },
+  "statsDetails": "Zikr Details",
+  "@statsDetails": {
+    "description": "Zikr details section title"
+  },
+  "widgetStatsDistribution": "Widget Zikr Distribution",
+  "@widgetStatsDistribution": {
+    "description": "Widget zikr distribution chart title"
+  },
+  "widgetStatsDetails": "Widget Zikr Details",
+  "@widgetStatsDetails": {
+    "description": "Widget zikr details section title"
+  },
+  "statsNoData": "No data yet",
+  "@statsNoData": {
+    "description": "No data message title"
+  },
+  "statsNoDataMessage": "No zikrs have been performed in this period yet",
+  "@statsNoDataMessage": {
+    "description": "No data message description"
+  },
+  "statsLoadingError": "Error occurred while loading data",
+  "@statsLoadingError": {
+    "description": "Data loading error message"
+  },
+  "statsPeriodStatsFor": "{period} Statistics",
+  "@statsPeriodStatsFor": {
+    "description": "Title format for period statistics, where {period} is replaced with the time period"
+  },
+  "statsPdfError": "PDF Error",
+  "@statsPdfError": {
+    "description": "PDF error dialog title"
+  },
+  "statsPdfSaveError": "Failed to save PDF",
+  "@statsPdfSaveError": {
+    "description": "PDF save error message"
+  },
+  "statsPdfCreateError": "An error occurred while creating PDF",
+  "@statsPdfCreateError": {
+    "description": "PDF creation error message"
+  },
+  "statsPdfOpenError": "An error occurred while opening PDF",
+  "@statsPdfOpenError": {
+    "description": "PDF open error message"
+  },
+  "statsPdfShareError": "An error occurred while sharing PDF",
+  "@statsPdfShareError": {
+    "description": "PDF share error message"
+  },
+  "statsError": "Error",
+  "@statsError": {
+    "description": "General error dialog title"
+  },
+  "statsPdfShareText": "My Tasbee Pro Statistics Report",
+  "@statsPdfShareText": {
+    "description": "Text shown when sharing PDF report"
+  },
+  "statsPdfShareSubject": "Tasbee Pro - Statistics Report",
+  "@statsPdfShareSubject": {
+    "description": "Subject line when sharing PDF report"
+  },
+  "widgetStatsPeriodTitle": "{period} Widget Statistics",
+  "@widgetStatsPeriodTitle": {
+    "description": "Title format for widget period statistics, where {period} is replaced with the time period"
+  },
+  "widgetStatsTotal": "Total Zikr",
+  "@widgetStatsTotal": {
+    "description": "Widget total zikr count label"
+  },
+  "widgetStatsActive": "Active Zikr",
+  "@widgetStatsActive": {
+    "description": "Widget active zikr count label"
+  },
+  "widgetStatsMostUsed": "Most Performed",
+  "@widgetStatsMostUsed": {
+    "description": "Widget most used zikr label"
+  },
+  "widgetStatsTotalRecords": "Total Records",
+  "@widgetStatsTotalRecords": {
+    "description": "Widget total records count label"
+  },
+  "widgetStatsNoData": "No widget data yet",
+  "@widgetStatsNoData": {
+    "description": "No widget data available message"
+  },
+  "widgetStatsNoZikr": "No widget zikr performed yet",
+  "@widgetStatsNoZikr": {
+    "description": "No widget zikr performed message"
+  },
+  "widgetStatsNoPeriodData": "No zikr performed through widget in this period yet",
+  "@widgetStatsNoPeriodData": {
+    "description": "No widget zikr data for specific period message"
+  },
+  "pdfSuccessTitle": "PDF Successfully Created! 📄",
+  "@pdfSuccessTitle": {
+    "description": "PDF creation success dialog title"
+  },
+  "pdfButtonOpen": "Open",
+  "@pdfButtonOpen": {
+    "description": "PDF dialog open button text"
+  },
+  "pdfButtonShare": "Share",
+  "@pdfButtonShare": {
+    "description": "PDF dialog share button text"
+  },
+  "pdfButtonClose": "Close",
+  "@pdfButtonClose": {
+    "description": "PDF dialog close button text"
+  },
+  "pdfReportTitle": "Tasbee Pro - Detailed Statistics Report",
+  "@pdfReportTitle": {
+    "description": "PDF report main title"
+  },
+  "pdfPeriodLabel": "Period",
+  "@pdfPeriodLabel": {
+    "description": "PDF period label"
+  },
+  "pdfDateLabel": "Date",
+  "@pdfDateLabel": {
+    "description": "PDF date label"
+  },
+  "pdfTotalZikrCard": "Total Zikr",
+  "@pdfTotalZikrCard": {
+    "description": "PDF total zikr card title"
+  },
+  "pdfMostUsedCard": "Most Performed",
+  "@pdfMostUsedCard": {
+    "description": "PDF most used zikr card title"
+  },
+  "pdfActiveZikrCard": "Active Zikr Types",
+  "@pdfActiveZikrCard": {
+    "description": "PDF active zikr card title"
+  },
+  "pdfZikrDetailsTitle": "Zikr Details",
+  "@pdfZikrDetailsTitle": {
+    "description": "PDF zikr details section title"
+  },
+  "pdfBismillah": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم",
+  "@pdfBismillah": {
+    "description": "Bismillah text in Arabic"
+  },
+  "pdfDate": "Date",
+  "@pdfDate": {
+    "description": "PDF date label"
+  },
+  "pdfPeriod": "Period",
+  "@pdfPeriod": {
+    "description": "PDF period label"
+  },
+  "pdfDailyAverage": "Daily Average",
+  "@pdfDailyAverage": {
+    "description": "PDF daily average label"
+  },
+  "pdfActiveZikrRatio": "Active Zikr",
+  "@pdfActiveZikrRatio": {
+    "description": "PDF active zikr ratio label"
+  },
+  "pdfMostUsedZikrs": "Most Used Zikrs",
+  "@pdfMostUsedZikrs": {
+    "description": "PDF most used zikrs section title"
+  },
+  "pdfNoZikrYet": "No zikr performed yet",
+  "@pdfNoZikrYet": {
+    "description": "PDF no zikr message"
+  },
+  "pdfQuranVerse": "وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ",
+  "@pdfQuranVerse": {
+    "description": "Quran verse in Arabic"
+  },
+  "pdfQuranTranslation": "\"Remember Allah frequently so that you may be successful.\" (Al-Anfal: 45)",
+  "@pdfQuranTranslation": {
+    "description": "Quran verse translation"
+  },
+  "pdfAppCredit": "This report was generated by Tasbee Pro application",
+  "@pdfAppCredit": {
+    "description": "PDF app credit text"
+  },
+  "pdfFileNotOpen": "PDF file could not be opened. Make sure a PDF reader app is installed",
+  "@pdfFileNotOpen": {
+    "description": "PDF file open error message"
+  },
+  "pdfFileCannotOpen": "File Cannot Open",
+  "@pdfFileCannotOpen": {
+    "description": "PDF file open error title"
+  },
+  "pdfExternalStorageError": "External storage not available",
+  "@pdfExternalStorageError": {
+    "description": "External storage error message"
+  },
+  "pdfMainStoragePath": "Main storage/TasbeePro",
+  "@pdfMainStoragePath": {
+    "description": "Main storage path description"
+  },
+  "pdfAppSpecificPath": "App-specific folder/TasbeePro_Reports",
+  "@pdfAppSpecificPath": {
+    "description": "App-specific storage path description"
+  },
+  "pdfDocumentsPath": "Application documents folder",
+  "@pdfDocumentsPath": {
+    "description": "Documents folder path description"
+  },
+  "pdfWidgetReportTitle": "Tasbee Pro - Widget Statistics Report",
+  "@pdfWidgetReportTitle": {
+    "description": "Widget statistics report title in PDF"
+  },
+  "pdfWidgetStatsSection": "Widget Zikr Details",
+  "@pdfWidgetStatsSection": {
+    "description": "Widget statistics section title in PDF"
+  },
+  "pdfWidgetTotalZikrCard": "Total Widget Zikr",
+  "@pdfWidgetTotalZikrCard": {
+    "description": "Total widget zikr count card title in PDF"
+  },
+  "pdfWidgetMostUsedCard": "Most Used",
+  "@pdfWidgetMostUsedCard": {
+    "description": "Most used zikr card title in PDF"
+  },
+  "pdfWidgetActiveTypesCard": "Active Zikr Types",
+  "@pdfWidgetActiveTypesCard": {
+    "description": "Active zikr types card title in PDF"
+  },
+  "pdfWidgetPeriodText": "In this period, a total of {count} zikr were performed through the widget",
+  "@pdfWidgetPeriodText": {
+    "description": "Widget period statistics text in PDF",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pdfWidgetTypesText": "A total of {count} different zikr types were used",
+  "@pdfWidgetTypesText": {
+    "description": "Widget types statistics text in PDF",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pdfWidgetMostUsedText": "Most used zikr: {name}",
+  "@pdfWidgetMostUsedText": {
+    "description": "Widget most used zikr text in PDF",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "pdfWidgetNoZikrText": "No zikr has been performed through the widget in this period yet",
+  "@pdfWidgetNoZikrText": {
+    "description": "Widget no zikr message in PDF"
+  },
+  "pdfWidgetInfoTitle": "About Widget",
+  "@pdfWidgetInfoTitle": {
+    "description": "Widget info section title in PDF"
+  },
+  "pdfWidgetInfoText": "Zikr performed through the widget are permanently saved and never deleted. This way you can track the history of your widget zikr",
+  "@pdfWidgetInfoText": {
+    "description": "Widget info description text in PDF"
   }
 }

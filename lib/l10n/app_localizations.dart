@@ -781,6 +781,486 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Zikr name must be at least 2 characters'**
   String get addCustomZikirNameMinLength;
+
+  /// Stats screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Detailed Statistics 💎'**
+  String get statsTitle;
+
+  /// Widget stats screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Widget Statistics 📱'**
+  String get widgetStatsTitle;
+
+  /// Daily tab label
+  ///
+  /// In en, this message translates to:
+  /// **'Daily'**
+  String get statsDaily;
+
+  /// Weekly tab label
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly'**
+  String get statsWeekly;
+
+  /// Monthly tab label
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get statsMonthly;
+
+  /// Yearly tab label
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly'**
+  String get statsYearly;
+
+  /// Daily stats info
+  ///
+  /// In en, this message translates to:
+  /// **'Details of zikrs performed today'**
+  String get statsDailyInfo;
+
+  /// Weekly stats info
+  ///
+  /// In en, this message translates to:
+  /// **'Details of zikrs performed this week'**
+  String get statsWeeklyInfo;
+
+  /// Monthly stats info
+  ///
+  /// In en, this message translates to:
+  /// **'Details of zikrs performed this month'**
+  String get statsMonthlyInfo;
+
+  /// Yearly stats info
+  ///
+  /// In en, this message translates to:
+  /// **'Details of zikrs performed this year'**
+  String get statsYearlyInfo;
+
+  /// Widget daily stats info
+  ///
+  /// In en, this message translates to:
+  /// **'Details of zikrs performed from widget today'**
+  String get widgetStatsDailyInfo;
+
+  /// Widget weekly stats info
+  ///
+  /// In en, this message translates to:
+  /// **'Details of zikrs performed from widget this week'**
+  String get widgetStatsWeeklyInfo;
+
+  /// Widget monthly stats info
+  ///
+  /// In en, this message translates to:
+  /// **'Details of zikrs performed from widget this month'**
+  String get widgetStatsMonthlyInfo;
+
+  /// Widget yearly stats info
+  ///
+  /// In en, this message translates to:
+  /// **'Details of zikrs performed from widget this year'**
+  String get widgetStatsYearlyInfo;
+
+  /// Total zikr stat label
+  ///
+  /// In en, this message translates to:
+  /// **'Total Zikr'**
+  String get statsTotal;
+
+  /// Most used zikr stat label
+  ///
+  /// In en, this message translates to:
+  /// **'Most Used'**
+  String get statsMostUsed;
+
+  /// Active zikrs stat label
+  ///
+  /// In en, this message translates to:
+  /// **'Active Zikrs'**
+  String get statsActiveZikrs;
+
+  /// Average stat label
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get statsAverage;
+
+  /// Zikr distribution chart title
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr Distribution'**
+  String get statsDistribution;
+
+  /// Zikr details section title
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr Details'**
+  String get statsDetails;
+
+  /// Widget zikr distribution chart title
+  ///
+  /// In en, this message translates to:
+  /// **'Widget Zikr Distribution'**
+  String get widgetStatsDistribution;
+
+  /// Widget zikr details section title
+  ///
+  /// In en, this message translates to:
+  /// **'Widget Zikr Details'**
+  String get widgetStatsDetails;
+
+  /// No data message title
+  ///
+  /// In en, this message translates to:
+  /// **'No data yet'**
+  String get statsNoData;
+
+  /// No data message description
+  ///
+  /// In en, this message translates to:
+  /// **'No zikrs have been performed in this period yet'**
+  String get statsNoDataMessage;
+
+  /// Data loading error message
+  ///
+  /// In en, this message translates to:
+  /// **'Error occurred while loading data'**
+  String get statsLoadingError;
+
+  /// Title format for period statistics, where {period} is replaced with the time period
+  ///
+  /// In en, this message translates to:
+  /// **'{period} Statistics'**
+  String statsPeriodStatsFor(Object period);
+
+  /// PDF error dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'PDF Error'**
+  String get statsPdfError;
+
+  /// PDF save error message
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to save PDF'**
+  String get statsPdfSaveError;
+
+  /// PDF creation error message
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while creating PDF'**
+  String get statsPdfCreateError;
+
+  /// PDF open error message
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while opening PDF'**
+  String get statsPdfOpenError;
+
+  /// PDF share error message
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while sharing PDF'**
+  String get statsPdfShareError;
+
+  /// General error dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get statsError;
+
+  /// Text shown when sharing PDF report
+  ///
+  /// In en, this message translates to:
+  /// **'My Tasbee Pro Statistics Report'**
+  String get statsPdfShareText;
+
+  /// Subject line when sharing PDF report
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbee Pro - Statistics Report'**
+  String get statsPdfShareSubject;
+
+  /// Title format for widget period statistics, where {period} is replaced with the time period
+  ///
+  /// In en, this message translates to:
+  /// **'{period} Widget Statistics'**
+  String widgetStatsPeriodTitle(Object period);
+
+  /// Widget total zikr count label
+  ///
+  /// In en, this message translates to:
+  /// **'Total Zikr'**
+  String get widgetStatsTotal;
+
+  /// Widget active zikr count label
+  ///
+  /// In en, this message translates to:
+  /// **'Active Zikr'**
+  String get widgetStatsActive;
+
+  /// Widget most used zikr label
+  ///
+  /// In en, this message translates to:
+  /// **'Most Performed'**
+  String get widgetStatsMostUsed;
+
+  /// Widget total records count label
+  ///
+  /// In en, this message translates to:
+  /// **'Total Records'**
+  String get widgetStatsTotalRecords;
+
+  /// No widget data available message
+  ///
+  /// In en, this message translates to:
+  /// **'No widget data yet'**
+  String get widgetStatsNoData;
+
+  /// No widget zikr performed message
+  ///
+  /// In en, this message translates to:
+  /// **'No widget zikr performed yet'**
+  String get widgetStatsNoZikr;
+
+  /// No widget zikr data for specific period message
+  ///
+  /// In en, this message translates to:
+  /// **'No zikr performed through widget in this period yet'**
+  String get widgetStatsNoPeriodData;
+
+  /// PDF creation success dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'PDF Successfully Created! 📄'**
+  String get pdfSuccessTitle;
+
+  /// PDF dialog open button text
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get pdfButtonOpen;
+
+  /// PDF dialog share button text
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get pdfButtonShare;
+
+  /// PDF dialog close button text
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get pdfButtonClose;
+
+  /// PDF report main title
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbee Pro - Detailed Statistics Report'**
+  String get pdfReportTitle;
+
+  /// PDF period label
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get pdfPeriodLabel;
+
+  /// PDF date label
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get pdfDateLabel;
+
+  /// PDF total zikr card title
+  ///
+  /// In en, this message translates to:
+  /// **'Total Zikr'**
+  String get pdfTotalZikrCard;
+
+  /// PDF most used zikr card title
+  ///
+  /// In en, this message translates to:
+  /// **'Most Performed'**
+  String get pdfMostUsedCard;
+
+  /// PDF active zikr card title
+  ///
+  /// In en, this message translates to:
+  /// **'Active Zikr Types'**
+  String get pdfActiveZikrCard;
+
+  /// PDF zikr details section title
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr Details'**
+  String get pdfZikrDetailsTitle;
+
+  /// Bismillah text in Arabic
+  ///
+  /// In en, this message translates to:
+  /// **'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم'**
+  String get pdfBismillah;
+
+  /// PDF date label
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get pdfDate;
+
+  /// PDF period label
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get pdfPeriod;
+
+  /// PDF daily average label
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Average'**
+  String get pdfDailyAverage;
+
+  /// PDF active zikr ratio label
+  ///
+  /// In en, this message translates to:
+  /// **'Active Zikr'**
+  String get pdfActiveZikrRatio;
+
+  /// PDF most used zikrs section title
+  ///
+  /// In en, this message translates to:
+  /// **'Most Used Zikrs'**
+  String get pdfMostUsedZikrs;
+
+  /// PDF no zikr message
+  ///
+  /// In en, this message translates to:
+  /// **'No zikr performed yet'**
+  String get pdfNoZikrYet;
+
+  /// Quran verse in Arabic
+  ///
+  /// In en, this message translates to:
+  /// **'وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ'**
+  String get pdfQuranVerse;
+
+  /// Quran verse translation
+  ///
+  /// In en, this message translates to:
+  /// **'\"Remember Allah frequently so that you may be successful.\" (Al-Anfal: 45)'**
+  String get pdfQuranTranslation;
+
+  /// PDF app credit text
+  ///
+  /// In en, this message translates to:
+  /// **'This report was generated by Tasbee Pro application'**
+  String get pdfAppCredit;
+
+  /// PDF file open error message
+  ///
+  /// In en, this message translates to:
+  /// **'PDF file could not be opened. Make sure a PDF reader app is installed'**
+  String get pdfFileNotOpen;
+
+  /// PDF file open error title
+  ///
+  /// In en, this message translates to:
+  /// **'File Cannot Open'**
+  String get pdfFileCannotOpen;
+
+  /// External storage error message
+  ///
+  /// In en, this message translates to:
+  /// **'External storage not available'**
+  String get pdfExternalStorageError;
+
+  /// Main storage path description
+  ///
+  /// In en, this message translates to:
+  /// **'Main storage/TasbeePro'**
+  String get pdfMainStoragePath;
+
+  /// App-specific storage path description
+  ///
+  /// In en, this message translates to:
+  /// **'App-specific folder/TasbeePro_Reports'**
+  String get pdfAppSpecificPath;
+
+  /// Documents folder path description
+  ///
+  /// In en, this message translates to:
+  /// **'Application documents folder'**
+  String get pdfDocumentsPath;
+
+  /// Widget statistics report title in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbee Pro - Widget Statistics Report'**
+  String get pdfWidgetReportTitle;
+
+  /// Widget statistics section title in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'Widget Zikr Details'**
+  String get pdfWidgetStatsSection;
+
+  /// Total widget zikr count card title in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'Total Widget Zikr'**
+  String get pdfWidgetTotalZikrCard;
+
+  /// Most used zikr card title in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'Most Used'**
+  String get pdfWidgetMostUsedCard;
+
+  /// Active zikr types card title in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'Active Zikr Types'**
+  String get pdfWidgetActiveTypesCard;
+
+  /// Widget period statistics text in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'In this period, a total of {count} zikr were performed through the widget'**
+  String pdfWidgetPeriodText(int count);
+
+  /// Widget types statistics text in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'A total of {count} different zikr types were used'**
+  String pdfWidgetTypesText(int count);
+
+  /// Widget most used zikr text in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'Most used zikr: {name}'**
+  String pdfWidgetMostUsedText(String name);
+
+  /// Widget no zikr message in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'No zikr has been performed through the widget in this period yet'**
+  String get pdfWidgetNoZikrText;
+
+  /// Widget info section title in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'About Widget'**
+  String get pdfWidgetInfoTitle;
+
+  /// Widget info description text in PDF
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr performed through the widget are permanently saved and never deleted. This way you can track the history of your widget zikr'**
+  String get pdfWidgetInfoText;
 }
 
 class _AppLocalizationsDelegate

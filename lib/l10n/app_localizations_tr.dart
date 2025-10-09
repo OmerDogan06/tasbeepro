@@ -361,4 +361,264 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get addCustomZikirNameMinLength =>
       'Zikir adı en az 2 karakter olmalıdır';
+
+  @override
+  String get statsTitle => 'Detaylı İstatistikler 💎';
+
+  @override
+  String get widgetStatsTitle => 'Widget İstatistikleri 📱';
+
+  @override
+  String get statsDaily => 'Günlük';
+
+  @override
+  String get statsWeekly => 'Haftalık';
+
+  @override
+  String get statsMonthly => 'Aylık';
+
+  @override
+  String get statsYearly => 'Yıllık';
+
+  @override
+  String get statsDailyInfo => 'Bugün çekilen zikirlerinizin detayları';
+
+  @override
+  String get statsWeeklyInfo => 'Bu hafta çekilen zikirlerinizin detayları';
+
+  @override
+  String get statsMonthlyInfo => 'Bu ay çekilen zikirlerinizin detayları';
+
+  @override
+  String get statsYearlyInfo => 'Bu yıl çekilen zikirlerinizin detayları';
+
+  @override
+  String get widgetStatsDailyInfo =>
+      'Bugün widget\'tan yapılan zikirlerinizin detayları';
+
+  @override
+  String get widgetStatsWeeklyInfo =>
+      'Bu hafta widget\'tan yapılan zikirlerinizin detayları';
+
+  @override
+  String get widgetStatsMonthlyInfo =>
+      'Bu ay widget\'tan yapılan zikirlerinizin detayları';
+
+  @override
+  String get widgetStatsYearlyInfo =>
+      'Bu yıl widget\'tan yapılan zikirlerinizin detayları';
+
+  @override
+  String get statsTotal => 'Toplam Zikir';
+
+  @override
+  String get statsMostUsed => 'En Çok Çekilen';
+
+  @override
+  String get statsActiveZikrs => 'Aktif Zikir';
+
+  @override
+  String get statsAverage => 'Ortalama';
+
+  @override
+  String get statsDistribution => 'Zikir Dağılımı';
+
+  @override
+  String get statsDetails => 'Zikir Detayları';
+
+  @override
+  String get widgetStatsDistribution => 'Widget Zikir Dağılımı';
+
+  @override
+  String get widgetStatsDetails => 'Widget Zikir Detayları';
+
+  @override
+  String get statsNoData => 'Henüz veri yok';
+
+  @override
+  String get statsNoDataMessage => 'Bu dönemde henüz zikir çekilmemiş';
+
+  @override
+  String get statsLoadingError => 'Veri yüklenirken hata oluştu';
+
+  @override
+  String statsPeriodStatsFor(Object period) {
+    return '$period İstatistikler';
+  }
+
+  @override
+  String get statsPdfError => 'PDF Hatası';
+
+  @override
+  String get statsPdfSaveError => 'PDF kaydedilemedi';
+
+  @override
+  String get statsPdfCreateError => 'PDF oluşturulurken bir hata oluştu';
+
+  @override
+  String get statsPdfOpenError => 'PDF açılırken bir hata oluştu';
+
+  @override
+  String get statsPdfShareError => 'PDF paylaşılırken bir hata oluştu';
+
+  @override
+  String get statsError => 'Hata';
+
+  @override
+  String get statsPdfShareText => 'Tasbee Pro İstatistik Raporum';
+
+  @override
+  String get statsPdfShareSubject => 'Tasbee Pro - İstatistik Raporu';
+
+  @override
+  String widgetStatsPeriodTitle(Object period) {
+    return '$period Widget İstatistikleri';
+  }
+
+  @override
+  String get widgetStatsTotal => 'Toplam Zikir';
+
+  @override
+  String get widgetStatsActive => 'Aktif Zikir';
+
+  @override
+  String get widgetStatsMostUsed => 'En Çok Yapılan';
+
+  @override
+  String get widgetStatsTotalRecords => 'Toplam Kayıt';
+
+  @override
+  String get widgetStatsNoData => 'Henüz widget verisi yok';
+
+  @override
+  String get widgetStatsNoZikr => 'Henüz widget zikir yapılmamış';
+
+  @override
+  String get widgetStatsNoPeriodData =>
+      'Bu dönemde henüz widget üzerinden zikir çekilmemiştir';
+
+  @override
+  String get pdfSuccessTitle => 'PDF Başarıyla Oluşturuldu! 📄';
+
+  @override
+  String get pdfButtonOpen => 'Aç';
+
+  @override
+  String get pdfButtonShare => 'Paylaş';
+
+  @override
+  String get pdfButtonClose => 'Kapat';
+
+  @override
+  String get pdfReportTitle => 'Tasbee Pro - Detaylı İstatistik Raporu';
+
+  @override
+  String get pdfPeriodLabel => 'Dönem';
+
+  @override
+  String get pdfDateLabel => 'Tarih';
+
+  @override
+  String get pdfTotalZikrCard => 'Toplam Zikir';
+
+  @override
+  String get pdfMostUsedCard => 'En Çok Çekilen';
+
+  @override
+  String get pdfActiveZikrCard => 'Aktif Zikir Türü';
+
+  @override
+  String get pdfZikrDetailsTitle => 'Zikir Detayları';
+
+  @override
+  String get pdfBismillah => 'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم';
+
+  @override
+  String get pdfDate => 'Tarih';
+
+  @override
+  String get pdfPeriod => 'Dönem';
+
+  @override
+  String get pdfDailyAverage => 'Günlük Ortalama';
+
+  @override
+  String get pdfActiveZikrRatio => 'Aktif Zikir';
+
+  @override
+  String get pdfMostUsedZikrs => 'En Çok Kullanılan Zikirler';
+
+  @override
+  String get pdfNoZikrYet => 'Henüz hiç zikir çekilmemiş';
+
+  @override
+  String get pdfQuranVerse =>
+      'وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ';
+
+  @override
+  String get pdfQuranTranslation =>
+      '\"Allah\'ı çok zikredin ki kurtulursunuz.\" (Enfal: 45)';
+
+  @override
+  String get pdfAppCredit => 'Allah\'ın izniyle Tasbee Pro ile oluşturuldu';
+
+  @override
+  String get pdfFileNotOpen =>
+      'PDF dosyası açılamadı. PDF okuyucu uygulaması yüklü olduğundan emin olun';
+
+  @override
+  String get pdfFileCannotOpen => 'Dosya Açılamadı';
+
+  @override
+  String get pdfExternalStorageError => 'External storage not available';
+
+  @override
+  String get pdfMainStoragePath => 'Ana depolama/TasbeePro';
+
+  @override
+  String get pdfAppSpecificPath => 'Uygulamaya özel klasör/TasbeePro_Reports';
+
+  @override
+  String get pdfDocumentsPath => 'Uygulama belgeler klasörü';
+
+  @override
+  String get pdfWidgetReportTitle => 'Tasbee Pro - Widget İstatistik Raporu';
+
+  @override
+  String get pdfWidgetStatsSection => 'Widget Zikir Detayları';
+
+  @override
+  String get pdfWidgetTotalZikrCard => 'Toplam Widget Zikir';
+
+  @override
+  String get pdfWidgetMostUsedCard => 'En Çok Kullanılan';
+
+  @override
+  String get pdfWidgetActiveTypesCard => 'Aktif Zikir Türü';
+
+  @override
+  String pdfWidgetPeriodText(int count) {
+    return 'Bu dönemde widget üzerinden toplam $count zikir çekilmiştir';
+  }
+
+  @override
+  String pdfWidgetTypesText(int count) {
+    return 'Toplam $count farklı zikir türü kullanılmıştır';
+  }
+
+  @override
+  String pdfWidgetMostUsedText(String name) {
+    return 'En çok kullanılan zikir: $name';
+  }
+
+  @override
+  String get pdfWidgetNoZikrText =>
+      'Bu dönemde henüz widget üzerinden zikir çekilmemiş';
+
+  @override
+  String get pdfWidgetInfoTitle => 'Widget Hakkında';
+
+  @override
+  String get pdfWidgetInfoText =>
+      'Widget üzerinden yapılan zikirler kalıcı olarak kaydedilir ve asla silinmez. Bu sayede widget zikirlerinizin geçmişini takip edebilirsiniz';
 }
