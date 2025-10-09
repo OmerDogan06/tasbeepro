@@ -50,7 +50,7 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: darkGreen.withOpacity(0.15),
+                  color: darkGreen.withAlpha(38),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -107,7 +107,7 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                       border: Border.all(color: goldColor, width: 1),
                       boxShadow: [
                         BoxShadow(
-                          color: goldColor.withOpacity(0.2),
+                          color: goldColor.withAlpha(51),
                           blurRadius: 8,
                           offset: const Offset(0, 2),
                         ),
@@ -151,7 +151,7 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                       borderRadius: BorderRadius.circular(15),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
+                          color: Colors.black.withAlpha(5),
                           blurRadius: 10,
                           offset: const Offset(0, 2),
                         ),
@@ -166,11 +166,11 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                         labelStyle: const TextStyle(color: emeraldGreen),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: goldColor.withOpacity(0.3)),
+                          borderSide: BorderSide(color: goldColor.withAlpha(77)),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: goldColor.withOpacity(0.3)),
+                          borderSide: BorderSide(color: goldColor.withAlpha(77)),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
@@ -200,7 +200,7 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                       borderRadius: BorderRadius.circular(15),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
+                          color: Colors.black.withAlpha(13),
                           blurRadius: 10,
                           offset: const Offset(0, 2),
                         ),
@@ -216,11 +216,11 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                         labelStyle: const TextStyle(color: emeraldGreen),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: goldColor.withOpacity(0.3)),
+                          borderSide: BorderSide(color: goldColor.withAlpha(77)),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: goldColor.withOpacity(0.3)),
+                          borderSide: BorderSide(color: goldColor.withAlpha(77)),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
@@ -244,7 +244,7 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                         backgroundColor: emeraldGreen,
                         foregroundColor: Colors.white,
                         elevation: 4,
-                        shadowColor: darkGreen.withOpacity(0.5),
+                        shadowColor: darkGreen.withAlpha(77),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),

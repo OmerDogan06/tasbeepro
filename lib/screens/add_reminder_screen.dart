@@ -53,7 +53,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: darkGreen.withOpacity(0.15),
+                  color: darkGreen.withAlpha(38),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -114,7 +114,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                     border: Border.all(color: goldColor, width: 1),
                     boxShadow: [
                       BoxShadow(
-                        color: goldColor.withOpacity(0.2),
+                        color: goldColor.withAlpha(51),
                         blurRadius: 8,
                         offset: const Offset(0, 2),
                       ),
@@ -197,9 +197,9 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: lightGold.withOpacity(0.3),
+                          color: lightGold.withAlpha(77),
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: goldColor.withOpacity(0.3)),
+                          border: Border.all(color: goldColor.withAlpha(77)),
                         ),
                         child: Row(
                           children: [
@@ -317,12 +317,12 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
         ),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: goldColor.withOpacity(0.3),
+          color: goldColor.withAlpha(77),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: darkGreen.withOpacity(0.1),
+            color: darkGreen.withAlpha(26),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

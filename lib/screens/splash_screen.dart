@@ -246,12 +246,12 @@ class _SplashScreenState extends State<SplashScreen>
         ),
         boxShadow: [
           BoxShadow(
-            color: darkGreen.withOpacity(0.4),
+            color: darkGreen.withAlpha(102),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
           BoxShadow(
-            color: goldColor.withOpacity(0.3),
+            color: goldColor.withAlpha(77),
             blurRadius: 40,
             offset: const Offset(0, 0),
           ),
@@ -332,7 +332,7 @@ class _SplashScreenState extends State<SplashScreen>
           child: CircularProgressIndicator(
             strokeWidth: 3,
             valueColor: const AlwaysStoppedAnimation<Color>(goldColor),
-            backgroundColor: lightGold.withOpacity(0.3),
+            backgroundColor: lightGold.withAlpha(77),
           ),
         ),
         const SizedBox(height: 10),
@@ -353,7 +353,7 @@ class IslamicPatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = const Color(0xFF3D6B1F).withOpacity(0.1)
+      ..color = const Color(0xFF3D6B1F).withAlpha(25)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
 

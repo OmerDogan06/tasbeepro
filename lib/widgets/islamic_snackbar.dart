@@ -35,13 +35,13 @@ class IslamicSnackbar {
         ),
         boxShadows: [
           BoxShadow(
-            color: emeraldGreen.withOpacity(0.2),
+            color: emeraldGreen.withAlpha(51),
             blurRadius: 15,
             offset: const Offset(0, 5),
             spreadRadius: 1,
           ),
         ],
-        borderColor: goldColor.withOpacity(0.4),
+        borderColor: goldColor.withAlpha(102),
         borderWidth: 1.5,
         leftBarIndicatorColor: Colors.green.shade600,
       ),
@@ -74,13 +74,13 @@ class IslamicSnackbar {
         ),
         boxShadows: [
           BoxShadow(
-            color: emeraldGreen.withOpacity(0.2),
+            color: emeraldGreen.withAlpha(51),
             blurRadius: 15,
             offset: const Offset(0, 5),
             spreadRadius: 1,
           ),
         ],
-        borderColor: goldColor.withOpacity(0.4),
+        borderColor: goldColor.withAlpha(102),
         borderWidth: 1.5,
         leftBarIndicatorColor: Colors.red.shade600,
       ),
@@ -113,13 +113,13 @@ class IslamicSnackbar {
         ),
         boxShadows: [
           BoxShadow(
-            color: emeraldGreen.withOpacity(0.2),
+            color: emeraldGreen.withAlpha(51),
             blurRadius: 15,
             offset: const Offset(0, 5),
             spreadRadius: 1,
           ),
         ],
-        borderColor: goldColor.withOpacity(0.4),
+        borderColor: goldColor.withAlpha(102),
         borderWidth: 1.5,
         leftBarIndicatorColor: Colors.blue.shade600,
       ),
@@ -152,13 +152,13 @@ class IslamicSnackbar {
         ),
         boxShadows: [
           BoxShadow(
-            color: emeraldGreen.withOpacity(0.2),
+            color: emeraldGreen.withAlpha(51),
             blurRadius: 15,
             offset: const Offset(0, 5),
             spreadRadius: 1,
           ),
         ],
-        borderColor: goldColor.withOpacity(0.4),
+        borderColor: goldColor.withAlpha(102),
         borderWidth: 1.5,
         leftBarIndicatorColor: Colors.orange.shade600,
       ),
@@ -198,19 +198,19 @@ class IslamicSnackbar {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: backgroundColors ?? [
-            lightGold.withOpacity(0.9),
+            lightGold.withAlpha(230),
             creamBackground,
           ],
         ),
         boxShadows: [
           BoxShadow(
-            color: emeraldGreen.withOpacity(0.2),
+            color: emeraldGreen.withAlpha(51),
             blurRadius: 15,
             offset: const Offset(0, 5),
             spreadRadius: 1,
           ),
         ],
-        borderColor: goldColor.withOpacity(0.4),
+        borderColor: goldColor.withAlpha(102),
         borderWidth: 1.5,
         leftBarIndicatorColor: leftBarColor ?? goldColor,
       ),
@@ -225,13 +225,13 @@ class IslamicSnackbar {
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
             gradient: RadialGradient(
-              colors: [lightGold, goldColor.withOpacity(0.8)],
+              colors: [lightGold, goldColor.withAlpha(204)],
               center: const Alignment(-0.2, -0.2),
             ),
             borderRadius: BorderRadius.circular(8),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withOpacity(0.15),
+                color: darkGreen.withAlpha(26),
                 blurRadius: 4,
                 offset: const Offset(0, 2),
               ),
@@ -273,7 +273,7 @@ class IslamicSnackbar {
         message,
         style: TextStyle(
           fontSize: 14,
-          color: emeraldGreen.withOpacity(0.9),
+          color: emeraldGreen.withAlpha(230),
           fontWeight: FontWeight.w500,
           height: 1.3,
         ),

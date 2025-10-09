@@ -315,7 +315,7 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
                     decoration: BoxDecoration(
                       border: Border.symmetric(
                         horizontal: BorderSide(
-                          color: widget.buttonColor.withOpacity(0.3),
+                          color: widget.buttonColor.withAlpha(77),
                           width: 1,
                         ),
                       ),
@@ -361,7 +361,7 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
                     decoration: BoxDecoration(
                       border: Border.symmetric(
                         horizontal: BorderSide(
-                          color: widget.buttonColor.withOpacity(0.3),
+                          color: widget.buttonColor.withAlpha(77),
                           width: 1,
                         ),
                       ),
@@ -411,7 +411,7 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
                     decoration: BoxDecoration(
                       border: Border.symmetric(
                         horizontal: BorderSide(
-                          color: widget.buttonColor.withOpacity(0.3),
+                          color: widget.buttonColor.withAlpha(77),
                           width: 1,
                         ),
                       ),
@@ -467,7 +467,7 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
                   decoration: BoxDecoration(
                     border: Border.symmetric(
                       horizontal: BorderSide(
-                        color: widget.buttonColor.withOpacity(0.3),
+                        color: widget.buttonColor.withAlpha(77),
                         width: 1,
                       ),
                     ),
@@ -540,7 +540,7 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
                   decoration: BoxDecoration(
                     border: Border.symmetric(
                       horizontal: BorderSide(
-                        color: widget.buttonColor.withOpacity(0.3),
+                        color: widget.buttonColor.withAlpha(77),
                         width: 1,
                       ),
                     ),
@@ -590,7 +590,7 @@ class _CustomBottomPickerState extends State<CustomBottomPicker> {
                     decoration: BoxDecoration(
                       border: Border.symmetric(
                         horizontal: BorderSide(
-                          color: widget.buttonColor.withOpacity(0.3),
+                          color: widget.buttonColor.withAlpha(77),
                           width: 1,
                         ),
                       ),

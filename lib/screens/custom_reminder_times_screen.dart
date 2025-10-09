@@ -57,7 +57,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: darkGreen.withOpacity(0.15),
+                  color: darkGreen.withAlpha(38),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -123,7 +123,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                   border: Border.all(color: goldColor, width: 1),
                   boxShadow: [
                     BoxShadow(
-                      color: goldColor.withOpacity(0.2),
+                      color: goldColor.withAlpha(51),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -195,7 +195,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: darkGreen.withOpacity(0.15),
+                  color: darkGreen.withAlpha(38),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -250,12 +250,12 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
         ),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: isActive ? goldColor.withOpacity(0.3) : Colors.grey.withOpacity(0.3),
+          color: isActive ? goldColor.withAlpha(77) : Colors.grey.withAlpha(77),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: darkGreen.withOpacity(0.1),
+            color: darkGreen.withAlpha(26),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -275,7 +275,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withOpacity(0.15),
+                color: darkGreen.withAlpha(38),
                 blurRadius: 6,
                 offset: const Offset(0, 2),
               ),
@@ -298,7 +298,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
         subtitle: Text(
           isActive ? 'Günlük hatırlatıcı aktif' : 'Devre dışı',
           style: TextStyle(
-            color: isActive ? emeraldGreen.withOpacity(0.7) : Colors.grey.shade500,
+            color: isActive ? emeraldGreen.withAlpha(179) : Colors.grey.shade500,
             fontSize: 11,
           ),
         ),
@@ -452,12 +452,12 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             ),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: goldColor.withOpacity(0.4),
+              color: goldColor.withAlpha(102),
               width: 1.5,
             ),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withOpacity(0.2),
+                color: darkGreen.withAlpha(51),
                 blurRadius: 12,
                 offset: const Offset(0, 6),
               ),
@@ -508,7 +508,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      goldColor.withOpacity(0.3),
+                      goldColor.withAlpha(77),
                       Colors.transparent,
                     ],
                   ),
@@ -538,12 +538,12 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                           child: TextButton(
                             onPressed: () => Get.back(result: false),
                             style: TextButton.styleFrom(
-                              backgroundColor: lightGold.withOpacity(0.3),
+                              backgroundColor: lightGold.withAlpha(77),
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 side: BorderSide(
-                                  color: goldColor.withOpacity(0.3),
+                                  color: goldColor.withAlpha(77),
                                   width: 1,
                                 ),
                               ),

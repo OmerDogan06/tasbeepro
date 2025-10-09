@@ -125,12 +125,12 @@ class _CounterButtonState extends State<CounterButton>
                                   fontSize: fontSize,
                                   shadows: [
                                     Shadow(
-                                      color: Colors.black.withOpacity(0.5),
+                                      color: Colors.black.withAlpha(128),
                                       offset: const Offset(0, 3),
                                       blurRadius: 6,
                                     ),
                                     Shadow(
-                                      color: const Color(0xFF2D5016).withOpacity(0.3), // Yeşil gölge
+                                      color: const Color(0xFF2D5016).withAlpha(77), // Yeşil gölge
                                       offset: const Offset(0, 1),
                                       blurRadius: 2,
                                     ),
@@ -151,7 +151,7 @@ class _CounterButtonState extends State<CounterButton>
                               letterSpacing: 1.2,
                               shadows: [
                                 Shadow(
-                                  color: Colors.black.withOpacity(0.4),
+                                  color: Colors.black.withAlpha(102),
                                   offset: const Offset(0, 2),
                                   blurRadius: 4,
                                 ),
@@ -201,7 +201,7 @@ class ModernButtonPainter extends CustomPainter {
     // Outer shadow (elevation effect)
     if (!isPressed) {
       final shadowPaint = Paint()
-        ..color = darkGreen.withOpacity(0.3)
+        ..color = darkGreen.withAlpha(77)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 15);
       
       canvas.drawCircle(
@@ -213,8 +213,8 @@ class ModernButtonPainter extends CustomPainter {
 
     // Ana buton - İslami gradient (HER ŞEY SABİT)
     final gradientColors = [
-      lightGold.withOpacity(0.7), 
-      goldColor.withOpacity(0.9), 
+      lightGold.withAlpha(179), 
+      goldColor.withAlpha(230), 
       emeraldGreen, 
       darkGreen
     ]; // SABİT renkler - basma durumuna göre değişmiyor
@@ -240,7 +240,7 @@ class ModernButtonPainter extends CustomPainter {
 
     // Altın kenar bordür
     final borderPaint = Paint()
-      ..color = goldColor.withOpacity(isPressed ? 0.6 : 0.9)
+      ..color = goldColor.withAlpha(isPressed ? 153 : 230)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3;
 
@@ -248,7 +248,7 @@ class ModernButtonPainter extends CustomPainter {
 
     // İç altın bordür
     final innerBorderPaint = Paint()
-      ..color = lightGold.withOpacity(0.7)
+      ..color = lightGold.withAlpha(179)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1;
 
@@ -277,7 +277,7 @@ class ModernButtonPainter extends CustomPainter {
 
       // Progress glow
       final glowPaint = Paint()
-        ..color = goldColor.withOpacity(0.3)
+        ..color = goldColor.withAlpha(77)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 12
         ..strokeCap = StrokeCap.round
@@ -303,7 +303,7 @@ class ModernButtonPainter extends CustomPainter {
 
     // Sol üst sabit highlight - Hilalin gözükmesi için çok açık
     final highlightPaint = Paint()
-      ..color = lightGold.withOpacity(0.10) // Sabit açıklık - değişmiyor
+      ..color = lightGold.withAlpha(25) // Sabit açıklık - değişmiyor
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 25);
     
     canvas.drawCircle(
@@ -318,7 +318,7 @@ class ModernButtonPainter extends CustomPainter {
     final goldColor = const Color(0xFFD4AF37);
     
     final patternPaint = Paint()
-      ..color = goldColor.withOpacity(isPressed ? 0.2 : 0.3) // Daha açık opacity
+      ..color = goldColor.withAlpha(isPressed ? 51 : 77) // Daha açık opacity
       ..style = PaintingStyle.fill;
 
     // Hilal (Yarım ay) çizimi - Türk bayrağındaki gibi
@@ -354,7 +354,7 @@ class ModernButtonPainter extends CustomPainter {
 
     // Hilal kenarına ince altın çizgi
     final crescentBorderPaint = Paint()
-      ..color = goldColor.withOpacity(0.3) // Daha açık kenar çizgisi
+      ..color = goldColor.withAlpha(77) // Daha açık kenar çizgisi
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
     
@@ -364,7 +364,7 @@ class ModernButtonPainter extends CustomPainter {
     for (int i = 1; i <= 3; i++) {
       final circleRadius = radius * 0.15 * i;
       final circlePaint = Paint()
-        ..color = goldColor.withOpacity(0.3 / i)
+        ..color = goldColor.withAlpha((0.3 * 255 / i).toInt())
         ..style = PaintingStyle.stroke
         ..strokeWidth = 1;
         
@@ -386,7 +386,7 @@ class ModernButtonPainter extends CustomPainter {
         Offset(startX, startY),
         Offset(endX, endY),
         Paint()
-          ..color = goldColor.withOpacity(0.3)
+          ..color = goldColor.withAlpha((0.3 * 255).toInt())
           ..strokeWidth = 1,
       );
     }

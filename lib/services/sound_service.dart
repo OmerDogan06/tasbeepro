@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'storage_service.dart';
@@ -30,7 +31,7 @@ class SoundService extends GetxService {
       }
     } catch (e) {
       // Ses dosyası bulunamazsa sessizce devam et
-      print('Sound file not found, continuing silently: $e');
+      debugPrint('Sound file not found, continuing silently: $e');
     }
   }
   

@@ -54,7 +54,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: darkGreen.withOpacity(0.15),
+                  color: darkGreen.withAlpha(38),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -108,7 +108,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                   border: Border.all(color: goldColor, width: 1),
                   boxShadow: [
                     BoxShadow(
-                      color: goldColor.withOpacity(0.2),
+                      color: goldColor.withAlpha(51),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -186,7 +186,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
           Container(
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
-              color: lightGold.withOpacity(0.3),
+              color: lightGold.withAlpha(77),
               shape: BoxShape.circle,
             ),
             child: const Icon(
@@ -230,10 +230,10 @@ class _ReminderScreenState extends State<ReminderScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: goldColor.withOpacity(0.3)),
+        border: Border.all(color: goldColor.withAlpha(77)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withAlpha(15),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -272,8 +272,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                 icon: const Icon(Icons.delete_outline, color: Colors.redAccent),
                 padding: EdgeInsets.all(8),
                 style: ButtonStyle(
-                  
-                  backgroundColor: MaterialStateProperty.all(Colors.redAccent.withOpacity(0.1)),
+                  backgroundColor: WidgetStateProperty.all(Colors.redAccent.withAlpha(26)),
                 ),
                 constraints: const BoxConstraints(),
               ),
@@ -300,7 +299,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
               message,
               style: TextStyle(
                 fontSize: 13,
-                color: emeraldGreen.withOpacity(0.7),
+                color: emeraldGreen.withAlpha(179),
               ),
             ),
           ],

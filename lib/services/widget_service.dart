@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import '../models/widget_zikr_record.dart';
 
@@ -29,7 +30,7 @@ class WidgetService extends GetxService {
       final List<dynamic> result = await _channel.invokeMethod('getAllRecords');
       return result.map((record) => WidgetZikrRecord.fromJson(Map<String, dynamic>.from(record))).toList();
     } catch (e) {
-      print('Widget kayıtları alınamadı: $e');
+      debugPrint('Widget kayıtları alınamadı: $e');
       return [];
     }
   }
@@ -44,7 +45,7 @@ class WidgetService extends GetxService {
       final List<dynamic> result = await _channel.invokeMethod('getRecordsInDateRange', params);
       return result.map((record) => WidgetZikrRecord.fromJson(Map<String, dynamic>.from(record))).toList();
     } catch (e) {
-      print('Tarih aralığındaki kayıtlar alınamadı: $e');
+      debugPrint('Tarih aralığındaki kayıtlar alınamadı: $e');
       return [];
     }
   }
@@ -55,7 +56,7 @@ class WidgetService extends GetxService {
       final Map<dynamic, dynamic> result = await _channel.invokeMethod('getWidgetStats');
       return Map<String, dynamic>.from(result);
     } catch (e) {
-      print('Widget istatistikleri alınamadı: $e');
+      debugPrint('Widget istatistikleri alınamadı: $e');
       return {
         'totalRecords': 0,
         'totalZikrCount': 0,
@@ -78,7 +79,7 @@ class WidgetService extends GetxService {
         'currentCount': currentCount,
       });
     } catch (e) {
-      print('Widget güncelleme hatası: $e');
+      debugPrint('Widget güncelleme hatası: $e');
     }
   }
 }

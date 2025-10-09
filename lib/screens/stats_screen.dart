@@ -12,6 +12,7 @@ import '../controllers/counter_controller.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../l10n/app_localizations.dart';
 
+
 class StatsScreen extends StatefulWidget {
   const StatsScreen({super.key});
 
@@ -23,7 +24,7 @@ class _StatsScreenState extends State<StatsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   bool _isExportingPDF = false; // PDF export loading state
-  String _selectedPeriod = 'Günlük';
+  String _selectedPeriod = AppLocalizations.of(Get.context!)?.statsDaily ?? 'Günlük';
 
   // İslami renk paleti
   static const emeraldGreen = Color(0xFF2D5016);
@@ -106,7 +107,7 @@ class _StatsScreenState extends State<StatsScreen>
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: darkGreen.withOpacity(0.15),
+                  color: darkGreen.withAlpha(38),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -136,7 +137,7 @@ class _StatsScreenState extends State<StatsScreen>
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: darkGreen.withOpacity(0.15),
+                    color: darkGreen.withAlpha(38),
                     blurRadius: 6,
                     offset: const Offset(0, 2),
                   ),
@@ -170,11 +171,11 @@ class _StatsScreenState extends State<StatsScreen>
             controller: _tabController,
             isScrollable: true,
             labelColor: emeraldGreen,
-            unselectedLabelColor: emeraldGreen.withOpacity(0.6),
+            unselectedLabelColor: emeraldGreen.withAlpha(153),
             indicatorColor: goldColor,
             indicatorSize: TabBarIndicatorSize.label,
             tabAlignment: TabAlignment.center,
-            overlayColor: MaterialStateProperty.all(Colors.transparent),
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
             indicatorWeight: 3,
             labelStyle: const TextStyle(
               fontWeight: FontWeight.bold,
@@ -237,10 +238,16 @@ class _StatsScreenState extends State<StatsScreen>
     
     // Map English period names to Turkish for comparison
     String periodKey = period;
-    if (period == 'Daily') periodKey = 'Günlük';
-    else if (period == 'Weekly') periodKey = 'Haftalık';
-    else if (period == 'Monthly') periodKey = 'Aylık';
-    else if (period == 'Yearly') periodKey = 'Yıllık';
+    if (period == 'Daily') {
+      periodKey = 'Günlük';
+    } else if (period == 'Weekly') {
+      periodKey = 'Haftalık';
+    } else if (period == 'Monthly') {
+      periodKey = 'Aylık';
+    } else if (period == 'Yearly') {
+      periodKey = 'Yıllık';
+    }
+   
     
     switch (periodKey) {
       case 'Günlük':
@@ -260,7 +267,7 @@ class _StatsScreenState extends State<StatsScreen>
         emoji = '🏆';
         break;
       default:
-        info = 'Zikir istatistikleriniz';
+         info =  AppLocalizations.of(context)?.widgetStatsTitle ?? 'Widget İstatistikleri';
         emoji = '📋';
     }
 
@@ -274,10 +281,10 @@ class _StatsScreenState extends State<StatsScreen>
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: goldColor.withOpacity(0.3), width: 1),
+        border: Border.all(color: goldColor.withAlpha(77), width: 1),
         boxShadow: [
           BoxShadow(
-            color: darkGreen.withOpacity(0.08),
+            color: darkGreen.withAlpha(20),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -315,7 +322,7 @@ class _StatsScreenState extends State<StatsScreen>
                   info,
                   style: TextStyle(
                     fontSize: 12,
-                    color: emeraldGreen.withOpacity(0.8),
+                    color: emeraldGreen.withAlpha(204),
                   ),
                 ),
               ],
@@ -339,10 +346,10 @@ class _StatsScreenState extends State<StatsScreen>
           colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
         ),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
+        border: Border.all(color: goldColor.withAlpha(77), width: 1.5),
         boxShadow: [
           BoxShadow(
-            color: darkGreen.withOpacity(0.1),
+            color: darkGreen.withAlpha(25),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -406,9 +413,9 @@ class _StatsScreenState extends State<StatsScreen>
       margin: const EdgeInsets.all(4),
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
-        color: lightGold.withOpacity(0.3),
+        color: lightGold.withAlpha(77),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: goldColor.withOpacity(0.2)),
+        border: Border.all(color: goldColor.withAlpha(51)),
       ),
       child: Column(
         children: [
@@ -426,7 +433,7 @@ class _StatsScreenState extends State<StatsScreen>
             title,
             style: TextStyle(
               fontSize: 11,
-              color: emeraldGreen.withOpacity(0.7),
+              color: emeraldGreen.withAlpha(179),
             ),
             textAlign: TextAlign.center,
           ),
@@ -448,10 +455,10 @@ class _StatsScreenState extends State<StatsScreen>
           colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
         ),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
+        border: Border.all(color: goldColor.withAlpha(77), width: 1.5),
         boxShadow: [
           BoxShadow(
-            color: darkGreen.withOpacity(0.1),
+            color: darkGreen.withAlpha(25),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -477,13 +484,13 @@ class _StatsScreenState extends State<StatsScreen>
                         Icon(
                           Icons.pie_chart,
                           size: 48,
-                          color: emeraldGreen.withOpacity(0.5),
+                          color: emeraldGreen.withAlpha(128),
                         ),
                         const SizedBox(height: 8),
                         Text(
                           AppLocalizations.of(context)?.statsNoData ?? 'Henüz $period veri yok',
                           style: TextStyle(
-                            color: emeraldGreen.withOpacity(0.7),
+                            color: emeraldGreen.withAlpha(179),
                             fontSize: 14,
                           ),
                         ),
@@ -584,10 +591,10 @@ class _StatsScreenState extends State<StatsScreen>
           colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
         ),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
+        border: Border.all(color: goldColor.withAlpha(77), width: 1.5),
         boxShadow: [
           BoxShadow(
-            color: darkGreen.withOpacity(0.1),
+            color: darkGreen.withAlpha(25),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -611,9 +618,9 @@ class _StatsScreenState extends State<StatsScreen>
               margin: const EdgeInsets.only(bottom: 8),
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: lightGold.withOpacity(0.2),
+                color: lightGold.withAlpha(51),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: goldColor.withOpacity(0.2)),
+                border: Border.all(color: goldColor.withAlpha(51)),
               ),
               child: Row(
                 children: [
@@ -648,7 +655,7 @@ class _StatsScreenState extends State<StatsScreen>
                           Text(
                             zikr.meaning!,
                             style: TextStyle(
-                              color: emeraldGreen.withOpacity(0.7),
+                              color: emeraldGreen.withAlpha(179),
                               fontSize: 11,
                             ),
                             maxLines: 1,
@@ -680,7 +687,7 @@ class _StatsScreenState extends State<StatsScreen>
                 ],
               ),
             );
-          }).toList(),
+          }),
         ],
       ),
     );
@@ -807,7 +814,7 @@ class _StatsScreenState extends State<StatsScreen>
         );
         amiriFont = pw.Font.ttf(amiriFontData);
       } catch (fontError) {
-        print('Font yüklenemedi: $fontError');
+        debugPrint('Font yüklenemedi: $fontError');
         // Font yüklenemezse varsayılan font kullanılacak
       }
 
@@ -1078,7 +1085,7 @@ class _StatsScreenState extends State<StatsScreen>
                               ],
                             ),
                           );
-                        }).toList(),
+                        }),
                       ] else ...[
                         pw.Text(
                           AppLocalizations.of(buildContext)?.pdfNoZikrYet ?? 'Henuz hic zikir cekilmemis.',
@@ -1160,21 +1167,21 @@ class _StatsScreenState extends State<StatsScreen>
           // Buradan ana directory'ye çıkalım (/storage/emulated/0)
           final mainPath = externalDir.path.split('/Android/data/')[0];
           saveDir = Directory('$mainPath/TasbeePro');
-          saveLocation = AppLocalizations.of(buildContext)?.pdfMainStoragePath ?? "Ana depolama/TasbeePro";
+          saveLocation = buildContext.mounted ? AppLocalizations.of(buildContext)?.pdfMainStoragePath ?? "Ana depolama/TasbeePro" : "Ana depolama/TasbeePro";
 
           // Klasör yoksa oluştur
           if (!await saveDir.exists()) {
             await saveDir.create(recursive: true);
           }
         } else {
-          throw Exception(AppLocalizations.of(buildContext)?.pdfExternalStorageError ?? 'External storage not available');
+          throw Exception(buildContext.mounted ? AppLocalizations.of(buildContext)?.pdfExternalStorageError ?? 'External storage not available' : 'External storage not available');
         }
       } catch (e) {
         // Fallback - App-specific external directory
         final externalDir = await getExternalStorageDirectory();
         if (externalDir != null) {
           saveDir = Directory('${externalDir.path}/TasbeePro_Reports');
-          saveLocation = AppLocalizations.of(buildContext)?.pdfAppSpecificPath ?? "Uygulamaya özel klasör/TasbeePro_Reports";
+          saveLocation = buildContext.mounted ? AppLocalizations.of(buildContext)?.pdfAppSpecificPath ?? "Uygulamaya özel klasör/TasbeePro_Reports" : "Uygulamaya özel klasör/TasbeePro_Reports";
 
           if (!await saveDir.exists()) {
             await saveDir.create(recursive: true);
@@ -1182,12 +1189,12 @@ class _StatsScreenState extends State<StatsScreen>
         } else {
           // Son fallback - Documents directory
           saveDir = await getApplicationDocumentsDirectory();
-          saveLocation = AppLocalizations.of(buildContext)?.pdfDocumentsPath ?? "Uygulama belgeler klasörü";
+          saveLocation = buildContext.mounted ? AppLocalizations.of(buildContext)?.pdfDocumentsPath ?? "Uygulama belgeler klasörü" : "Uygulama belgeler klasörü";
         }
       }
 
       final fileName =
-          'Tasbee_Pro_Istatistik_${DateTime.now().day}_${DateTime.now().month}_${DateTime.now().year}_${DateTime.now().hour}_${DateTime.now().minute}.pdf';
+          'Tasbee_Pro_${DateTime.now().day}_${DateTime.now().month}_${DateTime.now().year}_${DateTime.now().hour}_${DateTime.now().minute}.pdf';
       final file = File('${saveDir.path}/$fileName');
 
       try {
@@ -1196,17 +1203,14 @@ class _StatsScreenState extends State<StatsScreen>
         // PDF başarıyla kaydedildikten sonra kullanıcıya seçenekler sun
         await _showPdfOptionsDialog(file.path, fileName, saveLocation);
       } catch (pdfError) {
-        print('PDF kaydetme hatası: $pdfError');
-        IslamicSnackbar.showError(
-          AppLocalizations.of(context)?.statsPdfError ?? 'PDF Hatası', 
-          '${AppLocalizations.of(context)?.statsPdfSaveError ?? 'PDF kaydedilemedi'}: $pdfError'
-        );
+        debugPrint('PDF kaydetme hatası: $pdfError');
+        
+       
+      
       }
     } catch (e) {
-      IslamicSnackbar.showError(
-        AppLocalizations.of(context)?.statsError ?? 'Hata',
-        '${AppLocalizations.of(context)?.statsPdfCreateError ?? 'PDF oluşturulurken bir hata oluştu'}: $e',
-      );
+      debugPrint('PDF oluşturma hatası: $e');
+    
     } finally {
       // Loading state'ini sonlandır
       setState(() {
@@ -1236,10 +1240,10 @@ class _StatsScreenState extends State<StatsScreen>
               colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: goldColor.withOpacity(0.4), width: 1.5),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withOpacity(0.2),
+                color: darkGreen.withAlpha(51),
                 blurRadius: 15,
                 offset: const Offset(0, 8),
               ),
@@ -1290,7 +1294,7 @@ class _StatsScreenState extends State<StatsScreen>
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      goldColor.withOpacity(0.3),
+                      goldColor.withAlpha(77),
                       Colors.transparent,
                     ],
                   ),
@@ -1308,10 +1312,10 @@ class _StatsScreenState extends State<StatsScreen>
                       width: double.infinity,
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: lightGold.withOpacity(0.2),
+                        color: lightGold.withAlpha(51),
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: goldColor.withOpacity(0.3),
+                          color: goldColor.withAlpha(77),
                           width: 1,
                         ),
                       ),
@@ -1343,7 +1347,7 @@ class _StatsScreenState extends State<StatsScreen>
                             children: [
                               Icon(
                                 Icons.folder,
-                                color: emeraldGreen.withOpacity(0.7),
+                                color: emeraldGreen.withAlpha(179),
                                 size: 16,
                               ),
                               const SizedBox(width: 6),
@@ -1352,7 +1356,7 @@ class _StatsScreenState extends State<StatsScreen>
                                   saveLocation,
                                   style: TextStyle(
                                     fontSize: 11,
-                                    color: emeraldGreen.withOpacity(0.8),
+                                    color: emeraldGreen.withAlpha(204),
                                   ),
                                 ),
                               ),
@@ -1427,7 +1431,7 @@ class _StatsScreenState extends State<StatsScreen>
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(10),
-        overlayColor: WidgetStateProperty.all(goldColor.withOpacity(0.1)),
+        overlayColor: WidgetStateProperty.all(goldColor.withAlpha(26)),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
           decoration: BoxDecoration(
@@ -1435,15 +1439,15 @@ class _StatsScreenState extends State<StatsScreen>
                 ? const LinearGradient(colors: [lightGold, goldColor])
                 : null,
             color: isSecondary
-                ? lightGold.withOpacity(0.3)
+                ? lightGold.withAlpha(77)
                 : isPrimary
                 ? null
-                : goldColor.withOpacity(0.1),
+                : goldColor.withAlpha(26),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: isPrimary
-                  ? emeraldGreen.withOpacity(0.3)
-                  : goldColor.withOpacity(0.4),
+                  ? emeraldGreen.withAlpha(77)
+                  : goldColor.withAlpha(102),
               width: 1,
             ),
           ),
@@ -1472,16 +1476,20 @@ class _StatsScreenState extends State<StatsScreen>
     try {
       final result = await OpenFile.open(filePath);
       if (result.type != ResultType.done) {
+        if(buildContext.mounted) {
         IslamicSnackbar.showError(
           AppLocalizations.of(buildContext)?.pdfFileCannotOpen ?? 'Dosya Açılamadı',
           AppLocalizations.of(buildContext)?.pdfFileNotOpen ?? 'PDF dosyası açılamadı. PDF okuyucu uygulaması yüklü olduğundan emin olun.',
         );
+        }
       }
     } catch (e) {
+      if(buildContext.mounted) {
       IslamicSnackbar.showError(
         AppLocalizations.of(buildContext)?.statsError ?? 'Hata', 
         '${AppLocalizations.of(buildContext)?.statsPdfOpenError ?? 'PDF açılırken bir hata oluştu'}: $e'
       );
+      }
     }
   }
 
@@ -1494,10 +1502,12 @@ class _StatsScreenState extends State<StatsScreen>
         subject: AppLocalizations.of(buildContext)?.statsPdfShareSubject ?? 'Tasbee Pro - İstatistik Raporu',
       );
     } catch (e) {
+      if(buildContext.mounted) {
       IslamicSnackbar.showError(
         AppLocalizations.of(buildContext)?.statsError ?? 'Hata',
         '${AppLocalizations.of(buildContext)?.statsPdfShareError ?? 'PDF paylaşılırken bir hata oluştu'}: $e',
       );
+      }
     }
   }
 

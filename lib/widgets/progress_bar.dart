@@ -29,12 +29,12 @@ class ProgressBar extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: goldColor.withOpacity(0.3),
+            color: goldColor.withAlpha(77),
             width: 1,
           ),
           boxShadow: [
             BoxShadow(
-              color: darkGreen.withOpacity(0.1),
+              color: darkGreen.withAlpha(26),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -49,10 +49,10 @@ class ProgressBar extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                   decoration: BoxDecoration(
-                    color: lightGold.withOpacity(0.3),
+                    color: lightGold.withAlpha(77),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: goldColor.withOpacity(0.2),
+                      color: goldColor.withAlpha(51),
                       width: 1,
                     ),
                   ),
@@ -74,7 +74,7 @@ class ProgressBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
-                        color: darkGreen.withOpacity(0.15),
+                        color: darkGreen.withAlpha(39),
                         blurRadius: 4,
                         offset: const Offset(0, 1),
                       ),
@@ -97,10 +97,10 @@ class ProgressBar extends StatelessWidget {
             Container(
               height: 8,
               decoration: BoxDecoration(
-                color: lightGold.withOpacity(0.3),
+                color: lightGold.withAlpha(77),
                 borderRadius: BorderRadius.circular(4),
                 border: Border.all(
-                  color: goldColor.withOpacity(0.2),
+                  color: goldColor.withAlpha(51),
                   width: 0.5,
                 ),
               ),
@@ -128,12 +128,12 @@ class ProgressBar extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: emeraldGreen.withOpacity(0.3),
+                    color: emeraldGreen.withAlpha(77),
                     width: 1,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: darkGreen.withOpacity(0.2),
+                      color: darkGreen.withAlpha(26),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),

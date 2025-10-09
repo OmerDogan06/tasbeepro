@@ -72,7 +72,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
-                    color: darkGreen.withOpacity(0.15),
+                    color: darkGreen.withAlpha(39),
                     blurRadius: 6,
                     offset: const Offset(0, 2),
                   ),
@@ -336,10 +336,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
         ),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: goldColor.withOpacity(0.3), width: 1.5),
+        border: Border.all(color: goldColor.withAlpha(77), width: 1.5),
         boxShadow: [
           BoxShadow(
-            color: darkGreen.withOpacity(0.1),
+            color: darkGreen.withAlpha(25),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -367,7 +367,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: darkGreen.withOpacity(0.15),
+              color: darkGreen.withAlpha(39),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -385,12 +385,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(color: emeraldGreen.withOpacity(0.7), fontSize: 12),
+        style: TextStyle(color: emeraldGreen.withAlpha(179), fontSize: 12),
       ),
       trailing: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: goldColor.withOpacity(0.2),
+          color: goldColor.withAlpha(51),
           borderRadius: BorderRadius.circular(8),
         ),
         child: const Icon(
@@ -422,7 +422,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: darkGreen.withOpacity(0.15),
+              color: darkGreen.withAlpha(39),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -440,40 +440,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(color: emeraldGreen.withOpacity(0.7), fontSize: 12),
+        style: TextStyle(color: emeraldGreen.withAlpha(179), fontSize: 12),
       ),
       value: value,
       onChanged: onChanged,
-      thumbColor: MaterialStateProperty.resolveWith<Color?>((
-        Set<MaterialState> states,
+      thumbColor: WidgetStateProperty.resolveWith<Color?>((
+        Set<WidgetState> states,
       ) {
-        if (states.contains(MaterialState.selected)) {
+        if (states.contains(WidgetState.selected)) {
           return goldColor;
         }
         return emeraldGreen;
       }),
       tileColor: Colors.transparent,
       overlayColor: WidgetStateProperty.resolveWith<Color?>((
-        Set<MaterialState> states,
+        Set<WidgetState> states,
       ) {
-        if (states.contains(MaterialState.pressed)) {
-          return goldColor.withOpacity(0.1);
+        if (states.contains(WidgetState.pressed)) {
+          return goldColor.withAlpha(25);
         }
         return null;
       }),
-      trackOutlineColor: MaterialStateProperty.resolveWith<Color?>((
-        Set<MaterialState> states,
+      trackOutlineColor: WidgetStateProperty.resolveWith<Color?>((
+        Set<WidgetState> states,
       ) {
-        if (states.contains(MaterialState.selected)) {
+        if (states.contains(WidgetState.selected)) {
           return goldColor;
         }
         return goldColor;
       }),
 
-      trackColor: MaterialStateProperty.resolveWith<Color?>((
-        Set<MaterialState> states,
+      trackColor: WidgetStateProperty.resolveWith<Color?>((
+        Set<WidgetState> states,
       ) {
-        if (states.contains(MaterialState.selected)) {
+        if (states.contains(WidgetState.selected)) {
           return Colors.transparent;
         }
         return Colors.transparent;
@@ -489,7 +489,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         gradient: LinearGradient(
           colors: [
             Colors.transparent,
-            goldColor.withOpacity(0.3),
+            goldColor.withAlpha(77),
             Colors.transparent,
           ],
         ),
@@ -513,10 +513,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: goldColor.withOpacity(0.4), width: 1.5),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withOpacity(0.2),
+                color: darkGreen.withAlpha(51),
                 blurRadius: 12,
                 offset: const Offset(0, 6),
               ),
@@ -568,7 +568,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       'Uygulama dilini seçin',
                   style: TextStyle(
                     fontSize: 12,
-                    color: emeraldGreen.withOpacity(0.7),
+                    color: emeraldGreen.withAlpha(179),
                   ),
                 ),
               ),
@@ -584,7 +584,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      goldColor.withOpacity(0.3),
+                      goldColor.withAlpha(77),
                       Colors.transparent,
                     ],
                   ),
@@ -607,12 +607,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       child: TextButton(
                         onPressed: () => Navigator.of(context).pop(),
                         style: TextButton.styleFrom(
-                          backgroundColor: lightGold.withOpacity(0.3),
+                          backgroundColor: lightGold.withAlpha(77),
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                             side: BorderSide(
-                              color: goldColor.withOpacity(0.3),
+                              color: goldColor.withAlpha(77),
                               width: 1,
                             ),
                           ),
@@ -645,13 +645,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         color: service.currentLanguage == language['code']
-            ? goldColor.withOpacity(0.15)
+            ? goldColor.withAlpha(38)
             : Colors.transparent,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: service.currentLanguage == language['code']
-              ? goldColor.withOpacity(0.5)
-              : goldColor.withOpacity(0.2),
+              ? goldColor.withAlpha(128)
+              : goldColor.withAlpha(51),
           width: 1.5,
         ),
       ),
@@ -661,6 +661,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           borderRadius: BorderRadius.circular(10),
           onTap: () async {
             await service.changeLanguage(language['code']!);
+             if (!mounted) return; // ✅ widget hala yaşıyor mu kontrol et
             Navigator.of(context).pop();
             IslamicSnackbar.showSuccess(
               AppLocalizations.of(context)?.languageChanged ??
@@ -712,10 +713,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: goldColor.withOpacity(0.4), width: 1.5),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withOpacity(0.2),
+                color: darkGreen.withAlpha(51),
                 blurRadius: 12,
                 offset: const Offset(0, 6),
               ),
@@ -766,7 +767,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      goldColor.withOpacity(0.3),
+                      goldColor.withAlpha(77),
                       Colors.transparent,
                     ],
                   ),
@@ -807,13 +808,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       child: TextButton(
                         onPressed: () => Navigator.of(context).pop(),
                         style: TextButton.styleFrom(
-                          backgroundColor: lightGold.withOpacity(0.3),
+                          backgroundColor: lightGold.withAlpha(77),
                           padding: const EdgeInsets.symmetric(vertical: 6),
-                          overlayColor: Color(0xFFD4AF37).withOpacity(0.1),
+                          overlayColor: Color(0xFFD4AF37).withAlpha(26),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                             side: BorderSide(
-                              color: goldColor.withOpacity(0.3),
+                              color: goldColor.withAlpha(77),
                               width: 1,
                             ),
                           ),
@@ -847,13 +848,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
       margin: const EdgeInsets.only(bottom: 4),
       decoration: BoxDecoration(
         color: service.vibrationLevel == level
-            ? goldColor.withOpacity(0.15)
+            ? goldColor.withAlpha(38)
             : Colors.transparent,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: service.vibrationLevel == level
-              ? goldColor.withOpacity(0.5)
-              : goldColor.withOpacity(0.2),
+              ? goldColor.withAlpha(128)
+              : goldColor.withAlpha(51),
           width: 1,
         ),
       ),
@@ -861,12 +862,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
         color: Colors.transparent,
         child: InkWell(
           overlayColor: WidgetStateProperty.all(
-            Color(0xFFD4AF37).withOpacity(0.1),
+            Color(0xFFD4AF37).withAlpha(26),
           ),
           borderRadius: BorderRadius.circular(8),
           onTap: () => service
               .setVibrationLevel(level)
-              .then((_) => Navigator.of(context).pop()),
+              .then((_) {
+
+                if (!mounted) return; // ✅ widget hala yaşıyor mu kontrol et
+                Navigator.of(context).pop();
+              } ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             child: Row(
@@ -877,7 +882,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   decoration: BoxDecoration(
                     color: service.vibrationLevel == level
                         ? goldColor
-                        : emeraldGreen.withOpacity(0.4),
+                        : emeraldGreen.withAlpha(102),
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -920,10 +925,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: goldColor.withOpacity(0.4), width: 1.5),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withOpacity(0.2),
+                color: darkGreen.withAlpha(51),
                 blurRadius: 15,
                 offset: const Offset(0, 8),
               ),
@@ -975,7 +980,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      goldColor.withOpacity(0.3),
+                      goldColor.withAlpha(77),
                       Colors.transparent,
                     ],
                   ),
@@ -993,10 +998,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       width: double.infinity,
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: lightGold.withOpacity(0.2),
+                        color: lightGold.withAlpha(51),
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: goldColor.withOpacity(0.3),
+                          color: goldColor.withAlpha(77),
                           width: 1,
                         ),
                       ),
@@ -1074,12 +1079,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       child: TextButton(
                         onPressed: () => Navigator.of(context).pop(),
                         style: TextButton.styleFrom(
-                          backgroundColor: lightGold.withOpacity(0.3),
+                          backgroundColor: lightGold.withAlpha(77),
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                             side: BorderSide(
-                              color: goldColor.withOpacity(0.3),
+                              color: goldColor.withAlpha(77),
                               width: 1,
                             ),
                           ),
@@ -1117,7 +1122,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               text,
               style: TextStyle(
                 fontSize: 11,
-                color: emeraldGreen.withOpacity(0.8),
+                color: emeraldGreen.withAlpha(204),
               ),
             ),
           ),
@@ -1136,7 +1141,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     } catch (e) {
       // Platform channel başarısız olursa manual talimatlar göster
       HapticFeedback.lightImpact();
-
+      if (!mounted) return; // ✅ widget hala yaşıyor mu kontrol et
       IslamicSnackbar.showSuccess(
         AppLocalizations.of(context)?.widgetAddSuccess ?? 'Widget Ekleme',
         AppLocalizations.of(context)?.widgetAddSuccessMessage ?? 'Ana ekranınızda boş bir alana uzun basın ve "Widget\'lar" seçeneğini seçin. Ardından "Tasbee Pro" widget\'ını bulup ekleyin.',
@@ -1159,10 +1164,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: goldColor.withOpacity(0.4), width: 1.5),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withOpacity(0.2),
+                color: darkGreen.withAlpha(51),
                 blurRadius: 12,
                 offset: const Offset(0, 6),
               ),
@@ -1212,7 +1217,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      goldColor.withOpacity(0.3),
+                      goldColor.withAlpha(77),
                       Colors.transparent,
                     ],
                   ),
@@ -1231,7 +1236,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
                         ),
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: goldColor.withOpacity(0.2)),
+                        border: Border.all(color: goldColor.withAlpha(51)),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1261,13 +1266,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       child: TextButton(
                         onPressed: () => Navigator.of(context).pop(),
                         style: TextButton.styleFrom(
-                          backgroundColor: lightGold.withOpacity(0.3),
+                          backgroundColor: lightGold.withAlpha(77),
                           padding: const EdgeInsets.symmetric(vertical: 6),
-                          overlayColor: Color(0xFFD4AF37).withOpacity(0.1),
+                          overlayColor: Color(0xFFD4AF37).withAlpha(26),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                             side: BorderSide(
-                              color: goldColor.withOpacity(0.3),
+                              color: goldColor.withAlpha(77),
                               width: 1,
                             ),
                           ),

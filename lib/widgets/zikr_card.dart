@@ -38,15 +38,15 @@ class ZikrCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: isSelected 
-              ? emeraldGreen.withOpacity(0.5)
-              : goldColor.withOpacity(0.3),
+              ? emeraldGreen.withAlpha(127)
+              : goldColor.withAlpha(77),
           width: isSelected ? 2 : 1,
         ),
         boxShadow: [
           BoxShadow(
             color: isSelected 
-                ? darkGreen.withOpacity(0.3)
-                : darkGreen.withOpacity(0.1),
+                ? darkGreen.withAlpha(77)
+                : darkGreen.withAlpha(26),
             blurRadius: isSelected ? 15 : 8,
             offset: const Offset(0, 4),
           ),
@@ -92,7 +92,7 @@ class ZikrCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                           boxShadow: [
                             BoxShadow(
-                              color: darkGreen.withOpacity(0.3),
+                              color: darkGreen.withAlpha(77),
                               blurRadius: 4,
                               offset: const Offset(0, 2),
                             ),
@@ -114,13 +114,13 @@ class ZikrCard extends StatelessWidget {
                     padding: const EdgeInsets.all(0),
                     decoration: BoxDecoration(
                       color: isSelected 
-                          ? emeraldGreen.withOpacity(0.1)
-                          : lightGold.withOpacity(0.3),
+                          ? emeraldGreen.withAlpha(26)
+                          : lightGold.withAlpha(77),
                       borderRadius: BorderRadius.circular(4),
                       border: Border.all(
                         color: isSelected 
-                            ? emeraldGreen.withOpacity(0.3)
-                            : goldColor.withOpacity(0.2),
+                            ? emeraldGreen.withAlpha(77)
+                            : goldColor.withAlpha(51),
                         width: 1,
                       ),
                     ),
@@ -130,7 +130,7 @@ class ZikrCard extends StatelessWidget {
                               zikr.meaning!,
                               style: TextStyle(
                                 fontSize: 11,
-                                color: emeraldGreen.withOpacity(0.8),
+                                color: emeraldGreen.withAlpha(204),
                                 fontWeight: FontWeight.w400,
                               ),
                               textAlign: TextAlign.center,
@@ -142,7 +142,7 @@ class ZikrCard extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.mosque,
-                                  color: emeraldGreen.withOpacity(0.6),
+                                  color: emeraldGreen.withAlpha(153),
                                   size: 16,
                                 ),
                                 const SizedBox(width: 6),
@@ -150,14 +150,14 @@ class ZikrCard extends StatelessWidget {
                                   'Zikir Seç',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: emeraldGreen.withOpacity(0.7),
+                                    color: emeraldGreen.withAlpha(179),
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
                                 const SizedBox(width: 6),
                                 Icon(
                                   Icons.mosque,
-                                  color: emeraldGreen.withOpacity(0.6),
+                                  color: emeraldGreen.withAlpha(153),
                                   size: 16,
                                 ),
                               ],

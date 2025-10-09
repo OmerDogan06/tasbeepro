@@ -59,7 +59,7 @@ class ZikrListScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: darkGreen.withOpacity(0.15),
+                  color: darkGreen.withAlpha(39),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -95,7 +95,7 @@ class ZikrListScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: darkGreen.withOpacity(0.3),
+                        color: darkGreen.withAlpha(77),
                         blurRadius: 15,
                         offset: const Offset(0, 6),
                       ),

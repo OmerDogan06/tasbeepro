@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: darkGreen.withOpacity(0.15),
+                    color: darkGreen.withAlpha(38),
                     blurRadius: 6,
                     offset: const Offset(0, 2),
                   ),
@@ -104,12 +104,12 @@ class HomeScreen extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                            color: goldColor.withOpacity(0.3),
+                            color: goldColor.withAlpha(77),
                             width: 1.5,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: darkGreen.withOpacity(0.1),
+                              color: darkGreen.withAlpha(26),
                               blurRadius: 12,
                               offset: const Offset(0, 4),
                             ),
@@ -161,7 +161,7 @@ class HomeScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: darkGreen.withOpacity(0.2),
+                                    color: darkGreen.withAlpha(51),
                                     blurRadius: 6,
                                     offset: const Offset(0, 2),
                                   ),
@@ -212,7 +212,7 @@ class HomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                             boxShadow: [
                               BoxShadow(
-                                color: darkGreen.withOpacity(0.3),
+                                color: darkGreen.withAlpha(77),
                                 blurRadius: 15,
                                 offset: const Offset(0, 6),
                               ),
@@ -377,10 +377,10 @@ class HomeScreen extends StatelessWidget {
           colors: [Color(0xFFF5E6A8), Color(0xFFD4AF37)],
         ),
         borderRadius: BorderRadius.circular(5),
-        border: Border.all(color: emeraldGreen.withOpacity(0.2), width: 1),
+        border: Border.all(color: emeraldGreen.withAlpha(51), width: 1),
         boxShadow: [
           BoxShadow(
-            color: darkGreen.withOpacity(0.15),
+            color: darkGreen.withAlpha(38),
             blurRadius: 8,
             offset: const Offset(0, 3),
           ),
@@ -417,10 +417,10 @@ class HomeScreen extends StatelessWidget {
               colors: [Color(0xFFF5E6A8), Color(0xFFD4AF37)],
             ),
             borderRadius: BorderRadius.circular(5),
-            border: Border.all(color: emeraldGreen.withOpacity(0.2), width: 1),
+            border: Border.all(color: emeraldGreen.withAlpha(51), width: 1),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withOpacity(0.15),
+                color: darkGreen.withAlpha(38),
                 blurRadius: 8,
                 offset: const Offset(0, 3),
               ),
@@ -466,12 +466,12 @@ class HomeScreen extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: goldColor.withOpacity(0.4),
+              color: goldColor.withAlpha(102),
               width: 1.5,
             ),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withOpacity(0.2),
+                color: darkGreen.withAlpha(51),
                 blurRadius: 15,
                 offset: const Offset(0, 8),
               ),
@@ -520,7 +520,7 @@ class HomeScreen extends StatelessWidget {
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      goldColor.withOpacity(0.3),
+                      goldColor.withAlpha(77),
                       Colors.transparent,
                     ],
                   ),
@@ -538,20 +538,20 @@ class HomeScreen extends StatelessWidget {
                         margin: const EdgeInsets.only(bottom: 8),
                         decoration: BoxDecoration(
                           color: isSelected 
-                              ? goldColor.withOpacity(0.15)
+                              ? goldColor.withAlpha(38)
                               : Colors.transparent,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             color: isSelected 
-                                ? goldColor.withOpacity(0.5)
-                                : goldColor.withOpacity(0.2),
+                                ? goldColor.withAlpha(128)
+                                : goldColor.withAlpha(51),
                             width: 1,
                           ),
                         ),
                         child: Material(
                           color: Colors.transparent,
                           child: InkWell(
-                            overlayColor: WidgetStateProperty.all(Color(0xFFD4AF37).withOpacity(0.1)),
+                            overlayColor: WidgetStateProperty.all(Color(0xFFD4AF37).withAlpha(26)),
                             borderRadius: BorderRadius.circular(12),
                             onTap: () {
                               controller.setTarget(target);
@@ -568,7 +568,7 @@ class HomeScreen extends StatelessWidget {
                                     width: 6,
                                     height: 6,
                                     decoration: BoxDecoration(
-                                      color: isSelected ? goldColor : emeraldGreen.withOpacity(0.4),
+                                      color: isSelected ? goldColor : emeraldGreen.withAlpha(102),
                                       shape: BoxShape.circle,
                                     ),
                                   ),
@@ -595,7 +595,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                       );
-                    }).toList(),
+                    }),
                     
                     const SizedBox(height: 12),
                     
@@ -605,13 +605,13 @@ class HomeScreen extends StatelessWidget {
                       child: TextButton(
                         onPressed: () => Navigator.of(context).pop(),
                         style: TextButton.styleFrom(
-                          backgroundColor: lightGold.withOpacity(0.3),
+                          backgroundColor: lightGold.withAlpha(77),
                           padding: const EdgeInsets.symmetric(vertical: 8),
-                          overlayColor: Color(0xFFD4AF37).withOpacity(0.1),
+                          overlayColor: Color(0xFFD4AF37).withAlpha(26),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                             side: BorderSide(
-                              color: goldColor.withOpacity(0.3),
+                              color: goldColor.withAlpha(77),
                               width: 1,
                             ),
                           ),
@@ -642,7 +642,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: const Color(0xFFF8F6F0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: BorderSide(color: goldColor.withOpacity(0.3)),
+          side: BorderSide(color: goldColor.withAlpha(77)),
         ),
         title: Row(
           children: [
@@ -671,7 +671,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           Container(
             decoration: BoxDecoration(
-              border: Border.all(color: goldColor.withOpacity(0.5)),
+              border: Border.all(color: goldColor.withAlpha(128)),
               borderRadius: BorderRadius.circular(12),
             ),
             child: TextButton(

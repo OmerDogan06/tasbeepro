@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 
 class LanguageService extends GetxService {
   static const String _languageKey = 'selected_language';
@@ -24,7 +23,7 @@ class LanguageService extends GetxService {
       
       if (savedLanguage == null) {
         // Cihaz dilini kontrol et
-        String deviceLanguage = ui.window.locale.languageCode;
+       String deviceLanguage = WidgetsBinding.instance.platformDispatcher.locale.languageCode;
         savedLanguage = deviceLanguage == 'tr' ? 'tr' : 'en';
       }
       
@@ -61,7 +60,7 @@ class LanguageService extends GetxService {
       await prefs.setString(_languageKey, languageCode);
       
     } catch (e) {
-      print('Dil değiştirme hatası: $e');
+      debugPrint('Dil değiştirme hatası: $e');
     }
   }
 
