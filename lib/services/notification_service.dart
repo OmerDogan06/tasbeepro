@@ -114,7 +114,7 @@ class NotificationService extends GetxService {
     // Permission kontrolü
     if (!await _hasNotificationPermission()) {
       throw Exception(context != null 
-          ? (AppLocalizations.of(context)?.notificationPermissionRequired ?? 'Bildirim izni gerekli')
+          ? (context.mounted ? AppLocalizations.of(context)?.notificationPermissionRequired : 'Bildirim izni gerekli')
           : 'Bildirim izni gerekli');
     }
 
@@ -127,10 +127,10 @@ class NotificationService extends GetxService {
         android: AndroidNotificationDetails(
           'zikr_reminders',
           context != null 
-              ? (AppLocalizations.of(context)?.notificationChannelTitle ?? 'Zikir Hatırlatıcıları')
+              ? (context.mounted ? AppLocalizations.of(context)?.notificationChannelTitle : 'Zikir Hatırlatıcıları')!
               : 'Zikir Hatırlatıcıları',
           channelDescription: context != null 
-              ? (AppLocalizations.of(context)?.notificationChannelDescription ?? 'Zikir yapmayı hatırlatır')
+              ? (context.mounted ? AppLocalizations.of(context)?.notificationChannelDescription : 'Zikir yapmayı hatırlatır')
               : 'Zikir yapmayı hatırlatır',
           importance: Importance.max,
           priority: Priority.max,
@@ -148,7 +148,7 @@ class NotificationService extends GetxService {
           ledOnMs: 1000,
           ledOffMs: 500,
           ticker: context != null 
-              ? (AppLocalizations.of(context)?.notificationZikirReminder ?? 'Zikir Hatırlatıcısı')
+              ? (context.mounted ? AppLocalizations.of(context)?.notificationZikirReminder : 'Zikir Hatırlatıcısı')
               : 'Zikir Hatırlatıcısı',
           largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
           styleInformation: BigTextStyleInformation(

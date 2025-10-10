@@ -1136,8 +1136,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
           // Buradan ana directory'ye çıkalım (/storage/emulated/0)
           final mainPath = externalDir.path.split('/Android/data/')[0];
           saveDir = Directory('$mainPath/TasbeePro');
-          if (!buildContext.mounted)
-            return; // ✅ widget hala yaşıyor mu kontrol et
+          if (!buildContext.mounted) return; // ✅ widget hala yaşıyor mu kontrol et
           saveLocation =
               AppLocalizations.of(buildContext)?.pdfMainStoragePath ??
               "Ana depolama/TasbeePro";
@@ -1154,8 +1153,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         final externalDir = await getExternalStorageDirectory();
         if (externalDir != null) {
           saveDir = Directory('${externalDir.path}/TasbeePro_Reports');
-          if (!buildContext.mounted)
-            return; // ✅ widget hala yaşıyor mu kontrol et
+          if (!buildContext.mounted)return;             // ✅ widget hala yaşıyor mu kontrol et
           saveLocation =
               AppLocalizations.of(buildContext)?.pdfAppSpecificPath ??
               "Uygulamaya özel klasör/TasbeePro_Reports";
@@ -1166,8 +1164,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         } else {
           // Son fallback - Documents directory
           saveDir = await getApplicationDocumentsDirectory();
-          if (!buildContext.mounted)
-            return; // ✅ widget hala yaşıyor mu kontrol et
+          if (!buildContext.mounted)return;             // ✅ widget hala yaşıyor mu kontrol et
           saveLocation =
               AppLocalizations.of(buildContext)?.pdfDocumentsPath ??
               "Uygulama belgeler klasörü";
@@ -1185,8 +1182,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         await _showPdfOptionsDialog(file.path, fileName, saveLocation);
       } catch (pdfError) {
         debugPrint('PDF kaydetme hatası: $pdfError');
-        if (!buildContext.mounted)
-          return; // ✅ widget hala yaşıyor mu kontrol et
+        if (!buildContext.mounted)return; // ✅ widget hala yaşıyor mu kontrol et
         IslamicSnackbar.showError(
           AppLocalizations.of(buildContext)?.statsPdfError ?? 'PDF Hatası',
           '${AppLocalizations.of(buildContext)?.statsPdfSaveError ?? 'PDF kaydedilemedi'}: $pdfError',
@@ -1468,8 +1464,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
     try {
       final result = await OpenFile.open(filePath);
       if (result.type != ResultType.done) {
-        if (!buildContext.mounted)
-          return; // ✅ widget hala yaşıyor mu kontrol et
+        if (!buildContext.mounted)return; // ✅ widget hala yaşıyor mu kontrol et
         IslamicSnackbar.showError(
           AppLocalizations.of(buildContext)?.pdfFileCannotOpen ??
               'Dosya Açılamadı',
