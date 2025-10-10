@@ -32,7 +32,7 @@ class NotificationService extends GetxService {
 
   Future<void> _initializeNotifications() async {
     const androidSettings = AndroidInitializationSettings(
-      '@mipmap/ic_launcher',
+      '@mipmap/launcher_icon',
     );
     const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: true,
@@ -134,7 +134,7 @@ class NotificationService extends GetxService {
               : 'Zikir yapmayı hatırlatır',
           importance: Importance.max,
           priority: Priority.max,
-          icon: '@mipmap/ic_launcher',
+          icon: '@mipmap/launcher_icon',
           enableVibration: true,
           playSound: true,
           autoCancel: true,
@@ -150,7 +150,7 @@ class NotificationService extends GetxService {
           ticker: context != null 
               ? (context.mounted ? AppLocalizations.of(context)?.notificationZikirReminder : 'Zikir Hatırlatıcısı')
               : 'Zikir Hatırlatıcısı',
-          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/launcher_icon'),
           styleInformation: BigTextStyleInformation(
             body,
             htmlFormatBigText: false,
@@ -328,7 +328,7 @@ class NotificationService extends GetxService {
               : 'Belirlenen saatlerde günlük zikir hatırlatıcıları',
           importance: Importance.max,
           priority: Priority.max,
-          icon: '@mipmap/ic_launcher',
+          icon: '@mipmap/launcher_icon',
           enableVibration: true,
           playSound: true,
           autoCancel: true,
@@ -346,7 +346,7 @@ class NotificationService extends GetxService {
               : 'Zikir Zamanı!',
           when: null,
           usesChronometer: false,
-          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/launcher_icon'),
           styleInformation: BigTextStyleInformation(
             context != null 
                 ? (AppLocalizations.of(context)?.notificationDetailedMessage ?? 'Günlük zikir yapma zamanı geldi! SubhanAllah, Alhamdulillah, Allahu Akbar')
