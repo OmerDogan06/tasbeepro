@@ -70,71 +70,43 @@ class _StatsScreenState extends State<StatsScreen>
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-        
+          statusBarColor: Colors.white,
+         statusBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: Color(0xFF2D5016),
         systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
         backgroundColor: const Color(0xFFF8F6F0),
-        appBar: AppBar(
-          title: Text(
-            AppLocalizations.of(context)?.statsTitle ?? 'Detaylı İstatistikler 💎',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: emeraldGreen,
-              fontSize: 18,
-            ),
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+        appBar:PreferredSize(preferredSize: Size.fromHeight(104), child:  SafeArea(
+          child: AppBar(
+            title: Text(
+              AppLocalizations.of(context)?.statsTitle ?? 'Detaylı İstatistikler 💎',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: emeraldGreen,
+                fontSize: 18,
               ),
             ),
-          ),
-          leading: Container(
-            margin: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              gradient: const RadialGradient(
-                colors: [lightGold, goldColor],
-                center: Alignment(-0.2, -0.2),
-              ),
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: darkGreen.withAlpha(38),
-                  blurRadius: 6,
-                  offset: const Offset(0, 2),
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
                 ),
-              ],
-            ),
-            child: IconButton(
-              padding: EdgeInsets.zero,
-              style: ButtonStyle(
-                padding: WidgetStateProperty.all(EdgeInsets.zero),
-                overlayColor: WidgetStateProperty.all(Colors.transparent),
               ),
-              icon: const Icon(Icons.arrow_back, color: emeraldGreen, size: 20),
-              onPressed: () => Get.back(),
             ),
-          ),
-          actions: [
-            // PDF Export Button
-            Container(
-              width: 40,
-              height: 40,
-              margin: const EdgeInsets.only(right: 12),
+            leading: Container(
+              margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 gradient: const RadialGradient(
                   colors: [lightGold, goldColor],
                   center: Alignment(-0.2, -0.2),
                 ),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
                     color: darkGreen.withAlpha(38),
@@ -149,50 +121,81 @@ class _StatsScreenState extends State<StatsScreen>
                   padding: WidgetStateProperty.all(EdgeInsets.zero),
                   overlayColor: WidgetStateProperty.all(Colors.transparent),
                 ),
-                icon: _isExportingPDF
-                    ? SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          color: emeraldGreen,
-                          strokeWidth: 2,
-                        ),
-                      )
-                    : const Icon(
-                        Icons.picture_as_pdf,
-                        color: emeraldGreen,
-                        size: 20,
-                      ),
-                onPressed: _isExportingPDF ? null : () => _exportToPDF(_selectedPeriod, context),
+                icon: const Icon(Icons.arrow_back, color: emeraldGreen, size: 20),
+                onPressed: () => Get.back(),
               ),
             ),
-          ],
-          bottom: TabBar(
-            controller: _tabController,
-            isScrollable: true,
-            labelColor: emeraldGreen,
-            unselectedLabelColor: emeraldGreen.withAlpha(153),
-            indicatorColor: goldColor,
-            indicatorSize: TabBarIndicatorSize.label,
-            tabAlignment: TabAlignment.center,
-            overlayColor: WidgetStateProperty.all(Colors.transparent),
-            indicatorWeight: 3,
-            labelStyle: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-            unselectedLabelStyle: const TextStyle(
-              fontWeight: FontWeight.normal,
-              fontSize: 13,
-            ),
-            tabs: [
-              Tab(text: AppLocalizations.of(context)?.statsDaily ?? 'Günlük'),
-              Tab(text: AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık'),
-              Tab(text: AppLocalizations.of(context)?.statsMonthly ?? 'Aylık'),
-              Tab(text: AppLocalizations.of(context)?.statsYearly ?? 'Yıllık'),
+            actions: [
+              // PDF Export Button
+              Container(
+                width: 40,
+                height: 40,
+                margin: const EdgeInsets.only(right: 12),
+                decoration: BoxDecoration(
+                  gradient: const RadialGradient(
+                    colors: [lightGold, goldColor],
+                    center: Alignment(-0.2, -0.2),
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: darkGreen.withAlpha(38),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  style: ButtonStyle(
+                    padding: WidgetStateProperty.all(EdgeInsets.zero),
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  ),
+                  icon: _isExportingPDF
+                      ? SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            color: emeraldGreen,
+                            strokeWidth: 2,
+                          ),
+                        )
+                      : const Icon(
+                          Icons.picture_as_pdf,
+                          color: emeraldGreen,
+                          size: 20,
+                        ),
+                  onPressed: _isExportingPDF ? null : () => _exportToPDF(_selectedPeriod, context),
+                ),
+              ),
             ],
+            bottom: TabBar(
+              controller: _tabController,
+              isScrollable: true,
+              labelColor: emeraldGreen,
+              unselectedLabelColor: emeraldGreen.withAlpha(153),
+              indicatorColor: goldColor,
+              indicatorSize: TabBarIndicatorSize.label,
+              tabAlignment: TabAlignment.center,
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
+              indicatorWeight: 3,
+              labelStyle: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+              unselectedLabelStyle: const TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 13,
+              ),
+              tabs: [
+                Tab(text: AppLocalizations.of(context)?.statsDaily ?? 'Günlük'),
+                Tab(text: AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık'),
+                Tab(text: AppLocalizations.of(context)?.statsMonthly ?? 'Aylık'),
+                Tab(text: AppLocalizations.of(context)?.statsYearly ?? 'Yıllık'),
+              ],
+            ),
           ),
-        ),
+        )),
         body: SafeArea(
           child: TabBarView(
             controller: _tabController,

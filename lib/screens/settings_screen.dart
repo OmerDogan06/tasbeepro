@@ -55,64 +55,67 @@ class _SettingsScreenState extends State<SettingsScreen> {
       canPop: true,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
-          
+            statusBarColor: Colors.white,
+           statusBarIconBrightness: Brightness.dark,
           systemNavigationBarColor: Color(0xFF2D5016),
           systemNavigationBarIconBrightness: Brightness.light,
         ),
         child: Scaffold(
           backgroundColor: const Color(0xFFF8F6F0),
-          appBar: AppBar(
-            leading: Container(
-              margin: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                gradient: const RadialGradient(
-                  colors: [lightGold, goldColor],
-                  center: Alignment(-0.2, -0.2),
-                ),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: darkGreen.withAlpha(39),
-                    blurRadius: 6,
-                    offset: const Offset(0, 2),
+          appBar:PreferredSize(preferredSize: Size.fromHeight(56), child:  SafeArea(
+            child: AppBar(
+              leading: Container(
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  gradient: const RadialGradient(
+                    colors: [lightGold, goldColor],
+                    center: Alignment(-0.2, -0.2),
                   ),
-                ],
-              ),
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                style: ButtonStyle(
-                  padding: WidgetStateProperty.all(EdgeInsets.zero),
-                  overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: darkGreen.withAlpha(39),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
                 ),
-                icon: const Icon(
-                  Icons.arrow_back,
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  style: ButtonStyle(
+                    padding: WidgetStateProperty.all(EdgeInsets.zero),
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  ),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: emeraldGreen,
+                    size: 20,
+                  ),
+                  onPressed: () => Get.back(),
+                ),
+              ),
+              title: Text(
+                AppLocalizations.of(context)?.settingsTitle ?? 'Ayarlar',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
                   color: emeraldGreen,
-                  size: 20,
                 ),
-                onPressed: () => Get.back(),
               ),
-            ),
-            title: Text(
-              AppLocalizations.of(context)?.settingsTitle ?? 'Ayarlar',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: emeraldGreen,
-              ),
-            ),
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            iconTheme: const IconThemeData(color: emeraldGreen),
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+              centerTitle: true,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              iconTheme: const IconThemeData(color: emeraldGreen),
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+                  ),
                 ),
               ),
             ),
-          ),
+          )),
           body: SafeArea(
             child: ListView(
               padding: const EdgeInsets.all(10),

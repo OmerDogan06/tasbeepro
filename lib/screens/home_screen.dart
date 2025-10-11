@@ -25,64 +25,67 @@ class HomeScreen extends StatelessWidget {
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-         
+        statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: Color(0xFF2D5016),
       systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
         backgroundColor: const Color(0xFFF8F6F0), // Açık krem arka plan
-        appBar: AppBar(
-          title: Text(
-            AppLocalizations.of(context)?.homeTitle ?? 'Tasbee Pro',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: emeraldGreen,
-              fontSize: 20,
-            ),
-          ),
-          centerTitle: false,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+        appBar:PreferredSize(preferredSize: Size.fromHeight(56), child:  SafeArea(
+          child: AppBar(
+            title: Text(
+              AppLocalizations.of(context)?.homeTitle ?? 'Tasbee Pro',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: emeraldGreen,
+                fontSize: 20,
               ),
             ),
-          ),
-          actions: [
-            Container(
-              width: 40,
-              height: 40,
-              margin: const EdgeInsets.only(right: 12),
-              decoration: BoxDecoration(
-                gradient: const RadialGradient(
-                  colors: [lightGold, goldColor],
-                  center: Alignment(-0.2, -0.2),
+            centerTitle: false,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
                 ),
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: darkGreen.withAlpha(38),
-                    blurRadius: 6,
-                    offset: const Offset(0, 2),
+              ),
+            ),
+            actions: [
+              Container(
+                width: 40,
+                height: 40,
+                margin: const EdgeInsets.only(right: 12),
+                decoration: BoxDecoration(
+                  gradient: const RadialGradient(
+                    colors: [lightGold, goldColor],
+                    center: Alignment(-0.2, -0.2),
                   ),
-                ],
-              ),
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                style: ButtonStyle(
-                  padding: WidgetStateProperty.all(EdgeInsets.zero),
-                  overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: darkGreen.withAlpha(38),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
                 ),
-                icon: const Icon(Icons.settings, color: emeraldGreen, size: 22),
-                onPressed: () => Get.to (() => const SettingsScreen(), transition: Transition.rightToLeft,duration: Duration(milliseconds: 300)),
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  style: ButtonStyle(
+                    padding: WidgetStateProperty.all(EdgeInsets.zero),
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  ),
+                  icon: const Icon(Icons.settings, color: emeraldGreen, size: 22),
+                  onPressed: () => Get.to (() => const SettingsScreen(), transition: Transition.rightToLeft,duration: Duration(milliseconds: 300)),
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        )),
         body: SafeArea(
           child: Stack(
             children: [

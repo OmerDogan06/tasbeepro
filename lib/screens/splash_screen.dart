@@ -112,107 +112,107 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
         systemNavigationBarColor: emeraldGreen,
         systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
-        body: SafeArea(
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: RadialGradient(
-                center: Alignment(0, -0.3),
-                radius: 1.2,
-                colors: [
-                  Color(0xFF3D6B1F), // Açık emerald
-                  Color(0xFF2D5016), // Ana emerald
-                  Color(0xFF1A3409), // Koyu emerald
-                ],
-                stops: [0.0, 0.6, 1.0],
-              ),
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: RadialGradient(
+              center: Alignment(0, -0.3),
+              radius: 1.2,
+              colors: [
+                Color(0xFF3D6B1F), // Açık emerald
+                Color(0xFF2D5016), // Ana emerald
+                Color(0xFF1A3409), // Koyu emerald
+              ],
+              stops: [0.0, 0.6, 1.0],
             ),
-            child: SafeArea(
-              child: Stack(
-                children: [
-                  // İslami pattern background
-                  // _buildIslamicPattern(),
-
-                  // Main content
-                  Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Spacer(flex: 2),
-
-                        // Logo/Icon section
-                        AnimatedBuilder(
-                          animation: Listenable.merge([
-                            _fadeAnimation,
-                            _scaleAnimation,
-                            _rotationAnimation,
-                          ]),
-                          builder: (context, child) {
-                            return Transform.scale(
-                              scale: _scaleAnimation.value,
-                              child: Opacity(
-                                opacity: _fadeAnimation.value,
-                                child: _buildLogo(),
-                              ),
-                            );
-                          },
-                        ),
-
-                        const SizedBox(height: 40),
-
-                        // App name with shimmer effect
-                        AnimatedBuilder(
-                          animation: _shimmerAnimation,
-                          builder: (context, child) {
-                            return AnimatedBuilder(
-                              animation: _fadeAnimation,
-                              builder: (context, child) {
-                                return Opacity(
-                                  opacity: _fadeAnimation.value,
-                                  child: _buildAppTitle(),
-                                );
-                              },
-                            );
-                          },
-                        ),
-
-                        const SizedBox(height: 20),
-
-                        // Subtitle
-                        AnimatedBuilder(
-                          animation: _fadeAnimation,
-                          builder: (context, child) {
-                            return Opacity(
-                              opacity: _fadeAnimation.value * 0.8,
-                              child: _buildSubtitle(),
-                            );
-                          },
-                        ),
-
-                        const Spacer(flex: 3),
-
-                        // Loading indicator
-                        AnimatedBuilder(
-                          animation: _fadeAnimation,
-                          builder: (context, child) {
-                            return Opacity(
+          ),
+          child: SafeArea(
+            child: Stack(
+              children: [
+                // İslami pattern background
+                // _buildIslamicPattern(),
+        
+                // Main content
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(flex: 2),
+        
+                      // Logo/Icon section
+                      AnimatedBuilder(
+                        animation: Listenable.merge([
+                          _fadeAnimation,
+                          _scaleAnimation,
+                          _rotationAnimation,
+                        ]),
+                        builder: (context, child) {
+                          return Transform.scale(
+                            scale: _scaleAnimation.value,
+                            child: Opacity(
                               opacity: _fadeAnimation.value,
-                              child: _buildLoadingIndicator(),
-                            );
-                          },
-                        ),
-
-                        const SizedBox(height: 60),
-                      ],
-                    ),
+                              child: _buildLogo(),
+                            ),
+                          );
+                        },
+                      ),
+        
+                      const SizedBox(height: 40),
+        
+                      // App name with shimmer effect
+                      AnimatedBuilder(
+                        animation: _shimmerAnimation,
+                        builder: (context, child) {
+                          return AnimatedBuilder(
+                            animation: _fadeAnimation,
+                            builder: (context, child) {
+                              return Opacity(
+                                opacity: _fadeAnimation.value,
+                                child: _buildAppTitle(),
+                              );
+                            },
+                          );
+                        },
+                      ),
+        
+                      const SizedBox(height: 20),
+        
+                      // Subtitle
+                      AnimatedBuilder(
+                        animation: _fadeAnimation,
+                        builder: (context, child) {
+                          return Opacity(
+                            opacity: _fadeAnimation.value * 0.8,
+                            child: _buildSubtitle(),
+                          );
+                        },
+                      ),
+        
+                      const Spacer(flex: 3),
+        
+                      // Loading indicator
+                      AnimatedBuilder(
+                        animation: _fadeAnimation,
+                        builder: (context, child) {
+                          return Opacity(
+                            opacity: _fadeAnimation.value,
+                            child: _buildLoadingIndicator(),
+                          );
+                        },
+                      ),
+        
+                      const SizedBox(height: 60),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
