@@ -12,7 +12,8 @@ class CustomReminderTimesScreen extends StatefulWidget {
   const CustomReminderTimesScreen({super.key});
 
   @override
-  State<CustomReminderTimesScreen> createState() => _CustomReminderTimesScreenState();
+  State<CustomReminderTimesScreen> createState() =>
+      _CustomReminderTimesScreenState();
 }
 
 class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
@@ -21,9 +22,10 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
   static const lightGold = Color(0xFFF5E6A8);
   static const darkGreen = Color(0xFF1A3409);
 
-  final NotificationService _notificationService = Get.find<NotificationService>();
+  final NotificationService _notificationService =
+      Get.find<NotificationService>();
   final StorageService _storage = Get.find<StorageService>();
-  
+
   List<Map<String, dynamic>> _customTimes = [];
   RxBool isLoading = false.obs;
   @override
@@ -42,67 +44,72 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-         statusBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: Color(0xFF2D5016),
         systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
         backgroundColor: const Color(0xFFF8F6F0),
-        appBar:PreferredSize(preferredSize: Size.fromHeight(56), child:  SafeArea(
-          child: AppBar(
-            leading: Container(
-              margin: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                gradient: const RadialGradient(
-                  colors: [lightGold, goldColor],
-                  center: Alignment(-0.2, -0.2),
-                ),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: darkGreen.withAlpha(38),
-                    blurRadius: 6,
-                    offset: const Offset(0, 2),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(56),
+          child: SafeArea(
+            child: AppBar(
+              leading: Container(
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  gradient: const RadialGradient(
+                    colors: [lightGold, goldColor],
+                    center: Alignment(-0.2, -0.2),
                   ),
-                ],
-              ),
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                style: ButtonStyle(
-                  padding: WidgetStateProperty.all(EdgeInsets.zero),
-                  overlayColor: WidgetStateProperty.all(Colors.transparent),
-                ),
-                icon: const Icon(Icons.arrow_back, color: emeraldGreen, size: 20),
-                onPressed: () => Get.back(),
-              ),
-            ),
-            title: Text(
-              AppLocalizations.of(context)?.customTimesTitle ?? 'Hatırlatma Saatleri',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: emeraldGreen,
-                fontSize: 18,
-              ),
-            ),
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            iconTheme: const IconThemeData(color: emeraldGreen),
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Color(0xFFFFFDF7),
-                    Color(0xFFF8F6F0),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: darkGreen.withAlpha(38),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
                   ],
+                ),
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  style: ButtonStyle(
+                    padding: WidgetStateProperty.all(EdgeInsets.zero),
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  ),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: emeraldGreen,
+                    size: 20,
+                  ),
+                  onPressed: () => Get.back(),
+                ),
+              ),
+              title: Text(
+                AppLocalizations.of(context)?.customTimesTitle ??
+                    'Hatırlatma Saatleri',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: emeraldGreen,
+                  fontSize: 18,
+                ),
+              ),
+              centerTitle: true,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              iconTheme: const IconThemeData(color: emeraldGreen),
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+                  ),
                 ),
               ),
             ),
           ),
-        )),
+        ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: _addCustomTime,
           backgroundColor: emeraldGreen,
@@ -114,8 +121,8 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
           ),
         ),
-        body: Obx(() => 
-         LoadingOverlay(
+        body: Obx(
+          () => LoadingOverlay(
             isLoading: isLoading.value,
             color: Colors.black.withAlpha(50),
             progressIndicator: const CircularProgressIndicator(
@@ -163,7 +170,10 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            AppLocalizations.of(context)?.customTimesDescription ?? 'Özel saatlerde günlük zikir hatırlatıcıları alın. Eklediğiniz saatler her gün tekrarlanır.',
+                            AppLocalizations.of(
+                                  context,
+                                )?.customTimesDescription ??
+                                'Özel saatlerde günlük zikir hatırlatıcıları alın. Eklediğiniz saatler her gün tekrarlanır.',
                             style: const TextStyle(
                               fontSize: 13,
                               color: emeraldGreen,
@@ -174,7 +184,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                       ],
                     ),
                   ),
-                  
+
                   // Times List
                   Expanded(
                     child: _customTimes.isEmpty
@@ -218,15 +228,12 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                 ),
               ],
             ),
-            child: const Icon(
-              Icons.schedule,
-              color: emeraldGreen,
-              size: 40,
-            ),
+            child: const Icon(Icons.schedule, color: emeraldGreen, size: 40),
           ),
           const SizedBox(height: 16),
           Text(
-            AppLocalizations.of(context)?.customTimesEmptyTitle ?? 'Henüz özel saat eklenmemiş',
+            AppLocalizations.of(context)?.customTimesEmptyTitle ??
+                'Henüz özel saat eklenmemiş',
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -236,11 +243,9 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            AppLocalizations.of(context)?.customTimesEmptyMessage ?? 'Günlük hatırlatıcılar için özel saatler ekleyebilirsiniz',
-            style: const TextStyle(
-              fontSize: 14,
-              color: emeraldGreen,
-            ),
+            AppLocalizations.of(context)?.customTimesEmptyMessage ??
+                'Günlük hatırlatıcılar için özel saatler ekleyebilirsiniz',
+            style: const TextStyle(fontSize: 14, color: emeraldGreen),
             textAlign: TextAlign.center,
           ),
         ],
@@ -252,7 +257,8 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
     final hour = timeData['hour'] as int;
     final minute = timeData['minute'] as int;
     final isActive = timeData['isActive'] ?? true;
-    final timeString = '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
+    final timeString =
+        '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
 
     return Container(
       margin: const EdgeInsets.only(bottom: 6),
@@ -284,7 +290,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             gradient: RadialGradient(
-              colors: isActive 
+              colors: isActive
                   ? [lightGold, goldColor]
                   : [Colors.grey.shade300, Colors.grey.shade400],
               center: const Alignment(-0.2, -0.2),
@@ -313,11 +319,15 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           ),
         ),
         subtitle: Text(
-          isActive 
-              ? (AppLocalizations.of(context)?.customTimesActiveStatus ?? 'Günlük hatırlatıcı aktif')
-              : (AppLocalizations.of(context)?.customTimesInactiveStatus ?? 'Devre dışı'),
+          isActive
+              ? (AppLocalizations.of(context)?.customTimesActiveStatus ??
+                    'Günlük hatırlatıcı aktif')
+              : (AppLocalizations.of(context)?.customTimesInactiveStatus ??
+                    'Devre dışı'),
           style: TextStyle(
-            color: isActive ? emeraldGreen.withAlpha(179) : Colors.grey.shade500,
+            color: isActive
+                ? emeraldGreen.withAlpha(179)
+                : Colors.grey.shade500,
             fontSize: 11,
           ),
         ),
@@ -328,24 +338,24 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             Switch(
               value: isActive,
               onChanged: (value) => _toggleTime(index, value),
-              thumbColor: WidgetStateProperty.resolveWith<Color?>(
-                (Set<WidgetState> states) {
-                  if (states.contains(WidgetState.selected)) {
-                    return goldColor;
-                  }
-                  return emeraldGreen;
-                },
-              ),
-              trackOutlineColor: WidgetStateProperty.resolveWith<Color?>(
-                (Set<WidgetState> states) {
+              thumbColor: WidgetStateProperty.resolveWith<Color?>((
+                Set<WidgetState> states,
+              ) {
+                if (states.contains(WidgetState.selected)) {
                   return goldColor;
-                },
-              ),
-              trackColor: WidgetStateProperty.resolveWith<Color?>(
-                (Set<WidgetState> states) {
-                  return Colors.transparent;
-                },
-              ),
+                }
+                return emeraldGreen;
+              }),
+              trackOutlineColor: WidgetStateProperty.resolveWith<Color?>((
+                Set<WidgetState> states,
+              ) {
+                return goldColor;
+              }),
+              trackColor: WidgetStateProperty.resolveWith<Color?>((
+                Set<WidgetState> states,
+              ) {
+                return Colors.transparent;
+              }),
             ),
             // Delete Button
             IconButton(
@@ -366,44 +376,57 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
   }
 
   Future<void> _addCustomTime() async {
+    // Permission kontrolü
+    final hasPermission = await _notificationService
+        .checkNotificationPermission();
+    if (!hasPermission) {
+      _showPermissionDialog();
+      return;
+    }
+
     CustomBottomPicker.time(
       backgroundColor: Colors.white,
       buttonSingleColor: emeraldGreen,
-      onSubmit: (time) async{
+      onSubmit: (time) async {
         isLoading.value = true;
         final hour = time.hour;
         final minute = time.minute;
-        
+
         // Aynı saatin eklenip eklenmediğini kontrol et
-        final existingTime = _customTimes.any((t) => 
-            t['hour'] == hour && t['minute'] == minute);
-        
+        final existingTime = _customTimes.any(
+          (t) => t['hour'] == hour && t['minute'] == minute,
+        );
+
         if (existingTime) {
           IslamicSnackbar.showWarning(
-            AppLocalizations.of(context)?.customTimesAlreadyExists ?? 'Zaten Mevcut',
-            AppLocalizations.of(context)?.customTimesAlreadyExistsMessage ?? 'Bu saat zaten eklenmiş',
+            AppLocalizations.of(context)?.customTimesAlreadyExists ??
+                'Zaten Mevcut',
+            AppLocalizations.of(context)?.customTimesAlreadyExistsMessage ??
+                'Bu saat zaten eklenmiş',
           );
           isLoading.value = false;
           return;
         }
 
         setState(() {
-          _customTimes.add({
-            'hour': hour,
-            'minute': minute,
-            'isActive': true,
-          });
+          _customTimes.add({'hour': hour, 'minute': minute, 'isActive': true});
         });
 
-      await  _saveCustomTimes();
-      await  _scheduleTimeNotifications();
+        await _saveCustomTimes();
+        await _scheduleTimeNotifications();
 
-      isLoading.value = false;
+        isLoading.value = false;
 
-        final timeString = '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
-        final successMessage = AppLocalizations.of(context)?.customTimesAddSuccessMessage(timeString) ?? '$timeString saatinde günlük hatırlatıcı aktif';
+        final timeString =
+            '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
+        final successMessage =
+            AppLocalizations.of(
+              Get.context ?? context,
+            )?.customTimesAddSuccessMessage(timeString) ??
+            '$timeString saatinde günlük hatırlatıcı aktif';
         IslamicSnackbar.showSuccess(
-          AppLocalizations.of(context)?.customTimesAddSuccess ?? 'Saat Eklendi 🕐',
+          AppLocalizations.of( Get.context ?? context)?.customTimesAddSuccess ??
+              'Saat Eklendi 🕐',
           successMessage,
         );
       },
@@ -413,7 +436,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
       ),
       displaySubmitButton: true,
       use24hFormat: true,
-       headerBuilder: (context) => Container(
+      headerBuilder: (context) => Container(
         padding: const EdgeInsets.all(10),
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -426,9 +449,10 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           children: [
             Expanded(
               child: Text(
-                AppLocalizations.of(context)?.customTimesPickerTitle ?? 'Saat Seçin',
+                AppLocalizations.of(context)?.customTimesPickerTitle ??
+                    'Saat Seçin',
                 style: const TextStyle(
-                  color:emeraldGreen ,
+                  color: emeraldGreen,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -441,15 +465,34 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           ],
         ),
       ),
-    ).show(context);
+    ).show( Get.context ?? context);
   }
 
   Future<void> _toggleTime(int index, bool isActive) async {
+
+    isLoading.value = true;
     // Store localized strings before async operations
-    final activeTitle = AppLocalizations.of(context)?.customTimesToggleActive ?? 'Aktif Edildi';
-    final inactiveTitle = AppLocalizations.of(context)?.customTimesToggleInactive ?? 'Devre Dışı';
-    final activeMessage = AppLocalizations.of(context)?.customTimesToggleActiveMessage ?? 'Hatırlatıcı aktif';
-    final inactiveMessage = AppLocalizations.of(context)?.customTimesToggleInactiveMessage ?? 'Hatırlatıcı devre dışı';
+    final activeTitle =
+        AppLocalizations.of(context)?.customTimesToggleActive ?? 'Aktif Edildi';
+    final inactiveTitle =
+        AppLocalizations.of(context)?.customTimesToggleInactive ?? 'Devre Dışı';
+    final activeMessage =
+        AppLocalizations.of(context)?.customTimesToggleActiveMessage ??
+        'Hatırlatıcı aktif';
+    final inactiveMessage =
+        AppLocalizations.of(context)?.customTimesToggleInactiveMessage ??
+        'Hatırlatıcı devre dışı';
+    // Eğer aktif ediliyor ve permission yoksa kontrol et
+    if (isActive) {
+      final hasPermission = await _notificationService
+          .checkNotificationPermission();
+      if (!hasPermission) {
+        _showPermissionDialog();
+        isLoading.value = false;
+        return;
+      }
+    }
+
 
     setState(() {
       _customTimes[index]['isActive'] = isActive;
@@ -457,6 +500,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
 
     await _saveCustomTimes();
     await _scheduleTimeNotifications();
+    isLoading.value = false;
 
     IslamicSnackbar.showInfo(
       isActive ? activeTitle : inactiveTitle,
@@ -466,19 +510,30 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
 
   Future<void> _deleteTime(int index) async {
     final timeData = _customTimes[index];
-    final timeString = '${timeData['hour'].toString().padLeft(2, '0')}:${timeData['minute'].toString().padLeft(2, '0')}';
+    final timeString =
+        '${timeData['hour'].toString().padLeft(2, '0')}:${timeData['minute'].toString().padLeft(2, '0')}';
 
     // Store localized strings
-    final deleteTitle = AppLocalizations.of(context)?.customTimesDeleteTitle ?? 'Saati Sil?';
-    final deleteMessageTemplate = AppLocalizations.of(context)?.customTimesDeleteMessage(timeString) ?? ' $timeString saatindeki hatırlatıcıyı silmek istediğinizden emin misiniz?';
-    
-    final cancelText = AppLocalizations.of(context)?.customTimesDeleteCancel ?? 'İptal';
-    final confirmText = AppLocalizations.of(context)?.customTimesDeleteConfirm ?? 'Sil';
-    final successTitle = AppLocalizations.of(context)?.customTimesDeleteSuccess ?? 'Silindi 🗑️';
-    final successMessageTemplate = AppLocalizations.of(context)?.customTimesDeleteSuccessMessage(timeString) ?? '$timeString saati başarıyla silindi';
+    final deleteTitle =
+        AppLocalizations.of(context)?.customTimesDeleteTitle ?? 'Saati Sil?';
+    final deleteMessageTemplate =
+        AppLocalizations.of(context)?.customTimesDeleteMessage(timeString) ??
+        ' $timeString saatindeki hatırlatıcıyı silmek istediğinizden emin misiniz?';
+
+    final cancelText =
+        AppLocalizations.of(context)?.customTimesDeleteCancel ?? 'İptal';
+    final confirmText =
+        AppLocalizations.of(context)?.customTimesDeleteConfirm ?? 'Sil';
+    final successTitle =
+        AppLocalizations.of(context)?.customTimesDeleteSuccess ?? 'Silindi 🗑️';
+    final successMessageTemplate =
+        AppLocalizations.of(
+          context,
+        )?.customTimesDeleteSuccessMessage(timeString) ??
+        '$timeString saati başarıyla silindi';
 
     // Onay dialog'u - settings_screen.dart tarzında minimal ve İslami
-    final confirmed = await Get.dialog<bool>(
+    await Get.dialog<bool>(
       Dialog(
         backgroundColor: Colors.transparent,
         insetPadding: const EdgeInsets.all(20),
@@ -491,10 +546,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
               colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: goldColor.withAlpha(102),
-              width: 1.5,
-            ),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
             boxShadow: [
               BoxShadow(
                 color: darkGreen.withAlpha(51),
@@ -539,7 +591,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                   ],
                 ),
               ),
-              
+
               // Divider
               Container(
                 height: 1,
@@ -554,7 +606,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                   ),
                 ),
               ),
-              
+
               // Content
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -570,7 +622,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 16),
-                    
+
                     // Buttons
                     Row(
                       children: [
@@ -629,19 +681,20 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           ),
         ),
       ),
-    );
+    ).then((value) async {
+      if (value == true) {
+        isLoading.value = true;
+        setState(() {
+          _customTimes.removeAt(index);
+        });
 
-    if (confirmed == true) {
-      setState(() {
-        _customTimes.removeAt(index);
-      });
+        await _saveCustomTimes();
+        await _scheduleTimeNotifications();
+        isLoading.value = false;
 
-      await _saveCustomTimes();
-      await _scheduleTimeNotifications();
-
-     
-      IslamicSnackbar.showSuccess(successTitle, successMessageTemplate);
-    }
+        IslamicSnackbar.showSuccess(successTitle, successMessageTemplate);
+      }
+    });
   }
 
   Future<void> _saveCustomTimes() async {
@@ -651,7 +704,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
   Future<void> _scheduleTimeNotifications() async {
     // Tüm özel saat bildirimlerini iptal et ve yeniden planla
     await _notificationService.cancelCustomTimeNotifications();
-    
+
     for (final timeData in _customTimes) {
       if (timeData['isActive'] == true) {
         await _notificationService.scheduleCustomTimeReminder(
@@ -660,5 +713,193 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
         );
       }
     }
+  }
+
+  void _showPermissionDialog() {
+    final context = this.context;
+    Get.dialog(
+      Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(20),
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 320),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+            ),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
+            boxShadow: [
+              BoxShadow(
+                color: darkGreen.withAlpha(51),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 12),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: const RadialGradient(
+                          colors: [lightGold, goldColor],
+                          center: Alignment(-0.2, -0.2),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: darkGreen.withAlpha(39),
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: const Icon(
+                        Icons.notifications_off,
+                        color: emeraldGreen,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        AppLocalizations.of(
+                              context,
+                            )?.addReminderPermissionTitle ??
+                            'Bildirim İzni Gerekli',
+                        style: const TextStyle(
+                          color: emeraldGreen,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Divider
+              Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      goldColor.withAlpha(77),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+
+              // Content
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
+                child: Column(
+                  children: [
+                    Text(
+                      AppLocalizations.of(
+                            context,
+                          )?.addReminderPermissionMessage ??
+                          'Hatırlatıcıların çalışması için bildirim izni vermeniz gerekiyor.',
+                      style: TextStyle(
+                        color: emeraldGreen.withAlpha(204),
+                        fontSize: 14,
+                        height: 1.4,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Buttons
+                    Row(
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 40,
+                            child: ElevatedButton(
+                              onPressed: () => Navigator.pop(context),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: emeraldGreen,
+                                elevation: 0,
+                                side: BorderSide(
+                                  color: goldColor.withAlpha(128),
+                                  width: 1.5,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  AppLocalizations.of(
+                                        context,
+                                      )?.addReminderPermissionCancel ??
+                                      'İptal',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: SizedBox(
+                            height: 40,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                _notificationService.openNotificationSettings();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: emeraldGreen,
+                                foregroundColor: Colors.white,
+                                elevation: 2,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                shadowColor: darkGreen.withAlpha(77),
+                              ),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  AppLocalizations.of(
+                                        context,
+                                      )?.addReminderPermissionSettings ??
+                                      'Ayarlara Git',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

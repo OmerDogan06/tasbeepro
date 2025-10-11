@@ -150,7 +150,7 @@ class NotificationService extends GetxService {
           ticker: context != null 
               ? (context.mounted ? AppLocalizations.of(context)?.notificationZikirReminder : 'Zikir Hatırlatıcısı')
               : 'Zikir Hatırlatıcısı',
-          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/launcher_icon'),
+          
           styleInformation: BigTextStyleInformation(
             body,
             htmlFormatBigText: false,
@@ -346,7 +346,7 @@ class NotificationService extends GetxService {
               : 'Zikir Zamanı!',
           when: null,
           usesChronometer: false,
-          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/launcher_icon'),
+          
           styleInformation: BigTextStyleInformation(
             context != null 
                 ? (AppLocalizations.of(context)?.notificationDetailedMessage ?? 'Günlük zikir yapma zamanı geldi! SubhanAllah, Alhamdulillah, Allahu Akbar')

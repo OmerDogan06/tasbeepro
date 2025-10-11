@@ -25,7 +25,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
   final _messageController = TextEditingController();
 
   DateTime _selectedDateTime = DateTime.now().add(const Duration(hours: 1));
-  RxBool _isLoading = false.obs;
+  RxBool isLoading = false.obs;
 
   @override
   void dispose() {
@@ -281,7 +281,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                     width: double.infinity,
                     margin: const EdgeInsets.only(top: 10),
                     child: ElevatedButton(
-                      onPressed: _isLoading.value ? null : _addReminder,
+                      onPressed: isLoading.value ? null : _addReminder,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: emeraldGreen,
                         foregroundColor: Colors.white,
@@ -291,7 +291,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                         ),
                         elevation: 3,
                       ),
-                      child: _isLoading.value
+                      child: isLoading.value
                           ? const SizedBox(
                               height: 20,
                               width: 20,
@@ -501,7 +501,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
     }
 
    
-      _isLoading.value = true;
+      isLoading.value = true;
    
 
     // Store localized strings before async operations
@@ -551,7 +551,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
       IslamicSnackbar.showError(errorTitle, errorMessage);
     } finally {
      
-        _isLoading.value = false;
+        isLoading.value = false;
       
     }
   }
