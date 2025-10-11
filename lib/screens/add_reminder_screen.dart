@@ -19,12 +19,13 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
   static const lightGold = Color(0xFFF5E6A8);
   static const darkGreen = Color(0xFF1A3409);
 
-  final NotificationService _notificationService = Get.find<NotificationService>();
+  final NotificationService _notificationService =
+      Get.find<NotificationService>();
   final _titleController = TextEditingController();
   final _messageController = TextEditingController();
-  
+
   DateTime _selectedDateTime = DateTime.now().add(const Duration(hours: 1));
-  bool _isLoading = false;
+  RxBool _isLoading = false.obs;
 
   @override
   void dispose() {
@@ -37,67 +38,72 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-         statusBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: Color(0xFF2D5016),
         systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
         backgroundColor: const Color(0xFFF8F6F0),
-        appBar:PreferredSize(preferredSize: Size.fromHeight(56), child: SafeArea(
-          child: AppBar(
-            leading: Container(
-              margin: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                gradient: const RadialGradient(
-                  colors: [lightGold, goldColor],
-                  center: Alignment(-0.2, -0.2),
-                ),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: darkGreen.withAlpha(38),
-                    blurRadius: 6,
-                    offset: const Offset(0, 2),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(56),
+          child: SafeArea(
+            child: AppBar(
+              leading: Container(
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  gradient: const RadialGradient(
+                    colors: [lightGold, goldColor],
+                    center: Alignment(-0.2, -0.2),
                   ),
-                ],
-              ),
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                style: ButtonStyle(
-                  padding: WidgetStateProperty.all(EdgeInsets.zero),
-                  overlayColor: WidgetStateProperty.all(Colors.transparent),
-                ),
-                icon: const Icon(Icons.arrow_back, color: emeraldGreen, size: 20),
-                onPressed: () => Get.back(),
-              ),
-            ),
-            title: Text(
-              AppLocalizations.of(context)?.addReminderTitle ?? 'Yeni Hatırlatıcı',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: emeraldGreen,
-                fontSize: 18,
-              ),
-            ),
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            iconTheme: const IconThemeData(color: emeraldGreen),
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Color(0xFFFFFDF7),
-                    Color(0xFFF8F6F0),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: darkGreen.withAlpha(38),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
                   ],
+                ),
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  style: ButtonStyle(
+                    padding: WidgetStateProperty.all(EdgeInsets.zero),
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  ),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: emeraldGreen,
+                    size: 20,
+                  ),
+                  onPressed: () => Get.back(),
+                ),
+              ),
+              title: Text(
+                AppLocalizations.of(context)?.addReminderTitle ??
+                    'Yeni Hatırlatıcı',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: emeraldGreen,
+                  fontSize: 18,
+                ),
+              ),
+              centerTitle: true,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              iconTheme: const IconThemeData(color: emeraldGreen),
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+                  ),
                 ),
               ),
             ),
           ),
-        )),
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(8),
@@ -141,7 +147,10 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
-                          AppLocalizations.of(context)?.addReminderDescription ?? 'Belirlediğiniz tarih ve saatte zikir yapmayı hatırlatan bildirim alın',
+                          AppLocalizations.of(
+                                context,
+                              )?.addReminderDescription ??
+                              'Belirlediğiniz tarih ve saatte zikir yapmayı hatırlatan bildirim alın',
                           style: const TextStyle(
                             fontSize: 13,
                             color: emeraldGreen,
@@ -152,48 +161,57 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                     ],
                   ),
                 ),
-                
+
                 // Form
-                _buildSectionHeader(AppLocalizations.of(context)?.addReminderTitleLabel ?? 'Başlık'),
+                _buildSectionHeader(
+                  AppLocalizations.of(context)?.addReminderTitleLabel ??
+                      'Başlık',
+                ),
                 _buildInputCard(
                   child: TextField(
                     controller: _titleController,
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)?.addReminderTitleHint ?? 'Zikir Zamanı',
+                      hintText:
+                          AppLocalizations.of(context)?.addReminderTitleHint ??
+                          'Zikir Zamanı',
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.all(8),
                     ),
-                    style: const TextStyle(
-                      color: emeraldGreen,
-                      fontSize: 14,
-                    ),
+                    style: const TextStyle(color: emeraldGreen, fontSize: 14),
                   ),
                 ),
-                
+
                 const SizedBox(height: 16),
-                
+
                 // Message Input
-                _buildSectionHeader(AppLocalizations.of(context)?.addReminderMessageLabel ?? 'Mesaj (Opsiyonel)'),
+                _buildSectionHeader(
+                  AppLocalizations.of(context)?.addReminderMessageLabel ??
+                      'Mesaj (Opsiyonel)',
+                ),
                 _buildInputCard(
                   child: TextField(
                     controller: _messageController,
                     maxLines: 5,
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)?.addReminderMessageHint ?? 'Zikir yapma zamanı geldi!',
+                      hintText:
+                          AppLocalizations.of(
+                            context,
+                          )?.addReminderMessageHint ??
+                          'Zikir yapma zamanı geldi!',
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.all(8),
                     ),
-                    style: const TextStyle(
-                      color: emeraldGreen,
-                      fontSize: 14,
-                    ),
+                    style: const TextStyle(color: emeraldGreen, fontSize: 14),
                   ),
                 ),
-                
+
                 const SizedBox(height: 16),
-                
+
                 // Date & Time Selection
-                _buildSectionHeader(AppLocalizations.of(context)?.addReminderDateTimeLabel ?? 'Tarih ve Saat'),
+                _buildSectionHeader(
+                  AppLocalizations.of(context)?.addReminderDateTimeLabel ??
+                      'Tarih ve Saat',
+                ),
                 _buildInputCard(
                   child: Column(
                     children: [
@@ -207,11 +225,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                         ),
                         child: Row(
                           children: [
-                            Icon(
-                              Icons.event,
-                              color: emeraldGreen,
-                              size: 18,
-                            ),
+                            Icon(Icons.event, color: emeraldGreen, size: 18),
                             const SizedBox(width: 8),
                             Expanded(
                               child: Text(
@@ -226,16 +240,20 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                           ],
                         ),
                       ),
-                      
+
                       const SizedBox(height: 12),
-                      
+
                       // Date & Time Buttons
                       Row(
                         children: [
                           Expanded(
                             child: _buildDateTimeButton(
                               icon: Icons.calendar_today,
-                              label: AppLocalizations.of(context)?.addReminderSelectDate ?? 'Tarih Seç',
+                              label:
+                                  AppLocalizations.of(
+                                    context,
+                                  )?.addReminderSelectDate ??
+                                  'Tarih Seç',
                               onPressed: _selectDate,
                             ),
                           ),
@@ -243,7 +261,11 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                           Expanded(
                             child: _buildDateTimeButton(
                               icon: Icons.access_time,
-                              label: AppLocalizations.of(context)?.addReminderSelectTime ?? 'Saat Seç',
+                              label:
+                                  AppLocalizations.of(
+                                    context,
+                                  )?.addReminderSelectTime ??
+                                  'Saat Seç',
                               onPressed: _selectTime,
                             ),
                           ),
@@ -252,38 +274,45 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
                     ],
                   ),
                 ),
-                
+
                 // Add Button
-                Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(top: 10),
-                  child: ElevatedButton(
-                    onPressed: _isLoading ? null : _addReminder,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: emeraldGreen,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                Obx(() => 
+                   Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.only(top: 10),
+                    child: ElevatedButton(
+                      onPressed: _isLoading.value ? null : _addReminder,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: emeraldGreen,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        elevation: 3,
                       ),
-                      elevation: 3,
+                      child: _isLoading.value
+                          ? const SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.white,
+                                ),
+                                strokeWidth: 2,
+                              ),
+                            )
+                          : Text(
+                              AppLocalizations.of(
+                                    context,
+                                  )?.addReminderSubmitButton ??
+                                  'Hatırlatıcı Ekle',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                     ),
-                    child: _isLoading
-                        ? const SizedBox(
-                            height: 20,
-                            width: 20,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : Text(
-                            AppLocalizations.of(context)?.addReminderSubmitButton ?? 'Hatırlatıcı Ekle',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
                   ),
                 ),
               ],
@@ -314,16 +343,10 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFFFFDF7),
-            Color(0xFFF5F3E8),
-          ],
+          colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
         ),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: goldColor.withAlpha(77),
-          width: 1.5,
-        ),
+        border: Border.all(color: goldColor.withAlpha(77), width: 1.5),
         boxShadow: [
           BoxShadow(
             color: darkGreen.withAlpha(26),
@@ -344,14 +367,19 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
     return ElevatedButton.icon(
       onPressed: onPressed,
       icon: Icon(icon, size: 18, color: emeraldGreen),
-      label: Text(label, style: const TextStyle(color: emeraldGreen, fontSize: 14, fontWeight: FontWeight.bold)),
+      label: Text(
+        label,
+        style: const TextStyle(
+          color: emeraldGreen,
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       style: ElevatedButton.styleFrom(
         backgroundColor: goldColor,
         foregroundColor: emeraldGreen,
         padding: const EdgeInsets.symmetric(vertical: 12),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       ),
     );
   }
@@ -388,9 +416,10 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
           children: [
             Expanded(
               child: Text(
-                AppLocalizations.of(context)?.addReminderDatePickerTitle ?? 'Tarih Seçin',
+                AppLocalizations.of(context)?.addReminderDatePickerTitle ??
+                    'Tarih Seçin',
                 style: const TextStyle(
-                  color:emeraldGreen ,
+                  color: emeraldGreen,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -410,7 +439,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
     CustomBottomPicker.time(
       backgroundColor: Colors.white,
       buttonSingleColor: emeraldGreen,
-      
+
       onSubmit: (time) {
         setState(() {
           _selectedDateTime = DateTime(
@@ -428,7 +457,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
       ),
       displaySubmitButton: true,
       use24hFormat: true,
-       headerBuilder: (context) => Container(
+      headerBuilder: (context) => Container(
         padding: const EdgeInsets.all(10),
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -441,9 +470,10 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
           children: [
             Expanded(
               child: Text(
-                AppLocalizations.of(context)?.addReminderTimePickerTitle ?? 'Saat Seçin',
+                AppLocalizations.of(context)?.addReminderTimePickerTitle ??
+                    'Saat Seçin',
                 style: const TextStyle(
-                  color:emeraldGreen ,
+                  color: emeraldGreen,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -462,36 +492,48 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
   Future<void> _addReminder() async {
     if (_selectedDateTime.isBefore(DateTime.now())) {
       IslamicSnackbar.showWarning(
-        AppLocalizations.of(context)?.addReminderInvalidDate ?? 'Geçersiz Tarih',
-        AppLocalizations.of(context)?.addReminderInvalidDateMessage ?? 'Geçmiş bir tarih seçemezsiniz',
+        AppLocalizations.of(context)?.addReminderInvalidDate ??
+            'Geçersiz Tarih',
+        AppLocalizations.of(context)?.addReminderInvalidDateMessage ??
+            'Geçmiş bir tarih seçemezsiniz',
       );
       return;
     }
 
-    setState(() {
-      _isLoading = true;
-    });
+   
+      _isLoading.value = true;
+   
 
     // Store localized strings before async operations
-    final titleHint = AppLocalizations.of(context)?.addReminderTitleHint ?? 'Zikir Zamanı 🕌';
-    final defaultMessage = AppLocalizations.of(context)?.addReminderDefaultMessage ?? 'Zikir yapma zamanı geldi!';
-    final successTitle = AppLocalizations.of(context)?.addReminderSuccess ?? 'Hatırlatıcı Eklendi 🔔';
-    final successMessage = AppLocalizations.of(context)?.addReminderSuccessMessage ?? 'Belirlenen zamanda bildirim gelecek';
+    final titleHint =
+        AppLocalizations.of(context)?.addReminderTitleHint ?? 'Zikir Zamanı 🕌';
+    final defaultMessage =
+        AppLocalizations.of(context)?.addReminderDefaultMessage ??
+        'Zikir yapma zamanı geldi!';
+    final successTitle =
+        AppLocalizations.of(context)?.addReminderSuccess ??
+        'Hatırlatıcı Eklendi 🔔';
+    final successMessage =
+        AppLocalizations.of(context)?.addReminderSuccessMessage ??
+        'Belirlenen zamanda bildirim gelecek';
     final errorTitle = AppLocalizations.of(context)?.addReminderError ?? 'Hata';
-    final errorMessage = AppLocalizations.of(context)?.addReminderErrorMessage ?? 'Hatırlatıcı eklenirken bir hata oluştu';
+    final errorMessage =
+        AppLocalizations.of(context)?.addReminderErrorMessage ??
+        'Hatırlatıcı eklenirken bir hata oluştu';
 
     try {
       // Permission kontrolü
-      final hasPermission = await _notificationService.checkNotificationPermission();
+      final hasPermission = await _notificationService
+          .checkNotificationPermission();
       if (!hasPermission) {
         _showPermissionDialog();
         return;
       }
 
-      final reminderTitle = _titleController.text.trim().isEmpty 
+      final reminderTitle = _titleController.text.trim().isEmpty
           ? titleHint
           : _titleController.text.trim();
-      final reminderMessage = _messageController.text.trim().isEmpty 
+      final reminderMessage = _messageController.text.trim().isEmpty
           ? defaultMessage
           : _messageController.text.trim();
 
@@ -500,51 +542,204 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
         title: reminderTitle,
         message: reminderMessage,
       );
-
-      IslamicSnackbar.showSuccess(successTitle, successMessage);
-
       Get.back(); // Geri dön
+
+     await Future.delayed(const Duration(milliseconds: 1000), () {
+        IslamicSnackbar.showSuccess(successTitle, successMessage);
+      });
     } catch (e) {
       IslamicSnackbar.showError(errorTitle, errorMessage);
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+     
+        _isLoading.value = false;
+      
     }
   }
 
   void _showPermissionDialog() {
     final context = this.context;
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xFFF8F6F0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        title: Text(
-          AppLocalizations.of(context)?.addReminderPermissionTitle ?? 'Bildirim İzni Gerekli',
-          style: const TextStyle(color: emeraldGreen, fontWeight: FontWeight.bold),
-        ),
-        content: Text(
-          AppLocalizations.of(context)?.addReminderPermissionMessage ?? 'Hatırlatıcıların çalışması için bildirim izni vermeniz gerekiyor.',
-          style: const TextStyle(color: emeraldGreen),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(AppLocalizations.of(context)?.addReminderPermissionCancel ?? 'İptal'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              _notificationService.openNotificationSettings();
-            },
-            style: ElevatedButton.styleFrom(backgroundColor: emeraldGreen),
-            child: Text(
-              AppLocalizations.of(context)?.addReminderPermissionSettings ?? 'Ayarlara Git', 
-              style: const TextStyle(color: Colors.white)
+    Get.dialog(
+      Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(20),
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 320),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
+            boxShadow: [
+              BoxShadow(
+                color: darkGreen.withAlpha(51),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
           ),
-        ],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 12),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: const RadialGradient(
+                          colors: [lightGold, goldColor],
+                          center: Alignment(-0.2, -0.2),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: darkGreen.withAlpha(39),
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: const Icon(
+                        Icons.notifications_off,
+                        color: emeraldGreen,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        AppLocalizations.of(
+                              context,
+                            )?.addReminderPermissionTitle ??
+                            'Bildirim İzni Gerekli',
+                        style: const TextStyle(
+                          color: emeraldGreen,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Divider
+              Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      goldColor.withAlpha(77),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+
+              // Content
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
+                child: Column(
+                  children: [
+                    Text(
+                      AppLocalizations.of(
+                            context,
+                          )?.addReminderPermissionMessage ??
+                          'Hatırlatıcıların çalışması için bildirim izni vermeniz gerekiyor.',
+                      style: TextStyle(
+                        color: emeraldGreen.withAlpha(204),
+                        fontSize: 14,
+                        height: 1.4,
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Buttons
+                    Row(
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 40,
+                            child: ElevatedButton(
+                              onPressed: () => Navigator.pop(context),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: emeraldGreen,
+                                elevation: 0,
+                                side: BorderSide(
+                                  color: goldColor.withAlpha(128),
+                                  width: 1.5,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  AppLocalizations.of(
+                                        context,
+                                      )?.addReminderPermissionCancel ??
+                                      'İptal',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: SizedBox(
+                            height: 40,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                _notificationService.openNotificationSettings();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: emeraldGreen,
+                                foregroundColor: Colors.white,
+                                elevation: 2,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                shadowColor: darkGreen.withAlpha(77),
+                              ),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  AppLocalizations.of(
+                                        context,
+                                      )?.addReminderPermissionSettings ??
+                                      'Ayarlara Git',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

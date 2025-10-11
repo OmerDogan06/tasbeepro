@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 import '../services/notification_service.dart';
 import '../services/storage_service.dart';
 import '../widgets/islamic_snackbar.dart';
@@ -24,7 +25,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
   final StorageService _storage = Get.find<StorageService>();
   
   List<Map<String, dynamic>> _customTimes = [];
-
+  RxBool isLoading = false.obs;
   @override
   void initState() {
     super.initState();
@@ -113,74 +114,83 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
           ),
         ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              // Info Card
-              Container(
-                padding: const EdgeInsets.all(8),
-                margin: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [lightGold, Colors.white],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: goldColor, width: 1),
-                  boxShadow: [
-                    BoxShadow(
-                      color: goldColor.withAlpha(51),
-                      blurRadius: 8,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 35,
-                      height: 35,
-                      padding: const EdgeInsets.all(3),
-                      decoration: BoxDecoration(
-                        color: goldColor,
-                        borderRadius: BorderRadius.circular(5),
+        body: Obx(() => 
+         LoadingOverlay(
+            isLoading: isLoading.value,
+            color: Colors.black.withAlpha(50),
+            progressIndicator: const CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(emeraldGreen),
+            ),
+            child: SafeArea(
+              child: Column(
+                children: [
+                  // Info Card
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [lightGold, Colors.white],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
-                      child: const Icon(
-                        Icons.schedule,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        AppLocalizations.of(context)?.customTimesDescription ?? 'Özel saatlerde günlük zikir hatırlatıcıları alın. Eklediğiniz saatler her gün tekrarlanır.',
-                        style: const TextStyle(
-                          fontSize: 13,
-                          color: emeraldGreen,
-                          fontWeight: FontWeight.w500,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: goldColor, width: 1),
+                      boxShadow: [
+                        BoxShadow(
+                          color: goldColor.withAlpha(51),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 35,
+                          height: 35,
+                          padding: const EdgeInsets.all(3),
+                          decoration: BoxDecoration(
+                            color: goldColor,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const Icon(
+                            Icons.schedule,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            AppLocalizations.of(context)?.customTimesDescription ?? 'Özel saatlerde günlük zikir hatırlatıcıları alın. Eklediğiniz saatler her gün tekrarlanır.',
+                            style: const TextStyle(
+                              fontSize: 13,
+                              color: emeraldGreen,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  
+                  // Times List
+                  Expanded(
+                    child: _customTimes.isEmpty
+                        ? _buildEmptyState()
+                        : ListView.builder(
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            itemCount: _customTimes.length,
+                            itemBuilder: (context, index) {
+                              final timeData = _customTimes[index];
+                              return _buildTimeCard(timeData, index);
+                            },
+                          ),
+                  ),
+                ],
               ),
-              
-              // Times List
-              Expanded(
-                child: _customTimes.isEmpty
-                    ? _buildEmptyState()
-                    : ListView.builder(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        itemCount: _customTimes.length,
-                        itemBuilder: (context, index) {
-                          final timeData = _customTimes[index];
-                          return _buildTimeCard(timeData, index);
-                        },
-                      ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -359,7 +369,8 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
     CustomBottomPicker.time(
       backgroundColor: Colors.white,
       buttonSingleColor: emeraldGreen,
-      onSubmit: (time) {
+      onSubmit: (time) async{
+        isLoading.value = true;
         final hour = time.hour;
         final minute = time.minute;
         
@@ -372,6 +383,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             AppLocalizations.of(context)?.customTimesAlreadyExists ?? 'Zaten Mevcut',
             AppLocalizations.of(context)?.customTimesAlreadyExistsMessage ?? 'Bu saat zaten eklenmiş',
           );
+          isLoading.value = false;
           return;
         }
 
@@ -383,14 +395,16 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           });
         });
 
-        _saveCustomTimes();
-        _scheduleTimeNotifications();
+      await  _saveCustomTimes();
+      await  _scheduleTimeNotifications();
+
+      isLoading.value = false;
 
         final timeString = '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
         final successMessage = AppLocalizations.of(context)?.customTimesAddSuccessMessage(timeString) ?? '$timeString saatinde günlük hatırlatıcı aktif';
         IslamicSnackbar.showSuccess(
           AppLocalizations.of(context)?.customTimesAddSuccess ?? 'Saat Eklendi 🕐',
-          successMessage.replaceAll('{time}', timeString),
+          successMessage,
         );
       },
       initialTime: CustomTime(
