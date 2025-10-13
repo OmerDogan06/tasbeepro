@@ -437,8 +437,8 @@ class ZikrListScreen extends StatelessWidget {
                               Navigator.of(context).pop();
                               await controller.deleteCustomZikr(zikr.id);
                               IslamicSnackbar.showSuccess(
-                                AppLocalizations.of(context)?.deleteZikirSuccess ?? 'Silindi! 🗑️',
-                                '${zikr.name} ${AppLocalizations.of(context)?.zikirListSelected ?? 'silindi'}',
+                                AppLocalizations.of(context.mounted ? context : Get.context!)?.deleteZikirSuccess ?? 'Silindi! 🗑️',
+                                '${zikr.name} ${AppLocalizations.of(context.mounted ? context : Get.context!)?.zikirListSelected ?? 'silindi'}',
                               );
                             },
                             style: ElevatedButton.styleFrom(
