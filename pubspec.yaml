@@ -142,5 +142,5 @@ flutter_launcher_icons:
   image_path: "assets/image/tasbee-pro.png"
   
   # Adaptive launcher icons (Android 8.0 and above)
-  adaptive_icon_background: "#052713"
+  adaptive_icon_background: "#002914"
   adaptive_icon_foreground: "assets/image/tasbee-pro-transparant.png"
