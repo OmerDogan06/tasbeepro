@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Widget Tasbee Pro</string>
+    <string name="widget_description">Widget pengira zikir skrin utama</string>
+    <string name="add_widget">Tambah Widget</string>
+    <string name="zikr_counter">Pengira Zikir</string>
+    <string name="target">Sasaran</string>
+    <string name="current">Semasa</string>
+    <string name="progress">Kemajuan</string>
+    <string name="reset">Set Semula</string>
+    <string name="settings">Tetapan</string>
+    <string name="widget_settings">Tetapan Widget</string>
+    <string name="zikr_type">Jenis Zikir</string>
+    <string name="target_count">Bilangan Sasaran</string>
+    <string name="preview">Pratonton</string>
+    <string name="save">Simpan</string>
+    <string name="cancel">Batal</string>
+    <string name="widget_settings_desc">Tetapan</string>
+    <string name="widget_counter_desc">Pengira zikir</string>
+    <string name="widget_tap_text">KETIK</string>
+    <string name="widget_reset_desc">Set semula pengira</string>
+    <string name="widget_config_title">Tetapan Widget</string>
+    <string name="zikr_type_description">Pilih jenis zikir yang akan dipaparkan dalam widget</string>
+    <string name="target_count_description">Tetapkan sasaran bilangan zikir harian anda</string>
+    <string name="sound_settings_title">🔊 Tetapan Bunyi</string>
+    <string name="sound_effect">Kesan Bunyi</string>
+    <string name="widget_preview_title">👁️ Pratonton Widget</string>
+    <string name="preview_target_text">Sasaran: %1$d</string>
+    <string name="target_completed_title">Sasaran Selesai! 🎉</string>
+    <string name="target_completed_message">Masya Allah! Anda telah mencapai %1$d zikir. Semoga Allah menerima!</string>
+    <string name="target_completed_toast_main">🎉 Masya Allah! Anda telah selesaikan %1$d zikir!</string>
+    <string name="target_completed_toast">✨ Sasaran terlebih! (%1$d+) Teruskan!</string>
+    <string name="target_exceeded_title">Sasaran Terlebih! ✨</string>
+    <string name="target_exceeded_message">Masya Allah! Anda telah melebihi sasaran %1$d. Zikir anda berterusan!</string>
+    <string name="notification_channel_name">Pemberitahuan Tasbee</string>
+    <string name="notification_channel_description">Menunjukkan pemberitahuan sasaran zikir</string>
+    <string name="error_widget_update">Ralat berlaku semasa mengemaskini widget: %1$s</string>
+    <string name="error_widget_ids">Ralat berlaku semasa mendapatkan ID widget: %1$s</string>
+</resources>

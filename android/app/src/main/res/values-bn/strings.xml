@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
+    <string name="widget_description">জিকর কাউন্টার হোম স্ক্রিন উইজেট</string>
+    <string name="add_widget">উইজেট যোগ করুন</string>
+    <string name="zikr_counter">জিকর কাউন্টার</string>
+    <string name="target">লক্ষ্য</string>
+    <string name="current">বর্তমান</string>
+    <string name="progress">অগ্রগতি</string>
+    <string name="reset">রিসেট</string>
+    <string name="settings">সেটিংস</string>
+    <string name="widget_settings">উইজেট সেটিংস</string>
+    <string name="zikr_type">জিকরের ধরন</string>
+    <string name="target_count">লক্ষ্য সংখ্যা</string>
+    <string name="preview">প্রিভিউ</string>
+    <string name="save">সংরক্ষণ</string>
+    <string name="cancel">বাতিল</string>
+    <string name="widget_settings_desc">সেটিংস</string>
+    <string name="widget_counter_desc">জিকর কাউন্টার</string>
+    <string name="widget_tap_text">ট্যাপ</string>
+    <string name="widget_reset_desc">কাউন্টার রিসেট</string>
+    <string name="widget_config_title">উইজেট সেটিংস</string>
+    <string name="zikr_type_description">উইজেটে প্রদর্শিত হওয়া জিকরের ধরন নির্বাচন করুন</string>
+    <string name="target_count_description">আপনার দৈনিক জিকর লক্ষ্য সংখ্যা নির্ধারণ করুন</string>
+    <string name="sound_settings_title">🔊 শব্দ সেটিংস</string>
+    <string name="sound_effect">শব্দ প্রভাব</string>
+    <string name="widget_preview_title">👁️ উইজেট প্রিভিউ</string>
+    <string name="preview_target_text">লক্ষ্য: %1$d</string>
+    <string name="target_completed_title">লক্ষ্য সম্পন্ন! 🎉</string>
+    <string name="target_completed_message">মাশাআল্লাহ! আপনি %1$d জিকর সম্পন্ন করেছেন। আল্লাহ কবুল করুন!</string>
+    <string name="target_completed_toast_main">🎉 মাশাআল্লাহ! আপনি %1$d জিকর সম্পন্ন করেছেন!</string>
+    <string name="target_completed_toast">✨ লক্ষ্য অতিক্রম! (%1$d+) চালিয়ে যান!</string>
+    <string name="target_exceeded_title">লক্ষ্য অতিক্রম! ✨</string>
+    <string name="target_exceeded_message">মাশাআল্লাহ! আপনি %1$d লক্ষ্য অতিক্রম করেছেন। আপনার জিকর অব্যাহত!</string>
+    <string name="notification_channel_name">Tasbee বিজ্ঞপ্তি</string>
+    <string name="notification_channel_description">জিকর লক্ষ্য বিজ্ঞপ্তি দেখায়</string>
+    <string name="error_widget_update">উইজেট আপডেট করার সময় ত্রুটি: %1$s</string>
+    <string name="error_widget_ids">উইজেট আইডি পেতে ত্রুটি: %1$s</string>
+</resources>

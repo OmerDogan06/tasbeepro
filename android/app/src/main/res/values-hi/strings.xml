@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
+    <string name="widget_description">जिक्र काउंटर होम स्क्रीन विजेट</string>
+    <string name="add_widget">विजेट जोड़ें</string>
+    <string name="zikr_counter">जिक्र काउंटर</string>
+    <string name="target">लक्ष्य</string>
+    <string name="current">वर्तमान</string>
+    <string name="progress">प्रगति</string>
+    <string name="reset">रीसेट</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="widget_settings">विजेट सेटिंग्स</string>
+    <string name="zikr_type">जिक्र का प्रकार</string>
+    <string name="target_count">लक्ष्य संख्या</string>
+    <string name="preview">पूर्वावलोकन</string>
+    <string name="save">सहेजें</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="widget_settings_desc">सेटिंग्स</string>
+    <string name="widget_counter_desc">जिक्र काउंटर</string>
+    <string name="widget_tap_text">टैप करें</string>
+    <string name="widget_reset_desc">काउंटर रीसेट करें</string>
+    <string name="widget_config_title">विजेट सेटिंग्स</string>
+    <string name="zikr_type_description">विजेट में प्रदर्शित होने वाले जिक्र का प्रकार चुनें</string>
+    <string name="target_count_description">अपना दैनिक जिक्र लक्ष्य निर्धारित करें</string>
+    <string name="sound_settings_title">🔊 ध्वनि सेटिंग्स</string>
+    <string name="sound_effect">ध्वनि प्रभाव</string>
+    <string name="widget_preview_title">👁️ विजेट पूर्वावलोकन</string>
+    <string name="preview_target_text">लक्ष्य: %1$d</string>
+    <string name="target_completed_title">लक्ष्य पूरा! 🎉</string>
+    <string name="target_completed_message">माशा अल्लाह! आपने %1$d जिक्र पूरे किए। अल्लाह कबूल करे!</string>
+    <string name="target_completed_toast_main">🎉 माशा अल्लाह! आपने %1$d जिक्र पूरे किए!</string>
+    <string name="target_completed_toast">✨ लक्ष्य पार! (%1$d+) जारी रखें!</string>
+    <string name="target_exceeded_title">लक्ष्य पार! ✨</string>
+    <string name="target_exceeded_message">माशा अल्लाह! आपने %1$d का लक्ष्य पार कर लिया। आपका जिक्र जारी है!</string>
+    <string name="notification_channel_name">Tasbee सूचनाएं</string>
+    <string name="notification_channel_description">जिक्र लक्ष्य सूचनाएं दिखाता है</string>
+    <string name="error_widget_update">विजेट अपडेट करते समय त्रुटि: %1$s</string>
+    <string name="error_widget_ids">विजेट आईडी प्राप्त करते समय त्रुटि: %1$s</string>
+</resources>

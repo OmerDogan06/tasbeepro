@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 class LanguageService extends GetxService {
   static const String _languageKey = 'selected_language';
   
-  final RxString _currentLanguage = 'tr'.obs;
+  final RxString _currentLanguage = 'en'.obs;
   String get currentLanguage => _currentLanguage.value;
   
-  final Rx<Locale> _currentLocale = const Locale('tr', 'TR').obs;
+  final Rx<Locale> _currentLocale = const Locale('en', 'GB').obs;
   Locale get currentLocale => _currentLocale.value;
 
   Future<LanguageService> init() async {
@@ -23,14 +23,19 @@ class LanguageService extends GetxService {
       
       if (savedLanguage == null) {
         // Cihaz dilini kontrol et
-       String deviceLanguage = WidgetsBinding.instance.platformDispatcher.locale.languageCode;
-        savedLanguage = deviceLanguage == 'tr' ? 'tr' : 'en';
+        String deviceLanguage = WidgetsBinding.instance.platformDispatcher.locale.languageCode;
+        
+        // Desteklenen diller listesi
+        const supportedLanguages = ['tr', 'en', 'ar', 'id', 'ur', 'ms', 'bn', 'fr', 'hi'];
+        
+        // Eğer cihaz dili desteklenen diller arasında varsa onu kullan, yoksa İngilizce
+        savedLanguage = supportedLanguages.contains(deviceLanguage) ? deviceLanguage : 'en';
       }
       
       await changeLanguage(savedLanguage);
     } catch (e) {
-      // Hata durumunda varsayılan Türkçe
-      await changeLanguage('tr');
+      // Hata durumunda varsayılan İngilizce
+      await changeLanguage('en');
     }
   }
 
@@ -68,7 +73,7 @@ class LanguageService extends GetxService {
           newLocale = const Locale('hi', 'IN');
           break;
         default:
-          newLocale = const Locale('tr', 'TR');
+          newLocale = const Locale('en', 'GB');
       }
       
       _currentLocale.value = newLocale;
@@ -106,7 +111,7 @@ class LanguageService extends GetxService {
       case 'hi':
         return 'हिन्दी';
       default:
-        return 'Türkçe';
+        return 'English';
     }
   }
 

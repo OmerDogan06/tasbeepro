@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">أداة Tasbee Pro</string>
+    <string name="widget_description">أداة عداد التسبيح للشاشة الرئيسية</string>
+    <string name="add_widget">إضافة أداة</string>
+    <string name="zikr_counter">عداد التسبيح</string>
+    <string name="target">الهدف</string>
+    <string name="current">الحالي</string>
+    <string name="progress">التقدم</string>
+    <string name="reset">إعادة تعيين</string>
+    <string name="settings">الإعدادات</string>
+    <string name="widget_settings">إعدادات الأداة</string>
+    <string name="zikr_type">نوع التسبيح</string>
+    <string name="target_count">عدد الهدف</string>
+    <string name="preview">معاينة</string>
+    <string name="save">حفظ</string>
+    <string name="cancel">إلغاء</string>
+    <string name="widget_settings_desc">الإعدادات</string>
+    <string name="widget_counter_desc">عداد التسبيح</string>
+    <string name="widget_tap_text">اضغط</string>
+    <string name="widget_reset_desc">إعادة تعيين العداد</string>
+    <string name="widget_config_title">إعدادات الأداة</string>
+    <string name="zikr_type_description">اختر نوع التسبيح الذي سيظهر في الأداة</string>
+    <string name="target_count_description">حدد عدد التسبيح اليومي المستهدف</string>
+    <string name="sound_settings_title">🔊 إعدادات الصوت</string>
+    <string name="sound_effect">تأثير صوتي</string>
+    <string name="widget_preview_title">👁️ معاينة الأداة</string>
+    <string name="preview_target_text">الهدف: %1$d</string>
+    <string name="target_completed_title">تم إكمال الهدف! 🎉</string>
+    <string name="target_completed_message">ماشاء الله! لقد وصلت إلى %1$d من التسبيح. تقبل الله منك!</string>
+    <string name="target_completed_toast_main">🎉 ماشاء الله! لقد أكملت %1$d تسبيحة!</string>
+    <string name="target_completed_toast">✨ تم تجاوز الهدف! (%1$d+) استمر!</string>
+    <string name="target_exceeded_title">تم تجاوز الهدف! ✨</string>
+    <string name="target_exceeded_message">ماشاء الله! لقد تجاوزت هدف %1$d. تسبيحك مستمر!</string>
+    <string name="notification_channel_name">إشعارات Tasbee</string>
+    <string name="notification_channel_description">يعرض إشعارات هدف التسبيح</string>
+    <string name="error_widget_update">حدث خطأ أثناء تحديث الأداة: %1$s</string>
+    <string name="error_widget_ids">حدث خطأ أثناء الحصول على معرفات الأداة: %1$s</string>
+</resources>

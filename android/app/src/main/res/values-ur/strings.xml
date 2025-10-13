@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
+    <string name="widget_description">ذکر کاؤنٹر ہوم اسکرین ویجٹ</string>
+    <string name="add_widget">ویجٹ شامل کریں</string>
+    <string name="zikr_counter">ذکر کاؤنٹر</string>
+    <string name="target">ہدف</string>
+    <string name="current">موجودہ</string>
+    <string name="progress">پیش قدمی</string>
+    <string name="reset">ری سیٹ</string>
+    <string name="settings">ترتیبات</string>
+    <string name="widget_settings">ویجٹ کی ترتیبات</string>
+    <string name="zikr_type">ذکر کی قسم</string>
+    <string name="target_count">ہدف کی تعداد</string>
+    <string name="preview">پیش منظر</string>
+    <string name="save">محفوظ کریں</string>
+    <string name="cancel">منسوخ</string>
+    <string name="widget_settings_desc">ترتیبات</string>
+    <string name="widget_counter_desc">ذکر کاؤنٹر</string>
+    <string name="widget_tap_text">ٹیپ کریں</string>
+    <string name="widget_reset_desc">کاؤنٹر ری سیٹ کریں</string>
+    <string name="widget_config_title">ویجٹ کی ترتیبات</string>
+    <string name="zikr_type_description">ویجٹ میں دکھائے جانے والے ذکر کی قسم منتخب کریں</string>
+    <string name="target_count_description">اپنا روزانہ ذکر کا ہدف مقرر کریں</string>
+    <string name="sound_settings_title">🔊 آواز کی ترتیبات</string>
+    <string name="sound_effect">آواز کا اثر</string>
+    <string name="widget_preview_title">👁️ ویجٹ کا پیش منظر</string>
+    <string name="preview_target_text">ہدف: %1$d</string>
+    <string name="target_completed_title">ہدف مکمل! 🎉</string>
+    <string name="target_completed_message">ماشاء اللہ! آپ نے %1$d ذکر مکمل کیے۔ اللہ قبول فرمائے!</string>
+    <string name="target_completed_toast_main">🎉 ماشاء اللہ! آپ نے %1$d ذکر مکمل کیے!</string>
+    <string name="target_completed_toast">✨ ہدف سے زیادہ! (%1$d+) جاری رکھیں!</string>
+    <string name="target_exceeded_title">ہدف سے زیادہ! ✨</string>
+    <string name="target_exceeded_message">ماشاء اللہ! آپ نے %1$d کا ہدف پار کر لیا۔ آپ کا ذکر جاری ہے!</string>
+    <string name="notification_channel_name">Tasbee اطلاعات</string>
+    <string name="notification_channel_description">ذکر کے ہدف کی اطلاعات دکھاتا ہے</string>
+    <string name="error_widget_update">ویجٹ اپ ڈیٹ کرتے وقت خرابی: %1$s</string>
+    <string name="error_widget_ids">ویجٹ آئی ڈیز حاصل کرتے وقت خرابی: %1$s</string>
+</resources>

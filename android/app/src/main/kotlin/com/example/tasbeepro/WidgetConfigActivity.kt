@@ -15,6 +15,8 @@ import android.os.Build
 import android.graphics.Color
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import android.content.res.Configuration
+import java.util.Locale
 
 class WidgetConfigActivity : Activity() {
 
@@ -34,6 +36,9 @@ class WidgetConfigActivity : Activity() {
     
     // Ses ayarı
     private var soundEnabled = true
+    
+    // Desteklenen diller - Flutter tarafıyla aynı
+    private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "ur", "ms", "bn", "fr", "hi")
 
     // 16 Zikir türü
     private val zikrList = listOf(
@@ -58,6 +63,10 @@ class WidgetConfigActivity : Activity() {
     // Hedef seçenekleri (1000'e kadar)
     private val targetOptions = listOf(33, 99, 100, 250, 500, 1000)
 
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase?.let { getLocalizedContext(it) })
+    }
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
@@ -253,5 +262,41 @@ class WidgetConfigActivity : Activity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.setDecorFitsSystemWindows(false)
         }
+    }
+    
+    // Desteklenen dillere göre context'i ayarla
+    private fun getLocalizedContext(context: Context): Context {
+        val currentLocale = context.resources.configuration.locales[0]
+        val currentLanguage = currentLocale.language
+        
+        // Eğer mevcut dil desteklenen diller arasında değilse İngilizce'ye düş
+        val targetLanguage = if (SUPPORTED_LANGUAGES.contains(currentLanguage)) {
+            currentLanguage
+        } else {
+            "en" // Varsayılan İngilizce
+        }
+        
+        // Eğer zaten doğru dildeyse context'i olduğu gibi döndür
+        if (currentLanguage == targetLanguage) {
+            return context
+        }
+        
+        // Yeni locale ile context oluştur
+        val locale = when (targetLanguage) {
+            "tr" -> Locale("tr", "TR")
+            "ar" -> Locale("ar", "SA")
+            "id" -> Locale("id", "ID")
+            "ur" -> Locale("ur", "PK")
+            "ms" -> Locale("ms", "MY")
+            "bn" -> Locale("bn", "BD")
+            "fr" -> Locale("fr", "FR")
+            "hi" -> Locale("hi", "IN")
+            else -> Locale("en", "GB")
+        }
+        
+        val config = Configuration(context.resources.configuration)
+        config.setLocale(locale)
+        
+        return context.createConfigurationContext(config)
     }
 }

@@ -14,6 +14,8 @@ import androidx.core.app.NotificationCompat
 import android.util.Log
 import android.media.AudioManager
 import android.media.ToneGenerator
+import android.content.res.Configuration
+import java.util.Locale
 import com.skyforgestudios.tasbeepro.R
 
 class TasbeeWidgetProvider : AppWidgetProvider() {
@@ -29,6 +31,9 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         private const val KEY_ZIKR_NAME = "zikr_name_"
         private const val KEY_ZIKR_MEANING = "zikr_meaning_"
         private const val KEY_ZIKR_ID = "zikr_id_"
+        
+        // Desteklenen diller - Flutter tarafıyla aynı
+        private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "ur", "ms", "bn", "fr", "hi")
     }
 
     private lateinit var database: WidgetZikrDatabase
@@ -41,32 +46,69 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         database = WidgetZikrDatabase(context)
         
         for (appWidgetId in appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId)
+            updateAppWidget(getLocalizedContext(context), appWidgetManager, appWidgetId)
         }
+    }
+    
+    // Desteklenen dillere göre context'i ayarla
+    private fun getLocalizedContext(context: Context): Context {
+        val currentLocale = context.resources.configuration.locales[0]
+        val currentLanguage = currentLocale.language
+        
+        // Eğer mevcut dil desteklenen diller arasında değilse İngilizce'ye düş
+        val targetLanguage = if (SUPPORTED_LANGUAGES.contains(currentLanguage)) {
+            currentLanguage
+        } else {
+            "en" // Varsayılan İngilizce
+        }
+        
+        // Eğer zaten doğru dildeyse context'i olduğu gibi döndür
+        if (currentLanguage == targetLanguage) {
+            return context
+        }
+        
+        // Yeni locale ile context oluştur
+        val locale = when (targetLanguage) {
+            "tr" -> Locale("tr", "TR")
+            "ar" -> Locale("ar", "SA")
+            "id" -> Locale("id", "ID")
+            "ur" -> Locale("ur", "PK")
+            "ms" -> Locale("ms", "MY")
+            "bn" -> Locale("bn", "BD")
+            "fr" -> Locale("fr", "FR")
+            "hi" -> Locale("hi", "IN")
+            else -> Locale("en", "GB")
+        }
+        
+        val config = Configuration(context.resources.configuration)
+        config.setLocale(locale)
+        
+        return context.createConfigurationContext(config)
     }
 
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
         
         database = WidgetZikrDatabase(context)
+        val localizedContext = getLocalizedContext(context)
         
         when (intent.action) {
             ACTION_COUNTER_CLICK -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    incrementCounter(context, appWidgetId)
+                    incrementCounter(localizedContext, appWidgetId)
                 }
             }
             ACTION_RESET_CLICK -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    resetCounter(context, appWidgetId)
+                    resetCounter(localizedContext, appWidgetId)
                 }
             }
             ACTION_SETTINGS_CLICK -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    openWidgetSettings(context, appWidgetId)
+                    openWidgetSettings(context, appWidgetId) // Settings için orijinal context kullan
                 }
             }
         }

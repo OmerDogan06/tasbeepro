@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Widget Tasbee Pro</string>
+    <string name="widget_description">Widget compteur de dhikr pour l\'écran d\'accueil</string>
+    <string name="add_widget">Ajouter Widget</string>
+    <string name="zikr_counter">Compteur de Dhikr</string>
+    <string name="target">Objectif</string>
+    <string name="current">Actuel</string>
+    <string name="progress">Progrès</string>
+    <string name="reset">Réinitialiser</string>
+    <string name="settings">Paramètres</string>
+    <string name="widget_settings">Paramètres du Widget</string>
+    <string name="zikr_type">Type de Dhikr</string>
+    <string name="target_count">Nombre Objectif</string>
+    <string name="preview">Aperçu</string>
+    <string name="save">Enregistrer</string>
+    <string name="cancel">Annuler</string>
+    <string name="widget_settings_desc">Paramètres</string>
+    <string name="widget_counter_desc">Compteur de dhikr</string>
+    <string name="widget_tap_text">APPUYER</string>
+    <string name="widget_reset_desc">Réinitialiser le compteur</string>
+    <string name="widget_config_title">Paramètres du Widget</string>
+    <string name="zikr_type_description">Sélectionnez le type de dhikr à afficher dans le widget</string>
+    <string name="target_count_description">Définissez votre objectif quotidien de dhikr</string>
+    <string name="sound_settings_title">🔊 Paramètres Audio</string>
+    <string name="sound_effect">Effet Sonore</string>
+    <string name="widget_preview_title">👁️ Aperçu du Widget</string>
+    <string name="preview_target_text">Objectif: %1$d</string>
+    <string name="target_completed_title">Objectif Atteint! 🎉</string>
+    <string name="target_completed_message">Machallah! Vous avez atteint %1$d dhikr. Que Allah l\'accepte!</string>
+    <string name="target_completed_toast_main">🎉 Machallah! Vous avez complété %1$d dhikr!</string>
+    <string name="target_completed_toast">✨ Objectif dépassé! (%1$d+) Continuez!</string>
+    <string name="target_exceeded_title">Objectif Dépassé! ✨</string>
+    <string name="target_exceeded_message">Machallah! Vous avez dépassé l\'objectif de %1$d. Votre dhikr continue!</string>
+    <string name="notification_channel_name">Notifications Tasbee</string>
+    <string name="notification_channel_description">Affiche les notifications d\'objectif de dhikr</string>
+    <string name="error_widget_update">Erreur lors de la mise à jour du widget: %1$s</string>
+    <string name="error_widget_ids">Erreur lors de l\'obtention des IDs de widget: %1$s</string>
+</resources>
