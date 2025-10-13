@@ -10,6 +10,7 @@ import '../widgets/islamic_snackbar.dart';
 import 'reminder_screen.dart';
 import 'custom_reminder_times_screen.dart';
 import 'widget_stats_screen.dart';
+import 'permissions_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -150,6 +151,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       subtitle: vibrationService.vibrationLevelText,
                       onTap: () =>
                           _showVibrationDialog(context, vibrationService),
+                    ),
+                  ),
+                ]),
+
+                const SizedBox(height: 24),
+
+                // İzinler
+                _buildSectionHeader(
+                  context,
+                  AppLocalizations.of(context)?.settingsPermissions ?? 'İzinler',
+                ),
+                _buildIslamicCard([
+                  _buildIslamicListTile(
+                    icon: Icons.security,
+                    title:
+                        AppLocalizations.of(context)?.settingsPermissionsTitle ??
+                        'Uygulama İzinleri',
+                    subtitle:
+                        AppLocalizations.of(
+                          context,
+                        )?.settingsPermissionsSubtitle ??
+                        'Uygulama izinlerini görüntüle ve yönet',
+                    onTap: () => Get.to(
+                      () => const PermissionsScreen(),
+                      transition: Transition.rightToLeft,
+                      duration: const Duration(milliseconds: 300),
                     ),
                   ),
                 ]),

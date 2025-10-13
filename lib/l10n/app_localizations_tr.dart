@@ -892,4 +892,121 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get notificationDetailedMessage =>
       'Günlük zikir yapma zamanı geldi! SubhanAllah, Alhamdulillah, Allahu Akbar';
+
+  @override
+  String get settingsPermissions => 'İzinler';
+
+  @override
+  String get settingsPermissionsTitle => 'Uygulama İzinleri';
+
+  @override
+  String get settingsPermissionsSubtitle =>
+      'Uygulama izinlerini görüntüle ve yönet';
+
+  @override
+  String get permissionsTitle => 'İzinler';
+
+  @override
+  String get permissionsInfoTitle => 'İzin Bilgileri';
+
+  @override
+  String get permissionsInfoDescription =>
+      'Bu sayfada uygulamanın düzgün çalışması için gerekli izinleri görüntüleyebilir ve yönetebilirsiniz. İzinleri vermek için ilgili izin kartına dokunun.';
+
+  @override
+  String get permissionsRequired => 'Gerekli İzinler';
+
+  @override
+  String get permissionsRequestAll => 'Tüm İzinleri İste';
+
+  @override
+  String get permissionsOpenSettings => 'Uygulama Ayarlarını Aç';
+
+  @override
+  String get permissionGranted => 'Verildi';
+
+  @override
+  String get permissionDenied => 'Reddedildi';
+
+  @override
+  String get permissionPermanentlyDeniedShort => 'Kalıcı Red';
+
+  @override
+  String get permissionRestricted => 'Kısıtlı';
+
+  @override
+  String get permissionUnknown => 'Bilinmiyor';
+
+  @override
+  String get permissionPermanentlyDenied =>
+      'İzin kalıcı olarak reddedildi. Ayarlardan manuel olarak açmanız gerekiyor.';
+
+  @override
+  String get permissionNotificationTitle => 'Bildirim İzni';
+
+  @override
+  String get permissionAlarmTitle => 'Alarm İzni';
+
+  @override
+  String get permissionUnknownTitle => 'Bilinmeyen İzin';
+
+  @override
+  String get permissionNotificationDescription =>
+      'Zikir hatırlatıcıları ve bildirimler için gerekli';
+
+  @override
+  String get permissionAlarmDescription =>
+      'Zamanında hatırlatıcılar için gerekli (Android 12+)';
+
+  @override
+  String get permissionUnknownDescription =>
+      'Bu izin hakkında bilgi mevcut değil';
+
+  @override
+  String get permissionAlreadyGranted => 'İzin Zaten Verildi';
+
+  @override
+  String get permissionAlreadyGrantedMessage =>
+      'Bu izin zaten verilmiş durumda.';
+
+  @override
+  String get permissionGrantedMessage => 'İzin başarıyla verildi!';
+
+  @override
+  String get permissionPermanentlyDeniedMessage =>
+      'İzin kalıcı olarak reddedildi. Ayarlardan manuel olarak açabilirsiniz.';
+
+  @override
+  String get permissionDeniedMessage =>
+      'İzin reddedildi. Tekrar deneyebilirsiniz.';
+
+  @override
+  String get permissionRequestError => 'İzin istenirken bir hata oluştu.';
+
+  @override
+  String get permissionsAllGranted => 'Tüm İzinler Verildi';
+
+  @override
+  String get permissionsAllGrantedMessage =>
+      'Tüm gerekli izinler başarıyla verildi!';
+
+  @override
+  String get permissionsSomeGranted => 'Bazı İzinler Verildi';
+
+  @override
+  String get permissionsSomeGrantedMessage =>
+      'Bazı izinler verildi. Eksik izinleri manuel olarak verebilirsiniz.';
+
+  @override
+  String get permissionsRequestError => 'İzinler istenirken bir hata oluştu.';
+
+  @override
+  String get permissionManualTitle => 'Manuel İzin Gerekli';
+
+  @override
+  String get permissionManualMessage =>
+      'Bu izin kalıcı olarak reddedildi. Ayarlar sayfasından manuel olarak açmanız gerekiyor.';
+
+  @override
+  String get error => 'Hata';
 }

@@ -897,4 +897,121 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get notificationDetailedMessage =>
       'Daily zikr time has come! SubhanAllah, Alhamdulillah, Allahu Akbar';
+
+  @override
+  String get settingsPermissions => 'Permissions';
+
+  @override
+  String get settingsPermissionsTitle => 'App Permissions';
+
+  @override
+  String get settingsPermissionsSubtitle => 'View and manage app permissions';
+
+  @override
+  String get permissionsTitle => 'Permissions';
+
+  @override
+  String get permissionsInfoTitle => 'Permission Information';
+
+  @override
+  String get permissionsInfoDescription =>
+      'On this page, you can view and manage the permissions required for the app to function properly. Tap on the relevant permission card to grant permissions.';
+
+  @override
+  String get permissionsRequired => 'Required Permissions';
+
+  @override
+  String get permissionsRequestAll => 'Request All Permissions';
+
+  @override
+  String get permissionsOpenSettings => 'Open App Settings';
+
+  @override
+  String get permissionGranted => 'Granted';
+
+  @override
+  String get permissionDenied => 'Denied';
+
+  @override
+  String get permissionPermanentlyDeniedShort => 'Permanently Denied';
+
+  @override
+  String get permissionRestricted => 'Restricted';
+
+  @override
+  String get permissionUnknown => 'Unknown';
+
+  @override
+  String get permissionPermanentlyDenied =>
+      'Permission permanently denied. You need to enable it manually from settings.';
+
+  @override
+  String get permissionNotificationTitle => 'Notification Permission';
+
+  @override
+  String get permissionAlarmTitle => 'Alarm Permission';
+
+  @override
+  String get permissionUnknownTitle => 'Unknown Permission';
+
+  @override
+  String get permissionNotificationDescription =>
+      'Required for zikr reminders and notifications';
+
+  @override
+  String get permissionAlarmDescription =>
+      'Required for timely reminders (Android 12+)';
+
+  @override
+  String get permissionUnknownDescription =>
+      'No information available about this permission';
+
+  @override
+  String get permissionAlreadyGranted => 'Permission Already Granted';
+
+  @override
+  String get permissionAlreadyGrantedMessage =>
+      'This permission is already granted.';
+
+  @override
+  String get permissionGrantedMessage => 'Permission granted successfully!';
+
+  @override
+  String get permissionPermanentlyDeniedMessage =>
+      'Permission permanently denied. You can enable it manually from settings.';
+
+  @override
+  String get permissionDeniedMessage => 'Permission denied. You can try again.';
+
+  @override
+  String get permissionRequestError =>
+      'An error occurred while requesting permission.';
+
+  @override
+  String get permissionsAllGranted => 'All Permissions Granted';
+
+  @override
+  String get permissionsAllGrantedMessage =>
+      'All required permissions have been granted successfully!';
+
+  @override
+  String get permissionsSomeGranted => 'Some Permissions Granted';
+
+  @override
+  String get permissionsSomeGrantedMessage =>
+      'Some permissions granted. You can grant missing permissions manually.';
+
+  @override
+  String get permissionsRequestError =>
+      'An error occurred while requesting permissions.';
+
+  @override
+  String get permissionManualTitle => 'Manual Permission Required';
+
+  @override
+  String get permissionManualMessage =>
+      'This permission has been permanently denied. You need to enable it manually from the settings page.';
+
+  @override
+  String get error => 'Error';
 }

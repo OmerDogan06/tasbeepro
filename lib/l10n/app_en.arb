@@ -1145,5 +1145,145 @@
   "notificationDetailedMessage": "Daily zikr time has come! SubhanAllah, Alhamdulillah, Allahu Akbar",
   "@notificationDetailedMessage": {
     "description": "Detailed zikr reminder notification message"
+  },
+  "settingsPermissions": "Permissions",
+  "@settingsPermissions": {
+    "description": "Settings permissions section title"
+  },
+  "settingsPermissionsTitle": "App Permissions",
+  "@settingsPermissionsTitle": {
+    "description": "Settings permissions title"
+  },
+  "settingsPermissionsSubtitle": "View and manage app permissions",
+  "@settingsPermissionsSubtitle": {
+    "description": "Settings permissions subtitle"
+  },
+  "permissionsTitle": "Permissions",
+  "@permissionsTitle": {
+    "description": "Permissions screen title"
+  },
+  "permissionsInfoTitle": "Permission Information",
+  "@permissionsInfoTitle": {
+    "description": "Permissions info title"
+  },
+  "permissionsInfoDescription": "On this page, you can view and manage the permissions required for the app to function properly. Tap on the relevant permission card to grant permissions.",
+  "@permissionsInfoDescription": {
+    "description": "Permissions info description"
+  },
+  "permissionsRequired": "Required Permissions",
+  "@permissionsRequired": {
+    "description": "Required permissions section title"
+  },
+  "permissionsRequestAll": "Request All Permissions",
+  "@permissionsRequestAll": {
+    "description": "Request all permissions button"
+  },
+  "permissionsOpenSettings": "Open App Settings",
+  "@permissionsOpenSettings": {
+    "description": "Open app settings button"
+  },
+  "permissionGranted": "Granted",
+  "@permissionGranted": {
+    "description": "Permission granted status"
+  },
+  "permissionDenied": "Denied",
+  "@permissionDenied": {
+    "description": "Permission denied status"
+  },
+  "permissionPermanentlyDeniedShort": "Permanently Denied",
+  "@permissionPermanentlyDeniedShort": {
+    "description": "Permission permanently denied status (short)"
+  },
+  "permissionRestricted": "Restricted",
+  "@permissionRestricted": {
+    "description": "Permission restricted status"
+  },
+  "permissionUnknown": "Unknown",
+  "@permissionUnknown": {
+    "description": "Permission unknown status"
+  },
+  "permissionPermanentlyDenied": "Permission permanently denied. You need to enable it manually from settings.",
+  "@permissionPermanentlyDenied": {
+    "description": "Permission permanently denied warning message"
+  },
+  "permissionNotificationTitle": "Notification Permission",
+  "@permissionNotificationTitle": {
+    "description": "Notification permission title"
+  },
+  "permissionAlarmTitle": "Alarm Permission",
+  "@permissionAlarmTitle": {
+    "description": "Alarm permission title"
+  },
+  "permissionUnknownTitle": "Unknown Permission",
+  "@permissionUnknownTitle": {
+    "description": "Unknown permission title"
+  },
+  "permissionNotificationDescription": "Required for zikr reminders and notifications",
+  "@permissionNotificationDescription": {
+    "description": "Notification permission description"
+  },
+  "permissionAlarmDescription": "Required for timely reminders (Android 12+)",
+  "@permissionAlarmDescription": {
+    "description": "Alarm permission description"
+  },
+  "permissionUnknownDescription": "No information available about this permission",
+  "@permissionUnknownDescription": {
+    "description": "Unknown permission description"
+  },
+  "permissionAlreadyGranted": "Permission Already Granted",
+  "@permissionAlreadyGranted": {
+    "description": "Permission already granted title"
+  },
+  "permissionAlreadyGrantedMessage": "This permission is already granted.",
+  "@permissionAlreadyGrantedMessage": {
+    "description": "Permission already granted message"
+  },
+  "permissionGrantedMessage": "Permission granted successfully!",
+  "@permissionGrantedMessage": {
+    "description": "Permission granted success message"
+  },
+  "permissionPermanentlyDeniedMessage": "Permission permanently denied. You can enable it manually from settings.",
+  "@permissionPermanentlyDeniedMessage": {
+    "description": "Permission permanently denied message"
+  },
+  "permissionDeniedMessage": "Permission denied. You can try again.",
+  "@permissionDeniedMessage": {
+    "description": "Permission denied message"
+  },
+  "permissionRequestError": "An error occurred while requesting permission.",
+  "@permissionRequestError": {
+    "description": "Permission request error message"
+  },
+  "permissionsAllGranted": "All Permissions Granted",
+  "@permissionsAllGranted": {
+    "description": "All permissions granted title"
+  },
+  "permissionsAllGrantedMessage": "All required permissions have been granted successfully!",
+  "@permissionsAllGrantedMessage": {
+    "description": "All permissions granted message"
+  },
+  "permissionsSomeGranted": "Some Permissions Granted",
+  "@permissionsSomeGranted": {
+    "description": "Some permissions granted title"
+  },
+  "permissionsSomeGrantedMessage": "Some permissions granted. You can grant missing permissions manually.",
+  "@permissionsSomeGrantedMessage": {
+    "description": "Some permissions granted message"
+  },
+  "permissionsRequestError": "An error occurred while requesting permissions.",
+  "@permissionsRequestError": {
+    "description": "Permissions request error message"
+  },
+  "permissionManualTitle": "Manual Permission Required",
+  "@permissionManualTitle": {
+    "description": "Manual permission required dialog title"
+  },
+  "permissionManualMessage": "This permission has been permanently denied. You need to enable it manually from the settings page.",
+  "@permissionManualMessage": {
+    "description": "Manual permission required dialog message"
+  },
+  "error": "Error",
+  "@error": {
+    "description": "Error message for generic errors"
   }
 }

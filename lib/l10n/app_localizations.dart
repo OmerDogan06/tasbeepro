@@ -1771,6 +1771,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Daily zikr time has come! SubhanAllah, Alhamdulillah, Allahu Akbar'**
   String get notificationDetailedMessage;
+
+  /// Settings permissions section title
+  ///
+  /// In en, this message translates to:
+  /// **'Permissions'**
+  String get settingsPermissions;
+
+  /// Settings permissions title
+  ///
+  /// In en, this message translates to:
+  /// **'App Permissions'**
+  String get settingsPermissionsTitle;
+
+  /// Settings permissions subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'View and manage app permissions'**
+  String get settingsPermissionsSubtitle;
+
+  /// Permissions screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Permissions'**
+  String get permissionsTitle;
+
+  /// Permissions info title
+  ///
+  /// In en, this message translates to:
+  /// **'Permission Information'**
+  String get permissionsInfoTitle;
+
+  /// Permissions info description
+  ///
+  /// In en, this message translates to:
+  /// **'On this page, you can view and manage the permissions required for the app to function properly. Tap on the relevant permission card to grant permissions.'**
+  String get permissionsInfoDescription;
+
+  /// Required permissions section title
+  ///
+  /// In en, this message translates to:
+  /// **'Required Permissions'**
+  String get permissionsRequired;
+
+  /// Request all permissions button
+  ///
+  /// In en, this message translates to:
+  /// **'Request All Permissions'**
+  String get permissionsRequestAll;
+
+  /// Open app settings button
+  ///
+  /// In en, this message translates to:
+  /// **'Open App Settings'**
+  String get permissionsOpenSettings;
+
+  /// Permission granted status
+  ///
+  /// In en, this message translates to:
+  /// **'Granted'**
+  String get permissionGranted;
+
+  /// Permission denied status
+  ///
+  /// In en, this message translates to:
+  /// **'Denied'**
+  String get permissionDenied;
+
+  /// Permission permanently denied status (short)
+  ///
+  /// In en, this message translates to:
+  /// **'Permanently Denied'**
+  String get permissionPermanentlyDeniedShort;
+
+  /// Permission restricted status
+  ///
+  /// In en, this message translates to:
+  /// **'Restricted'**
+  String get permissionRestricted;
+
+  /// Permission unknown status
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get permissionUnknown;
+
+  /// Permission permanently denied warning message
+  ///
+  /// In en, this message translates to:
+  /// **'Permission permanently denied. You need to enable it manually from settings.'**
+  String get permissionPermanentlyDenied;
+
+  /// Notification permission title
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Permission'**
+  String get permissionNotificationTitle;
+
+  /// Alarm permission title
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm Permission'**
+  String get permissionAlarmTitle;
+
+  /// Unknown permission title
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown Permission'**
+  String get permissionUnknownTitle;
+
+  /// Notification permission description
+  ///
+  /// In en, this message translates to:
+  /// **'Required for zikr reminders and notifications'**
+  String get permissionNotificationDescription;
+
+  /// Alarm permission description
+  ///
+  /// In en, this message translates to:
+  /// **'Required for timely reminders (Android 12+)'**
+  String get permissionAlarmDescription;
+
+  /// Unknown permission description
+  ///
+  /// In en, this message translates to:
+  /// **'No information available about this permission'**
+  String get permissionUnknownDescription;
+
+  /// Permission already granted title
+  ///
+  /// In en, this message translates to:
+  /// **'Permission Already Granted'**
+  String get permissionAlreadyGranted;
+
+  /// Permission already granted message
+  ///
+  /// In en, this message translates to:
+  /// **'This permission is already granted.'**
+  String get permissionAlreadyGrantedMessage;
+
+  /// Permission granted success message
+  ///
+  /// In en, this message translates to:
+  /// **'Permission granted successfully!'**
+  String get permissionGrantedMessage;
+
+  /// Permission permanently denied message
+  ///
+  /// In en, this message translates to:
+  /// **'Permission permanently denied. You can enable it manually from settings.'**
+  String get permissionPermanentlyDeniedMessage;
+
+  /// Permission denied message
+  ///
+  /// In en, this message translates to:
+  /// **'Permission denied. You can try again.'**
+  String get permissionDeniedMessage;
+
+  /// Permission request error message
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while requesting permission.'**
+  String get permissionRequestError;
+
+  /// All permissions granted title
+  ///
+  /// In en, this message translates to:
+  /// **'All Permissions Granted'**
+  String get permissionsAllGranted;
+
+  /// All permissions granted message
+  ///
+  /// In en, this message translates to:
+  /// **'All required permissions have been granted successfully!'**
+  String get permissionsAllGrantedMessage;
+
+  /// Some permissions granted title
+  ///
+  /// In en, this message translates to:
+  /// **'Some Permissions Granted'**
+  String get permissionsSomeGranted;
+
+  /// Some permissions granted message
+  ///
+  /// In en, this message translates to:
+  /// **'Some permissions granted. You can grant missing permissions manually.'**
+  String get permissionsSomeGrantedMessage;
+
+  /// Permissions request error message
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while requesting permissions.'**
+  String get permissionsRequestError;
+
+  /// Manual permission required dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Manual Permission Required'**
+  String get permissionManualTitle;
+
+  /// Manual permission required dialog message
+  ///
+  /// In en, this message translates to:
+  /// **'This permission has been permanently denied. You need to enable it manually from the settings page.'**
+  String get permissionManualMessage;
+
+  /// Error message for generic errors
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
 }
 
 class _AppLocalizationsDelegate
