@@ -313,5 +313,14 @@
   "permissionsRequestError": "Terjadi kesalahan saat meminta izin.",
   "permissionManualTitle": "Izin Manual Diperlukan",
   "permissionManualMessage": "Izin ini ditolak secara permanen. Anda perlu mengaktifkannya secara manual dari halaman pengaturan.",
-  "error": "Kesalahan"
+  "error": "Kesalahan",
+  "targetCompletionTitle": "Selamat! 🎉",
+  "targetCompletionMessage": "Anda telah menyelesaikan target!",
+  "customZikirAddedTitle": "Berhasil! 🎉",
+  "customZikirAddedMessage": "Zikir kustom berhasil ditambahkan",
+  "deleteZikirTitle": "Hapus Zikir",
+  "deleteZikirMessage": "Apakah Anda yakin ingin menghapus zikir ini?",
+  "deleteZikirConfirm": "Hapus",
+  "deleteZikirCancel": "Batal",
+  "deleteZikirSuccess": "Terhapus! 🗑️"
 }

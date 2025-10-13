@@ -1005,4 +1005,31 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get error => 'خرابی';
+
+  @override
+  String get targetCompletionTitle => 'مبارک ہو! 🎉';
+
+  @override
+  String get targetCompletionMessage => 'آپ نے اپنا ہدف مکمل کر لیا!';
+
+  @override
+  String get customZikirAddedTitle => 'کامیاب! 🎉';
+
+  @override
+  String get customZikirAddedMessage => 'کسٹم ذکر شامل کر دیا گیا';
+
+  @override
+  String get deleteZikirTitle => 'ذکر حذف کریں';
+
+  @override
+  String get deleteZikirMessage => 'کیا آپ واقعی اس ذکر کو حذف کرنا چاہتے ہیں؟';
+
+  @override
+  String get deleteZikirConfirm => 'حذف کریں';
+
+  @override
+  String get deleteZikirCancel => 'منسوخ';
+
+  @override
+  String get deleteZikirSuccess => 'حذف ہو گیا! 🗑️';
 }

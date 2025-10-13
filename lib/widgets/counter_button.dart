@@ -96,7 +96,9 @@ class _CounterButtonState extends State<CounterButton>
                 onTapUp: _onTapUp,
                 onTapCancel: _onTapCancel,
                 onTap: () {
-                  controller.increment();
+                  final completionTitle = AppLocalizations.of(context)?.targetCompletionTitle ?? 'Tebrikler! 🎉';
+                  final completionMessage = AppLocalizations.of(context)?.targetCompletionMessage ?? 'Hedefini tamamladın!';
+                  controller.increment(completionTitle, completionMessage);
                 },
                 child: CustomPaint(
                   size: Size(buttonSize, buttonSize),

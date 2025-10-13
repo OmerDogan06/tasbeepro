@@ -1008,4 +1008,31 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get error => 'त्रुटि';
+
+  @override
+  String get targetCompletionTitle => 'बधाई हो! 🎉';
+
+  @override
+  String get targetCompletionMessage => 'आपने अपना लक्ष्य पूरा कर लिया है!';
+
+  @override
+  String get customZikirAddedTitle => 'सफल! 🎉';
+
+  @override
+  String get customZikirAddedMessage => 'कस्टम जिक्र जोड़ा गया';
+
+  @override
+  String get deleteZikirTitle => 'जिक्र हटाएं';
+
+  @override
+  String get deleteZikirMessage => 'क्या आप वाकई इस जिक्र को हटाना चाहते हैं?';
+
+  @override
+  String get deleteZikirConfirm => 'हटाएं';
+
+  @override
+  String get deleteZikirCancel => 'रद्द करें';
+
+  @override
+  String get deleteZikirSuccess => 'हटा दिया गया! 🗑️';
 }

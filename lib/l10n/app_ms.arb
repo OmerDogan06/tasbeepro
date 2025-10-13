@@ -313,5 +313,14 @@
   "permissionsRequestError": "Ralat berlaku semasa meminta kebenaran.",
   "permissionManualTitle": "Kebenaran Manual Diperlukan",
   "permissionManualMessage": "Kebenaran ini ditolak secara kekal. Anda perlu mengaktifkannya secara manual dari halaman tetapan.",
-  "error": "Ralat"
+  "error": "Ralat",
+  "targetCompletionTitle": "Tahniah! 🎉",
+  "targetCompletionMessage": "Anda telah mencapai sasaran anda!",
+  "customZikirAddedTitle": "Berjaya! 🎉",
+  "customZikirAddedMessage": "Zikir tersuai ditambah",
+  "deleteZikirTitle": "Padam Zikir",
+  "deleteZikirMessage": "Adakah anda pasti ingin memadam zikir ini?",
+  "deleteZikirConfirm": "Padam",
+  "deleteZikirCancel": "Batal",
+  "deleteZikirSuccess": "Dipadam! 🗑️"
 }

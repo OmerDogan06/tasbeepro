@@ -1014,4 +1014,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error => 'Error';
+
+  @override
+  String get targetCompletionTitle => 'Congratulations! 🎉';
+
+  @override
+  String get targetCompletionMessage => 'You\'ve completed your target!';
+
+  @override
+  String get customZikirAddedTitle => 'Success! 🎉';
+
+  @override
+  String get customZikirAddedMessage => 'Custom zikr added';
+
+  @override
+  String get deleteZikirTitle => 'Delete Zikr';
+
+  @override
+  String get deleteZikirMessage => 'Are you sure you want to delete this zikr?';
+
+  @override
+  String get deleteZikirConfirm => 'Delete';
+
+  @override
+  String get deleteZikirCancel => 'Cancel';
+
+  @override
+  String get deleteZikirSuccess => 'Deleted! 🗑️';
 }

@@ -667,7 +667,7 @@ class _StatsScreenState extends State<StatsScreen>
             ),
           ),
           const SizedBox(height: 10),
-          ...controller.getAllZikrs().map((zikr) {
+          ...controller.allZikrs.map((zikr) {
             final count = controller.getZikrCountForPeriod(zikr.id, period);
             return Container(
               margin: const EdgeInsets.only(bottom: 8),
@@ -752,7 +752,7 @@ class _StatsScreenState extends State<StatsScreen>
     String period,
     CounterController controller,
   ) {
-    final allZikrs = controller.getAllZikrs();
+    final allZikrs = controller.allZikrs;
     int totalCount = 0;
     int activeZikrs = 0;
     String? mostUsed;
@@ -782,7 +782,7 @@ class _StatsScreenState extends State<StatsScreen>
   }
 
   List<ChartData> _getChartData(String period, CounterController controller) {
-    final allZikrs = controller.getAllZikrs();
+    final allZikrs = controller.allZikrs;
     final List<ChartData> chartData = [];
 
     // Tüm zikirleri al ve sırala (count'a göre)
@@ -890,7 +890,7 @@ class _StatsScreenState extends State<StatsScreen>
           pageFormat: PdfPageFormat.a4,
           margin: const pw.EdgeInsets.all(16),
           build: (pw.Context context) {
-            final allZikrs = controller.getAllZikrs();
+            final allZikrs = controller.allZikrs;
             final totalCount = allZikrs.fold<int>(
               0,
               (sum, zikr) => sum + controller.getZikrCountForPeriod(zikr.id, period),

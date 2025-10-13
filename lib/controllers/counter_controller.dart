@@ -60,7 +60,7 @@ class CounterController extends GetxController {
     _dailyTotal.value = _storage.getTotalDailyCount();
   }
   
-  Future<void> increment() async {
+  Future<void> increment([String? completionTitle, String? completionMessage]) async {
     if (_isAnimating.value) return;
     
     _isAnimating.value = true;
@@ -95,7 +95,7 @@ class CounterController extends GetxController {
     // Check if target just completed (was not completed before but is now)
     if (previousCount < _target.value && _count.value >= _target.value) {
       _completedTargets.value++;
-      _showCompletionMessage();
+      _showCompletionMessage(completionTitle, completionMessage);
     }
     
     // Animation delay
@@ -103,10 +103,10 @@ class CounterController extends GetxController {
     _isAnimating.value = false;
   }
   
-  void _showCompletionMessage() {
+  void _showCompletionMessage([String? title, String? message]) {
     IslamicSnackbar.showSuccess(
-      'Tebrikler! 🎉',
-      'Hedefini tamamladın!',
+      title ?? 'Tebrikler! 🎉',
+      message ?? 'Hedefini tamamladın!',
       duration: const Duration(seconds: 2),
     );
   }
@@ -168,15 +168,12 @@ class CounterController extends GetxController {
     customZikrs.add(customZikr.toJson());
     await _storage.saveCustomZikrs(customZikrs);
     
-    IslamicSnackbar.showSuccess(
-      'Başarılı! 🎉',
-      'Özel zikir eklendi',
-    );
+    
   }
-  
+   final allZikrs = <Zikr>[].obs;
   // Mevcut zikir listesini yenile
-  List<Zikr> getAllZikrs() {
-    final allZikrs = <Zikr>[];
+  void getAllZikrs() {
+    allZikrs.clear();
     
     // Varsayılan zikirler (localized)
     allZikrs.addAll(Zikr.getLocalizedDefaultZikrs());
@@ -186,8 +183,24 @@ class CounterController extends GetxController {
     for (var customData in customZikrs) {
       allZikrs.add(Zikr.fromJson(customData));
     }
+
+    allZikrs.refresh();
+  }
+  
+  // Custom zikir silme
+  Future<void> deleteCustomZikr(String zikrId) async {
+    final customZikrs = _storage.getCustomZikrs();
+    customZikrs.removeWhere((zikrData) => zikrData['id'] == zikrId);
+    await _storage.saveCustomZikrs(customZikrs);
     
-    return allZikrs;
+    // Eğer silinen zikir şu an seçili zikr ise, varsayılan zikre geç
+    if (_currentZikr.value.id == zikrId) {
+      final defaultZikrs = Zikr.getLocalizedDefaultZikrs();
+      await selectZikr(defaultZikrs.first);
+    }
+    
+    // Listeyi yenile
+    getAllZikrs();
   }
   
   // İstatistikler için zikir sayısını al

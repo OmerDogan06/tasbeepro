@@ -1038,4 +1038,32 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get error => 'Erreur';
+
+  @override
+  String get targetCompletionTitle => 'Félicitations! 🎉';
+
+  @override
+  String get targetCompletionMessage => 'Vous avez atteint votre objectif!';
+
+  @override
+  String get customZikirAddedTitle => 'Succès! 🎉';
+
+  @override
+  String get customZikirAddedMessage => 'Zikr personnalisé ajouté';
+
+  @override
+  String get deleteZikirTitle => 'Supprimer le Zikr';
+
+  @override
+  String get deleteZikirMessage =>
+      'Êtes-vous sûr de vouloir supprimer ce zikr?';
+
+  @override
+  String get deleteZikirConfirm => 'Supprimer';
+
+  @override
+  String get deleteZikirCancel => 'Annuler';
+
+  @override
+  String get deleteZikirSuccess => 'Supprimé! 🗑️';
 }

@@ -313,5 +313,14 @@
   "permissionsRequestError": "İzinler istenirken bir hata oluştu.",
   "permissionManualTitle": "Manuel İzin Gerekli",
   "permissionManualMessage": "Bu izin kalıcı olarak reddedildi. Ayarlar sayfasından manuel olarak açmanız gerekiyor.",
-  "error": "Hata"
+  "error": "Hata",
+  "targetCompletionTitle": "Tebrikler! 🎉",
+  "targetCompletionMessage": "Hedefini tamamladın!",
+  "customZikirAddedTitle": "Başarılı! 🎉",
+  "customZikirAddedMessage": "Özel zikir eklendi",
+  "deleteZikirTitle": "Zikir Sil",
+  "deleteZikirMessage": "Bu zikiri silmek istediğinizden emin misiniz?",
+  "deleteZikirConfirm": "Sil",
+  "deleteZikirCancel": "İptal",
+  "deleteZikirSuccess": "Silindi! 🗑️"
 }

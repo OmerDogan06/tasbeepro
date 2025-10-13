@@ -6,12 +6,14 @@ class ZikrCard extends StatelessWidget {
   final Zikr zikr;
   final bool isSelected;
   final VoidCallback onTap;
+  final VoidCallback? onDelete; // Silme callback'i (custom zikirler için)
   
   const ZikrCard({
     super.key,
     required this.zikr,
     required this.isSelected,
     required this.onTap,
+    this.onDelete, // Custom zikirler için silme butonu
   });
 
   // İslami renk paleti
@@ -59,7 +61,7 @@ class ZikrCard extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(10),
           child: Container(
-            height: 80,
+            height: zikr.isCustom ? 90 : 80,
             padding: const EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,6 +87,29 @@ class ZikrCard extends StatelessWidget {
                         ),
                       ),
                     ),
+                    // Silme butonu (sadece custom zikirler için)
+                    if (onDelete != null && !isSelected)
+                      Container(
+                        width: 35,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color: Colors.red.shade400,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: IconButton(
+                          padding: const EdgeInsets.all(4),
+                          constraints: const BoxConstraints(
+                            minWidth: 28,
+                            minHeight: 28,
+                          ),
+                          icon: const Icon(
+                            Icons.delete_outline,
+                            color: Colors.white,
+                            size: 16,
+                          ),
+                          onPressed: onDelete,
+                        ),
+                      ),
                     if (isSelected)
                       Container(
                         padding: const EdgeInsets.all(4),

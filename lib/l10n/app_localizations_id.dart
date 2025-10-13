@@ -1014,4 +1014,32 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get error => 'Kesalahan';
+
+  @override
+  String get targetCompletionTitle => 'Selamat! 🎉';
+
+  @override
+  String get targetCompletionMessage => 'Anda telah menyelesaikan target!';
+
+  @override
+  String get customZikirAddedTitle => 'Berhasil! 🎉';
+
+  @override
+  String get customZikirAddedMessage => 'Zikir kustom berhasil ditambahkan';
+
+  @override
+  String get deleteZikirTitle => 'Hapus Zikir';
+
+  @override
+  String get deleteZikirMessage =>
+      'Apakah Anda yakin ingin menghapus zikir ini?';
+
+  @override
+  String get deleteZikirConfirm => 'Hapus';
+
+  @override
+  String get deleteZikirCancel => 'Batal';
+
+  @override
+  String get deleteZikirSuccess => 'Terhapus! 🗑️';
 }

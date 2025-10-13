@@ -991,4 +991,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get error => 'خطأ';
+
+  @override
+  String get targetCompletionTitle => 'مبروك! 🎉';
+
+  @override
+  String get targetCompletionMessage => 'لقد أكملت هدفك!';
+
+  @override
+  String get customZikirAddedTitle => 'نجح! 🎉';
+
+  @override
+  String get customZikirAddedMessage => 'تمت إضافة الذكر المخصص';
+
+  @override
+  String get deleteZikirTitle => 'حذف الذكر';
+
+  @override
+  String get deleteZikirMessage => 'هل أنت متأكد من أنك تريد حذف هذا الذكر؟';
+
+  @override
+  String get deleteZikirConfirm => 'حذف';
+
+  @override
+  String get deleteZikirCancel => 'إلغاء';
+
+  @override
+  String get deleteZikirSuccess => 'تم الحذف! 🗑️';
 }

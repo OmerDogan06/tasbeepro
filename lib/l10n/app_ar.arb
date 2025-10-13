@@ -313,5 +313,14 @@
   "permissionsRequestError": "حدث خطأ أثناء طلب الأذونات.",
   "permissionManualTitle": "إذن يدوي مطلوب",
   "permissionManualMessage": "تم رفض هذا الإذن بشكل دائم. يجب تفعيله يدوياً من صفحة الإعدادات.",
-  "error": "خطأ"
+  "error": "خطأ",
+  "targetCompletionTitle": "مبروك! 🎉",
+  "targetCompletionMessage": "لقد أكملت هدفك!",
+  "customZikirAddedTitle": "نجح! 🎉",
+  "customZikirAddedMessage": "تمت إضافة الذكر المخصص",
+  "deleteZikirTitle": "حذف الذكر",
+  "deleteZikirMessage": "هل أنت متأكد من أنك تريد حذف هذا الذكر؟",
+  "deleteZikirConfirm": "حذف",
+  "deleteZikirCancel": "إلغاء",
+  "deleteZikirSuccess": "تم الحذف! 🗑️"
 }

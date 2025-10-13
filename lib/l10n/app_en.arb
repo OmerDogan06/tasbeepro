@@ -1285,5 +1285,38 @@
   "error": "Error",
   "@error": {
     "description": "Error message for generic errors"
+  },
+  "targetCompletionTitle": "Congratulations! 🎉",
+  "@targetCompletionTitle": {
+    "description": "Title shown when user completes their target"
+  },
+  "targetCompletionMessage": "You've completed your target!",
+  "@targetCompletionMessage": {
+    "description": "Message shown when user completes their target"
+  },
+  "customZikirAddedTitle": "Success! 🎉",
+  "@customZikirAddedTitle": {
+    "description": "Title shown when custom zikr is successfully added"
+  },
+  "customZikirAddedMessage": "Custom zikr added",
+  "deleteZikirTitle": "Delete Zikr",
+  "@deleteZikirTitle": {
+    "description": "Title for delete zikr confirmation dialog"
+  },
+  "deleteZikirMessage": "Are you sure you want to delete this zikr?",
+  "@deleteZikirMessage": {
+    "description": "Message for delete zikr confirmation dialog"
+  },
+  "deleteZikirConfirm": "Delete",
+  "@deleteZikirConfirm": {
+    "description": "Confirm button text for delete zikr dialog"
+  },
+  "deleteZikirCancel": "Cancel",
+  "@deleteZikirCancel": {
+    "description": "Cancel button text for delete zikr dialog"
+  },
+  "deleteZikirSuccess": "Deleted! 🗑️",
+  "@deleteZikirSuccess": {
+    "description": "Success message when zikr is deleted"
   }
 }

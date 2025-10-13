@@ -1012,4 +1012,32 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get error => 'ত্রুটি';
+
+  @override
+  String get targetCompletionTitle => 'অভিনন্দন! 🎉';
+
+  @override
+  String get targetCompletionMessage => 'আপনি আপনার লক্ষ্য সম্পূর্ণ করেছেন!';
+
+  @override
+  String get customZikirAddedTitle => 'সফল! 🎉';
+
+  @override
+  String get customZikirAddedMessage => 'কাস্টম জিকির যোগ করা হয়েছে';
+
+  @override
+  String get deleteZikirTitle => 'জিকির মুছুন';
+
+  @override
+  String get deleteZikirMessage =>
+      'আপনি কি নিশ্চিত যে এই জিকিরটি মুছে ফেলতে চান?';
+
+  @override
+  String get deleteZikirConfirm => 'মুছুন';
+
+  @override
+  String get deleteZikirCancel => 'বাতিল';
+
+  @override
+  String get deleteZikirSuccess => 'মুছে ফেলা হয়েছে! 🗑️';
 }

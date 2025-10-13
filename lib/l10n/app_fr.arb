@@ -313,5 +313,14 @@
   "permissionsRequestError": "Une erreur s'est produite lors de la demande de permissions.",
   "permissionManualTitle": "Permission Manuelle Requise",
   "permissionManualMessage": "Cette permission a été refusée de manière permanente. Vous devez l'ouvrir manuellement depuis la page des paramètres.",
-  "error": "Erreur"
+  "error": "Erreur",
+  "targetCompletionTitle": "Félicitations! 🎉",
+  "targetCompletionMessage": "Vous avez atteint votre objectif!",
+  "customZikirAddedTitle": "Succès! 🎉",
+  "customZikirAddedMessage": "Zikr personnalisé ajouté",
+  "deleteZikirTitle": "Supprimer le Zikr",
+  "deleteZikirMessage": "Êtes-vous sûr de vouloir supprimer ce zikr?",
+  "deleteZikirConfirm": "Supprimer",
+  "deleteZikirCancel": "Annuler",
+  "deleteZikirSuccess": "Supprimé! 🗑️"
 }

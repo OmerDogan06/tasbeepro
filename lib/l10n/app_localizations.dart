@@ -1995,6 +1995,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error'**
   String get error;
+
+  /// Title shown when user completes their target
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations! 🎉'**
+  String get targetCompletionTitle;
+
+  /// Message shown when user completes their target
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve completed your target!'**
+  String get targetCompletionMessage;
+
+  /// Title shown when custom zikr is successfully added
+  ///
+  /// In en, this message translates to:
+  /// **'Success! 🎉'**
+  String get customZikirAddedTitle;
+
+  /// No description provided for @customZikirAddedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom zikr added'**
+  String get customZikirAddedMessage;
+
+  /// Title for delete zikr confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Zikr'**
+  String get deleteZikirTitle;
+
+  /// Message for delete zikr confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this zikr?'**
+  String get deleteZikirMessage;
+
+  /// Confirm button text for delete zikr dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get deleteZikirConfirm;
+
+  /// Cancel button text for delete zikr dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get deleteZikirCancel;
+
+  /// Success message when zikr is deleted
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted! 🗑️'**
+  String get deleteZikirSuccess;
 }
 
 class _AppLocalizationsDelegate

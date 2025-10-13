@@ -1009,4 +1009,32 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get error => 'Hata';
+
+  @override
+  String get targetCompletionTitle => 'Tebrikler! 🎉';
+
+  @override
+  String get targetCompletionMessage => 'Hedefini tamamladın!';
+
+  @override
+  String get customZikirAddedTitle => 'Başarılı! 🎉';
+
+  @override
+  String get customZikirAddedMessage => 'Özel zikir eklendi';
+
+  @override
+  String get deleteZikirTitle => 'Zikir Sil';
+
+  @override
+  String get deleteZikirMessage =>
+      'Bu zikiri silmek istediğinizden emin misiniz?';
+
+  @override
+  String get deleteZikirConfirm => 'Sil';
+
+  @override
+  String get deleteZikirCancel => 'İptal';
+
+  @override
+  String get deleteZikirSuccess => 'Silindi! 🗑️';
 }
