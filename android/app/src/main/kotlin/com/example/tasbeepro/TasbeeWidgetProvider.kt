@@ -1,4 +1,4 @@
-package com.example.tasbeepro
+package com.skyforgestudios.tasbeepro
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -14,7 +14,7 @@ import androidx.core.app.NotificationCompat
 import android.util.Log
 import android.media.AudioManager
 import android.media.ToneGenerator
-import com.example.tasbeepro.R
+import com.skyforgestudios.tasbeepro.R
 
 class TasbeeWidgetProvider : AppWidgetProvider() {
 

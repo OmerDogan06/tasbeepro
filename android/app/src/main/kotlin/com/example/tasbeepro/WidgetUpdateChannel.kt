@@ -1,4 +1,4 @@
-package com.example.tasbeepro
+package com.skyforgestudios.tasbeepro
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
@@ -10,7 +10,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 class WidgetUpdateChannel(private val context: Context) : MethodCallHandler {
     
     companion object {
-        const val CHANNEL_NAME = "com.example.tasbeepro/widget"
+        const val CHANNEL_NAME = "com.skyforgestudios.tasbeepro/widget"
     }
 
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {

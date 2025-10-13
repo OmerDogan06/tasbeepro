@@ -10,5 +10,5 @@
     android:description="@string/widget_description"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
-    android:configure="com.example.tasbeepro.WidgetConfigActivity">
+    android:configure="com.skyforgestudios.tasbeepro.WidgetConfigActivity">
 </appwidget-provider>

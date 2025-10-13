@@ -1,4 +1,4 @@
-package com.example.tasbeepro
+package com.skyforgestudios.tasbeepro
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
@@ -10,7 +10,7 @@ import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
     
-    private val WIDGET_CHANNEL = "com.example.tasbeepro/widget"
+    private val WIDGET_CHANNEL = "com.skyforgestudios.tasbeepro/widget"
     
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)

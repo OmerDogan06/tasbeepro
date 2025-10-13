@@ -1,4 +1,4 @@
-package com.example.tasbeepro
+package com.skyforgestudios.tasbeepro
 
 import android.app.Activity
 import android.appwidget.AppWidgetManager

@@ -1139,7 +1139,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       HapticFeedback.lightImpact();
 
       // Android widget picker'ını açmak için platform channel kullanıyoruz
-      const platform = MethodChannel('com.example.tasbeepro/widget');
+      const platform = MethodChannel('com.skyforgestudios.tasbeepro/widget');
       await platform.invokeMethod('openWidgetPicker');
     } catch (e) {
       // Platform channel başarısız olursa manual talimatlar göster
