@@ -1,0 +1,317 @@
+{
+  "@@locale": "ar",
+  "splashAppTitle": "تسبيح برو",
+  "splashSubtitleArabic": "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+  "splashSubtitleTurkish": "تطبيق المسبحة الرقمية",
+  "splashLoading": "جارٍ التحميل...",
+  "settingsTitle": "الإعدادات",
+  "settingsSoundVibration": "الصوت والاهتزاز",
+  "settingsSoundEffect": "المؤثرات الصوتية",
+  "settingsSoundSubtitle": "تشغيل/إيقاف صوت اللمس",
+  "settingsVibration": "الاهتزاز",
+  "settingsReminders": "التذكيرات 💎",
+  "settingsZikirReminder": "تذكير الذكر",
+  "settingsReminderSubtitle": "عرض وإدارة التذكيرات",
+  "settingsReminderTimes": "أوقات التذكير",
+  "settingsReminderTimesSubtitle": "إشعارات يومية متكررة",
+  "settingsWidget": "الودجت 📱",
+  "settingsWidgetStats": "إحصائيات الودجت",
+  "settingsWidgetStatsSubtitle": "عرض جميع أذكارك من الودجت",
+  "settingsWidgetInfo": "حول الودجت",
+  "settingsWidgetInfoSubtitle": "كيفية استخدام الودجت وإضافته للشاشة الرئيسية",
+  "settingsAbout": "حول",
+  "settingsAppInfo": "حول التطبيق",
+  "settingsRateApp": "تقييم التطبيق",
+  "settingsRateSubtitle": "تقييم على متجر بلاي",
+  "settingsLanguage": "اللغة",
+  "settingsLanguageSubtitle": "تغيير لغة التطبيق",
+  "vibrationOff": "إيقاف",
+  "vibrationLight": "خفيف",
+  "vibrationMedium": "متوسط",
+  "vibrationHigh": "قوي",
+  "vibrationTitle": "الاهتزاز",
+  "vibrationOk": "حسناً",
+  "languageSelectionTitle": "اختيار اللغة",
+  "languageSelectionSubtitle": "اختر لغة التطبيق",
+  "languageChanged": "تم تغيير اللغة",
+  "languageChangedMessage": "تم تغيير لغة التطبيق بنجاح",
+  "ok": "حسناً",
+  "cancel": "إلغاء",
+  "close": "إغلاق",
+  "loading": "جارٍ التحميل...",
+  "thanks": "شكراً",
+  "success": "نجح",
+  "rateAppMessage": "تقييمك مهم جداً بالنسبة لنا!",
+  "widgetAddTitle": "إضافة ودجت",
+  "widgetInfoTitle": "حول ودجت تسبيح 📱",
+  "widgetFeatures": "✨ ميزات الودجت:",
+  "widgetFeature1": "يمكنك التسبيح بسهولة من شاشتك الرئيسية",
+  "widgetFeature2": "جميع أذكارك محفوظة بشكل دائم",
+  "widgetFeature3": "يمكنك متابعة إحصائيات الودجت",
+  "widgetFeature4": "يمكنك تحديد عدد الهدف",
+  "widgetFeature5": "يمكنك اختيار أنواع مختلفة من الأذكار",
+  "widgetAddInstructions": "اضغط مطولاً على مساحة فارغة في شاشتك الرئيسية واختر \"الودجات\". ثم ابحث عن ودجت \"تسبيح برو\" وأضفه.",
+  "appInfoTitle": "تسبيح برو",
+  "appInfoDescription": "تطبيق المسبحة الرقمية يعمل بدون اتصال.",
+  "version": "الإصدار",
+  "widgetAddSuccess": "إضافة الودجت",
+  "widgetAddSuccessMessage": "اضغط مطولاً على مساحة فارغة في شاشتك الرئيسية واختر \"الودجات\". ثم ابحث عن ودجت \"تسبيح برو\" وأضفه.",
+  "appInfoVersionLabel": "الإصدار: ",
+  "homeTitle": "تسبيح برو",
+  "homeDailyTotal": "إجمالي الأذكار اليومية",
+  "homeTarget": "الهدف",
+  "homeReset": "إعادة تعيين",
+  "homeStatistics": "الإحصائيات",
+  "homeResetConfirmTitle": "إعادة تعيين",
+  "homeResetConfirmMessage": "هل أنت متأكد من إعادة تعيين العداد؟",
+  "homeResetSuccess": "نجح",
+  "homeResetSuccessMessage": "تم إعادة تعيين العداد",
+  "homeTargetDialogTitle": "اختر الهدف",
+  "zikirListTitle": "اختر الذكر",
+  "zikirListProSelection": "اختيار الذكر المميز",
+  "zikirListDescription": "مجموعة واسعة من الأذكار وإنشاء أذكار مخصصة",
+  "zikirListAddCustom": "إضافة ذكر مخصص",
+  "zikirListSelectionSuccess": "نجح",
+  "zikirListSelected": "تم الاختيار",
+  "zikirSubhanallah": "سبحان الله",
+  "zikirSubhanallahMeaning": "الله منزه ومقدس",
+  "zikirAlhamdulillah": "الحمد لله",
+  "zikirAlhamdulillahMeaning": "الحمد لله وحده",
+  "zikirAllahuAkbar": "الله أكبر",
+  "zikirAllahuAkbarMeaning": "الله أكبر من كل شيء",
+  "zikirLaIlaheIllallah": "لا إله إلا الله",
+  "zikirLaIlaheIllallahMeaning": "لا معبود بحق إلا الله",
+  "zikirEstaghfirullah": "أستغفر الله",
+  "zikirEstaghfirullahMeaning": "أطلب المغفرة من الله",
+  "zikirLaHawleWelaKuvvete": "لا حول ولا قوة إلا بالله",
+  "zikirLaHawleWelaKuvveteMeaning": "لا قوة ولا حول إلا بالله",
+  "zikirHasbiyallahu": "حسبي الله",
+  "zikirHasbiyallahuMeaning": "الله يكفيني وهو نعم الوكيل",
+  "zikirRabbenaAtina": "ربنا آتنا",
+  "zikirRabbenaAtinaMeaning": "ربنا آتنا في الدنيا حسنة",
+  "zikirAllahummeSalli": "اللهم صل على محمد",
+  "zikirAllahummeCalliMeaning": "اللهم صل على محمد",
+  "zikirRabbiZidniIlmen": "رب زدني علماً",
+  "zikirRabbiZidniIlmenMeaning": "ربي زدني علماً",
+  "zikirBismillah": "بسم الله",
+  "zikirBismillahMeaning": "باسم الله الرحمن الرحيم",
+  "zikirInnallahaMaasSabirin": "إن الله مع الصابرين",
+  "zikirInnallahaMaasSabirinMeaning": "إن الله مع الصابرين",
+  "zikirAllahuLatif": "الله لطيف",
+  "zikirAllahuLatifMeaning": "الله لطيف بعباده",
+  "zikirYaRahman": "يا رحمن يا رحيم",
+  "zikirYaRahmanMeaning": "يا رحمن يا رحيم",
+  "zikirTabarakAllah": "تبارك الله",
+  "zikirTabarakAllahMeaning": "الله مبارك",
+  "zikirMashallah": "ما شاء الله",
+  "zikirMashallahMeaning": "ما شاء الله كان",
+  "addCustomZikirTitle": "إضافة ذكر مخصص",
+  "addCustomZikirDescription": "أنشئ أذكارك المخصصة وأضفها للقائمة",
+  "addCustomZikirNameLabel": "اسم الذكر",
+  "addCustomZikirNameHint": "مثال: الله أكبر",
+  "addCustomZikirMeaningLabel": "المعنى (اختياري)",
+  "addCustomZikirMeaningHint": "يمكنك كتابة معنى الذكر",
+  "addCustomZikirButton": "إضافة الذكر",
+  "addCustomZikirNameRequired": "اسم الذكر مطلوب",
+  "addCustomZikirNameMinLength": "اسم الذكر يجب أن يكون حرفين على الأقل",
+  "statsTitle": "إحصائيات تفصيلية 💎",
+  "widgetStatsTitle": "إحصائيات الودجت 📱",
+  "statsDaily": "يومي",
+  "statsWeekly": "أسبوعي",
+  "statsMonthly": "شهري",
+  "statsYearly": "سنوي",
+  "statsDailyInfo": "تفاصيل أذكارك اليوم",
+  "statsWeeklyInfo": "تفاصيل أذكارك هذا الأسبوع",
+  "statsMonthlyInfo": "تفاصيل أذكارك هذا الشهر",
+  "statsYearlyInfo": "تفاصيل أذكارك هذا العام",
+  "widgetStatsDailyInfo": "تفاصيل أذكارك من الودجت اليوم",
+  "widgetStatsWeeklyInfo": "تفاصيل أذكارك من الودجت هذا الأسبوع",
+  "widgetStatsMonthlyInfo": "تفاصيل أذكارك من الودجت هذا الشهر",
+  "widgetStatsYearlyInfo": "تفاصيل أذكارك من الودجت هذا العام",
+  "statsTotal": "إجمالي الأذكار",
+  "statsMostUsed": "الأكثر استخداماً",
+  "statsActiveZikrs": "الذكر النشط",
+  "statsAverage": "المتوسط",
+  "statsDistribution": "توزيع الأذكار",
+  "statsPeriodStatsFor": "إحصائيات {period}",
+  "statsPdfError": "خطأ في PDF",
+  "statsPdfSaveError": "تعذر حفظ PDF",
+  "statsPdfCreateError": "حدث خطأ أثناء إنشاء PDF",
+  "statsPdfOpenError": "حدث خطأ أثناء فتح PDF",
+  "statsPdfShareError": "حدث خطأ أثناء مشاركة PDF",
+  "statsError": "خطأ",
+  "statsPdfShareText": "تقرير إحصائيات تسبيح برو",
+  "statsPdfShareSubject": "تسبيح برو - تقرير الإحصائيات",
+  "widgetStatsPeriodTitle": "إحصائيات الودجت {period}",
+  "widgetStatsTotal": "إجمالي الأذكار",
+  "widgetStatsActive": "الذكر النشط",
+  "widgetStatsMostUsed": "الأكثر استخداماً",
+  "widgetStatsTotalRecords": "إجمالي السجلات",
+  "widgetStatsNoData": "لا توجد بيانات ودجت حتى الآن",
+  "widgetStatsNoZikr": "لم يتم التسبيح من الودجت حتى الآن",
+  "widgetStatsNoPeriodData": "لم يتم التسبيح من الودجت في هذه الفترة",
+  "pdfSuccessTitle": "تم إنشاء PDF بنجاح! 📄",
+  "pdfButtonOpen": "فتح",
+  "pdfButtonShare": "مشاركة",
+  "pdfButtonClose": "إغلاق",
+  "pdfReportTitle": "تسبيح برو - تقرير إحصائيات تفصيلي",
+  "pdfPeriodLabel": "الفترة",
+  "pdfDateLabel": "التاريخ",
+  "pdfTotalZikrCard": "إجمالي الأذكار",
+  "pdfMostUsedCard": "الأكثر استخداماً",
+  "pdfActiveZikrCard": "نوع الذكر النشط",
+  "pdfZikrDetailsTitle": "تفاصيل الأذكار",
+  "pdfBismillah": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم",
+  "pdfDate": "التاريخ",
+  "pdfPeriod": "الفترة",
+  "pdfDailyAverage": "المتوسط اليومي",
+  "pdfActiveZikrRatio": "الذكر النشط",
+  "pdfMostUsedZikrs": "الأذكار الأكثر استخداماً",
+  "pdfNoZikrYet": "لم يتم التسبيح حتى الآن",
+  "pdfQuranVerse": "وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ",
+  "pdfQuranTranslation": "\"واذكروا الله كثيراً لعلكم تفلحون\" (الأنفال: 45)",
+  "pdfWidgetReportTitle": "تسبيح برو - تقرير إحصائيات الودجت",
+  "pdfWidgetStatsSection": "تفاصيل أذكار الودجت",
+  "pdfWidgetTotalZikrCard": "إجمالي أذكار الودجت",
+  "pdfWidgetMostUsedCard": "الأكثر استخداماً",
+  "pdfWidgetActiveTypesCard": "نوع الذكر النشط",
+  "pdfWidgetPeriodText": "تم التسبيح {count} مرة من الودجت في هذه الفترة",
+  "pdfWidgetTypesText": "تم استخدام {count} نوع مختلف من الأذكار",
+  "pdfWidgetMostUsedText": "الذكر الأكثر استخداماً: {name}",
+  "pdfWidgetNoZikrText": "لم يتم التسبيح من الودجت في هذه الفترة",
+  "pdfWidgetInfoTitle": "حول الودجت",
+  "pdfWidgetInfoText": "الأذكار المُنجزة من الودجت محفوظة بشكل دائم ولن تُحذف أبداً. يمكنك متابعة سجل أذكار الودجت",
+  "pdfAppCredit": "تم الإنشاء بإذن الله بواسطة تسبيح برو",
+  "pdfFileNotOpen": "تعذر فتح ملف PDF. تأكد من تثبيت تطبيق قارئ PDF",
+  "pdfFileCannotOpen": "تعذر فتح الملف",
+  "pdfExternalStorageError": "وحدة التخزين الخارجية غير متاحة",
+  "pdfMainStoragePath": "التخزين الرئيسي/TasbeePro",
+  "pdfAppSpecificPath": "مجلد خاص بالتطبيق/TasbeePro_Reports",
+  "pdfDocumentsPath": "مجلد مستندات التطبيق",
+  "statsDetails": "تفاصيل الأذكار",
+  "widgetStatsDistribution": "توزيع أذكار الودجت",
+  "widgetStatsDetails": "تفاصيل أذكار الودجت",
+  "statsNoData": "لا توجد بيانات حتى الآن",
+  "statsNoDataMessage": "لم يتم التسبيح في هذه الفترة",
+  "statsLoadingError": "حدث خطأ أثناء تحميل البيانات",
+  "reminderScreenTitle": "تذكيرات الأذكار",
+  "reminderScreenDescription": "احصل على إشعارات للتذكير بالذكر في التاريخ والوقت المحدد",
+  "reminderScreenAddButton": "إضافة تذكير",
+  "reminderScreenEmpty": "لا توجد تذكيرات حتى الآن",
+  "reminderScreenEmptyMessage": "أضف تذكيراً لعدم نسيان الذكر",
+  "reminderDeleteSuccess": "تم الحذف 🗑️",
+  "reminderDeleteMessage": "تم حذف التذكير بنجاح",
+  "reminderDefaultTitle": "وقت الذكر",
+  "addReminderTitle": "تذكير جديد",
+  "addReminderDescription": "احصل على إشعار للتذكير بالذكر في التاريخ والوقت المحدد",
+  "addReminderTitleLabel": "العنوان",
+  "addReminderTitleHint": "وقت الذكر",
+  "addReminderMessageLabel": "الرسالة (اختياري)",
+  "addReminderMessageHint": "حان وقت الذكر!",
+  "addReminderDateTimeLabel": "التاريخ والوقت",
+  "addReminderSelectDate": "اختر التاريخ",
+  "addReminderSelectTime": "اختر الوقت",
+  "addReminderDatePickerTitle": "اختر التاريخ",
+  "addReminderTimePickerTitle": "اختر الوقت",
+  "addReminderSubmitButton": "إضافة التذكير",
+  "addReminderInvalidDate": "تاريخ غير صالح",
+  "addReminderInvalidDateMessage": "لا يمكنك اختيار تاريخ ماضٍ",
+  "addReminderDefaultMessage": "حان وقت الذكر!",
+  "addReminderSuccess": "تمت إضافة التذكير 🔔",
+  "addReminderSuccessMessage": "سيصلك الإشعار في الوقت المحدد",
+  "addReminderError": "خطأ",
+  "addReminderErrorMessage": "حدث خطأ أثناء إضافة التذكير",
+  "addReminderPermissionTitle": "إذن الإشعارات مطلوب",
+  "addReminderPermissionMessage": "تحتاج إلى منح إذن الإشعارات لعمل التذكيرات.",
+  "addReminderPermissionCancel": "إلغاء",
+  "addReminderPermissionSettings": "الذهاب للإعدادات",
+  "customTimesTitle": "أوقات التذكير",
+  "customTimesAddButton": "إضافة وقت",
+  "customTimesDescription": "احصل على تذكيرات أذكار يومية في أوقات مخصصة. الأوقات المضافة تتكرر يومياً.",
+  "customTimesEmptyTitle": "لم تتم إضافة أوقات مخصصة حتى الآن",
+  "customTimesEmptyMessage": "يمكنك إضافة أوقات مخصصة للتذكيرات اليومية",
+  "customTimesActiveStatus": "التذكير اليومي نشط",
+  "customTimesInactiveStatus": "معطل",
+  "customTimesPickerTitle": "اختر الوقت",
+  "customTimesAlreadyExists": "موجود بالفعل",
+  "customTimesAlreadyExistsMessage": "هذا الوقت مضاف بالفعل",
+  "customTimesAddSuccess": "تمت إضافة الوقت 🕐",
+  "customTimesAddSuccessMessage": "التذكير اليومي نشط في الساعة {time}",
+  "customTimesToggleActive": "تم التفعيل",
+  "customTimesToggleInactive": "معطل",
+  "customTimesToggleActiveMessage": "التذكير نشط",
+  "customTimesToggleInactiveMessage": "التذكير معطل",
+  "customTimesDeleteTitle": "حذف الوقت؟",
+  "customTimesDeleteMessage": "هل أنت متأكد من حذف التذكير في الساعة {time}؟",
+  "customTimesDeleteCancel": "إلغاء",
+  "customTimesDeleteConfirm": "حذف",
+  "customTimesDeleteSuccess": "تم الحذف 🗑️",
+  "customTimesDeleteSuccessMessage": "تم حذف الساعة {time} بنجاح",
+  "counterButtonText": "اضغط",
+  "progressBarCompleted": "ما شاء الله! اكتمل الهدف",
+  "zikirCardSelectText": "اختر الذكر",
+  "pickerSelectButton": "اختيار",
+  "pickerDateTitle": "اختر التاريخ",
+  "pickerTimeTitle": "اختر الوقت",
+  "pickerDay": "اليوم",
+  "pickerMonth": "الشهر",
+  "pickerYear": "السنة",
+  "pickerHour": "الساعة",
+  "pickerMinute": "الدقيقة",
+  "pickerMonthJanuary": "يناير",
+  "pickerMonthFebruary": "فبراير",
+  "pickerMonthMarch": "مارس",
+  "pickerMonthApril": "أبريل",
+  "pickerMonthMay": "مايو",
+  "pickerMonthJune": "يونيو",
+  "pickerMonthJuly": "يوليو",
+  "pickerMonthAugust": "أغسطس",
+  "pickerMonthSeptember": "سبتمبر",
+  "pickerMonthOctober": "أكتوبر",
+  "pickerMonthNovember": "نوفمبر",
+  "pickerMonthDecember": "ديسمبر",
+  "notificationChannelTitle": "تذكيرات الأذكار",
+  "notificationChannelDescription": "تذكير بالأذكار",
+  "notificationDailyChannelTitle": "التذكيرات اليومية",
+  "notificationDailyChannelDescription": "تذكيرات أذكار يومية في الأوقات المحددة",
+  "notificationPermissionRequired": "إذن الإشعارات مطلوب",
+  "notificationZikirTime": "وقت الذكر 🕌",
+  "notificationDailyZikirMessage": "حان وقت الذكر اليومي!",
+  "notificationZikirReminder": "تذكير الذكر",
+  "notificationDetailedMessage": "حان وقت الذكر اليومي! سبحان الله، الحمد لله، الله أكبر",
+  "settingsPermissions": "الأذونات",
+  "settingsPermissionsTitle": "أذونات التطبيق",
+  "settingsPermissionsSubtitle": "عرض وإدارة أذونات التطبيق",
+  "permissionsTitle": "الأذونات",
+  "permissionsInfoTitle": "معلومات الأذونات",
+  "permissionsInfoDescription": "في هذه الصفحة يمكنك عرض وإدارة الأذونات المطلوبة لعمل التطبيق بشكل صحيح. اضغط على بطاقة الإذن لمنحه.",
+  "permissionsRequired": "الأذونات المطلوبة",
+  "permissionsRequestAll": "طلب جميع الأذونات",
+  "permissionsOpenSettings": "فتح إعدادات التطبيق",
+  "permissionGranted": "ممنوح",
+  "permissionDenied": "مرفوض",
+  "permissionPermanentlyDeniedShort": "رفض دائم",
+  "permissionRestricted": "مقيد",
+  "permissionUnknown": "غير معروف",
+  "permissionPermanentlyDenied": "تم رفض الإذن بشكل دائم. يجب تفعيله يدوياً من الإعدادات.",
+  "permissionNotificationTitle": "إذن الإشعارات",
+  "permissionAlarmTitle": "إذن المنبه",
+  "permissionUnknownTitle": "إذن غير معروف",
+  "permissionNotificationDescription": "مطلوب لتذكيرات الأذكار والإشعارات",
+  "permissionAlarmDescription": "مطلوب للتذكيرات في الوقت المحدد (أندرويد 12+)",
+  "permissionUnknownDescription": "المعلومات حول هذا الإذن غير متوفرة",
+  "permissionAlreadyGranted": "الإذن ممنوح بالفعل",
+  "permissionAlreadyGrantedMessage": "هذا الإذن ممنوح بالفعل.",
+  "permissionGrantedMessage": "تم منح الإذن بنجاح!",
+  "permissionPermanentlyDeniedMessage": "تم رفض الإذن بشكل دائم. يمكنك تفعيله يدوياً من الإعدادات.",
+  "permissionDeniedMessage": "تم رفض الإذن. يمكنك المحاولة مرة أخرى.",
+  "permissionRequestError": "حدث خطأ أثناء طلب الإذن.",
+  "permissionsAllGranted": "تم منح جميع الأذونات",
+  "permissionsAllGrantedMessage": "تم منح جميع الأذونات المطلوبة بنجاح!",
+  "permissionsSomeGranted": "تم منح بعض الأذونات",
+  "permissionsSomeGrantedMessage": "تم منح بعض الأذونات. يمكنك منح الأذونات الناقصة يدوياً.",
+  "permissionsRequestError": "حدث خطأ أثناء طلب الأذونات.",
+  "permissionManualTitle": "إذن يدوي مطلوب",
+  "permissionManualMessage": "تم رفض هذا الإذن بشكل دائم. يجب تفعيله يدوياً من صفحة الإعدادات.",
+  "error": "خطأ"
+}

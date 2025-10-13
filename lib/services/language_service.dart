@@ -44,7 +44,28 @@ class LanguageService extends GetxService {
           newLocale = const Locale('tr', 'TR');
           break;
         case 'en':
-          newLocale = const Locale('en', 'US');
+          newLocale = const Locale('en', 'GB');
+          break;
+        case 'ar':
+          newLocale = const Locale('ar', 'SA');
+          break;
+        case 'id':
+          newLocale = const Locale('id', 'ID');
+          break;
+        case 'ur':
+          newLocale = const Locale('ur', 'PK');
+          break;
+        case 'ms':
+          newLocale = const Locale('ms', 'MY');
+          break;
+        case 'bn':
+          newLocale = const Locale('bn', 'BD');
+          break;
+        case 'fr':
+          newLocale = const Locale('fr', 'FR');
+          break;
+        case 'hi':
+          newLocale = const Locale('hi', 'IN');
           break;
         default:
           newLocale = const Locale('tr', 'TR');
@@ -70,6 +91,20 @@ class LanguageService extends GetxService {
         return 'Türkçe';
       case 'en':
         return 'English';
+      case 'ar':
+        return 'العربية';
+      case 'id':
+        return 'Bahasa Indonesia';
+      case 'ur':
+        return 'اردو';
+      case 'ms':
+        return 'Bahasa Melayu';
+      case 'bn':
+        return 'বাংলা';
+      case 'fr':
+        return 'Français';
+      case 'hi':
+        return 'हिन्दी';
       default:
         return 'Türkçe';
     }
@@ -77,6 +112,13 @@ class LanguageService extends GetxService {
 
   List<Map<String, String>> get supportedLanguages => [
     {'code': 'tr', 'name': 'Türkçe', 'flag': '🇹🇷'},
-    {'code': 'en', 'name': 'English', 'flag': '🇺🇸'},
+    {'code': 'en', 'name': 'English', 'flag': '🇬🇧'},
+    {'code': 'ar', 'name': 'العربية', 'flag': '🇸🇦'},
+    {'code': 'id', 'name': 'Bahasa Indonesia', 'flag': '🇮🇩'},
+    {'code': 'ur', 'name': 'اردو', 'flag': '🇵🇰'},
+    {'code': 'ms', 'name': 'Bahasa Melayu', 'flag': '🇲🇾'},
+    {'code': 'bn', 'name': 'বাংলা', 'flag': '🇧🇩'},
+    {'code': 'fr', 'name': 'Français', 'flag': '🇫🇷'},
+    {'code': 'hi', 'name': 'हिन्दी', 'flag': '🇮🇳'},
   ];
 }

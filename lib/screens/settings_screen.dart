@@ -20,6 +20,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  ScrollController languageScrollController = ScrollController();
   String appVersion = '';
 
   @override
@@ -56,67 +57,70 @@ class _SettingsScreenState extends State<SettingsScreen> {
       canPop: true,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
-            statusBarColor: Colors.white,
-           statusBarIconBrightness: Brightness.dark,
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
           systemNavigationBarColor: Color(0xFF2D5016),
           systemNavigationBarIconBrightness: Brightness.light,
         ),
         child: Scaffold(
           backgroundColor: const Color(0xFFF8F6F0),
-          appBar:PreferredSize(preferredSize: Size.fromHeight(56), child:  SafeArea(
-            child: AppBar(
-              leading: Container(
-                margin: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  gradient: const RadialGradient(
-                    colors: [lightGold, goldColor],
-                    center: Alignment(-0.2, -0.2),
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: darkGreen.withAlpha(39),
-                      blurRadius: 6,
-                      offset: const Offset(0, 2),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(56),
+            child: SafeArea(
+              child: AppBar(
+                leading: Container(
+                  margin: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    gradient: const RadialGradient(
+                      colors: [lightGold, goldColor],
+                      center: Alignment(-0.2, -0.2),
                     ),
-                  ],
-                ),
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  style: ButtonStyle(
-                    padding: WidgetStateProperty.all(EdgeInsets.zero),
-                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: darkGreen.withAlpha(39),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
-                  icon: const Icon(
-                    Icons.arrow_back,
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    style: ButtonStyle(
+                      padding: WidgetStateProperty.all(EdgeInsets.zero),
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                    ),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: emeraldGreen,
+                      size: 20,
+                    ),
+                    onPressed: () => Get.back(),
+                  ),
+                ),
+                title: Text(
+                  AppLocalizations.of(context)?.settingsTitle ?? 'Ayarlar',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
                     color: emeraldGreen,
-                    size: 20,
                   ),
-                  onPressed: () => Get.back(),
                 ),
-              ),
-              title: Text(
-                AppLocalizations.of(context)?.settingsTitle ?? 'Ayarlar',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: emeraldGreen,
-                ),
-              ),
-              centerTitle: true,
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              iconTheme: const IconThemeData(color: emeraldGreen),
-              flexibleSpace: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                iconTheme: const IconThemeData(color: emeraldGreen),
+                flexibleSpace: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+                    ),
                   ),
                 ),
               ),
             ),
-          )),
+          ),
           body: SafeArea(
             child: ListView(
               padding: const EdgeInsets.all(10),
@@ -160,13 +164,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 // İzinler
                 _buildSectionHeader(
                   context,
-                  AppLocalizations.of(context)?.settingsPermissions ?? 'İzinler',
+                  AppLocalizations.of(context)?.settingsPermissions ??
+                      'İzinler',
                 ),
                 _buildIslamicCard([
                   _buildIslamicListTile(
                     icon: Icons.security,
                     title:
-                        AppLocalizations.of(context)?.settingsPermissionsTitle ??
+                        AppLocalizations.of(
+                          context,
+                        )?.settingsPermissionsTitle ??
                         'Uygulama İzinleri',
                     subtitle:
                         AppLocalizations.of(
@@ -533,9 +540,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     Get.dialog(
       Dialog(
         backgroundColor: Colors.transparent,
-        insetPadding: const EdgeInsets.all(20),
+        insetPadding: const EdgeInsets.all(16),
         child: Container(
-          constraints: const BoxConstraints(maxWidth: 280),
+          constraints: const BoxConstraints(maxWidth: 300, maxHeight: 400),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               begin: Alignment.topLeft,
@@ -622,42 +629,70 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
 
               // Language options
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    for (var language in languageService.supportedLanguages)
-                      _buildLanguageOption(languageService, language),
-
-                    const SizedBox(height: 16),
-
-                    // Close button
-                    SizedBox(
-                      width: double.infinity,
-                      child: TextButton(
-                        onPressed: () => Navigator.of(context).pop(),
-                        style: TextButton.styleFrom(
-                          backgroundColor: lightGold.withAlpha(77),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            side: BorderSide(
-                              color: goldColor.withAlpha(77),
-                              width: 1,
+              Expanded(
+                child: ScrollbarTheme(
+                  data: ScrollbarThemeData(
+                    thumbColor: WidgetStateProperty.all(goldColor),
+                  
+                    radius: const Radius.circular(10),
+                    thickness: WidgetStateProperty.all(6),
+                  ),
+                  child: Scrollbar(
+                    controller: languageScrollController,
+                    thumbVisibility: true,
+                    trackVisibility: true,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: ListView.builder(
+                              controller: languageScrollController,
+                              itemCount:
+                                  languageService.supportedLanguages.length,
+                              itemBuilder: (context, index) {
+                                var language =
+                                    languageService.supportedLanguages[index];
+                                return _buildLanguageOption(
+                                  languageService,
+                                  language,
+                                );
+                              },
                             ),
                           ),
-                        ),
-                        child: Text(
-                          AppLocalizations.of(context)?.close ?? 'Kapat',
-                          style: const TextStyle(
-                            color: emeraldGreen,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
+                  
+                          const SizedBox(height: 16),
+                  
+                          // Close button
+                          SizedBox(
+                            width: double.infinity,
+                            child: TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              style: TextButton.styleFrom(
+                                backgroundColor: lightGold.withAlpha(77),
+                                padding: const EdgeInsets.symmetric(vertical: 10),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                  side: BorderSide(
+                                    color: goldColor.withAlpha(77),
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                AppLocalizations.of(context)?.close ?? 'Kapat',
+                                style: const TextStyle(
+                                  color: emeraldGreen,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ),
             ],
@@ -688,10 +723,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(5),
           onTap: () async {
             await service.changeLanguage(language['code']!);
-             if (!mounted) return; // ✅ widget hala yaşıyor mu kontrol et
+            if (!mounted) return; // ✅ widget hala yaşıyor mu kontrol et
             Navigator.of(context).pop();
             IslamicSnackbar.showSuccess(
               AppLocalizations.of(context)?.languageChanged ??
@@ -702,7 +737,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             );
           },
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(6),
             child: Row(
               children: [
                 Text(language['flag']!, style: const TextStyle(fontSize: 20)),
@@ -895,13 +930,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Color(0xFFD4AF37).withAlpha(26),
           ),
           borderRadius: BorderRadius.circular(8),
-          onTap: () => service
-              .setVibrationLevel(level)
-              .then((_) {
-
-                if (!mounted) return; // ✅ widget hala yaşıyor mu kontrol et
-                Navigator.of(context).pop();
-              } ),
+          onTap: () => service.setVibrationLevel(level).then((_) {
+            if (!mounted) return; // ✅ widget hala yaşıyor mu kontrol et
+            Navigator.of(context).pop();
+          }),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             child: Row(
@@ -1038,8 +1070,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                           Text(
-                           AppLocalizations.of(context)?.widgetFeatures ??  '✨ Widget Özellikleri:',
+                          Text(
+                            AppLocalizations.of(context)?.widgetFeatures ??
+                                '✨ Widget Özellikleri:',
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -1049,23 +1082,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           const SizedBox(height: 8),
                           _buildWidgetFeature(
                             '📱',
-                        AppLocalizations.of(context)?.widgetFeature1 ??    'Ana ekranınızda kolayca zikir çekebilirsiniz',
+                            AppLocalizations.of(context)?.widgetFeature1 ??
+                                'Ana ekranınızda kolayca zikir çekebilirsiniz',
                           ),
                           _buildWidgetFeature(
                             '💾',
-                          AppLocalizations.of(context)?.widgetFeature2 ??   'Tüm zikirleriniz kalıcı olarak kaydedilir',
+                            AppLocalizations.of(context)?.widgetFeature2 ??
+                                'Tüm zikirleriniz kalıcı olarak kaydedilir',
                           ),
                           _buildWidgetFeature(
                             '📊',
-                            AppLocalizations.of(context)?.widgetFeature3 ??   'Widget istatistiklerini takip edebilirsiniz',
+                            AppLocalizations.of(context)?.widgetFeature3 ??
+                                'Widget istatistiklerini takip edebilirsiniz',
                           ),
                           _buildWidgetFeature(
                             '🎯',
-                            AppLocalizations.of(context)?.widgetFeature4 ??   'Hedef sayısı belirleyebilirsiniz',
+                            AppLocalizations.of(context)?.widgetFeature4 ??
+                                'Hedef sayısı belirleyebilirsiniz',
                           ),
                           _buildWidgetFeature(
                             '🔄',
-                            AppLocalizations.of(context)?.widgetFeature5 ??   'Farklı zikir türleri seçebilirsiniz',
+                            AppLocalizations.of(context)?.widgetFeature5 ??
+                                'Farklı zikir türleri seçebilirsiniz',
                           ),
                         ],
                       ),
@@ -1091,8 +1129,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           elevation: 4,
                         ),
                         icon: const Icon(Icons.add_to_home_screen, size: 20),
-                        label:  Text(
-                          AppLocalizations.of(context)?.widgetAddTitle ?? 'Widget Ekle',
+                        label: Text(
+                          AppLocalizations.of(context)?.widgetAddTitle ??
+                              'Widget Ekle',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
@@ -1120,7 +1159,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ),
                         ),
                         child: Text(
-                          AppLocalizations.of(context)?.close ??  'Kapat',
+                          AppLocalizations.of(context)?.close ?? 'Kapat',
                           style: TextStyle(
                             color: emeraldGreen,
                             fontWeight: FontWeight.w600,
@@ -1174,7 +1213,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       if (!mounted) return; // ✅ widget hala yaşıyor mu kontrol et
       IslamicSnackbar.showSuccess(
         AppLocalizations.of(context)?.widgetAddSuccess ?? 'Widget Ekleme',
-        AppLocalizations.of(context)?.widgetAddSuccessMessage ?? 'Ana ekranınızda boş bir alana uzun basın ve "Widget\'lar" seçeneğini seçin. Ardından "Tasbee Pro" widget\'ını bulup ekleyin.',
+        AppLocalizations.of(context)?.widgetAddSuccessMessage ??
+            'Ana ekranınızda boş bir alana uzun basın ve "Widget\'lar" seçeneğini seçin. Ardından "Tasbee Pro" widget\'ını bulup ekleyin.',
         duration: const Duration(seconds: 5),
       );
     }
@@ -1227,8 +1267,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     ),
                     const SizedBox(width: 8),
-                     Text(
-                    AppLocalizations.of(context)?.appInfoTitle ??  'Tasbee Free',
+                    Text(
+                      AppLocalizations.of(context)?.appInfoTitle ??
+                          'Tasbee Free',
                       style: TextStyle(
                         color: emeraldGreen,
                         fontWeight: FontWeight.bold,
@@ -1280,8 +1321,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ),
                           ),
                           const SizedBox(height: 4),
-                           Text(
-                          AppLocalizations.of(context)?.appInfoDescription ??  'Offline çalışan dijital tesbih uygulaması.',
+                          Text(
+                            AppLocalizations.of(context)?.appInfoDescription ??
+                                'Offline çalışan dijital tesbih uygulaması.',
                             style: TextStyle(color: emeraldGreen, fontSize: 10),
                           ),
                         ],
@@ -1307,8 +1349,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ),
                           ),
                         ),
-                        child:  Text(
-                       AppLocalizations.of(context)?.ok ??'Tamam',
+                        child: Text(
+                          AppLocalizations.of(context)?.ok ?? 'Tamam',
                           style: TextStyle(
                             color: emeraldGreen,
                             fontWeight: FontWeight.w600,

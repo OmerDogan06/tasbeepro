@@ -67,6 +67,7 @@ class _StatsScreenState extends State<StatsScreen>
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<CounterController>();
+      TextDirection textDirection = Directionality.of(context);
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
@@ -130,7 +131,9 @@ class _StatsScreenState extends State<StatsScreen>
               Container(
                 width: 40,
                 height: 40,
-                margin: const EdgeInsets.only(right: 12),
+                margin:textDirection == TextDirection.ltr
+                    ? const EdgeInsets.only(right: 12)
+                    : const EdgeInsets.only(left: 12),
                 decoration: BoxDecoration(
                   gradient: const RadialGradient(
                     colors: [lightGold, goldColor],

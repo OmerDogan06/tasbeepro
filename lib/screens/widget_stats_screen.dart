@@ -71,7 +71,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<WidgetStatsController>();
-
+     TextDirection textDirection = Directionality.of(context);
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
           statusBarColor: Colors.white,
@@ -135,7 +135,9 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
               Container(
                 width: 40,
                 height: 40,
-                margin: const EdgeInsets.only(right: 12),
+                margin: textDirection == TextDirection.ltr
+                    ? const EdgeInsets.only(right: 12)
+                    : const EdgeInsets.only(left: 12),
                 decoration: BoxDecoration(
                   gradient: const RadialGradient(
                     colors: [lightGold, goldColor],
