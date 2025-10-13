@@ -24,7 +24,7 @@ class _StatsScreenState extends State<StatsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   bool _isExportingPDF = false; // PDF export loading state
-  String _selectedPeriod = AppLocalizations.of(Get.context!)?.statsDaily ?? 'Günlük';
+  CounterController controller = Get.find<CounterController>();
 
   // İslami renk paleti
   static const emeraldGreen = Color(0xFF2D5016);
@@ -34,28 +34,10 @@ class _StatsScreenState extends State<StatsScreen>
 
   @override
   void initState() {
+    dataload();
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
-    _tabController.addListener(() {
-      if (_tabController.indexIsChanging) {
-        setState(() {
-          switch (_tabController.index) {
-            case 0:
-              _selectedPeriod = AppLocalizations.of(context)?.statsDaily ?? 'Günlük';
-              break;
-            case 1:
-              _selectedPeriod = AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık';
-              break;
-            case 2:
-              _selectedPeriod = AppLocalizations.of(context)?.statsMonthly ?? 'Aylık';
-              break;
-            case 3:
-              _selectedPeriod = AppLocalizations.of(context)?.statsYearly ?? 'Yıllık';
-              break;
-          }
-        });
-      }
-    });
+
   }
 
   @override
@@ -63,6 +45,11 @@ class _StatsScreenState extends State<StatsScreen>
     _tabController.dispose();
     super.dispose();
   }
+
+  dataload()  {
+     controller.getAllZikrs();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +155,27 @@ class _StatsScreenState extends State<StatsScreen>
                           color: emeraldGreen,
                           size: 20,
                         ),
-                  onPressed: _isExportingPDF ? null : () => _exportToPDF(_selectedPeriod, context),
+                  onPressed: _isExportingPDF ? null : () {
+                    // Güncel tab index'ine göre period'u belirle
+                    String currentPeriod;
+                    switch (_tabController.index) {
+                      case 0:
+                        currentPeriod = AppLocalizations.of(context)?.statsDaily ?? 'Günlük';
+                        break;
+                      case 1:
+                        currentPeriod = AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık';
+                        break;
+                      case 2:
+                        currentPeriod = AppLocalizations.of(context)?.statsMonthly ?? 'Aylık';
+                        break;
+                      case 3:
+                        currentPeriod = AppLocalizations.of(context)?.statsYearly ?? 'Yıllık';
+                        break;
+                      default:
+                        currentPeriod = AppLocalizations.of(context)?.statsDaily ?? 'Günlük';
+                    }
+                    _exportToPDF(currentPeriod, context);
+                  },
                 ),
               ),
             ],
@@ -340,7 +347,8 @@ class _StatsScreenState extends State<StatsScreen>
   }
 
   Widget _buildSummaryCard(String period, CounterController controller) {
-    final stats = _calculatePeriodStats(period, controller);
+    Map<String, dynamic>  stats = _calculatePeriodStats(period, controller).obs;
+    
 
     return Container(
       width: double.infinity,
@@ -891,19 +899,14 @@ class _StatsScreenState extends State<StatsScreen>
           margin: const pw.EdgeInsets.all(16),
           build: (pw.Context context) {
             final allZikrs = controller.allZikrs;
-            final totalCount = allZikrs.fold<int>(
-              0,
-              (sum, zikr) => sum + controller.getZikrCountForPeriod(zikr.id, period),
-            );
-            final activeZikrs = allZikrs
-                .where((zikr) => controller.getZikrCountForPeriod(zikr.id, period) > 0)
-                .length;
+            
+            // Dönemsel istatistikleri doğru hesapla
+            final periodStats = _calculatePeriodStats(period, controller);
+            final totalCount = periodStats['totalCount'] as int;
+            final activeZikrs = periodStats['activeZikrs'] as int;
+            final average = periodStats['average'] as int;
+            
             final now = DateTime.now();
-            final firstDate = DateTime(2024, 1, 1);
-            final daysSinceStart = now.difference(firstDate).inDays + 1;
-            final dailyAverage = (totalCount / daysSinceStart).toStringAsFixed(
-              1,
-            );
 
             // En çok kullanılan zikirler (aktif olanlar - max 5)
             final sortedZikrs =
@@ -918,6 +921,7 @@ class _StatsScreenState extends State<StatsScreen>
                         .compareTo(controller.getZikrCountForPeriod(a.id, period)),
                   );
             final topZikrs = sortedZikrs.take(5).toList(); // Max 5 zikir göster
+            TextDirection textDirection = Directionality.of(buildContext);
 
             return pw.Column(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -942,8 +946,8 @@ class _StatsScreenState extends State<StatsScreen>
                         mainAxisAlignment: pw.MainAxisAlignment.center,
                         children: [
                           pw.Container(
-                            width: 75,
-                            height: 75,
+                            width: 45,
+                            height: 45,
                             alignment: pw.Alignment.center,
                             decoration: pw.BoxDecoration(
                               color: PdfColor.fromHex('#D4AF37'),
@@ -969,8 +973,8 @@ class _StatsScreenState extends State<StatsScreen>
                           ),
                           pw.SizedBox(width: 16),
                           pw.Container(
-                            width: 75,
-                            height: 75,
+                            width: 45,
+                            height: 45,
                             alignment: pw.Alignment.center,
                             decoration: pw.BoxDecoration(
                               color: PdfColor.fromHex('#D4AF37'),
@@ -984,13 +988,13 @@ class _StatsScreenState extends State<StatsScreen>
                       ),
                       pw.SizedBox(height: 12),
                       pw.Text(
-                        AppLocalizations.of(buildContext)?.pdfReportTitle ?? 'Tasbee Pro - Detaylı İstatistik Raporu',
+                       '${AppLocalizations.of(buildContext)?.pdfReportTitle ?? 'Tasbee Pro - Detaylı İstatistik Raporu'} ($period)',
                         textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(
-                          fontSize: 22,
+                          fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColors.white,
-                          font: boldFont,
+                          font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
                         ),
                       ),
                       pw.SizedBox(height: 8),
@@ -999,7 +1003,7 @@ class _StatsScreenState extends State<StatsScreen>
                         style: pw.TextStyle(
                           fontSize: 12,
                           color: PdfColor.fromHex('#F5E6A8'),
-                          font: regularFont,
+                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
                         ),
                       ),
                     ],
@@ -1018,16 +1022,20 @@ class _StatsScreenState extends State<StatsScreen>
                         'O',
                         regularFont,
                         boldFont,
+                        textDirection,
+                        amiriFont
                       ),
                     ),
                     pw.SizedBox(width: 12),
                     pw.Expanded(
                       child: _buildStatCard(
-                        AppLocalizations.of(buildContext)?.pdfDailyAverage ?? 'Günlük Ortalama',
-                        dailyAverage,
+                        AppLocalizations.of(buildContext)?.statsAverage ?? 'Ortalama',
+                        average.toString(),
                         '#',
                         regularFont,
                         boldFont,
+                         textDirection,
+                        amiriFont
                       ),
                     ),
                     pw.SizedBox(width: 12),
@@ -1038,6 +1046,8 @@ class _StatsScreenState extends State<StatsScreen>
                         '+',
                         regularFont,
                         boldFont,
+                         textDirection,
+                        amiriFont
                       ),
                     ),
                   ],
@@ -1066,7 +1076,7 @@ class _StatsScreenState extends State<StatsScreen>
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: boldFont,
+                          font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
                         ),
                       ),
                       pw.SizedBox(height: 12),
@@ -1100,7 +1110,7 @@ class _StatsScreenState extends State<StatsScreen>
                                           fontSize: 11,
                                           fontWeight: pw.FontWeight.bold,
                                           color: PdfColor.fromHex('#2D5016'),
-                                          font: regularFont,
+                                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
                                         ),
                                       ),
                                     ),
@@ -1110,7 +1120,7 @@ class _StatsScreenState extends State<StatsScreen>
                                         fontSize: 11,
                                         fontWeight: pw.FontWeight.bold,
                                         color: PdfColor.fromHex('#D4AF37'),
-                                        font: boldFont,
+                                        font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
                                       ),
                                     ),
                                   ],
@@ -1158,7 +1168,7 @@ class _StatsScreenState extends State<StatsScreen>
                           style: pw.TextStyle(
                             fontSize: 12,
                             color: PdfColor.fromHex('#2D5016'),
-                            font: regularFont,
+                            font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
                             fontStyle: pw.FontStyle.italic,
                           ),
                         ),
@@ -1200,7 +1210,7 @@ class _StatsScreenState extends State<StatsScreen>
                       pw.Text(
                         AppLocalizations.of(buildContext)?.pdfQuranTranslation ?? '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
                         textAlign: pw.TextAlign.center,
-                        style: pw.TextStyle(fontSize: 10, font: regularFont),
+                        style: pw.TextStyle(fontSize: 10, font: textDirection == TextDirection.ltr ? regularFont : amiriFont),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
@@ -1209,7 +1219,7 @@ class _StatsScreenState extends State<StatsScreen>
                         style: pw.TextStyle(
                           fontSize: 9,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: regularFont,
+                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
                         ),
                       ),
                     ],
@@ -1260,7 +1270,7 @@ class _StatsScreenState extends State<StatsScreen>
       }
 
       final fileName =
-          'Tasbee_Pro_${DateTime.now().day}_${DateTime.now().month}_${DateTime.now().year}_${DateTime.now().hour}_${DateTime.now().minute}.pdf';
+          'Tasbee_Pro_${DateTime.now().day}_${DateTime.now().month}_${DateTime.now().year}_${DateTime.now().hour}_${DateTime.now().minute}_$period.pdf';
       final file = File('${saveDir.path}/$fileName');
 
       try {
@@ -1584,6 +1594,8 @@ class _StatsScreenState extends State<StatsScreen>
     String icon,
     pw.Font? regularFont,
     pw.Font? boldFont,
+    TextDirection textDirection,
+    pw.Font? amiriFont,
   ) {
     return pw.Container(
       padding: const pw.EdgeInsets.all(8),
@@ -1607,7 +1619,7 @@ class _StatsScreenState extends State<StatsScreen>
               fontSize: 20,
               fontWeight: pw.FontWeight.bold,
               color: PdfColor.fromHex('#2D5016'),
-              font: boldFont,
+              font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
             ),
           ),
           pw.SizedBox(height: 4),
@@ -1617,13 +1629,15 @@ class _StatsScreenState extends State<StatsScreen>
             style: pw.TextStyle(
               fontSize: 10,
               color: PdfColor.fromHex('#2D5016'),
-              font: regularFont,
+              font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
             ),
           ),
         ],
       ),
     );
   }
+
+
 }
 
 class ChartData {
