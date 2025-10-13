@@ -23,8 +23,6 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   bool _isExportingPDF = false;
-  String _selectedPeriod =
-      AppLocalizations.of(Get.context!)?.statsDaily ?? 'Günlük';
 
   // İslami renk paleti
   static const emeraldGreen = Color(0xFF2D5016);
@@ -36,30 +34,6 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
-    _tabController.addListener(() {
-      if (_tabController.indexIsChanging) {
-        setState(() {
-          switch (_tabController.index) {
-            case 0:
-              _selectedPeriod =
-                  AppLocalizations.of(context)?.statsDaily ?? 'Günlük';
-              break;
-            case 1:
-              _selectedPeriod =
-                  AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık';
-              break;
-            case 2:
-              _selectedPeriod =
-                  AppLocalizations.of(context)?.statsMonthly ?? 'Aylık';
-              break;
-            case 3:
-              _selectedPeriod =
-                  AppLocalizations.of(context)?.statsYearly ?? 'Yıllık';
-              break;
-          }
-        });
-      }
-    });
   }
 
   @override
@@ -71,79 +45,49 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<WidgetStatsController>();
-     TextDirection textDirection = Directionality.of(context);
+    TextDirection textDirection = Directionality.of(context);
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-         statusBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: Color(0xFF2D5016),
         systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
         backgroundColor: const Color(0xFFF8F6F0),
-        appBar:PreferredSize(preferredSize: Size.fromHeight(104), child: SafeArea(
-          child: AppBar(
-            title: Text(
-              AppLocalizations.of(context)?.widgetStatsTitle ??
-                  'Widget İstatistikleri 📱',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: emeraldGreen,
-                fontSize: 18,
-              ),
-            ),
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(104),
+          child: SafeArea(
+            child: AppBar(
+              title: Text(
+                AppLocalizations.of(context)?.widgetStatsTitle ??
+                    'Widget İstatistikleri 📱',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: emeraldGreen,
+                  fontSize: 18,
                 ),
               ),
-            ),
-            leading: Container(
-              margin: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                gradient: const RadialGradient(
-                  colors: [lightGold, goldColor],
-                  center: Alignment(-0.2, -0.2),
-                ),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: darkGreen.withAlpha(38),
-                    blurRadius: 6,
-                    offset: const Offset(0, 2),
+              centerTitle: true,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
                   ),
-                ],
-              ),
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                style: ButtonStyle(
-                  padding: WidgetStateProperty.all(EdgeInsets.zero),
-                  overlayColor: WidgetStateProperty.all(Colors.transparent),
                 ),
-                icon: const Icon(Icons.arrow_back, color: emeraldGreen, size: 20),
-                onPressed: () => Get.back(),
               ),
-            ),
-            actions: [
-              // PDF Export Button
-              Container(
-                width: 40,
-                height: 40,
-                margin: textDirection == TextDirection.ltr
-                    ? const EdgeInsets.only(right: 12)
-                    : const EdgeInsets.only(left: 12),
+              leading: Container(
+                margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   gradient: const RadialGradient(
                     colors: [lightGold, goldColor],
                     center: Alignment(-0.2, -0.2),
                   ),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
                       color: darkGreen.withAlpha(38),
@@ -158,56 +102,131 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                     padding: WidgetStateProperty.all(EdgeInsets.zero),
                     overlayColor: WidgetStateProperty.all(Colors.transparent),
                   ),
-                  icon: _isExportingPDF
-                      ? SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: emeraldGreen,
+                    size: 20,
+                  ),
+                  onPressed: () => Get.back(),
+                ),
+              ),
+              actions: [
+                // PDF Export Button
+                Container(
+                  width: 40,
+                  height: 40,
+                  margin: textDirection == TextDirection.ltr
+                      ? const EdgeInsets.only(right: 12)
+                      : const EdgeInsets.only(left: 12),
+                  decoration: BoxDecoration(
+                    gradient: const RadialGradient(
+                      colors: [lightGold, goldColor],
+                      center: Alignment(-0.2, -0.2),
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: darkGreen.withAlpha(38),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    style: ButtonStyle(
+                      padding: WidgetStateProperty.all(EdgeInsets.zero),
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                    ),
+                    icon: _isExportingPDF
+                        ? SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: emeraldGreen,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : const Icon(
+                            Icons.picture_as_pdf,
                             color: emeraldGreen,
-                            strokeWidth: 2,
+                            size: 20,
                           ),
-                        )
-                      : const Icon(
-                          Icons.picture_as_pdf,
-                          color: emeraldGreen,
-                          size: 20,
-                        ),
-                  onPressed: _isExportingPDF
-                      ? null
-                      : () => _exportToPDF(_selectedPeriod, context),
+                    onPressed: _isExportingPDF
+                        ? null
+                        : () {
+                            String currentPeriod;
+                            switch (_tabController.index) {
+                              case 0:
+                                currentPeriod =
+                                    AppLocalizations.of(context)?.statsDaily ??
+                                    'Günlük';
+                                break;
+                              case 1:
+                                currentPeriod =
+                                    AppLocalizations.of(context)?.statsWeekly ??
+                                    'Haftalık';
+                                break;
+                              case 2:
+                                currentPeriod =
+                                    AppLocalizations.of(
+                                      context,
+                                    )?.statsMonthly ??
+                                    'Aylık';
+                                break;
+                              case 3:
+                                currentPeriod =
+                                    AppLocalizations.of(context)?.statsYearly ??
+                                    'Yıllık';
+                                break;
+                              default:
+                                currentPeriod =
+                                    AppLocalizations.of(context)?.statsDaily ??
+                                    'Günlük';
+                            }
+                            _exportToPDF(currentPeriod, context);
+                          },
+                  ),
                 ),
-              ),
-            ],
-            bottom: TabBar(
-              controller: _tabController,
-              isScrollable: true,
-              labelColor: emeraldGreen,
-              unselectedLabelColor: emeraldGreen.withAlpha(153),
-              indicatorColor: goldColor,
-              indicatorSize: TabBarIndicatorSize.label,
-              tabAlignment: TabAlignment.center,
-              overlayColor: WidgetStateProperty.all(Colors.transparent),
-          
-              indicatorWeight: 3,
-              labelStyle: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
-              unselectedLabelStyle: const TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 13,
-              ),
-              tabs: [
-                Tab(text: AppLocalizations.of(context)?.statsDaily ?? 'Günlük'),
-                Tab(
-                  text: AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık',
-                ),
-                Tab(text: AppLocalizations.of(context)?.statsMonthly ?? 'Aylık'),
-                Tab(text: AppLocalizations.of(context)?.statsYearly ?? 'Yıllık'),
               ],
+              bottom: TabBar(
+                controller: _tabController,
+                isScrollable: true,
+                labelColor: emeraldGreen,
+                unselectedLabelColor: emeraldGreen.withAlpha(153),
+                indicatorColor: goldColor,
+                indicatorSize: TabBarIndicatorSize.label,
+                tabAlignment: TabAlignment.center,
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
+
+                indicatorWeight: 3,
+                labelStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+                unselectedLabelStyle: const TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 13,
+                ),
+                tabs: [
+                  Tab(
+                    text: AppLocalizations.of(context)?.statsDaily ?? 'Günlük',
+                  ),
+                  Tab(
+                    text:
+                        AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık',
+                  ),
+                  Tab(
+                    text: AppLocalizations.of(context)?.statsMonthly ?? 'Aylık',
+                  ),
+                  Tab(
+                    text: AppLocalizations.of(context)?.statsYearly ?? 'Yıllık',
+                  ),
+                ],
+              ),
             ),
           ),
-        )),
+        ),
         body: SafeArea(
           child: TabBarView(
             controller: _tabController,
@@ -239,28 +258,12 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
     return FutureBuilder<Map<String, dynamic>>(
       future: controller.getWidgetStatsForPeriod(period),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(emeraldGreen),
-            ),
-          );
-        }
-
         if (snapshot.hasError) {
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.error, size: 48, color: emeraldGreen.withAlpha(128)),
-                const SizedBox(height: 8),
-                Text(
-                  'Veri yüklenirken hata oluştu',
-                  style: TextStyle(
-                    color: emeraldGreen.withAlpha(179),
-                    fontSize: 14,
-                  ),
-                ),
               ],
             ),
           );
@@ -802,6 +805,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
             final mostUsed = stats['mostUsed'] ?? 'Yok';
             final now = DateTime.now();
 
+            TextDirection textDirection = Directionality.of(buildContext);
+
             return pw.Column(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
               children: [
@@ -825,8 +830,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         mainAxisAlignment: pw.MainAxisAlignment.center,
                         children: [
                           pw.Container(
-                            width: 75,
-                            height: 75,
+                            width: 45,
+                            height: 45,
                             alignment: pw.Alignment.center,
                             decoration: pw.BoxDecoration(
                               color: PdfColor.fromHex('#D4AF37'),
@@ -868,16 +873,16 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                       ),
                       pw.SizedBox(height: 12),
                       pw.Text(
-                        AppLocalizations.of(
+                       '${AppLocalizations.of(
                               buildContext,
                             )?.pdfWidgetReportTitle ??
-                            'Tasbee Pro - Widget İstatistik Raporu',
+                            'Tasbee Pro - Widget İstatistik Raporu'} ($period)',
                         textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(
-                          fontSize: 22,
+                          fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColors.white,
-                          font: boldFont,
+                          font:textDirection == TextDirection.ltr ? boldFont : amiriFont,
                         ),
                       ),
                       pw.SizedBox(height: 8),
@@ -886,7 +891,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         style: pw.TextStyle(
                           fontSize: 12,
                           color: PdfColor.fromHex('#F5E6A8'),
-                          font: regularFont,
+                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
                         ),
                       ),
                     ],
@@ -908,6 +913,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         'O',
                         regularFont,
                         boldFont,
+                        amiriFont,
+                        textDirection
                       ),
                     ),
                     pw.SizedBox(width: 12),
@@ -921,6 +928,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         '*',
                         regularFont,
                         boldFont,
+                          amiriFont,
+                        textDirection
                       ),
                     ),
                     pw.SizedBox(width: 12),
@@ -934,6 +943,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         '#',
                         regularFont,
                         boldFont,
+                          amiriFont,
+                        textDirection
                       ),
                     ),
                   ],
@@ -962,7 +973,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: boldFont,
+                          font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
                         ),
                       ),
                       pw.SizedBox(height: 12),
@@ -976,7 +987,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                           style: pw.TextStyle(
                             fontSize: 12,
                             color: PdfColor.fromHex('#2D5016'),
-                            font: regularFont,
+                            font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
                           ),
                         ),
                         if (activeZikrs > 0) ...[
@@ -989,7 +1000,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                             style: pw.TextStyle(
                               fontSize: 12,
                               color: PdfColor.fromHex('#2D5016'),
-                              font: regularFont,
+                              font:textDirection == TextDirection.ltr ? regularFont : amiriFont,
                             ),
                           ),
                         ],
@@ -1003,7 +1014,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                             style: pw.TextStyle(
                               fontSize: 12,
                               color: PdfColor.fromHex('#2D5016'),
-                              font: regularFont,
+                              font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
                               fontWeight: pw.FontWeight.bold,
                             ),
                           ),
@@ -1017,7 +1028,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                           style: pw.TextStyle(
                             fontSize: 12,
                             color: PdfColor.fromHex('#2D5016'),
-                            font: regularFont,
+                            font:textDirection == TextDirection.ltr ? regularFont : amiriFont,
                             fontStyle: pw.FontStyle.italic,
                           ),
                         ),
@@ -1050,7 +1061,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                           fontSize: 14,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: boldFont,
+                          font:textDirection == TextDirection.ltr ? boldFont : amiriFont,
                         ),
                       ),
                       pw.SizedBox(height: 8),
@@ -1060,7 +1071,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         style: pw.TextStyle(
                           fontSize: 11,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: regularFont,
+                          font:textDirection == TextDirection.ltr ? regularFont : amiriFont,
                         ),
                       ),
                     ],
@@ -1108,7 +1119,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                             )?.pdfQuranTranslation ??
                             '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
                         textAlign: pw.TextAlign.center,
-                        style: pw.TextStyle(fontSize: 10, font: regularFont),
+                        style: pw.TextStyle(fontSize: 10, font:textDirection == TextDirection.ltr ? regularFont : amiriFont,),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
@@ -1118,7 +1129,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         style: pw.TextStyle(
                           fontSize: 9,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: regularFont,
+                          font:textDirection == TextDirection.ltr ? regularFont : amiriFont,
                         ),
                       ),
                     ],
@@ -1142,7 +1153,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
           // Buradan ana directory'ye çıkalım (/storage/emulated/0)
           final mainPath = externalDir.path.split('/Android/data/')[0];
           saveDir = Directory('$mainPath/TasbeePro');
-          if (!buildContext.mounted) return; // ✅ widget hala yaşıyor mu kontrol et
+          if (!buildContext.mounted)
+            return; // ✅ widget hala yaşıyor mu kontrol et
           saveLocation =
               AppLocalizations.of(buildContext)?.pdfMainStoragePath ??
               "Ana depolama/TasbeePro";
@@ -1159,7 +1171,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         final externalDir = await getExternalStorageDirectory();
         if (externalDir != null) {
           saveDir = Directory('${externalDir.path}/TasbeePro_Reports');
-          if (!buildContext.mounted)return;             // ✅ widget hala yaşıyor mu kontrol et
+          if (!buildContext.mounted)
+            return; // ✅ widget hala yaşıyor mu kontrol et
           saveLocation =
               AppLocalizations.of(buildContext)?.pdfAppSpecificPath ??
               "Uygulamaya özel klasör/TasbeePro_Reports";
@@ -1170,7 +1183,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         } else {
           // Son fallback - Documents directory
           saveDir = await getApplicationDocumentsDirectory();
-          if (!buildContext.mounted)return;             // ✅ widget hala yaşıyor mu kontrol et
+          if (!buildContext.mounted)
+            return; // ✅ widget hala yaşıyor mu kontrol et
           saveLocation =
               AppLocalizations.of(buildContext)?.pdfDocumentsPath ??
               "Uygulama belgeler klasörü";
@@ -1188,7 +1202,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         await _showPdfOptionsDialog(file.path, fileName, saveLocation);
       } catch (pdfError) {
         debugPrint('PDF kaydetme hatası: $pdfError');
-        if (!buildContext.mounted)return; // ✅ widget hala yaşıyor mu kontrol et
+        if (!buildContext.mounted)
+          return; // ✅ widget hala yaşıyor mu kontrol et
         IslamicSnackbar.showError(
           AppLocalizations.of(buildContext)?.statsPdfError ?? 'PDF Hatası',
           '${AppLocalizations.of(buildContext)?.statsPdfSaveError ?? 'PDF kaydedilemedi'}: $pdfError',
@@ -1470,7 +1485,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
     try {
       final result = await OpenFile.open(filePath);
       if (result.type != ResultType.done) {
-        if (!buildContext.mounted)return; // ✅ widget hala yaşıyor mu kontrol et
+        if (!buildContext.mounted)
+          return; // ✅ widget hala yaşıyor mu kontrol et
         IslamicSnackbar.showError(
           AppLocalizations.of(buildContext)?.pdfFileCannotOpen ??
               'Dosya Açılamadı',
@@ -1515,6 +1531,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
     String icon,
     pw.Font? regularFont,
     pw.Font? boldFont,
+    pw.Font? amiriFont,
+    TextDirection textDirection,
   ) {
     return pw.Container(
       padding: const pw.EdgeInsets.all(8),
@@ -1538,7 +1556,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
               fontSize: 20,
               fontWeight: pw.FontWeight.bold,
               color: PdfColor.fromHex('#2D5016'),
-              font: boldFont,
+              font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
             ),
           ),
           pw.SizedBox(height: 4),
@@ -1548,7 +1566,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
             style: pw.TextStyle(
               fontSize: 10,
               color: PdfColor.fromHex('#2D5016'),
-              font: regularFont,
+              font:textDirection == TextDirection.ltr ? regularFont : amiriFont,
             ),
           ),
         ],
