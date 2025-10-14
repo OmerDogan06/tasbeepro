@@ -10,6 +10,9 @@ class LanguageService extends GetxService {
   
   final Rx<Locale> _currentLocale = const Locale('en', 'GB').obs;
   Locale get currentLocale => _currentLocale.value;
+  
+  // Public getter for listening to changes
+  RxString get currentLanguageRx => _currentLanguage;
 
   Future<LanguageService> init() async {
     await _loadSavedLanguage();
