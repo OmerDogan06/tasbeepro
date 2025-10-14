@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'screens/splash_screen.dart';
@@ -89,12 +88,12 @@ class TasbeeApp extends StatelessWidget {
       systemNavigationBarIconBrightness: Brightness.light,
           ),
         ),
-        textTheme: GoogleFonts.poppinsTextTheme(),
+      
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
 
-        textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
+      
       ),
       themeMode: ThemeMode.light, 
       home: const SplashScreen(),
