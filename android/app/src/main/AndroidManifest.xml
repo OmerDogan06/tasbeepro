@@ -15,13 +15,12 @@
     <!-- For Android 13+ (API 33+) notification permission -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
+    <!-- Exact alarm permissions for Android 12+ (API 31+) -->
+    <!-- Required for precise notification scheduling for prayer reminders -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <!-- Fallback for devices that don't support SCHEDULE_EXACT_ALARM -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
-      <!-- Exact alarm permission for Android 12+ -->
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
-    
-
-    
     <application
         android:label="@string/app_name"
         android:name="${applicationName}"
@@ -105,6 +104,10 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- Required for exact alarm permission intent -->
+        <intent>
+            <action android:name="android.settings.REQUEST_SCHEDULE_EXACT_ALARM"/>
         </intent>
     </queries>
 </manifest>
