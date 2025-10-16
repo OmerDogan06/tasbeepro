@@ -75,6 +75,9 @@ dependencies:
   # Device info
   device_info_plus: ^10.1.0
   loading_overlay: ^0.5.0
+  
+  # URL launcher
+  url_launcher: ^6.2.4
 
 dev_dependencies:
   flutter_test:

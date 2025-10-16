@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../services/sound_service.dart';
 import '../services/vibration_service.dart';
 import '../services/language_service.dart';
@@ -318,14 +319,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     subtitle:
                         AppLocalizations.of(context)?.settingsRateSubtitle ??
                         'Play Store\'da değerlendir',
-                    onTap: () {
-                      IslamicSnackbar.showInfo(
-                        AppLocalizations.of(context)?.thanks ?? 'Teşekkürler',
-                        AppLocalizations.of(context)?.rateAppMessage ??
-                            'Değerlendirmeniz bizim için çok önemli!',
-                        duration: const Duration(seconds: 2),
-                      );
-                    },
+                    onTap: () => _openGooglePlay(),
                   ),
                   _buildDivider(),
                 ]),
@@ -1367,5 +1361,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _openGooglePlay() async {
+    const String packageName = 'com.skyforgestudios.tasbeepro'; // Uygulamanızın gerçek package name'ini kullanın
+    final Uri playStoreUri = Uri.parse('https://play.google.com/store/apps/details?id=$packageName');
+    final Uri marketUri = Uri.parse('market://details?id=$packageName');
+    
+    try {
+      // Önce Google Play Store uygulaması ile açmayı deneyin
+      if (await canLaunchUrl(marketUri)) {
+        await launchUrl(marketUri, mode: LaunchMode.externalApplication);
+      } 
+      // Google Play Store uygulaması yoksa web browser ile açın
+      else if (await canLaunchUrl(playStoreUri)) {
+        await launchUrl(playStoreUri, mode: LaunchMode.externalApplication);
+      } else {
+        // Her ikisi de başarısız olursa snackbar göster
+        if (!mounted) return;
+        IslamicSnackbar.showInfo(
+          AppLocalizations.of(context)?.thanks ?? 'Teşekkürler',
+          AppLocalizations.of(context)?.rateAppMessage ??
+              'Google Play Store\'a erişilemiyor. Lütfen manuel olarak derecelendirin.',
+          duration: const Duration(seconds: 3),
+        );
+      }
+    } catch (e) {
+      // Hata durumunda snackbar göster
+      if (!mounted) return;
+      IslamicSnackbar.showInfo(
+        AppLocalizations.of(context)?.thanks ?? 'Teşekkürler',
+        AppLocalizations.of(context)?.rateAppMessage ??
+            'Google Play Store açılamadı. Değerlendirmeniz bizim için çok önemli!',
+        duration: const Duration(seconds: 3),
+      );
+    }
   }
 }
