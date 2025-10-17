@@ -239,6 +239,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get add => 'Add';
 
   @override
+  String get deleteTargetTitle => 'Delete Target';
+
+  @override
+  String deleteTargetMessage(int target) {
+    return 'Are you sure you want to delete the target $target?';
+  }
+
+  @override
+  String get deleteTargetSuccess => 'Target deleted';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
   String get zikirListTitle => 'Select Zikr';
 
   @override

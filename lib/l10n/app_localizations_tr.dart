@@ -240,6 +240,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String get add => 'Ekle';
 
   @override
+  String get deleteTargetTitle => 'Hedefi Sil';
+
+  @override
+  String deleteTargetMessage(int target) {
+    return '$target hedefini silmek istediğinizden emin misiniz?';
+  }
+
+  @override
+  String get deleteTargetSuccess => 'Hedef silindi';
+
+  @override
+  String get delete => 'Sil';
+
+  @override
   String get zikirListTitle => 'Zikir Seç';
 
   @override

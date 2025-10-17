@@ -242,6 +242,20 @@ class AppLocalizationsMs extends AppLocalizations {
   String get add => 'Tambah';
 
   @override
+  String get deleteTargetTitle => 'Padam Sasaran';
+
+  @override
+  String deleteTargetMessage(int target) {
+    return 'Adakah anda pasti mahu memadam sasaran $target?';
+  }
+
+  @override
+  String get deleteTargetSuccess => 'Sasaran dipadam';
+
+  @override
+  String get delete => 'Padam';
+
+  @override
   String get zikirListTitle => 'Pilih Zikir';
 
   @override

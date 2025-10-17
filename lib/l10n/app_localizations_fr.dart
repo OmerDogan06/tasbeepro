@@ -248,6 +248,20 @@ class AppLocalizationsFr extends AppLocalizations {
   String get add => 'Ajouter';
 
   @override
+  String get deleteTargetTitle => 'Delete Target';
+
+  @override
+  String deleteTargetMessage(int target) {
+    return 'Are you sure you want to delete the target $target?';
+  }
+
+  @override
+  String get deleteTargetSuccess => 'Target deleted';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
   String get zikirListTitle => 'Sélectionner le Dhikr';
 
   @override

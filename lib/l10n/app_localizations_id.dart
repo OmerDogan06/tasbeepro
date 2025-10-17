@@ -242,6 +242,20 @@ class AppLocalizationsId extends AppLocalizations {
   String get add => 'Tambah';
 
   @override
+  String get deleteTargetTitle => 'Hapus Target';
+
+  @override
+  String deleteTargetMessage(int target) {
+    return 'Apakah Anda yakin ingin menghapus target $target?';
+  }
+
+  @override
+  String get deleteTargetSuccess => 'Target dihapus';
+
+  @override
+  String get delete => 'Hapus';
+
+  @override
   String get zikirListTitle => 'Pilih Dzikir';
 
   @override

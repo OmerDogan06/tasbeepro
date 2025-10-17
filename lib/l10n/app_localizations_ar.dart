@@ -237,6 +237,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get add => 'إضافة';
 
   @override
+  String get deleteTargetTitle => 'حذف الهدف';
+
+  @override
+  String deleteTargetMessage(int target) {
+    return 'هل أنت متأكد من أنك تريد حذف الهدف $target؟';
+  }
+
+  @override
+  String get deleteTargetSuccess => 'تم حذف الهدف';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
   String get zikirListTitle => 'اختر الذكر';
 
   @override

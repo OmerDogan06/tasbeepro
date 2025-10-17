@@ -242,6 +242,20 @@ class AppLocalizationsBn extends AppLocalizations {
   String get add => 'যোগ করুন';
 
   @override
+  String get deleteTargetTitle => 'লক্ষ্য মুছুন';
+
+  @override
+  String deleteTargetMessage(int target) {
+    return 'আপনি কি নিশ্চিত যে আপনি $target লক্ষ্যটি মুছতে চান?';
+  }
+
+  @override
+  String get deleteTargetSuccess => 'লক্ষ্য মুছে ফেলা হয়েছে';
+
+  @override
+  String get delete => 'মুছুন';
+
+  @override
   String get zikirListTitle => 'জিকির নির্বাচন করুন';
 
   @override

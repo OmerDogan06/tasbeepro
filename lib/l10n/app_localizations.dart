@@ -562,6 +562,30 @@ abstract class AppLocalizations {
   /// **'Add'**
   String get add;
 
+  /// Delete target dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Target'**
+  String get deleteTargetTitle;
+
+  /// Delete target dialog message
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete the target {target}?'**
+  String deleteTargetMessage(int target);
+
+  /// Delete target success message
+  ///
+  /// In en, this message translates to:
+  /// **'Target deleted'**
+  String get deleteTargetSuccess;
+
+  /// Delete button text
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
   /// Zikr list screen title
   ///
   /// In en, this message translates to:

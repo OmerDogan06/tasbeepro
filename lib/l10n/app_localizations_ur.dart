@@ -241,6 +241,20 @@ class AppLocalizationsUr extends AppLocalizations {
   String get add => 'شامل کریں';
 
   @override
+  String get deleteTargetTitle => 'ہدف حذف کریں';
+
+  @override
+  String deleteTargetMessage(int target) {
+    return 'کیا آپ واقعی $target ہدف کو حذف کرنا چاہتے ہیں؟';
+  }
+
+  @override
+  String get deleteTargetSuccess => 'ہدف حذف ہو گیا';
+
+  @override
+  String get delete => 'حذف کریں';
+
+  @override
   String get zikirListTitle => 'ذکر منتخب کریں';
 
   @override

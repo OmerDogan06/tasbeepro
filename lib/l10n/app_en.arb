@@ -300,6 +300,27 @@
   "@add": {
     "description": "Add button text"
   },
+  "deleteTargetTitle": "Delete Target",
+  "@deleteTargetTitle": {
+    "description": "Delete target dialog title"
+  },
+  "deleteTargetMessage": "Are you sure you want to delete the target {target}?",
+  "@deleteTargetMessage": {
+    "description": "Delete target dialog message",
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "deleteTargetSuccess": "Target deleted",
+  "@deleteTargetSuccess": {
+    "description": "Delete target success message"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete button text"
+  },
   "zikirListTitle": "Select Zikr",
   "@zikirListTitle": {
     "description": "Zikr list screen title"

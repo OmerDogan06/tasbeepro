@@ -242,6 +242,20 @@ class AppLocalizationsHi extends AppLocalizations {
   String get add => 'जोड़ें';
 
   @override
+  String get deleteTargetTitle => 'लक्ष्य हटाएं';
+
+  @override
+  String deleteTargetMessage(int target) {
+    return 'क्या आप वाकई $target लक्ष्य को हटाना चाहते हैं?';
+  }
+
+  @override
+  String get deleteTargetSuccess => 'लक्ष्य हटा दिया गया';
+
+  @override
+  String get delete => 'हटाएं';
+
+  @override
   String get zikirListTitle => 'जिक्र चुनें';
 
   @override

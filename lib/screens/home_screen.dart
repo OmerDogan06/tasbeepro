@@ -637,9 +637,12 @@ class HomeScreen extends StatelessWidget {
                                         Navigator.of(context).pop();
                                       },
                                       child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 12,
-                                          vertical: 10,
+                                        padding: const EdgeInsets.only(
+                                        
+                                          left: 12,
+                                          right: 5,
+                                          top: 10,
+                                          bottom: 10
                                         ),
                                         child: Row(
                                           children: [
@@ -672,6 +675,36 @@ class HomeScreen extends StatelessWidget {
                                                 color: goldColor,
                                                 size: 16,
                                               ),
+                                            // Silme butonu - sadece özel hedefler için ve seçili değilse
+                                            if (target > 1000 && !isSelected)
+                                              Container(
+                                                margin: const EdgeInsets.only(left: 8),
+                                                child: InkWell(
+                                                  
+                                                  onTap: () => _showDeleteTargetConfirmation(
+                                                    context,
+                                                    controller,
+                                                    target,
+                                                  ),
+                                                  borderRadius: BorderRadius.circular(8),
+                                                  child: Container(
+                                                    padding: const EdgeInsets.all(5),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.red.withAlpha(26),
+                                                      borderRadius: BorderRadius.circular(8),
+                                                      border: Border.all(
+                                                        color: Colors.red.withAlpha(77),
+                                                        width: 1,
+                                                      ),
+                                                    ),
+                                                    child: Icon(
+                                                      Icons.delete_outline,
+                                                      color: Colors.red.shade700,
+                                                      size: 18,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
                                           ],
                                         ),
                                       ),
@@ -692,7 +725,10 @@ class HomeScreen extends StatelessWidget {
                         child: TextButton.icon(
                           onPressed: () {
                             Navigator.of(context).pop();
-                            _showCustomTargetBottomSheet(context, controller);
+                            // Kısa bir delay ekleyerek context'in güvenli olmasını sağla
+                            Future.delayed(const Duration(milliseconds: 500), () {
+                              _showCustomTargetBottomSheet(Get.context ?? context, controller);
+                            });
                           },
                           style: TextButton.styleFrom(
                             backgroundColor: emeraldGreen.withAlpha(26),
@@ -1043,10 +1079,115 @@ class HomeScreen extends StatelessWidget {
     controller.addCustomTarget(target);
     Get.back();
 
+    // Target dialog'unu yeniden aç - böylece yeni hedef listede görünür
+    Future.delayed(const Duration(milliseconds: 500), () {
+      _showTargetDialog( Get.context ?? context, controller, ScrollController());
+    });
+
     IslamicSnackbar.showSuccess(
       AppLocalizations.of(context)?.customTargetSuccess ?? 'Başarılı',
       AppLocalizations.of(context)?.customTargetSuccessMessage ??
           'Özel hedef eklendi',
+    );
+  }
+
+  void _showDeleteTargetConfirmation(
+    BuildContext context,
+    CounterController controller,
+    int target,
+  ) {
+    Get.dialog(
+      AlertDialog(
+        backgroundColor: const Color(0xFFF8F6F0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(color: goldColor.withAlpha(77)),
+        ),
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.red.withAlpha(26),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: Colors.red.withAlpha(77),
+                  width: 1,
+                ),
+              ),
+              child: Icon(
+                Icons.delete_outline,
+                color: Colors.red.shade700,
+                size: 20,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Text(
+              AppLocalizations.of(context)?.deleteTargetTitle ?? 'Hedefi Sil',
+              style: const TextStyle(
+                color: emeraldGreen,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        content: Text(
+          AppLocalizations.of(context)?.deleteTargetMessage(target) ?? '$target hedefini silmek istediğinizden emin misiniz?',
+          style: const TextStyle(color: emeraldGreen),
+        ),
+        actions: [
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: goldColor.withAlpha(128)),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(
+                AppLocalizations.of(context)?.cancel ?? 'İptal',
+                style: const TextStyle(color: emeraldGreen),
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.red.withAlpha(26),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: Colors.red.withAlpha(77),
+                width: 1,
+              ),
+            ),
+            child: TextButton(
+              onPressed: () async {
+                await controller.removeCustomTarget(target);
+                Navigator.of(context).pop();
+                // Ana dialog'u da kapat
+                Navigator.of(context).pop();
+                
+                // Kısa bir delay ekleyerek context'in güvenli olmasını sağla
+                Future.delayed(const Duration(milliseconds: 100), () {
+                  // Target seçim dialog'unu yeniden aç - bu liste yenileme sorununu çözer
+                  _showTargetDialog(Get.context ?? context, controller, ScrollController());
+                });
+                
+                IslamicSnackbar.showSuccess(
+                  AppLocalizations.of(context)?.homeResetSuccess ?? 'Başarılı',
+                  AppLocalizations.of(context)?.deleteTargetSuccess ?? 'Hedef silindi',
+                  duration: const Duration(seconds: 1),
+                );
+              },
+              child: Text(
+                AppLocalizations.of(context)?.delete ?? 'Sil',
+                style: TextStyle(
+                  color: Colors.red.shade700,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
