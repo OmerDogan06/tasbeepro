@@ -214,6 +214,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeTargetDialogTitle => 'Select Target';
 
   @override
+  String get addCustomTarget => 'Add Target';
+
+  @override
+  String get customTargetTitle => 'Add Custom Target';
+
+  @override
+  String get customTargetHint => 'Enter a target greater than 1000';
+
+  @override
+  String get customTargetError => 'Invalid Target';
+
+  @override
+  String get customTargetErrorMessage =>
+      'Target must be greater than 1000 and unique';
+
+  @override
+  String get customTargetSuccess => 'Success';
+
+  @override
+  String get customTargetSuccessMessage => 'Custom target added';
+
+  @override
+  String get add => 'Add';
+
+  @override
   String get zikirListTitle => 'Select Zikr';
 
   @override

@@ -217,6 +217,31 @@ class AppLocalizationsBn extends AppLocalizations {
   String get homeTargetDialogTitle => 'লক্ষ্য নির্বাচন করুন';
 
   @override
+  String get addCustomTarget => 'লক্ষ্য যোগ করুন';
+
+  @override
+  String get customTargetTitle => 'কাস্টম লক্ষ্য যোগ করুন';
+
+  @override
+  String get customTargetHint => '১০০০ এর চেয়ে বড় একটি লক্ষ্য প্রবেশ করান';
+
+  @override
+  String get customTargetError => 'অবৈধ লক্ষ্য';
+
+  @override
+  String get customTargetErrorMessage =>
+      'লক্ষ্য ১০০০ এর চেয়ে বড় এবং অনন্য হতে হবে';
+
+  @override
+  String get customTargetSuccess => 'সফল';
+
+  @override
+  String get customTargetSuccessMessage => 'কাস্টম লক্ষ্য যোগ করা হয়েছে';
+
+  @override
+  String get add => 'যোগ করুন';
+
+  @override
   String get zikirListTitle => 'জিকির নির্বাচন করুন';
 
   @override

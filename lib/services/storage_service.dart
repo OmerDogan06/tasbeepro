@@ -237,4 +237,15 @@ class StorageService extends GetxService {
     }
     return [];
   }
+
+  // Custom targets
+  Future<void> saveCustomTargets(List<int> targets) async {
+    final customTargets = targets.where((target) => target > 1000).toList();
+    await _prefs.setStringList('custom_targets', customTargets.map((e) => e.toString()).toList());
+  }
+  
+  List<int> getCustomTargets() {
+    final stringList = _prefs.getStringList('custom_targets') ?? [];
+    return stringList.map((e) => int.tryParse(e) ?? 0).where((e) => e > 0).toList();
+  }
 }

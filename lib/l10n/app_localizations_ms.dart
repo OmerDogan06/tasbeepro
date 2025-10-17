@@ -217,6 +217,31 @@ class AppLocalizationsMs extends AppLocalizations {
   String get homeTargetDialogTitle => 'Pilih Sasaran';
 
   @override
+  String get addCustomTarget => 'Tambah Sasaran';
+
+  @override
+  String get customTargetTitle => 'Tambah Sasaran Kustom';
+
+  @override
+  String get customTargetHint => 'Masukkan sasaran lebih besar dari 1000';
+
+  @override
+  String get customTargetError => 'Sasaran tidak sah';
+
+  @override
+  String get customTargetErrorMessage =>
+      'Sasaran harus lebih besar dari 1000 dan unik';
+
+  @override
+  String get customTargetSuccess => 'Berjaya';
+
+  @override
+  String get customTargetSuccessMessage => 'Sasaran kustom ditambahkan';
+
+  @override
+  String get add => 'Tambah';
+
+  @override
   String get zikirListTitle => 'Pilih Zikir';
 
   @override

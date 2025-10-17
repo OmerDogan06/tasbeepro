@@ -22,7 +22,7 @@ class CounterController extends GetxController {
   
   final _completedTargets = 0.obs; // Tamamlanan hedef sayısını takip et
   
-  final List<int> targetOptions = [33, 99, 100, 500, 1000];
+  final _targetOptions = <int>[33, 99, 100, 500, 1000].obs;
   
   // Dinamik getter - dil değişiminde güncel name döndürür
   Zikr get currentZikr {
@@ -48,6 +48,7 @@ class CounterController extends GetxController {
   int get target => _target.value;
   int get dailyTotal => _dailyTotal.value;
   bool get isAnimating => _isAnimating.value;
+  List<int> get targetOptions => _targetOptions.toList();
   double get progress => target > 0 ? (count / target).clamp(0.0, 1.0) : 0.0;
   bool get isCompleted => count >= target;
   
@@ -77,6 +78,9 @@ class CounterController extends GetxController {
     
     // Load daily total (tüm zikirlerden)
     _dailyTotal.value = _storage.getTotalDailyCount();
+    
+    // Load custom targets
+    loadCustomTargets();
   }
   
   Future<void> increment([String? completionTitle, String? completionMessage]) async {
@@ -226,6 +230,33 @@ class CounterController extends GetxController {
   double getZikrCount(String zikrId) {
     final counterData = _storage.getCounterData(zikrId);
     return counterData?.count.toDouble() ?? 0.0;
+  }
+
+  // Custom hedef ekleme
+  Future<void> addCustomTarget(int target) async {
+    if (target > 1000 && !_targetOptions.contains(target)) {
+      _targetOptions.add(target);
+      _targetOptions.sort();
+      await _storage.saveCustomTargets(_targetOptions.toList());
+    }
+  }
+
+  // Custom hedef silme
+  Future<void> removeCustomTarget(int target) async {
+    if (target > 1000 && _targetOptions.contains(target)) {
+      _targetOptions.remove(target);
+      await _storage.saveCustomTargets(_targetOptions.toList());
+    }
+  }
+
+  // Custom hedefleri yükle
+  void loadCustomTargets() {
+    final customTargets = _storage.getCustomTargets();
+    final baseTargets = [33, 99, 100, 500, 1000];
+    _targetOptions.clear();
+    _targetOptions.addAll(baseTargets);
+    _targetOptions.addAll(customTargets.where((target) => target > 1000));
+    _targetOptions.sort();
   }
 
   // Tarihe göre zikir sayılarını al

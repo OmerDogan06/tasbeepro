@@ -217,6 +217,31 @@ class AppLocalizationsHi extends AppLocalizations {
   String get homeTargetDialogTitle => 'लक्ष्य चुनें';
 
   @override
+  String get addCustomTarget => 'लक्ष्य जोड़ें';
+
+  @override
+  String get customTargetTitle => 'कस्टम लक्ष्य जोड़ें';
+
+  @override
+  String get customTargetHint => '1000 से अधिक का लक्ष्य दर्ज करें';
+
+  @override
+  String get customTargetError => 'अमान्य लक्ष्य';
+
+  @override
+  String get customTargetErrorMessage =>
+      'लक्ष्य 1000 से अधिक और अद्वितीय होना चाहिए';
+
+  @override
+  String get customTargetSuccess => 'सफलता';
+
+  @override
+  String get customTargetSuccessMessage => 'कस्टम लक्ष्य जोड़ा गया';
+
+  @override
+  String get add => 'जोड़ें';
+
+  @override
   String get zikirListTitle => 'जिक्र चुनें';
 
   @override

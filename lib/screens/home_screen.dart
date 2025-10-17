@@ -23,77 +23,89 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<CounterController>();
     TextDirection textDirection = Directionality.of(context);
-
+    ScrollController targetScrollController = ScrollController();
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.white,
-          statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: Color(0xFF2D5016),
-      systemNavigationBarIconBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Color(0xFF2D5016),
+        systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
         backgroundColor: const Color(0xFFF8F6F0), // Açık krem arka plan
-        appBar:PreferredSize(preferredSize: Size.fromHeight(56), child:  SafeArea(
-          child: AppBar(
-            title: Text(
-              AppLocalizations.of(context)?.homeTitle ?? 'Tasbee Pro',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: emeraldGreen,
-                fontSize: 20,
-              ),
-            ),
-            centerTitle: false,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+        resizeToAvoidBottomInset:
+            false, // Klavye açıldığında layout'u yukarı taşıma
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(56),
+          child: SafeArea(
+            child: AppBar(
+              title: Text(
+                AppLocalizations.of(context)?.homeTitle ?? 'Tasbee Pro',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: emeraldGreen,
+                  fontSize: 20,
                 ),
               ),
-            ),
-            actions: [
-              Container(
-                width: 40,
-                height: 40,
-                margin: textDirection == TextDirection.ltr
-                    ? const EdgeInsets.only(right: 12)
-                    : const EdgeInsets.only(left: 12),
-                decoration: BoxDecoration(
-                  gradient: const RadialGradient(
-                    colors: [lightGold, goldColor],
-                    center: Alignment(-0.2, -0.2),
+              centerTitle: false,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
                   ),
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: darkGreen.withAlpha(38),
-                      blurRadius: 6,
-                      offset: const Offset(0, 2),
+                ),
+              ),
+              actions: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  margin: textDirection == TextDirection.ltr
+                      ? const EdgeInsets.only(right: 12)
+                      : const EdgeInsets.only(left: 12),
+                  decoration: BoxDecoration(
+                    gradient: const RadialGradient(
+                      colors: [lightGold, goldColor],
+                      center: Alignment(-0.2, -0.2),
                     ),
-                  ],
-                ),
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  style: ButtonStyle(
-                    padding: WidgetStateProperty.all(EdgeInsets.zero),
-                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: darkGreen.withAlpha(38),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
-                  icon: const Icon(Icons.settings, color: emeraldGreen, size: 22),
-                  onPressed: () => Get.to (() => const SettingsScreen(), transition: Transition.rightToLeft,duration: Duration(milliseconds: 300)),
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    style: ButtonStyle(
+                      padding: WidgetStateProperty.all(EdgeInsets.zero),
+                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                    ),
+                    icon: const Icon(
+                      Icons.settings,
+                      color: emeraldGreen,
+                      size: 22,
+                    ),
+                    onPressed: () => Get.to(
+                      () => const SettingsScreen(),
+                      transition: Transition.rightToLeft,
+                      duration: Duration(milliseconds: 300),
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        )),
+        ),
         body: SafeArea(
           child: Stack(
             children: [
-            
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
@@ -136,12 +148,15 @@ class HomeScreen extends StatelessWidget {
                                   const SizedBox(width: 10),
                                   Expanded(
                                     child: Text(
-                                      AppLocalizations.of(context)?.homeDailyTotal ?? 'Bugünkü Toplam Zikir',
-                                      maxLines:2,
+                                      AppLocalizations.of(
+                                            context,
+                                          )?.homeDailyTotal ??
+                                          'Bugünkü Toplam Zikir',
+                                      maxLines: 2,
                                       style: const TextStyle(
                                         color: emeraldGreen,
                                         fontSize: 14,
-                                        
+
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -197,13 +212,17 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-      
+
                     const SizedBox(height: 10),
-      
+
                     // Current zikr - İslami kart tasarımı
                     Obx(
                       () => GestureDetector(
-                        onTap: () => Get.to (() => const ZikrListScreen(), transition: Transition.rightToLeft,duration: Duration(milliseconds: 300)),
+                        onTap: () => Get.to(
+                          () => const ZikrListScreen(),
+                          transition: Transition.rightToLeft,
+                          duration: Duration(milliseconds: 300),
+                        ),
                         child: Container(
                           width: double.infinity,
                           padding: const EdgeInsets.symmetric(
@@ -246,33 +265,36 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-      
+
                               const Icon(
                                 Icons.arrow_forward_ios,
                                 color: lightGold,
                                 size: 18,
                               ),
-                             
                             ],
                           ),
                         ),
                       ),
                     ),
-      
+
                     const Spacer(),
-      
+
                     // Counter button (zaten mükemmel)
                     const CounterButton(),
-      
+
                     const Spacer(),
-      
+
                     // Progress bar (İslami tema ile)
                     const ProgressBar(),
-      
+
                     const SizedBox(height: 10),
-      
+
                     // Action buttons - İslami tasarım
-                    _buildActionButtons(context, controller),
+                    _buildActionButtons(
+                      context,
+                      controller,
+                      targetScrollController,
+                    ),
                   ],
                 ),
               ),
@@ -286,6 +308,7 @@ class HomeScreen extends StatelessWidget {
   Widget _buildActionButtons(
     BuildContext context,
     CounterController controller,
+    ScrollController scrollController,
   ) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -297,8 +320,10 @@ class HomeScreen extends StatelessWidget {
                 child: _buildActionButton(
                   context,
                   icon: Icons.flag,
-                  label: '${AppLocalizations.of(context)?.homeTarget ?? 'Hedef'}: ${controller.target}',
-                  onTap: () => _showTargetDialog(context, controller),
+                  label:
+                      '${AppLocalizations.of(context)?.homeTarget ?? 'Hedef'}: ${controller.target}',
+                  onTap: () =>
+                      _showTargetDialog(context, controller, scrollController),
                   isObx: true,
                   controller: controller,
                 ),
@@ -317,8 +342,14 @@ class HomeScreen extends StatelessWidget {
                 child: _buildActionButton(
                   context,
                   icon: Icons.bar_chart,
-                  label: AppLocalizations.of(context)?.homeStatistics ?? 'İstatistik',
-                  onTap: () => Get.to (() => const StatsScreen(), transition: Transition.rightToLeft,duration: Duration(milliseconds: 300)),
+                  label:
+                      AppLocalizations.of(context)?.homeStatistics ??
+                      'İstatistik',
+                  onTap: () => Get.to(
+                    () => const StatsScreen(),
+                    transition: Transition.rightToLeft,
+                    duration: Duration(milliseconds: 300),
+                  ),
                 ),
               ),
             ],
@@ -333,8 +364,13 @@ class HomeScreen extends StatelessWidget {
                     child: _buildActionButton(
                       context,
                       icon: Icons.flag,
-                      label: '${AppLocalizations.of(context)?.homeTarget ?? 'Hedef'}: ${controller.target}',
-                      onTap: () => _showTargetDialog(context, controller),
+                      label:
+                          '${AppLocalizations.of(context)?.homeTarget ?? 'Hedef'}: ${controller.target}',
+                      onTap: () => _showTargetDialog(
+                        context,
+                        controller,
+                        scrollController,
+                      ),
                       isObx: true,
                       controller: controller,
                     ),
@@ -344,7 +380,8 @@ class HomeScreen extends StatelessWidget {
                     child: _buildActionButton(
                       context,
                       icon: Icons.refresh,
-                      label: AppLocalizations.of(context)?.homeReset ?? 'Sıfırla',
+                      label:
+                          AppLocalizations.of(context)?.homeReset ?? 'Sıfırla',
                       onTap: () => _showResetDialog(context, controller),
                     ),
                   ),
@@ -356,8 +393,14 @@ class HomeScreen extends StatelessWidget {
                 child: _buildActionButton(
                   context,
                   icon: Icons.bar_chart,
-                  label: AppLocalizations.of(context)?.homeStatistics ?? 'İstatistikler',
-                  onTap: () => Get.to (() => const StatsScreen(), transition: Transition.rightToLeft,duration: Duration(milliseconds: 300)),
+                  label:
+                      AppLocalizations.of(context)?.homeStatistics ??
+                      'İstatistikler',
+                  onTap: () => Get.to(
+                    () => const StatsScreen(),
+                    transition: Transition.rightToLeft,
+                    duration: Duration(milliseconds: 300),
+                  ),
                 ),
               ),
             ],
@@ -458,7 +501,11 @@ class HomeScreen extends StatelessWidget {
     return GestureDetector(onTap: onTap, child: buttonContent);
   }
 
-  void _showTargetDialog(BuildContext context, CounterController controller) {
+  void _showTargetDialog(
+    BuildContext context,
+    CounterController controller,
+    ScrollController scrollController,
+  ) {
     Get.dialog(
       Dialog(
         backgroundColor: Colors.transparent,
@@ -472,10 +519,7 @@ class HomeScreen extends StatelessWidget {
               colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
             ),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: goldColor.withAlpha(102),
-              width: 1.5,
-            ),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
             boxShadow: [
               BoxShadow(
                 color: darkGreen.withAlpha(51),
@@ -508,7 +552,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 12),
                     Text(
-                      AppLocalizations.of(context)?.homeTargetDialogTitle ?? 'Hedef Seç',
+                      AppLocalizations.of(context)?.homeTargetDialogTitle ??
+                          'Hedef Seç',
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -518,7 +563,7 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              
+
               // Divider
               Container(
                 height: 1,
@@ -533,107 +578,182 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              
+
               // Compact options
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    ...controller.targetOptions.map((target) {
-                      final isSelected = controller.target == target;
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 8),
-                        decoration: BoxDecoration(
-                          color: isSelected 
-                              ? goldColor.withAlpha(38)
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: isSelected 
-                                ? goldColor.withAlpha(128)
-                                : goldColor.withAlpha(51),
-                            width: 1,
+              Container(
+                constraints: const BoxConstraints(maxHeight: 380),
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Theme(
+                          data: ThemeData(
+                            scrollbarTheme: ScrollbarThemeData(
+                              thumbColor:
+                                  WidgetStateProperty .all(goldColor),
+                              trackColor: WidgetStateProperty .all(
+                                  goldColor.withAlpha(51)),
+                              trackBorderColor: WidgetStateProperty .all(
+                                  goldColor.withAlpha(77)),
+                              radius: const Radius.circular(8),
+                              thickness: WidgetStateProperty .all(4),
+                            ),
                           ),
-                        ),
-                        child: Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            overlayColor: WidgetStateProperty.all(Color(0xFFD4AF37).withAlpha(26)),
-                            borderRadius: BorderRadius.circular(12),
-                            onTap: () {
-                              controller.setTarget(target);
-                              Navigator.of(context).pop();
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 10,
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 6,
-                                    height: 6,
-                                    decoration: BoxDecoration(
-                                      color: isSelected ? goldColor : emeraldGreen.withAlpha(102),
-                                      shape: BoxShape.circle,
+                          child: Scrollbar(
+                            controller: scrollController,
+                            thumbVisibility: true,
+                          
+                            child: ListView.builder(
+                              padding: EdgeInsets.only(right: 7),
+                              controller: scrollController,
+                              itemCount: controller.targetOptions.length,
+                              itemBuilder: (context, index) {
+                                final target = controller.targetOptions[index];
+                                final isSelected = controller.target == target;
+                                return Container(
+                                  margin: const EdgeInsets.only(bottom: 8),
+                                  decoration: BoxDecoration(
+                                    color: isSelected
+                                        ? goldColor.withAlpha(38)
+                                        : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(12),
+                                    border: Border.all(
+                                      color: isSelected
+                                          ? goldColor.withAlpha(128)
+                                          : goldColor.withAlpha(51),
+                                      width: 1,
                                     ),
                                   ),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                    child: Text(
-                                      '$target',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
-                                        color: emeraldGreen,
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      overlayColor: WidgetStateProperty.all(
+                                        Color(0xFFD4AF37).withAlpha(26),
+                                      ),
+                                      borderRadius: BorderRadius.circular(12),
+                                      onTap: () {
+                                        controller.setTarget(target);
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 12,
+                                          vertical: 10,
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              width: 6,
+                                              height: 6,
+                                              decoration: BoxDecoration(
+                                                color: isSelected
+                                                    ? goldColor
+                                                    : emeraldGreen.withAlpha(102),
+                                                shape: BoxShape.circle,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 12),
+                                            Expanded(
+                                              child: Text(
+                                                '$target',
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: isSelected
+                                                      ? FontWeight.bold
+                                                      : FontWeight.w500,
+                                                  color: emeraldGreen,
+                                                ),
+                                              ),
+                                            ),
+                                            if (isSelected)
+                                              Icon(
+                                                Icons.check_circle,
+                                                color: goldColor,
+                                                size: 16,
+                                              ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
-                                  if (isSelected)
-                                    Icon(
-                                      Icons.check_circle,
-                                      color: goldColor,
-                                      size: 16,
-                                    ),
-                                ],
-                              ),
+                                );
+                              },
                             ),
-                          ),
-                        ),
-                      );
-                    }),
-                    
-                    const SizedBox(height: 12),
-                    
-                    // Minimal close button
-                    SizedBox(
-                      width: double.infinity,
-                      child: TextButton(
-                        onPressed: () => Navigator.of(context).pop(),
-                        style: TextButton.styleFrom(
-                          backgroundColor: lightGold.withAlpha(77),
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          overlayColor: Color(0xFFD4AF37).withAlpha(26),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            side: BorderSide(
-                              color: goldColor.withAlpha(77),
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                        child: Text(
-                          AppLocalizations.of(context)?.close ?? 'Kapat',
-                          style: const TextStyle(
-                            color: emeraldGreen,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
                           ),
                         ),
                       ),
-                    ),
-                  ],
+
+                      const SizedBox(height: 12),
+
+                      // Add custom target button
+                      SizedBox(
+                        width: double.infinity,
+                        child: TextButton.icon(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            _showCustomTargetBottomSheet(context, controller);
+                          },
+                          style: TextButton.styleFrom(
+                            backgroundColor: emeraldGreen.withAlpha(26),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            overlayColor: emeraldGreen.withAlpha(51),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(
+                                color: emeraldGreen.withAlpha(77),
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                          icon: const Icon(
+                            Icons.add,
+                            color: emeraldGreen,
+                            size: 16,
+                          ),
+                          label: Text(
+                            AppLocalizations.of(context)?.addCustomTarget ??
+                                'Hedef Ekle',
+                            style: const TextStyle(
+                              color: emeraldGreen,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 8),
+
+                      // Minimal close button
+                      SizedBox(
+                        width: double.infinity,
+                        child: TextButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          style: TextButton.styleFrom(
+                            backgroundColor: lightGold.withAlpha(77),
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            overlayColor: Color(0xFFD4AF37).withAlpha(26),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(
+                                color: goldColor.withAlpha(77),
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                          child: Text(
+                            AppLocalizations.of(context)?.close ?? 'Kapat',
+                            style: const TextStyle(
+                              color: emeraldGreen,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -672,7 +792,8 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         content: Text(
-          AppLocalizations.of(context)?.homeResetConfirmMessage ?? 'Sayacı sıfırlamak istediğinizden emin misiniz?',
+          AppLocalizations.of(context)?.homeResetConfirmMessage ??
+              'Sayacı sıfırlamak istediğinizden emin misiniz?',
           style: const TextStyle(color: emeraldGreen),
         ),
         actions: [
@@ -683,7 +804,10 @@ class HomeScreen extends StatelessWidget {
             ),
             child: TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text(AppLocalizations.of(context)?.cancel ?? 'İptal', style: const TextStyle(color: emeraldGreen)),
+              child: Text(
+                AppLocalizations.of(context)?.cancel ?? 'İptal',
+                style: const TextStyle(color: emeraldGreen),
+              ),
             ),
           ),
           Container(
@@ -697,7 +821,8 @@ class HomeScreen extends StatelessWidget {
                 Navigator.of(context).pop();
                 IslamicSnackbar.showSuccess(
                   AppLocalizations.of(context)?.homeResetSuccess ?? 'Başarılı',
-                  AppLocalizations.of(context)?.homeResetSuccessMessage ?? 'Sayaç sıfırlandı',
+                  AppLocalizations.of(context)?.homeResetSuccessMessage ??
+                      'Sayaç sıfırlandı',
                   duration: const Duration(seconds: 1),
                 );
               },
@@ -714,8 +839,214 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
+  void _showCustomTargetBottomSheet(
+    BuildContext context,
+    CounterController controller,
+  ) {
+    final TextEditingController textController = TextEditingController();
+
+    Get.bottomSheet(
+      Container(
+        padding: EdgeInsets.only(
+          left: 20,
+          right: 20,
+          top: 20,
+          bottom:
+              20 +
+              MediaQuery.of(
+                context,
+              ).viewInsets.bottom, // Klavye yüksekliğini ekle
+        ),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+          ),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Header
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    gradient: const RadialGradient(
+                      colors: [lightGold, goldColor],
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Icon(
+                    Icons.add_circle_outline,
+                    color: emeraldGreen,
+                    size: 20,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    AppLocalizations.of(context)?.customTargetTitle ??
+                        'Özel Hedef Ekle',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: emeraldGreen,
+                    ),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () => Get.back(),
+                  icon: const Icon(Icons.close, color: emeraldGreen),
+                  style: IconButton.styleFrom(
+                    backgroundColor: goldColor.withAlpha(51),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 10),
+
+            // Input field
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white.withAlpha(128),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: goldColor.withAlpha(77), width: 1),
+              ),
+              child: TextField(
+                controller: textController,
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                style: const TextStyle(
+                  color: emeraldGreen,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                decoration: InputDecoration(
+                  hintText:
+                      AppLocalizations.of(context)?.customTargetHint ??
+                      '1000\'den büyük bir hedef girin',
+                  hintStyle: TextStyle(
+                    color: emeraldGreen.withAlpha(128),
+                    fontSize: 14,
+                  ),
+                  border: InputBorder.none,
+                  contentPadding: const EdgeInsets.all(12),
+                  prefixIcon: Icon(
+                    Icons.flag_outlined,
+                    color: emeraldGreen.withAlpha(153),
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            // Action buttons
+            Row(
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () => Get.back(),
+                    style: TextButton.styleFrom(
+                      backgroundColor: lightGold.withAlpha(77),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(
+                          color: goldColor.withAlpha(77),
+                          width: 1,
+                        ),
+                      ),
+                    ),
+                    child: Text(
+                      AppLocalizations.of(context)?.cancel ?? 'İptal',
+                      style: const TextStyle(
+                        color: emeraldGreen,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: TextButton(
+                    onPressed: () => _addCustomTarget(
+                      context,
+                      controller,
+                      textController.text,
+                    ),
+                    style: TextButton.styleFrom(
+                      backgroundColor: goldColor,
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: goldColor, width: 1),
+                      ),
+                    ),
+                    child: Text(
+                      AppLocalizations.of(context)?.add ?? 'Ekle',
+                      style: const TextStyle(
+                        color: emeraldGreen,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            // Add some bottom padding for safe area
+            // SizedBox(height: MediaQuery.of(context).viewInsets.bottom > 0 ? 20 : 0), // Bu satırı kaldırdık
+          ],
+        ),
+      ),
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      ignoreSafeArea: false, // Safe area'yı dikkate al
+    );
+  }
+
+  void _addCustomTarget(
+    BuildContext context,
+    CounterController controller,
+    String input,
+  ) {
+    final target = int.tryParse(input.trim());
+
+    if (target == null || target <= 1000) {
+      IslamicSnackbar.showError(
+        AppLocalizations.of(context)?.customTargetError ?? 'Geçersiz hedef',
+        AppLocalizations.of(context)?.customTargetErrorMessage ??
+            'Hedef 1000\'den büyük ve benzersiz olmalıdır',
+      );
+      return;
+    }
+
+    if (controller.targetOptions.contains(target)) {
+      IslamicSnackbar.showError(
+        AppLocalizations.of(context)?.customTargetError ?? 'Geçersiz hedef',
+        AppLocalizations.of(context)?.customTargetErrorMessage ??
+            'Hedef 1000\'den büyük ve benzersiz olmalıdır',
+      );
+      return;
+    }
+
+    controller.addCustomTarget(target);
+    Get.back();
+
+    IslamicSnackbar.showSuccess(
+      AppLocalizations.of(context)?.customTargetSuccess ?? 'Başarılı',
+      AppLocalizations.of(context)?.customTargetSuccessMessage ??
+          'Özel hedef eklendi',
+    );
+  }
 }
-
-
-
-

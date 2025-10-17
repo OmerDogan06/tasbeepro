@@ -268,6 +268,38 @@
   "@homeTargetDialogTitle": {
     "description": "Target selection dialog title"
   },
+  "addCustomTarget": "Add Target",
+  "@addCustomTarget": {
+    "description": "Add custom target button text"
+  },
+  "customTargetTitle": "Add Custom Target",
+  "@customTargetTitle": {
+    "description": "Custom target bottom sheet title"
+  },
+  "customTargetHint": "Enter a target greater than 1000",
+  "@customTargetHint": {
+    "description": "Custom target input field hint"
+  },
+  "customTargetError": "Invalid Target",
+  "@customTargetError": {
+    "description": "Custom target error title"
+  },
+  "customTargetErrorMessage": "Target must be greater than 1000 and unique",
+  "@customTargetErrorMessage": {
+    "description": "Custom target error message"
+  },
+  "customTargetSuccess": "Success",
+  "@customTargetSuccess": {
+    "description": "Custom target success title"
+  },
+  "customTargetSuccessMessage": "Custom target added",
+  "@customTargetSuccessMessage": {
+    "description": "Custom target success message"
+  },
+  "add": "Add",
+  "@add": {
+    "description": "Add button text"
+  },
   "zikirListTitle": "Select Zikr",
   "@zikirListTitle": {
     "description": "Zikr list screen title"

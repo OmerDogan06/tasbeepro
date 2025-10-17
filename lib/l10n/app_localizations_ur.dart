@@ -216,6 +216,31 @@ class AppLocalizationsUr extends AppLocalizations {
   String get homeTargetDialogTitle => 'ہدف منتخب کریں';
 
   @override
+  String get addCustomTarget => 'ہدف شامل کریں';
+
+  @override
+  String get customTargetTitle => 'اپنا ہدف شامل کریں';
+
+  @override
+  String get customTargetHint => '1000 سے زیادہ کا ہدف داخل کریں';
+
+  @override
+  String get customTargetError => 'غلط ہدف';
+
+  @override
+  String get customTargetErrorMessage =>
+      'ہدف 1000 سے زیادہ اور منفرد ہونا چاہیے';
+
+  @override
+  String get customTargetSuccess => 'کامیاب';
+
+  @override
+  String get customTargetSuccessMessage => 'اپنا ہدف شامل کر دیا گیا';
+
+  @override
+  String get add => 'شامل کریں';
+
+  @override
   String get zikirListTitle => 'ذکر منتخب کریں';
 
   @override

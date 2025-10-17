@@ -213,6 +213,30 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeTargetDialogTitle => 'اختر الهدف';
 
   @override
+  String get addCustomTarget => 'إضافة هدف';
+
+  @override
+  String get customTargetTitle => 'إضافة هدف مخصص';
+
+  @override
+  String get customTargetHint => 'أدخل هدفاً أكبر من 1000';
+
+  @override
+  String get customTargetError => 'هدف غير صالح';
+
+  @override
+  String get customTargetErrorMessage => 'يجب أن يكون الهدف أكبر من 1000 وفريد';
+
+  @override
+  String get customTargetSuccess => 'نجح';
+
+  @override
+  String get customTargetSuccessMessage => 'تم إضافة الهدف المخصص';
+
+  @override
+  String get add => 'إضافة';
+
+  @override
   String get zikirListTitle => 'اختر الذكر';
 
   @override

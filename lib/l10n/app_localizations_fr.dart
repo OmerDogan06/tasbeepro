@@ -223,6 +223,31 @@ class AppLocalizationsFr extends AppLocalizations {
   String get homeTargetDialogTitle => 'Sélectionner l\'Objectif';
 
   @override
+  String get addCustomTarget => 'Ajouter Objectif';
+
+  @override
+  String get customTargetTitle => 'Ajouter Objectif Personnalisé';
+
+  @override
+  String get customTargetHint => 'Entrez un objectif supérieur à 1000';
+
+  @override
+  String get customTargetError => 'Objectif Invalide';
+
+  @override
+  String get customTargetErrorMessage =>
+      'L\'objectif doit être supérieur à 1000 et unique';
+
+  @override
+  String get customTargetSuccess => 'Succès';
+
+  @override
+  String get customTargetSuccessMessage => 'Objectif personnalisé ajouté';
+
+  @override
+  String get add => 'Ajouter';
+
+  @override
   String get zikirListTitle => 'Sélectionner le Dhikr';
 
   @override

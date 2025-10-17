@@ -514,6 +514,54 @@ abstract class AppLocalizations {
   /// **'Select Target'**
   String get homeTargetDialogTitle;
 
+  /// Add custom target button text
+  ///
+  /// In en, this message translates to:
+  /// **'Add Target'**
+  String get addCustomTarget;
+
+  /// Custom target bottom sheet title
+  ///
+  /// In en, this message translates to:
+  /// **'Add Custom Target'**
+  String get customTargetTitle;
+
+  /// Custom target input field hint
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a target greater than 1000'**
+  String get customTargetHint;
+
+  /// Custom target error title
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Target'**
+  String get customTargetError;
+
+  /// Custom target error message
+  ///
+  /// In en, this message translates to:
+  /// **'Target must be greater than 1000 and unique'**
+  String get customTargetErrorMessage;
+
+  /// Custom target success title
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get customTargetSuccess;
+
+  /// Custom target success message
+  ///
+  /// In en, this message translates to:
+  /// **'Custom target added'**
+  String get customTargetSuccessMessage;
+
+  /// Add button text
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
   /// Zikr list screen title
   ///
   /// In en, this message translates to:

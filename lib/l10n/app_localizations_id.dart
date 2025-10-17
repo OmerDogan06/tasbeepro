@@ -217,6 +217,31 @@ class AppLocalizationsId extends AppLocalizations {
   String get homeTargetDialogTitle => 'Pilih Target';
 
   @override
+  String get addCustomTarget => 'Tambah Target';
+
+  @override
+  String get customTargetTitle => 'Tambah Target Kustom';
+
+  @override
+  String get customTargetHint => 'Masukkan target lebih besar dari 1000';
+
+  @override
+  String get customTargetError => 'Target Tidak Valid';
+
+  @override
+  String get customTargetErrorMessage =>
+      'Target harus lebih besar dari 1000 dan unik';
+
+  @override
+  String get customTargetSuccess => 'Berhasil';
+
+  @override
+  String get customTargetSuccessMessage => 'Target kustom ditambahkan';
+
+  @override
+  String get add => 'Tambah';
+
+  @override
   String get zikirListTitle => 'Pilih Dzikir';
 
   @override

@@ -215,6 +215,31 @@ class AppLocalizationsTr extends AppLocalizations {
   String get homeTargetDialogTitle => 'Hedef Seç';
 
   @override
+  String get addCustomTarget => 'Hedef Ekle';
+
+  @override
+  String get customTargetTitle => 'Özel Hedef Ekle';
+
+  @override
+  String get customTargetHint => '1000\'den büyük bir hedef girin';
+
+  @override
+  String get customTargetError => 'Geçersiz hedef';
+
+  @override
+  String get customTargetErrorMessage =>
+      'Hedef 1000\'den büyük ve benzersiz olmalıdır';
+
+  @override
+  String get customTargetSuccess => 'Başarılı';
+
+  @override
+  String get customTargetSuccessMessage => 'Özel hedef eklendi';
+
+  @override
+  String get add => 'Ekle';
+
+  @override
   String get zikirListTitle => 'Zikir Seç';
 
   @override
