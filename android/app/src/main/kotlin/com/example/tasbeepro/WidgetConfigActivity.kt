@@ -312,7 +312,7 @@ class WidgetConfigActivity : Activity() {
         // SharedPreferences'a kaydet
         val prefs: SharedPreferences = getSharedPreferences("TasbeeWidgetPrefs", Context.MODE_PRIVATE)
         val editor = prefs.edit()
-        editor.putString("zikr_name_$appWidgetId", selectedZikr.first)
+        // zikr_name artık kaydedilmiyor, her zaman ID'den yerelleştiriliyor
         editor.putString("zikr_meaning_$appWidgetId", selectedZikr.second)
         editor.putString("zikr_id_$appWidgetId", zikrId) // Zikir ID'sini de kaydet
         editor.putInt("target_$appWidgetId", selectedTarget)

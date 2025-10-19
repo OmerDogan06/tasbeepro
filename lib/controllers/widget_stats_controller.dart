@@ -1,9 +1,20 @@
 import 'package:get/get.dart';
 import '../services/widget_service.dart';
 import '../models/widget_zikr_record.dart';
+import '../models/zikr.dart';
 
 class WidgetStatsController extends GetxController {
   final WidgetService _widgetService = Get.find<WidgetService>();
+
+  // Zikir ID'sini mevcut dile göre lokalize edilmiş isme çevir
+  String getLocalizedZikirName(String zikrId) {
+    final localizedZikrs = Zikr.getLocalizedDefaultZikrs();
+    final zikr = localizedZikrs.firstWhere(
+      (z) => z.id == zikrId,
+      orElse: () => Zikr(id: zikrId, name: zikrId), // Fallback olarak ID'yi kullan
+    );
+    return zikr.name;
+  }
 
   // Android SQLite'tan tüm widget kayıtlarını al
   Future<List<WidgetZikrRecord>> getAllWidgetRecords() async {
@@ -56,18 +67,8 @@ class WidgetStatsController extends GetxController {
     for (final entry in totals.entries) {
       if (entry.value > mostUsedCount) {
         mostUsedCount = entry.value;
-        // Zikir adını bul
-        final record = records.firstWhere(
-          (r) => r.zikrId == entry.key,
-          orElse: () => WidgetZikrRecord(
-            id: '', 
-            zikrId: '', 
-            zikrName: '', 
-            count: 0, 
-            date: DateTime.now()
-          ),
-        );
-        mostUsedZikrName = record.zikrName.isNotEmpty ? record.zikrName : entry.key;
+        // Zikir adını mevcut dile göre lokalize et
+        mostUsedZikrName = getLocalizedZikirName(entry.key);
       }
     }
 
@@ -83,18 +84,16 @@ class WidgetStatsController extends GetxController {
   Future<List<Map<String, dynamic>>> getChartDataForPeriod(String period) async {
     final records = await getRecordsForPeriod(period);
     final Map<String, int> totals = {};
-    final Map<String, String> zikrNames = {};
 
     // Zikir bazında toplamları hesapla
     for (final record in records) {
       totals[record.zikrId] = (totals[record.zikrId] ?? 0) + record.count;
-      zikrNames[record.zikrId] = record.zikrName;
     }
 
     return totals.entries.map((entry) {
       return {
         'zikrId': entry.key,
-        'zikrName': zikrNames[entry.key] ?? entry.key,
+        'zikrName': getLocalizedZikirName(entry.key), // Mevcut dile göre lokalize et
         'count': entry.value,
       };
     }).toList();

@@ -157,9 +157,8 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         val target = prefs.getInt(KEY_TARGET + appWidgetId, 33)
         val zikrId = prefs.getString(KEY_ZIKR_ID + appWidgetId, "subhanallah") ?: "subhanallah"
         
-        // Zikir adını önce SharedPreferences'tan al, yoksa localized string'den al
-        val savedZikrName = prefs.getString(KEY_ZIKR_NAME + appWidgetId, null)
-        val zikrName = savedZikrName ?: getLocalizedZikirName(context, zikrId)
+        // Zikir adını her zaman güncel dilden al (sistem dili değişikliği için)
+        val zikrName = getLocalizedZikirName(context, zikrId)
         
         val zikrMeaning = prefs.getString(KEY_ZIKR_MEANING + appWidgetId, "") ?: ""
 
@@ -233,9 +232,8 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         val target = prefs.getInt(KEY_TARGET + appWidgetId, 33)
         val zikrId = prefs.getString(KEY_ZIKR_ID + appWidgetId, "subhanallah") ?: "subhanallah"
         
-        // Zikir adını önce SharedPreferences'tan al, yoksa localized string'den al
-        val savedZikrName = prefs.getString(KEY_ZIKR_NAME + appWidgetId, null)
-        val zikrName = savedZikrName ?: getLocalizedZikirName(context, zikrId)
+        // Zikir adını her zaman güncel dilden al
+        val zikrName = getLocalizedZikirName(context, zikrId)
         
         // Widget'ın kendi ayarlarını kontrol et ve ses/titreşim efekti uygula
         playWidgetFeedback(context)
