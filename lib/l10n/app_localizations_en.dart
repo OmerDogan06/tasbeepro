@@ -290,46 +290,46 @@ class AppLocalizationsEn extends AppLocalizations {
   String get zikirAllahuAkbarMeaning => 'Allah is the Greatest';
 
   @override
-  String get zikirLaIlaheIllallah => 'La ilahe illallah';
+  String get zikirLaIlaheIllallah => 'La ilaha illAllah';
 
   @override
   String get zikirLaIlaheIllallahMeaning => 'There is no deity but Allah';
 
   @override
-  String get zikirEstaghfirullah => 'Estağfirullah';
+  String get zikirEstaghfirullah => 'Astaghfirullah';
 
   @override
   String get zikirEstaghfirullahMeaning => 'I seek forgiveness from Allah';
 
   @override
-  String get zikirLaHawleWelaKuvvete => 'La hawle vela kuvvete';
+  String get zikirLaHawleWelaKuvvete => 'La hawla wa la quwwata illa billah';
 
   @override
   String get zikirLaHawleWelaKuvveteMeaning =>
       'There is no power except with Allah';
 
   @override
-  String get zikirHasbiyallahu => 'Hasbiyallahu';
+  String get zikirHasbiyallahu => 'HasbiyAllahu wa ni’mal wakeel';
 
   @override
   String get zikirHasbiyallahuMeaning =>
       'Allah is sufficient for me, and He is the best Disposer of affairs';
 
   @override
-  String get zikirRabbenaAtina => 'Rabbena Atina';
+  String get zikirRabbenaAtina => 'Rabbana Atina';
 
   @override
   String get zikirRabbenaAtinaMeaning => 'Our Lord! Give us good in this world';
 
   @override
-  String get zikirAllahummeSalli => 'Allahumme Salli';
+  String get zikirAllahummeSalli => 'Allahumma Salli';
 
   @override
   String get zikirAllahummeCalliMeaning =>
       'O Allah, send blessings upon Muhammad';
 
   @override
-  String get zikirRabbiZidniIlmen => 'Rabbi Zidni İlmen';
+  String get zikirRabbiZidniIlmen => 'Rabbi Zidni Ilm';
 
   @override
   String get zikirRabbiZidniIlmenMeaning => 'My Lord! Increase me in knowledge';
@@ -342,7 +342,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'In the name of Allah, the Most Gracious, the Most Merciful';
 
   @override
-  String get zikirInnallahaMaasSabirin => 'İnnallaha maas sabirin';
+  String get zikirInnallahaMaasSabirin => 'Innalaha ma’as sabirin';
 
   @override
   String get zikirInnallahaMaasSabirinMeaning =>
@@ -367,7 +367,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get zikirTabarakAllahMeaning => 'Blessed is Allah';
 
   @override
-  String get zikirMashallah => 'Maşallah';
+  String get zikirMashallah => 'MashaAllah';
 
   @override
   String get zikirMashallahMeaning => 'What Allah has willed has happened';

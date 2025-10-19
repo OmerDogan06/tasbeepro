@@ -330,7 +330,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get zikirAllahummeCalliMeaning => 'हे अल्लाह! मुहम्मद पर दरूद भेज';
 
   @override
-  String get zikirRabbiZidniIlmen => 'रब्बि जिदनी इल्मन';
+  String get zikirRabbiZidniIlmen => 'रब्बि जिदनी इल्म';
 
   @override
   String get zikirRabbiZidniIlmenMeaning =>

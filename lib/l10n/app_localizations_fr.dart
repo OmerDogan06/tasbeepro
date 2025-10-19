@@ -248,18 +248,18 @@ class AppLocalizationsFr extends AppLocalizations {
   String get add => 'Ajouter';
 
   @override
-  String get deleteTargetTitle => 'Delete Target';
+  String get deleteTargetTitle => 'Supprimer l\'Objectif';
 
   @override
   String deleteTargetMessage(int target) {
-    return 'Are you sure you want to delete the target $target?';
+    return 'Êtes-vous sûr de vouloir supprimer l\'objectif $target?';
   }
 
   @override
-  String get deleteTargetSuccess => 'Target deleted';
+  String get deleteTargetSuccess => 'Objectif supprimé';
 
   @override
-  String get delete => 'Delete';
+  String get delete => 'Supprimer';
 
   @override
   String get zikirListTitle => 'Sélectionner le Dhikr';
@@ -299,7 +299,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get zikirAllahuAkbarMeaning => 'Allah est le plus grand';
 
   @override
-  String get zikirLaIlaheIllallah => 'La ilaha illallah';
+  String get zikirLaIlaheIllallah => 'La ilaha illAllah';
 
   @override
   String get zikirLaIlaheIllallahMeaning => 'Il n\'y a de divinité qu\'Allah';
@@ -311,14 +311,14 @@ class AppLocalizationsFr extends AppLocalizations {
   String get zikirEstaghfirullahMeaning => 'Je demande pardon à Allah';
 
   @override
-  String get zikirLaHawleWelaKuvvete => 'La hawla wa la quwwata';
+  String get zikirLaHawleWelaKuvvete => 'La hawla wa la quwwata illa billah';
 
   @override
   String get zikirLaHawleWelaKuvveteMeaning =>
       'Il n\'y a de force et de puissance qu\'en Allah';
 
   @override
-  String get zikirHasbiyallahu => 'Hasbiyallahu';
+  String get zikirHasbiyallahu => 'HasbiyAllahu wa ni’mal wakeel';
 
   @override
   String get zikirHasbiyallahuMeaning =>
@@ -339,7 +339,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Ô Allah! Envoie tes bénédictions sur Muhammad';
 
   @override
-  String get zikirRabbiZidniIlmen => 'Rabbi Zidni Ilman';
+  String get zikirRabbiZidniIlmen => 'Rabbi Zidni Ilm';
 
   @override
   String get zikirRabbiZidniIlmenMeaning =>
@@ -353,7 +353,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Au nom d\'Allah, le Tout Miséricordieux, le Très Miséricordieux';
 
   @override
-  String get zikirInnallahaMaasSabirin => 'Innallaha maas sabirin';
+  String get zikirInnallahaMaasSabirin => 'Innalaha ma’as sabirin';
 
   @override
   String get zikirInnallahaMaasSabirinMeaning =>

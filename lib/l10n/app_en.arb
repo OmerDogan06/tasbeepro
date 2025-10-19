@@ -353,6 +353,7 @@
   "@zikirSubhanallahMeaning": {
     "description": "Subhanallah zikr meaning"
   },
+
   "zikirAlhamdulillah": "Alhamdulillah",
   "@zikirAlhamdulillah": {
     "description": "Alhamdulillah zikr name"
@@ -361,6 +362,7 @@
   "@zikirAlhamdulillahMeaning": {
     "description": "Alhamdulillah zikr meaning"
   },
+
   "zikirAllahuAkbar": "Allahu Akbar",
   "@zikirAllahuAkbar": {
     "description": "Allahu Akbar zikr name"
@@ -369,62 +371,70 @@
   "@zikirAllahuAkbarMeaning": {
     "description": "Allahu Akbar zikr meaning"
   },
-  "zikirLaIlaheIllallah": "La ilahe illallah",
+
+  "zikirLaIlaheIllallah": "La ilaha illAllah",
   "@zikirLaIlaheIllallah": {
-    "description": "La ilahe illallah zikr name"
+    "description": "La ilaha illAllah zikr name"
   },
   "zikirLaIlaheIllallahMeaning": "There is no deity but Allah",
   "@zikirLaIlaheIllallahMeaning": {
-    "description": "La ilahe illallah zikr meaning"
+    "description": "La ilaha illAllah zikr meaning"
   },
-  "zikirEstaghfirullah": "Estağfirullah",
+
+  "zikirEstaghfirullah": "Astaghfirullah",
   "@zikirEstaghfirullah": {
-    "description": "Estağfirullah zikr name"
+    "description": "Astaghfirullah zikr name"
   },
   "zikirEstaghfirullahMeaning": "I seek forgiveness from Allah",
   "@zikirEstaghfirullahMeaning": {
-    "description": "Estağfirullah zikr meaning"
+    "description": "Astaghfirullah zikr meaning"
   },
-  "zikirLaHawleWelaKuvvete": "La hawle vela kuvvete",
+
+  "zikirLaHawleWelaKuvvete": "La hawla wa la quwwata illa billah",
   "@zikirLaHawleWelaKuvvete": {
-    "description": "La hawle vela kuvvete zikr name"
+    "description": "La hawla wa la quwwata illa billah zikr name"
   },
   "zikirLaHawleWelaKuvveteMeaning": "There is no power except with Allah",
   "@zikirLaHawleWelaKuvveteMeaning": {
-    "description": "La hawle vela kuvvete zikr meaning"
+    "description": "La hawla wa la quwwata illa billah zikr meaning"
   },
-  "zikirHasbiyallahu": "Hasbiyallahu",
+
+  "zikirHasbiyallahu": "HasbiyAllahu wa ni’mal wakeel",
   "@zikirHasbiyallahu": {
-    "description": "Hasbiyallahu zikr name"
+    "description": "HasbiyAllahu wa ni’mal wakeel zikr name"
   },
   "zikirHasbiyallahuMeaning": "Allah is sufficient for me, and He is the best Disposer of affairs",
   "@zikirHasbiyallahuMeaning": {
-    "description": "Hasbiyallahu zikr meaning"
+    "description": "HasbiyAllahu wa ni’mal wakeel zikr meaning"
   },
-  "zikirRabbenaAtina": "Rabbena Atina",
+
+  "zikirRabbenaAtina": "Rabbana Atina",
   "@zikirRabbenaAtina": {
-    "description": "Rabbena Atina zikr name"
+    "description": "Rabbana Atina zikr name"
   },
   "zikirRabbenaAtinaMeaning": "Our Lord! Give us good in this world",
   "@zikirRabbenaAtinaMeaning": {
-    "description": "Rabbena Atina zikr meaning"
+    "description": "Rabbana Atina zikr meaning"
   },
-  "zikirAllahummeSalli": "Allahumme Salli",
+
+  "zikirAllahummeSalli": "Allahumma Salli",
   "@zikirAllahummeSalli": {
-    "description": "Allahumme Salli zikr name"
+    "description": "Allahumma Salli zikr name"
   },
   "zikirAllahummeCalliMeaning": "O Allah, send blessings upon Muhammad",
   "@zikirAllahummeCalliMeaning": {
-    "description": "Allahumme Salli zikr meaning"
+    "description": "Allahumma Salli zikr meaning"
   },
-  "zikirRabbiZidniIlmen": "Rabbi Zidni İlmen",
+
+  "zikirRabbiZidniIlmen": "Rabbi Zidni Ilm",
   "@zikirRabbiZidniIlmen": {
-    "description": "Rabbi Zidni İlmen zikr name"
+    "description": "Rabbi Zidni Ilm zikr name"
   },
   "zikirRabbiZidniIlmenMeaning": "My Lord! Increase me in knowledge",
   "@zikirRabbiZidniIlmenMeaning": {
-    "description": "Rabbi Zidni İlmen zikr meaning"
+    "description": "Rabbi Zidni Ilm zikr meaning"
   },
+
   "zikirBismillah": "Bismillah",
   "@zikirBismillah": {
     "description": "Bismillah zikr name"
@@ -433,14 +443,16 @@
   "@zikirBismillahMeaning": {
     "description": "Bismillah zikr meaning"
   },
-  "zikirInnallahaMaasSabirin": "İnnallaha maas sabirin",
+
+  "zikirInnallahaMaasSabirin": "Innalaha ma’as sabirin",
   "@zikirInnallahaMaasSabirin": {
-    "description": "İnnallaha maas sabirin zikr name"
+    "description": "Innalaha ma’as sabirin zikr name"
   },
   "zikirInnallahaMaasSabirinMeaning": "Indeed, Allah is with the patient",
   "@zikirInnallahaMaasSabirinMeaning": {
-    "description": "İnnallaha maas sabirin zikr meaning"
+    "description": "Innalaha ma’as sabirin zikr meaning"
   },
+
   "zikirAllahuLatif": "Allahu Latif",
   "@zikirAllahuLatif": {
     "description": "Allahu Latif zikr name"
@@ -449,6 +461,7 @@
   "@zikirAllahuLatifMeaning": {
     "description": "Allahu Latif zikr meaning"
   },
+
   "zikirYaRahman": "Ya Rahman Ya Rahim",
   "@zikirYaRahman": {
     "description": "Ya Rahman Ya Rahim zikr name"
@@ -457,6 +470,7 @@
   "@zikirYaRahmanMeaning": {
     "description": "Ya Rahman Ya Rahim zikr meaning"
   },
+
   "zikirTabarakAllah": "Tabarak Allah",
   "@zikirTabarakAllah": {
     "description": "Tabarak Allah zikr name"
@@ -465,13 +479,14 @@
   "@zikirTabarakAllahMeaning": {
     "description": "Tabarak Allah zikr meaning"
   },
-  "zikirMashallah": "Maşallah",
+
+  "zikirMashallah": "MashaAllah",
   "@zikirMashallah": {
-    "description": "Maşallah zikr name"
+    "description": "MashaAllah zikr name"
   },
   "zikirMashallahMeaning": "What Allah has willed has happened",
   "@zikirMashallahMeaning": {
-    "description": "Maşallah zikr meaning"
+    "description": "MashaAllah zikr meaning"
   },
   "addCustomZikirTitle": "Add Custom Zikr",
   "@addCustomZikirTitle": {

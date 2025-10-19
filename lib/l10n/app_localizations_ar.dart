@@ -297,16 +297,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get zikirEstaghfirullah => 'أستغفر الله';
 
   @override
-  String get zikirEstaghfirullahMeaning => 'أطلب المغفرة من الله';
+  String get zikirEstaghfirullahMeaning => 'أستغفر الله وأتوب إليه';
 
   @override
   String get zikirLaHawleWelaKuvvete => 'لا حول ولا قوة إلا بالله';
 
   @override
-  String get zikirLaHawleWelaKuvveteMeaning => 'لا قوة ولا حول إلا بالله';
+  String get zikirLaHawleWelaKuvveteMeaning => 'لا حول ولا قوة إلا بالله';
 
   @override
-  String get zikirHasbiyallahu => 'حسبي الله';
+  String get zikirHasbiyallahu => 'حسبي الله ونعم الوكيل';
 
   @override
   String get zikirHasbiyallahuMeaning => 'الله يكفيني وهو نعم الوكيل';
@@ -321,19 +321,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get zikirAllahummeSalli => 'اللهم صل على محمد';
 
   @override
-  String get zikirAllahummeCalliMeaning => 'اللهم صل على محمد';
+  String get zikirAllahummeCalliMeaning => 'اللهم صل وسلم وبارك على محمد';
 
   @override
   String get zikirRabbiZidniIlmen => 'رب زدني علماً';
 
   @override
-  String get zikirRabbiZidniIlmenMeaning => 'ربي زدني علماً';
+  String get zikirRabbiZidniIlmenMeaning => 'ربي زدني علماً ووفقني';
 
   @override
   String get zikirBismillah => 'بسم الله';
 
   @override
-  String get zikirBismillahMeaning => 'باسم الله الرحمن الرحيم';
+  String get zikirBismillahMeaning => 'بسم الله الرحمن الرحيم';
 
   @override
   String get zikirInnallahaMaasSabirin => 'إن الله مع الصابرين';

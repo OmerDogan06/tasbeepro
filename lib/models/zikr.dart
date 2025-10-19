@@ -32,7 +32,7 @@ class Zikr {
     );
   }
   
-  // Method to get localized default zikrs
+  // Global mobil uygulama için optimize edilmiş lokalize zikirler
   static List<Zikr> getLocalizedDefaultZikrs() {
     final context = Get.context;
     if (context == null) return defaultZikrs;
@@ -47,7 +47,7 @@ class Zikr {
       Zikr(
         id: 'alhamdulillah',
         name: AppLocalizations.of(context)?.zikirAlhamdulillah ?? 'Alhamdulillah',
-        meaning: AppLocalizations.of(context)?.zikirAlhamdulillahMeaning ?? 'Hamd Allah\'a mahsustur',
+        meaning: AppLocalizations.of(context)?.zikirAlhamdulillahMeaning ?? 'Bütün övgüler yalnızca Allah’adır',
       ),
       Zikr(
         id: 'allahu_akbar',
@@ -56,49 +56,49 @@ class Zikr {
       ),
       Zikr(
         id: 'la_ilahe_illallah',
-        name: AppLocalizations.of(context)?.zikirLaIlaheIllallah ?? 'La ilahe illallah',
-        meaning: AppLocalizations.of(context)?.zikirLaIlaheIllallahMeaning ?? 'Allah\'tan başka ilah yoktur',
+        name: AppLocalizations.of(context)?.zikirLaIlaheIllallah ?? 'La ilaha illAllah',
+        meaning: AppLocalizations.of(context)?.zikirLaIlaheIllallahMeaning ?? 'Allah’tan başka ilah yoktur',
       ),
       Zikr(
         id: 'estaghfirullah',
-        name: AppLocalizations.of(context)?.zikirEstaghfirullah ?? 'Estağfirullah',
-        meaning: AppLocalizations.of(context)?.zikirEstaghfirullahMeaning ?? 'Allah\'tan mağfiret dilerim',
+        name: AppLocalizations.of(context)?.zikirEstaghfirullah ?? 'Astaghfirullah',
+        meaning: AppLocalizations.of(context)?.zikirEstaghfirullahMeaning ?? 'Allah’tan mağfiret dilerim',
       ),
       
       // Pro ile gelen ek zikirler
       Zikr(
         id: 'la_hawle_wala_quwwate',
-        name: AppLocalizations.of(context)?.zikirLaHawleWelaKuvvete ?? 'La hawle vela kuvvete',
-        meaning: AppLocalizations.of(context)?.zikirLaHawleWelaKuvveteMeaning ?? 'Güç ve kuvvet ancak Allah\'tandır',
+        name: AppLocalizations.of(context)?.zikirLaHawleWelaKuvvete ?? 'La hawla wa la quwwata illa billah',
+        meaning: AppLocalizations.of(context)?.zikirLaHawleWelaKuvveteMeaning ?? 'Güç ve kuvvet ancak Allah’tandır',
       ),
       Zikr(
         id: 'hasbi_allahu',
-        name: AppLocalizations.of(context)?.zikirHasbiyallahu ?? 'Hasbiyallahu',
+        name: AppLocalizations.of(context)?.zikirHasbiyallahu ?? 'HasbiyAllahu wa ni’mal wakeel',
         meaning: AppLocalizations.of(context)?.zikirHasbiyallahuMeaning ?? 'Allah bana yeter, O ne güzel vekildir',
       ),
       Zikr(
         id: 'rabbana_atina',
-        name: AppLocalizations.of(context)?.zikirRabbenaAtina ?? 'Rabbena Atina',
+        name: AppLocalizations.of(context)?.zikirRabbenaAtina ?? 'Rabbana Atina',
         meaning: AppLocalizations.of(context)?.zikirRabbenaAtinaMeaning ?? 'Rabbimiz! Bize dünyada iyilik ver',
       ),
       Zikr(
         id: 'allahume_salli',
-        name: AppLocalizations.of(context)?.zikirAllahummeSalli ?? 'Allahumme Salli',
-        meaning: AppLocalizations.of(context)?.zikirAllahummeCalliMeaning ?? 'Allah\'ım, Muhammed\'e salat eyle',
+        name: AppLocalizations.of(context)?.zikirAllahummeSalli ?? 'Allahumma Salli',
+        meaning: AppLocalizations.of(context)?.zikirAllahummeCalliMeaning ?? 'Allahım, Muhammed’e salat eyle',
       ),
       Zikr(
         id: 'rabbi_zidni_ilmen',
-        name: AppLocalizations.of(context)?.zikirRabbiZidniIlmen ?? 'Rabbi Zidni İlmen',
+        name: AppLocalizations.of(context)?.zikirRabbiZidniIlmen ?? 'Rabbi Zidni Ilm',
         meaning: AppLocalizations.of(context)?.zikirRabbiZidniIlmenMeaning ?? 'Rabbim! İlmimi artır',
       ),
       Zikr(
         id: 'bismillah',
         name: AppLocalizations.of(context)?.zikirBismillah ?? 'Bismillah',
-        meaning: AppLocalizations.of(context)?.zikirBismillahMeaning ?? 'Rahman ve Rahim olan Allah\'ın adıyla',
+        meaning: AppLocalizations.of(context)?.zikirBismillahMeaning ?? 'Rahman ve Rahim olan Allah’ın adıyla',
       ),
       Zikr(
         id: 'innallaha_maal_sabirin',
-        name: AppLocalizations.of(context)?.zikirInnallahaMaasSabirin ?? 'İnnallaha maas sabirin',
+        name: AppLocalizations.of(context)?.zikirInnallahaMaasSabirin ?? 'Innalaha ma’as sabirin',
         meaning: AppLocalizations.of(context)?.zikirInnallahaMaasSabirinMeaning ?? 'Şüphesiz Allah sabredenlerle beraberdir',
       ),
       Zikr(
@@ -118,23 +118,23 @@ class Zikr {
       ),
       Zikr(
         id: 'mashallah',
-        name: AppLocalizations.of(context)?.zikirMashallah ?? 'Maşallah',
-        meaning: AppLocalizations.of(context)?.zikirMashallahMeaning ?? 'Allah\'ın dilediği oldu',
+        name: AppLocalizations.of(context)?.zikirMashallah ?? 'MashaAllah',
+        meaning: AppLocalizations.of(context)?.zikirMashallahMeaning ?? 'Allah’ın dilediği oldu',
       ),
     ];
   }
-  
+
+  // Default list (fallback)
   static const List<Zikr> defaultZikrs = [
-    // Temel zikirler
     Zikr(
       id: 'subhanallah',
       name: 'Subhanallah',
-      meaning: 'Allah\'tan münezzeh ve mukaddestir',
+      meaning: 'Allah’tan münezzeh ve mukaddestir',
     ),
     Zikr(
       id: 'alhamdulillah',
       name: 'Alhamdulillah',
-      meaning: 'Hamd Allah\'a mahsustur',
+      meaning: 'Bütün övgüler yalnızca Allah’adır',
     ),
     Zikr(
       id: 'allahu_akbar',
@@ -143,49 +143,47 @@ class Zikr {
     ),
     Zikr(
       id: 'la_ilahe_illallah',
-      name: 'La ilahe illallah',
-      meaning: 'Allah\'tan başka ilah yoktur',
+      name: 'La ilaha illAllah',
+      meaning: 'Allah’tan başka ilah yoktur',
     ),
     Zikr(
       id: 'estaghfirullah',
-      name: 'Estağfirullah',
-      meaning: 'Allah\'tan mağfiret dilerim',
+      name: 'Astaghfirullah',
+      meaning: 'Allah’tan mağfiret dilerim',
     ),
-    
-    // Pro ile gelen ek zikirler
     Zikr(
       id: 'la_hawle_wala_quwwate',
-      name: 'La hawle vela kuvvete',
-      meaning: 'Güç ve kuvvet ancak Allah\'tandır',
+      name: 'La hawla wa la quwwata illa billah',
+      meaning: 'Güç ve kuvvet ancak Allah’tandır',
     ),
     Zikr(
       id: 'hasbi_allahu',
-      name: 'Hasbiyallahu',
+      name: 'HasbiyAllahu wa ni’mal wakeel',
       meaning: 'Allah bana yeter, O ne güzel vekildir',
     ),
     Zikr(
       id: 'rabbana_atina',
-      name: 'Rabbena Atina',
+      name: 'Rabbana Atina',
       meaning: 'Rabbimiz! Bize dünyada iyilik ver',
     ),
     Zikr(
       id: 'allahume_salli',
-      name: 'Allahumme Salli',
-      meaning: 'Allah\'ım, Muhammed\'e salat eyle',
+      name: 'Allahumma Salli',
+      meaning: 'Allahım, Muhammed’e salat eyle',
     ),
     Zikr(
       id: 'rabbi_zidni_ilmen',
-      name: 'Rabbi Zidni İlmen',
+      name: 'Rabbi Zidni Ilm',
       meaning: 'Rabbim! İlmimi artır',
     ),
     Zikr(
       id: 'bismillah',
       name: 'Bismillah',
-      meaning: 'Rahman ve Rahim olan Allah\'ın adıyla',
+      meaning: 'Rahman ve Rahim olan Allah’ın adıyla',
     ),
     Zikr(
       id: 'innallaha_maal_sabirin',
-      name: 'İnnallaha maas sabirin',
+      name: 'Innalaha ma’as sabirin',
       meaning: 'Şüphesiz Allah sabredenlerle beraberdir',
     ),
     Zikr(
@@ -205,8 +203,8 @@ class Zikr {
     ),
     Zikr(
       id: 'mashallah',
-      name: 'Maşallah',
-      meaning: 'Allah\'ın dilediği oldu',
+      name: 'MashaAllah',
+      meaning: 'Allah’ın dilediği oldu',
     ),
   ];
 }
