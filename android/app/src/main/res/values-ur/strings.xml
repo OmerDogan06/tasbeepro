@@ -37,4 +37,22 @@
     <string name="notification_channel_description">ذکر کے ہدف کی اطلاعات دکھاتا ہے</string>
     <string name="error_widget_update">ویجٹ اپ ڈیٹ کرتے وقت خرابی: %1$s</string>
     <string name="error_widget_ids">ویجٹ آئی ڈیز حاصل کرتے وقت خرابی: %1$s</string>
+    
+    <!-- اذکار کے نام -->
+    <string name="zikir_subhanallah">سبحان اللہ</string>
+    <string name="zikir_alhamdulillah">الحمد للہ</string>
+    <string name="zikir_allahu_akbar">اللہ اکبر</string>
+    <string name="zikir_la_ilahe_illallah">لا الہ الا اللہ</string>
+    <string name="zikir_estaghfirullah">استغفر اللہ</string>
+    <string name="zikir_la_hawle_wela_kuvvete">لا حول ولا قوۃ</string>
+    <string name="zikir_hasbiyallahu">حسبی اللہ</string>
+    <string name="zikir_rabbena_atina">ربنا آتنا</string>
+    <string name="zikir_allahume_salli">اللھم صل</string>
+    <string name="zikir_rabbi_zidni_ilmen">رب زدنی علماً</string>
+    <string name="zikir_bismillah">بسم اللہ</string>
+    <string name="zikir_innallaha_maas_sabirin">ان اللہ مع الصابرین</string>
+    <string name="zikir_allahu_latif">اللہ لطیف</string>
+    <string name="zikir_ya_rahman">یا رحمٰن یا رحیم</string>
+    <string name="zikir_tabarak_allah">تبارک اللہ</string>
+    <string name="zikir_mashallah">ماشاء اللہ</string>
 </resources>

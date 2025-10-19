@@ -85,6 +85,36 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         
         return context.createConfigurationContext(config)
     }
+    
+    // Localized zikir adını al
+    private fun getLocalizedZikirName(context: Context, zikirKey: String): String {
+        val resourceName = "zikir_$zikirKey"
+        val resourceId = context.resources.getIdentifier(resourceName, "string", context.packageName)
+        return if (resourceId != 0) {
+            context.getString(resourceId)
+        } else {
+            // Fallback to English names
+            when (zikirKey) {
+                "subhanallah" -> "Subhanallah"
+                "alhamdulillah" -> "Alhamdulillah"
+                "allahu_akbar" -> "Allahu Akbar"
+                "la_ilahe_illallah" -> "La ilaha illAllah"
+                "estaghfirullah" -> "Astaghfirullah"
+                "la_hawle_wela_kuvvete" -> "La hawla wa la quwwata illa billah"
+                "hasbiyallahu" -> "HasbiyAllahu wa ni'mal wakeel"
+                "rabbena_atina" -> "Rabbana Atina"
+                "allahume_salli" -> "Allahumma Salli"
+                "rabbi_zidni_ilmen" -> "Rabbi Zidni Ilm"
+                "bismillah" -> "Bismillah"
+                "innallaha_maas_sabirin" -> "Innalaha ma'as sabirin"
+                "allahu_latif" -> "Allahu Latif"
+                "ya_rahman" -> "Ya Rahman Ya Rahim"
+                "tabarak_allah" -> "Tabarak Allah"
+                "mashallah" -> "MashaAllah"
+                else -> "Unknown Zikr"
+            }
+        }
+    }
 
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
@@ -125,9 +155,13 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         // Verileri SharedPreferences'tan al
         val count = prefs.getInt(KEY_COUNT + appWidgetId, 0)
         val target = prefs.getInt(KEY_TARGET + appWidgetId, 33)
-        val zikrName = prefs.getString(KEY_ZIKR_NAME + appWidgetId, "Subhanallah") ?: "Subhanallah"
-        val zikrMeaning = prefs.getString(KEY_ZIKR_MEANING + appWidgetId, "Allah'tan münezzeh ve mukaddestir") ?: ""
         val zikrId = prefs.getString(KEY_ZIKR_ID + appWidgetId, "subhanallah") ?: "subhanallah"
+        
+        // Zikir adını önce SharedPreferences'tan al, yoksa localized string'den al
+        val savedZikrName = prefs.getString(KEY_ZIKR_NAME + appWidgetId, null)
+        val zikrName = savedZikrName ?: getLocalizedZikirName(context, zikrId)
+        
+        val zikrMeaning = prefs.getString(KEY_ZIKR_MEANING + appWidgetId, "") ?: ""
 
         // UI güncelle
         views.setTextViewText(R.id.zikr_name, zikrName)
@@ -197,8 +231,11 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val currentCount = prefs.getInt(KEY_COUNT + appWidgetId, 0)
         val target = prefs.getInt(KEY_TARGET + appWidgetId, 33)
-        val zikrName = prefs.getString(KEY_ZIKR_NAME + appWidgetId, "Subhanallah") ?: "Subhanallah"
         val zikrId = prefs.getString(KEY_ZIKR_ID + appWidgetId, "subhanallah") ?: "subhanallah"
+        
+        // Zikir adını önce SharedPreferences'tan al, yoksa localized string'den al
+        val savedZikrName = prefs.getString(KEY_ZIKR_NAME + appWidgetId, null)
+        val zikrName = savedZikrName ?: getLocalizedZikirName(context, zikrId)
         
         // Widget'ın kendi ayarlarını kontrol et ve ses/titreşim efekti uygula
         playWidgetFeedback(context)

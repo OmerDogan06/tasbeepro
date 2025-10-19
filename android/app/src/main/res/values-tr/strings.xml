@@ -37,4 +37,22 @@
     <string name="notification_channel_description">Zikir hedefi bildirimlerini gösterir</string>
     <string name="error_widget_update">Widget güncellenirken hata oluştu: %1$s</string>
     <string name="error_widget_ids">Widget ID\'leri alınırken hata oluştu: %1$s</string>
+    
+    <!-- Zikir Isimleri -->
+    <string name="zikir_subhanallah">Subhanallah</string>
+    <string name="zikir_alhamdulillah">Alhamdulillah</string>
+    <string name="zikir_allahu_akbar">Allahu Akbar</string>
+    <string name="zikir_la_ilahe_illallah">La ilaha illAllah</string>
+    <string name="zikir_estaghfirullah">Astaghfirullah</string>
+    <string name="zikir_la_hawle_wela_kuvvete">La hawla wa la quwwata illa billah</string>
+    <string name="zikir_hasbiyallahu">HasbiyAllahu wa ni\'mal wakeel</string>
+    <string name="zikir_rabbena_atina">Rabbana Atina</string>
+    <string name="zikir_allahume_salli">Allahumma Salli</string>
+    <string name="zikir_rabbi_zidni_ilmen">Rabbi Zidni Ilm</string>
+    <string name="zikir_bismillah">Bismillah</string>
+    <string name="zikir_innallaha_maas_sabirin">Innalaha ma\'as sabirin</string>
+    <string name="zikir_allahu_latif">Allahu Latif</string>
+    <string name="zikir_ya_rahman">Ya Rahman Ya Rahim</string>
+    <string name="zikir_tabarak_allah">Tabarak Allah</string>
+    <string name="zikir_mashallah">MashaAllah</string>
 </resources>

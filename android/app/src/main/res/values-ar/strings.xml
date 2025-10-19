@@ -37,4 +37,22 @@
     <string name="notification_channel_description">يعرض إشعارات هدف التسبيح</string>
     <string name="error_widget_update">حدث خطأ أثناء تحديث الأداة: %1$s</string>
     <string name="error_widget_ids">حدث خطأ أثناء الحصول على معرفات الأداة: %1$s</string>
+    
+    <!-- أسماء الأذكار -->
+    <string name="zikir_subhanallah">سبحان الله</string>
+    <string name="zikir_alhamdulillah">الحمد لله</string>
+    <string name="zikir_allahu_akbar">الله أكبر</string>
+    <string name="zikir_la_ilahe_illallah">لا إله إلا الله</string>
+    <string name="zikir_estaghfirullah">أستغفر الله</string>
+    <string name="zikir_la_hawle_wela_kuvvete">لا حول ولا قوة إلا بالله</string>
+    <string name="zikir_hasbiyallahu">حسبي الله ونعم الوكيل</string>
+    <string name="zikir_rabbena_atina">ربنا آتنا</string>
+    <string name="zikir_allahume_salli">اللهم صل على محمد</string>
+    <string name="zikir_rabbi_zidni_ilmen">رب زدني علماً</string>
+    <string name="zikir_bismillah">بسم الله</string>
+    <string name="zikir_innallaha_maas_sabirin">إن الله مع الصابرين</string>
+    <string name="zikir_allahu_latif">الله لطيف</string>
+    <string name="zikir_ya_rahman">يا رحمن يا رحيم</string>
+    <string name="zikir_tabarak_allah">تبارك الله</string>
+    <string name="zikir_mashallah">ما شاء الله</string>
 </resources>

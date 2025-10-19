@@ -47,24 +47,55 @@ class WidgetConfigActivity : Activity() {
     private var targetOptions = mutableListOf<Int>()
 
     // Varsayılan veriler (fallback)
-    private val defaultZikrList = listOf(
-        "Subhanallah" to "Allah'tan münezzeh ve mukaddestir",
-        "Alhamdulillah" to "Hamd Allah'a mahsustur",
-        "Allahu Akbar" to "Allah en büyüktür",
-        "La ilahe illallah" to "Allah'tan başka ilah yoktur",
-        "Estağfirullah" to "Allah'tan mağfiret dilerim",
-        "La hawle vela kuvvete" to "Güç ve kuvvet ancak Allah'tandır",
-        "Hasbiyallahu" to "Allah bana yeter, O ne güzel vekildir",
-        "Rabbena Atina" to "Rabbimiz! Bize dünyada iyilik ver",
-        "Allahumme Salli" to "Allah'ım, Muhammed'e salat eyle",
-        "Rabbi Zidni İlmen" to "Rabbim! İlmimi artır",
-        "Bismillah" to "Rahman ve Rahim olan Allah'ın adıyla",
-        "İnnallaha maas sabirin" to "Şüphesiz Allah sabredenlerle beraberdir",
-        "Allahu Latif" to "Allah kullarına karşı çok merhametlidir",
-        "Ya Rahman Ya Rahim" to "Ey Rahman, Ey Rahim",
-        "Tabarak Allah" to "Allah mübarektir",
-        "Maşallah" to "Allah'ın dilediği oldu"
-    )
+    private fun getLocalizedZikirList(): List<Pair<String, String>> {
+        return listOf(
+            getLocalizedZikirName("subhanallah") to getLocalizedZikirName("subhanallah"),
+            getLocalizedZikirName("alhamdulillah") to getLocalizedZikirName("alhamdulillah"), 
+            getLocalizedZikirName("allahu_akbar") to getLocalizedZikirName("allahu_akbar"),
+            getLocalizedZikirName("la_ilahe_illallah") to getLocalizedZikirName("la_ilahe_illallah"),
+            getLocalizedZikirName("estaghfirullah") to getLocalizedZikirName("estaghfirullah"),
+            getLocalizedZikirName("la_hawle_wela_kuvvete") to getLocalizedZikirName("la_hawle_wela_kuvvete"),
+            getLocalizedZikirName("hasbiyallahu") to getLocalizedZikirName("hasbiyallahu"),
+            getLocalizedZikirName("rabbena_atina") to getLocalizedZikirName("rabbena_atina"),
+            getLocalizedZikirName("allahume_salli") to getLocalizedZikirName("allahume_salli"),
+            getLocalizedZikirName("rabbi_zidni_ilmen") to getLocalizedZikirName("rabbi_zidni_ilmen"),
+            getLocalizedZikirName("bismillah") to getLocalizedZikirName("bismillah"),
+            getLocalizedZikirName("innallaha_maas_sabirin") to getLocalizedZikirName("innallaha_maas_sabirin"),
+            getLocalizedZikirName("allahu_latif") to getLocalizedZikirName("allahu_latif"),
+            getLocalizedZikirName("ya_rahman") to getLocalizedZikirName("ya_rahman"),
+            getLocalizedZikirName("tabarak_allah") to getLocalizedZikirName("tabarak_allah"),
+            getLocalizedZikirName("mashallah") to getLocalizedZikirName("mashallah")
+        )
+    }
+    
+    private fun getLocalizedZikirName(zikirKey: String): String {
+        val resourceName = "zikir_$zikirKey"
+        val resourceId = resources.getIdentifier(resourceName, "string", packageName)
+        return if (resourceId != 0) {
+            getString(resourceId)
+        } else {
+            // Fallback to English names
+            when (zikirKey) {
+                "subhanallah" -> "Subhanallah"
+                "alhamdulillah" -> "Alhamdulillah"
+                "allahu_akbar" -> "Allahu Akbar"
+                "la_ilahe_illallah" -> "La ilaha illAllah"
+                "estaghfirullah" -> "Astaghfirullah"
+                "la_hawle_wala_quwwate" -> getString(resources.getIdentifier("zikir_la_hawle_wela_kuvvete", "string", packageName))
+                "hasbi_allahu" -> getString(resources.getIdentifier("zikir_hasbiyallahu", "string", packageName))
+                "rabbana_atina" -> getString(resources.getIdentifier("zikir_rabbena_atina", "string", packageName))
+                "allahume_salli" -> getString(resources.getIdentifier("zikir_allahume_salli", "string", packageName))
+                "rabbi_zidni_ilmen" -> "Rabbi Zidni Ilm"
+                "bismillah" -> "Bismillah"
+                "innallaha_maal_sabirin" -> getString(resources.getIdentifier("zikir_innallaha_maas_sabirin", "string", packageName))
+                "allahu_latif" -> "Allahu Latif"
+                "ya_rahman" -> "Ya Rahman Ya Rahim"
+                "tabarak_allah" -> "Tabarak Allah"
+                "mashallah" -> "MashaAllah"
+                else -> "Unknown Zikr"
+            }
+        }
+    }
 
     private val defaultTargetOptions = listOf(33, 99, 100, 250, 500, 1000)
 
@@ -159,15 +190,25 @@ class WidgetConfigActivity : Activity() {
                 
                 zikrList.clear()
                 for (zikirMap in zikirMapList) {
+                    val id = zikirMap["id"] as? String ?: ""
                     val name = zikirMap["name"] as? String ?: ""
                     val meaning = zikirMap["meaning"] as? String ?: ""
-                    zikrList.add(name to meaning)
+                    val isCustom = zikirMap["isCustom"] as? Boolean ?: false
+                    
+                    // Eğer custom değilse, Android tarafında yerelleştir
+                    val localizedName = if (!isCustom && id.isNotEmpty()) {
+                        getLocalizedZikirName(id)
+                    } else {
+                        name // Custom zikirler için Flutter'dan gelen ismi kullan
+                    }
+                    
+                    zikrList.add(localizedName to meaning)
                 }
                 
                 android.util.Log.d("WidgetConfig", "Flutter'dan ${zikrList.size} zikir yüklendi")
             } else {
-                // Varsayılan liste kullan
-                zikrList.addAll(defaultZikrList)
+                // Varsayılan liste kullan (localized)
+                zikrList.addAll(getLocalizedZikirList())
                 android.util.Log.d("WidgetConfig", "Varsayılan zikir listesi kullanılıyor")
             }
             
@@ -191,7 +232,7 @@ class WidgetConfigActivity : Activity() {
             android.util.Log.e("WidgetConfig", "Widget verileri yüklenirken hata: ${e.message}")
             // Hata durumunda varsayılan listeleri kullan
             zikrList.clear()
-            zikrList.addAll(defaultZikrList)
+            zikrList.addAll(getLocalizedZikirList())
             targetOptions.clear()
             targetOptions.addAll(defaultTargetOptions)
         }

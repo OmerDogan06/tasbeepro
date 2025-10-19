@@ -37,4 +37,22 @@
     <string name="notification_channel_description">জিকর লক্ষ্য বিজ্ঞপ্তি দেখায়</string>
     <string name="error_widget_update">উইজেট আপডেট করার সময় ত্রুটি: %1$s</string>
     <string name="error_widget_ids">উইজেট আইডি পেতে ত্রুটি: %1$s</string>
+    
+    <!-- জিকরের নাম -->
+    <string name="zikir_subhanallah">সুবহানাল্লাহ</string>
+    <string name="zikir_alhamdulillah">আলহামদুলিল্লাহ</string>
+    <string name="zikir_allahu_akbar">আল্লাহু আকবার</string>
+    <string name="zikir_la_ilahe_illallah">লা ইলাহা ইল্লাল্লাহু</string>
+    <string name="zikir_estaghfirullah">আস্তাগফিরুল্লাহ</string>
+    <string name="zikir_la_hawle_wela_kuvvete">লা হাওলা ওয়ালা কুওয়াতা</string>
+    <string name="zikir_hasbiyallahu">হাসবিয়াল্লাহু</string>
+    <string name="zikir_rabbena_atina">রাব্বানা আতিনা</string>
+    <string name="zikir_allahume_salli">আল্লাহুম্মা সাল্লি</string>
+    <string name="zikir_rabbi_zidni_ilmen">রাব্বি যিদনি ইলমান</string>
+    <string name="zikir_bismillah">বিসমিল্লাহ</string>
+    <string name="zikir_innallaha_maas_sabirin">ইন্নাল্লাহা মাআস সাবিরিন</string>
+    <string name="zikir_allahu_latif">আল্লাহু লাতিফ</string>
+    <string name="zikir_ya_rahman">ইয়া রাহমান ইয়া রাহিম</string>
+    <string name="zikir_tabarak_allah">তাবারাকাল্লাহ</string>
+    <string name="zikir_mashallah">মাশাআল্লাহ</string>
 </resources>
