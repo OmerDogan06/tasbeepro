@@ -2,9 +2,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import '../models/widget_zikr_record.dart';
+import '../models/zikr.dart';
+import 'storage_service.dart';
 
 class WidgetService extends GetxService {
   static const MethodChannel _channel = MethodChannel('widget_database');
+  static const MethodChannel _updateChannel = MethodChannel('com.skyforgestudios.tasbeepro/widget');
 
   @override
   void onInit() {
@@ -80,6 +83,54 @@ class WidgetService extends GetxService {
       });
     } catch (e) {
       debugPrint('Widget güncelleme hatası: $e');
+    }
+  }
+
+  // Widget'a zikir ve hedef listelerini gönder
+  Future<void> updateWidgetData() async {
+    try {
+      final storageService = Get.find<StorageService>();
+      
+      // Tüm zikirleri topla (default + custom)
+      final allZikrs = <Map<String, dynamic>>[];
+      
+      // Default zikirler
+      final defaultZikrs = Zikr.getLocalizedDefaultZikrs();
+      for (var zikr in defaultZikrs) {
+        allZikrs.add({
+          'id': zikr.id,
+          'name': zikr.name,
+          'meaning': zikr.meaning ?? '',
+          'isCustom': false,
+        });
+      }
+      
+      // Custom zikirler
+      final customZikrs = storageService.getCustomZikrs();
+      for (var customData in customZikrs) {
+        allZikrs.add({
+          'id': customData['id'],
+          'name': customData['name'],
+          'meaning': customData['meaning'] ?? '',
+          'isCustom': true,
+        });
+      }
+      
+      // Hedef listesi (base + custom)
+      final baseTargets = [33, 99, 100, 500, 1000];
+      final customTargets = storageService.getCustomTargets();
+      final allTargets = [...baseTargets, ...customTargets].toSet().toList()..sort();
+      
+      // Widget update channel'ına gönder
+      await _updateChannel.invokeMethod('updateWidgetData', {
+        'zikirList': allZikrs,
+        'targetList': allTargets,
+      });
+      
+      debugPrint('Widget verileri güncellendi - Zikir: ${allZikrs.length}, Hedef: ${allTargets.length}');
+      
+    } catch (e) {
+      debugPrint('Widget veri güncelleme hatası: $e');
     }
   }
 }

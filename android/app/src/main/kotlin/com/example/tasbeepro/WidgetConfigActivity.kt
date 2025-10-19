@@ -17,6 +17,8 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import android.content.res.Configuration
 import java.util.Locale
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class WidgetConfigActivity : Activity() {
 
@@ -40,8 +42,12 @@ class WidgetConfigActivity : Activity() {
     // Desteklenen diller - Flutter tarafıyla aynı
     private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "ur", "ms", "bn", "fr", "hi")
 
-    // 16 Zikir türü
-    private val zikrList = listOf(
+    // Zikir ve hedef listelerini Flutter'dan yükle
+    private var zikrList = mutableListOf<Pair<String, String>>()
+    private var targetOptions = mutableListOf<Int>()
+
+    // Varsayılan veriler (fallback)
+    private val defaultZikrList = listOf(
         "Subhanallah" to "Allah'tan münezzeh ve mukaddestir",
         "Alhamdulillah" to "Hamd Allah'a mahsustur",
         "Allahu Akbar" to "Allah en büyüktür",
@@ -60,8 +66,7 @@ class WidgetConfigActivity : Activity() {
         "Maşallah" to "Allah'ın dilediği oldu"
     )
 
-    // Hedef seçenekleri (1000'e kadar)
-    private val targetOptions = listOf(33, 99, 100, 250, 500, 1000)
+    private val defaultTargetOptions = listOf(33, 99, 100, 250, 500, 1000)
 
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(newBase?.let { getLocalizedContext(it) })
@@ -112,6 +117,7 @@ class WidgetConfigActivity : Activity() {
 
         findViews()
         loadSettings()
+        loadWidgetData() // Flutter'dan veri yükle
         setupSpinners()
         setupClickListeners()
         updatePreview()
@@ -139,15 +145,66 @@ class WidgetConfigActivity : Activity() {
         // UI'yi güncelle
         soundSwitch.isChecked = soundEnabled
     }
+    
+    private fun loadWidgetData() {
+        try {
+            val prefs = getSharedPreferences("TasbeeWidgetData", Context.MODE_PRIVATE)
+            val gson = Gson()
+            
+            // Zikir listesini yükle
+            val zikirJsonString = prefs.getString("zikr_list", null)
+            if (zikirJsonString != null) {
+                val zikirListType = object : TypeToken<List<Map<String, Any>>>() {}.type
+                val zikirMapList: List<Map<String, Any>> = gson.fromJson(zikirJsonString, zikirListType)
+                
+                zikrList.clear()
+                for (zikirMap in zikirMapList) {
+                    val name = zikirMap["name"] as? String ?: ""
+                    val meaning = zikirMap["meaning"] as? String ?: ""
+                    zikrList.add(name to meaning)
+                }
+                
+                android.util.Log.d("WidgetConfig", "Flutter'dan ${zikrList.size} zikir yüklendi")
+            } else {
+                // Varsayılan liste kullan
+                zikrList.addAll(defaultZikrList)
+                android.util.Log.d("WidgetConfig", "Varsayılan zikir listesi kullanılıyor")
+            }
+            
+            // Target listesini yükle
+            val targetJsonString = prefs.getString("target_list", null)
+            if (targetJsonString != null) {
+                val targetListType = object : TypeToken<List<Int>>() {}.type
+                val loadedTargets: List<Int> = gson.fromJson(targetJsonString, targetListType)
+                
+                targetOptions.clear()
+                targetOptions.addAll(loadedTargets.sorted())
+                
+                android.util.Log.d("WidgetConfig", "Flutter'dan ${targetOptions.size} hedef yüklendi")
+            } else {
+                // Varsayılan liste kullan
+                targetOptions.addAll(defaultTargetOptions)
+                android.util.Log.d("WidgetConfig", "Varsayılan hedef listesi kullanılıyor")
+            }
+            
+        } catch (e: Exception) {
+            android.util.Log.e("WidgetConfig", "Widget verileri yüklenirken hata: ${e.message}")
+            // Hata durumunda varsayılan listeleri kullan
+            zikrList.clear()
+            zikrList.addAll(defaultZikrList)
+            targetOptions.clear()
+            targetOptions.addAll(defaultTargetOptions)
+        }
+    }
 
     private fun setupSpinners() {
-        // Zikir spinner setup
+        // Zikir spinner setup - dinamik liste
         val zikrNames = zikrList.map { it.first }
         val zikrAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, zikrNames)
         zikrAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         zikrSpinner.adapter = zikrAdapter
 
-        // Target spinner setup
+        // Target spinner setup - dinamik liste
         val targetAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, targetOptions)
         targetAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         targetSpinner.adapter = targetAdapter

@@ -5,6 +5,7 @@ import '../services/storage_service.dart';
 import '../services/sound_service.dart';
 import '../services/vibration_service.dart';
 import '../services/language_service.dart';
+import '../services/widget_service.dart';
 import '../widgets/islamic_snackbar.dart';
 
 class CounterController extends GetxController {
@@ -12,6 +13,7 @@ class CounterController extends GetxController {
   final SoundService _sound = Get.find<SoundService>();
   final VibrationService _vibration = Get.find<VibrationService>();
   final LanguageService _languageService = Get.find<LanguageService>();
+  final WidgetService _widgetService = Get.find<WidgetService>();
   
   final _currentZikrId = 'subhanallah'.obs;
   
@@ -191,7 +193,8 @@ class CounterController extends GetxController {
     customZikrs.add(customZikr.toJson());
     await _storage.saveCustomZikrs(customZikrs);
     
-    
+    // Widget verilerini güncelle
+    await _widgetService.updateWidgetData();
   }
    final allZikrs = <Zikr>[].obs;
   // Mevcut zikir listesini yenile
@@ -222,6 +225,9 @@ class CounterController extends GetxController {
       await selectZikr(defaultZikrs.first);
     }
     
+    // Widget verilerini güncelle
+    await _widgetService.updateWidgetData();
+    
     // Listeyi yenile
     getAllZikrs();
   }
@@ -238,6 +244,9 @@ class CounterController extends GetxController {
       _targetOptions.add(target);
       _targetOptions.sort();
       await _storage.saveCustomTargets(_targetOptions.toList());
+      
+      // Widget verilerini güncelle
+      await _widgetService.updateWidgetData();
     }
   }
 
@@ -246,6 +255,9 @@ class CounterController extends GetxController {
     if (target > 1000 && _targetOptions.contains(target)) {
       _targetOptions.remove(target);
       await _storage.saveCustomTargets(_targetOptions.toList());
+      
+      // Widget verilerini güncelle
+      await _widgetService.updateWidgetData();
     }
   }
 

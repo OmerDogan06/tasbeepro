@@ -48,6 +48,10 @@ void main() async {
   Get.put(CounterController());
   Get.put(WidgetStatsController());
 
+  // Widget verilerini güncelle (custom zikir ve target'lar için)
+  final widgetService = Get.find<WidgetService>();
+  await widgetService.updateWidgetData();
+
   runApp(const TasbeeApp());
 }
 
