@@ -43,28 +43,28 @@ class WidgetConfigActivity : Activity() {
     private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "ur", "ms", "bn", "fr", "hi")
 
     // Zikir ve hedef listelerini Flutter'dan yükle
-    private var zikrList = mutableListOf<Pair<String, String>>()
+    private var zikrList = mutableListOf<Triple<String, String, String>>() // id, name, meaning
     private var targetOptions = mutableListOf<Int>()
 
     // Varsayılan veriler (fallback)
-    private fun getLocalizedZikirList(): List<Pair<String, String>> {
+    private fun getLocalizedZikirList(): List<Triple<String, String, String>> {
         return listOf(
-            getLocalizedZikirName("subhanallah") to getLocalizedZikirName("subhanallah"),
-            getLocalizedZikirName("alhamdulillah") to getLocalizedZikirName("alhamdulillah"), 
-            getLocalizedZikirName("allahu_akbar") to getLocalizedZikirName("allahu_akbar"),
-            getLocalizedZikirName("la_ilahe_illallah") to getLocalizedZikirName("la_ilahe_illallah"),
-            getLocalizedZikirName("estaghfirullah") to getLocalizedZikirName("estaghfirullah"),
-            getLocalizedZikirName("la_hawle_wela_kuvvete") to getLocalizedZikirName("la_hawle_wela_kuvvete"),
-            getLocalizedZikirName("hasbiyallahu") to getLocalizedZikirName("hasbiyallahu"),
-            getLocalizedZikirName("rabbena_atina") to getLocalizedZikirName("rabbena_atina"),
-            getLocalizedZikirName("allahume_salli") to getLocalizedZikirName("allahume_salli"),
-            getLocalizedZikirName("rabbi_zidni_ilmen") to getLocalizedZikirName("rabbi_zidni_ilmen"),
-            getLocalizedZikirName("bismillah") to getLocalizedZikirName("bismillah"),
-            getLocalizedZikirName("innallaha_maas_sabirin") to getLocalizedZikirName("innallaha_maas_sabirin"),
-            getLocalizedZikirName("allahu_latif") to getLocalizedZikirName("allahu_latif"),
-            getLocalizedZikirName("ya_rahman") to getLocalizedZikirName("ya_rahman"),
-            getLocalizedZikirName("tabarak_allah") to getLocalizedZikirName("tabarak_allah"),
-            getLocalizedZikirName("mashallah") to getLocalizedZikirName("mashallah")
+            Triple("subhanallah", getLocalizedZikirName("subhanallah"), getLocalizedZikirName("subhanallah")),
+            Triple("alhamdulillah", getLocalizedZikirName("alhamdulillah"), getLocalizedZikirName("alhamdulillah")),
+            Triple("allahu_akbar", getLocalizedZikirName("allahu_akbar"), getLocalizedZikirName("allahu_akbar")),
+            Triple("la_ilaha_illallah", getLocalizedZikirName("la_ilaha_illallah"), getLocalizedZikirName("la_ilaha_illallah")),
+            Triple("estaghfirullah", getLocalizedZikirName("estaghfirullah"), getLocalizedZikirName("estaghfirullah")),
+            Triple("la_hawle_wala_quwwate", getLocalizedZikirName("la_hawle_wala_quwwate"), getLocalizedZikirName("la_hawle_wala_quwwate")),
+            Triple("hasbi_allahu", getLocalizedZikirName("hasbi_allahu"), getLocalizedZikirName("hasbi_allahu")),
+            Triple("rabbana_atina", getLocalizedZikirName("rabbana_atina"), getLocalizedZikirName("rabbana_atina")),
+            Triple("allahume_salli", getLocalizedZikirName("allahume_salli"), getLocalizedZikirName("allahume_salli")),
+            Triple("rabbi_zidni_ilmen", getLocalizedZikirName("rabbi_zidni_ilmen"), getLocalizedZikirName("rabbi_zidni_ilmen")),
+            Triple("bismillah", getLocalizedZikirName("bismillah"), getLocalizedZikirName("bismillah")),
+            Triple("innallaha_maas_sabirin", getLocalizedZikirName("innallaha_maas_sabirin"), getLocalizedZikirName("innallaha_maas_sabirin")),
+            Triple("allahu_latif", getLocalizedZikirName("allahu_latif"), getLocalizedZikirName("allahu_latif")),
+            Triple("ya_rahman", getLocalizedZikirName("ya_rahman"), getLocalizedZikirName("ya_rahman")),
+            Triple("tabarak_allah", getLocalizedZikirName("tabarak_allah"), getLocalizedZikirName("tabarak_allah")),
+            Triple("mashallah", getLocalizedZikirName("mashallah"), getLocalizedZikirName("mashallah"))
         )
     }
     
@@ -79,15 +79,15 @@ class WidgetConfigActivity : Activity() {
                 "subhanallah" -> "Subhanallah"
                 "alhamdulillah" -> "Alhamdulillah"
                 "allahu_akbar" -> "Allahu Akbar"
-                "la_ilahe_illallah" -> "La ilaha illAllah"
+                "la_ilaha_illallah" -> "La ilaha illAllah"
                 "estaghfirullah" -> "Astaghfirullah"
-                "la_hawle_wala_quwwate" -> getString(resources.getIdentifier("zikir_la_hawle_wela_kuvvete", "string", packageName))
-                "hasbi_allahu" -> getString(resources.getIdentifier("zikir_hasbiyallahu", "string", packageName))
-                "rabbana_atina" -> getString(resources.getIdentifier("zikir_rabbena_atina", "string", packageName))
+                "la_hawle_wala_quwwate" -> getString(resources.getIdentifier("zikir_la_hawle_wala_quwwate", "string", packageName))
+                "hasbi_allahu" -> getString(resources.getIdentifier("zikir_hasbi_allahu", "string", packageName))
+                "rabbana_atina" -> getString(resources.getIdentifier("zikir_rabbana_atina", "string", packageName))
                 "allahume_salli" -> getString(resources.getIdentifier("zikir_allahume_salli", "string", packageName))
                 "rabbi_zidni_ilmen" -> "Rabbi Zidni Ilm"
                 "bismillah" -> "Bismillah"
-                "innallaha_maal_sabirin" -> getString(resources.getIdentifier("zikir_innallaha_maas_sabirin", "string", packageName))
+                "innallaha_maas_sabirin" -> getString(resources.getIdentifier("zikir_innallaha_maas_sabirin", "string", packageName))
                 "allahu_latif" -> "Allahu Latif"
                 "ya_rahman" -> "Ya Rahman Ya Rahim"
                 "tabarak_allah" -> "Tabarak Allah"
@@ -202,7 +202,7 @@ class WidgetConfigActivity : Activity() {
                         name // Custom zikirler için Flutter'dan gelen ismi kullan
                     }
                     
-                    zikrList.add(localizedName to meaning)
+                    zikrList.add(Triple(id, localizedName, meaning))
                 }
                 
                 android.util.Log.d("WidgetConfig", "Flutter'dan ${zikrList.size} zikir yüklendi")
@@ -240,7 +240,7 @@ class WidgetConfigActivity : Activity() {
 
     private fun setupSpinners() {
         // Zikir spinner setup - dinamik liste
-        val zikrNames = zikrList.map { it.first }
+        val zikrNames = zikrList.map { it.second }  // İsimler (second = name)
         val zikrAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, zikrNames)
         zikrAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         zikrSpinner.adapter = zikrAdapter
@@ -287,10 +287,10 @@ class WidgetConfigActivity : Activity() {
     }
 
     private fun updatePreview() {
-        val selectedZikr = zikrList[zikrSpinner.selectedItemPosition].first
+        val selectedZikr = zikrList[zikrSpinner.selectedItemPosition]
         val selectedTarget = targetOptions[targetSpinner.selectedItemPosition]
 
-        previewZikrName.text = selectedZikr
+        previewZikrName.text = selectedZikr.second  // name
         previewTarget.text = getString(R.string.preview_target_text, selectedTarget)
     }
 
@@ -298,22 +298,16 @@ class WidgetConfigActivity : Activity() {
         val selectedZikr = zikrList[zikrSpinner.selectedItemPosition]
         val selectedTarget = targetOptions[targetSpinner.selectedItemPosition]
 
-        // Zikir ID'sini oluştur (Türkçe karakterleri normalize et)
-        val zikrId = selectedZikr.first.lowercase()
-            .replace("ı", "i")
-            .replace("ğ", "g")
-            .replace("ü", "u")
-            .replace("ş", "s")
-            .replace("ö", "o")
-            .replace("ç", "c")
-            .replace(" ", "_")
-            .replace("-", "_")
+        // Flutter'dan gelen gerçek ID'yi kullan (artık normalizasyon yok)
+        val zikrId = selectedZikr.first  // ID
+        val zikrName = selectedZikr.second  // Name
+        val zikrMeaning = selectedZikr.third  // Meaning
 
         // SharedPreferences'a kaydet
         val prefs: SharedPreferences = getSharedPreferences("TasbeeWidgetPrefs", Context.MODE_PRIVATE)
         val editor = prefs.edit()
         // zikr_name artık kaydedilmiyor, her zaman ID'den yerelleştiriliyor
-        editor.putString("zikr_meaning_$appWidgetId", selectedZikr.second)
+        editor.putString("zikr_meaning_$appWidgetId", zikrMeaning)
         editor.putString("zikr_id_$appWidgetId", zikrId) // Zikir ID'sini de kaydet
         editor.putInt("target_$appWidgetId", selectedTarget)
         editor.putInt("count_$appWidgetId", 0) // Başlangıç sayısı 0

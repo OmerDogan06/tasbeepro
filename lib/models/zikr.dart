@@ -55,7 +55,7 @@ class Zikr {
         meaning: AppLocalizations.of(context)?.zikirAllahuAkbarMeaning ?? 'Allah en büyüktür',
       ),
       Zikr(
-        id: 'la_ilahe_illallah',
+        id: 'la_ilaha_illallah',
         name: AppLocalizations.of(context)?.zikirLaIlaheIllallah ?? 'La ilaha illAllah',
         meaning: AppLocalizations.of(context)?.zikirLaIlaheIllallahMeaning ?? 'Allah’tan başka ilah yoktur',
       ),
@@ -97,7 +97,7 @@ class Zikr {
         meaning: AppLocalizations.of(context)?.zikirBismillahMeaning ?? 'Rahman ve Rahim olan Allah’ın adıyla',
       ),
       Zikr(
-        id: 'innallaha_maal_sabirin',
+        id: 'innallaha_maas_sabirin',
         name: AppLocalizations.of(context)?.zikirInnallahaMaasSabirin ?? 'Innalaha ma’as sabirin',
         meaning: AppLocalizations.of(context)?.zikirInnallahaMaasSabirinMeaning ?? 'Şüphesiz Allah sabredenlerle beraberdir',
       ),
@@ -142,7 +142,7 @@ class Zikr {
       meaning: 'Allah en büyüktür',
     ),
     Zikr(
-      id: 'la_ilahe_illallah',
+      id: 'la_ilaha_illallah',
       name: 'La ilaha illAllah',
       meaning: 'Allah’tan başka ilah yoktur',
     ),
@@ -182,7 +182,7 @@ class Zikr {
       meaning: 'Rahman ve Rahim olan Allah’ın adıyla',
     ),
     Zikr(
-      id: 'innallaha_maal_sabirin',
+      id: 'innallaha_maas_sabirin',
       name: 'Innalaha ma’as sabirin',
       meaning: 'Şüphesiz Allah sabredenlerle beraberdir',
     ),

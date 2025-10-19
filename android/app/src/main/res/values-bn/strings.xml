@@ -42,11 +42,11 @@
     <string name="zikir_subhanallah">সুবহানাল্লাহ</string>
     <string name="zikir_alhamdulillah">আলহামদুলিল্লাহ</string>
     <string name="zikir_allahu_akbar">আল্লাহু আকবার</string>
-    <string name="zikir_la_ilahe_illallah">লা ইলাহা ইল্লাল্লাহু</string>
+    <string name="zikir_la_ilaha_illallah">লা ইলাহা ইল্লাল্লাহু</string>
     <string name="zikir_estaghfirullah">আস্তাগফিরুল্লাহ</string>
-    <string name="zikir_la_hawle_wela_kuvvete">লা হাওলা ওয়ালা কুওয়াতা</string>
-    <string name="zikir_hasbiyallahu">হাসবিয়াল্লাহু</string>
-    <string name="zikir_rabbena_atina">রাব্বানা আতিনা</string>
+    <string name="zikir_la_hawle_wala_quwwate">লা হাওলা ওয়ালা কুওয়াতা</string>
+    <string name="zikir_hasbi_allahu">হাসবিয়াল্লাহু</string>
+    <string name="zikir_rabbana_atina">রাব্বানা আতিনা</string>
     <string name="zikir_allahume_salli">আল্লাহুম্মা সাল্লি</string>
     <string name="zikir_rabbi_zidni_ilmen">রাব্বি যিদনি ইলমান</string>
     <string name="zikir_bismillah">বিসমিল্লাহ</string>
