@@ -104,6 +104,18 @@ class AppLocalizationsMs extends AppLocalizations {
   String get vibrationOk => 'OK';
 
   @override
+  String get soundVolumeTitle => 'Volume Bunyi';
+
+  @override
+  String get soundVolumeLow => 'Rendah';
+
+  @override
+  String get soundVolumeMedium => 'Sederhana';
+
+  @override
+  String get soundVolumeHigh => 'Tinggi';
+
+  @override
   String get languageSelectionTitle => 'Pilihan Bahasa';
 
   @override

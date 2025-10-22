@@ -104,7 +104,19 @@ class AppLocalizationsId extends AppLocalizations {
   String get vibrationOk => 'OK';
 
   @override
-  String get languageSelectionTitle => 'Pilih Bahasa';
+  String get soundVolumeTitle => 'Volume Suara';
+
+  @override
+  String get soundVolumeLow => 'Rendah';
+
+  @override
+  String get soundVolumeMedium => 'Sedang';
+
+  @override
+  String get soundVolumeHigh => 'Tinggi';
+
+  @override
+  String get languageSelectionTitle => 'Pilihan Bahasa';
 
   @override
   String get languageSelectionSubtitle => 'Pilih bahasa aplikasi';

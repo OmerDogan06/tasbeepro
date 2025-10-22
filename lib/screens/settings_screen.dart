@@ -49,6 +49,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
   static const lightGold = Color(0xFFF5E6A8);
   static const darkGreen = Color(0xFF1A3409);
 
+  String _getSoundVolumeText(BuildContext context, int volume) {
+    switch (volume) {
+      case 0: return AppLocalizations.of(context)?.soundVolumeLow ?? 'Düşük';
+      case 1: return AppLocalizations.of(context)?.soundVolumeMedium ?? 'Orta';
+      case 2: return AppLocalizations.of(context)?.soundVolumeHigh ?? 'Yüksek';
+      default: return AppLocalizations.of(context)?.soundVolumeHigh ?? 'Yüksek';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final soundService = Get.find<SoundService>();
@@ -144,6 +153,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           'Dokunma sesini aç/kapat',
                       value: soundService.isSoundEnabled,
                       onChanged: (value) => soundService.toggleSound(),
+                    ),
+                  ),
+                  _buildDivider(),
+                  Obx(
+                    () => _buildIslamicListTile(
+                      icon: Icons.volume_down,
+                      title: AppLocalizations.of(context)?.soundVolumeTitle ?? 'Ses Seviyesi',
+                      subtitle: _getSoundVolumeText(context, soundService.soundVolume),
+                      onTap: () => _showSoundVolumeDialog(context, soundService),
                     ),
                   ),
                   _buildDivider(),
@@ -758,6 +776,140 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+  void _showSoundVolumeDialog(BuildContext context, SoundService service) {
+    Get.dialog(
+      Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(20),
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 200),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+            ),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
+            boxShadow: [
+              BoxShadow(
+                color: darkGreen.withAlpha(51),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Mini header
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                        gradient: const RadialGradient(
+                          colors: [lightGold, goldColor],
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Icon(
+                        Icons.volume_down,
+                        color: emeraldGreen,
+                        size: 14,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      AppLocalizations.of(context)?.soundVolumeTitle ?? 'Ses Seviyesi',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: emeraldGreen,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Mini divider
+              Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(horizontal: 12),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      goldColor.withAlpha(77),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+
+              // Tiny options
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  children: [
+                    _buildSoundVolumeOption(
+                      service, 
+                      0, 
+                      AppLocalizations.of(context)?.soundVolumeLow ?? 'Düşük'
+                    ),
+                    _buildSoundVolumeOption(
+                      service, 
+                      1, 
+                      AppLocalizations.of(context)?.soundVolumeMedium ?? 'Orta'
+                    ),
+                    _buildSoundVolumeOption(
+                      service, 
+                      2, 
+                      AppLocalizations.of(context)?.soundVolumeHigh ?? 'Yüksek'
+                    ),
+
+                    const SizedBox(height: 8),
+
+                    // Mini close button
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        style: TextButton.styleFrom(
+                          backgroundColor: lightGold.withAlpha(77),
+                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          overlayColor: Color(0xFFD4AF37).withAlpha(26),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            side: BorderSide(
+                              color: goldColor.withAlpha(77),
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          AppLocalizations.of(context)?.vibrationOk ?? 'Tamam',
+                          style: TextStyle(
+                            color: emeraldGreen,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   void _showVibrationDialog(BuildContext context, VibrationService service) {
     Get.dialog(
       Dialog(
@@ -892,6 +1044,78 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSoundVolumeOption(
+    SoundService service,
+    int level,
+    String title,
+  ) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 4),
+      decoration: BoxDecoration(
+        color: service.soundVolume == level
+            ? goldColor.withAlpha(38)
+            : Colors.transparent,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: service.soundVolume == level
+              ? goldColor.withAlpha(128)
+              : goldColor.withAlpha(51),
+          width: 1,
+        ),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          overlayColor: WidgetStateProperty.all(
+            Color(0xFFD4AF37).withAlpha(26),
+          ),
+          borderRadius: BorderRadius.circular(8),
+          onTap: () async {
+            await service.setSoundVolume(level);
+            // Test sesi çal
+            await service.playClickSound();
+            if (!mounted) return;
+            Navigator.of(context).pop();
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            child: Row(
+              children: [
+                Container(
+                  width: 4,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: service.soundVolume == level
+                        ? goldColor
+                        : emeraldGreen.withAlpha(102),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Obx(
+                    () => Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: service.soundVolume == level
+                            ? FontWeight.bold
+                            : FontWeight.w500,
+                        color: emeraldGreen,
+                      ),
+                    ),
+                  ),
+                ),
+                if (service.soundVolume == level)
+                  Icon(Icons.check_circle, color: goldColor, size: 12),
+              ],
+            ),
           ),
         ),
       ),

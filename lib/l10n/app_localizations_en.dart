@@ -103,6 +103,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get vibrationOk => 'OK';
 
   @override
+  String get soundVolumeTitle => 'Sound Volume';
+
+  @override
+  String get soundVolumeLow => 'Low';
+
+  @override
+  String get soundVolumeMedium => 'Medium';
+
+  @override
+  String get soundVolumeHigh => 'High';
+
+  @override
   String get languageSelectionTitle => 'Language Selection';
 
   @override

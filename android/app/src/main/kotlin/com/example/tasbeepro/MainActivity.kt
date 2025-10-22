@@ -3,6 +3,9 @@ package com.skyforgestudios.tasbeepro
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
+import android.media.AudioManager
+import android.media.ToneGenerator
+import android.view.SoundEffectConstants
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall
@@ -26,5 +29,64 @@ class MainActivity : FlutterActivity() {
             flutterEngine.dartExecutor.binaryMessenger,
             "widget_database"
         ).setMethodCallHandler(widgetDatabaseChannel)
+        
+        // Sound channel'ını kaydet
+        MethodChannel(
+            flutterEngine.dartExecutor.binaryMessenger,
+            "com.skyforgestudios.tasbeepro/sound"
+        ).setMethodCallHandler { call, result ->
+            when (call.method) {
+                "playClickSound" -> {
+                    try {
+                        val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
+                        
+                        // Flutter'dan gelen ses seviyesi parametresi (0=Düşük, 1=Orta, 2=Yüksek)
+                        val volumeLevel = call.argument<Int>("volume") ?: 2
+                        
+                        // Notification stream kullan - genellikle daha yüksek ses
+                        val stream = AudioManager.STREAM_NOTIFICATION
+                        val currentVolume = audioManager.getStreamVolume(stream)
+                        val maxVolume = audioManager.getStreamMaxVolume(stream)
+                        
+                        // Ses seviyesine göre ToneGenerator volume ayarla
+                        val toneVolume = when (volumeLevel) {
+                            0 -> 60  // Düşük (artırıldı: 30 -> 60)
+                            1 -> 80  // Orta (artırıldı: 70 -> 80)
+                            2 -> ToneGenerator.MAX_VOLUME // Yüksek
+                            else -> ToneGenerator.MAX_VOLUME
+                        }
+                        
+                        // Sistem ses seviyesini ayarla
+                        val targetVolume = when (volumeLevel) {
+                            0 -> (maxVolume * 0.4).toInt()  // %40 (artırıldı: %30 -> %40)
+                            1 -> (maxVolume * 0.6).toInt()  // %60 (artırıldı: %50 -> %60)
+                            2 -> (maxVolume * 0.85).toInt() // %85
+                            else -> (maxVolume * 0.85).toInt()
+                        }
+                        
+                        audioManager.setStreamVolume(stream, targetVolume, 0)
+                        
+                        // ToneGenerator ile ayarlanabilir ses seviyesi
+                        val toneGenerator = ToneGenerator(stream, toneVolume)
+                        toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 120)
+                        
+                        // Temizlik ve ses seviyesini geri yükle
+                        Thread {
+                            Thread.sleep(180)
+                            toneGenerator.release()
+                            // Orijinal ses seviyesini geri yükle
+                            audioManager.setStreamVolume(stream, currentVolume, 0)
+                        }.start()
+                        
+                        result.success(true)
+                    } catch (e: Exception) {
+                        result.error("SOUND_ERROR", "Could not play sound: ${e.message}", null)
+                    }
+                }
+                else -> {
+                    result.notImplemented()
+                }
+            }
+        }
     }
 }

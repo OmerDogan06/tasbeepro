@@ -103,6 +103,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get vibrationOk => 'حسناً';
 
   @override
+  String get soundVolumeTitle => 'مستوى الصوت';
+
+  @override
+  String get soundVolumeLow => 'منخفض';
+
+  @override
+  String get soundVolumeMedium => 'متوسط';
+
+  @override
+  String get soundVolumeHigh => 'عالي';
+
+  @override
   String get languageSelectionTitle => 'اختيار اللغة';
 
   @override

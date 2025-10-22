@@ -45,6 +45,15 @@ class StorageService extends GetxService {
     return _prefs.getBool('sound_enabled') ?? true;
   }
   
+  // Sound volume settings (0=Düşük, 1=Orta, 2=Yüksek)
+  Future<void> saveSoundVolume(int volume) async {
+    await _prefs.setInt('sound_volume', volume);
+  }
+  
+  int getSoundVolume() {
+    return _prefs.getInt('sound_volume') ?? 1; // Varsayılan: Orta
+  }
+  
   // Vibration settings
   Future<void> saveVibrationLevel(int level) async {
     await _prefs.setInt('vibration_level', level);

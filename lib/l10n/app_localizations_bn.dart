@@ -104,6 +104,18 @@ class AppLocalizationsBn extends AppLocalizations {
   String get vibrationOk => 'ঠিক আছে';
 
   @override
+  String get soundVolumeTitle => 'শব্দ ভলিউম';
+
+  @override
+  String get soundVolumeLow => 'কম';
+
+  @override
+  String get soundVolumeMedium => 'মাঝারি';
+
+  @override
+  String get soundVolumeHigh => 'উচ্চ';
+
+  @override
   String get languageSelectionTitle => 'ভাষা নির্বাচন';
 
   @override

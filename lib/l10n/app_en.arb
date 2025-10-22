@@ -124,6 +124,22 @@
   "@vibrationOk": {
     "description": "OK button in vibration dialog"
   },
+  "soundVolumeTitle": "Sound Volume",
+  "@soundVolumeTitle": {
+    "description": "Sound volume settings title"
+  },
+  "soundVolumeLow": "Low",
+  "@soundVolumeLow": {
+    "description": "Low sound volume option"
+  },
+  "soundVolumeMedium": "Medium",
+  "@soundVolumeMedium": {
+    "description": "Medium sound volume option"
+  },
+  "soundVolumeHigh": "High",
+  "@soundVolumeHigh": {
+    "description": "High sound volume option"
+  },
   "languageSelectionTitle": "Language Selection",
   "@languageSelectionTitle": {
     "description": "Language selection dialog title"

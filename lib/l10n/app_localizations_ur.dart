@@ -103,6 +103,18 @@ class AppLocalizationsUr extends AppLocalizations {
   String get vibrationOk => 'ٹھیک ہے';
 
   @override
+  String get soundVolumeTitle => 'آواز کا حجم';
+
+  @override
+  String get soundVolumeLow => 'کم';
+
+  @override
+  String get soundVolumeMedium => 'درمیانہ';
+
+  @override
+  String get soundVolumeHigh => 'زیادہ';
+
+  @override
   String get languageSelectionTitle => 'زبان کا انتخاب';
 
   @override

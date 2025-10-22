@@ -298,6 +298,30 @@ abstract class AppLocalizations {
   /// **'OK'**
   String get vibrationOk;
 
+  /// Sound volume settings title
+  ///
+  /// In en, this message translates to:
+  /// **'Sound Volume'**
+  String get soundVolumeTitle;
+
+  /// Low sound volume option
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get soundVolumeLow;
+
+  /// Medium sound volume option
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get soundVolumeMedium;
+
+  /// High sound volume option
+  ///
+  /// In en, this message translates to:
+  /// **'High'**
+  String get soundVolumeHigh;
+
   /// Language selection dialog title
   ///
   /// In en, this message translates to:

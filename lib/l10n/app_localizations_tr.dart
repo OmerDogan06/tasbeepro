@@ -104,6 +104,18 @@ class AppLocalizationsTr extends AppLocalizations {
   String get vibrationOk => 'Tamam';
 
   @override
+  String get soundVolumeTitle => 'Ses Seviyesi';
+
+  @override
+  String get soundVolumeLow => 'Düşük';
+
+  @override
+  String get soundVolumeMedium => 'Orta';
+
+  @override
+  String get soundVolumeHigh => 'Yüksek';
+
+  @override
   String get languageSelectionTitle => 'Dil Seçimi';
 
   @override

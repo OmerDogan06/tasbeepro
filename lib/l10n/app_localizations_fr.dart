@@ -105,6 +105,18 @@ class AppLocalizationsFr extends AppLocalizations {
   String get vibrationOk => 'D\'accord';
 
   @override
+  String get soundVolumeTitle => 'Volume du Son';
+
+  @override
+  String get soundVolumeLow => 'Faible';
+
+  @override
+  String get soundVolumeMedium => 'Moyen';
+
+  @override
+  String get soundVolumeHigh => 'Élevé';
+
+  @override
   String get languageSelectionTitle => 'Sélection de Langue';
 
   @override

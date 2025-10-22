@@ -104,6 +104,18 @@ class AppLocalizationsHi extends AppLocalizations {
   String get vibrationOk => 'ठीक है';
 
   @override
+  String get soundVolumeTitle => 'ध्वनि वॉल्यूम';
+
+  @override
+  String get soundVolumeLow => 'कम';
+
+  @override
+  String get soundVolumeMedium => 'मध्यम';
+
+  @override
+  String get soundVolumeHigh => 'उच्च';
+
+  @override
   String get languageSelectionTitle => 'भाषा चयन';
 
   @override
