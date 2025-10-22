@@ -794,6 +794,9 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
       // Widget istatistiklerini al
       final stats = await controller.getWidgetStatsForPeriod(period);
 
+      // Widget istatistiklerini al ve chart data'yı al
+      final chartDataRaw = await controller.getChartDataForPeriod(period);
+      
       // PDF sayfası oluştur
       pdf.addPage(
         pw.Page(
@@ -802,9 +805,12 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
           build: (pw.Context context) {
             final totalCount = stats['totalCount'] ?? 0;
             final activeZikrs = stats['activeZikrs'] ?? 0;
-            final mostUsed = stats['mostUsed'] ?? 'Yok';
+            final average = activeZikrs > 0 ? (totalCount / activeZikrs).round() : 0;
+            
             final now = DateTime.now();
 
+            // En çok kullanılan zikirler (aktif olanlar - max 5)
+            final topZikrs = chartDataRaw.take(10).toList(); // Max 5 zikir göster
             TextDirection textDirection = Directionality.of(buildContext);
 
             return pw.Column(
@@ -844,8 +850,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                           pw.SizedBox(width: 16),
                           pw.Expanded(
                             child: pw.Text(
-                              AppLocalizations.of(buildContext)?.pdfBismillah ??
-                                  'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم',
+                              AppLocalizations.of(buildContext)?.pdfBismillah ?? 'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم',
                               textAlign: pw.TextAlign.center,
                               textDirection: pw.TextDirection.rtl,
                               style: pw.TextStyle(
@@ -858,8 +863,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                           ),
                           pw.SizedBox(width: 16),
                           pw.Container(
-                            width: 75,
-                            height: 75,
+                            width: 45,
+                            height: 45,
                             alignment: pw.Alignment.center,
                             decoration: pw.BoxDecoration(
                               color: PdfColor.fromHex('#D4AF37'),
@@ -873,21 +878,18 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                       ),
                       pw.SizedBox(height: 12),
                       pw.Text(
-                       '${AppLocalizations.of(
-                              buildContext,
-                            )?.pdfWidgetReportTitle ??
-                            'Tasbee Pro - Widget İstatistik Raporu'} ($period)',
+                       '${AppLocalizations.of(buildContext)?.pdfReportTitle ?? 'Tasbee Pro - Widget İstatistik Raporu'} ($period)',
                         textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColors.white,
-                          font:textDirection == TextDirection.ltr ? boldFont : amiriFont,
+                          font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
                         ),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
-                        '${AppLocalizations.of(buildContext)?.pdfPeriodLabel ?? 'Dönem'}: $period - ${AppLocalizations.of(buildContext)?.pdfDateLabel ?? 'Tarih'}: ${now.day}/${now.month}/${now.year} - ${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}',
+                        '${AppLocalizations.of(buildContext)?.pdfDate ?? 'Tarih'}: ${now.day}/${now.month}/${now.year} - ${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}',
                         style: pw.TextStyle(
                           fontSize: 12,
                           color: PdfColor.fromHex('#F5E6A8'),
@@ -905,10 +907,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                   children: [
                     pw.Expanded(
                       child: _buildStatCard(
-                        AppLocalizations.of(
-                              buildContext,
-                            )?.pdfWidgetTotalZikrCard ??
-                            'Toplam Widget Zikir',
+                        AppLocalizations.of(buildContext)?.pdfTotalZikrCard ?? 'Toplam Zikir',
                         totalCount.toString(),
                         'O',
                         regularFont,
@@ -920,30 +919,24 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                     pw.SizedBox(width: 12),
                     pw.Expanded(
                       child: _buildStatCard(
-                        AppLocalizations.of(
-                              buildContext,
-                            )?.pdfWidgetMostUsedCard ??
-                            'En Çok Kullanılan',
-                        mostUsed.toString(),
-                        '*',
+                        AppLocalizations.of(buildContext)?.statsAverage ?? 'Ortalama',
+                        average.toString(),
+                        '#',
                         regularFont,
                         boldFont,
-                          amiriFont,
+                        amiriFont,
                         textDirection
                       ),
                     ),
                     pw.SizedBox(width: 12),
                     pw.Expanded(
                       child: _buildStatCard(
-                        AppLocalizations.of(
-                              buildContext,
-                            )?.pdfWidgetActiveTypesCard ??
-                            'Aktif Zikir Türü',
-                        activeZikrs.toString(),
-                        '#',
+                        AppLocalizations.of(buildContext)?.pdfActiveZikrRatio ?? 'Aktif Zikir',
+                        '$activeZikrs/${chartDataRaw.length}',
+                        '+',
                         regularFont,
                         boldFont,
-                          amiriFont,
+                        amiriFont,
                         textDirection
                       ),
                     ),
@@ -952,7 +945,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
 
                 pw.SizedBox(height: 16),
 
-                // Widget Zikir Detayları
+                // En Çok Kullanılan Zikirler - Grafik benzeri görünüm
                 pw.Container(
                   width: double.infinity,
                   padding: const pw.EdgeInsets.all(12),
@@ -968,7 +961,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
                       pw.Text(
-                        '>> $period ${AppLocalizations.of(buildContext)?.pdfWidgetStatsSection ?? 'Döneminde Kullanılan Widget Zikirler'}',
+                        '>> ${AppLocalizations.of(buildContext)?.pdfMostUsedZikrs ?? 'En Cok Kullanilan Zikirler'}',
                         style: pw.TextStyle(
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
@@ -978,57 +971,92 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                       ),
                       pw.SizedBox(height: 12),
 
-                      if (totalCount > 0) ...[
+                      // Grafik benzeri çubuklar - sadece aktif zikirler gösterilir
+                      if (topZikrs.isNotEmpty) ...[
+                        ...topZikrs.map((zikr) {
+                          final count = zikr['count'] ?? 0;
+                          final maxCount = topZikrs.isEmpty
+                              ? 1
+                              : topZikrs.first['count'] ?? 1;
+                          final percentage = maxCount > 0
+                              ? (count / maxCount) * 100
+                              : 0;
+
+                          return pw.Container(
+                            margin: const pw.EdgeInsets.only(bottom: 8),
+                            child: pw.Column(
+                              crossAxisAlignment: pw.CrossAxisAlignment.start,
+                              children: [
+                                pw.Row(
+                                  mainAxisAlignment:
+                                      pw.MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    pw.Expanded(
+                                      child: pw.Text(
+                                        zikr['zikrName'] ?? '',
+                                        style: pw.TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: pw.FontWeight.bold,
+                                          color: PdfColor.fromHex('#2D5016'),
+                                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
+                                        ),
+                                      ),
+                                    ),
+                                    pw.Text(
+                                      count.toString(),
+                                      style: pw.TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: pw.FontWeight.bold,
+                                        color: PdfColor.fromHex('#D4AF37'),
+                                        font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                pw.SizedBox(height: 4),
+                                // Progress bar - dinamik genişlik
+                                pw.Stack(
+                                  children: [
+                                    pw.Container(
+                                      height: 8,
+                                      width: double.infinity,
+                                      decoration: pw.BoxDecoration(
+                                        color: PdfColor.fromHex('#E8E0C7'),
+                                        borderRadius: pw.BorderRadius.circular(
+                                          4,
+                                        ),
+                                      ),
+                                    ),
+                                    pw.Container(
+                                      height: 8,
+                                      width:
+                                          (percentage / 100) *
+                                          300, // 300 points max width
+                                      decoration: pw.BoxDecoration(
+                                        gradient: pw.LinearGradient(
+                                          colors: [
+                                            PdfColor.fromHex('#D4AF37'),
+                                            PdfColor.fromHex('#F5E6A8'),
+                                          ],
+                                        ),
+                                        borderRadius: pw.BorderRadius.circular(
+                                          4,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
+                      ] else ...[
                         pw.Text(
-                          AppLocalizations.of(
-                                buildContext,
-                              )?.pdfWidgetPeriodText(totalCount) ??
-                              'Bu dönemde widget üzerinden toplam $totalCount zikir çekilmiştir.',
+                          AppLocalizations.of(buildContext)?.pdfNoZikrYet ?? 'Henuz hic zikir cekilmemis.',
                           style: pw.TextStyle(
                             fontSize: 12,
                             color: PdfColor.fromHex('#2D5016'),
                             font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
-                          ),
-                        ),
-                        if (activeZikrs > 0) ...[
-                          pw.SizedBox(height: 8),
-                          pw.Text(
-                            AppLocalizations.of(
-                                  buildContext,
-                                )?.pdfWidgetTypesText(activeZikrs) ??
-                                'Toplam $activeZikrs farklı zikir türü kullanılmıştır.',
-                            style: pw.TextStyle(
-                              fontSize: 12,
-                              color: PdfColor.fromHex('#2D5016'),
-                              font:textDirection == TextDirection.ltr ? regularFont : amiriFont,
-                            ),
-                          ),
-                        ],
-                        if (mostUsed != 'Yok') ...[
-                          pw.SizedBox(height: 8),
-                          pw.Text(
-                            AppLocalizations.of(
-                                  buildContext,
-                                )?.pdfWidgetMostUsedText(mostUsed) ??
-                                'En çok kullanılan zikir: $mostUsed',
-                            style: pw.TextStyle(
-                              fontSize: 12,
-                              color: PdfColor.fromHex('#2D5016'),
-                              font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
-                              fontWeight: pw.FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ] else ...[
-                        pw.Text(
-                          AppLocalizations.of(
-                                buildContext,
-                              )?.pdfWidgetNoZikrText ??
-                              'Bu dönemde henüz widget üzerinden zikir çekilmemiştir.',
-                          style: pw.TextStyle(
-                            fontSize: 12,
-                            color: PdfColor.fromHex('#2D5016'),
-                            font:textDirection == TextDirection.ltr ? regularFont : amiriFont,
                             fontStyle: pw.FontStyle.italic,
                           ),
                         ),
@@ -1039,51 +1067,10 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
 
                 pw.SizedBox(height: 16),
 
-                // Widget özelliği açıklama
-                pw.Container(
-                  width: double.infinity,
-                  padding: const pw.EdgeInsets.all(12),
-                  decoration: pw.BoxDecoration(
-                    color: PdfColor.fromHex('#F0E9D2'),
-                    border: pw.Border.all(
-                      color: PdfColor.fromHex('#D4AF37'),
-                      width: 1,
-                    ),
-                    borderRadius: pw.BorderRadius.circular(8),
-                  ),
-                  child: pw.Column(
-                    crossAxisAlignment: pw.CrossAxisAlignment.start,
-                    children: [
-                      pw.Text(
-                        AppLocalizations.of(buildContext)?.pdfWidgetInfoTitle ??
-                            'Widget Hakkında',
-                        style: pw.TextStyle(
-                          fontSize: 14,
-                          fontWeight: pw.FontWeight.bold,
-                          color: PdfColor.fromHex('#2D5016'),
-                          font:textDirection == TextDirection.ltr ? boldFont : amiriFont,
-                        ),
-                      ),
-                      pw.SizedBox(height: 8),
-                      pw.Text(
-                        AppLocalizations.of(buildContext)?.pdfWidgetInfoText ??
-                            'Widget üzerinden yapılan zikirler kalıcı olarak kaydedilir ve asla silinmez. Bu sayede widget zikirlerinizin geçmişini takip edebilirsiniz.',
-                        style: pw.TextStyle(
-                          fontSize: 11,
-                          color: PdfColor.fromHex('#2D5016'),
-                          font:textDirection == TextDirection.ltr ? regularFont : amiriFont,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                pw.SizedBox(height: 16),
-
                 // İslami alt bilgi
                 pw.Container(
                   width: double.infinity,
-                  padding: const pw.EdgeInsets.all(16),
+                  padding: const pw.EdgeInsets.all(8),
                   decoration: pw.BoxDecoration(
                     color: PdfColor.fromHex('#F0E9D2'),
                     borderRadius: pw.BorderRadius.circular(10),
@@ -1101,35 +1088,26 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                           borderRadius: pw.BorderRadius.circular(8),
                         ),
                         child: pw.Text(
-                          AppLocalizations.of(buildContext)?.pdfQuranVerse ??
-                              'وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ',
+                          AppLocalizations.of(buildContext)?.pdfQuranVerse ?? 'وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ',
                           textAlign: pw.TextAlign.center,
                           textDirection: pw.TextDirection.rtl,
-                          style: pw.TextStyle(
-                            fontSize: 12,
-                            font: amiriFont,
-                            color: PdfColor.fromHex('#FFFFFF'),
-                          ),
+                          style: pw.TextStyle(fontSize: 12, font: amiriFont,color: PdfColor.fromHex('#FFFFFF')),
                         ),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
-                        AppLocalizations.of(
-                              buildContext,
-                            )?.pdfQuranTranslation ??
-                            '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
+                        AppLocalizations.of(buildContext)?.pdfQuranTranslation ?? '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
                         textAlign: pw.TextAlign.center,
-                        style: pw.TextStyle(fontSize: 10, font:textDirection == TextDirection.ltr ? regularFont : amiriFont,),
+                        style: pw.TextStyle(fontSize: 10, font: textDirection == TextDirection.ltr ? regularFont : amiriFont),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
-                        AppLocalizations.of(buildContext)?.pdfAppCredit ??
-                            'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.',
+                        AppLocalizations.of(buildContext)?.pdfAppCredit ?? 'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.',
                         textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(
                           fontSize: 9,
                           color: PdfColor.fromHex('#2D5016'),
-                          font:textDirection == TextDirection.ltr ? regularFont : amiriFont,
+                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
                         ),
                       ),
                     ],

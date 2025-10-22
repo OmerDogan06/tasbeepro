@@ -964,7 +964,7 @@ class _StatsScreenState extends State<StatsScreen>
                         .getZikrCountForPeriod(b.id, period)
                         .compareTo(controller.getZikrCountForPeriod(a.id, period)),
                   );
-            final topZikrs = sortedZikrs.take(5).toList(); // Max 5 zikir göster
+            final topZikrs = sortedZikrs.take(10).toList(); // Max 10 zikir göster
             TextDirection textDirection = Directionality.of(buildContext);
 
             return pw.Column(
@@ -1226,7 +1226,7 @@ class _StatsScreenState extends State<StatsScreen>
                 // İslami alt bilgi
                 pw.Container(
                   width: double.infinity,
-                  padding: const pw.EdgeInsets.all(16),
+                  padding: const pw.EdgeInsets.all(8),
                   decoration: pw.BoxDecoration(
                     color: PdfColor.fromHex('#F0E9D2'),
                     borderRadius: pw.BorderRadius.circular(10),
