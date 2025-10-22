@@ -618,6 +618,7 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
                           child: TextButton(
                             onPressed: () => Navigator.pop(context),
                             style: TextButton.styleFrom(
+                              fixedSize: const Size.fromHeight(44),
                               backgroundColor: lightGold.withAlpha(77),
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               shape: RoundedRectangleBorder(
@@ -646,19 +647,24 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
                               _permissionService.openSettings();
                             },
                             style: ElevatedButton.styleFrom(
+                              
+                              fixedSize: const Size.fromHeight(44),
                               backgroundColor: emeraldGreen,
                               foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               elevation: 2,
                             ),
-                            child: Text(
-                              AppLocalizations.of(context)?.permissionsOpenSettings ?? 'Ayarlara Git',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                AppLocalizations.of(context)?.permissionsOpenSettings ?? 'Ayarlara Git',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
                               ),
                             ),
                           ),
