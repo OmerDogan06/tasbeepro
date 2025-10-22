@@ -78,6 +78,9 @@ dependencies:
   
   # URL launcher
   url_launcher: ^6.2.4
+  
+  # Animations
+  animate_do: ^3.3.4
 
 dev_dependencies:
   flutter_test:
