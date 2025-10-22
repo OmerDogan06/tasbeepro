@@ -123,18 +123,23 @@ class _CounterButtonState extends State<CounterButton>
                               child: Text(
                                 controller.count.toString(),
                                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                                  color: const Color(0xFFD4AF37), // Altın rengi
-                                  fontWeight: FontWeight.bold,
+                                  color: const Color(0xFFFFD700), // Kraliyet altını - Pro renk
+                                  fontWeight: FontWeight.w900, // Daha kalın
                                   fontSize: fontSize,
                                   shadows: [
                                     Shadow(
-                                      color: Colors.black.withAlpha(128),
-                                      offset: const Offset(0, 3),
-                                      blurRadius: 6,
+                                      color: Colors.black.withAlpha(153),
+                                      offset: const Offset(0, 4),
+                                      blurRadius: 8,
                                     ),
                                     Shadow(
-                                      color: const Color(0xFF2D5016).withAlpha(77), // Yeşil gölge
-                                      offset: const Offset(0, 1),
+                                      color: const Color(0xFF0D4F3C).withAlpha(102), // Derin deniz yeşili gölge
+                                      offset: const Offset(0, 2),
+                                      blurRadius: 4,
+                                    ),
+                                    Shadow(
+                                      color: const Color(0xFFCD7F32).withAlpha(77), // Bronz parıltı
+                                      offset: const Offset(1, 1),
                                       blurRadius: 2,
                                     ),
                                   ],
@@ -148,15 +153,25 @@ class _CounterButtonState extends State<CounterButton>
                           Text(
                             AppLocalizations.of(context)?.counterButtonText ?? 'Dokun',
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: const Color(0xFFF5E6A8), // Açık altın
+                              color: Colors.white, // Beyaz renk - En belirgin olacak
                               fontSize: (buttonSize * 0.08).clamp(12.0, 18.0), // Responsive font
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1.2,
+                              fontWeight: FontWeight.w800, // Daha da kalın
+                              letterSpacing: 2.0, // Daha geniş karakter aralığı
                               shadows: [
                                 Shadow(
-                                  color: Colors.black.withAlpha(102),
+                                  color: Colors.black.withAlpha(179), // Daha koyu gölge
+                                  offset: const Offset(0, 4),
+                                  blurRadius: 8,
+                                ),
+                                Shadow(
+                                  color: const Color(0xFF0A2818).withAlpha(128), // Daha belirgin yeşil gölge
                                   offset: const Offset(0, 2),
                                   blurRadius: 4,
+                                ),
+                                Shadow(
+                                  color: const Color(0xFFFFD700).withAlpha(77), // Altın parıltı
+                                  offset: const Offset(1, 1),
+                                  blurRadius: 2,
                                 ),
                               ],
                             ),
@@ -195,16 +210,16 @@ class ModernButtonPainter extends CustomPainter {
     final center = Offset(size.width / 2, size.height / 2);
     final radius = size.width / 2;
 
-    // İslami renk paleti
-    final emeraldGreen = const Color(0xFF2D5016);
-    final goldColor = const Color(0xFFD4AF37);
-    final lightGold = const Color(0xFFF5E6A8);
-    final darkGreen = const Color(0xFF1A3409);
+    // Pro İslami renk paleti - Daha premium ve sofistike
+    final deepTeal = const Color(0xFF0D4F3C); // Derin deniz yeşili
+    final royalGold = const Color(0xFFFFD700); // Kraliyet altını
+    final champagneGold = const Color(0xFFF7E7CE); // Şampanya altını
+    final darkForest = const Color(0xFF0A2818); // Koyu orman yeşili
 
     // Outer shadow (elevation effect)
     if (!isPressed) {
       final shadowPaint = Paint()
-        ..color = darkGreen.withAlpha(77)
+        ..color = darkForest.withAlpha(77)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 15);
       
       canvas.drawCircle(
@@ -214,12 +229,12 @@ class ModernButtonPainter extends CustomPainter {
       );
     }
 
-    // Ana buton - İslami gradient (HER ŞEY SABİT)
+    // Ana buton - Pro İslami gradient (HER ŞEY SABİT)
     final gradientColors = [
-      lightGold.withAlpha(179), 
-      goldColor.withAlpha(230), 
-      emeraldGreen, 
-      darkGreen
+      champagneGold.withAlpha(179), 
+      royalGold.withAlpha(230), 
+      deepTeal, 
+      darkForest
     ]; // SABİT renkler - basma durumuna göre değişmiyor
 
     final gradientStops = [0.0, 0.3, 0.8, 1.0]; // SABİT stops
@@ -241,26 +256,26 @@ class ModernButtonPainter extends CustomPainter {
     // İslami desenler - Geometrik pattern
     _drawIslamicPattern(canvas, center, radius);
 
-    // Altın kenar bordür
+    // Kraliyet altın kenar bordür
     final borderPaint = Paint()
-      ..color = goldColor.withAlpha(isPressed ? 153 : 230)
+      ..color = royalGold.withAlpha(isPressed ? 153 : 230)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3;
 
     canvas.drawCircle(center, radius - 5, borderPaint);
 
-    // İç altın bordür
+    // İç şampanya altın bordür
     final innerBorderPaint = Paint()
-      ..color = lightGold.withAlpha(179)
+      ..color = champagneGold.withAlpha(179)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1;
 
     canvas.drawCircle(center, radius - 15, innerBorderPaint);
 
-    // Progress ring - Altın renkte
+    // Progress ring - Kraliyet altını renkte
     if (progress > 0) {
       final progressPaint = Paint()
-        ..color = goldColor
+        ..color = royalGold
         ..style = PaintingStyle.stroke
         ..strokeWidth = 6
         ..strokeCap = StrokeCap.round;
@@ -280,7 +295,7 @@ class ModernButtonPainter extends CustomPainter {
 
       // Progress glow
       final glowPaint = Paint()
-        ..color = goldColor.withAlpha(77)
+        ..color = royalGold.withAlpha(77)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 12
         ..strokeCap = StrokeCap.round
@@ -306,7 +321,7 @@ class ModernButtonPainter extends CustomPainter {
 
     // Sol üst sabit highlight - Hilalin gözükmesi için çok açık
     final highlightPaint = Paint()
-      ..color = lightGold.withAlpha(25) // Sabit açıklık - değişmiyor
+      ..color = champagneGold.withAlpha(25) // Sabit açıklık - değişmiyor
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 25);
     
     canvas.drawCircle(
@@ -317,68 +332,61 @@ class ModernButtonPainter extends CustomPainter {
   }
 
   void _drawIslamicPattern(Canvas canvas, Offset center, double radius) {
-    // İslami renk paleti
-    final goldColor = const Color(0xFFD4AF37);
+    // Pro İslami renk paleti
+    final champagneGold = const Color(0xFFF7E7CE);
+    final bronzeAccent = const Color(0xFFCD7F32);
     
-    final patternPaint = Paint()
-      ..color = goldColor.withAlpha(isPressed ? 51 : 77) // Daha açık opacity
-      ..style = PaintingStyle.fill;
-
-    // Hilal (Yarım ay) çizimi - Türk bayrağındaki gibi
-    final crescentRadius = radius * 0.5; // Daha büyük
-    final crescentCenter = Offset(center.dx - crescentRadius * 0.1, center.dy);
+    // Pro Hilal (Türk bayrağı tarzı eğimli ay) çizimi
+    final crescentRadius = radius * 0.4;
+    final crescentCenter = Offset(center.dx, center.dy - radius * 0.1); // Biraz yukarıda
     
-    // Dış daire (büyük)
+    // Ana hilal - tek katman (eğimli)
     final outerCircle = Path()
       ..addOval(Rect.fromCircle(
         center: crescentCenter, 
         radius: crescentRadius,
       ));
     
-    // İç daire (küçük) - hilali oluşturmak için, daha az örtüşecek
+    // İç daire merkezi - orta seviye eğim için dengeli pozisyon
     final innerCircleCenter = Offset(
-      crescentCenter.dx + crescentRadius * 0.5, // Daha az örtüşme
-      crescentCenter.dy,
+      crescentCenter.dx + crescentRadius * 0.4, // X ekseni 
+      crescentCenter.dy - crescentRadius * 0.25, // Y ekseni - orta seviye yukarı kaydır
     );
     final innerCircle = Path()
       ..addOval(Rect.fromCircle(
         center: innerCircleCenter, 
-        radius: crescentRadius * 0.75, // Daha ince hilal için büyük iç daire
+        radius: crescentRadius * 0.75,
       ));
     
-    // Hilal şeklini oluştur (dış daire - iç daire)
     final crescentPath = Path.combine(
       PathOperation.difference, 
       outerCircle, 
       innerCircle,
     );
     
-    canvas.drawPath(crescentPath, patternPaint);
-
-    // Hilal kenarına ince altın çizgi
-    final crescentBorderPaint = Paint()
-      ..color = goldColor.withAlpha(77) // Daha açık kenar çizgisi
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.5;
+    // Ana hilal - koyu altın renk (dokun yazısından farklı)
+    final crescentPaint = Paint()
+      ..color = const Color(0xFFB8860B) // Koyu altın rengi - DarkGoldenRod
+      ..style = PaintingStyle.fill;
     
-    canvas.drawPath(crescentPath, crescentBorderPaint);
+    canvas.drawPath(crescentPath, crescentPaint);
 
-    // Merkez etrafında ince daireler (geleneksel İslami motif)
+    // Merkez etrafında bronz vurgu daireler (Pro İslami motif)
     for (int i = 1; i <= 3; i++) {
       final circleRadius = radius * 0.15 * i;
       final circlePaint = Paint()
-        ..color = goldColor.withAlpha((0.3 * 255 / i).toInt())
+        ..color = bronzeAccent.withAlpha((0.4 * 255 / i).toInt()) // Daha belirgin
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 1;
+        ..strokeWidth = 1.5; // Daha kalın çizgiler
         
       canvas.drawCircle(center, circleRadius, circlePaint);
     }
     
-    // 8 yönde ince radyal çizgiler (geleneksel İslami geometri)
-    for (int i = 0; i < 8; i++) {
-      final angle = (i * 2 * math.pi) / 8;
-      final startRadius = radius * 0.6;
-      final endRadius = radius * 0.8;
+    // 12 yönde Pro radyal çizgiler (sofistike İslami geometri)
+    for (int i = 0; i < 12; i++) {
+      final angle = (i * 2 * math.pi) / 12;
+      final startRadius = radius * 0.65;
+      final endRadius = radius * 0.85;
       
       final startX = center.dx + startRadius * math.cos(angle);
       final startY = center.dy + startRadius * math.sin(angle);
@@ -389,8 +397,8 @@ class ModernButtonPainter extends CustomPainter {
         Offset(startX, startY),
         Offset(endX, endY),
         Paint()
-          ..color = goldColor.withAlpha((0.3 * 255).toInt())
-          ..strokeWidth = 1,
+          ..color = champagneGold.withAlpha((0.4 * 255).toInt()) // Daha belirgin
+          ..strokeWidth = 1.5, // Daha kalın
       );
     }
   }
