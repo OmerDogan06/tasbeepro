@@ -1,9 +1,11 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'storage_service.dart';
 
 class SoundService extends GetxService {
+  final AudioPlayer _audioPlayer = AudioPlayer();
   final StorageService _storage = Get.find<StorageService>();
   static const platform = MethodChannel('com.skyforgestudios.tasbeepro/sound');
   
@@ -17,21 +19,29 @@ class SoundService extends GetxService {
     _soundVolume.value = _storage.getSoundVolume();
   }
   
-  Future<void> playClickSound() async {
+   Future<void> playClickSound() async {
     try {
       if (_soundEnabled.value) {
-        debugPrint('🔊 Playing click sound at volume level: ${_soundVolume.value}');
-        // Native Android ses çal - ses seviyesi ile birlikte
-        final result = await platform.invokeMethod('playClickSound', {
-          'volume': _soundVolume.value
-        });
-        debugPrint('🔊 Sound played successfully: $result');
-      } else {
-        debugPrint('🔇 Sound is disabled');
+        // Önce durdur, sonra çal - hızlı tıklamalar için
+        await _audioPlayer.stop();
+        await _audioPlayer.play(AssetSource('sounds/click.mp3'),volume: volumeMultiplier());
       }
     } catch (e) {
-      // Hata durumunda sessizce devam et
-      debugPrint('❌ Native sound could not be played: $e');
+      // Ses dosyası bulunamazsa sessizce devam et
+      debugPrint('Sound file not found, continuing silently: $e');
+    }
+  }
+
+  double volumeMultiplier() {
+    switch (_soundVolume.value) {
+      case 0:
+        return 0.10; // Düşük
+      case 1:
+        return 0.35; // Orta
+      case 2:
+        return 0.65; // Yüksek
+      default:
+        return  0.65;
     }
   }
   
@@ -57,3 +67,13 @@ class SoundService extends GetxService {
     await _storage.saveSoundVolume(volume);
   }
 }
+
+
+
+
+
+
+
+
+
+

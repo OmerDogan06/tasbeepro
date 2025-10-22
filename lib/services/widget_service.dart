@@ -119,7 +119,7 @@ class WidgetService extends GetxService {
       // Hedef listesi (base + custom)
       final baseTargets = [33, 99, 100, 500, 1000];
       final customTargets = storageService.getCustomTargets();
-      final allTargets = [...baseTargets, ...customTargets].toSet().toList()..sort();
+      final allTargets = <int>{...baseTargets, ...customTargets}.toList()..sort();
       
       // Widget update channel'ına gönder
       await _updateChannel.invokeMethod('updateWidgetData', {

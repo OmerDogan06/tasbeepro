@@ -590,20 +590,21 @@ class HomeScreen extends StatelessWidget {
                         child: Theme(
                           data: ThemeData(
                             scrollbarTheme: ScrollbarThemeData(
-                              thumbColor:
-                                  WidgetStateProperty .all(goldColor),
-                              trackColor: WidgetStateProperty .all(
-                                  goldColor.withAlpha(51)),
-                              trackBorderColor: WidgetStateProperty .all(
-                                  goldColor.withAlpha(77)),
+                              thumbColor: WidgetStateProperty.all(goldColor),
+                              trackColor: WidgetStateProperty.all(
+                                goldColor.withAlpha(51),
+                              ),
+                              trackBorderColor: WidgetStateProperty.all(
+                                goldColor.withAlpha(77),
+                              ),
                               radius: const Radius.circular(8),
-                              thickness: WidgetStateProperty .all(4),
+                              thickness: WidgetStateProperty.all(4),
                             ),
                           ),
                           child: Scrollbar(
                             controller: scrollController,
                             thumbVisibility: true,
-                          
+
                             child: ListView.builder(
                               padding: EdgeInsets.only(right: 7),
                               controller: scrollController,
@@ -638,11 +639,10 @@ class HomeScreen extends StatelessWidget {
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.only(
-                                        
                                           left: 12,
                                           right: 5,
                                           top: 10,
-                                          bottom: 10
+                                          bottom: 10,
                                         ),
                                         child: Row(
                                           children: [
@@ -652,7 +652,9 @@ class HomeScreen extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                 color: isSelected
                                                     ? goldColor
-                                                    : emeraldGreen.withAlpha(102),
+                                                    : emeraldGreen.withAlpha(
+                                                        102,
+                                                      ),
                                                 shape: BoxShape.circle,
                                               ),
                                             ),
@@ -678,28 +680,38 @@ class HomeScreen extends StatelessWidget {
                                             // Silme butonu - sadece özel hedefler için ve seçili değilse
                                             if (target > 1000 && !isSelected)
                                               Container(
-                                                margin: const EdgeInsets.only(left: 8),
+                                                margin: const EdgeInsets.only(
+                                                  left: 8,
+                                                ),
                                                 child: InkWell(
-                                                  
-                                                  onTap: () => _showDeleteTargetConfirmation(
-                                                    context,
-                                                    controller,
-                                                    target,
-                                                  ),
-                                                  borderRadius: BorderRadius.circular(8),
+                                                  onTap: () =>
+                                                      _showDeleteTargetConfirmation(
+                                                        context,
+                                                        controller,
+                                                        target,
+                                                      ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
                                                   child: Container(
-                                                    padding: const EdgeInsets.all(5),
+                                                    padding:
+                                                        const EdgeInsets.all(5),
                                                     decoration: BoxDecoration(
-                                                      color: Colors.red.withAlpha(26),
-                                                      borderRadius: BorderRadius.circular(8),
+                                                      color: Colors.red
+                                                          .withAlpha(26),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            8,
+                                                          ),
                                                       border: Border.all(
-                                                        color: Colors.red.withAlpha(77),
+                                                        color: Colors.red
+                                                            .withAlpha(77),
                                                         width: 1,
                                                       ),
                                                     ),
                                                     child: Icon(
                                                       Icons.delete_outline,
-                                                      color: Colors.red.shade700,
+                                                      color:
+                                                          Colors.red.shade700,
                                                       size: 18,
                                                     ),
                                                   ),
@@ -726,9 +738,15 @@ class HomeScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context).pop();
                             // Kısa bir delay ekleyerek context'in güvenli olmasını sağla
-                            Future.delayed(const Duration(milliseconds: 500), () {
-                              _showCustomTargetBottomSheet(Get.context ?? context, controller);
-                            });
+                            Future.delayed(
+                              const Duration(milliseconds: 500),
+                              () {
+                                _showCustomTargetBottomSheet(
+                                  Get.context ?? context,
+                                  controller,
+                                );
+                              },
+                            );
                           },
                           style: TextButton.styleFrom(
                             backgroundColor: emeraldGreen.withAlpha(26),
@@ -1081,7 +1099,7 @@ class HomeScreen extends StatelessWidget {
 
     // Target dialog'unu yeniden aç - böylece yeni hedef listede görünür
     Future.delayed(const Duration(milliseconds: 500), () {
-      _showTargetDialog( Get.context ?? context, controller, ScrollController());
+      _showTargetDialog(Get.context ?? context, controller, ScrollController());
     });
 
     IslamicSnackbar.showSuccess(
@@ -1110,10 +1128,7 @@ class HomeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.red.withAlpha(26),
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: Colors.red.withAlpha(77),
-                  width: 1,
-                ),
+                border: Border.all(color: Colors.red.withAlpha(77), width: 1),
               ),
               child: Icon(
                 Icons.delete_outline,
@@ -1132,7 +1147,8 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         content: Text(
-          AppLocalizations.of(context)?.deleteTargetMessage(target) ?? '$target hedefini silmek istediğinizden emin misiniz?',
+          AppLocalizations.of(context)?.deleteTargetMessage(target) ??
+              '$target hedefini silmek istediğinizden emin misiniz?',
           style: const TextStyle(color: emeraldGreen),
         ),
         actions: [
@@ -1153,27 +1169,32 @@ class HomeScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.red.withAlpha(26),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: Colors.red.withAlpha(77),
-                width: 1,
-              ),
+              border: Border.all(color: Colors.red.withAlpha(77), width: 1),
             ),
             child: TextButton(
               onPressed: () async {
                 await controller.removeCustomTarget(target);
-                Navigator.of(context).pop();
-                // Ana dialog'u da kapat
-                Navigator.of(context).pop();
-                
+                Navigator.of(
+                    context.mounted ? context : Get.context!,
+                    rootNavigator: true,
+                  )
+                  ..pop()
+                  ..pop();
+
                 // Kısa bir delay ekleyerek context'in güvenli olmasını sağla
-                Future.delayed(const Duration(milliseconds: 100), () {
+                Future.delayed(const Duration(milliseconds: 800), () {
                   // Target seçim dialog'unu yeniden aç - bu liste yenileme sorununu çözer
-                  _showTargetDialog(Get.context ?? context, controller, ScrollController());
+                  _showTargetDialog(
+                    Get.context ?? context,
+                    controller,
+                    ScrollController(),
+                  );
                 });
-                
+
                 IslamicSnackbar.showSuccess(
-                  AppLocalizations.of(context)?.homeResetSuccess ?? 'Başarılı',
-                  AppLocalizations.of(context)?.deleteTargetSuccess ?? 'Hedef silindi',
+                  AppLocalizations.of(context.mounted ? context : Get.context!)?.homeResetSuccess ?? 'Başarılı',
+                  AppLocalizations.of(context.mounted ? context : Get.context!)?.deleteTargetSuccess ??
+                      'Hedef silindi',
                   duration: const Duration(seconds: 1),
                 );
               },
