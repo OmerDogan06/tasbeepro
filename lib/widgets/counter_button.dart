@@ -231,13 +231,13 @@ class ModernButtonPainter extends CustomPainter {
 
     // Ana buton - Pro İslami gradient (HER ŞEY SABİT)
     final gradientColors = [
-      champagneGold.withAlpha(179), 
-      royalGold.withAlpha(230), 
+      champagneGold.withAlpha(90), // Parlaklık azaltıldı (179'dan 120'ye)
+      royalGold.withAlpha(100), // Parlaklık azaltıldı (230'dan 180'e)
       deepTeal, 
       darkForest
     ]; // SABİT renkler - basma durumuna göre değişmiyor
 
-    final gradientStops = [0.0, 0.3, 0.8, 1.0]; // SABİT stops
+    final gradientStops = [0.05, 0.3, 0.8, 1.0]; // SABİT stops
 
     final gradient = RadialGradient(
       colors: gradientColors,
@@ -295,11 +295,11 @@ class ModernButtonPainter extends CustomPainter {
 
       // Progress glow
       final glowPaint = Paint()
-        ..color = royalGold.withAlpha(77)
+        ..color = royalGold.withAlpha(40) // Parlaklık azaltıldı (77'den 40'a)
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 12
+        ..strokeWidth = 8 // Kalınlık da azaltıldı (12'den 8'e)
         ..strokeCap = StrokeCap.round
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6); // Blur azaltıldı (8'den 6'ya)
 
       canvas.drawArc(
         progressRect,
@@ -319,16 +319,18 @@ class ModernButtonPainter extends CustomPainter {
     //   canvas.drawCircle(center, radius * 0.7, ripplePaint);
     // }
 
-    // Sol üst sabit highlight - Hilalin gözükmesi için çok açık
+    // Sol üst sabit highlight - Tamamen kaldırıldı
+    /* Highlight efekti kaldırıldı
     final highlightPaint = Paint()
-      ..color = champagneGold.withAlpha(25) // Sabit açıklık - değişmiyor
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 25);
+      ..color = champagneGold.withAlpha(8)
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 15);
     
     canvas.drawCircle(
-      center + const Offset(-30, -30), // Pixel değer ile sabit - değişmiyor!
-      radius * 0.4,
+      center + const Offset(-30, -30),
+      radius * 0.35,
       highlightPaint,
     );
+    */
   }
 
   void _drawIslamicPattern(Canvas canvas, Offset center, double radius) {
