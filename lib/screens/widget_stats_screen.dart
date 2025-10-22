@@ -1614,90 +1614,9 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         ),
 
         const SizedBox(height: 16),
-
-        GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 3,
-            crossAxisSpacing: 12,
-            mainAxisSpacing: 12,
-          ),
-          itemCount: chartData.length,
-          itemBuilder: (context, index) {
-            final data = chartData[index];
-            final total = chartData.fold<double>(
-              0,
-              (sum, item) => sum + item.y,
-            );
-            final percentage = total > 0 ? (data.y / total * 100) : 0;
-
-            return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-              decoration: BoxDecoration(
-                color: _getChartColor(index).withAlpha(26),
-                borderRadius: BorderRadius.circular(6),
-                border: Border.all(
-                  color: _getChartColor(index).withAlpha(77),
-                  width: 1,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    width: 10,
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: _getChartColor(index),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          data.label,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            color: emeraldGreen,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              _formatNumber(data.y.toInt()),
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: _getChartColor(index),
-                              ),
-                            ),
-                            Text(
-                              '${percentage.toStringAsFixed(0)}%',
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w500,
-                                color: emeraldGreen.withAlpha(179),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
+        
+        // Legend - Sabit yükseklikli iki sütunlu düzen
+        _buildTwoColumnLegend(chartData),
       ],
     );
   }
@@ -1711,6 +1630,110 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
       return number.toString();
     }
   }
+
+  // Sabit yükseklikli iki sütunlu legend düzeni
+  Widget _buildTwoColumnLegend(List<ChartData> chartData) {
+    // Toplam değeri hesapla
+    final total = chartData.fold<double>(0, (sum, item) => sum + item.y);
+    
+    return Column(
+      children: [
+        for (int i = 0; i < chartData.length; i += 2)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Row(
+              children: [
+                // Sol sütun
+                Expanded(
+                  child: _buildLegendItem(chartData[i], i, total),
+                ),
+                const SizedBox(width: 12),
+                // Sağ sütun (eğer varsa)
+                Expanded(
+                  child: i + 1 < chartData.length
+                      ? _buildLegendItem(chartData[i + 1], i + 1, total)
+                      : const SizedBox(), // Boş alan
+                ),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+
+  // Legend item builder - sabit yükseklik
+  Widget _buildLegendItem(ChartData data, int index, [double? totalValue]) {
+    final total = totalValue ?? data.y; // Fallback to data.y if no total provided
+    final percentage = total > 0 ? (data.y / total * 100) : 0;
+
+    return Container(
+      height: 50, // Sabit yükseklik
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      decoration: BoxDecoration(
+        color: _getChartColor(index).withAlpha(26),
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(
+          color: _getChartColor(index).withAlpha(77),
+          width: 1,
+        ),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 10,
+            height: 10,
+            decoration: BoxDecoration(
+              color: _getChartColor(index),
+              shape: BoxShape.circle,
+            ),
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  data.label,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: emeraldGreen,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 2),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      _formatNumber(data.y.toInt()),
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: _getChartColor(index),
+                      ),
+                    ),
+                    Text(
+                      '${percentage.toStringAsFixed(0)}%',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w500,
+                        color: emeraldGreen.withAlpha(179),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+
 
   List<ChartData> _convertToChartData(List<Map<String, dynamic>> data) {
     final List<ChartData> chartData = [];
