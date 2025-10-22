@@ -24,7 +24,7 @@ class SoundService extends GetxService {
       if (_soundEnabled.value) {
         // Önce durdur, sonra çal - hızlı tıklamalar için
         await _audioPlayer.stop();
-        await _audioPlayer.play(AssetSource('sounds/click.mp3'),volume: volumeMultiplier());
+        await _audioPlayer.play(AssetSource('sounds/click2.wav'),volume: volumeMultiplier());
       }
     } catch (e) {
       // Ses dosyası bulunamazsa sessizce devam et
@@ -35,13 +35,13 @@ class SoundService extends GetxService {
   double volumeMultiplier() {
     switch (_soundVolume.value) {
       case 0:
-        return 0.10; // Düşük
+        return 0.45; // Düşük
       case 1:
-        return 0.35; // Orta
+        return 0.65; // Orta
       case 2:
-        return 0.65; // Yüksek
+        return 1; // Yüksek
       default:
-        return  0.65;
+        return  1;
     }
   }
   

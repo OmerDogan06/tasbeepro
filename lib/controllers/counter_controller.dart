@@ -91,7 +91,7 @@ class CounterController extends GetxController {
     _isAnimating.value = true;
     
     // Play sound and vibration
-    _sound.playClickSound();
+   await _sound.playClickSound();
     _vibration.vibrate();
     
     // Store previous count to check if target was just completed
