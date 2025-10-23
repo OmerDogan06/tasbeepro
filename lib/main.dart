@@ -18,10 +18,10 @@ import 'l10n/app_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  
+
   // Initialize timezone
   tz.initializeTimeZones();
-  
+
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -29,7 +29,6 @@ void main() async {
 
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-      
       systemNavigationBarColor: Color(0xFF2D5016),
       systemNavigationBarIconBrightness: Brightness.light,
     ),
@@ -52,7 +51,95 @@ void main() async {
   final widgetService = Get.find<WidgetService>();
   await widgetService.updateWidgetData();
 
-  runApp(const TasbeeApp());
+  runApp(const OrientationGuardApp());
+}
+
+class OrientationGuardApp extends StatelessWidget {
+  const OrientationGuardApp({super.key});
+
+  Locale _getDeviceLocale() {
+    // Cihazın dilini kontrol et
+    final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
+
+    // Eğer Türkçe ise TR, değilse EN döndür
+    if (deviceLocale.languageCode == 'tr') {
+      return const Locale('tr');
+    }
+    return const Locale('en');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final languageService = Get.find<LanguageService>();
+    return OrientationBuilder(
+      builder: (context, orientation) {
+        if (orientation == Orientation.portrait) {
+          // Ana uygulama burada
+          return const TasbeeApp();
+        } else {
+          // Yatay modda gösterilecek ekran
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            locale: languageService.currentLocale,
+            supportedLocales: const [
+              Locale('tr', 'TR'),
+              Locale('en', 'GB'),
+              Locale('ar', 'SA'),
+              Locale('id', 'ID'),
+              Locale('ur', 'PK'),
+              Locale('ms', 'MY'),
+              Locale('bn', 'BD'),
+              Locale('fr', 'FR'),
+              Locale('hi', 'IN'),
+            ],
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            theme: ThemeData(
+              useMaterial3: true,
+              appBarTheme: const AppBarTheme(
+                systemOverlayStyle: SystemUiOverlayStyle(
+                  systemNavigationBarColor: Color(0xFF2D5016),
+                  systemNavigationBarIconBrightness: Brightness.light,
+                ),
+              ),
+            ),
+            darkTheme: ThemeData(useMaterial3: true),
+            themeMode: ThemeMode.light,
+            home: Builder(
+              builder: (context) => Scaffold(
+                backgroundColor: Colors.black,
+                body: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.screen_rotation,
+                        color: Colors.white,
+                        size: 80,
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        "📱 Please rotate your device to portrait mode",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        }
+      },
+    );
+  }
 }
 
 class TasbeeApp extends StatelessWidget {
@@ -61,46 +148,42 @@ class TasbeeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final languageService = Get.find<LanguageService>();
-    
-    return Obx(() => GetMaterialApp(
-      title: 'Tasbee Pro',
-      debugShowCheckedModeBanner: false,
-      locale: languageService.currentLocale,
-      supportedLocales: const [
-        Locale('tr', 'TR'),
-        Locale('en', 'GB'),
-        Locale('ar', 'SA'),
-        Locale('id', 'ID'),
-        Locale('ur', 'PK'),
-        Locale('ms', 'MY'),
-        Locale('bn', 'BD'),
-        Locale('fr', 'FR'),
-        Locale('hi', 'IN'),
-      ],
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      theme: ThemeData(
-        useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle(
-             
-      systemNavigationBarColor: Color(0xFF2D5016),
-      systemNavigationBarIconBrightness: Brightness.light,
+
+    return Obx(
+      () => GetMaterialApp(
+        title: 'Tasbee Pro',
+        debugShowCheckedModeBanner: false,
+        locale: languageService.currentLocale,
+        supportedLocales: const [
+          Locale('tr', 'TR'),
+          Locale('en', 'GB'),
+          Locale('ar', 'SA'),
+          Locale('id', 'ID'),
+          Locale('ur', 'PK'),
+          Locale('ms', 'MY'),
+          Locale('bn', 'BD'),
+          Locale('fr', 'FR'),
+          Locale('hi', 'IN'),
+        ],
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        theme: ThemeData(
+          useMaterial3: true,
+          appBarTheme: const AppBarTheme(
+            systemOverlayStyle: SystemUiOverlayStyle(
+              systemNavigationBarColor: Color(0xFF2D5016),
+              systemNavigationBarIconBrightness: Brightness.light,
+            ),
           ),
         ),
-      
+        darkTheme: ThemeData(useMaterial3: true),
+        themeMode: ThemeMode.light,
+        home: const SplashScreen(),
       ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-
-      
-      ),
-      themeMode: ThemeMode.light, 
-      home: const SplashScreen(),
-    ));
+    );
   }
 }

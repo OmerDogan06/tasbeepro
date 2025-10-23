@@ -901,166 +901,168 @@ class HomeScreen extends StatelessWidget {
     final TextEditingController textController = TextEditingController();
 
     Get.bottomSheet(
-      Container(
-        padding: EdgeInsets.only(
-          left: 20,
-          right: 20,
-          top: 20,
-          bottom:
-              20 +
-              MediaQuery.of(
-                context,
-              ).viewInsets.bottom, // Klavye yüksekliğini ekle
-        ),
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+      SafeArea(
+        child: Container(
+          padding: EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 20,
+            bottom:
+                20 +
+                MediaQuery.of(
+                  context,
+                ).viewInsets.bottom, // Klavye yüksekliğini ekle
           ),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+            ),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
           ),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header
-            Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    gradient: const RadialGradient(
-                      colors: [lightGold, goldColor],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      gradient: const RadialGradient(
+                        colors: [lightGold, goldColor],
+                      ),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Icon(
-                    Icons.add_circle_outline,
-                    color: emeraldGreen,
-                    size: 20,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    AppLocalizations.of(context)?.customTargetTitle ??
-                        'Özel Hedef Ekle',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                    child: const Icon(
+                      Icons.add_circle_outline,
                       color: emeraldGreen,
+                      size: 20,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      AppLocalizations.of(context)?.customTargetTitle ??
+                          'Özel Hedef Ekle',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: emeraldGreen,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () => Get.back(),
+                    icon: const Icon(Icons.close, color: emeraldGreen),
+                    style: IconButton.styleFrom(
+                      backgroundColor: goldColor.withAlpha(51),
+                    ),
+                  ),
+                ],
+              ),
+        
+              const SizedBox(height: 10),
+        
+              // Input field
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white.withAlpha(128),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: goldColor.withAlpha(77), width: 1),
+                ),
+                child: TextField(
+                  controller: textController,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  style: const TextStyle(
+                    color: emeraldGreen,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  decoration: InputDecoration(
+                    hintText:
+                        AppLocalizations.of(context)?.customTargetHint ??
+                        '1000\'den büyük bir hedef girin',
+                    hintStyle: TextStyle(
+                      color: emeraldGreen.withAlpha(128),
+                      fontSize: 14,
+                    ),
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.all(12),
+                    prefixIcon: Icon(
+                      Icons.flag_outlined,
+                      color: emeraldGreen.withAlpha(153),
                     ),
                   ),
                 ),
-                IconButton(
-                  onPressed: () => Get.back(),
-                  icon: const Icon(Icons.close, color: emeraldGreen),
-                  style: IconButton.styleFrom(
-                    backgroundColor: goldColor.withAlpha(51),
-                  ),
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 10),
-
-            // Input field
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white.withAlpha(128),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: goldColor.withAlpha(77), width: 1),
               ),
-              child: TextField(
-                controller: textController,
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                style: const TextStyle(
-                  color: emeraldGreen,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-                decoration: InputDecoration(
-                  hintText:
-                      AppLocalizations.of(context)?.customTargetHint ??
-                      '1000\'den büyük bir hedef girin',
-                  hintStyle: TextStyle(
-                    color: emeraldGreen.withAlpha(128),
-                    fontSize: 14,
-                  ),
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.all(12),
-                  prefixIcon: Icon(
-                    Icons.flag_outlined,
-                    color: emeraldGreen.withAlpha(153),
-                  ),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 10),
-
-            // Action buttons
-            Row(
-              children: [
-                Expanded(
-                  child: TextButton(
-                    onPressed: () => Get.back(),
-                    style: TextButton.styleFrom(
-                      backgroundColor: lightGold.withAlpha(77),
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        side: BorderSide(
-                          color: goldColor.withAlpha(77),
-                          width: 1,
+        
+              const SizedBox(height: 10),
+        
+              // Action buttons
+              Row(
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () => Get.back(),
+                      style: TextButton.styleFrom(
+                        backgroundColor: lightGold.withAlpha(77),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: BorderSide(
+                            color: goldColor.withAlpha(77),
+                            width: 1,
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        AppLocalizations.of(context)?.cancel ?? 'İptal',
+                        style: const TextStyle(
+                          color: emeraldGreen,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
-                    child: Text(
-                      AppLocalizations.of(context)?.cancel ?? 'İptal',
-                      style: const TextStyle(
-                        color: emeraldGreen,
-                        fontWeight: FontWeight.w600,
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () => _addCustomTarget(
+                        context,
+                        controller,
+                        textController.text,
+                      ),
+                      style: TextButton.styleFrom(
+                        backgroundColor: goldColor,
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: BorderSide(color: goldColor, width: 1),
+                        ),
+                      ),
+                      child: Text(
+                        AppLocalizations.of(context)?.add ?? 'Ekle',
+                        style: const TextStyle(
+                          color: emeraldGreen,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: TextButton(
-                    onPressed: () => _addCustomTarget(
-                      context,
-                      controller,
-                      textController.text,
-                    ),
-                    style: TextButton.styleFrom(
-                      backgroundColor: goldColor,
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        side: BorderSide(color: goldColor, width: 1),
-                      ),
-                    ),
-                    child: Text(
-                      AppLocalizations.of(context)?.add ?? 'Ekle',
-                      style: const TextStyle(
-                        color: emeraldGreen,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            // Add some bottom padding for safe area
-            // SizedBox(height: MediaQuery.of(context).viewInsets.bottom > 0 ? 20 : 0), // Bu satırı kaldırdık
-          ],
+                ],
+              ),
+        
+              // Add some bottom padding for safe area
+              // SizedBox(height: MediaQuery.of(context).viewInsets.bottom > 0 ? 20 : 0), // Bu satırı kaldırdık
+            ],
+          ),
         ),
       ),
       isScrollControlled: true,
