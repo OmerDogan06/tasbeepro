@@ -1068,4 +1068,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get deleteZikirSuccess => 'تم الحذف! 🗑️';
+
+  @override
+  String get rotateDeviceMessage => '📱 يرجى تدوير جهازك إلى الوضع العمودي';
 }

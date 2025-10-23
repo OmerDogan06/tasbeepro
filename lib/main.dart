@@ -57,16 +57,6 @@ void main() async {
 class OrientationGuardApp extends StatelessWidget {
   const OrientationGuardApp({super.key});
 
-  Locale _getDeviceLocale() {
-    // Cihazın dilini kontrol et
-    final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
-
-    // Eğer Türkçe ise TR, değilse EN döndür
-    if (deviceLocale.languageCode == 'tr') {
-      return const Locale('tr');
-    }
-    return const Locale('en');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +113,7 @@ class OrientationGuardApp extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        "📱 Please rotate your device to portrait mode",
+                        AppLocalizations.of(context)!.rotateDeviceMessage,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           color: Colors.white,

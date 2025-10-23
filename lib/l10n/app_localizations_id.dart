@@ -1093,4 +1093,8 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get deleteZikirSuccess => 'Terhapus! 🗑️';
+
+  @override
+  String get rotateDeviceMessage =>
+      '📱 Harap putar perangkat Anda ke mode potret';
 }

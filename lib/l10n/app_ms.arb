@@ -338,5 +338,6 @@
   "deleteZikirMessage": "Adakah anda pasti ingin memadam zikir ini?",
   "deleteZikirConfirm": "Padam",
   "deleteZikirCancel": "Batal",
-  "deleteZikirSuccess": "Dipadam! 🗑️"
+  "deleteZikirSuccess": "Dipadam! 🗑️",
+  "rotateDeviceMessage": "📱 Sila putar peranti anda ke mod potret"
 }

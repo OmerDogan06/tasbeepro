@@ -1091,4 +1091,8 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get deleteZikirSuccess => 'মুছে ফেলা হয়েছে! 🗑️';
+
+  @override
+  String get rotateDeviceMessage =>
+      '📱 অনুগ্রহ করে আপনার ডিভাইসটি পোর্ট্রেট মোডে ঘুরান';
 }

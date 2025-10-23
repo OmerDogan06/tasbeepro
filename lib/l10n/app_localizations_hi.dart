@@ -1086,4 +1086,8 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get deleteZikirSuccess => 'हटा दिया गया! 🗑️';
+
+  @override
+  String get rotateDeviceMessage =>
+      '📱 कृपया अपने डिवाइस को पोर्ट्रेट मोड में घुमाएं';
 }

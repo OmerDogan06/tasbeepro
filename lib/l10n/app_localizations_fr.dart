@@ -1117,4 +1117,8 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get deleteZikirSuccess => 'Supprimé! 🗑️';
+
+  @override
+  String get rotateDeviceMessage =>
+      '📱 Veuillez faire pivoter votre appareil en mode portrait';
 }

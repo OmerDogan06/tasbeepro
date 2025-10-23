@@ -338,5 +338,6 @@
   "deleteZikirMessage": "Bu zikiri silmek istediğinizden emin misiniz?",
   "deleteZikirConfirm": "Sil",
   "deleteZikirCancel": "İptal",
-  "deleteZikirSuccess": "Silindi! 🗑️"
+  "deleteZikirSuccess": "Silindi! 🗑️",
+  "rotateDeviceMessage": "📱 Lütfen cihazınızı dikey konuma çevirin"
 }

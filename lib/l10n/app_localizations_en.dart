@@ -1092,4 +1092,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get deleteZikirSuccess => 'Deleted! 🗑️';
+
+  @override
+  String get rotateDeviceMessage =>
+      '📱 Please rotate your device to portrait mode';
 }

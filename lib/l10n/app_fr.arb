@@ -338,5 +338,6 @@
   "deleteZikirMessage": "Êtes-vous sûr de vouloir supprimer ce zikr?",
   "deleteZikirConfirm": "Supprimer",
   "deleteZikirCancel": "Annuler",
-  "deleteZikirSuccess": "Supprimé! 🗑️"
+  "deleteZikirSuccess": "Supprimé! 🗑️",
+  "rotateDeviceMessage": "📱 Veuillez faire pivoter votre appareil en mode portrait"
 }

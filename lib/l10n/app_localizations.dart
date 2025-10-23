@@ -2145,6 +2145,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Deleted! 🗑️'**
   String get deleteZikirSuccess;
+
+  /// Message shown when device is in landscape mode
+  ///
+  /// In en, this message translates to:
+  /// **'📱 Please rotate your device to portrait mode'**
+  String get rotateDeviceMessage;
 }
 
 class _AppLocalizationsDelegate

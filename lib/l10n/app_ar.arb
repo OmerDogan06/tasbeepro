@@ -338,5 +338,6 @@
   "deleteZikirMessage": "هل أنت متأكد من أنك تريد حذف هذا الذكر؟",
   "deleteZikirConfirm": "حذف",
   "deleteZikirCancel": "إلغاء",
-  "deleteZikirSuccess": "تم الحذف! 🗑️"
+  "deleteZikirSuccess": "تم الحذف! 🗑️",
+  "rotateDeviceMessage": "📱 يرجى تدوير جهازك إلى الوضع العمودي"
 }

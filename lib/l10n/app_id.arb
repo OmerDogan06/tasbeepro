@@ -338,5 +338,6 @@
   "deleteZikirMessage": "Apakah Anda yakin ingin menghapus zikir ini?",
   "deleteZikirConfirm": "Hapus",
   "deleteZikirCancel": "Batal",
-  "deleteZikirSuccess": "Terhapus! 🗑️"
+  "deleteZikirSuccess": "Terhapus! 🗑️",
+  "rotateDeviceMessage": "📱 Harap putar perangkat Anda ke mode potret"
 }

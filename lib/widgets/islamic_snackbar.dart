@@ -11,158 +11,182 @@ class IslamicSnackbar {
 
   /// Başarı mesajı için İslami temalı snackbar
   static void showSuccess(String title, String message, {Duration? duration}) {
-    Get.showSnackbar(
-      GetSnackBar(
-        titleText: _buildTitleText(title, Icons.check_circle, Colors.green.shade700),
-        messageText: _buildMessageText(message),
-        backgroundColor: Colors.white,
-        duration: duration ?? const Duration(seconds: 2),
-        margin: const EdgeInsets.all(16),
-        borderRadius: 5,
-        snackPosition: SnackPosition.TOP,
-        animationDuration: const Duration(milliseconds: 500),
-        reverseAnimationCurve: Curves.easeInOut,
-        forwardAnimationCurve: Curves.easeInOut,
-        isDismissible: true,
-        dismissDirection: DismissDirection.horizontal,
-        backgroundGradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFE8F5E8),
-            Color(0xFFF0F9F0),
-          ],
-        ),
-        boxShadows: [
-          BoxShadow(
-            color: emeraldGreen.withAlpha(51),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-            spreadRadius: 1,
+    // Overlay disposing sorununu önlemek için kısa bir gecikme ekle
+    Future.delayed(const Duration(milliseconds: 100), () {
+      // Context'in hala geçerli olup olmadığını kontrol et
+      if (Get.overlayContext != null) {
+        Get.showSnackbar(
+          GetSnackBar(
+            titleText: _buildTitleText(title, Icons.check_circle, Colors.green.shade700),
+            messageText: _buildMessageText(message),
+            backgroundColor: Colors.white,
+            duration: duration ?? const Duration(seconds: 2),
+            margin: const EdgeInsets.all(16),
+            borderRadius: 5,
+            snackPosition: SnackPosition.TOP,
+            animationDuration: const Duration(milliseconds: 300), // Kısaltıldı
+            reverseAnimationCurve: Curves.easeInOut,
+            forwardAnimationCurve: Curves.easeInOut,
+            isDismissible: true,
+            dismissDirection: DismissDirection.horizontal,
+            backgroundGradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFFE8F5E8),
+                Color(0xFFF0F9F0),
+              ],
+            ),
+            boxShadows: [
+              BoxShadow(
+                color: emeraldGreen.withAlpha(51),
+                blurRadius: 15,
+                offset: const Offset(0, 5),
+                spreadRadius: 1,
+              ),
+            ],
+            borderColor: goldColor.withAlpha(102),
+            borderWidth: 1.5,
+            leftBarIndicatorColor: Colors.green.shade600,
           ),
-        ],
-        borderColor: goldColor.withAlpha(102),
-        borderWidth: 1.5,
-        leftBarIndicatorColor: Colors.green.shade600,
-      ),
-    );
+        );
+      }
+    });
   }
 
   /// Hata mesajı için İslami temalı snackbar
   static void showError(String title, String message, {Duration? duration}) {
-    Get.showSnackbar(
-      GetSnackBar(
-        titleText: _buildTitleText(title, Icons.error, Colors.red.shade700),
-        messageText: _buildMessageText(message),
-        backgroundColor: Colors.white,
-        duration: duration ?? const Duration(seconds: 3),
-        margin: const EdgeInsets.all(16),
-        borderRadius: 5,
-        snackPosition: SnackPosition.TOP,
-        animationDuration: const Duration(milliseconds: 500),
-        reverseAnimationCurve: Curves.easeInOut,
-        forwardAnimationCurve: Curves.easeInOut,
-        isDismissible: true,
-        dismissDirection: DismissDirection.horizontal,
-        backgroundGradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFFFF5F5),
-            Color(0xFFFFF0F0),
-          ],
-        ),
-        boxShadows: [
-          BoxShadow(
-            color: emeraldGreen.withAlpha(51),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-            spreadRadius: 1,
+    // Overlay disposing sorununu önlemek için kısa bir gecikme ekle
+    Future.delayed(const Duration(milliseconds: 100), () {
+      // Context'in hala geçerli olup olmadığını kontrol et
+      if (Get.overlayContext != null) {
+        Get.showSnackbar(
+          GetSnackBar(
+            titleText: _buildTitleText(title, Icons.error, Colors.red.shade700),
+            messageText: _buildMessageText(message),
+            backgroundColor: Colors.white,
+            duration: duration ?? const Duration(seconds: 3),
+            margin: const EdgeInsets.all(16),
+            borderRadius: 5,
+            snackPosition: SnackPosition.TOP,
+            animationDuration: const Duration(milliseconds: 300), // Kısaltıldı
+            reverseAnimationCurve: Curves.easeInOut,
+            forwardAnimationCurve: Curves.easeInOut,
+            isDismissible: true,
+            dismissDirection: DismissDirection.horizontal,
+            backgroundGradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFFFFF5F5),
+                Color(0xFFFFF0F0),
+              ],
+            ),
+            boxShadows: [
+              BoxShadow(
+                color: emeraldGreen.withAlpha(51),
+                blurRadius: 15,
+                offset: const Offset(0, 5),
+                spreadRadius: 1,
+              ),
+            ],
+            borderColor: goldColor.withAlpha(102),
+            borderWidth: 1.5,
+            leftBarIndicatorColor: Colors.red.shade600,
           ),
-        ],
-        borderColor: goldColor.withAlpha(102),
-        borderWidth: 1.5,
-        leftBarIndicatorColor: Colors.red.shade600,
-      ),
-    );
+        );
+      }
+    });
   }
 
   /// Bilgi mesajı için İslami temalı snackbar
   static void showInfo(String title, String message, {Duration? duration}) {
-    Get.showSnackbar(
-      GetSnackBar(
-        titleText: _buildTitleText(title, Icons.info, Colors.blue.shade700),
-        messageText: _buildMessageText(message),
-        backgroundColor: Colors.white,
-        duration: duration ?? const Duration(seconds: 2),
-        margin: const EdgeInsets.all(16),
-        borderRadius: 5,
-        snackPosition: SnackPosition.TOP,
-        animationDuration: const Duration(milliseconds: 500),
-        reverseAnimationCurve: Curves.easeInOut,
-        forwardAnimationCurve: Curves.easeInOut,
-        isDismissible: true,
-        dismissDirection: DismissDirection.horizontal,
-        backgroundGradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFF0F8FF),
-            Color(0xFFF8FBFF),
-          ],
-        ),
-        boxShadows: [
-          BoxShadow(
-            color: emeraldGreen.withAlpha(51),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-            spreadRadius: 1,
+    // Overlay disposing sorununu önlemek için kısa bir gecikme ekle
+    Future.delayed(const Duration(milliseconds: 100), () {
+      // Context'in hala geçerli olup olmadığını kontrol et
+      if (Get.overlayContext != null) {
+        Get.showSnackbar(
+          GetSnackBar(
+            titleText: _buildTitleText(title, Icons.info, Colors.blue.shade700),
+            messageText: _buildMessageText(message),
+            backgroundColor: Colors.white,
+            duration: duration ?? const Duration(seconds: 2),
+            margin: const EdgeInsets.all(16),
+            borderRadius: 5,
+            snackPosition: SnackPosition.TOP,
+            animationDuration: const Duration(milliseconds: 300), // Kısaltıldı
+            reverseAnimationCurve: Curves.easeInOut,
+            forwardAnimationCurve: Curves.easeInOut,
+            isDismissible: true,
+            dismissDirection: DismissDirection.horizontal,
+            backgroundGradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFFF0F8FF),
+                Color(0xFFF8FBFF),
+              ],
+            ),
+            boxShadows: [
+              BoxShadow(
+                color: emeraldGreen.withAlpha(51),
+                blurRadius: 15,
+                offset: const Offset(0, 5),
+                spreadRadius: 1,
+              ),
+            ],
+            borderColor: goldColor.withAlpha(102),
+            borderWidth: 1.5,
+            leftBarIndicatorColor: Colors.blue.shade600,
           ),
-        ],
-        borderColor: goldColor.withAlpha(102),
-        borderWidth: 1.5,
-        leftBarIndicatorColor: Colors.blue.shade600,
-      ),
-    );
+        );
+      }
+    });
   }
 
   /// Uyarı mesajı için İslami temalı snackbar
   static void showWarning(String title, String message, {Duration? duration}) {
-    Get.showSnackbar(
-      GetSnackBar(
-        titleText: _buildTitleText(title, Icons.warning, Colors.orange.shade700),
-        messageText: _buildMessageText(message),
-        backgroundColor: Colors.white,
-        duration: duration ?? const Duration(seconds: 2),
-        margin: const EdgeInsets.all(16),
-        borderRadius: 5,
-        snackPosition: SnackPosition.TOP,
-        animationDuration: const Duration(milliseconds: 500),
-        reverseAnimationCurve: Curves.easeInOut,
-        forwardAnimationCurve: Curves.easeInOut,
-        isDismissible: true,
-        dismissDirection: DismissDirection.horizontal,
-        backgroundGradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFFFF8F0),
-            Color(0xFFFFFAF5),
-          ],
-        ),
-        boxShadows: [
-          BoxShadow(
-            color: emeraldGreen.withAlpha(51),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-            spreadRadius: 1,
+    // Overlay disposing sorununu önlemek için kısa bir gecikme ekle
+    Future.delayed(const Duration(milliseconds: 100), () {
+      // Context'in hala geçerli olup olmadığını kontrol et
+      if (Get.overlayContext != null) {
+        Get.showSnackbar(
+          GetSnackBar(
+            titleText: _buildTitleText(title, Icons.warning, Colors.orange.shade700),
+            messageText: _buildMessageText(message),
+            backgroundColor: Colors.white,
+            duration: duration ?? const Duration(seconds: 2),
+            margin: const EdgeInsets.all(16),
+            borderRadius: 5,
+            snackPosition: SnackPosition.TOP,
+            animationDuration: const Duration(milliseconds: 300), // Kısaltıldı
+            reverseAnimationCurve: Curves.easeInOut,
+            forwardAnimationCurve: Curves.easeInOut,
+            isDismissible: true,
+            dismissDirection: DismissDirection.horizontal,
+            backgroundGradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFFFFF8F0),
+                Color(0xFFFFFAF5),
+              ],
+            ),
+            boxShadows: [
+              BoxShadow(
+                color: emeraldGreen.withAlpha(51),
+                blurRadius: 15,
+                offset: const Offset(0, 5),
+                spreadRadius: 1,
+              ),
+            ],
+            borderColor: goldColor.withAlpha(102),
+            borderWidth: 1.5,
+            leftBarIndicatorColor: Colors.orange.shade600,
           ),
-        ],
-        borderColor: goldColor.withAlpha(102),
-        borderWidth: 1.5,
-        leftBarIndicatorColor: Colors.orange.shade600,
-      ),
-    );
+        );
+      }
+    });
   }
 
   /// Genel kullanım için özelleştirilebilir İslami temalı snackbar
@@ -176,45 +200,51 @@ class IslamicSnackbar {
     Duration? duration,
     SnackPosition position = SnackPosition.TOP,
   }) {
-    Get.showSnackbar(
-      GetSnackBar(
-        titleText: _buildTitleText(
-          title, 
-          icon ?? Icons.info, 
-          iconColor ?? emeraldGreen
-        ),
-        messageText: _buildMessageText(message),
-        backgroundColor: Colors.white,
-        duration: duration ?? const Duration(seconds: 2),
-        margin: const EdgeInsets.all(16),
-        borderRadius: 5,
-        snackPosition: position,
-        animationDuration: const Duration(milliseconds: 500),
-        reverseAnimationCurve: Curves.easeInOut,
-        forwardAnimationCurve: Curves.easeInOut,
-        isDismissible: true,
-        dismissDirection: DismissDirection.horizontal,
-        backgroundGradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: backgroundColors ?? [
-            lightGold.withAlpha(230),
-            creamBackground,
-          ],
-        ),
-        boxShadows: [
-          BoxShadow(
-            color: emeraldGreen.withAlpha(51),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-            spreadRadius: 1,
+    // Overlay disposing sorununu önlemek için kısa bir gecikme ekle
+    Future.delayed(const Duration(milliseconds: 100), () {
+      // Context'in hala geçerli olup olmadığını kontrol et
+      if (Get.overlayContext != null) {
+        Get.showSnackbar(
+          GetSnackBar(
+            titleText: _buildTitleText(
+              title, 
+              icon ?? Icons.info, 
+              iconColor ?? emeraldGreen
+            ),
+            messageText: _buildMessageText(message),
+            backgroundColor: Colors.white,
+            duration: duration ?? const Duration(seconds: 2),
+            margin: const EdgeInsets.all(16),
+            borderRadius: 5,
+            snackPosition: position,
+            animationDuration: const Duration(milliseconds: 300), // Kısaltıldı
+            reverseAnimationCurve: Curves.easeInOut,
+            forwardAnimationCurve: Curves.easeInOut,
+            isDismissible: true,
+            dismissDirection: DismissDirection.horizontal,
+            backgroundGradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: backgroundColors ?? [
+                lightGold.withAlpha(230),
+                creamBackground,
+              ],
+            ),
+            boxShadows: [
+              BoxShadow(
+                color: emeraldGreen.withAlpha(51),
+                blurRadius: 15,
+                offset: const Offset(0, 5),
+                spreadRadius: 1,
+              ),
+            ],
+            borderColor: goldColor.withAlpha(102),
+            borderWidth: 1.5,
+            leftBarIndicatorColor: leftBarColor ?? goldColor,
           ),
-        ],
-        borderColor: goldColor.withAlpha(102),
-        borderWidth: 1.5,
-        leftBarIndicatorColor: leftBarColor ?? goldColor,
-      ),
-    );
+        );
+      }
+    });
   }
 
   /// Title text widget'ı oluşturur

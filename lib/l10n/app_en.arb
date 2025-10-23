@@ -1402,5 +1402,9 @@
   "deleteZikirSuccess": "Deleted! 🗑️",
   "@deleteZikirSuccess": {
     "description": "Success message when zikr is deleted"
+  },
+  "rotateDeviceMessage": "📱 Please rotate your device to portrait mode",
+  "@rotateDeviceMessage": {
+    "description": "Message shown when device is in landscape mode"
   }
 }

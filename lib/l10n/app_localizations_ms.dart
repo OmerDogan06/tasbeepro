@@ -1095,4 +1095,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get deleteZikirSuccess => 'Dipadam! 🗑️';
+
+  @override
+  String get rotateDeviceMessage => '📱 Sila putar peranti anda ke mod potret';
 }

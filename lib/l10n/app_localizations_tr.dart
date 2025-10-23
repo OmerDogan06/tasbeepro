@@ -1088,4 +1088,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get deleteZikirSuccess => 'Silindi! 🗑️';
+
+  @override
+  String get rotateDeviceMessage => '📱 Lütfen cihazınızı dikey konuma çevirin';
 }
