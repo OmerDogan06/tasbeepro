@@ -69,6 +69,7 @@ class OrientationGuardApp extends StatelessWidget {
         } else {
           // Yatay modda gösterilecek ekran
           return MaterialApp(
+            title: 'Tasbee Pro',
             debugShowCheckedModeBanner: false,
             locale: languageService.currentLocale,
             supportedLocales: const [
