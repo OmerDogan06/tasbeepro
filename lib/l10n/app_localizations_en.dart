@@ -51,6 +51,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsReminderTimesSubtitle => 'Daily recurring notifications';
 
   @override
+  String get settingsReminderWarning =>
+      'Android restricts notifications with intervals less than 2 minutes for security reasons. Set your reminders at least 2 minutes apart.';
+
+  @override
   String get settingsWidget => 'Widget 📱';
 
   @override

@@ -51,6 +51,10 @@ class AppLocalizationsMs extends AppLocalizations {
   String get settingsReminderTimesSubtitle => 'Notifikasi harian berulang';
 
   @override
+  String get settingsReminderWarning =>
+      'Android mengehadkan notifikasi dengan selang waktu kurang dari 2 minit atas sebab keselamatan. Tetapkan peringatan anda dengan selang sekurang-kurangnya 2 minit.';
+
+  @override
   String get settingsWidget => 'Widget 📱';
 
   @override

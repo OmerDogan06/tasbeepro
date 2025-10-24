@@ -51,6 +51,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get settingsReminderTimesSubtitle => 'Günlük tekrarlanan bildirimler';
 
   @override
+  String get settingsReminderWarning =>
+      'Android güvenlik nedeniyle 2 dakikadan az aralıklı bildirimleri kısıtlar. Hatırlatıcılarınızı en az 2 dakika arayla ayarlayın.';
+
+  @override
   String get settingsWidget => 'Widget 📱';
 
   @override

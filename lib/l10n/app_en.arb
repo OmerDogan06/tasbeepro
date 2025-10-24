@@ -53,6 +53,7 @@
     "description": "Reminder times setting title"
   },
   "settingsReminderTimesSubtitle": "Daily recurring notifications",
+  "settingsReminderWarning": "Android restricts notifications with intervals less than 2 minutes for security reasons. Set your reminders at least 2 minutes apart.",
   "@settingsReminderTimesSubtitle": {
     "description": "Reminder times setting subtitle"
   },

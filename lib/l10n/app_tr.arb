@@ -14,6 +14,7 @@
   "settingsReminderSubtitle": "Hatırlatıcıları görüntüle ve yönet",
   "settingsReminderTimes": "Hatırlatma Saatleri",
   "settingsReminderTimesSubtitle": "Günlük tekrarlanan bildirimler",
+  "settingsReminderWarning": "Android güvenlik nedeniyle 2 dakikadan az aralıklı bildirimleri kısıtlar. Hatırlatıcılarınızı en az 2 dakika arayla ayarlayın.",
   "settingsWidget": "Widget 📱",
   "settingsWidgetStats": "Widget İstatistikleri",
   "settingsWidgetStatsSubtitle": "Widget'tan yapılan tüm zikirlerinizi görün",

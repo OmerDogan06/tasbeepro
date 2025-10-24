@@ -51,6 +51,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get settingsReminderTimesSubtitle => 'Notifikasi harian berulang';
 
   @override
+  String get settingsReminderWarning =>
+      'Android membatasi notifikasi dengan interval kurang dari 2 menit karena alasan keamanan. Atur pengingat Anda dengan jarak minimal 2 menit.';
+
+  @override
   String get settingsWidget => 'Widget 📱';
 
   @override

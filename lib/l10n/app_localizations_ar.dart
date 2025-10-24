@@ -51,6 +51,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get settingsReminderTimesSubtitle => 'إشعارات يومية متكررة';
 
   @override
+  String get settingsReminderWarning =>
+      'يقيد الأندرويد الإشعارات التي تقل فترتها عن دقيقتين لأسباب أمنية. اضبط تذكيراتك بفاصل زمني لا يقل عن دقيقتين.';
+
+  @override
   String get settingsWidget => 'الودجت 📱';
 
   @override

@@ -196,6 +196,12 @@ abstract class AppLocalizations {
   /// **'Daily recurring notifications'**
   String get settingsReminderTimesSubtitle;
 
+  /// No description provided for @settingsReminderWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Android restricts notifications with intervals less than 2 minutes for security reasons. Set your reminders at least 2 minutes apart.'**
+  String get settingsReminderWarning;
+
   /// Widget section header
   ///
   /// In en, this message translates to:

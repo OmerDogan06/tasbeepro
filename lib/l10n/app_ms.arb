@@ -14,6 +14,7 @@
   "settingsReminderSubtitle": "Lihat dan urus peringatan",
   "settingsReminderTimes": "Masa Peringatan",
   "settingsReminderTimesSubtitle": "Notifikasi harian berulang",
+  "settingsReminderWarning": "Android mengehadkan notifikasi dengan selang waktu kurang dari 2 minit atas sebab keselamatan. Tetapkan peringatan anda dengan selang sekurang-kurangnya 2 minit.",
   "settingsWidget": "Widget 📱",
   "settingsWidgetStats": "Statistik Widget",
   "settingsWidgetStatsSubtitle": "Lihat semua zikir anda dari widget",

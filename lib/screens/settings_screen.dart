@@ -236,6 +236,57 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   AppLocalizations.of(context)?.settingsReminders ??
                       'Hatırlatıcılar 💎',
                 ),
+
+                   // Bilgilendirme kartı - Android bildirim kısıtlamaları
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [Color(0xFFFFF9E6), Color(0xFFFFF3D1)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: goldColor.withAlpha(77), width: 1),
+                    boxShadow: [
+                      BoxShadow(
+                        color: darkGreen.withAlpha(13),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: Colors.orange.shade100,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Icon(
+                          Icons.info_outline,
+                          color: Colors.orange.shade700,
+                          size: 18,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          AppLocalizations.of(context)?.settingsReminderWarning ??
+                              'Android güvenlik nedeniyle 2 dakikadan az aralıklı bildirimleri kısıtlar. Hatırlatıcılarınızı en az 2 dakika arayla ayarlayın.',
+                          style: TextStyle(
+                            color: emeraldGreen.withAlpha(204),
+                            fontSize: 11,
+                            height: 1.3,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8),
                 _buildIslamicCard([
                   _buildIslamicListTile(
                     icon: Icons.notifications,
