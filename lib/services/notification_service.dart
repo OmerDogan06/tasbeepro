@@ -212,27 +212,7 @@ class NotificationService extends GetxService {
     await _storage.saveReminders(reminders);
   }
 
-  Future<void> scheduleDailyReminder({
-    required int hour,
-    required int minute,
-    required String message,
-  }) async {
-    final context = Get.context;
-    
-    await scheduleZikrReminder(
-      id: 1,
-      title: context != null 
-          ? (AppLocalizations.of(context)?.notificationZikirTime ?? 'Zikir Zamanı 🕌')
-          : 'Zikir Zamanı 🕌',
-      body: message,
-      scheduledTime: DateTime.now().copyWith(
-        hour: hour,
-        minute: minute,
-        second: 0,
-        millisecond: 0,
-      ),
-    );
-  }
+
 
   Future<void> cancelAllNotifications() async {
     await _notifications.cancelAll();
