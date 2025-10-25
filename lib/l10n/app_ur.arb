@@ -14,7 +14,7 @@
   "settingsReminderSubtitle": "یاد دہانیاں دیکھیں اور منظم کریں",
   "settingsReminderTimes": "یاد دہانی کے اوقات",
   "settingsReminderTimesSubtitle": "روزانہ تکرار شدہ اطلاعات",
-  "settingsReminderWarning": "اینڈرائیڈ سیکیورٹی وجوہات کی بناء پر 2 منٹ سے کم وقفے والی اطلاعات کو محدود کرتا ہے۔ اپنے یاددہانی کم از کم 2 منٹ کے وقفے سے سیٹ کریں۔",
+  "settingsReminderWarning": "اینڈرائیڈ سیکیورٹی وجوہات کی بناء پر 5 منٹ سے کم وقفے والی اطلاعات کو محدود کرتا ہے۔ اپنے یاددہانی کم از کم 5 منٹ کے وقفے سے سیٹ کریں۔",
   "settingsWidget": "ویجٹ 📱",
   "settingsWidgetStats": "ویجٹ کی تفصیلات",
   "settingsWidgetStatsSubtitle": "ویجٹ سے کیے گئے تمام ذکر دیکھیں",

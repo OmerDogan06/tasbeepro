@@ -275,7 +275,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       Expanded(
                         child: Text(
                           AppLocalizations.of(context)?.settingsReminderWarning ??
-                              'Android güvenlik nedeniyle 2 dakikadan az aralıklı bildirimleri kısıtlar. Hatırlatıcılarınızı en az 2 dakika arayla ayarlayın.',
+                              'Android güvenlik nedeniyle 5 dakikadan az aralıklı bildirimleri kısıtlar. Hatırlatıcılarınızı en az 5 dakika arayla ayarlayın.',
                           style: TextStyle(
                             color: emeraldGreen.withAlpha(204),
                             fontSize: 11,

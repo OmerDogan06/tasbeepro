@@ -14,7 +14,7 @@
   "settingsReminderSubtitle": "Lihat dan kelola pengingat",
   "settingsReminderTimes": "Waktu Pengingat",
   "settingsReminderTimesSubtitle": "Notifikasi harian berulang",
-  "settingsReminderWarning": "Android membatasi notifikasi dengan interval kurang dari 2 menit karena alasan keamanan. Atur pengingat Anda dengan jarak minimal 2 menit.",
+  "settingsReminderWarning": "Android membatasi notifikasi dengan interval kurang dari 5 menit karena alasan keamanan. Atur pengingat Anda dengan jarak minimal 5 menit.",
   "settingsWidget": "Widget 📱",
   "settingsWidgetStats": "Statistik Widget",
   "settingsWidgetStatsSubtitle": "Lihat semua dzikir Anda dari widget",

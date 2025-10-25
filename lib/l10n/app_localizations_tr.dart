@@ -52,7 +52,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get settingsReminderWarning =>
-      'Android güvenlik nedeniyle 2 dakikadan az aralıklı bildirimleri kısıtlar. Hatırlatıcılarınızı en az 2 dakika arayla ayarlayın.';
+      'Android güvenlik nedeniyle 5 dakikadan az aralıklı bildirimleri kısıtlar. Hatırlatıcılarınızı en az 5 dakika arayla ayarlayın.';
 
   @override
   String get settingsWidget => 'Widget 📱';

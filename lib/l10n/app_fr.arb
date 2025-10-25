@@ -14,7 +14,7 @@
   "settingsReminderSubtitle": "Afficher et gérer les rappels",
   "settingsReminderTimes": "Heures de Rappel",
   "settingsReminderTimesSubtitle": "Notifications quotidiennes répétées",
-  "settingsReminderWarning": "Android restreint les notifications avec des intervalles de moins de 2 minutes pour des raisons de sécurité. Réglez vos rappels à au moins 2 minutes d'intervalle.",
+  "settingsReminderWarning": "Android restreint les notifications avec des intervalles de moins de 5 minutes pour des raisons de sécurité. Réglez vos rappels à au moins 5 minutes d'intervalle.",
   "settingsWidget": "Widget 📱",
   "settingsWidgetStats": "Statistiques du Widget",
   "settingsWidgetStatsSubtitle": "Voir tous les dhikrs faits depuis le widget",

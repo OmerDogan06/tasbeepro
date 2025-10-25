@@ -52,7 +52,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get settingsReminderWarning =>
-      'اینڈرائیڈ سیکیورٹی وجوہات کی بناء پر 2 منٹ سے کم وقفے والی اطلاعات کو محدود کرتا ہے۔ اپنے یاددہانی کم از کم 2 منٹ کے وقفے سے سیٹ کریں۔';
+      'اینڈرائیڈ سیکیورٹی وجوہات کی بناء پر 5 منٹ سے کم وقفے والی اطلاعات کو محدود کرتا ہے۔ اپنے یاددہانی کم از کم 5 منٹ کے وقفے سے سیٹ کریں۔';
 
   @override
   String get settingsWidget => 'ویجٹ 📱';
