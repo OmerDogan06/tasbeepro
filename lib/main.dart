@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'screens/splash_screen.dart';
 import 'controllers/counter_controller.dart';
 import 'controllers/widget_stats_controller.dart';
@@ -23,8 +22,7 @@ void main() async {
   // Initialize timezone
   tz.initializeTimeZones();
   
-  // Initialize AndroidAlarmManager
-  await AndroidAlarmManager.initialize();
+
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -43,7 +41,7 @@ void main() async {
   await Get.putAsync(() => LanguageService().init());
   Get.put(SoundService());
   Get.put(VibrationService());
-  await Get.putAsync(() => NotificationService().init());
+ Get.put(NotificationService());
   Get.put(WidgetService());
   Get.put(PermissionService());
 
