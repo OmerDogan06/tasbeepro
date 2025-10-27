@@ -14,6 +14,16 @@
 
 # Google Play Core
 -keep class com.google.android.play.core.** { *; }
+-keep class com.google.android.play.core.tasks.** { *; }
+-dontwarn com.google.android.play.core.**
+
+# Google Play Services Tasks
+-keep class com.google.android.gms.tasks.** { *; }
+-dontwarn com.google.android.gms.tasks.**
+
+# Flutter engine - R8 compatibility
+-keep class io.flutter.embedding.engine.deferredcomponents.** { *; }
+-dontwarn io.flutter.embedding.engine.deferredcomponents.**
 
 # Core AndroidX libraries
 -keep class androidx.core.** { *; }

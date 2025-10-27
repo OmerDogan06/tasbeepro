@@ -43,10 +43,15 @@ android {
         applicationId = "com.skyforgestudios.tasbeepro"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion  // Android 5.0+ için optimize edildi
-        targetSdk = flutter.targetSdkVersion
+        minSdk = flutter.minSdkVersion  // Android 5.0+ geniş cihaz desteği için
+        targetSdk = 36  // Android 16 - En güncel target SDK
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        
+        // Geniş cihaz desteği için tüm ABI'lar
+        ndk {
+            abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
+        }
         
         // Multiapk support için
         multiDexEnabled = true
@@ -83,13 +88,18 @@ flutter {
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.google.code.gson:gson:2.11.0")
     
-    // Google Play Core - eksik olan bağımlılık
-    implementation("com.google.android.play:core:1.10.3")
+    // Google Play Core - Android 16 uyumlu en güncel kitaplıklar
+    implementation("com.google.android.play:app-update:2.1.0")
+    implementation("com.google.android.play:review:2.0.1")
+    implementation("com.google.android.play:feature-delivery:2.1.0")
     
-    // Core Android libraries
-    implementation("androidx.core:core-ktx:1.13.1")
+    // Flutter engine için gerekli Play Core tasks
+    implementation("com.google.android.gms:play-services-tasks:18.2.0")
+    
+    // Core Android libraries - Android 16 uyumlu
+    implementation("androidx.core:core-ktx:1.15.0")
     
     // Multidex support
     implementation("androidx.multidex:multidex:2.0.1")
