@@ -485,6 +485,8 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
         return Icons.notifications;
       case Permission.scheduleExactAlarm:
         return Icons.schedule;
+      case Permission.ignoreBatteryOptimizations:
+        return Icons.battery_saver;
       default:
         return Icons.security;
     }

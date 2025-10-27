@@ -1367,6 +1367,14 @@
   "@permissionManualMessage": {
     "description": "Manual permission required dialog message"
   },
+  "permissionBatteryTitle": "Battery Optimization",
+  "@permissionBatteryTitle": {
+    "description": "Battery optimization permission title"
+  },
+  "permissionBatteryDescription": "Required for reliable background notifications",
+  "@permissionBatteryDescription": {
+    "description": "Battery optimization permission description"
+  },
   "error": "Error",
   "@error": {
     "description": "Error message for generic errors"

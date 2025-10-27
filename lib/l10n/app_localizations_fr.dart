@@ -1089,7 +1089,14 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get permissionManualMessage =>
-      'Cette permission a été refusée de manière permanente. Vous devez l\'ouvrir manuellement depuis la page des paramètres.';
+      'Cette permission a été refusée de manière permanente. Vous devez l\'activer manuellement depuis les paramètres.';
+
+  @override
+  String get permissionBatteryTitle => 'Optimisation de la Batterie';
+
+  @override
+  String get permissionBatteryDescription =>
+      'Nécessaire pour les notifications fiables en arrière-plan';
 
   @override
   String get error => 'Erreur';

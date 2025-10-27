@@ -330,6 +330,8 @@
   "permissionsRequestError": "İzinler istenirken bir hata oluştu.",
   "permissionManualTitle": "Manuel İzin Gerekli",
   "permissionManualMessage": "Bu izin kalıcı olarak reddedildi. Ayarlar sayfasından manuel olarak açmanız gerekiyor.",
+  "permissionBatteryTitle": "Batarya Optimizasyonu",
+  "permissionBatteryDescription": "Arka planda güvenilir bildirimler için gerekli",
   "error": "Hata",
   "targetCompletionTitle": "Tebrikler! 🎉",
   "targetCompletionMessage": "Hedefini tamamladın!",

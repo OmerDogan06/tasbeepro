@@ -1062,6 +1062,13 @@ class AppLocalizationsHi extends AppLocalizations {
       'यह अनुमति स्थायी रूप से अस्वीकृत कर दी गई। आपको सेटिंग्स पृष्ठ से मैन्युअल रूप से खोलना होगा।';
 
   @override
+  String get permissionBatteryTitle => 'बैटरी ऑप्टिमाइज़ेशन';
+
+  @override
+  String get permissionBatteryDescription =>
+      'पृष्ठभूमि में विश्वसनीय सूचनाओं के लिए आवश्यक';
+
+  @override
   String get error => 'त्रुटि';
 
   @override

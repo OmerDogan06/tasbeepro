@@ -21,12 +21,24 @@ class NotificationService extends GetxService {
   Future<void> _requestPermissions() async {
     // Android 13+ için notification permission iste
     if (await Permission.notification.isDenied) {
-      await Permission.notification.request();
+      final status = await Permission.notification.request();
+      if (status.isDenied) {
+        // Kullanıcıya açıklama göster
+        print('Notification permission denied');
+      }
     }
 
     // Exact alarm permission (Android 12+)
     if (await Permission.scheduleExactAlarm.isDenied) {
-      await Permission.scheduleExactAlarm.request();
+      final status = await Permission.scheduleExactAlarm.request();
+      if (status.isDenied) {
+        print('Exact alarm permission denied');
+      }
+    }
+    
+    // Battery optimization için izin iste (opsiyonel)
+    if (await Permission.ignoreBatteryOptimizations.isDenied) {
+      await Permission.ignoreBatteryOptimizations.request();
     }
   }
 
@@ -57,6 +69,7 @@ class NotificationService extends GetxService {
   Future<void> _createNotificationChannel() async {
     final context = Get.context;
     
+    // High priority channel for critical reminders
     final AndroidNotificationChannel channel = AndroidNotificationChannel(
       'zikr_reminders',
       context != null 
@@ -65,14 +78,15 @@ class NotificationService extends GetxService {
       description: context != null 
           ? (AppLocalizations.of(context)?.notificationChannelDescription ?? 'Zikir yapmayı hatırlatır')
           : 'Zikir yapmayı hatırlatır',
-      importance: Importance.max, // Max seviye
+      importance: Importance.high, // High instead of max to avoid being too intrusive
       enableVibration: true,
       playSound: true,
       enableLights: true,
-      ledColor: Color.fromARGB(255, 255, 0, 0),
+      ledColor: const Color.fromARGB(255, 0, 255, 0),
       showBadge: true,
     );
 
+    // Daily reminders channel
     final AndroidNotificationChannel dailyChannel = AndroidNotificationChannel(
       'daily_reminders',
       context != null 
@@ -81,11 +95,11 @@ class NotificationService extends GetxService {
       description: context != null 
           ? (AppLocalizations.of(context)?.notificationDailyChannelDescription ?? 'Belirlenen saatlerde günlük zikir hatırlatıcıları')
           : 'Belirlenen saatlerde günlük zikir hatırlatıcıları',
-      importance: Importance.max, // Max seviye
+      importance: Importance.high, // High instead of max
       enableVibration: true,
       playSound: true,
       enableLights: true,
-      ledColor: Color.fromARGB(255, 255, 0, 0),
+      ledColor: const Color.fromARGB(255, 0, 255, 0),
       showBadge: true,
     );
 
@@ -132,19 +146,19 @@ class NotificationService extends GetxService {
           channelDescription: context != null 
               ? (context.mounted ? AppLocalizations.of(context)?.notificationChannelDescription : 'Zikir yapmayı hatırlatır')
               : 'Zikir yapmayı hatırlatır',
-          importance: Importance.max,
-          priority: Priority.max,
+          importance: Importance.high,
+          priority: Priority.high,
           icon: '@mipmap/launcher_icon',
+          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/launcher_icon'),
           enableVibration: true,
           playSound: true,
           autoCancel: true,
           ongoing: false,
-          category: AndroidNotificationCategory.alarm,
+          category: AndroidNotificationCategory.reminder,
           visibility: NotificationVisibility.public,
           showWhen: true,
-          fullScreenIntent: false, // Ekranı uyandırır
           enableLights: true,
-          ledColor: const Color.fromARGB(255, 255, 0, 0),
+          ledColor: const Color.fromARGB(255, 0, 255, 0),
           ledOnMs: 1000,
           ledOffMs: 500,
           ticker: context != null 
@@ -159,17 +173,16 @@ class NotificationService extends GetxService {
             summaryText: 'Tasbee Pro',
             htmlFormatSummaryText: false,
           ),
-          // Flag'leri kaldırdık
         ),
         iOS: const DarwinNotificationDetails(
           presentAlert: true,
           presentBadge: true,
           presentSound: true,
           badgeNumber: 1,
-          interruptionLevel: InterruptionLevel.critical,
+          interruptionLevel: InterruptionLevel.active,
         ),
       ),
-        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
   }
 
@@ -326,19 +339,19 @@ class NotificationService extends GetxService {
           channelDescription: context != null 
               ? (AppLocalizations.of(context)?.notificationDailyChannelDescription ?? 'Belirlenen saatlerde günlük zikir hatırlatıcıları')
               : 'Belirlenen saatlerde günlük zikir hatırlatıcıları',
-          importance: Importance.max,
-          priority: Priority.max,
+          importance: Importance.high,
+          priority: Priority.high,
           icon: '@mipmap/launcher_icon',
+          largeIcon: const DrawableResourceAndroidBitmap('@mipmap/launcher_icon'),
           enableVibration: true,
           playSound: true,
           autoCancel: true,
           ongoing: false,
-          category: AndroidNotificationCategory.alarm,
-          fullScreenIntent: false, // Bu ekranı uyandırır ama uygulama açmaz
+          category: AndroidNotificationCategory.reminder,
           channelShowBadge: true,
           visibility: NotificationVisibility.public,
           enableLights: true,
-          ledColor: const Color.fromARGB(255, 255, 0, 0),
+          ledColor: const Color.fromARGB(255, 0, 255, 0),
           ledOnMs: 1000,
           ledOffMs: 500,
           ticker: context != null 
@@ -359,18 +372,16 @@ class NotificationService extends GetxService {
             summaryText: 'Tasbee Pro',
             htmlFormatSummaryText: false,
           ),
-          // Flag'leri kaldırdık - sürekli ses sorunu buradandı
         ),
         iOS: const DarwinNotificationDetails(
           presentAlert: true,
           presentBadge: true,
           presentSound: true,
           categoryIdentifier: 'daily_reminder',
-          interruptionLevel: InterruptionLevel.critical,
+          interruptionLevel: InterruptionLevel.active,
         ),
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-
       matchDateTimeComponents: DateTimeComponents.time,
     );
   }

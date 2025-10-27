@@ -330,6 +330,8 @@
   "permissionsRequestError": "حدث خطأ أثناء طلب الأذونات.",
   "permissionManualTitle": "إذن يدوي مطلوب",
   "permissionManualMessage": "تم رفض هذا الإذن بشكل دائم. يجب تفعيله يدوياً من صفحة الإعدادات.",
+  "permissionBatteryTitle": "تحسين البطارية",
+  "permissionBatteryDescription": "مطلوب للإشعارات الموثوقة في الخلفية",
   "error": "خطأ",
   "targetCompletionTitle": "مبروك! 🎉",
   "targetCompletionMessage": "لقد أكملت هدفك!",

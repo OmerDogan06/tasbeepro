@@ -1059,6 +1059,13 @@ class AppLocalizationsUr extends AppLocalizations {
       'یہ اجازت مستقل طور پر مسترد کر دی گئی۔ آپ کو سیٹنگز سے دستی طور پر کھولنا ہوگا۔';
 
   @override
+  String get permissionBatteryTitle => 'بیٹری آپٹیمائزیشن';
+
+  @override
+  String get permissionBatteryDescription =>
+      'پس منظر میں قابل اعتماد اطلاعات کے لیے ضروری';
+
+  @override
   String get error => 'خرابی';
 
   @override

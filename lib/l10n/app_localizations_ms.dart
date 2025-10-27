@@ -1068,7 +1068,14 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get permissionManualMessage =>
-      'Kebenaran ini ditolak secara kekal. Anda perlu mengaktifkannya secara manual dari halaman tetapan.';
+      'Kebenaran ini telah ditolak secara kekal. Anda perlu mengaktifkannya secara manual daripada halaman tetapan.';
+
+  @override
+  String get permissionBatteryTitle => 'Pengoptimuman Bateri';
+
+  @override
+  String get permissionBatteryDescription =>
+      'Diperlukan untuk pemberitahuan yang boleh dipercayai di latar belakang';
 
   @override
   String get error => 'Ralat';

@@ -2092,6 +2092,18 @@ abstract class AppLocalizations {
   /// **'This permission has been permanently denied. You need to enable it manually from the settings page.'**
   String get permissionManualMessage;
 
+  /// Battery optimization permission title
+  ///
+  /// In en, this message translates to:
+  /// **'Battery Optimization'**
+  String get permissionBatteryTitle;
+
+  /// Battery optimization permission description
+  ///
+  /// In en, this message translates to:
+  /// **'Required for reliable background notifications'**
+  String get permissionBatteryDescription;
+
   /// Error message for generic errors
   ///
   /// In en, this message translates to:

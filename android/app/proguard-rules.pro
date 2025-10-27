@@ -12,3 +12,30 @@
 # Timezone data
 -keep class org.threeten.bp.** { *; }
 
+# Google Play Core
+-keep class com.google.android.play.core.** { *; }
+
+# Core AndroidX libraries
+-keep class androidx.core.** { *; }
+
+# Multidex
+-keep class androidx.multidex.** { *; }
+
+# Flutter engine
+-keep class io.flutter.** { *; }
+
+# Kotlin
+-keep class kotlin.** { *; }
+-keep class kotlinx.** { *; }
+
+# Prevent obfuscation of notification-related classes
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+
+# Don't obfuscate generic types
+-keepattributes Signature
+
+# Don't obfuscate exceptions
+-keepattributes Exceptions
+

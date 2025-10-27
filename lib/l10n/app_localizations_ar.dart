@@ -1044,6 +1044,13 @@ class AppLocalizationsAr extends AppLocalizations {
       'تم رفض هذا الإذن بشكل دائم. يجب تفعيله يدوياً من صفحة الإعدادات.';
 
   @override
+  String get permissionBatteryTitle => 'تحسين البطارية';
+
+  @override
+  String get permissionBatteryDescription =>
+      'مطلوب للإشعارات الموثوقة في الخلفية';
+
+  @override
   String get error => 'خطأ';
 
   @override

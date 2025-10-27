@@ -1065,7 +1065,14 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get permissionManualMessage =>
-      'Izin ini ditolak secara permanen. Anda perlu mengaktifkannya secara manual dari halaman pengaturan.';
+      'Izin ini telah ditolak secara permanen. Anda perlu mengaktifkannya secara manual dari halaman pengaturan.';
+
+  @override
+  String get permissionBatteryTitle => 'Optimisasi Baterai';
+
+  @override
+  String get permissionBatteryDescription =>
+      'Diperlukan untuk notifikasi yang handal di latar belakang';
 
   @override
   String get error => 'Kesalahan';

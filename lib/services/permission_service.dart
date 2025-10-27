@@ -12,6 +12,7 @@ class PermissionService extends GetxService {
   final List<Permission> _requiredPermissions = [
     Permission.notification,
     Permission.scheduleExactAlarm,
+    Permission.ignoreBatteryOptimizations,
   ];
 
   // Getter'lar
@@ -177,6 +178,8 @@ class PermissionService extends GetxService {
         return AppLocalizations.of(context)?.permissionNotificationTitle ?? 'Bildirim İzni';
       case Permission.scheduleExactAlarm:
         return AppLocalizations.of(context)?.permissionAlarmTitle ?? 'Alarm İzni';
+      case Permission.ignoreBatteryOptimizations:
+        return AppLocalizations.of(context)?.permissionBatteryTitle ?? 'Batarya Optimizasyonu';
       default:
         return AppLocalizations.of(context)?.permissionUnknownTitle ?? 'Bilinmeyen İzin';
     }
@@ -194,6 +197,9 @@ class PermissionService extends GetxService {
       case Permission.scheduleExactAlarm:
         return AppLocalizations.of(context)?.permissionAlarmDescription ?? 
                'Zamanında hatırlatıcılar için gerekli (Android 12+)';
+      case Permission.ignoreBatteryOptimizations:
+        return AppLocalizations.of(context)?.permissionBatteryDescription ?? 
+               'Arka planda güvenilir bildirimler için gerekli';
       default:
         return AppLocalizations.of(context)?.permissionUnknownDescription ?? 
                'Bu izin hakkında bilgi mevcut değil';

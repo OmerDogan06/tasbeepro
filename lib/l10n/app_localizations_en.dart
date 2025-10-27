@@ -1068,6 +1068,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'This permission has been permanently denied. You need to enable it manually from the settings page.';
 
   @override
+  String get permissionBatteryTitle => 'Battery Optimization';
+
+  @override
+  String get permissionBatteryDescription =>
+      'Required for reliable background notifications';
+
+  @override
   String get error => 'Error';
 
   @override

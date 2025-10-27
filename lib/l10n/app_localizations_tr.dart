@@ -1063,6 +1063,13 @@ class AppLocalizationsTr extends AppLocalizations {
       'Bu izin kalıcı olarak reddedildi. Ayarlar sayfasından manuel olarak açmanız gerekiyor.';
 
   @override
+  String get permissionBatteryTitle => 'Batarya Optimizasyonu';
+
+  @override
+  String get permissionBatteryDescription =>
+      'Arka planda güvenilir bildirimler için gerekli';
+
+  @override
   String get error => 'Hata';
 
   @override

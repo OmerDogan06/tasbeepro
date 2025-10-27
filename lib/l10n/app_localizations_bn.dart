@@ -1066,6 +1066,13 @@ class AppLocalizationsBn extends AppLocalizations {
       'এই অনুমতি স্থায়ীভাবে প্রত্যাখ্যাত হয়েছে। সেটিংস পৃষ্ঠা থেকে ম্যানুয়ালি খুলতে হবে।';
 
   @override
+  String get permissionBatteryTitle => 'ব্যাটারি অপ্টিমাইজেশন';
+
+  @override
+  String get permissionBatteryDescription =>
+      'ব্যাকগ্রাউন্ডে নির্ভরযোগ্য বিজ্ঞপ্তির জন্য প্রয়োজন';
+
+  @override
   String get error => 'ত্রুটি';
 
   @override
