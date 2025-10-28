@@ -114,7 +114,7 @@ class HomeScreen extends StatelessWidget {
                     Obx(
                       () => Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             begin: Alignment.topLeft,
@@ -194,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                                 child: Text(
                                   '${controller.dailyTotal}',
                                   style: const TextStyle(
-                                    fontSize: 28,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color: emeraldGreen,
                                     shadows: [
@@ -213,7 +213,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 5),
 
                     // Current zikr - İslami kart tasarımı
                     Obx(
@@ -287,7 +287,7 @@ class HomeScreen extends StatelessWidget {
                     // Progress bar (İslami tema ile)
                     const ProgressBar(),
 
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 5),
 
                     // Action buttons - İslami tasarım
                     _buildActionButtons(
@@ -328,7 +328,7 @@ class HomeScreen extends StatelessWidget {
                   controller: controller,
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 6),
               Expanded(
                 child: _buildActionButton(
                   context,
@@ -337,7 +337,7 @@ class HomeScreen extends StatelessWidget {
                   onTap: () => _showResetDialog(context, controller),
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 6),
               Expanded(
                 child: _buildActionButton(
                   context,
@@ -375,7 +375,7 @@ class HomeScreen extends StatelessWidget {
                       controller: controller,
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 6),
                   Expanded(
                     child: _buildActionButton(
                       context,
@@ -387,7 +387,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 6),
               SizedBox(
                 width: double.infinity,
                 child: _buildActionButton(

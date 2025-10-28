@@ -78,7 +78,7 @@ class _ProgressBarState extends State<ProgressBar>
             return FadeInDown(
               duration: const Duration(milliseconds: 600),
               child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
             begin: Alignment.topLeft,

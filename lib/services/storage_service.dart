@@ -51,7 +51,7 @@ class StorageService extends GetxService {
   }
   
   int getSoundVolume() {
-    return _prefs.getInt('sound_volume') ?? 1; // Varsayılan: Orta
+    return _prefs.getInt('sound_volume') ?? 2; // Varsayılan: Yüksek
   }
   
   // Vibration settings
