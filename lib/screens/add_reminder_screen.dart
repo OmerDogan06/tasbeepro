@@ -456,7 +456,7 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
         minutes: _selectedDateTime.minute,
       ),
       displaySubmitButton: true,
-      use24hFormat: true,
+      use24hFormat: null,
       headerBuilder: (context) => Container(
         padding: const EdgeInsets.all(10),
         decoration: const BoxDecoration(

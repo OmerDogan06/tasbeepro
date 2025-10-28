@@ -435,7 +435,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
         minutes: TimeOfDay.now().minute,
       ),
       displaySubmitButton: true,
-      use24hFormat: true,
+      use24hFormat: null,
       headerBuilder: (context) => Container(
         padding: const EdgeInsets.all(10),
         decoration: const BoxDecoration(
