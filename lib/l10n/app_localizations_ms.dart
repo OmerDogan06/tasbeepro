@@ -1109,4 +1109,31 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get rotateDeviceMessage => '📱 Sila putar peranti anda ke mod potret';
+
+  @override
+  String get notificationSettingsDialogTitle => 'Bantuan Tetapan Notifikasi 🔔';
+
+  @override
+  String get notificationSettingsDialogMessage =>
+      'Untuk Tasbee Pro mengingatkan anda pada masa yang tepat, beberapa kebenaran perlu diaktifkan dalam tetapan peranti.\nSila periksa yang berikut:';
+
+  @override
+  String get notificationSettingsPermission =>
+      'Kebenaran notifikasi: Pastikan notifikasi aplikasi dibenarkan.';
+
+  @override
+  String get notificationSettingsBattery =>
+      'Tetapan bateri dan latar belakang: Benarkan Tasbee Pro berjalan di latar belakang.';
+
+  @override
+  String get notificationSettingsDoNotDisturb =>
+      'Benarkan gangguan (pilihan): Aktifkan pilihan ini untuk peringatan muncul walaupun dalam mod senyap.';
+
+  @override
+  String get notificationSettingsLockScreen =>
+      'Tunjukkan pada skrin kunci: Benarkan notifikasi muncul pada skrin kunci. (Notifikasi mungkin tersembunyi pada sesetengah peranti.)';
+
+  @override
+  String get notificationSettingsRestart =>
+      'Membuka aplikasi sekali selepas peranti restart menyegarkan sistem notifikasi.';
 }

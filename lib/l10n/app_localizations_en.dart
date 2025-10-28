@@ -1107,4 +1107,31 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get rotateDeviceMessage =>
       '📱 Please rotate your device to portrait mode';
+
+  @override
+  String get notificationSettingsDialogTitle => 'Notification Settings Help 🔔';
+
+  @override
+  String get notificationSettingsDialogMessage =>
+      'For Tasbee Pro to remind you at the right time, some permissions need to be enabled in device settings.\nPlease check the following:';
+
+  @override
+  String get notificationSettingsPermission =>
+      'Notification permission: Make sure app notifications are allowed.';
+
+  @override
+  String get notificationSettingsBattery =>
+      'Battery and background settings: Allow Tasbee Pro to run in the background.';
+
+  @override
+  String get notificationSettingsDoNotDisturb =>
+      'Allow interruptions (optional): Enable this option for reminders to appear even in silent mode.';
+
+  @override
+  String get notificationSettingsLockScreen =>
+      'Show on lock screen: Allow notifications to appear on the lock screen. (Notifications may be hidden on some devices.)';
+
+  @override
+  String get notificationSettingsRestart =>
+      'Opening the app once after device restart refreshes the notification system.';
 }

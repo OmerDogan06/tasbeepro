@@ -1108,4 +1108,32 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get rotateDeviceMessage =>
       '📱 Harap putar perangkat Anda ke mode potret';
+
+  @override
+  String get notificationSettingsDialogTitle =>
+      'Bantuan Pengaturan Notifikasi 🔔';
+
+  @override
+  String get notificationSettingsDialogMessage =>
+      'Agar Tasbee Pro dapat mengingatkan Anda pada waktu yang tepat, beberapa izin perlu diaktifkan di pengaturan perangkat.\nHarap periksa hal berikut:';
+
+  @override
+  String get notificationSettingsPermission =>
+      'Izin notifikasi: Pastikan notifikasi aplikasi diizinkan.';
+
+  @override
+  String get notificationSettingsBattery =>
+      'Pengaturan baterai dan latar belakang: Izinkan Tasbee Pro berjalan di latar belakang.';
+
+  @override
+  String get notificationSettingsDoNotDisturb =>
+      'Izinkan gangguan (opsional): Aktifkan opsi ini agar pengingat muncul bahkan dalam mode senyap.';
+
+  @override
+  String get notificationSettingsLockScreen =>
+      'Tampilkan di layar kunci: Izinkan notifikasi muncul di layar kunci. (Notifikasi mungkin tersembunyi di beberapa perangkat.)';
+
+  @override
+  String get notificationSettingsRestart =>
+      'Membuka aplikasi sekali setelah perangkat restart menyegarkan sistem notifikasi.';
 }

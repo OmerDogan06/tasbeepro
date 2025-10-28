@@ -342,5 +342,12 @@
   "deleteZikirConfirm": "Supprimer",
   "deleteZikirCancel": "Annuler",
   "deleteZikirSuccess": "Supprimé! 🗑️",
-  "rotateDeviceMessage": "📱 Veuillez faire pivoter votre appareil en mode portrait"
+  "rotateDeviceMessage": "📱 Veuillez faire pivoter votre appareil en mode portrait",
+  "notificationSettingsDialogTitle": "Aide pour les Paramètres de Notification 🔔",
+  "notificationSettingsDialogMessage": "Pour que Tasbee Pro puisse vous rappeler au bon moment, certaines permissions doivent être activées dans les paramètres de l'appareil.\nVeuillez vérifier les points suivants:",
+  "notificationSettingsPermission": "Permission de notification: Assurez-vous que les notifications de l'application sont autorisées.",
+  "notificationSettingsBattery": "Paramètres de batterie et d'arrière-plan: Autorisez Tasbee Pro à fonctionner en arrière-plan.",
+  "notificationSettingsDoNotDisturb": "Autoriser les interruptions (optionnel): Activez cette option pour que les rappels apparaissent même en mode silencieux.",
+  "notificationSettingsLockScreen": "Afficher sur l'écran de verrouillage: Autorisez les notifications à apparaître sur l'écran de verrouillage. (Les notifications peuvent être masquées sur certains appareils.)",
+  "notificationSettingsRestart": "Ouvrir l'application une fois après le redémarrage de l'appareil rafraîchit le système de notification."
 }

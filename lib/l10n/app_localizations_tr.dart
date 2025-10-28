@@ -1102,4 +1102,31 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get rotateDeviceMessage => '📱 Lütfen cihazınızı dikey konuma çevirin';
+
+  @override
+  String get notificationSettingsDialogTitle => 'Bildirim Ayarları Yardımı 🔔';
+
+  @override
+  String get notificationSettingsDialogMessage =>
+      'Tasbee Pro\'nun seni doğru zamanda hatırlatabilmesi için cihaz ayarlarında bazı izinlerin açık olması gerekir.\nLütfen aşağıdakileri kontrol et:';
+
+  @override
+  String get notificationSettingsPermission =>
+      'Bildirim izni: Uygulama bildirimlerine izin verildiğinden emin ol.';
+
+  @override
+  String get notificationSettingsBattery =>
+      'Pil ve arka plan ayarları: Tasbee Pro\'nun arka planda çalışmasına izin ver.';
+
+  @override
+  String get notificationSettingsDoNotDisturb =>
+      'Kesintilere izin ver (isteğe bağlı): Sessiz moddayken de hatırlatmaların görünmesi için bu seçeneği aktif edebilirsin.';
+
+  @override
+  String get notificationSettingsLockScreen =>
+      'Kilit ekranında göster: Bildirimlerin kilit ekranında görünmesine izin ver. (Bazı cihazlarda bildirimler gizli olabilir.)';
+
+  @override
+  String get notificationSettingsRestart =>
+      'Cihaz yeniden başladıktan sonra uygulamayı bir kez açmak, bildirim sistemini yeniler.';
 }

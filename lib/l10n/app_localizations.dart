@@ -2169,6 +2169,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'📱 Please rotate your device to portrait mode'**
   String get rotateDeviceMessage;
+
+  /// Notification settings dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Settings Help 🔔'**
+  String get notificationSettingsDialogTitle;
+
+  /// Notification settings dialog main message
+  ///
+  /// In en, this message translates to:
+  /// **'For Tasbee Pro to remind you at the right time, some permissions need to be enabled in device settings.\nPlease check the following:'**
+  String get notificationSettingsDialogMessage;
+
+  /// Notification permission label
+  ///
+  /// In en, this message translates to:
+  /// **'Notification permission: Make sure app notifications are allowed.'**
+  String get notificationSettingsPermission;
+
+  /// Battery and background settings label
+  ///
+  /// In en, this message translates to:
+  /// **'Battery and background settings: Allow Tasbee Pro to run in the background.'**
+  String get notificationSettingsBattery;
+
+  /// Do not disturb optional setting
+  ///
+  /// In en, this message translates to:
+  /// **'Allow interruptions (optional): Enable this option for reminders to appear even in silent mode.'**
+  String get notificationSettingsDoNotDisturb;
+
+  /// Lock screen notification setting
+  ///
+  /// In en, this message translates to:
+  /// **'Show on lock screen: Allow notifications to appear on the lock screen. (Notifications may be hidden on some devices.)'**
+  String get notificationSettingsLockScreen;
+
+  /// Device restart tip
+  ///
+  /// In en, this message translates to:
+  /// **'Opening the app once after device restart refreshes the notification system.'**
+  String get notificationSettingsRestart;
 }
 
 class _AppLocalizationsDelegate

@@ -1098,4 +1098,31 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get rotateDeviceMessage =>
       '📱 براہ کرم اپنے آلے کو پورٹریٹ موڈ میں گھمائیں';
+
+  @override
+  String get notificationSettingsDialogTitle => 'اطلاع کی سیٹنگز کی مدد 🔔';
+
+  @override
+  String get notificationSettingsDialogMessage =>
+      'Tasbee Pro کے ذریعے صحیح وقت پر آپ کو یاد دلانے کے لیے، آلے کی سیٹنگز میں کچھ اجازات کو فعال کرنا ضروری ہے۔\nبرائے کرم درج ذیل کو چیک کریں:';
+
+  @override
+  String get notificationSettingsPermission =>
+      'اطلاع کی اجازت: یقینی بنائیں کہ ایپ کی اطلاعات کی اجازت دی گئی ہے۔';
+
+  @override
+  String get notificationSettingsBattery =>
+      'بیٹری اور بیک گراؤنڈ سیٹنگز: Tasbee Pro کو بیک گراؤنڈ میں چلانے کی اجازت دیں۔';
+
+  @override
+  String get notificationSettingsDoNotDisturb =>
+      'مداخلت کی اجازت دیں (اختیاری): خاموش موڈ میں بھی یاد دہانیاں دکھانے کے لیے اس اختیار کو فعال کریں۔';
+
+  @override
+  String get notificationSettingsLockScreen =>
+      'لاک اسکرین پر دکھائیں: لاک اسکرین پر اطلاعات دکھانے کی اجازت دیں۔ (کچھ آلات پر اطلاعات چھپی ہو سکتی ہیں۔)';
+
+  @override
+  String get notificationSettingsRestart =>
+      'آلے کے دوبارہ شروع ہونے کے بعد ایپ کو ایک بار کھولنا اطلاع کے نظام کو تازہ کرتا ہے۔';
 }

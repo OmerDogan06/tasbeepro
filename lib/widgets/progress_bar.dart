@@ -241,11 +241,11 @@ class _ProgressBarState extends State<ProgressBar>
             
             // Hedef tamamlandı mesajı - Modern animasyonlu
             if (controller.isCompleted) ...[
-              const SizedBox(height: 8),
+              const SizedBox(height: 4),
               BounceInDown(
                 duration: const Duration(milliseconds: 600),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [lightGold, goldColor],

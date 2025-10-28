@@ -342,5 +342,12 @@
   "deleteZikirConfirm": "Sil",
   "deleteZikirCancel": "İptal",
   "deleteZikirSuccess": "Silindi! 🗑️",
-  "rotateDeviceMessage": "📱 Lütfen cihazınızı dikey konuma çevirin"
+  "rotateDeviceMessage": "📱 Lütfen cihazınızı dikey konuma çevirin",
+  "notificationSettingsDialogTitle": "Bildirim Ayarları Yardımı 🔔",
+  "notificationSettingsDialogMessage": "Tasbee Pro'nun seni doğru zamanda hatırlatabilmesi için cihaz ayarlarında bazı izinlerin açık olması gerekir.\nLütfen aşağıdakileri kontrol et:",
+  "notificationSettingsPermission": "Bildirim izni: Uygulama bildirimlerine izin verildiğinden emin ol.",
+  "notificationSettingsBattery": "Pil ve arka plan ayarları: Tasbee Pro'nun arka planda çalışmasına izin ver.",
+  "notificationSettingsDoNotDisturb": "Kesintilere izin ver (isteğe bağlı): Sessiz moddayken de hatırlatmaların görünmesi için bu seçeneği aktif edebilirsin.",
+  "notificationSettingsLockScreen": "Kilit ekranında göster: Bildirimlerin kilit ekranında görünmesine izin ver. (Bazı cihazlarda bildirimler gizli olabilir.)",
+  "notificationSettingsRestart": "Cihaz yeniden başladıktan sonra uygulamayı bir kez açmak, bildirim sistemini yeniler."
 }

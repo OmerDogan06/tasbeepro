@@ -1132,4 +1132,32 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get rotateDeviceMessage =>
       '📱 Veuillez faire pivoter votre appareil en mode portrait';
+
+  @override
+  String get notificationSettingsDialogTitle =>
+      'Aide pour les Paramètres de Notification 🔔';
+
+  @override
+  String get notificationSettingsDialogMessage =>
+      'Pour que Tasbee Pro puisse vous rappeler au bon moment, certaines permissions doivent être activées dans les paramètres de l\'appareil.\nVeuillez vérifier les points suivants:';
+
+  @override
+  String get notificationSettingsPermission =>
+      'Permission de notification: Assurez-vous que les notifications de l\'application sont autorisées.';
+
+  @override
+  String get notificationSettingsBattery =>
+      'Paramètres de batterie et d\'arrière-plan: Autorisez Tasbee Pro à fonctionner en arrière-plan.';
+
+  @override
+  String get notificationSettingsDoNotDisturb =>
+      'Autoriser les interruptions (optionnel): Activez cette option pour que les rappels apparaissent même en mode silencieux.';
+
+  @override
+  String get notificationSettingsLockScreen =>
+      'Afficher sur l\'écran de verrouillage: Autorisez les notifications à apparaître sur l\'écran de verrouillage. (Les notifications peuvent être masquées sur certains appareils.)';
+
+  @override
+  String get notificationSettingsRestart =>
+      'Ouvrir l\'application une fois après le redémarrage de l\'appareil rafraîchit le système de notification.';
 }

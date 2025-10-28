@@ -342,5 +342,12 @@
   "deleteZikirConfirm": "حذف کریں",
   "deleteZikirCancel": "منسوخ",
   "deleteZikirSuccess": "حذف ہو گیا! 🗑️",
-  "rotateDeviceMessage": "📱 براہ کرم اپنے آلے کو پورٹریٹ موڈ میں گھمائیں"
+  "rotateDeviceMessage": "📱 براہ کرم اپنے آلے کو پورٹریٹ موڈ میں گھمائیں",
+  "notificationSettingsDialogTitle": "اطلاع کی سیٹنگز کی مدد 🔔",
+  "notificationSettingsDialogMessage": "Tasbee Pro کے ذریعے صحیح وقت پر آپ کو یاد دلانے کے لیے، آلے کی سیٹنگز میں کچھ اجازات کو فعال کرنا ضروری ہے۔\nبرائے کرم درج ذیل کو چیک کریں:",
+  "notificationSettingsPermission": "اطلاع کی اجازت: یقینی بنائیں کہ ایپ کی اطلاعات کی اجازت دی گئی ہے۔",
+  "notificationSettingsBattery": "بیٹری اور بیک گراؤنڈ سیٹنگز: Tasbee Pro کو بیک گراؤنڈ میں چلانے کی اجازت دیں۔",
+  "notificationSettingsDoNotDisturb": "مداخلت کی اجازت دیں (اختیاری): خاموش موڈ میں بھی یاد دہانیاں دکھانے کے لیے اس اختیار کو فعال کریں۔",
+  "notificationSettingsLockScreen": "لاک اسکرین پر دکھائیں: لاک اسکرین پر اطلاعات دکھانے کی اجازت دیں۔ (کچھ آلات پر اطلاعات چھپی ہو سکتی ہیں۔)",
+  "notificationSettingsRestart": "آلے کے دوبارہ شروع ہونے کے بعد ایپ کو ایک بار کھولنا اطلاع کے نظام کو تازہ کرتا ہے۔"
 }

@@ -342,5 +342,12 @@
   "deleteZikirConfirm": "Hapus",
   "deleteZikirCancel": "Batal",
   "deleteZikirSuccess": "Terhapus! 🗑️",
-  "rotateDeviceMessage": "📱 Harap putar perangkat Anda ke mode potret"
+  "rotateDeviceMessage": "📱 Harap putar perangkat Anda ke mode potret",
+  "notificationSettingsDialogTitle": "Bantuan Pengaturan Notifikasi 🔔",
+  "notificationSettingsDialogMessage": "Agar Tasbee Pro dapat mengingatkan Anda pada waktu yang tepat, beberapa izin perlu diaktifkan di pengaturan perangkat.\nHarap periksa hal berikut:",
+  "notificationSettingsPermission": "Izin notifikasi: Pastikan notifikasi aplikasi diizinkan.",
+  "notificationSettingsBattery": "Pengaturan baterai dan latar belakang: Izinkan Tasbee Pro berjalan di latar belakang.",
+  "notificationSettingsDoNotDisturb": "Izinkan gangguan (opsional): Aktifkan opsi ini agar pengingat muncul bahkan dalam mode senyap.",
+  "notificationSettingsLockScreen": "Tampilkan di layar kunci: Izinkan notifikasi muncul di layar kunci. (Notifikasi mungkin tersembunyi di beberapa perangkat.)",
+  "notificationSettingsRestart": "Membuka aplikasi sekali setelah perangkat restart menyegarkan sistem notifikasi."
 }

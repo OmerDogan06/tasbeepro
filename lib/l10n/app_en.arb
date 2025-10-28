@@ -1415,5 +1415,33 @@
   "rotateDeviceMessage": "📱 Please rotate your device to portrait mode",
   "@rotateDeviceMessage": {
     "description": "Message shown when device is in landscape mode"
+  },
+  "notificationSettingsDialogTitle": "Notification Settings Help 🔔",
+  "@notificationSettingsDialogTitle": {
+    "description": "Notification settings dialog title"
+  },
+  "notificationSettingsDialogMessage": "For Tasbee Pro to remind you at the right time, some permissions need to be enabled in device settings.\nPlease check the following:",
+  "@notificationSettingsDialogMessage": {
+    "description": "Notification settings dialog main message"
+  },
+  "notificationSettingsPermission": "Notification permission: Make sure app notifications are allowed.",
+  "@notificationSettingsPermission": {
+    "description": "Notification permission label"
+  },
+  "notificationSettingsBattery": "Battery and background settings: Allow Tasbee Pro to run in the background.",
+  "@notificationSettingsBattery": {
+    "description": "Battery and background settings label"
+  },
+  "notificationSettingsDoNotDisturb": "Allow interruptions (optional): Enable this option for reminders to appear even in silent mode.",
+  "@notificationSettingsDoNotDisturb": {
+    "description": "Do not disturb optional setting"
+  },
+  "notificationSettingsLockScreen": "Show on lock screen: Allow notifications to appear on the lock screen. (Notifications may be hidden on some devices.)",
+  "@notificationSettingsLockScreen": {
+    "description": "Lock screen notification setting"
+  },
+  "notificationSettingsRestart": "Opening the app once after device restart refreshes the notification system.",
+  "@notificationSettingsRestart": {
+    "description": "Device restart tip"
   }
 }
