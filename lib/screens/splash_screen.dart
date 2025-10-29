@@ -89,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen>
     _shimmerController.repeat(reverse: true);
 
     // Navigate to home after all animations
-    await Future.delayed(const Duration(milliseconds: 3200));
+    await Future.delayed(const Duration(milliseconds: 1000));
     if (mounted) {
       Get.offAll(
         () => const HomeScreen(),

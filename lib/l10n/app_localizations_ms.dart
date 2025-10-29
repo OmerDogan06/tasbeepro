@@ -52,7 +52,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get settingsReminderWarning =>
-      'Android mengehadkan notifikasi dengan selang waktu kurang dari 5 minit atas sebab keselamatan. Tetapkan peringatan anda dengan selang sekurang-kurangnya 5 minit.';
+      'Android mungkin menyekat notifikasi yang dihantar terlalu kerap. Pilih selang masa yang munasabah untuk peringatan anda berfungsi dengan betul.';
 
   @override
   String get settingsWidget => 'Widget 📱';

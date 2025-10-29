@@ -199,7 +199,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsReminderWarning.
   ///
   /// In en, this message translates to:
-  /// **'Android restricts notifications with intervals less than 5 minutes for security reasons. Set your reminders at least 5 minutes apart.'**
+  /// **'Android may block notifications sent too frequently. Choose reasonable intervals for your reminders to work properly.'**
   String get settingsReminderWarning;
 
   /// Widget section header

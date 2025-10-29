@@ -52,7 +52,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsReminderWarning =>
-      'Android restricts notifications with intervals less than 5 minutes for security reasons. Set your reminders at least 5 minutes apart.';
+      'Android may block notifications sent too frequently. Choose reasonable intervals for your reminders to work properly.';
 
   @override
   String get settingsWidget => 'Widget 📱';
