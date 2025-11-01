@@ -33,7 +33,7 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         private const val KEY_ZIKR_ID = "zikr_id_"
         
         // Desteklenen diller - Flutter tarafıyla aynı
-        private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru")
+        private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru", "es")
     }
 
     private lateinit var database: WidgetZikrDatabase
@@ -80,6 +80,7 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             "fa" -> Locale("fa", "IR")
             "uz" -> Locale("uz", "UZ")
             "ru" -> Locale("ru", "RU")
+            "es" -> Locale("es", "ES")
             else -> Locale("en", "GB")
         }
         
