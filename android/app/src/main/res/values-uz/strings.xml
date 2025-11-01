@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro vidjet</string>
+    <string name="widget_description">Asosiy ekran zikr hisoblagich vidjeti</string>
+    <string name="add_widget">Vidjet qo\'shish</string>
+    <string name="zikr_counter">Zikr hisoblagich</string>
+    <string name="target">Maqsad</string>
+    <string name="current">Qilingan</string>
+    <string name="progress">Jarayon</string>
+    <string name="reset">Qayta o\'rnatish</string>
+    <string name="settings">Sozlamalar</string>
+    <string name="widget_settings">Vidjet sozlamalari</string>
+    <string name="zikr_type">Zikr turi</string>
+    <string name="target_count">Maqsad soni</string>
+    <string name="preview">Ko\'rib chiqish</string>
+    <string name="save">Saqlash</string>
+    <string name="cancel">Bekor qilish</string>
+    <string name="widget_settings_desc">Sozlamalar</string>
+    <string name="widget_counter_desc">Zikr hisoblagich</string>
+    <string name="widget_tap_text">BOSING</string>
+    <string name="widget_reset_desc">Hisoblagichni qayta o\'rnatish</string>
+    <string name="widget_config_title">Vidjet sozlamalari</string>
+    <string name="zikr_type_description">Vidjetda ko\'rsatiladigan zikr turini tanlang</string>
+    <string name="target_count_description">Kundalik maqsad zikr sonini belgilang</string>
+    <string name="sound_settings_title">🔊 Tovush sozlamalari</string>
+    <string name="sound_effect">Tovush effekti</string>
+    <string name="widget_preview_title">👁️ Vidjet ko\'rib chiqish</string>
+    <string name="preview_target_text">Maqsad: %1$d</string>
+    <string name="target_completed_title">Maqsad bajarildi! 🎉</string>
+    <string name="target_completed_message">Mashaalloh! %1$d zikr soniga yetdingiz. Alloh qabul qilsin!</string>
+    <string name="target_completed_toast_main">🎉 Mashaalloh! %1$d zikirni bajardingiz!</string>
+    <string name="target_completed_toast">✨ Maqsadni oshirdingiz! (%1$d+) Davom eting!</string>
+    <string name="target_exceeded_title">Maqsad oshirildi! ✨</string>
+    <string name="target_exceeded_message">Mashaalloh! %1$d maqsadni oshirdingiz. Zikirlaringiz davom etmoqda!</string>
+    <string name="notification_channel_name">Tasbee bildirmalari</string>
+    <string name="notification_channel_description">Zikr maqsadi bildirishnomalarini ko\'rsatadi</string>
+    <string name="error_widget_update">Vidjetni yangilashda xato yuz berdi: %1$s</string>
+    <string name="error_widget_ids">Vidjet ID\'larini olishda xato yuz berdi: %1$s</string>
+    
+    <!-- Zikr nomlari -->
+    <string name="zikir_subhanallah">Subhanalloh</string>
+    <string name="zikir_alhamdulillah">Alhamdulillah</string>
+    <string name="zikir_allahu_akbar">Allohu akbar</string>
+    <string name="zikir_la_ilaha_illallah">La ilaha illalloh</string>
+    <string name="zikir_estaghfirullah">Astaghfirulloh</string>
+    <string name="zikir_la_hawle_wala_quwwate">La hawla wa la quwwata illa billah</string>
+    <string name="zikir_hasbi_allahu">Hasbiyallohu wa ni\'mal wakeel</string>
+    <string name="zikir_rabbana_atina">Rabbana atina</string>
+    <string name="zikir_allahume_salli">Allahumma salli</string>
+    <string name="zikir_rabbi_zidni_ilmen">Rabbi zidni ilman</string>
+    <string name="zikir_bismillah">Bismillah</string>
+    <string name="zikir_innallaha_maas_sabirin">Innalloha ma\'as sabirin</string>
+    <string name="zikir_allahu_latif">Allohu latif</string>
+    <string name="zikir_ya_rahman">Ya Rahman Ya Rahim</string>
+    <string name="zikir_tabarak_allah">Tabarakalloh</string>
+    <string name="zikir_mashallah">Mashaalloh</string>
+</resources>

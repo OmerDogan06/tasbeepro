@@ -15,6 +15,7 @@ import 'app_localizations_id.dart';
 import 'app_localizations_ms.dart';
 import 'app_localizations_tr.dart';
 import 'app_localizations_ur.dart';
+import 'app_localizations_uz.dart';
 
 // ignore_for_file: type=lint
 
@@ -112,6 +113,7 @@ abstract class AppLocalizations {
     Locale('hi'),
     Locale('bn'),
     Locale('fa'),
+    Locale('uz'),
   ];
 
   /// The title of the application shown on splash screen
@@ -2236,6 +2238,7 @@ class _AppLocalizationsDelegate
     'ms',
     'tr',
     'ur',
+    'uz',
   ].contains(locale.languageCode);
 
   @override
@@ -2265,6 +2268,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsTr();
     case 'ur':
       return AppLocalizationsUr();
+    case 'uz':
+      return AppLocalizationsUz();
   }
 
   throw FlutterError(

@@ -158,6 +158,7 @@ class TasbeeApp extends StatelessWidget {
           Locale('fr', 'FR'),
           Locale('hi', 'IN'),
           Locale('fa', 'IR'),
+          Locale('uz', 'UZ'),
         ],
         localizationsDelegates: const [
           AppLocalizations.delegate,
