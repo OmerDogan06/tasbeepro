@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tasbee Pro</string>
-    <string name="appwidget_text">أداة Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
     <string name="widget_description">أداة عداد التسبيح للشاشة الرئيسية</string>
     <string name="add_widget">إضافة أداة</string>
     <string name="zikr_counter">عداد التسبيح</string>

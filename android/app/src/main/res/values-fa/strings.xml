@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tasbee Pro</string>
-    <string name="appwidget_text">ویدجت Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
     <string name="widget_description">ویجت شمارنده ذکر صفحه اصلی</string>
     <string name="add_widget">اضافه کردن ویجت</string>
     <string name="zikr_counter">شمارنده ذکر</string>

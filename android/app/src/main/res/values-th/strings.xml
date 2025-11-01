@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
+    <string name="widget_description">วิดเจ็ตตัวนับซิกร์สำหรับหน้าหลัก</string>
+    <string name="add_widget">เพิ่มวิดเจ็ต</string>
+    <string name="zikr_counter">ตัวนับซิกร์</string>
+    <string name="target">เป้าหมาย</string>
+    <string name="current">ที่ทำแล้ว</string>
+    <string name="progress">ความคืบหน้า</string>
+    <string name="reset">รีเซ็ต</string>
+    <string name="settings">การตั้งค่า</string>
+    <string name="widget_settings">การตั้งค่าวิดเจ็ต</string>
+    <string name="zikr_type">ประเภทซิกร์</string>
+    <string name="target_count">จำนวนเป้าหมาย</string>
+    <string name="preview">แสดงตัวอย่าง</string>
+    <string name="save">บันทึก</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="widget_settings_desc">การตั้งค่า</string>
+    <string name="widget_counter_desc">ตัวนับซิกร์</string>
+    <string name="widget_tap_text">แตะ</string>
+    <string name="widget_reset_desc">รีเซ็ตตัวนับ</string>
+    <string name="widget_config_title">การตั้งค่าวิดเจ็ต</string>
+    <string name="zikr_type_description">เลือกประเภทซิกร์ที่จะแสดงในวิดเจ็ต</string>
+    <string name="target_count_description">กำหนดจำนวนเป้าหมายซิกร์รายวัน</string>
+    <string name="sound_settings_title">🔊 การตั้งค่าเสียง</string>
+    <string name="sound_effect">เอฟเฟ็กต์เสียง</string>
+    <string name="widget_preview_title">👁️ แสดงตัวอย่างวิดเจ็ต</string>
+    <string name="preview_target_text">เป้าหมาย: %1$d</string>
+    <string name="target_completed_title">บรรลุเป้าหมายแล้ว! 🎉</string>
+    <string name="target_completed_message">มาชาอัลลาห์! คุณบรรลุ %1$d ซิกร์แล้ว ขออัลลอห์ทรงรับ!</string>
+    <string name="target_completed_toast_main">🎉 มาชาอัลลาห์! คุณทำ %1$d ซิกร์สำเร็จแล้ว!</string>
+    <string name="target_completed_toast">✨ เกินเป้าหมายแล้ว! (%1$d+) ทำต่อไป!</string>
+    <string name="target_exceeded_title">เกินเป้าหมายแล้ว! ✨</string>
+    <string name="target_exceeded_message">มาชาอัลลาห์! คุณเกินเป้าหมาย %1$d แล้ว ซิกร์ของคุณยังคงดำเนินต่อไป!</string>
+    <string name="notification_channel_name">การแจ้งเตือนตัสบี</string>
+    <string name="notification_channel_description">แสดงการแจ้งเตือนเป้าหมายซิกร์</string>
+    <string name="error_widget_update">เกิดข้อผิดพลาดขณะอัปเดตวิดเจ็ต: %1$s</string>
+    <string name="error_widget_ids">เกิดข้อผิดพลาดขณะดึง ID วิดเจ็ต: %1$s</string>
+    
+    <!-- ชื่อซิกร์ -->
+    <string name="zikir_subhanallah">สุบฮานัลลอห์</string>
+    <string name="zikir_alhamdulillah">อัลฮัมดุลิลลาห์</string>
+    <string name="zikir_allahu_akbar">อัลลาฮู อักบาร์</string>
+    <string name="zikir_la_ilaha_illallah">ลา อิลาฮะ อิลลัลลาห์</string>
+    <string name="zikir_estaghfirullah">อัสตัฆฟิรุลลาห์</string>
+    <string name="zikir_la_hawle_wala_quwwate">ลา เฮาลา วะลา กุวตะ อิลลา บิลลาห์</string>
+    <string name="zikir_hasbi_allahu">ฮัสบียัลลาฮู วะนิอมัล วะกีล</string>
+    <string name="zikir_rabbana_atina">รอบบะนา อาตินา</string>
+    <string name="zikir_allahume_salli">อัลลาฮุมมะ ศอลลิ</string>
+    <string name="zikir_rabbi_zidni_ilmen">รอบบิ ซิดนี อิลมัน</string>
+    <string name="zikir_bismillah">บิสมิลลาห์</string>
+    <string name="zikir_innallaha_maas_sabirin">อินนัลลาฮะ มะอัศศอบิรีน</string>
+    <string name="zikir_allahu_latif">อัลลาฮู ละตีฟ</string>
+    <string name="zikir_ya_rahman">ยา รอฮมาน ยา รอฮีม</string>
+    <string name="zikir_tabarak_allah">ตะบารอกัลลาห์</string>
+    <string name="zikir_mashallah">มาชาอัลลาห์</string>
+</resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tasbee Pro</string>
-    <string name="appwidget_text">Widget Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
     <string name="widget_description">Widget contador de dhikr de pantalla principal</string>
     <string name="add_widget">Agregar widget</string>
     <string name="zikr_counter">Contador de dhikr</string>

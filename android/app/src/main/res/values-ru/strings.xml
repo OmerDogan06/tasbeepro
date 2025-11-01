@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tasbee Pro</string>
-    <string name="appwidget_text">Виджет Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
     <string name="widget_description">Виджет счетчика зикра главного экрана</string>
     <string name="add_widget">Добавить виджет</string>
     <string name="zikr_counter">Счетчик зикра</string>
