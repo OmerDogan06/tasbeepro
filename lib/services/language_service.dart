@@ -29,7 +29,7 @@ class LanguageService extends GetxService {
         String deviceLanguage = WidgetsBinding.instance.platformDispatcher.locale.languageCode;
         
         // Desteklenen diller listesi
-        const supportedLanguages = ['tr', 'en', 'ar', 'id', 'ur', 'ms', 'bn', 'fr', 'hi', 'fa', 'uz', 'ru', 'es', 'pt', 'de', 'it', 'zh'];
+        const supportedLanguages = ['tr', 'en', 'ar', 'id', 'ur', 'ms', 'bn', 'fr', 'hi', 'fa', 'uz', 'ru', 'es', 'pt', 'de', 'it', 'zh', 'sw'];
         
         // Eğer cihaz dili desteklenen diller arasında varsa onu kullan, yoksa İngilizce
         savedLanguage = supportedLanguages.contains(deviceLanguage) ? deviceLanguage : 'en';
@@ -99,6 +99,9 @@ class LanguageService extends GetxService {
         case 'zh':
           newLocale = const Locale('zh', 'CN');
           break;
+        case 'sw':
+          newLocale = const Locale('sw', 'KE');
+          break;
         default:
           newLocale = const Locale('en', 'GB');
       }
@@ -153,6 +156,8 @@ class LanguageService extends GetxService {
         return 'Italiano';
       case 'zh':
         return '中文';
+      case 'sw':
+        return 'Kiswahili';
       default:
         return 'English';
     }
@@ -176,5 +181,6 @@ class LanguageService extends GetxService {
     {'code': 'de', 'name': 'Deutsch', 'flag': '🇩🇪'},
     {'code': 'it', 'name': 'Italiano', 'flag': '🇮🇹'},
     {'code': 'zh', 'name': '中文', 'flag': '🇨🇳'},
+    {'code': 'sw', 'name': 'Kiswahili', 'flag': '🇰🇪'},
   ];
 }

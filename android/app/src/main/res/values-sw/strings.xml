@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
+    <string name="widget_description">Widget ya kihesabuji cha dhikiri ya skrini kuu</string>
+    <string name="add_widget">Ongeza Widget</string>
+    <string name="zikr_counter">Kihesabuji cha Dhikiri</string>
+    <string name="target">Lengo</string>
+    <string name="current">Iliyofanywa</string>
+    <string name="progress">Maendeleo</string>
+    <string name="reset">Weka upya</string>
+    <string name="settings">Mipangilio</string>
+    <string name="widget_settings">Mipangilio ya Widget</string>
+    <string name="zikr_type">Aina ya Dhikiri</string>
+    <string name="target_count">Idadi ya Lengo</string>
+    <string name="preview">Onyesho la awali</string>
+    <string name="save">Hifadhi</string>
+    <string name="cancel">Ghairi</string>
+    <string name="widget_settings_desc">Mipangilio</string>
+    <string name="widget_counter_desc">Kihesabuji cha dhikiri</string>
+    <string name="widget_tap_text">GUSA</string>
+    <string name="widget_reset_desc">Weka upya kihesabuji</string>
+    <string name="widget_config_title">Mipangilio ya Widget</string>
+    <string name="zikr_type_description">Chagua aina ya dhikiri inayoonyeshwa kwenye widget</string>
+    <string name="target_count_description">Weka idadi ya lengo la dhikiri za kila siku</string>
+    <string name="sound_settings_title">🔊 Mipangilio ya Sauti</string>
+    <string name="sound_effect">Athari ya Sauti</string>
+    <string name="widget_preview_title">👁️ Onyesho la awali la Widget</string>
+    <string name="preview_target_text">Lengo: %1$d</string>
+    <string name="target_completed_title">Lengo Limekamilika! 🎉</string>
+    <string name="target_completed_message">Masha\'Allah! Umefikia dhikiri %1$d. Allah akubali!</string>
+    <string name="target_completed_toast_main">🎉 Masha\'Allah! Umekamilisha dhikiri %1$d!</string>
+    <string name="target_completed_toast">✨ Lengo limezidishwa! (%1$d+) Endelea!</string>
+    <string name="target_exceeded_title">Lengo Limezidishwa! ✨</string>
+    <string name="target_exceeded_message">Masha\'Allah! Umezidi lengo la %1$d. Dhikiri zako zinaendelea!</string>
+    <string name="notification_channel_name">Arifa za Tasbee</string>
+    <string name="notification_channel_description">Inaonyesha arifa za lengo la dhikiri</string>
+    <string name="error_widget_update">Hitilafu wakati wa kusasisha widget: %1$s</string>
+    <string name="error_widget_ids">Hitilafu wakati wa kupata vitambulisho vya widget: %1$s</string>
+    
+    <!-- Zikir Isimleri -->
+    <string name="zikir_subhanallah">Subhanallah</string>
+    <string name="zikir_alhamdulillah">Alhamdulillah</string>
+    <string name="zikir_allahu_akbar">Allahu Akbar</string>
+    <string name="zikir_la_ilaha_illallah">La ilaha illAllah</string>
+    <string name="zikir_estaghfirullah">Astaghfirullah</string>
+    <string name="zikir_la_hawle_wala_quwwate">La hawla wa la quwwata illa billah</string>
+    <string name="zikir_hasbi_allahu">HasbiyAllahu wa ni\'mal wakeel</string>
+    <string name="zikir_rabbana_atina">Rabbana Atina</string>
+    <string name="zikir_allahume_salli">Allahumma Salli</string>
+    <string name="zikir_rabbi_zidni_ilmen">Rabbi Zidni Ilm</string>
+    <string name="zikir_bismillah">Bismillah</string>
+    <string name="zikir_innallaha_maas_sabirin">Innalaha ma\'as sabirin</string>
+    <string name="zikir_allahu_latif">Allahu Latif</string>
+    <string name="zikir_ya_rahman">Ya Rahman Ya Rahim</string>
+    <string name="zikir_tabarak_allah">Tabarak Allah</string>
+    <string name="zikir_mashallah">MashaAllah</string>
+</resources>
