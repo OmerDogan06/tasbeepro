@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
+    <string name="widget_description">ホーム画面ズィクルカウンターウィジェット</string>
+    <string name="add_widget">ウィジェットを追加</string>
+    <string name="zikr_counter">ズィクルカウンター</string>
+    <string name="target">目標</string>
+    <string name="current">現在</string>
+    <string name="progress">進捗</string>
+    <string name="reset">リセット</string>
+    <string name="settings">設定</string>
+    <string name="widget_settings">ウィジェット設定</string>
+    <string name="zikr_type">ズィクルタイプ</string>
+    <string name="target_count">目標カウント</string>
+    <string name="preview">プレビュー</string>
+    <string name="save">保存</string>
+    <string name="cancel">キャンセル</string>
+    <string name="widget_settings_desc">設定</string>
+    <string name="widget_counter_desc">ズィクルカウンター</string>
+    <string name="widget_tap_text">タップ</string>
+    <string name="widget_reset_desc">カウンターをリセット</string>
+    <string name="widget_config_title">ウィジェット設定</string>
+    <string name="zikr_type_description">ウィジェットに表示するズィクルのタイプを選択</string>
+    <string name="target_count_description">日々のズィクル目標カウントを設定</string>
+    <string name="sound_settings_title">🔊 サウンド設定</string>
+    <string name="sound_effect">効果音</string>
+    <string name="widget_preview_title">👁️ ウィジェットプレビュー</string>
+    <string name="preview_target_text">目標: %1$d</string>
+    <string name="target_completed_title">目標達成！ 🎉</string>
+    <string name="target_completed_message">マーシャーアッラー！%1$dズィクルカウントに到達しました。アッラーがお受け入れくださいますように！</string>
+    <string name="target_completed_toast_main">🎉 マーシャーアッラー！%1$dズィクルを完了しました！</string>
+    <string name="target_completed_toast">✨ 目標を超過！(%1$d+) 続けましょう！</string>
+    <string name="target_exceeded_title">目標を超過！ ✨</string>
+    <string name="target_exceeded_message">マーシャーアッラー！目標の%1$dを超えました。ズィクルを続けましょう！</string>
+    <string name="notification_channel_name">Tasbee通知</string>
+    <string name="notification_channel_description">ズィクル目標通知を表示</string>
+    <string name="error_widget_update">ウィジェットの更新中にエラーが発生しました: %1$s</string>
+    <string name="error_widget_ids">ウィジェットIDの取得中にエラーが発生しました: %1$s</string>
+    
+    <!-- ズィクル名 -->
+    <string name="zikir_subhanallah">スブハーナッラー</string>
+    <string name="zikir_alhamdulillah">アルハムドゥリッラー</string>
+    <string name="zikir_allahu_akbar">アッラーフ・アクバル</string>
+    <string name="zikir_la_ilaha_illallah">ラー・イラーハ・イッラッラー</string>
+    <string name="zikir_estaghfirullah">アスタグフィルッラー</string>
+    <string name="zikir_la_hawle_wala_quwwate">ラー・ハウラ・ワラー・クッワタ・イッラー・ビッラー</string>
+    <string name="zikir_hasbi_allahu">ハスビヤッラーフ・ワ・ニイマル・ワキール</string>
+    <string name="zikir_rabbana_atina">ラッバナー・アーティナー</string>
+    <string name="zikir_allahume_salli">アッラーフンマ・サッリ</string>
+    <string name="zikir_rabbi_zidni_ilmen">ラッビ・ズィドニー・イルマン</string>
+    <string name="zikir_bismillah">ビスミッラー</string>
+    <string name="zikir_innallaha_maas_sabirin">インナッラーハ・マアッ・サービリーン</string>
+    <string name="zikir_allahu_latif">アッラーフ・ラティーフ</string>
+    <string name="zikir_ya_rahman">ヤー・ラフマーン・ヤー・ラヒーム</string>
+    <string name="zikir_tabarak_allah">タバーラカッラー</string>
+    <string name="zikir_mashallah">マーシャーアッラー</string>
+</resources>

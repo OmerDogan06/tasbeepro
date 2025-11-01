@@ -60,82 +60,87 @@ class ZikrCard extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(10),
-          child: Container(
-            height: zikr.isCustom ? 90 : 80,
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        zikr.name,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: isSelected ? emeraldGreen : emeraldGreen,
-                          shadows: isSelected
-                              ? [
-                                  const Shadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0, 1),
-                                    blurRadius: 2,
-                                  ),
-                                ]
-                              : null,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              minHeight: 50,
+              maxHeight: 150,
+            ),
+            child: Container(   
+              // height: zikr.isCustom ? 90 : 80,
+              padding: const EdgeInsets.all(8),
+              child: Column(
+                mainAxisSize: MainAxisSize.min, // <-- Burayı değiştir
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          zikr.name,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: isSelected ? emeraldGreen : emeraldGreen,
+                            shadows: isSelected
+                                ? [
+                                    const Shadow(
+                                      color: Colors.black26,
+                                      offset: Offset(0, 1),
+                                      blurRadius: 2,
+                                    ),
+                                  ]
+                                : null,
+                          ),
                         ),
                       ),
-                    ),
-                    // Silme butonu (sadece custom zikirler için)
-                    if (onDelete != null && !isSelected)
-                      Container(
-                        width: 35,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          color: Colors.red.shade400,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: IconButton(
-                          padding: const EdgeInsets.all(4),
-                          constraints: const BoxConstraints(
-                            minWidth: 28,
-                            minHeight: 28,
+                      // Silme butonu (sadece custom zikirler için)
+                      if (onDelete != null && !isSelected)
+                        Container(
+                          width: 35,
+                          height: 35,
+                          decoration: BoxDecoration(
+                            color: Colors.red.shade400,
+                            borderRadius: BorderRadius.circular(6),
                           ),
-                          icon: const Icon(
-                            Icons.delete_outline,
-                            color: Colors.white,
+                          child: IconButton(
+                            padding: const EdgeInsets.all(4),
+                            constraints: const BoxConstraints(
+                              minWidth: 28,
+                              minHeight: 28,
+                            ),
+                            icon: const Icon(
+                              Icons.delete_outline,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                            onPressed: onDelete,
+                          ),
+                        ),
+                      if (isSelected)
+                        Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: emeraldGreen,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: darkGreen.withAlpha(77),
+                                blurRadius: 4,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: const Icon(
+                            Icons.check,
+                            color: lightGold,
                             size: 16,
                           ),
-                          onPressed: onDelete,
                         ),
-                      ),
-                    if (isSelected)
-                      Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: BoxDecoration(
-                          color: emeraldGreen,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                              color: darkGreen.withAlpha(77),
-                              blurRadius: 4,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: const Icon(
-                          Icons.check,
-                          color: lightGold,
-                          size: 16,
-                        ),
-                      ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                // Zikir anlamı
-                Expanded(
-                  child: Container(
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  // Zikir anlamı
+                  Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(0),
                     decoration: BoxDecoration(
@@ -190,8 +195,8 @@ class ZikrCard extends StatelessWidget {
                             ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

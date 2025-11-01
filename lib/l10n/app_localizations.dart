@@ -15,6 +15,7 @@ import 'app_localizations_fr.dart';
 import 'app_localizations_hi.dart';
 import 'app_localizations_id.dart';
 import 'app_localizations_it.dart';
+import 'app_localizations_ja.dart';
 import 'app_localizations_ms.dart';
 import 'app_localizations_pt.dart';
 import 'app_localizations_ru.dart';
@@ -128,6 +129,7 @@ abstract class AppLocalizations {
     Locale('it'),
     Locale('zh'),
     Locale('sw'),
+    Locale('ja'),
   ];
 
   /// The title of the application shown on splash screen
@@ -2252,6 +2254,7 @@ class _AppLocalizationsDelegate
     'hi',
     'id',
     'it',
+    'ja',
     'ms',
     'pt',
     'ru',
@@ -2289,6 +2292,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsId();
     case 'it':
       return AppLocalizationsIt();
+    case 'ja':
+      return AppLocalizationsJa();
     case 'ms':
       return AppLocalizationsMs();
     case 'pt':
