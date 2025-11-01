@@ -40,7 +40,7 @@ class WidgetConfigActivity : Activity() {
     private var soundEnabled = true
     
     // Desteklenen diller - Flutter tarafıyla aynı
-    private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru", "es", "pt")
+    private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru", "es", "pt", "de")
 
     // Zikir ve hedef listelerini Flutter'dan yükle
     private var zikrList = mutableListOf<Triple<String, String, String>>() // id, name, meaning
@@ -388,6 +388,7 @@ class WidgetConfigActivity : Activity() {
             "ru" -> Locale("ru", "RU")
             "es" -> Locale("es", "ES")
             "pt" -> Locale("pt", "BR")
+            "de" -> Locale("de", "DE")
             else -> Locale("en", "GB")
         }
         
