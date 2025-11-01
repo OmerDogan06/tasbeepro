@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
+    <string name="widget_description">念珠计数器主屏幕小组件</string>
+    <string name="add_widget">添加小组件</string>
+    <string name="zikr_counter">念珠计数器</string>
+    <string name="target">目标</string>
+    <string name="current">已完成</string>
+    <string name="progress">进度</string>
+    <string name="reset">重置</string>
+    <string name="settings">设置</string>
+    <string name="widget_settings">小组件设置</string>
+    <string name="zikr_type">念珠类型</string>
+    <string name="target_count">目标数量</string>
+    <string name="preview">预览</string>
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="widget_settings_desc">设置</string>
+    <string name="widget_counter_desc">念珠计数器</string>
+    <string name="widget_tap_text">触摸</string>
+    <string name="widget_reset_desc">重置计数器</string>
+    <string name="widget_config_title">小组件设置</string>
+    <string name="zikr_type_description">选择在小组件中显示的念珠类型</string>
+    <string name="target_count_description">设置每日目标念珠数量</string>
+    <string name="sound_settings_title">🔊 声音设置</string>
+    <string name="sound_effect">声音效果</string>
+    <string name="widget_preview_title">👁️ 小组件预览</string>
+    <string name="preview_target_text">目标：%1$d</string>
+    <string name="target_completed_title">目标已完成！🎉</string>
+    <string name="target_completed_message">真主赞善你！您已达到 %1$d 次念珠。愿真主接受！</string>
+    <string name="target_completed_toast_main">🎉 真主赞善你！您已完成 %1$d 次念珠！</string>
+    <string name="target_completed_toast">✨ 超过目标！(%1$d+) 继续！</string>
+    <string name="target_exceeded_title">超过目标！✨</string>
+    <string name="target_exceeded_message">真主赞善你！您已超过 %1$d 的目标。您的念珠在继续！</string>
+    <string name="notification_channel_name">Tasbee 通知</string>
+    <string name="notification_channel_description">显示念珠目标通知</string>
+    <string name="error_widget_update">更新小组件时出错：%1$s</string>
+    <string name="error_widget_ids">获取小组件ID时出错：%1$s</string>
+    
+    <!-- Zikir Isimleri -->
+    <string name="zikir_subhanallah">Subhanallah</string>
+    <string name="zikir_alhamdulillah">Alhamdulillah</string>
+    <string name="zikir_allahu_akbar">Allahu Akbar</string>
+    <string name="zikir_la_ilaha_illallah">La ilaha illAllah</string>
+    <string name="zikir_estaghfirullah">Astaghfirullah</string>
+    <string name="zikir_la_hawle_wala_quwwate">La hawla wa la quwwata illa billah</string>
+    <string name="zikir_hasbi_allahu">HasbiyAllahu wa ni\'mal wakeel</string>
+    <string name="zikir_rabbana_atina">Rabbana Atina</string>
+    <string name="zikir_allahume_salli">Allahumma Salli</string>
+    <string name="zikir_rabbi_zidni_ilmen">Rabbi Zidni Ilm</string>
+    <string name="zikir_bismillah">Bismillah</string>
+    <string name="zikir_innallaha_maas_sabirin">Innalaha ma\'as sabirin</string>
+    <string name="zikir_allahu_latif">Allahu Latif</string>
+    <string name="zikir_ya_rahman">Ya Rahman Ya Rahim</string>
+    <string name="zikir_tabarak_allah">Tabarak Allah</string>
+    <string name="zikir_mashallah">MashaAllah</string>
+</resources>

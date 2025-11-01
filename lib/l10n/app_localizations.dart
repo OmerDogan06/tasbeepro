@@ -21,6 +21,7 @@ import 'app_localizations_ru.dart';
 import 'app_localizations_tr.dart';
 import 'app_localizations_ur.dart';
 import 'app_localizations_uz.dart';
+import 'app_localizations_zh.dart';
 
 // ignore_for_file: type=lint
 
@@ -114,16 +115,17 @@ abstract class AppLocalizations {
     Locale('id'),
     Locale('ur'),
     Locale('ms'),
+    Locale('bn'),
     Locale('fr'),
     Locale('hi'),
-    Locale('bn'),
-    Locale('de'),
-    Locale('es'),
     Locale('fa'),
-    Locale('it'),
-    Locale('pt'),
-    Locale('ru'),
     Locale('uz'),
+    Locale('ru'),
+    Locale('es'),
+    Locale('pt'),
+    Locale('de'),
+    Locale('it'),
+    Locale('zh'),
   ];
 
   /// The title of the application shown on splash screen
@@ -2254,6 +2256,7 @@ class _AppLocalizationsDelegate
     'tr',
     'ur',
     'uz',
+    'zh',
   ].contains(locale.languageCode);
 
   @override
@@ -2295,6 +2298,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsUr();
     case 'uz':
       return AppLocalizationsUz();
+    case 'zh':
+      return AppLocalizationsZh();
   }
 
   throw FlutterError(

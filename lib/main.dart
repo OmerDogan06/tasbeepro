@@ -91,6 +91,7 @@ class OrientationGuardApp extends StatelessWidget {
               Locale('pt', 'BR'),
               Locale('de', 'DE'),
               Locale('it', 'IT'),
+              Locale('zh', 'CN'),
             ],
             localizationsDelegates: const [
               AppLocalizations.delegate,
@@ -171,6 +172,7 @@ class TasbeeApp extends StatelessWidget {
           Locale('pt', 'BR'),
           Locale('de', 'DE'),
           Locale('it', 'IT'),
+          Locale('zh', 'CN'),
         ],
         localizationsDelegates: const [
           AppLocalizations.delegate,
