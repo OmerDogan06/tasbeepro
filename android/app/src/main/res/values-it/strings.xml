@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
+    <string name="widget_description">Widget contatore dhikr per schermata principale</string>
+    <string name="add_widget">Aggiungi Widget</string>
+    <string name="zikr_counter">Contatore Dhikr</string>
+    <string name="target">Obiettivo</string>
+    <string name="current">Fatto</string>
+    <string name="progress">Progresso</string>
+    <string name="reset">Reimposta</string>
+    <string name="settings">Impostazioni</string>
+    <string name="widget_settings">Impostazioni Widget</string>
+    <string name="zikr_type">Tipo di Dhikr</string>
+    <string name="target_count">Numero Obiettivo</string>
+    <string name="preview">Anteprima</string>
+    <string name="save">Salva</string>
+    <string name="cancel">Annulla</string>
+    <string name="widget_settings_desc">Impostazioni</string>
+    <string name="widget_counter_desc">Contatore dhikr</string>
+    <string name="widget_tap_text">TOCCA</string>
+    <string name="widget_reset_desc">Reimposta contatore</string>
+    <string name="widget_config_title">Impostazioni Widget</string>
+    <string name="zikr_type_description">Seleziona il tipo di dhikr da mostrare nel widget</string>
+    <string name="target_count_description">Imposta il numero obiettivo di dhikr giornalieri</string>
+    <string name="sound_settings_title">🔊 Impostazioni Audio</string>
+    <string name="sound_effect">Effetto Sonoro</string>
+    <string name="widget_preview_title">👁️ Anteprima Widget</string>
+    <string name="preview_target_text">Obiettivo: %1$d</string>
+    <string name="target_completed_title">Obiettivo Completato! 🎉</string>
+    <string name="target_completed_message">Masha\'Allah! Hai raggiunto %1$d dhikr. Allah accetti!</string>
+    <string name="target_completed_toast_main">🎉 Masha\'Allah! Hai completato %1$d dhikr!</string>
+    <string name="target_completed_toast">✨ Obiettivo superato! (%1$d+) Continua!</string>
+    <string name="target_exceeded_title">Obiettivo Superato! ✨</string>
+    <string name="target_exceeded_message">Masha\'Allah! Hai superato l\'obiettivo di %1$d. I tuoi dhikr continuano!</string>
+    <string name="notification_channel_name">Notifiche Tasbee</string>
+    <string name="notification_channel_description">Mostra notifiche obiettivo dhikr</string>
+    <string name="error_widget_update">Errore durante l\'aggiornamento del widget: %1$s</string>
+    <string name="error_widget_ids">Errore durante il recupero degli ID widget: %1$s</string>
+    
+    <!-- Zikir Isimleri -->
+    <string name="zikir_subhanallah">Subhanallah</string>
+    <string name="zikir_alhamdulillah">Alhamdulillah</string>
+    <string name="zikir_allahu_akbar">Allahu Akbar</string>
+    <string name="zikir_la_ilaha_illallah">La ilaha illAllah</string>
+    <string name="zikir_estaghfirullah">Astaghfirullah</string>
+    <string name="zikir_la_hawle_wala_quwwate">La hawla wa la quwwata illa billah</string>
+    <string name="zikir_hasbi_allahu">HasbiyAllahu wa ni\'mal wakeel</string>
+    <string name="zikir_rabbana_atina">Rabbana Atina</string>
+    <string name="zikir_allahume_salli">Allahumma Salli</string>
+    <string name="zikir_rabbi_zidni_ilmen">Rabbi Zidni Ilm</string>
+    <string name="zikir_bismillah">Bismillah</string>
+    <string name="zikir_innallaha_maas_sabirin">Innalaha ma\'as sabirin</string>
+    <string name="zikir_allahu_latif">Allahu Latif</string>
+    <string name="zikir_ya_rahman">Ya Rahman Ya Rahim</string>
+    <string name="zikir_tabarak_allah">Tabarak Allah</string>
+    <string name="zikir_mashallah">MashaAllah</string>
+</resources>
