@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Tasbee Pro Widget</string>
+    <string name="widget_description">홈 화면 지크르 카운터 위젯</string>
+    <string name="add_widget">위젯 추가</string>
+    <string name="zikr_counter">지크르 카운터</string>
+    <string name="target">목표</string>
+    <string name="current">현재</string>
+    <string name="progress">진행상황</string>
+    <string name="reset">리셋</string>
+    <string name="settings">설정</string>
+    <string name="widget_settings">위젯 설정</string>
+    <string name="zikr_type">지크르 유형</string>
+    <string name="target_count">목표 횟수</string>
+    <string name="preview">미리보기</string>
+    <string name="save">저장</string>
+    <string name="cancel">취소</string>
+    <string name="widget_settings_desc">설정</string>
+    <string name="widget_counter_desc">지크르 카운터</string>
+    <string name="widget_tap_text">탭</string>
+    <string name="widget_reset_desc">카운터 리셋</string>
+    <string name="widget_config_title">위젯 설정</string>
+    <string name="zikr_type_description">위젯에 표시할 지크르 유형 선택</string>
+    <string name="target_count_description">일일 지크르 목표 횟수 설정</string>
+    <string name="sound_settings_title">🔊 사운드 설정</string>
+    <string name="sound_effect">효과음</string>
+    <string name="widget_preview_title">👁️ 위젯 미리보기</string>
+    <string name="preview_target_text">목표: %1$d</string>
+    <string name="target_completed_title">목표 달성! 🎉</string>
+    <string name="target_completed_message">마샤알라! %1$d 지크르 횟수에 도달했습니다. 알라께서 받아주시길!</string>
+    <string name="target_completed_toast_main">🎉 마샤알라! %1$d 지크르를 완료했습니다!</string>
+    <string name="target_completed_toast">✨ 목표 초과! (%1$d+) 계속하세요!</string>
+    <string name="target_exceeded_title">목표 초과! ✨</string>
+    <string name="target_exceeded_message">마샤알라! 목표 %1$d를 초과했습니다. 지크르를 계속하세요!</string>
+    <string name="notification_channel_name">Tasbee 알림</string>
+    <string name="notification_channel_description">지크르 목표 알림 표시</string>
+    <string name="error_widget_update">위젯 업데이트 중 오류 발생: %1$s</string>
+    <string name="error_widget_ids">위젯 ID 가져오기 중 오류 발생: %1$s</string>
+    
+    <!-- 지크르 이름 -->
+    <string name="zikir_subhanallah">수브하날라</string>
+    <string name="zikir_alhamdulillah">알함둘릴라</string>
+    <string name="zikir_allahu_akbar">알라후 아크바르</string>
+    <string name="zikir_la_ilaha_illallah">라 일라하 일랄라</string>
+    <string name="zikir_estaghfirullah">아스타그피룰라</string>
+    <string name="zikir_la_hawle_wala_quwwate">라 하울라 와라 쿠와타 일라 빌라</string>
+    <string name="zikir_hasbi_allahu">하스비얄라후 와 니말 와킬</string>
+    <string name="zikir_rabbana_atina">랍바나 아티나</string>
+    <string name="zikir_allahume_salli">알라훔마 살리</string>
+    <string name="zikir_rabbi_zidni_ilmen">랍비 지드니 일만</string>
+    <string name="zikir_bismillah">비스밀라</string>
+    <string name="zikir_innallaha_maas_sabirin">인날라하 마아 사비린</string>
+    <string name="zikir_allahu_latif">알라후 라티프</string>
+    <string name="zikir_ya_rahman">야 라흐만 야 라힘</string>
+    <string name="zikir_tabarak_allah">타바라칼라</string>
+    <string name="zikir_mashallah">마샤알라</string>
+</resources>

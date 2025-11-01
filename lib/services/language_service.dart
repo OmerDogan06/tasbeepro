@@ -29,7 +29,7 @@ class LanguageService extends GetxService {
         String deviceLanguage = WidgetsBinding.instance.platformDispatcher.locale.languageCode;
         
         // Desteklenen diller listesi
-        const supportedLanguages = ['tr', 'en', 'ar', 'id', 'ur', 'ms', 'bn', 'fr', 'hi', 'fa', 'uz', 'ru', 'es', 'pt', 'de', 'it', 'zh', 'sw', 'ja'];
+        const supportedLanguages = ['tr', 'en', 'ar', 'id', 'ur', 'ms', 'bn', 'fr', 'hi', 'fa', 'uz', 'ru', 'es', 'pt', 'de', 'it', 'zh', 'sw', 'ja', 'ko'];
         
         // Eğer cihaz dili desteklenen diller arasında varsa onu kullan, yoksa İngilizce
         savedLanguage = supportedLanguages.contains(deviceLanguage) ? deviceLanguage : 'en';
@@ -105,6 +105,9 @@ class LanguageService extends GetxService {
         case 'ja':
           newLocale = const Locale('ja', 'JP');
           break;
+        case 'ko':
+          newLocale = const Locale('ko', 'KR');
+          break;
         default:
           newLocale = const Locale('en', 'GB');
       }
@@ -163,6 +166,8 @@ class LanguageService extends GetxService {
         return 'Kiswahili';
       case 'ja':
         return '日本語';
+      case 'ko':
+        return '한국어';
       default:
         return 'English';
     }
@@ -188,5 +193,6 @@ class LanguageService extends GetxService {
     {'code': 'zh', 'name': '中文', 'flag': '🇨🇳'},
     {'code': 'sw', 'name': 'Kiswahili', 'flag': '🇰🇪'},
     {'code': 'ja', 'name': '日本語', 'flag': '🇯🇵'},
+    {'code': 'ko', 'name': '한국어', 'flag': '🇰🇷'},
   ];
 }
