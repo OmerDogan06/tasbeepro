@@ -1,0 +1,353 @@
+{
+  "@@locale": "fa",
+  "splashAppTitle": "تسبیح پرو",
+  "splashSubtitleArabic": "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+  "splashSubtitleTurkish": "برنامه دیجیتال تسبیح",
+  "splashLoading": "در حال بارگیری...",
+  "settingsTitle": "تنظیمات",
+  "settingsSoundVibration": "صدا و لرزش",
+  "settingsSoundEffect": "جلوه صوتی",
+  "settingsSoundSubtitle": "صدای لمس را روشن/خاموش کنید",
+  "settingsVibration": "لرزش",
+  "settingsReminders": "یادآورها 💎",
+  "settingsZikirReminder": "یادآور ذکر",
+  "settingsReminderSubtitle": "یادآورها را مشاهده و مدیریت کنید",
+  "settingsReminderTimes": "ساعات یادآوری",
+  "settingsReminderTimesSubtitle": "اعلان‌های روزانه تکراری",
+  "settingsReminderWarning": "اندروید ممکن است اعلان‌های مرسل شده در فواصل مکرر را مسدود کند. برای عملکرد صحیح یادآورهایتان، فواصل معقولی انتخاب کنید.",
+  "settingsWidget": "ویجت 📱",
+  "settingsWidgetStats": "آمار ویجت",
+  "settingsWidgetStatsSubtitle": "تمام ذکرهای انجام شده از ویجت را ببینید",
+  "settingsWidgetInfo": "درباره ویجت",
+  "settingsWidgetInfoSubtitle": "نحوه استفاده از ویجت و اضافه کردن آن به صفحه اصلی",
+  "settingsAbout": "درباره",
+  "settingsAppInfo": "درباره برنامه",
+  "settingsRateApp": "ارزیابی برنامه",
+  "settingsRateSubtitle": "در پلی استور ارزیابی کنید",
+  "settingsLanguage": "زبان",
+  "settingsLanguageSubtitle": "زبان برنامه را تغییر دهید",
+  "vibrationOff": "خاموش",
+  "vibrationLight": "سبک",
+  "vibrationMedium": "متوسط",
+  "vibrationHigh": "قوی",
+  "vibrationTitle": "لرزش",
+  "vibrationOk": "تأیید",
+  "soundVolumeTitle": "سطح صدا",
+  "soundVolumeLow": "کم",
+  "soundVolumeMedium": "متوسط",
+  "soundVolumeHigh": "زیاد",
+  "languageSelectionTitle": "انتخاب زبان",
+  "languageSelectionSubtitle": "زبان برنامه را انتخاب کنید",
+  "languageChanged": "زبان تغییر یافت",
+  "languageChangedMessage": "زبان برنامه با موفقیت تغییر یافت",
+  "ok": "تأیید",
+  "cancel": "لغو",
+  "close": "بستن",
+  "loading": "در حال بارگیری...",
+  "thanks": "متشکرم",
+  "success": "موفق",
+  "rateAppMessage": "ارزیابی شما برای ما بسیار مهم است!",
+  "widgetAddTitle": "اضافه کردن ویجت",
+  "widgetInfoTitle": "درباره ویجت تسبیح 📱",
+  "widgetFeatures": "✨ ویژگی‌های ویجت:",
+  "widgetFeature1": "به راحتی در صفحه اصلی خود ذکر بگویید",
+  "widgetFeature2": "تمام ذکرهایتان به طور دائمی ذخیره می‌شود",
+  "widgetFeature3": "می‌توانید آمار ویجت را دنبال کنید",
+  "widgetFeature4": "می‌توانید هدف تعیین کنید",
+  "widgetFeature5": "می‌توانید انواع مختلف ذکر انتخاب کنید",
+  "widgetAddInstructions": "روی یک فضای خالی در صفحه اصلی خود فشار طولانی دهید و گزینه \"ویجت‌ها\" را انتخاب کنید. سپس ویجت \"تسبیح پرو\" را پیدا کرده و اضافه کنید.",
+  "appInfoTitle": "تسبیح پرو",
+  "appInfoDescription": "برنامه دیجیتال تسبیح که آفلاین کار می‌کند.",
+  "version": "نسخه",
+  "widgetAddSuccess": "اضافه کردن ویجت",
+  "widgetAddSuccessMessage": "روی یک فضای خالی در صفحه اصلی خود فشار طولانی دهید و گزینه \"ویجت‌ها\" را انتخاب کنید. سپس ویجت \"تسبیح پرو\" را پیدا کرده و اضافه کنید.",
+  "appInfoVersionLabel": "نسخه: ",
+  "homeTitle": "تسبیح پرو",
+  "homeDailyTotal": "مجموع ذکرهای امروز",
+  "homeTarget": "هدف",
+  "homeReset": "بازنشانی",
+  "homeStatistics": "آمار",
+  "homeResetConfirmTitle": "بازنشانی",
+  "homeResetConfirmMessage": "آیا مطمئن هستید که می‌خواهید شمارنده را بازنشانی کنید؟",
+  "homeResetSuccess": "موفق",
+  "homeResetSuccessMessage": "شمارنده بازنشانی شد",
+  "homeTargetDialogTitle": "انتخاب هدف",
+  "addCustomTarget": "اضافه کردن هدف",
+  "customTargetTitle": "اضافه کردن هدف سفارشی",
+  "customTargetHint": "هدفی بزرگتر از ۱۰۰۰ وارد کنید",
+  "customTargetError": "هدف نامعتبر",
+  "customTargetErrorMessage": "هدف باید بزرگتر از ۱۰۰۰ و منحصر به فرد باشد",
+  "customTargetSuccess": "موفق",
+  "customTargetSuccessMessage": "هدف سفارشی اضافه شد",
+  "add": "اضافه",
+  "deleteTargetTitle": "حذف هدف",
+  "deleteTargetMessage": "آیا مطمئن هستید که می‌خواهید هدف {target} را حذف کنید؟",
+  "deleteTargetSuccess": "هدف حذف شد",
+  "delete": "حذف",
+  "zikirListTitle": "انتخاب ذکر",
+  "zikirListProSelection": "انتخاب ذکر حرفه‌ای",
+  "zikirListDescription": "مجموعه گسترده ذکر و ایجاد ذکر سفارشی",
+  "zikirListAddCustom": "اضافه کردن ذکر سفارشی",
+  "zikirListSelectionSuccess": "موفق",
+  "zikirListSelected": "انتخاب شد",
+  "zikirSubhanallah": "سبحان الله",
+  "zikirSubhanallahMeaning": "خدا منزه و مقدس است",
+  "zikirAlhamdulillah": "الحمدلله",
+  "zikirAlhamdulillahMeaning": "تمام حمدها تنها برای خداست",
+  "zikirAllahuAkbar": "الله اکبر",
+  "zikirAllahuAkbarMeaning": "خدا بزرگتر است",
+  "zikirLaIlaheIllallah": "لا إله إلا الله",
+  "zikirLaIlaheIllallahMeaning": "معبودی جز خدا نیست",
+  "zikirEstaghfirullah": "استغفرالله",
+  "zikirEstaghfirullahMeaning": "از خدا آمرزش می‌طلبم",
+  "zikirLaHawleWelaKuvvete": "لا حول ولا قوة إلا بالله",
+  "zikirLaHawleWelaKuvveteMeaning": "قدرت و نیرو تنها از خداست",
+  "zikirHasbiyallahu": "حسبی الله و نعم الوکیل",
+  "zikirHasbiyallahuMeaning": "خدا برای من کافی است، او چه وکیل خوبی است",
+  "zikirRabbenaAtina": "ربنا آتنا",
+  "zikirRabbenaAtinaMeaning": "پروردگارا! در دنیا به ما خیر عطا کن",
+  "zikirAllahummeSalli": "اللهم صل",
+  "zikirAllahummeCalliMeaning": "خدایا، بر محمد درود فرست",
+  "zikirRabbiZidniIlmen": "رب زدنی علم",
+  "zikirRabbiZidniIlmenMeaning": "پروردگارا! علم مرا بیفزای",
+  "zikirBismillah": "بسم الله",
+  "zikirBismillahMeaning": "به نام خدای رحمان رحیم",
+  "zikirInnallahaMaasSabirin": "إن الله مع الصابرین",
+  "zikirInnallahaMaasSabirinMeaning": "بی‌شک خدا با صابران همراه است",
+  "zikirAllahuLatif": "الله لطیف",
+  "zikirAllahuLatifMeaning": "خدا نسبت به بندگانش بسیار مهربان است",
+  "zikirYaRahman": "یا رحمان یا رحیم",
+  "zikirYaRahmanMeaning": "ای رحمان، ای رحیم",
+  "zikirTabarakAllah": "تبارک الله",
+  "zikirTabarakAllahMeaning": "خدا مبارک است",
+  "zikirMashallah": "ماشاءالله",
+  "zikirMashallahMeaning": "آنچه خدا خواست اتفاق افتاد",
+  "addCustomZikirTitle": "اضافه کردن ذکر سفارشی",
+  "addCustomZikirDescription": "ذکرهای سفارشی خود را ایجاد کرده و به لیست اضافه کنید",
+  "addCustomZikirNameLabel": "نام ذکر",
+  "addCustomZikirNameHint": "مثال: الله اکبر",
+  "addCustomZikirMeaningLabel": "معنی (اختیاری)",
+  "addCustomZikirMeaningHint": "می‌توانید معنی ذکر را بنویسید",
+  "addCustomZikirButton": "اضافه کردن ذکر",
+  "addCustomZikirNameRequired": "نام ذکر لازم است",
+  "addCustomZikirNameMinLength": "نام ذکر باید حداقل ۲ کاراکتر باشد",
+  "statsTitle": "آمار تفصیلی 💎",
+  "widgetStatsTitle": "آمار ویجت 📱",
+  "statsDaily": "روزانه",
+  "statsWeekly": "هفتگی",
+  "statsMonthly": "ماهانه",
+  "statsYearly": "سالانه",
+  "statsDailyInfo": "جزئیات ذکرهای گفته شده امروز",
+  "statsWeeklyInfo": "جزئیات ذکرهای گفته شده این هفته",
+  "statsMonthlyInfo": "جزئیات ذکرهای گفته شده این ماه",
+  "statsYearlyInfo": "جزئیات ذکرهای گفته شده امسال",
+  "widgetStatsDailyInfo": "جزئیات ذکرهای انجام شده از ویجت امروز",
+  "widgetStatsWeeklyInfo": "جزئیات ذکرهای انجام شده از ویجت این هفته",
+  "widgetStatsMonthlyInfo": "جزئیات ذکرهای انجام شده از ویجت این ماه",
+  "widgetStatsYearlyInfo": "جزئیات ذکرهای انجام شده از ویجت امسال",
+  "statsTotal": "مجموع ذکر",
+  "statsMostUsed": "پرکاربردترین",
+  "statsActiveZikrs": "ذکر فعال",
+  "statsAverage": "میانگین",
+  "statsDistribution": "توزیع ذکر",
+  "statsPeriodStatsFor": "آمار {period}",
+  "statsPdfError": "خطای PDF",
+  "statsPdfSaveError": "PDF ذخیره نشد",
+  "statsPdfCreateError": "در ایجاد PDF خطایی رخ داد",
+  "statsPdfOpenError": "در باز کردن PDF خطایی رخ داد",
+  "statsPdfShareError": "در اشتراک‌گذاری PDF خطایی رخ داد",
+  "statsError": "خطا",
+  "statsPdfShareText": "گزارش آمار تسبیح پرو من",
+  "statsPdfShareSubject": "تسبیح پرو - گزارش آمار",
+  "widgetStatsPeriodTitle": "آمار ویجت {period}",
+  "widgetStatsTotal": "مجموع ذکر",
+  "widgetStatsActive": "ذکر فعال", 
+  "widgetStatsMostUsed": "پرکاربردترین",
+  "widgetStatsTotalRecords": "مجموع رکورد",
+  "widgetStatsNoData": "هنوز داده ویجت وجود ندارد",
+  "widgetStatsNoZikr": "هنوز از ویجت ذکری گفته نشده", 
+  "widgetStatsNoPeriodData": "در این دوره هنوز از طریق ویجت ذکری گفته نشده",
+  "pdfSuccessTitle": "PDF با موفقیت ایجاد شد! 📄",
+  "pdfButtonOpen": "باز کردن",
+  "pdfButtonShare": "اشتراک", 
+  "pdfButtonClose": "بستن",
+  "pdfReportTitle": "تسبیح پرو - گزارش آمار تفصیلی",
+  "pdfPeriodLabel": "دوره",
+  "pdfDateLabel": "تاریخ",
+  "pdfTotalZikrCard": "مجموع ذکر",
+  "pdfMostUsedCard": "پرکاربردترین",
+  "pdfActiveZikrCard": "نوع ذکر فعال",
+  "pdfZikrDetailsTitle": "جزئیات ذکر",
+  "pdfBismillah": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم",
+  "pdfDate": "تاریخ",
+  "pdfPeriod": "دوره",
+  "pdfDailyAverage": "میانگین روزانه",
+  "pdfActiveZikrRatio": "ذکر فعال",
+  "pdfMostUsedZikrs": "پرکاربردترین ذکرها",
+  "pdfNoZikrYet": "هنوز هیچ ذکری گفته نشده",
+  "pdfQuranVerse": "وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ",
+  "pdfQuranTranslation": "\"خدا را بسیار یاد کنید تا رستگار شوید.\" (انفال: ۴۵)",
+  "pdfWidgetReportTitle": "تسبیح پرو - گزارش آمار ویجت",
+  "pdfWidgetStatsSection": "جزئیات ذکر ویجت",
+  "pdfWidgetTotalZikrCard": "مجموع ذکر ویجت",
+  "pdfWidgetMostUsedCard": "پرکاربردترین",
+  "pdfWidgetActiveTypesCard": "نوع ذکر فعال",
+  "pdfWidgetPeriodText": "در این دوره مجموع {count} ذکر از طریق ویجت گفته شده",
+  "pdfWidgetTypesText": "مجموع {count} نوع مختلف ذکر استفاده شده",
+  "pdfWidgetMostUsedText": "پرکاربردترین ذکر: {name}",
+  "pdfWidgetNoZikrText": "در این دوره هنوز از طریق ویجت ذکری گفته نشده",
+  "pdfWidgetInfoTitle": "درباره ویجت",
+  "pdfWidgetInfoText": "ذکرهای انجام شده از طریق ویجت به طور دائمی ذخیره می‌شود و هرگز حذف نمی‌شود. بدین گونه می‌توانید تاریخچه ذکرهای ویجت خود را دنبال کنید",
+  "pdfAppCredit": "با اجازه خدا با تسبیح پرو ایجاد شده",
+  "pdfFileNotOpen": "فایل PDF باز نشد. مطمئن شوید که برنامه خواننده PDF نصب است",
+  "pdfFileCannotOpen": "فایل باز نشد",
+  "pdfExternalStorageError": "فضای ذخیره‌سازی خارجی در دسترس نیست",
+  "pdfMainStoragePath": "ذخیره‌سازی اصلی/TasbeePro",
+  "pdfAppSpecificPath": "پوشه مخصوص برنامه/TasbeePro_Reports",
+  "pdfDocumentsPath": "پوشه اسناد برنامه",
+  "statsDetails": "جزئیات ذکر",
+  "widgetStatsDistribution": "توزیع ذکر ویجت",
+  "widgetStatsDetails": "جزئیات ذکر ویجت",
+  "statsNoData": "هنوز داده‌ای وجود ندارد",
+  "statsNoDataMessage": "در این دوره هنوز ذکری گفته نشده",
+  "statsLoadingError": "در بارگیری داده خطایی رخ داد",
+  "reminderScreenTitle": "یادآورهای ذکر",
+  "reminderScreenDescription": "در تاریخ و ساعت مشخص شده اعلان یادآوری ذکر دریافت کنید",
+  "reminderScreenAddButton": "اضافه کردن یادآور",
+  "reminderScreenEmpty": "هنوز یادآوری وجود ندارد",
+  "reminderScreenEmptyMessage": "برای فراموش نکردن ذکر، یادآور اضافه کنید",
+  "reminderDeleteSuccess": "حذف شد 🗑️",
+  "reminderDeleteMessage": "یادآور با موفقیت حذف شد",
+  "reminderDefaultTitle": "زمان ذکر",
+  "addReminderTitle": "یادآور جدید",
+  "addReminderDescription": "در تاریخ و ساعت مشخص شده اعلان یادآوری ذکر دریافت کنید",
+  "addReminderTitleLabel": "عنوان",
+  "addReminderTitleHint": "زمان ذکر",
+  "addReminderMessageLabel": "پیام (اختیاری)",
+  "addReminderMessageHint": "زمان ذکر گفتن فرا رسیده!",
+  "addReminderDateTimeLabel": "تاریخ و ساعت",
+  "addReminderSelectDate": "انتخاب تاریخ",
+  "addReminderSelectTime": "انتخاب ساعت",
+  "addReminderDatePickerTitle": "تاریخ را انتخاب کنید",
+  "addReminderTimePickerTitle": "ساعت را انتخاب کنید",
+  "addReminderSubmitButton": "اضافه کردن یادآور",
+  "addReminderInvalidDate": "تاریخ نامعتبر",
+  "addReminderInvalidDateMessage": "نمی‌توانید تاریخ گذشته انتخاب کنید",
+  "addReminderDefaultMessage": "زمان ذکر گفتن فرا رسیده!",
+  "addReminderSuccess": "یادآور اضافه شد 🔔",
+  "addReminderSuccessMessage": "در زمان مشخص شده اعلان خواهد آمد",
+  "addReminderError": "خطا",
+  "addReminderErrorMessage": "در اضافه کردن یادآور خطایی رخ داد",
+  "addReminderPermissionTitle": "مجوز اعلان لازم است",
+  "addReminderPermissionMessage": "برای عملکرد یادآورها باید مجوز اعلان بدهید.",
+  "addReminderPermissionCancel": "لغو",
+  "addReminderPermissionSettings": "رفتن به تنظیمات",
+  "customTimesTitle": "ساعات یادآوری",
+  "customTimesAddButton": "اضافه کردن ساعت",
+  "customTimesDescription": "در ساعات سفارشی یادآور ذکر روزانه دریافت کنید. ساعات اضافه شده هر روز تکرار می‌شود.",
+  "customTimesEmptyTitle": "هنوز ساعت سفارشی اضافه نشده",
+  "customTimesEmptyMessage": "می‌توانید برای یادآورهای روزانه ساعات سفارشی اضافه کنید",
+  "customTimesActiveStatus": "یادآور روزانه فعال",
+  "customTimesInactiveStatus": "غیرفعال",
+  "customTimesPickerTitle": "ساعت را انتخاب کنید",
+  "customTimesAlreadyExists": "از قبل موجود",
+  "customTimesAlreadyExistsMessage": "این ساعت از قبل اضافه شده",
+  "customTimesAddSuccess": "ساعت اضافه شد 🕐",
+  "customTimesAddSuccessMessage": "یادآور روزانه در ساعت {time} فعال شد",
+  "customTimesToggleActive": "فعال شد",
+  "customTimesToggleInactive": "غیرفعال شد",
+  "customTimesToggleActiveMessage": "یادآور فعال",
+  "customTimesToggleInactiveMessage": "یادآور غیرفعال",
+  "customTimesDeleteTitle": "حذف ساعت؟",
+  "customTimesDeleteMessage": "آیا مطمئن هستید که می‌خواهید یادآور ساعت {time} را حذف کنید؟",
+  "customTimesDeleteCancel": "لغو",
+  "customTimesDeleteConfirm": "حذف",
+  "customTimesDeleteSuccess": "حذف شد 🗑️",
+  "customTimesDeleteSuccessMessage": "ساعت {time} با موفقیت حذف شد",
+  "counterButtonText": "لمس کنید",
+  "progressBarCompleted": "ماشاءالله! هدف تکمیل شد",
+  "zikirCardSelectText": "انتخاب ذکر",
+  "pickerSelectButton": "انتخاب",
+  "pickerDateTitle": "تاریخ را انتخاب کنید",
+  "pickerTimeTitle": "ساعت را انتخاب کنید",
+  "pickerDay": "روز",
+  "pickerMonth": "ماه",
+  "pickerYear": "سال",
+  "pickerHour": "ساعت",
+  "pickerMinute": "دقیقه",
+  "pickerMonthJanuary": "ژانویه",
+  "pickerMonthFebruary": "فوریه",
+  "pickerMonthMarch": "مارس",
+  "pickerMonthApril": "آپریل",
+  "pickerMonthMay": "مه",
+  "pickerMonthJune": "ژوئن",
+  "pickerMonthJuly": "ژوئیه",
+  "pickerMonthAugust": "آگوست",
+  "pickerMonthSeptember": "سپتامبر",
+  "pickerMonthOctober": "اکتبر",
+  "pickerMonthNovember": "نوامبر",
+  "pickerMonthDecember": "دسامبر",
+  "notificationChannelTitle": "یادآورهای ذکر",
+  "notificationChannelDescription": "یادآور ذکر گفتن",
+  "notificationDailyChannelTitle": "یادآورهای روزانه",
+  "notificationDailyChannelDescription": "یادآورهای ذکر روزانه در ساعات مشخص شده",
+  "notificationPermissionRequired": "مجوز اعلان لازم است",
+  "notificationZikirTime": "زمان ذکر 🕌",
+  "notificationDailyZikirMessage": "زمان ذکر روزانه فرا رسیده!",
+  "notificationZikirReminder": "یادآور ذکر",
+  "notificationDetailedMessage": "زمان ذکر روزانه فرا رسیده! سبحان‌الله، الحمدلله، الله اکبر",
+  "settingsPermissions": "مجوزها",
+  "settingsPermissionsTitle": "مجوزهای برنامه",
+  "settingsPermissionsSubtitle": "مجوزهای برنامه را مشاهده و مدیریت کنید",
+  "permissionsTitle": "مجوزها",
+  "permissionsInfoTitle": "اطلاعات مجوز",
+  "permissionsInfoDescription": "در این صفحه می‌توانید مجوزهای لازم برای عملکرد صحیح برنامه را مشاهده و مدیریت کنید. برای دادن مجوزها، روی کارت مجوز مربوطه ضربه بزنید.",
+  "permissionsRequired": "مجوزهای لازم",
+  "permissionsRequestAll": "درخواست تمام مجوزها",
+  "permissionsOpenSettings": "باز کردن تنظیمات برنامه",
+  "permissionGranted": "داده شده",
+  "permissionDenied": "رد شده",
+  "permissionPermanentlyDeniedShort": "رد دائمی",
+  "permissionRestricted": "محدود",
+  "permissionUnknown": "نامشخص",
+  "permissionPermanentlyDenied": "مجوز به طور دائمی رد شده. باید از تنظیمات به صورت دستی آن را فعال کنید.",
+  "permissionNotificationTitle": "مجوز اعلان",
+  "permissionAlarmTitle": "مجوز زنگ",
+  "permissionUnknownTitle": "مجوز نامشخص",
+  "permissionNotificationDescription": "برای یادآورهای ذکر و اعلان‌ها لازم است",
+  "permissionAlarmDescription": "برای یادآورهای به موقع لازم است (اندروید ۱۲+)",
+  "permissionUnknownDescription": "اطلاعاتی درباره این مجوز در دسترس نیست",
+  "permissionAlreadyGranted": "مجوز از قبل داده شده",
+  "permissionAlreadyGrantedMessage": "این مجوز از قبل داده شده است.",
+  "permissionGrantedMessage": "مجوز با موفقیت داده شد!",
+  "permissionPermanentlyDeniedMessage": "مجوز به طور دائمی رد شده. می‌توانید از تنظیمات به صورت دستی آن را فعال کنید.",
+  "permissionDeniedMessage": "مجوز رد شده. می‌توانید دوباره امتحان کنید.",
+  "permissionRequestError": "در درخواست مجوز خطایی رخ داد.",
+  "permissionsAllGranted": "تمام مجوزها داده شد",
+  "permissionsAllGrantedMessage": "تمام مجوزهای لازم با موفقیت داده شد!",
+  "permissionsSomeGranted": "برخی مجوزها داده شد",
+  "permissionsSomeGrantedMessage": "برخی مجوزها داده شد. می‌توانید مجوزهای باقی‌مانده را به صورت دستی بدهید.",
+  "permissionsRequestError": "در درخواست مجوزها خطایی رخ داد.",
+  "permissionManualTitle": "مجوز دستی لازم",
+  "permissionManualMessage": "این مجوز به طور دائمی رد شده. باید از صفحه تنظیمات به صورت دستی آن را فعال کنید.",
+  "permissionBatteryTitle": "بهینه‌سازی باتری",
+  "permissionBatteryDescription": "برای اعلان‌های قابل اعتماد در پس‌زمینه لازم است",
+  "error": "خطا",
+  "targetCompletionTitle": "تبریک! 🎉",
+  "targetCompletionMessage": "هدف خود را تکمیل کردید!",
+  "customZikirAddedTitle": "موفق! 🎉",
+  "customZikirAddedMessage": "ذکر سفارشی اضافه شد",
+  "deleteZikirTitle": "حذف ذکر",
+  "deleteZikirMessage": "آیا مطمئن هستید که می‌خواهید این ذکر را حذف کنید؟",
+  "deleteZikirConfirm": "حذف",
+  "deleteZikirCancel": "لغو",
+  "deleteZikirSuccess": "حذف شد! 🗑️",
+  "rotateDeviceMessage": "📱 لطفاً دستگاه خود را به حالت عمودی بچرخانید",
+  "notificationSettingsDialogTitle": "راهنمای تنظیمات اعلان 🔔",
+  "notificationSettingsDialogMessage": "برای اینکه تسبیح پرو بتواند در زمان مناسب شما را یادآوری کند، برخی مجوزها باید در تنظیمات دستگاه فعال باشد.\nلطفاً موارد زیر را بررسی کنید:",
+  "notificationSettingsPermission": "مجوز اعلان: مطمئن شوید که اعلان‌های برنامه مجاز است.",
+  "notificationSettingsBattery": "تنظیمات باتری و پس‌زمینه: به تسبیح پرو اجازه دهید در پس‌زمینه اجرا شود.",
+  "notificationSettingsDoNotDisturb": "اجازه وقفه (اختیاری): می‌توانید این گزینه را فعال کنید تا یادآورها حتی در حالت سکوت نیز نمایش داده شوند.",
+  "notificationSettingsLockScreen": "نمایش در صفحه قفل: اجازه دهید اعلان‌ها در صفحه قفل نمایش داده شوند. (در برخی دستگاه‌ها اعلان‌ها ممکن است مخفی باشد.)",
+  "notificationSettingsRestart": "پس از راه‌اندازی مجدد دستگاه، یک بار باز کردن برنامه، سیستم اعلان را تازه‌سازی می‌کند."
+}

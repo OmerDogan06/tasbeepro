@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تسبیح پرو</string>
+    <string name="appwidget_text">ویجت تسبیح پرو</string>
+    <string name="widget_description">ویجت شمارنده ذکر صفحه اصلی</string>
+    <string name="add_widget">اضافه کردن ویجت</string>
+    <string name="zikr_counter">شمارنده ذکر</string>
+    <string name="target">هدف</string>
+    <string name="current">انجام شده</string>
+    <string name="progress">پیشرفت</string>
+    <string name="reset">بازنشانی</string>
+    <string name="settings">تنظیمات</string>
+    <string name="widget_settings">تنظیمات ویجت</string>
+    <string name="zikr_type">نوع ذکر</string>
+    <string name="target_count">تعداد هدف</string>
+    <string name="preview">پیش‌نمایش</string>
+    <string name="save">ذخیره</string>
+    <string name="cancel">لغو</string>
+    <string name="widget_settings_desc">تنظیمات</string>
+    <string name="widget_counter_desc">شمارنده ذکر</string>
+    <string name="widget_tap_text">لمس کنید</string>
+    <string name="widget_reset_desc">شمارنده را بازنشانی کن</string>
+    <string name="widget_config_title">تنظیمات ویجت</string>
+    <string name="zikr_type_description">نوع ذکری که در ویجت نمایش داده شود را انتخاب کنید</string>
+    <string name="target_count_description">تعداد هدف ذکر روزانه را تعیین کنید</string>
+    <string name="sound_settings_title">🔊 تنظیمات صوتی</string>
+    <string name="sound_effect">جلوه صوتی</string>
+    <string name="widget_preview_title">👁️ پیش‌نمایش ویجت</string>
+    <string name="preview_target_text">هدف: %1$d</string>
+    <string name="target_completed_title">هدف تکمیل شد! 🎉</string>
+    <string name="target_completed_message">ماشاءالله! به تعداد %1$d ذکر رسیدید. خدا قبول کند!</string>
+    <string name="target_completed_toast_main">🎉 ماشاءالله! %1$d ذکر خود را تکمیل کردید!</string>
+    <string name="target_completed_toast">✨ هدف را گذراندید! (%1$d+) ادامه دهید!</string>
+    <string name="target_exceeded_title">هدف گذرانده شد! ✨</string>
+    <string name="target_exceeded_message">ماشاءالله! هدف %1$d را گذراندید. ذکرهایتان ادامه دارد!</string>
+    <string name="notification_channel_name">اعلان‌های تسبیح</string>
+    <string name="notification_channel_description">اعلان‌های هدف ذکر را نمایش می‌دهد</string>
+    <string name="error_widget_update">در به‌روزرسانی ویجت خطایی رخ داد: %1$s</string>
+    <string name="error_widget_ids">در دریافت شناسه‌های ویجت خطایی رخ داد: %1$s</string>
+    
+    <!-- اسامی ذکر -->
+    <string name="zikir_subhanallah">سبحان الله</string>
+    <string name="zikir_alhamdulillah">الحمدلله</string>
+    <string name="zikir_allahu_akbar">الله اکبر</string>
+    <string name="zikir_la_ilaha_illallah">لا إله إلا الله</string>
+    <string name="zikir_estaghfirullah">استغفرالله</string>
+    <string name="zikir_la_hawle_wala_quwwate">لا حول ولا قوة إلا بالله</string>
+    <string name="zikir_hasbi_allahu">حسبی الله و نعم الوکیل</string>
+    <string name="zikir_rabbana_atina">ربنا آتنا</string>
+    <string name="zikir_allahume_salli">اللهم صل</string>
+    <string name="zikir_rabbi_zidni_ilmen">رب زدنی علم</string>
+    <string name="zikir_bismillah">بسم الله</string>
+    <string name="zikir_innallaha_maas_sabirin">إن الله مع الصابرین</string>
+    <string name="zikir_allahu_latif">الله لطیف</string>
+    <string name="zikir_ya_rahman">یا رحمان یا رحیم</string>
+    <string name="zikir_tabarak_allah">تبارک الله</string>
+    <string name="zikir_mashallah">ماشاءالله</string>
+</resources>
