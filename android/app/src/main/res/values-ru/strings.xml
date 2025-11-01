@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasbee Pro</string>
+    <string name="appwidget_text">Виджет Tasbee Pro</string>
+    <string name="widget_description">Виджет счетчика зикра главного экрана</string>
+    <string name="add_widget">Добавить виджет</string>
+    <string name="zikr_counter">Счетчик зикра</string>
+    <string name="target">Цель</string>
+    <string name="current">Сделано</string>
+    <string name="progress">Прогресс</string>
+    <string name="reset">Сброс</string>
+    <string name="settings">Настройки</string>
+    <string name="widget_settings">Настройки виджета</string>
+    <string name="zikr_type">Тип зикра</string>
+    <string name="target_count">Число цели</string>
+    <string name="preview">Предпросмотр</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="widget_settings_desc">Настройки</string>
+    <string name="widget_counter_desc">Счетчик зикра</string>
+    <string name="widget_tap_text">КОСНИТЕСЬ</string>
+    <string name="widget_reset_desc">Сбросить счетчик</string>
+    <string name="widget_config_title">Настройки виджета</string>
+    <string name="zikr_type_description">Выберите тип зикра для отображения в виджете</string>
+    <string name="target_count_description">Определите ежедневную цель количества зикров</string>
+    <string name="sound_settings_title">🔊 Настройки звука</string>
+    <string name="sound_effect">Звуковой эффект</string>
+    <string name="widget_preview_title">👁️ Предпросмотр виджета</string>
+    <string name="preview_target_text">Цель: %1$d</string>
+    <string name="target_completed_title">Цель выполнена! 🎉</string>
+    <string name="target_completed_message">МашаАллах! Вы достигли %1$d зикров. Да примет Аллах!</string>
+    <string name="target_completed_toast_main">🎉 МашаАллах! Вы выполнили %1$d зикров!</string>
+    <string name="target_completed_toast">✨ Превысили цель! (%1$d+) Продолжайте!</string>
+    <string name="target_exceeded_title">Цель превышена! ✨</string>
+    <string name="target_exceeded_message">МашаАллах! Вы превысили цель %1$d. Ваши зикры продолжаются!</string>
+    <string name="notification_channel_name">Уведомления Tasbee</string>
+    <string name="notification_channel_description">Показывает уведомления о цели зикра</string>
+    <string name="error_widget_update">Произошла ошибка при обновлении виджета: %1$s</string>
+    <string name="error_widget_ids">Произошла ошибка при получении ID виджетов: %1$s</string>
+    
+    <!-- Названия зикров -->
+    <string name="zikir_subhanallah">Субханаллах</string>
+    <string name="zikir_alhamdulillah">Альхамдулиллях</string>
+    <string name="zikir_allahu_akbar">Аллаху акбар</string>
+    <string name="zikir_la_ilaha_illallah">Ля иляха илля Ллах</string>
+    <string name="zikir_estaghfirullah">Астагфируллах</string>
+    <string name="zikir_la_hawle_wala_quwwate">Ля хауля ва ля куввата илля биЛлях</string>
+    <string name="zikir_hasbi_allahu">Хасбияллаху ва ни\'маль вакиль</string>
+    <string name="zikir_rabbana_atina">Раббана атина</string>
+    <string name="zikir_allahume_salli">Аллахумма салли</string>
+    <string name="zikir_rabbi_zidni_ilmen">Рабби зидни \'ильман</string>
+    <string name="zikir_bismillah">Бисмиллях</string>
+    <string name="zikir_innallaha_maas_sabirin">Инна Ллаха ма\'ас сабирин</string>
+    <string name="zikir_allahu_latif">Аллаху латиф</string>
+    <string name="zikir_ya_rahman">Я Рахман Я Рахим</string>
+    <string name="zikir_tabarak_allah">Табарак Аллах</string>
+    <string name="zikir_mashallah">Машаллах</string>
+</resources>

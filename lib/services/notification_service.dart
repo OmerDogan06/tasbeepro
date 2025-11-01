@@ -24,7 +24,7 @@ class NotificationService extends GetxService {
       final status = await Permission.notification.request();
       if (status.isDenied) {
         // Kullanıcıya açıklama göster
-        print('Notification permission denied');
+        debugPrint('Notification permission denied');
       }
     }
 
@@ -32,7 +32,7 @@ class NotificationService extends GetxService {
     if (await Permission.scheduleExactAlarm.isDenied) {
       final status = await Permission.scheduleExactAlarm.request();
       if (status.isDenied) {
-        print('Exact alarm permission denied');
+        debugPrint('Exact alarm permission denied');
       }
     }
     
