@@ -11,7 +11,7 @@ class SoundService extends GetxService {
   static const platform = MethodChannel('com.skyforgestudios.tasbeepro/sound');
   
   final _soundEnabled = true.obs; // Reaktif değişken
-  final _soundVolume = 2.obs; // Ses seviyesi: 0=Düşük, 1=Orta, 2=Yüksek
+  final _soundVolume = 1.obs; // Ses seviyesi: 0=Düşük, 1=Orta, 2=Yüksek
   
   @override
   void onInit() {
@@ -36,7 +36,7 @@ class SoundService extends GetxService {
   Future<void> _preloadSounds() async {
     try {
       // Ses dosyasını önceden yükle
-      _clickSound = await _soloud.loadAsset('assets/sounds/click2.wav');
+      _clickSound = await _soloud.loadAsset('assets/sounds/click3.wav');
       debugPrint('Sound preloaded successfully');
     } catch (e) {
       debugPrint('Failed to preload sound: $e');
@@ -67,13 +67,13 @@ class SoundService extends GetxService {
   double volumeMultiplier() {
     switch (_soundVolume.value) {
       case 0:
-        return 0.45; // Düşük
+        return 0.25; // Düşük
       case 1:
-        return 0.65; // Orta
+        return 0.5; // Orta
       case 2:
-        return 1; // Yüksek
+        return 0.80; // Yüksek
       default:
-        return  1;
+        return  0.80;
     }
   }
   
