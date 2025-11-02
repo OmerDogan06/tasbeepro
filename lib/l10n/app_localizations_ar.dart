@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get splashAppTitle => 'تسبيح برو';
+  String get splashAppTitle => 'Tasbee Pro';
 
   @override
   String get splashSubtitleArabic => 'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ';
@@ -177,10 +177,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get widgetAddInstructions =>
-      'اضغط مطولاً على مساحة فارغة في شاشتك الرئيسية واختر \"الودجات\". ثم ابحث عن ودجت \"تسبيح برو\" وأضفه.';
+      'اضغط مطولاً على مساحة فارغة في شاشتك الرئيسية واختر \"الودجات\". ثم ابحث عن ودجت \"Tasbee Pro\" وأضفه.';
 
   @override
-  String get appInfoTitle => 'تسبيح برو';
+  String get appInfoTitle => 'Tasbee Pro';
 
   @override
   String get appInfoDescription => 'تطبيق المسبحة الرقمية يعمل بدون اتصال.';
@@ -193,13 +193,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get widgetAddSuccessMessage =>
-      'اضغط مطولاً على مساحة فارغة في شاشتك الرئيسية واختر \"الودجات\". ثم ابحث عن ودجت \"تسبيح برو\" وأضفه.';
+      'اضغط مطولاً على مساحة فارغة في شاشتك الرئيسية واختر \"الودجات\". ثم ابحث عن ودجت \"Tasbee Pro\" وأضفه.';
 
   @override
   String get appInfoVersionLabel => 'الإصدار: ';
 
   @override
-  String get homeTitle => 'تسبيح برو';
+  String get homeTitle => 'Tasbee Pro';
 
   @override
   String get homeDailyTotal => 'إجمالي الأذكار اليومية';
@@ -508,10 +508,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get statsError => 'خطأ';
 
   @override
-  String get statsPdfShareText => 'تقرير إحصائيات تسبيح برو';
+  String get statsPdfShareText => 'تقرير إحصائيات Tasbee Pro';
 
   @override
-  String get statsPdfShareSubject => 'تسبيح برو - تقرير الإحصائيات';
+  String get statsPdfShareSubject => 'Tasbee Pro - تقرير الإحصائيات';
 
   @override
   String widgetStatsPeriodTitle(Object period) {
@@ -553,7 +553,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get pdfButtonClose => 'إغلاق';
 
   @override
-  String get pdfReportTitle => 'تسبيح برو - تقرير إحصائيات تفصيلي';
+  String get pdfReportTitle => 'Tasbee Pro - تقرير إحصائيات تفصيلي';
 
   @override
   String get pdfPeriodLabel => 'الفترة';
@@ -603,7 +603,7 @@ class AppLocalizationsAr extends AppLocalizations {
       '\"واذكروا الله كثيراً لعلكم تفلحون\" (الأنفال: 45)';
 
   @override
-  String get pdfAppCredit => 'تم الإنشاء بإذن الله بواسطة تسبيح برو';
+  String get pdfAppCredit => 'تم الإنشاء بإذن الله بواسطة Tasbee Pro';
 
   @override
   String get pdfFileNotOpen => 'تعذر فتح ملف PDF. تأكد من تثبيت تطبيق قارئ PDF';
@@ -624,7 +624,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get pdfDocumentsPath => 'مجلد مستندات التطبيق';
 
   @override
-  String get pdfWidgetReportTitle => 'تسبيح برو - تقرير إحصائيات الودجت';
+  String get pdfWidgetReportTitle => 'Tasbee Pro - تقرير إحصائيات الودجت';
 
   @override
   String get pdfWidgetStatsSection => 'تفاصيل أذكار الودجت';
@@ -1088,7 +1088,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notificationSettingsDialogMessage =>
-      'لكي يتمكن تطبيق تسبيح برو من تذكيرك في الوقت المناسب، يجب تفعيل بعض الأذونات في إعدادات الجهاز.\nيرجى التحقق من التالي:';
+      'لكي يتمكن تطبيق Tasbee Pro من تذكيرك في الوقت المناسب، يجب تفعيل بعض الأذونات في إعدادات الجهاز.\nيرجى التحقق من التالي:';
 
   @override
   String get notificationSettingsPermission =>
@@ -1096,7 +1096,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notificationSettingsBattery =>
-      'إعدادات البطارية والخلفية: اسمح لتطبيق تسبيح برو بالعمل في الخلفية.';
+      'إعدادات البطارية والخلفية: اسمح لتطبيق Tasbee Pro بالعمل في الخلفية.';
 
   @override
   String get notificationSettingsDoNotDisturb =>
