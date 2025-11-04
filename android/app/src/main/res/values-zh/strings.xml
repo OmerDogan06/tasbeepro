@@ -39,20 +39,20 @@
     <string name="error_widget_ids">获取小组件ID时出错：%1$s</string>
     
     <!-- Zikir Isimleri -->
-    <string name="zikir_subhanallah">Subhanallah</string>
-    <string name="zikir_alhamdulillah">Alhamdulillah</string>
-    <string name="zikir_allahu_akbar">Allahu Akbar</string>
-    <string name="zikir_la_ilaha_illallah">La ilaha illAllah</string>
-    <string name="zikir_estaghfirullah">Astaghfirullah</string>
-    <string name="zikir_la_hawle_wala_quwwate">La hawla wa la quwwata illa billah</string>
-    <string name="zikir_hasbi_allahu">HasbiyAllahu wa ni\'mal wakeel</string>
-    <string name="zikir_rabbana_atina">Rabbana Atina</string>
-    <string name="zikir_allahume_salli">Allahumma Salli</string>
-    <string name="zikir_rabbi_zidni_ilmen">Rabbi Zidni Ilm</string>
-    <string name="zikir_bismillah">Bismillah</string>
-    <string name="zikir_innallaha_maas_sabirin">Innalaha ma\'as sabirin</string>
-    <string name="zikir_allahu_latif">Allahu Latif</string>
-    <string name="zikir_ya_rahman">Ya Rahman Ya Rahim</string>
-    <string name="zikir_tabarak_allah">Tabarak Allah</string>
-    <string name="zikir_mashallah">MashaAllah</string>
+    <string name="zikir_subhanallah">苏布哈纳拉</string>
+    <string name="zikir_alhamdulillah">艾勒哈姆度利拉</string>
+    <string name="zikir_allahu_akbar">安拉胡艾克巴尔</string>
+    <string name="zikir_la_ilaha_illallah">拉伊拉海印拉拉</string>
+    <string name="zikir_estaghfirullah">艾斯塔格菲鲁拉</string>
+    <string name="zikir_la_hawle_wala_quwwate">拉豪拉沃拉古沃塔伊拉比拉</string>
+    <string name="zikir_hasbi_allahu">哈斯比亚拉胡沃尼玛勒瓦基勒</string>
+    <string name="zikir_rabbana_atina">拉巴纳阿提纳</string>
+    <string name="zikir_allahume_salli">安拉胡玛萨利</string>
+    <string name="zikir_rabbi_zidni_ilmen">拉比齐德尼伊勒玛</string>
+    <string name="zikir_bismillah">比斯米拉</string>
+    <string name="zikir_innallaha_maas_sabirin">印纳拉哈玛阿萨比林</string>
+    <string name="zikir_allahu_latif">安拉胡拉提夫</string>
+    <string name="zikir_ya_rahman">亚拉赫曼亚拉希姆</string>
+    <string name="zikir_tabarak_allah">塔巴拉克安拉</string>
+    <string name="zikir_mashallah">马沙安拉</string>
 </resources>

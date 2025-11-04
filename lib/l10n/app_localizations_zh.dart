@@ -284,97 +284,97 @@ class AppLocalizationsZh extends AppLocalizations {
   String get zikirListSelected => '已选择';
 
   @override
-  String get zikirSubhanallah => 'Subhanallah';
+  String get zikirSubhanallah => '苏布哈纳拉';
 
   @override
   String get zikirSubhanallahMeaning => '真主是完美无瑕的，是神圣的';
 
   @override
-  String get zikirAlhamdulillah => 'Alhamdulillah';
+  String get zikirAlhamdulillah => '艾勒哈姆度利拉';
 
   @override
   String get zikirAlhamdulillahMeaning => '一切赞美都属于真主';
 
   @override
-  String get zikirAllahuAkbar => 'Allahu Akbar';
+  String get zikirAllahuAkbar => '安拉胡艾克巴尔';
 
   @override
   String get zikirAllahuAkbarMeaning => '真主至大';
 
   @override
-  String get zikirLaIlaheIllallah => 'La ilaha illAllah';
+  String get zikirLaIlaheIllallah => '拉伊拉海印拉拉';
 
   @override
   String get zikirLaIlaheIllallahMeaning => '除真主外，别无应受崇拜的';
 
   @override
-  String get zikirEstaghfirullah => 'Astaghfirullah';
+  String get zikirEstaghfirullah => '艾斯塔格菲鲁拉';
 
   @override
   String get zikirEstaghfirullahMeaning => '我向真主寻求宽恕';
 
   @override
-  String get zikirLaHawleWelaKuvvete => 'La hawla wa la quwwata illa billah';
+  String get zikirLaHawleWelaKuvvete => '拉豪拉沃拉古沃塔伊拉比拉';
 
   @override
   String get zikirLaHawleWelaKuvveteMeaning => '除依靠真主外，无力量无能力';
 
   @override
-  String get zikirHasbiyallahu => 'HasbiyAllahu wa ni\'mal wakeel';
+  String get zikirHasbiyallahu => '哈斯比亚拉胡沃尼玛勒瓦基勒';
 
   @override
   String get zikirHasbiyallahuMeaning => '真主足以保护我，他是最好的监护者';
 
   @override
-  String get zikirRabbenaAtina => 'Rabbana Atina';
+  String get zikirRabbenaAtina => '拉巴纳阿提纳';
 
   @override
   String get zikirRabbenaAtinaMeaning => '我们的主啊！在今世赐给我们美好';
 
   @override
-  String get zikirAllahummeSalli => 'Allahumma Salli';
+  String get zikirAllahummeSalli => '安拉胡玛萨利';
 
   @override
   String get zikirAllahummeCalliMeaning => '真主啊，求你赐福穆罕默德';
 
   @override
-  String get zikirRabbiZidniIlmen => 'Rabbi Zidni Ilm';
+  String get zikirRabbiZidniIlmen => '拉比齐德尼伊勒玛';
 
   @override
   String get zikirRabbiZidniIlmenMeaning => '我的主啊！求你增加我的知识';
 
   @override
-  String get zikirBismillah => 'Bismillah';
+  String get zikirBismillah => '比斯米拉';
 
   @override
   String get zikirBismillahMeaning => '奉至仁至慈的真主之名';
 
   @override
-  String get zikirInnallahaMaasSabirin => 'Innalaha ma\'as sabirin';
+  String get zikirInnallahaMaasSabirin => '印纳拉哈玛阿萨比林';
 
   @override
   String get zikirInnallahaMaasSabirinMeaning => '真主确实与坚忍者同在';
 
   @override
-  String get zikirAllahuLatif => 'Allahu Latif';
+  String get zikirAllahuLatif => '安拉胡拉提夫';
 
   @override
   String get zikirAllahuLatifMeaning => '真主对他的仆人是极仁慈的';
 
   @override
-  String get zikirYaRahman => 'Ya Rahman Ya Rahim';
+  String get zikirYaRahman => '亚拉赫曼亚拉希姆';
 
   @override
   String get zikirYaRahmanMeaning => '至仁者啊，至慈者啊';
 
   @override
-  String get zikirTabarakAllah => 'Tabarak Allah';
+  String get zikirTabarakAllah => '塔巴拉克安拉';
 
   @override
   String get zikirTabarakAllahMeaning => '真主是吉庆的';
 
   @override
-  String get zikirMashallah => 'MashaAllah';
+  String get zikirMashallah => '马沙安拉';
 
   @override
   String get zikirMashallahMeaning => '真主所意欲的事已发生';
@@ -389,7 +389,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get addCustomZikirNameLabel => '念珠名称';
 
   @override
-  String get addCustomZikirNameHint => '例如：Allahu Akbar';
+  String get addCustomZikirNameHint => '例如：安拉胡艾克巴尔';
 
   @override
   String get addCustomZikirMeaningLabel => '含义（可选）';
@@ -916,8 +916,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notificationZikirReminder => '念珠提醒';
 
   @override
-  String get notificationDetailedMessage =>
-      '是时候进行每日念珠了！Subhanallah，Alhamdulillah，Allahu Akbar';
+  String get notificationDetailedMessage => '是时候进行每日念珠了！苏布哈纳拉，艾勒哈姆度利拉，安拉胡艾克巴尔';
 
   @override
   String get settingsPermissions => '权限';
