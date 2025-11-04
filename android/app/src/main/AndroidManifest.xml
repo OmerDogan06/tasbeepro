@@ -48,8 +48,7 @@
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize"
             android:turnScreenOn="false"
-            android:showWhenLocked="false"
-            android:screenOrientation="portrait">
+            android:showWhenLocked="false">
             
             <!-- Standard app launch -->
             <intent-filter android:autoVerify="true">
