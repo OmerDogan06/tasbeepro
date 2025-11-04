@@ -212,28 +212,7 @@ class _ProgressBarState extends State<ProgressBar>
                       minHeight: 10,
                     ),
                     // Işıltı efekti
-                    if (_progressAnimation.value > 0)
-                      Positioned.fill(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            gradient: LinearGradient(
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                              stops: [
-                                (_progressAnimation.value - 0.3).clamp(0.0, 1.0),
-                                _progressAnimation.value,
-                                (_progressAnimation.value + 0.1).clamp(0.0, 1.0),
-                              ],
-                              colors: [
-                                Colors.transparent,
-                                Colors.white.withAlpha(102),
-                                Colors.transparent,
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                   
                   ],
                 ),
               ),
