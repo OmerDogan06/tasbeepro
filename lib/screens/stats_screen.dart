@@ -911,12 +911,25 @@ class _StatsScreenState extends State<StatsScreen>
       final moonImage = pw.MemoryImage(moonBytes.buffer.asUint8List());
       final pdf = pw.Document();
 
-      // Unicode destekli Poppins fontunu yükle
+      // Unicode destekli fontları yükle
       pw.Font? regularFont;
       pw.Font? boldFont;
       pw.Font? amiriFont;
+      pw.Font? japaneseFont;
+      pw.Font? japaneseBoldFont;
+      pw.Font? koreanFont;
+      pw.Font? koreanBoldFont;
+      pw.Font? chineseFont;
+      pw.Font? chineseBoldFont;
+      pw.Font? bengaliFont;
+      pw.Font? bengaliBoldFont;
+      pw.Font? thaiFont;
+      pw.Font? thaiBoldFont;
+      pw.Font? cyrillicFont;
+      pw.Font? cyrillicBoldFont;
 
       try {
+        // Latin karakterler için
         final regularFontData = await rootBundle.load(
           'assets/fonts/Poppins-Regular.ttf',
         );
@@ -927,13 +940,138 @@ class _StatsScreenState extends State<StatsScreen>
         );
         boldFont = pw.Font.ttf(boldFontData);
 
+        // Arapça/İslami metinler için
         final amiriFontData = await rootBundle.load(
           'assets/fonts/Amiri-Regular.ttf',
         );
         amiriFont = pw.Font.ttf(amiriFontData);
+
+        // Japonca için
+        try {
+          final japaneseFontData = await rootBundle.load(
+            'assets/fonts/NotoSansJP-Regular.ttf',
+          );
+          japaneseFont = pw.Font.ttf(japaneseFontData);
+          
+          final japaneseBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSansJP-Bold.ttf',
+          );
+          japaneseBoldFont = pw.Font.ttf(japaneseBoldFontData);
+        } catch (jpError) {
+          debugPrint('Japonca font yüklenemedi: $jpError');
+        }
+
+        // Korece için
+        try {
+          final koreanFontData = await rootBundle.load(
+            'assets/fonts/NotoSansKR-Regular.ttf',
+          );
+          koreanFont = pw.Font.ttf(koreanFontData);
+          
+          final koreanBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSansKR-Bold.ttf',
+          );
+          koreanBoldFont = pw.Font.ttf(koreanBoldFontData);
+        } catch (krError) {
+          debugPrint('Korece font yüklenemedi: $krError');
+        }
+
+        // Tayca için
+        try {
+          final thaiFontData = await rootBundle.load(
+            'assets/fonts/NotoSansThai-Regular.ttf',
+          );
+          thaiFont = pw.Font.ttf(thaiFontData);
+          
+          final thaiBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSansThai-Bold.ttf',
+          );
+          thaiBoldFont = pw.Font.ttf(thaiBoldFontData);
+        } catch (thError) {
+          debugPrint('Tayca font yüklenemedi: $thError');
+        }
+
+        // Çince için (Simplified Chinese - 简体中文)
+        try {
+          final chineseFontData = await rootBundle.load(
+            'assets/fonts/NotoSansSC-Regular.ttf',
+          );
+          chineseFont = pw.Font.ttf(chineseFontData);
+          
+          final chineseBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSansSC-Bold.ttf',
+          );
+          chineseBoldFont = pw.Font.ttf(chineseBoldFontData);
+        } catch (cnError) {
+          debugPrint('Çince font yüklenemedi: $cnError - Fallback olarak Latin font kullanılacak');
+          chineseFont = null;
+          chineseBoldFont = null;
+        }
+
+        // Bengalce için
+        try {
+          final bengaliFontData = await rootBundle.load(
+            'assets/fonts/NotoSansBengali-Regular.ttf',
+          );
+          bengaliFont = pw.Font.ttf(bengaliFontData);
+          
+          final bengaliBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSansBengali-Bold.ttf',
+          );
+          bengaliBoldFont = pw.Font.ttf(bengaliBoldFontData);
+        } catch (bnError) {
+          debugPrint('Bengalce font yüklenemedi: $bnError');
+        }
+
+        // Rusça ve Kiril alfabesi için
+        try {
+          final cyrillicFontData = await rootBundle.load(
+            'assets/fonts/NotoSans-cyrillic-Regular.ttf',
+          );
+          cyrillicFont = pw.Font.ttf(cyrillicFontData);
+
+          final cyrillicBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSans-cyrillic-Bold.ttf',
+          );
+          cyrillicBoldFont = pw.Font.ttf(cyrillicBoldFontData);
+        } catch (cyError) {
+          debugPrint('Kiril alfabesi font yüklenemedi: $cyError');
+        }
+
       } catch (fontError) {
         debugPrint('Font yüklenemedi: $fontError');
-        // Font yüklenemezse varsayılan font kullanılacak
+        // Font yüklenemezse fallback fontları kullan
+        try {
+          // En azından temel fontları yüklemeye çalış
+          if (regularFont == null) {
+            final fallbackFontData = await rootBundle.load('assets/fonts/Poppins-Regular.ttf');
+            regularFont = pw.Font.ttf(fallbackFontData);
+          }
+          if (boldFont == null) {
+            final fallbackBoldFontData = await rootBundle.load('assets/fonts/Poppins-Bold.ttf');
+            boldFont = pw.Font.ttf(fallbackBoldFontData);
+          }
+        } catch (fallbackError) {
+          debugPrint('Fallback fontlar da yüklenemedi: $fallbackError');
+          // En son çare olarak built-in fontları kullan
+          regularFont = pw.Font.helvetica();
+          boldFont = pw.Font.helveticaBold();
+        }
+        
+        // Diğer fontlar için fallback
+        amiriFont ??= regularFont;
+        japaneseFont ??= regularFont;
+        japaneseBoldFont ??= boldFont;
+        koreanFont ??= regularFont;
+        koreanBoldFont ??= boldFont;
+        chineseFont ??= regularFont;
+        chineseBoldFont ??= boldFont;
+        thaiFont ??= regularFont;
+        thaiBoldFont ??= boldFont;
+        bengaliFont ??= regularFont;
+        bengaliBoldFont ??= boldFont;
+        cyrillicFont ??= regularFont;
+        cyrillicBoldFont ??= boldFont;
       }
 
       // PDF sayfası oluştur
@@ -966,6 +1104,70 @@ class _StatsScreenState extends State<StatsScreen>
                   );
             final topZikrs = sortedZikrs.take(10).toList(); // Max 10 zikir göster
             TextDirection textDirection = Directionality.of(buildContext);
+
+            // Font seçim fonksiyonu - dile göre uygun font döndürür
+            pw.Font? _selectFontForText(String text, {bool isBold = false}) {
+              // Arapça karakterler kontrolü
+              if (RegExp(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]').hasMatch(text)) {
+                return amiriFont ?? regularFont ?? pw.Font.helvetica();
+              }
+              
+              // Bengalce karakterler kontrolü
+              if (RegExp(r'[\u0980-\u09FF]').hasMatch(text)) {
+                return isBold 
+                  ? (bengaliBoldFont ?? bengaliFont ?? regularFont ?? pw.Font.helveticaBold())
+                  : (bengaliFont ?? regularFont ?? pw.Font.helvetica());
+              }
+
+              // Tayca karakterler kontrolü
+              if (RegExp(r'[\u0E00-\u0E7F]').hasMatch(text)) {
+                return isBold 
+                  ? (thaiBoldFont ?? thaiFont ?? regularFont ?? pw.Font.helveticaBold())
+                  : (thaiFont ?? regularFont ?? pw.Font.helvetica());
+              }
+              
+              // Çince karakterler kontrolü (Simplified & Traditional)
+              if (RegExp(r'[\u4e00-\u9fff]').hasMatch(text)) {
+                debugPrint('Çince karakter tespit edildi: $text');
+                return isBold 
+                  ? (chineseBoldFont ?? chineseFont ?? japaneseFont ?? regularFont ?? pw.Font.helveticaBold())
+                  : (chineseFont ?? japaneseFont ?? regularFont ?? pw.Font.helvetica());
+              }
+              
+              // Japonca karakterler kontrolü (Hiragana, Katakana, Kanji)
+              if (RegExp(r'[\u3040-\u309f\u30a0-\u30ff]').hasMatch(text)) {
+                return isBold 
+                  ? (japaneseBoldFont ?? japaneseFont ?? regularFont ?? pw.Font.helveticaBold())
+                  : (japaneseFont ?? regularFont ?? pw.Font.helvetica());
+              }
+              
+              // Korece karakterler kontrolü
+              if (RegExp(r'[\uac00-\ud7af]').hasMatch(text)) {
+                return isBold 
+                  ? (koreanBoldFont ?? koreanFont ?? regularFont ?? pw.Font.helveticaBold())
+                  : (koreanFont ?? regularFont ?? pw.Font.helvetica());
+              }
+              
+              // Kiril alfabesi kontrolü (Rusça vb.)
+              if (RegExp(r'[\u0400-\u04FF]').hasMatch(text)) {
+                if (isBold) {
+                  return cyrillicBoldFont ?? boldFont ?? regularFont ?? pw.Font.helveticaBold();
+                } else {
+                  return cyrillicFont ?? regularFont ?? pw.Font.helvetica();
+                }
+              }
+              
+              // Varsayılan Latin fontları
+              if (textDirection == TextDirection.rtl) {
+                return amiriFont ?? regularFont ?? pw.Font.helvetica();
+              }
+              
+              if (isBold) {
+                return boldFont ?? regularFont ?? pw.Font.helveticaBold();
+              } else {
+                return regularFont ?? pw.Font.helvetica();
+              }
+            }
 
             return pw.Column(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -1038,7 +1240,7 @@ class _StatsScreenState extends State<StatsScreen>
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColors.white,
-                          font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
+                          font: _selectFontForText('${AppLocalizations.of(buildContext)?.pdfReportTitle ?? 'Tasbee Pro - Detaylı İstatistik Raporu'} ($period)', isBold: true),
                         ),
                       ),
                       pw.SizedBox(height: 8),
@@ -1047,7 +1249,7 @@ class _StatsScreenState extends State<StatsScreen>
                         style: pw.TextStyle(
                           fontSize: 12,
                           color: PdfColor.fromHex('#F5E6A8'),
-                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
+                          font: _selectFontForText('${AppLocalizations.of(buildContext)?.pdfDate ?? 'Tarih'}: ${now.day}/${now.month}/${now.year} - ${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}'),
                         ),
                       ),
                     ],
@@ -1067,7 +1269,19 @@ class _StatsScreenState extends State<StatsScreen>
                         regularFont,
                         boldFont,
                         textDirection,
-                        amiriFont
+                        amiriFont,
+                        japaneseFont,
+                        japaneseBoldFont,
+                        koreanFont,
+                        koreanBoldFont,
+                        chineseFont,
+                        chineseBoldFont,
+                        thaiFont,
+                        thaiBoldFont,
+                        bengaliFont,
+                        bengaliBoldFont,
+                        cyrillicFont,
+                        cyrillicBoldFont
                       ),
                     ),
                     pw.SizedBox(width: 12),
@@ -1079,7 +1293,19 @@ class _StatsScreenState extends State<StatsScreen>
                         regularFont,
                         boldFont,
                          textDirection,
-                        amiriFont
+                        amiriFont,
+                        japaneseFont,
+                        japaneseBoldFont,
+                        koreanFont,
+                        koreanBoldFont,
+                        chineseFont,
+                        chineseBoldFont,
+                        thaiFont,
+                        thaiBoldFont,
+                        bengaliFont,
+                        bengaliBoldFont,
+                        cyrillicFont,
+                        cyrillicBoldFont
                       ),
                     ),
                     pw.SizedBox(width: 12),
@@ -1091,7 +1317,19 @@ class _StatsScreenState extends State<StatsScreen>
                         regularFont,
                         boldFont,
                          textDirection,
-                        amiriFont
+                        amiriFont,
+                        japaneseFont,
+                        japaneseBoldFont,
+                        koreanFont,
+                        koreanBoldFont,
+                        chineseFont,
+                        chineseBoldFont,
+                        thaiFont,
+                        thaiBoldFont,
+                        bengaliFont,
+                        bengaliBoldFont,
+                        cyrillicFont,
+                        cyrillicBoldFont
                       ),
                     ),
                   ],
@@ -1120,7 +1358,7 @@ class _StatsScreenState extends State<StatsScreen>
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
+                          font: _selectFontForText('>> ${AppLocalizations.of(buildContext)?.pdfMostUsedZikrs ?? 'En Cok Kullanilan Zikirler'}', isBold: true),
                         ),
                       ),
                       pw.SizedBox(height: 12),
@@ -1154,7 +1392,7 @@ class _StatsScreenState extends State<StatsScreen>
                                           fontSize: 11,
                                           fontWeight: pw.FontWeight.bold,
                                           color: PdfColor.fromHex('#2D5016'),
-                                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
+                                          font: _selectFontForText(zikr.name, isBold: true),
                                         ),
                                       ),
                                     ),
@@ -1164,7 +1402,7 @@ class _StatsScreenState extends State<StatsScreen>
                                         fontSize: 11,
                                         fontWeight: pw.FontWeight.bold,
                                         color: PdfColor.fromHex('#D4AF37'),
-                                        font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
+                                        font: _selectFontForText(count.toString(), isBold: true),
                                       ),
                                     ),
                                   ],
@@ -1212,7 +1450,7 @@ class _StatsScreenState extends State<StatsScreen>
                           style: pw.TextStyle(
                             fontSize: 12,
                             color: PdfColor.fromHex('#2D5016'),
-                            font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
+                            font: _selectFontForText(AppLocalizations.of(buildContext)?.pdfNoZikrYet ?? 'Henuz hic zikir cekilmemis.'),
                             fontStyle: pw.FontStyle.italic,
                           ),
                         ),
@@ -1254,7 +1492,7 @@ class _StatsScreenState extends State<StatsScreen>
                       pw.Text(
                         AppLocalizations.of(buildContext)?.pdfQuranTranslation ?? '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
                         textAlign: pw.TextAlign.center,
-                        style: pw.TextStyle(fontSize: 10, font: textDirection == TextDirection.ltr ? regularFont : amiriFont),
+                        style: pw.TextStyle(fontSize: 10, font: _selectFontForText(AppLocalizations.of(buildContext)?.pdfQuranTranslation ?? '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)')),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
@@ -1263,7 +1501,7 @@ class _StatsScreenState extends State<StatsScreen>
                         style: pw.TextStyle(
                           fontSize: 9,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
+                          font: _selectFontForText(AppLocalizations.of(buildContext)?.pdfAppCredit ?? 'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.'),
                         ),
                       ),
                     ],
@@ -1640,7 +1878,78 @@ class _StatsScreenState extends State<StatsScreen>
     pw.Font? boldFont,
     TextDirection textDirection,
     pw.Font? amiriFont,
+    pw.Font? japaneseFont,
+    pw.Font? japaneseBoldFont,
+    pw.Font? koreanFont,
+    pw.Font? koreanBoldFont,
+    pw.Font? chineseFont,
+    pw.Font? chineseBoldFont,
+    pw.Font? thaiFont,
+    pw.Font? thaiBoldFont,
+    pw.Font? bengaliFont,
+    pw.Font? bengaliBoldFont,
+    pw.Font? cyrillicFont,
+    pw.Font? cyrillicBoldFont,
   ) {
+    // Font seçim fonksiyonu - dile göre uygun font döndürür
+    pw.Font? _selectFontForText(String text, {bool isBold = false}) {
+      // Arapça karakterler kontrolü
+      if (RegExp(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]').hasMatch(text)) {
+        return amiriFont ?? regularFont ?? pw.Font.helvetica();
+      }
+      
+      // Bengalce karakterler kontrolü
+      if (RegExp(r'[\u0980-\u09FF]').hasMatch(text)) {
+        return isBold 
+          ? (bengaliBoldFont ?? bengaliFont ?? regularFont ?? pw.Font.helveticaBold())
+          : (bengaliFont ?? regularFont ?? pw.Font.helvetica());
+      }
+
+      // Tayca karakterler kontrolü
+      if (RegExp(r'[\u0E00-\u0E7F]').hasMatch(text)) {
+        return isBold 
+          ? (thaiBoldFont ?? thaiFont ?? regularFont ?? pw.Font.helveticaBold())
+          : (thaiFont ?? regularFont ?? pw.Font.helvetica());
+      }
+      
+      // Çince karakterler kontrolü (Simplified Chinese)
+      if (RegExp(r'[\u4e00-\u9fff]').hasMatch(text)) {
+        return isBold 
+          ? (chineseBoldFont ?? chineseFont ?? regularFont ?? pw.Font.helveticaBold())
+          : (chineseFont ?? regularFont ?? pw.Font.helvetica());
+      }
+      
+      // Japonca karakterler kontrolü (Hiragana, Katakana)
+      if (RegExp(r'[\u3040-\u309f\u30a0-\u30ff]').hasMatch(text)) {
+        return isBold 
+          ? (japaneseBoldFont ?? japaneseFont ?? regularFont ?? pw.Font.helveticaBold())
+          : (japaneseFont ?? regularFont ?? pw.Font.helvetica());
+      }
+      
+      // Korece karakterler kontrolü
+      if (RegExp(r'[\uac00-\ud7af]').hasMatch(text)) {
+        return isBold 
+          ? (koreanBoldFont ?? koreanFont ?? regularFont ?? pw.Font.helveticaBold())
+          : (koreanFont ?? regularFont ?? pw.Font.helvetica());
+      }
+      
+      // Kiril alfabesi kontrolü (Rusça vb.)
+      if (RegExp(r'[\u0400-\u04FF]').hasMatch(text)) {
+        return isBold 
+          ? (cyrillicBoldFont ?? boldFont ?? regularFont ?? pw.Font.helveticaBold())
+          : (cyrillicFont ?? regularFont ?? pw.Font.helvetica());
+      }
+      
+      // Varsayılan Latin fontları
+      if (textDirection == TextDirection.rtl) {
+        return amiriFont ?? regularFont ?? pw.Font.helvetica();
+      }
+      
+      return isBold 
+        ? (boldFont ?? regularFont ?? pw.Font.helveticaBold())
+        : (regularFont ?? pw.Font.helvetica());
+    }
+
     return pw.Container(
       padding: const pw.EdgeInsets.all(8),
       decoration: pw.BoxDecoration(
@@ -1663,7 +1972,7 @@ class _StatsScreenState extends State<StatsScreen>
               fontSize: 20,
               fontWeight: pw.FontWeight.bold,
               color: PdfColor.fromHex('#2D5016'),
-              font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
+              font: _selectFontForText(value, isBold: true),
             ),
           ),
           pw.SizedBox(height: 4),
@@ -1673,7 +1982,7 @@ class _StatsScreenState extends State<StatsScreen>
             style: pw.TextStyle(
               fontSize: 10,
               color: PdfColor.fromHex('#2D5016'),
-              font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
+              font: _selectFontForText(title),
             ),
           ),
         ],

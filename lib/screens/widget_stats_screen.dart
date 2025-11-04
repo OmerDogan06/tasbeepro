@@ -407,7 +407,8 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
     return FutureBuilder<Map<String, dynamic>>(
       future: controller.getWidgetStatsForPeriod(period),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+        // PDF export sırasında loading göstermeyi önle
+        if (snapshot.connectionState == ConnectionState.waiting && !_isExportingPDF) {
           return Container(
             height: 200,
             decoration: BoxDecoration(
@@ -573,7 +574,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                 ),
               ),
               const SizedBox(height: 20),
-              snapshot.connectionState == ConnectionState.waiting
+              snapshot.connectionState == ConnectionState.waiting && !_isExportingPDF
                   ? const Center(
                       child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(emeraldGreen),
@@ -645,7 +646,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                 ),
               ),
               const SizedBox(height: 10),
-              if (snapshot.connectionState == ConnectionState.waiting)
+              if (snapshot.connectionState == ConnectionState.waiting && !_isExportingPDF)
                 const Center(
                   child: CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(emeraldGreen),
@@ -753,6 +754,66 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
     );
   }
 
+  // Font seçimi için yardımcı fonksiyon
+  pw.Font _selectFontForText(String text, pw.Font? defaultFont, pw.Font? defaultBoldFont, 
+      pw.Font? amiriFont, pw.Font? japaneseFont, pw.Font? japaneseBoldFont,
+      pw.Font? koreanFont, pw.Font? koreanBoldFont, pw.Font? chineseFont, pw.Font? chineseBoldFont,
+      pw.Font? thaiFont, pw.Font? thaiBoldFont, pw.Font? bengaliFont, pw.Font? bengaliBoldFont,
+      pw.Font? cyrillicFont, pw.Font? cyrillicBoldFont, bool isBold) {
+    
+    // Arapça karakterler kontrolü (U+0600-U+06FF, U+0750-U+077F, U+FB50-U+FDFF, U+FE70-U+FEFF)
+    if (RegExp(r'[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]').hasMatch(text)) {
+      return amiriFont ?? defaultFont ?? pw.Font.helvetica();
+    }
+    
+    // Çince karakterler kontrolü (Simplified Chinese)
+    if (RegExp(r'[\u4E00-\u9FFF]').hasMatch(text)) {
+      return isBold 
+        ? (chineseBoldFont ?? chineseFont ?? defaultFont ?? pw.Font.helveticaBold())
+        : (chineseFont ?? defaultFont ?? pw.Font.helvetica());
+    }
+    
+    // Japonca karakterler kontrolü (Hiragana, Katakana, Kanji)
+    if (RegExp(r'[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]').hasMatch(text)) {
+      return isBold 
+        ? (japaneseBoldFont ?? japaneseFont ?? defaultFont ?? pw.Font.helveticaBold())
+        : (japaneseFont ?? defaultFont ?? pw.Font.helvetica());
+    }
+    
+    // Korece karakterler kontrolü (Hangul: U+AC00-U+D7AF, Jamo: U+1100-U+11FF, U+3130-U+318F)
+    if (RegExp(r'[\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]').hasMatch(text)) {
+      return isBold 
+        ? (koreanBoldFont ?? koreanFont ?? defaultFont ?? pw.Font.helveticaBold())
+        : (koreanFont ?? defaultFont ?? pw.Font.helvetica());
+    }
+    
+    // Tayca karakterler kontrolü (U+0E00-U+0E7F)
+    if (RegExp(r'[\u0E00-\u0E7F]').hasMatch(text)) {
+      return isBold 
+        ? (thaiBoldFont ?? thaiFont ?? defaultFont ?? pw.Font.helveticaBold())
+        : (thaiFont ?? defaultFont ?? pw.Font.helvetica());
+    }
+    
+    // Bengalce karakterler kontrolü (U+0980-U+09FF)
+    if (RegExp(r'[\u0980-\u09FF]').hasMatch(text)) {
+      return isBold 
+        ? (bengaliBoldFont ?? bengaliFont ?? defaultFont ?? pw.Font.helveticaBold())
+        : (bengaliFont ?? defaultFont ?? pw.Font.helvetica());
+    }
+    
+    // Kiril alfabesi kontrolü (U+0400-U+04FF)
+    if (RegExp(r'[\u0400-\u04FF]').hasMatch(text)) {
+      return isBold 
+        ? (cyrillicBoldFont ?? defaultBoldFont ?? defaultFont ?? pw.Font.helveticaBold())
+        : (cyrillicFont ?? defaultFont ?? pw.Font.helvetica());
+    }
+    
+    // Varsayılan Latin karakterler
+    return isBold 
+      ? (defaultBoldFont ?? defaultFont ?? pw.Font.helveticaBold())
+      : (defaultFont ?? pw.Font.helvetica());
+  }
+
   Future<void> _exportToPDF(String period, BuildContext buildContext) async {
     // Loading state'ini başlat
     setState(() {
@@ -766,12 +827,25 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
       final moonImage = pw.MemoryImage(moonBytes.buffer.asUint8List());
       final pdf = pw.Document();
 
-      // Unicode destekli Poppins fontunu yükle
+      // Unicode destekli fontları yükle
       pw.Font? regularFont;
       pw.Font? boldFont;
       pw.Font? amiriFont;
+      pw.Font? japaneseFont;
+      pw.Font? japaneseBoldFont;
+      pw.Font? koreanFont;
+      pw.Font? koreanBoldFont;
+      pw.Font? chineseFont;
+      pw.Font? chineseBoldFont;
+      pw.Font? thaiFont;
+      pw.Font? thaiBoldFont;
+      pw.Font? bengaliFont;
+      pw.Font? bengaliBoldFont;
+      pw.Font? cyrillicFont;
+      pw.Font? cyrillicBoldFont;
 
       try {
+        // Latin karakterler için
         final regularFontData = await rootBundle.load(
           'assets/fonts/Poppins-Regular.ttf',
         );
@@ -782,13 +856,146 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
         );
         boldFont = pw.Font.ttf(boldFontData);
 
+        // Arapça/İslami metinler için
         final amiriFontData = await rootBundle.load(
           'assets/fonts/Amiri-Regular.ttf',
         );
         amiriFont = pw.Font.ttf(amiriFontData);
+
+        // Japonca için
+        try {
+          final japaneseFontData = await rootBundle.load(
+            'assets/fonts/NotoSansJP-Regular.ttf',
+          );
+          japaneseFont = pw.Font.ttf(japaneseFontData);
+          
+          final japaneseBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSansJP-Bold.ttf',
+          );
+          japaneseBoldFont = pw.Font.ttf(japaneseBoldFontData);
+        } catch (jpError) {
+          debugPrint('Japonca font yüklenemedi: $jpError');
+          japaneseFont = null;
+          japaneseBoldFont = null;
+        }
+
+        // Korece için
+        try {
+          final koreanFontData = await rootBundle.load(
+            'assets/fonts/NotoSansKR-Regular.ttf',
+          );
+          koreanFont = pw.Font.ttf(koreanFontData);
+          
+          final koreanBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSansKR-Bold.ttf',
+          );
+          koreanBoldFont = pw.Font.ttf(koreanBoldFontData);
+        } catch (krError) {
+          debugPrint('Korece font yüklenemedi: $krError');
+          koreanFont = null;
+          koreanBoldFont = null;
+        }
+
+        // Tayca için
+        try {
+          final thaiFontData = await rootBundle.load(
+            'assets/fonts/NotoSansThai-Regular.ttf',
+          );
+          thaiFont = pw.Font.ttf(thaiFontData);
+          
+          final thaiBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSansThai-Bold.ttf',
+          );
+          thaiBoldFont = pw.Font.ttf(thaiBoldFontData);
+        } catch (thError) {
+          debugPrint('Tayca font yüklenemedi: $thError');
+          thaiFont = null;
+          thaiBoldFont = null;
+        }
+
+        // Çince için (Simplified Chinese - 简体中文)
+        try {
+          final chineseFontData = await rootBundle.load(
+            'assets/fonts/NotoSansSC-Regular.ttf',
+          );
+          chineseFont = pw.Font.ttf(chineseFontData);
+          
+          final chineseBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSansSC-Bold.ttf',
+          );
+          chineseBoldFont = pw.Font.ttf(chineseBoldFontData);
+        } catch (cnError) {
+          debugPrint('Çince font yüklenemedi: $cnError - Fallback olarak Latin font kullanılacak');
+          chineseFont = null;
+          chineseBoldFont = null;
+        }
+
+        // Bengalce için
+        try {
+          final bengaliFontData = await rootBundle.load(
+            'assets/fonts/NotoSansBengali-Regular.ttf',
+          );
+          bengaliFont = pw.Font.ttf(bengaliFontData);
+          
+          final bengaliBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSansBengali-Bold.ttf',
+          );
+          bengaliBoldFont = pw.Font.ttf(bengaliBoldFontData);
+        } catch (bnError) {
+          debugPrint('Bengalce font yüklenemedi: $bnError');
+          bengaliFont = null;
+          bengaliBoldFont = null;
+        }
+
+        // Rusça ve Kiril alfabesi için
+        try {
+          final cyrillicFontData = await rootBundle.load(
+            'assets/fonts/NotoSans-cyrillic-Regular.ttf',
+          );
+          cyrillicFont = pw.Font.ttf(cyrillicFontData);
+
+          final cyrillicBoldFontData = await rootBundle.load(
+            'assets/fonts/NotoSans-cyrillic-Bold.ttf',
+          );
+          cyrillicBoldFont = pw.Font.ttf(cyrillicBoldFontData);
+        } catch (cyError) {
+          debugPrint('Kiril alfabesi font yüklenemedi: $cyError');
+        }
+
       } catch (fontError) {
         debugPrint('Font yüklenemedi: $fontError');
-        // Font yüklenemezse varsayılan font kullanılacak
+        // Font yüklenemezse fallback fontları kullan
+        try {
+          // En azından temel fontları yüklemeye çalış
+          if (regularFont == null) {
+            final fallbackFontData = await rootBundle.load('assets/fonts/Poppins-Regular.ttf');
+            regularFont = pw.Font.ttf(fallbackFontData);
+          }
+          if (boldFont == null) {
+            final fallbackBoldFontData = await rootBundle.load('assets/fonts/Poppins-Bold.ttf');
+            boldFont = pw.Font.ttf(fallbackBoldFontData);
+          }
+        } catch (fallbackError) {
+          debugPrint('Fallback fontlar da yüklenemedi: $fallbackError');
+          // En son çare olarak built-in fontları kullan
+          regularFont = pw.Font.helvetica();
+          boldFont = pw.Font.helveticaBold();
+        }
+        
+        // Diğer fontlar için fallback
+        amiriFont ??= regularFont;
+        japaneseFont ??= regularFont;
+        japaneseBoldFont ??= boldFont;
+        koreanFont ??= regularFont;
+        koreanBoldFont ??= boldFont;
+        chineseFont ??= regularFont;
+        chineseBoldFont ??= boldFont;
+        thaiFont ??= regularFont;
+        thaiBoldFont ??= boldFont;
+        bengaliFont ??= regularFont;
+        bengaliBoldFont ??= boldFont;
+        cyrillicFont ??= regularFont;
+        cyrillicBoldFont ??= boldFont;
       }
 
       // Widget istatistiklerini al
@@ -878,13 +1085,19 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                       ),
                       pw.SizedBox(height: 12),
                       pw.Text(
-                       '${AppLocalizations.of(buildContext)?.pdfReportTitle ?? 'Tasbee Pro - Widget İstatistik Raporu'} ($period)',
+                       '${AppLocalizations.of(buildContext)?.pdfWidgetReportTitle ?? 'Tasbee Pro - Widget İstatistik Raporu'} ($period)',
                         textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColors.white,
-                          font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
+                          font: _selectFontForText(
+                            '${AppLocalizations.of(buildContext)?.pdfWidgetReportTitle ?? 'Tasbee Pro - Widget İstatistik Raporu'} ($period)',
+                            regularFont, boldFont, amiriFont, japaneseFont, japaneseBoldFont,
+                            koreanFont, koreanBoldFont, chineseFont, chineseBoldFont,
+                            thaiFont, thaiBoldFont, bengaliFont, bengaliBoldFont,
+                            cyrillicFont, cyrillicBoldFont, true
+                          ),
                         ),
                       ),
                       pw.SizedBox(height: 8),
@@ -893,7 +1106,13 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         style: pw.TextStyle(
                           fontSize: 12,
                           color: PdfColor.fromHex('#F5E6A8'),
-                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
+                          font: _selectFontForText(
+                            '${AppLocalizations.of(buildContext)?.pdfDate ?? 'Tarih'}: ${now.day}/${now.month}/${now.year} - ${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}',
+                            regularFont, boldFont, amiriFont, japaneseFont, japaneseBoldFont,
+                            koreanFont, koreanBoldFont, chineseFont, chineseBoldFont,
+                            thaiFont, thaiBoldFont, bengaliFont, bengaliBoldFont,
+                            cyrillicFont, cyrillicBoldFont, false
+                          ),
                         ),
                       ),
                     ],
@@ -913,6 +1132,18 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         regularFont,
                         boldFont,
                         amiriFont,
+                        japaneseFont,
+                        japaneseBoldFont,
+                        koreanFont,
+                        koreanBoldFont,
+                        chineseFont,
+                        chineseBoldFont,
+                        thaiFont,
+                        thaiBoldFont,
+                        bengaliFont,
+                        bengaliBoldFont,
+                        cyrillicFont,
+                        cyrillicBoldFont,
                         textDirection
                       ),
                     ),
@@ -925,6 +1156,18 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         regularFont,
                         boldFont,
                         amiriFont,
+                        japaneseFont,
+                        japaneseBoldFont,
+                        koreanFont,
+                        koreanBoldFont,
+                        chineseFont,
+                        chineseBoldFont,
+                        thaiFont,
+                        thaiBoldFont,
+                        bengaliFont,
+                        bengaliBoldFont,
+                        cyrillicFont,
+                        cyrillicBoldFont,
                         textDirection
                       ),
                     ),
@@ -937,6 +1180,18 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         regularFont,
                         boldFont,
                         amiriFont,
+                        japaneseFont,
+                        japaneseBoldFont,
+                        koreanFont,
+                        koreanBoldFont,
+                        chineseFont,
+                        chineseBoldFont,
+                        thaiFont,
+                        thaiBoldFont,
+                        bengaliFont,
+                        bengaliBoldFont,
+                        cyrillicFont,
+                        cyrillicBoldFont,
                         textDirection
                       ),
                     ),
@@ -966,7 +1221,13 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
+                          font: _selectFontForText(
+                            '>> ${AppLocalizations.of(buildContext)?.pdfMostUsedZikrs ?? 'En Cok Kullanilan Zikirler'}',
+                            regularFont, boldFont, amiriFont, japaneseFont, japaneseBoldFont,
+                            koreanFont, koreanBoldFont, chineseFont, chineseBoldFont,
+                            thaiFont, thaiBoldFont, bengaliFont, bengaliBoldFont,
+                            cyrillicFont, cyrillicBoldFont, true
+                          ),
                         ),
                       ),
                       pw.SizedBox(height: 12),
@@ -998,7 +1259,13 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                                           fontSize: 11,
                                           fontWeight: pw.FontWeight.bold,
                                           color: PdfColor.fromHex('#2D5016'),
-                                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
+                                          font: _selectFontForText(
+                                            zikr['zikrName'] ?? '',
+                                            regularFont, boldFont, amiriFont, japaneseFont, japaneseBoldFont,
+                                            koreanFont, koreanBoldFont, chineseFont, chineseBoldFont,
+                                            thaiFont, thaiBoldFont, bengaliFont, bengaliBoldFont,
+                                            cyrillicFont, cyrillicBoldFont, true
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -1056,7 +1323,13 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                           style: pw.TextStyle(
                             fontSize: 12,
                             color: PdfColor.fromHex('#2D5016'),
-                            font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
+                            font: _selectFontForText(
+                              AppLocalizations.of(buildContext)?.pdfNoZikrYet ?? 'Henuz hic zikir cekilmemis.',
+                              regularFont, boldFont, amiriFont, japaneseFont, japaneseBoldFont,
+                              koreanFont, koreanBoldFont, chineseFont, chineseBoldFont,
+                              thaiFont, thaiBoldFont, bengaliFont, bengaliBoldFont,
+                              cyrillicFont, cyrillicBoldFont, false
+                            ),
                             fontStyle: pw.FontStyle.italic,
                           ),
                         ),
@@ -1098,7 +1371,16 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                       pw.Text(
                         AppLocalizations.of(buildContext)?.pdfQuranTranslation ?? '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
                         textAlign: pw.TextAlign.center,
-                        style: pw.TextStyle(fontSize: 10, font: textDirection == TextDirection.ltr ? regularFont : amiriFont),
+                        style: pw.TextStyle(
+                          fontSize: 10, 
+                          font: _selectFontForText(
+                            AppLocalizations.of(buildContext)?.pdfQuranTranslation ?? '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
+                            regularFont, boldFont, amiriFont, japaneseFont, japaneseBoldFont,
+                            koreanFont, koreanBoldFont, chineseFont, chineseBoldFont,
+                            thaiFont, thaiBoldFont, bengaliFont, bengaliBoldFont,
+                            cyrillicFont, cyrillicBoldFont, false
+                          ),
+                        ),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
@@ -1107,7 +1389,13 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                         style: pw.TextStyle(
                           fontSize: 9,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: textDirection == TextDirection.ltr ? regularFont : amiriFont,
+                          font: _selectFontForText(
+                            AppLocalizations.of(buildContext)?.pdfAppCredit ?? 'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.',
+                            regularFont, boldFont, amiriFont, japaneseFont, japaneseBoldFont,
+                            koreanFont, koreanBoldFont, chineseFont, chineseBoldFont,
+                            thaiFont, thaiBoldFont, bengaliFont, bengaliBoldFont,
+                            cyrillicFont, cyrillicBoldFont, false
+                          ),
                         ),
                       ),
                     ],
@@ -1505,6 +1793,18 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
     pw.Font? regularFont,
     pw.Font? boldFont,
     pw.Font? amiriFont,
+    pw.Font? japaneseFont,
+    pw.Font? japaneseBoldFont,
+    pw.Font? koreanFont,
+    pw.Font? koreanBoldFont,
+    pw.Font? chineseFont,
+    pw.Font? chineseBoldFont,
+    pw.Font? thaiFont,
+    pw.Font? thaiBoldFont,
+    pw.Font? bengaliFont,
+    pw.Font? bengaliBoldFont,
+    pw.Font? cyrillicFont,
+    pw.Font? cyrillicBoldFont,
     TextDirection textDirection,
   ) {
     return pw.Container(
@@ -1529,7 +1829,13 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
               fontSize: 20,
               fontWeight: pw.FontWeight.bold,
               color: PdfColor.fromHex('#2D5016'),
-              font: textDirection == TextDirection.ltr ? boldFont : amiriFont,
+              font: _selectFontForText(
+                value,
+                regularFont, boldFont, amiriFont, japaneseFont, japaneseBoldFont,
+                koreanFont, koreanBoldFont, chineseFont, chineseBoldFont,
+                thaiFont, thaiBoldFont, bengaliFont, bengaliBoldFont,
+                cyrillicFont, cyrillicBoldFont, true
+              ),
             ),
           ),
           pw.SizedBox(height: 4),
@@ -1539,7 +1845,13 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
             style: pw.TextStyle(
               fontSize: 10,
               color: PdfColor.fromHex('#2D5016'),
-              font:textDirection == TextDirection.ltr ? regularFont : amiriFont,
+              font: _selectFontForText(
+                title,
+                regularFont, boldFont, amiriFont, japaneseFont, japaneseBoldFont,
+                koreanFont, koreanBoldFont, chineseFont, chineseBoldFont,
+                thaiFont, thaiBoldFont, bengaliFont, bengaliBoldFont,
+                cyrillicFont, cyrillicBoldFont, false
+              ),
             ),
           ),
         ],
