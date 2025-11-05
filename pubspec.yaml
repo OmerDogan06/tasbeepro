@@ -130,7 +130,6 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
     - family: Amiri
       fonts:
@@ -138,32 +137,26 @@ flutter:
     - family: NotoSansJP
       fonts:
         - asset: assets/fonts/NotoSansJP-Regular.ttf
-        - asset: assets/fonts/NotoSansJP-Bold.ttf
           weight: 700
     - family: NotoSansKR
       fonts:
         - asset: assets/fonts/NotoSansKR-Regular.ttf
-        - asset: assets/fonts/NotoSansKR-Bold.ttf
           weight: 700
     - family: NotoSansSC
       fonts:
         - asset: assets/fonts/NotoSansSC-Regular.ttf
-        - asset: assets/fonts/NotoSansSC-Bold.ttf
           weight: 700
     - family: NotoSansThai
       fonts:
         - asset: assets/fonts/NotoSansThai-Regular.ttf
-        - asset: assets/fonts/NotoSansThai-Bold.ttf
           weight: 700
     - family: NotoSansBengali
       fonts:
         - asset: assets/fonts/NotoSansBengali-Regular.ttf
-        - asset: assets/fonts/NotoSansBengali-Bold.ttf
           weight: 700
     - family: NotoSansCyrillic
       fonts:
         - asset: assets/fonts/NotoSans-cyrillic-Regular.ttf
-        - asset: assets/fonts/NotoSans-cyrillic-Bold.ttf
           weight: 700
   #   - family: Trajan Pro
   #     fonts:
