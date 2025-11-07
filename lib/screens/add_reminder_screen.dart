@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../services/notification_service.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../widgets/custom_bottom_picker.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../l10n/app_localizations.dart';
 
 class AddReminderScreen extends StatefulWidget {
@@ -110,6 +111,10 @@ class _AddReminderScreenState extends State<AddReminderScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Banner Ad at top
+                const BannerAdWidget(),
+                const SizedBox(height: 10),
+                
                 // Info Card
                 Container(
                   padding: const EdgeInsets.all(10),

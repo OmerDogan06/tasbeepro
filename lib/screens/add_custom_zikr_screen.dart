@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import '../controllers/counter_controller.dart';
 import '../models/zikr.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../l10n/app_localizations.dart';
 
 class AddCustomZikrScreen extends StatefulWidget {
@@ -108,6 +109,10 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                   key: _formKey,
                   child: Column(
                     children: [
+                      // Banner Ad at top
+                      const BannerAdWidget(),
+                      const SizedBox(height: 10),
+                      
                       // Info Card
                       Container(
                         width: double.infinity,

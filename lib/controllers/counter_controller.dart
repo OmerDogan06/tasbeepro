@@ -6,6 +6,7 @@ import '../services/sound_service.dart';
 import '../services/vibration_service.dart';
 import '../services/language_service.dart';
 import '../services/widget_service.dart';
+import '../services/ad_service.dart';
 import '../widgets/islamic_snackbar.dart';
 
 class CounterController extends GetxController {
@@ -14,6 +15,7 @@ class CounterController extends GetxController {
   final VibrationService _vibration = Get.find<VibrationService>();
   final LanguageService _languageService = Get.find<LanguageService>();
   final WidgetService _widgetService = Get.find<WidgetService>();
+  final AdService _adService = Get.find<AdService>();
   
   final _currentZikrId = 'subhanallah'.obs;
   
@@ -121,6 +123,9 @@ class CounterController extends GetxController {
     if (previousCount < _target.value && _count.value >= _target.value) {
       _completedTargets.value++;
       _showCompletionMessage(completionTitle, completionMessage);
+      
+      // Notify AdService about target completion
+      _adService.onTargetCompleted();
     }
     
     // Animation delay

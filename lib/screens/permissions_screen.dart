@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../services/permission_service.dart';
 
 class PermissionsScreen extends StatefulWidget {
@@ -107,9 +108,18 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
               onRefresh: _checkAllPermissions,
               color: goldColor,
               backgroundColor: Colors.white,
-              child: ListView(
-                padding: const EdgeInsets.all(8),
-                children: [
+              child: CustomScrollView(
+                slivers: [
+                  // Sticky Banner Ad
+                  const SliverToBoxAdapter(
+                child: BannerAdWidget(),
+              ),
+                  
+                  SliverPadding(
+                    padding: const EdgeInsets.all(8),
+                    sliver: SliverList(
+                      delegate: SliverChildListDelegate([
+                  
                   // Açıklama metni
                   Container(
                     padding: const EdgeInsets.all(8),
@@ -198,6 +208,11 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
 
                   // Ayarları aç butonu
                   _buildOpenSettingsButton(),
+                      ]),
+                    ),
+                  ),
+
+              
                 ],
               ),
             ),
@@ -683,3 +698,4 @@ class _PermissionsScreenState extends State<PermissionsScreen> {
     );
   }
 }
+

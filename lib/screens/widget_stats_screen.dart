@@ -10,6 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import 'dart:io';
 import '../controllers/widget_stats_controller.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../l10n/app_localizations.dart';
 
 class WidgetStatsScreen extends StatefulWidget {
@@ -273,6 +274,10 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
           padding: const EdgeInsets.all(8),
           child: Column(
             children: [
+              // Banner Ad at top
+              const BannerAdWidget(),
+              const SizedBox(height: 10),
+              
               // Bilgi Kartı - Widget'a özel açıklama
               _buildPeriodInfoCard(period),
               const SizedBox(height: 10),

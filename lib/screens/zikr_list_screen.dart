@@ -5,6 +5,7 @@ import 'package:tasbeepro/models/zikr.dart';
 import '../controllers/counter_controller.dart';
 import '../widgets/zikr_card.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../l10n/app_localizations.dart';
 import 'add_custom_zikr_screen.dart';
 
@@ -88,12 +89,19 @@ class ZikrListScreen extends StatelessWidget {
           ),
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Başlık bölümü - İslami tasarım
+          child: CustomScrollView(
+            slivers: [
+              // Banner Ad - normal widget olarak
+              const SliverToBoxAdapter(
+                child: BannerAdWidget(),
+              ),
+              
+              // Scrollable content
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate([
+                    // Başlık bölümü - İslami tasarım
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(10),
@@ -251,8 +259,10 @@ class ZikrListScreen extends StatelessWidget {
                     );
                   },
                 ),
-              ],
-            ),
+                  ]),
+                ),
+              ),
+            ],
           ),
         ),
       ),

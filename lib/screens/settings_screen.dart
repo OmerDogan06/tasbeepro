@@ -8,6 +8,7 @@ import '../services/vibration_service.dart';
 import '../services/language_service.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../widgets/banner_ad_widget.dart';
 import 'reminder_screen.dart';
 import 'custom_reminder_times_screen.dart';
 import 'widget_stats_screen.dart';
@@ -137,10 +138,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
           body: SafeArea(
-            child: ListView(
-              padding: const EdgeInsets.all(10),
-              children: [
-                // Ses ve Titreşim Ayarları
+            child: CustomScrollView(
+              slivers: [
+                // Sticky Banner Ad
+                 const SliverToBoxAdapter(
+                child: BannerAdWidget(),
+              ),
+                // Scrollable content
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  sliver: SliverList(
+                    delegate: SliverChildListDelegate([
+                      // Ses ve Titreşim Ayarları
                 _buildSectionHeader(
                   context,
                   AppLocalizations.of(context)?.settingsSoundVibration ??
@@ -452,6 +461,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   _buildDivider(),
                 ]),
+                    ]),
+                  ),
+                ),
               ],
             ),
           ),
@@ -2010,3 +2022,5 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 }
+
+

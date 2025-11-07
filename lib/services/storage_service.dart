@@ -257,4 +257,13 @@ class StorageService extends GetxService {
     final stringList = _prefs.getStringList('custom_targets') ?? [];
     return stringList.map((e) => int.tryParse(e) ?? 0).where((e) => e > 0).toList();
   }
+
+  // Completed targets count for ads
+  Future<void> saveCompletedTargetsCount(int count) async {
+    await _prefs.setInt('completed_targets_count', count);
+  }
+  
+  int getCompletedTargetsCount() {
+    return _prefs.getInt('completed_targets_count') ?? 0;
+  }
 }

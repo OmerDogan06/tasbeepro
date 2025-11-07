@@ -6,6 +6,7 @@ import '../services/notification_service.dart';
 import '../services/storage_service.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../widgets/custom_bottom_picker.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../l10n/app_localizations.dart';
 
 class CustomReminderTimesScreen extends StatefulWidget {
@@ -129,74 +130,86 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
               valueColor: AlwaysStoppedAnimation<Color>(emeraldGreen),
             ),
             child: SafeArea(
-              child: Column(
-                children: [
+              child: CustomScrollView(
+                slivers: [
+                  // Sticky Banner Ad
+                  const SliverToBoxAdapter(child: BannerAdWidget()),
+
                   // Info Card
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    margin: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [lightGold, Colors.white],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
+                  SliverToBoxAdapter(
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [lightGold, Colors.white],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: goldColor, width: 1),
+                        boxShadow: [
+                          BoxShadow(
+                            color: goldColor.withAlpha(51),
+                            blurRadius: 8,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
                       ),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: goldColor, width: 1),
-                      boxShadow: [
-                        BoxShadow(
-                          color: goldColor.withAlpha(51),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 35,
-                          height: 35,
-                          padding: const EdgeInsets.all(3),
-                          decoration: BoxDecoration(
-                            color: goldColor,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Icon(
-                            Icons.schedule,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            AppLocalizations.of(
-                                  context,
-                                )?.customTimesDescription ??
-                                'Özel saatlerde günlük zikir hatırlatıcıları alın. Eklediğiniz saatler her gün tekrarlanır.',
-                            style: const TextStyle(
-                              fontSize: 13,
-                              color: emeraldGreen,
-                              fontWeight: FontWeight.w500,
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 35,
+                            height: 35,
+                            padding: const EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                              color: goldColor,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: const Icon(
+                              Icons.schedule,
+                              color: Colors.white,
+                              size: 20,
                             ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              AppLocalizations.of(
+                                    context,
+                                  )?.customTimesDescription ??
+                                  'Özel saatlerde günlük zikir hatırlatıcıları alın. Eklediğiniz saatler her gün tekrarlanır.',
+                              style: const TextStyle(
+                                fontSize: 13,
+                                color: emeraldGreen,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
 
                   // Times List
-                  Expanded(
-                    child: _customTimes.isEmpty
-                        ? _buildEmptyState()
-                        : ListView.builder(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            itemCount: _customTimes.length,
-                            itemBuilder: (context, index) {
-                              final timeData = _customTimes[index];
-                              return _buildTimeCard(timeData, index);
-                            },
-                          ),
+                  _customTimes.isEmpty
+                      ? SliverFillRemaining(child: _buildEmptyState())
+                      : SliverList(
+                          delegate: SliverChildBuilderDelegate((
+                            context,
+                            index,
+                          ) {
+                            final timeData = _customTimes[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 8, right: 8),
+                              child: _buildTimeCard(timeData, index),
+                            );
+                          }, childCount: _customTimes.length),
+                        ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height:_customTimes.isNotEmpty? MediaQuery.of(context).viewPadding.bottom + 80: 0,
+                    ),
                   ),
                 ],
               ),
@@ -425,7 +438,7 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
             )?.customTimesAddSuccessMessage(timeString) ??
             '$timeString saatinde günlük hatırlatıcı aktif';
         IslamicSnackbar.showSuccess(
-          AppLocalizations.of( Get.context ?? context)?.customTimesAddSuccess ??
+          AppLocalizations.of(Get.context ?? context)?.customTimesAddSuccess ??
               'Saat Eklendi 🕐',
           successMessage,
         );
@@ -465,11 +478,10 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
           ],
         ),
       ),
-    ).show( Get.context ?? context);
+    ).show(Get.context ?? context);
   }
 
   Future<void> _toggleTime(int index, bool isActive) async {
-
     isLoading.value = true;
     // Store localized strings before async operations
     final activeTitle =
@@ -492,7 +504,6 @@ class _CustomReminderTimesScreenState extends State<CustomReminderTimesScreen> {
         return;
       }
     }
-
 
     setState(() {
       _customTimes[index]['isActive'] = isActive;

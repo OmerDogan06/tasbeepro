@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Internet permissions - Removed for fully offline app -->
-    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
-    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+    <!-- Internet permission for ads -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     
     <!-- Core notification permissions -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -128,6 +128,12 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+          <!--Test ID : ca-app-pub-3940256099942544~3347511713 -->
+          <!--Production ID : ca-app-pub-8365973392717077~8118430681 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

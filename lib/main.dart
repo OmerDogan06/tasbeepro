@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:tasbeepro/services/ad_service.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'screens/splash_screen.dart';
@@ -41,6 +42,7 @@ void main() async {
   await Get.putAsync(() => LanguageService().init());
   Get.put(SoundService());
   Get.put(VibrationService());
+   Get.put(AdService()); // Reklam servisini başlat
  Get.put(NotificationService());
   Get.put(WidgetService());
   Get.put(PermissionService());

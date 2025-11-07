@@ -10,6 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import 'dart:io';
 import '../controllers/counter_controller.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../l10n/app_localizations.dart';
 
 
@@ -222,11 +223,18 @@ class _StatsScreenState extends State<StatsScreen>
   }
 
   Widget _buildPeriodStats(String period, CounterController controller) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        children: [
-          // Bilgi Kartı - Dönemsel açıklama
+    return CustomScrollView(
+      slivers: [
+        // Sticky Banner Ad
+        const SliverToBoxAdapter(
+                child: BannerAdWidget(),
+              ),
+        // Scrollable content
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          sliver: SliverList(
+            delegate: SliverChildListDelegate([
+              // Bilgi Kartı - Dönemsel açıklama
           _buildPeriodInfoCard(period),
           const SizedBox(height: 10),
 
@@ -240,8 +248,10 @@ class _StatsScreenState extends State<StatsScreen>
 
           // Zikir Listesi
           _buildZikrList(period, controller),
-        ],
-      ),
+            ]),
+          ),
+        ),
+      ],
     );
   }
 
@@ -1902,9 +1912,9 @@ class _StatsScreenState extends State<StatsScreen>
       ),
     );
   }
-
-
 }
+
+
 
 class ChartData {
   final String label;
