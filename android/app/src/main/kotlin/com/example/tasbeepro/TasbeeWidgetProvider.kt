@@ -138,7 +138,12 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             ACTION_COUNTER_CLICK -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    incrementCounter(localizedContext, appWidgetId)
+                    // Premium kontrolü tekrar yap (güvenlik için)
+                    if (checkPremiumStatus(context)) {
+                        incrementCounter(localizedContext, appWidgetId)
+                    } else {
+                        showPremiumNotification(localizedContext)
+                    }
                 }
             }
             ACTION_RESET_CLICK -> {
@@ -150,8 +155,16 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             ACTION_SETTINGS_CLICK -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    openWidgetSettings(context, appWidgetId) // Settings için orijinal context kullan
+                    // Premium kontrolü tekrar yap (güvenlik için)
+                    if (checkPremiumStatus(context)) {
+                        openWidgetSettings(context, appWidgetId) // Settings için orijinal context kullan
+                    } else {
+                        showPremiumNotification(localizedContext)
+                    }
                 }
+            }
+            "SHOW_PREMIUM_NOTIFICATION" -> {
+                showPremiumNotification(localizedContext)
             }
         }
     }
@@ -204,18 +217,46 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
     }
 
     private fun setClickIntents(context: Context, views: RemoteViews, appWidgetId: Int) {
-        // Counter button click
-        val counterIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
-            action = ACTION_COUNTER_CLICK
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        }
-        val counterPendingIntent = PendingIntent.getBroadcast(
-            context, appWidgetId * 10 + 1, counterIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-        views.setOnClickPendingIntent(R.id.counter_button, counterPendingIntent)
+        // Premium durumunu kontrol et
+        val isPremium = checkPremiumStatus(context)
+        
+        if (isPremium) {
+            // Counter button click - Premium kullanıcı
+            val counterIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
+                action = ACTION_COUNTER_CLICK
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            }
+            val counterPendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId * 10 + 1, counterIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            views.setOnClickPendingIntent(R.id.counter_button, counterPendingIntent)
 
-        // Reset button click
+            // Settings button click - Premium kullanıcı
+            val settingsIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
+                action = ACTION_SETTINGS_CLICK
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            }
+            val settingsPendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId * 10 + 3, settingsIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            views.setOnClickPendingIntent(R.id.settings_button, settingsPendingIntent)
+        } else {
+            // Premium olmayan kullanıcı - Sadece premium uyarısı göster
+            val premiumIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
+                action = "SHOW_PREMIUM_NOTIFICATION"
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            }
+            val premiumPendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId * 10 + 1, premiumIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            views.setOnClickPendingIntent(R.id.counter_button, premiumPendingIntent)
+            views.setOnClickPendingIntent(R.id.settings_button, premiumPendingIntent)
+        }
+
+        // Reset button - Her zaman aktif (ücretsiz özellik)
         val resetIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
             action = ACTION_RESET_CLICK
             putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
@@ -225,17 +266,6 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
         views.setOnClickPendingIntent(R.id.reset_button, resetPendingIntent)
-
-        // Settings button click
-        val settingsIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
-            action = ACTION_SETTINGS_CLICK
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        }
-        val settingsPendingIntent = PendingIntent.getBroadcast(
-            context, appWidgetId * 10 + 3, settingsIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-        views.setOnClickPendingIntent(R.id.settings_button, settingsPendingIntent)
     }
 
     private fun incrementCounter(context: Context, appWidgetId: Int) {
@@ -458,5 +488,68 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         
         val appWidgetManager = AppWidgetManager.getInstance(context)
         updateAppWidget(context, appWidgetManager, appWidgetId)
+    }
+
+    // Premium durumu kontrol et (SharedPreferences'tan)
+    private fun checkPremiumStatus(context: Context): Boolean {
+        return try {
+            val prefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
+            prefs.getBoolean("flutter.is_premium", false)
+        } catch (e: Exception) {
+            Log.e(TAG, "Premium durum kontrol hatası: ${e.message}")
+            false
+        }
+    }
+
+    // Premium bildirimi göster
+    private fun showPremiumNotification(context: Context) {
+        try {
+            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val channelId = "premium_notification_channel"
+            
+            // Bildirim kanalı oluştur (Android 8.0+)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val channel = NotificationChannel(
+                    channelId,
+                    "Premium Bildirimleri",
+                    NotificationManager.IMPORTANCE_DEFAULT
+                ).apply {
+                    description = "Premium özellik bildirimleri"
+                    enableVibration(true)
+                    vibrationPattern = longArrayOf(0, 300)
+                }
+                notificationManager.createNotificationChannel(channel)
+            }
+
+            // Ana uygulamayı açacak intent
+            val appIntent = context.packageManager.getLaunchIntentForPackage(context.packageName)?.apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }
+            
+            val appPendingIntent = PendingIntent.getActivity(
+                context, 0, appIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+
+            // Bildirim oluştur
+            val notification = NotificationCompat.Builder(context, channelId)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("Premium Özellik")
+                .setContentText("Widget özelliklerini kullanmak için Premium'a geçin")
+                .setStyle(
+                    NotificationCompat.BigTextStyle()
+                        .bigText("Widget'ın sayaç ve ayarlar özelliklerini kullanmak için Premium abonelik gereklidir. Uygulamayı açıp Premium'a geçebilirsiniz.")
+                )
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(appPendingIntent)
+                .setAutoCancel(true)
+                .setVibrate(longArrayOf(0, 300))
+                .build()
+
+            notificationManager.notify(System.currentTimeMillis().toInt(), notification)
+            
+        } catch (e: Exception) {
+            Log.e(TAG, "Premium bildirim hatası: ${e.message}")
+        }
     }
 }

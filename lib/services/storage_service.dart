@@ -287,6 +287,15 @@ class StorageService extends GetxService {
     return null;
   }
 
+  // Simple premium status for background service
+  Future<void> savePremiumStatus(bool isPremium) async {
+    await _prefs.setBool('is_premium', isPremium);
+  }
+  
+  bool getPremiumStatus() {
+    return _prefs.getBool('is_premium') ?? false;
+  }
+
   // First app launch check for trial
   Future<void> setFirstLaunchCompleted() async {
     await _prefs.setBool('first_launch_completed', true);

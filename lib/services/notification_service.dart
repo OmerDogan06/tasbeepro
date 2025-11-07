@@ -3,7 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:permission_handler/permission_handler.dart';
-import '../models/subscription_plan.dart';
+
 import 'storage_service.dart';
 import 'subscription_service.dart';
 import '../l10n/app_localizations.dart';
@@ -123,7 +123,7 @@ class NotificationService extends GetxService {
   bool _canUseReminders() {
     try {
       final subscriptionService = Get.find<SubscriptionService>();
-      return subscriptionService.canUseFeature(PremiumFeature.reminders);
+      return subscriptionService.areRemindersEnabled;
     } catch (e) {
       // SubscriptionService henüz initialize olmamış olabilir
       return false;

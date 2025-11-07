@@ -371,7 +371,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       transition: Transition.rightToLeft,
                       duration: const Duration(milliseconds: 300),
                     ),
-                    direction: direction
+                    direction: direction,
+                    isPremiumFeature: true,
                   ),
                   _buildDivider(),
                   _buildIslamicListTile(
@@ -389,7 +390,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       transition: Transition.rightToLeft,
                       duration: const Duration(milliseconds: 300),
                     ),
-                    direction: direction
+                    direction: direction,
+                    isPremiumFeature: true,
                   ),
                 ]),
 
@@ -416,7 +418,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       transition: Transition.rightToLeft,
                       duration: const Duration(milliseconds: 300),
                     ),
-                    direction: direction
+                    direction: direction,
+                    isPremiumFeature: true,
                   ),
                   _buildDivider(),
                   _buildIslamicListTile(
@@ -430,7 +433,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         )?.settingsWidgetInfoSubtitle ??
                         'Widget nasıl kullanılır ve ana ekrana eklenir',
                     onTap: () => _showWidgetInfoDialog(context),
-                    direction: direction
+                    direction: direction,
+                    isPremiumFeature: true,
                   ),
                 ]),
 
@@ -539,59 +543,192 @@ class _SettingsScreenState extends State<SettingsScreen> {
     required String subtitle,
     required VoidCallback onTap,
     required TextDirection direction,
+    bool isPremiumFeature = false,
   }) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-      leading: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          gradient: const RadialGradient(
-            colors: [lightGold, goldColor],
-            center: Alignment(-0.2, -0.2),
-          ),
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: darkGreen.withAlpha(39),
-              blurRadius: 6,
-              offset: const Offset(0, 2),
+    return GetX<SubscriptionService>(
+      builder: (subscriptionService) {
+        final isPremium = subscriptionService.isPremium;
+        final isLocked = isPremiumFeature && !isPremium;
+        
+        return Opacity(
+          opacity: isLocked ? 0.6 : 1.0,
+          child: ListTile(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+            leading: Stack(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    gradient: isLocked 
+                        ? LinearGradient(
+                            colors: [
+                              Colors.grey.shade300,
+                              Colors.grey.shade400,
+                            ],
+                          )
+                        : const RadialGradient(
+                            colors: [lightGold, goldColor],
+                            center: Alignment(-0.2, -0.2),
+                          ),
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: isLocked 
+                            ? Colors.grey.withAlpha(39)
+                            : darkGreen.withAlpha(39),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    icon, 
+                    color: isLocked ? Colors.grey.shade600 : emeraldGreen, 
+                    size: 22
+                  ),
+                ),
+                if (isLocked)
+                  Positioned(
+                    right: -2,
+                    top: -2,
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: const BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.lock,
+                        color: Colors.white,
+                        size: 10,
+                      ),
+                    ),
+                  ),
+              ],
             ),
-          ],
-        ),
-        child: Icon(icon, color: emeraldGreen, size: 22),
-      ),
-      title: Text(
-        title,
-        style: const TextStyle(
-          color: emeraldGreen,
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
-        ),
-      ),
-      subtitle: Text(
-        subtitle,
-        style: TextStyle(color: emeraldGreen.withAlpha(179), fontSize: 12),
-      ),
-      trailing: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: goldColor.withAlpha(51),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child:direction == TextDirection.ltr
-            ? const Icon(
-                Icons.keyboard_arrow_right,
-                color: emeraldGreen,
-                size: 20,
-              )
-            :
-         const Icon(
-          Icons.keyboard_arrow_left,
-          color: emeraldGreen,
-          size: 20,
-        ),
-      ),
-      onTap: onTap,
+            title: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      color: isLocked 
+                          ? Colors.grey.shade600 
+                          : emeraldGreen,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                if (isPremiumFeature)
+                  Container(
+                    margin: const EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    decoration: BoxDecoration(
+                      gradient: isLocked 
+                          ? LinearGradient(colors: [Colors.grey.shade400, Colors.grey.shade500])
+                          : const LinearGradient(colors: [goldColor, lightGold]),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      'PRO',
+                      style: TextStyle(
+                        color: isLocked ? Colors.white : emeraldGreen,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            subtitle: Text(
+              isLocked ? 'Premium özellik - Kilidi açmak için premium olun' : subtitle,
+              style: TextStyle(
+                color: isLocked 
+                    ? Colors.red.shade600 
+                    : emeraldGreen.withAlpha(179), 
+                fontSize: 12
+              ),
+            ),
+            trailing: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: isLocked 
+                    ? Colors.grey.withAlpha(51)
+                    : goldColor.withAlpha(51),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: isLocked 
+                  ? const Icon(
+                      Icons.lock,
+                      color: Colors.red,
+                      size: 20,
+                    )
+                  : (direction == TextDirection.ltr
+                      ? const Icon(
+                          Icons.keyboard_arrow_right,
+                          color: emeraldGreen,
+                          size: 20,
+                        )
+                      : const Icon(
+                          Icons.keyboard_arrow_left,
+                          color: emeraldGreen,
+                          size: 20,
+                        )),
+            ),
+            onTap: isLocked 
+                ? () {
+                    HapticFeedback.lightImpact();
+                    Get.defaultDialog(
+                      title: 'Premium Özellik 💎',
+                      titleStyle: const TextStyle(
+                        color: emeraldGreen,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      middleText: 'Bu özellik premium abonelik gerektirir.\nTüm özel özelliklerin kilidini açmak için premium\'a geçin.',
+                      middleTextStyle: TextStyle(
+                        color: emeraldGreen.withOpacity(0.8),
+                        fontSize: 14,
+                      ),
+                      backgroundColor: const Color(0xFFFFF9E6),
+                      titlePadding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
+                      contentPadding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+                      confirm: Container(
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [goldColor, lightGold],
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Get.back();
+                            Get.to(() => const PremiumScreen(), transition: Transition.rightToLeft);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            foregroundColor: emeraldGreen,
+                          ),
+                          child: const Text(
+                            'Premium\'a Geç',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      cancel: TextButton(
+                        onPressed: () => Get.back(),
+                        child: Text(
+                          'İptal',
+                          style: TextStyle(color: emeraldGreen.withOpacity(0.7)),
+                        ),
+                      ),
+                    );
+                  }
+                : onTap,
+          ),
+        );
+      },
     );
   }
 
@@ -1338,6 +1475,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _showWidgetInfoDialog(BuildContext context) {
+    final subscriptionService = Get.find<SubscriptionService>();
+    final isPremium = subscriptionService.isPremium;
+    
     Get.dialog(
       Dialog(
         backgroundColor: Colors.transparent,
@@ -1345,18 +1485,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Container(
           constraints: const BoxConstraints(maxWidth: 400),
           decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
-            ),
+            gradient: isPremium 
+                ? const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFFFFF9E6), Color(0xFFF5E6A8)],
+                  )
+                : const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+                  ),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
+            border: Border.all(
+              color: isPremium ? goldColor : goldColor.withAlpha(102), 
+              width: isPremium ? 2 : 1.5
+            ),
             boxShadow: [
               BoxShadow(
-                color: darkGreen.withAlpha(51),
+                color: isPremium 
+                    ? goldColor.withOpacity(0.3)
+                    : darkGreen.withAlpha(51),
                 blurRadius: 15,
                 offset: const Offset(0, 8),
+                spreadRadius: isPremium ? 2 : 0,
               ),
             ],
           ),
@@ -1368,29 +1520,71 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 padding: const EdgeInsets.all(8),
                 child: Row(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        gradient: const RadialGradient(
-                          colors: [lightGold, goldColor],
+                    Stack(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            gradient: isPremium 
+                                ? const RadialGradient(
+                                    colors: [goldColor, lightGold],
+                                  )
+                                : RadialGradient(
+                                    colors: [lightGold, goldColor],
+                                  ),
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: isPremium ? [
+                              BoxShadow(
+                                color: goldColor.withOpacity(0.4),
+                                blurRadius: 8,
+                                spreadRadius: 2,
+                              ),
+                            ] : null,
+                          ),
+                          child: const Icon(
+                            Icons.widgets,
+                            color: emeraldGreen,
+                            size: 20,
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Icon(
-                        Icons.widgets,
-                        color: emeraldGreen,
-                        size: 20,
-                      ),
+                        if (!isPremium)
+                          Positioned(
+                            right: -2,
+                            top: -2,
+                            child: Container(
+                              padding: const EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  colors: [goldColor, lightGold],
+                                ),
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.diamond,
+                                color: emeraldGreen,
+                                size: 8,
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                     const SizedBox(width: 6),
                     Expanded(
                       child: Text(
-                        AppLocalizations.of(context)?.widgetInfoTitle ??
-                            'Tasbee Widget Hakkında 📱',
+                        isPremium
+                            ? (AppLocalizations.of(context)?.widgetInfoTitle ?? 'Tasbee Widget Hakkında 📱')
+                            : 'Tasbee Widget Hakkında �',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: emeraldGreen,
+                          shadows: isPremium ? [
+                            Shadow(
+                              color: goldColor.withOpacity(0.3),
+                              blurRadius: 2,
+                              offset: const Offset(1, 1),
+                            ),
+                          ] : null,
                         ),
                       ),
                     ),
@@ -1476,32 +1670,92 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     const SizedBox(height: 16),
 
                     // Widget ekleme butonu
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                          _addWidgetToHomeScreen();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: goldColor,
-                          foregroundColor: emeraldGreen,
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                    GetX<SubscriptionService>(
+                      builder: (subscriptionService) {
+                        final isPremium = subscriptionService.isPremium;
+                        
+                        return SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton.icon(
+                            onPressed: isPremium 
+                                ? () {
+                                    Navigator.of(context).pop();
+                                    _addWidgetToHomeScreen();
+                                  }
+                                : () {
+                                    HapticFeedback.lightImpact();
+                                    Get.defaultDialog(
+                                      title: 'Premium Özellik 💎',
+                                      titleStyle: const TextStyle(
+                                        color: emeraldGreen,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      middleText: 'Ana ekran widget\'ı premium bir özelliktir.\nWidget\'ı kullanmak için premium\'a geçin.',
+                                      middleTextStyle: TextStyle(
+                                        color: emeraldGreen.withOpacity(0.8),
+                                        fontSize: 14,
+                                      ),
+                                      backgroundColor: const Color(0xFFFFF9E6),
+                                      titlePadding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
+                                      contentPadding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+                                      confirm: Container(
+                                        decoration: BoxDecoration(
+                                          gradient: const LinearGradient(
+                                            colors: [goldColor, lightGold],
+                                          ),
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            Get.back();
+                                            Get.back(); // Close widget info dialog too
+                                            Get.to(() => const PremiumScreen(), transition: Transition.rightToLeft);
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.transparent,
+                                            shadowColor: Colors.transparent,
+                                            foregroundColor: emeraldGreen,
+                                          ),
+                                          child: const Text(
+                                            'Premium\'a Geç',
+                                            style: TextStyle(fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ),
+                                      cancel: TextButton(
+                                        onPressed: () => Get.back(),
+                                        child: Text(
+                                          'İptal',
+                                          style: TextStyle(color: emeraldGreen.withOpacity(0.7)),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: isPremium ? goldColor : Colors.grey.shade400,
+                              foregroundColor: isPremium ? emeraldGreen : Colors.grey.shade600,
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              elevation: isPremium ? 4 : 1,
+                            ),
+                            icon: Icon(
+                              isPremium ? Icons.add_to_home_screen : Icons.lock,
+                              size: 20,
+                            ),
+                            label: Text(
+                              isPremium 
+                                  ? (AppLocalizations.of(context)?.widgetAddTitle ?? 'Widget Ekle')
+                                  : 'Premium Gerekli',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
                           ),
-                          elevation: 4,
-                        ),
-                        icon: const Icon(Icons.add_to_home_screen, size: 20),
-                        label: Text(
-                          AppLocalizations.of(context)?.widgetAddTitle ??
-                              'Widget Ekle',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
+                        );
+                      },
                     ),
 
                     const SizedBox(height: 8),
@@ -2032,109 +2286,409 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return GetX<SubscriptionService>(
       builder: (subscriptionService) {
         final isPremium = subscriptionService.isPremium;
-        final isTrialActive = subscriptionService.isTrialActive;
-        final statusText = subscriptionService.subscriptionStatusText;
         
         return Column(
           children: [
             _buildSectionHeader(
               context,
-              isPremium ? 'Premium Aktif' : 'Premium',
+              isPremium ? '✨ Premium Aktif ✨' : '💎 Premium',
             ),
-            _buildIslamicCard([
-              Container(
-                padding: const EdgeInsets.all(16),
+            Container(
+              margin: const EdgeInsets.only(bottom: 16),
+              decoration: BoxDecoration(
+                gradient: isPremium 
+                    ? const LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color(0xFFFFF9E6), // Light gold
+                          Color(0xFFF5E6A8), // Lighter gold
+                          Color(0xFFD4AF37), // Gold
+                          Color(0xFFF5E6A8), // Lighter gold
+                        ],
+                        stops: [0.0, 0.3, 0.7, 1.0],
+                      )
+                    : const LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
+                      ),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: isPremium ? goldColor : goldColor.withAlpha(77), 
+                  width: isPremium ? 2 : 1.5
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: isPremium 
+                        ? goldColor.withOpacity(0.4)
+                        : darkGreen.withAlpha(25),
+                    blurRadius: isPremium ? 20 : 12,
+                    offset: const Offset(0, 4),
+                    spreadRadius: isPremium ? 5 : 0,
+                  ),
+                ],
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(8),
                 child: Column(
                   children: [
+                    // Premium crown icon and title
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: isPremium ? goldColor : goldColor.withOpacity(0.3),
-                            borderRadius: BorderRadius.circular(8),
+                            gradient: isPremium 
+                                ? const RadialGradient(
+                                    colors: [emeraldGreen, darkGreen],
+                                    center: Alignment.topLeft,
+                                  )
+                                : RadialGradient(
+                                    colors: [lightGold, goldColor],
+                                    center: Alignment.topLeft,
+                                  ),
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                color: isPremium 
+                                    ? emeraldGreen.withOpacity(0.4)
+                                    : goldColor.withOpacity(0.4),
+                                blurRadius: 10,
+                                spreadRadius: 2,
+                              ),
+                            ],
                           ),
                           child: Icon(
-                            isPremium ? Icons.star : Icons.star_outline,
-                            color: isPremium ? Colors.white : goldColor,
-                            size: 24,
+                            isPremium ? Icons.diamond : Icons.diamond_outlined,
+                            color: isPremium ? goldColor : emeraldGreen,
+                            size: 28,
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 8),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                isPremium ? 'Premium Üye' : 'Premium\'a Geç',
-                                style: const TextStyle(
-                                  fontSize: 16,
+                                isPremium ? '🌟 Premium Üye 🌟' : '💎 Premium\'a Geçin',
+                                style: TextStyle(
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: emeraldGreen,
+                                  color: isPremium ? emeraldGreen : emeraldGreen,
+                                  shadows: isPremium ? [
+                                    Shadow(
+                                      color: goldColor.withOpacity(0.3),
+                                      blurRadius: 2,
+                                      offset: const Offset(1, 1),
+                                    ),
+                                  ] : null,
                                 ),
                               ),
-                              if (statusText.isNotEmpty) ...[
-                                const SizedBox(height: 4),
-                                Text(
-                                  statusText,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: isTrialActive ? Colors.orange[700] : Colors.grey[600],
-                                  ),
+                              const SizedBox(height: 4),
+                              Text(
+                                isPremium 
+                                    ? 'Tam dijital tesbih deneyimi'
+                                    : 'Reklamsız ve özel özellikler',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: isPremium 
+                                      ? emeraldGreen.withOpacity(0.8)
+                                      : emeraldGreen.withOpacity(0.7),
+                                  fontWeight: FontWeight.w500,
                                 ),
-                              ],
+                              ),
+                              const SizedBox(height: 4),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 2, 
+                                  vertical: 6
+                                ),
+                                decoration: BoxDecoration(
+                                  gradient: isPremium
+                                      ? LinearGradient(
+                                          colors: [
+                                            emeraldGreen.withOpacity(0.2),
+                                            emeraldGreen.withOpacity(0.1),
+                                          ],
+                                        )
+                                      : LinearGradient(
+                                          colors: [
+                                            goldColor.withOpacity(0.3),
+                                            lightGold.withOpacity(0.4),
+                                          ],
+                                        ),
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: isPremium 
+                                        ? emeraldGreen.withOpacity(0.4)
+                                        : goldColor.withOpacity(0.6),
+                                    width: 1.2,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: isPremium 
+                                          ? emeraldGreen.withOpacity(0.2)
+                                          : goldColor.withOpacity(0.3),
+                                      blurRadius: 4,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      isPremium ? Icons.verified : Icons.diamond,
+                                      color: isPremium ? emeraldGreen : goldColor,
+                                      size: 14,
+                                    ),
+                                    const SizedBox(width: 6),
+                                    Expanded(
+                                      child: Text(
+                                        isPremium 
+                                            ? 'Premium Üyelik Aktif'
+                                            : 'Premium\'a Geçin - %60 Tasarruf',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: isPremium ? emeraldGreen : emeraldGreen,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ],
                     ),
                     
+                    const SizedBox(height: 10),
+                    
+                    // Premium features
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: isPremium 
+                            ? emeraldGreen.withOpacity(0.1)
+                            : lightGold.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: isPremium 
+                              ? emeraldGreen.withOpacity(0.3)
+                              : goldColor.withOpacity(0.5),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          _buildPremiumFeature(
+                            isPremium,
+                            Icons.block,
+                            'Reklamsız Deneyim',
+                            'Kesintisiz zikir ve dua',
+                          ),
+                          _buildPremiumFeature(
+                            isPremium,
+                            Icons.notifications_active,
+                            'Akıllı Hatırlatıcılar',
+                            'Özelleştirilebilir bildirimler',
+                          ),
+                          _buildPremiumFeature(
+                            isPremium,
+                            Icons.widgets,
+                            'Ana Ekran Widget\'ı',
+                            'Hızlı erişim ve sayaç',
+                            isLast: true,
+                          ),
+                        ],
+                      ),
+                    ),
+                    
                     if (!isPremium) ...[
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       Container(
                         width: double.infinity,
-                        height: 44,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [goldColor, lightGold, goldColor],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                          borderRadius: BorderRadius.circular(25),
+                          boxShadow: [
+                            BoxShadow(
+                              color: goldColor.withOpacity(0.4),
+                              blurRadius: 15,
+                              spreadRadius: 2,
+                            ),
+                          ],
+                        ),
                         child: ElevatedButton(
-                          onPressed: () => Get.to(() => const PremiumScreen()),
+                          onPressed: () => Get.to(
+                            () => const PremiumScreen(), 
+                            transition: Transition.rightToLeft
+                          ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: goldColor,
-                            foregroundColor: Colors.white,
-                            elevation: 2,
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(25),
                             ),
                           ),
-                          child: const Text(
-                            'Premium\'a Geç',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.diamond,
+                                color: emeraldGreen,
+                                size: 24,
+                              ),
+                              const SizedBox(width: 8),
+                              const Text(
+                                'Premium\'a Geçin',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: emeraldGreen,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              const Icon(
+                                Icons.arrow_forward_ios,
+                                color: emeraldGreen,
+                                size: 16,
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
-                    
-                    if (isPremium) ...[
-                      const SizedBox(height: 12),
-                      const Text(
-                        '✨ Reklamsız deneyim\n🔔 Hatırlatıcılar\n📱 Ana ekran widget\'ı',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.green,
-                          height: 1.4,
+                    ] else ...[
+                      const SizedBox(height: 16),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [emeraldGreen, darkGreen],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: emeraldGreen.withOpacity(0.3),
+                              blurRadius: 10,
+                              spreadRadius: 2,
+                            ),
+                          ],
                         ),
-                        textAlign: TextAlign.center,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.check_circle, color: goldColor, size: 20),
+                            SizedBox(width: 8),
+                            Text(
+                              'Premium Üyeliğiniz Aktif',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: goldColor,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ],
                 ),
               ),
-            ]),
-            const SizedBox(height: 16),
+            ),
           ],
         );
       },
+    );
+  }
+
+  Widget _buildPremiumFeature(bool isPremium, IconData icon, String title, String description, {bool isLast = false}) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                gradient: isPremium 
+                    ? const RadialGradient(
+                        colors: [goldColor, lightGold],
+                        center: Alignment.topLeft,
+                      )
+                    : RadialGradient(
+                        colors: [emeraldGreen.withOpacity(0.7), emeraldGreen],
+                        center: Alignment.topLeft,
+                      ),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(
+                icon,
+                color: isPremium ? emeraldGreen : Colors.white,
+                size: 18,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: isPremium ? emeraldGreen : emeraldGreen.withOpacity(0.8),
+                    ),
+                  ),
+                  Text(
+                    description,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: isPremium 
+                          ? emeraldGreen.withOpacity(0.7)
+                          : emeraldGreen.withOpacity(0.6),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (isPremium)
+              const Icon(
+                Icons.check_circle,
+                color: emeraldGreen,
+                size: 16,
+              ),
+          ],
+        ),
+        if (!isLast) ...[
+          const SizedBox(height: 12),
+          Container(
+            height: 1,
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.transparent,
+                  isPremium 
+                      ? emeraldGreen.withOpacity(0.3)
+                      : goldColor.withOpacity(0.3),
+                  Colors.transparent,
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+        ],
+      ],
     );
   }
 }

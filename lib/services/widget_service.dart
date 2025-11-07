@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import '../models/subscription_plan.dart';
+
 import '../models/widget_zikr_record.dart';
 import '../models/zikr.dart';
 import 'storage_service.dart';
@@ -146,7 +146,7 @@ class WidgetService extends GetxService {
   bool _canUseWidget() {
     try {
       final subscriptionService = Get.find<SubscriptionService>();
-      return subscriptionService.canUseFeature(PremiumFeature.androidWidget);
+      return subscriptionService.isWidgetEnabled;
     } catch (e) {
       // SubscriptionService henüz initialize olmamış olabilir
       return false;

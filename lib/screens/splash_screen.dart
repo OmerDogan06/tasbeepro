@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
 import 'home_screen.dart';
+import 'first_launch_premium_intro_screen.dart';
+import '../services/storage_service.dart';
 import '../l10n/app_localizations.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -88,9 +90,25 @@ class _SplashScreenState extends State<SplashScreen>
     await Future.delayed(const Duration(milliseconds: 800));
     _shimmerController.repeat(reverse: true);
 
-    // Navigate to home after all animations
+    // Navigate based on first launch status
     await Future.delayed(const Duration(milliseconds: 1000));
     if (mounted) {
+      _navigateBasedOnFirstLaunch();
+    }
+  }
+
+  void _navigateBasedOnFirstLaunch() {
+    final storageService = Get.find<StorageService>();
+    
+    if (storageService.isFirstLaunch()) {
+      // İlk açılış - Premium tanıtım sayfasına git
+      Get.offAll(
+        () => const FirstLaunchPremiumIntroScreen(),
+        transition: Transition.fadeIn,
+        duration: const Duration(milliseconds: 800),
+      );
+    } else {
+      // Normal açılış - Ana sayfaya git
       Get.offAll(
         () => const HomeScreen(),
         transition: Transition.fadeIn,
