@@ -6,6 +6,7 @@ import '../widgets/counter_button.dart';
 import '../widgets/progress_bar.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../l10n/app_localizations.dart';
+import '../services/ad_service.dart';
 import 'zikr_list_screen.dart';
 import 'settings_screen.dart';
 import 'stats_screen.dart';
@@ -635,6 +636,10 @@ class HomeScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(12),
                                       onTap: () {
                                         controller.setTarget(target);
+                                        
+                                        // Hedef değiştirme işlemi için reklam sayacını artır
+                                        AdService.instance.onUserAction('hedef_degistir');
+                                        
                                         Navigator.of(context).pop();
                                       },
                                       child: Padding(
@@ -872,6 +877,10 @@ class HomeScreen extends StatelessWidget {
             child: TextButton(
               onPressed: () {
                 controller.reset();
+                
+                // Sıfırlama işlemi için reklam sayacını artır
+                AdService.instance.onUserAction('sifirla');
+                
                 Navigator.of(context).pop();
                 IslamicSnackbar.showSuccess(
                   AppLocalizations.of(context)?.homeResetSuccess ?? 'Başarılı',
@@ -1097,6 +1106,10 @@ class HomeScreen extends StatelessWidget {
     }
 
     controller.addCustomTarget(target);
+    
+    // Özel hedef ekleme işlemi için reklam sayacını artır
+    AdService.instance.onUserAction('ozel_hedef_ekle');
+    
     Get.back();
 
     // Target dialog'unu yeniden aç - böylece yeni hedef listede görünür
@@ -1176,6 +1189,10 @@ class HomeScreen extends StatelessWidget {
             child: TextButton(
               onPressed: () async {
                 await controller.removeCustomTarget(target);
+                
+                // Hedef silme işlemi için reklam sayacını artır
+                AdService.instance.onUserAction('hedef_sil');
+                
                 Navigator.of(
                     context.mounted ? context : Get.context!,
                     rootNavigator: true,

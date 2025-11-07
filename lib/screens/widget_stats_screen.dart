@@ -11,6 +11,7 @@ import 'dart:io';
 import '../controllers/widget_stats_controller.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../widgets/banner_ad_widget.dart';
+import '../services/ad_service.dart';
 import '../l10n/app_localizations.dart';
 
 class WidgetStatsScreen extends StatefulWidget {
@@ -806,6 +807,9 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
   }
 
   Future<void> _exportToPDF(String period, BuildContext buildContext) async {
+    // PDF çıkarma işlemi için tam ekran reklam göster
+    AdService.instance.showInterstitialAd();
+    
     // Loading state'ini başlat
     setState(() {
       _isExportingPDF = true;

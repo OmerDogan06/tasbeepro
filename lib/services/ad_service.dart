@@ -238,19 +238,24 @@ class AdService extends GetxService with WidgetsBindingObserver {
   
   // Target completion tracking methods
   void onTargetCompleted() {
+    onUserAction('hedef_tamamlama');
+  }
+  
+  // Genel kullanıcı aksiyonu takibi - Tüm işlemler için tek sayaç
+  void onUserAction(String actionType) {
     _completedTargetsCount.value++;
     
     // Storage'a kaydet
     try {
       final storageService = Get.find<StorageService>();
       storageService.saveCompletedTargetsCount(_completedTargetsCount.value);
-      if (kDebugMode) print('Target completed! Total saved to storage: ${_completedTargetsCount.value}');
+      if (kDebugMode) print('User action ($actionType)! Total count: ${_completedTargetsCount.value}');
     } catch (e) {
-      if (kDebugMode) print('Error saving completed targets: $e');
+      if (kDebugMode) print('Error saving user actions: $e');
     }
     
-    // Show full-screen ad every 2 target completions
-    if (_completedTargetsCount.value % 2 == 0) {
+    // Her 5 işlemde bir tam ekran reklam göster
+    if (_completedTargetsCount.value % 5 == 0) {
       _showFullScreenAd();
     }
   }
