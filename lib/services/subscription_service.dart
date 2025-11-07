@@ -6,7 +6,6 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:tasbeepro/models/subscription_plan.dart';
 
 import 'storage_service.dart';
-import 'background_subscription_service.dart';
 
 class SubscriptionService extends GetxController {
   static SubscriptionService get to => Get.find();
@@ -40,9 +39,6 @@ class SubscriptionService extends GetxController {
     super.onInit();
     await _loadPremiumStatus();
     await _initializePurchases();
-    
-    // Background service'i başlat
-    Get.put(BackgroundSubscriptionService());
   }
 
   // Premium durumunu yükle
@@ -159,8 +155,6 @@ class SubscriptionService extends GetxController {
   // Test için manuel subscription check
   Future<void> forceCheckSubscription() async {
     try {
-      final backgroundService = Get.find<BackgroundSubscriptionService>();
-      await backgroundService.checkSubscriptionNow();
       await refreshPremiumStatus();
       
       Get.snackbar(

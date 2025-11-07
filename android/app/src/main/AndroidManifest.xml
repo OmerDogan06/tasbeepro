@@ -7,8 +7,7 @@
     <!-- Billing permission for in-app purchases -->
     <uses-permission android:name="com.android.vending.BILLING" />
     
-    <!-- AD ID permission for Android 13+ (API 33+) -->
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    
     
     <!-- Core notification permissions -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -26,12 +25,11 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     
-    <!-- Background service permissions -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
-    
     <!-- Additional permissions for reliable notifications -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- AD ID permission for Android 13+ (API 33+) -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
     
 
     <application
@@ -144,6 +142,16 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8365973392717077~8118430681"/>
+            
+        <!-- Indicate that this app uses the Advertising ID -->
+        <meta-data
+            android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT"
+            android:value="true"/>
+            
+        <!-- Privacy declaration for Google Ads -->
+        <meta-data
+            android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION"
+            android:value="true"/>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
