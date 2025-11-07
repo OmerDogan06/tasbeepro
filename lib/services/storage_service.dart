@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/counter_data.dart';
+import '../models/subscription_plan.dart';
 import '../models/zikr.dart';
 
 class StorageService extends GetxService {
+  static StorageService get to => Get.find();
   late SharedPreferences _prefs;
   
   Future<StorageService> init() async {
@@ -265,5 +267,32 @@ class StorageService extends GetxService {
   
   int getCompletedTargetsCount() {
     return _prefs.getInt('completed_targets_count') ?? 0;
+  }
+
+  // Subscription status
+  Future<void> saveSubscriptionStatus(SubscriptionStatus status) async {
+    await _prefs.setString('subscription_status', jsonEncode(status.toJson()));
+  }
+  
+  Future<SubscriptionStatus?> getSubscriptionStatus() async {
+    final jsonString = _prefs.getString('subscription_status');
+    if (jsonString != null) {
+      try {
+        return SubscriptionStatus.fromJson(jsonDecode(jsonString));
+      } catch (e) {
+        print('Error parsing subscription status: $e');
+        return null;
+      }
+    }
+    return null;
+  }
+
+  // First app launch check for trial
+  Future<void> setFirstLaunchCompleted() async {
+    await _prefs.setBool('first_launch_completed', true);
+  }
+  
+  bool isFirstLaunch() {
+    return !(_prefs.getBool('first_launch_completed') ?? false);
   }
 }

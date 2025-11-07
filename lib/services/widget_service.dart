@@ -1,9 +1,11 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import '../models/subscription_plan.dart';
 import '../models/widget_zikr_record.dart';
 import '../models/zikr.dart';
 import 'storage_service.dart';
+import 'subscription_service.dart';
 
 class WidgetService extends GetxService {
   static const MethodChannel _channel = MethodChannel('widget_database');
@@ -88,6 +90,12 @@ class WidgetService extends GetxService {
 
   // Widget'a zikir ve hedef listelerini gönder
   Future<void> updateWidgetData() async {
+    // Premium kontrolü
+    if (!_canUseWidget()) {
+      debugPrint('Widget özelliği premium üyelik gerektirir');
+      return;
+    }
+    
     try {
       final storageService = Get.find<StorageService>();
       
@@ -131,6 +139,17 @@ class WidgetService extends GetxService {
       
     } catch (e) {
       debugPrint('Widget veri güncelleme hatası: $e');
+    }
+  }
+
+  // Premium kontrolü
+  bool _canUseWidget() {
+    try {
+      final subscriptionService = Get.find<SubscriptionService>();
+      return subscriptionService.canUseFeature(PremiumFeature.androidWidget);
+    } catch (e) {
+      // SubscriptionService henüz initialize olmamış olabilir
+      return false;
     }
   }
 }

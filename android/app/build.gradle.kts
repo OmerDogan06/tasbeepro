@@ -90,6 +90,9 @@ dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
     implementation("com.google.code.gson:gson:2.11.0")
     
+    // Google Play Billing Library for in-app purchases
+    implementation("com.android.billingclient:billing:7.1.1")
+    
     // Google Play Core - Android 16 uyumlu en güncel kitaplıklar
     implementation("com.google.android.play:app-update:2.1.0")
     implementation("com.google.android.play:review:2.0.1")

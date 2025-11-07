@@ -17,9 +17,23 @@
 -keep class com.google.android.play.core.tasks.** { *; }
 -dontwarn com.google.android.play.core.**
 
+# Google Play Billing
+-keep class com.android.billingclient.** { *; }
+-dontwarn com.android.billingclient.**
+
 # Google Play Services Tasks
 -keep class com.google.android.gms.tasks.** { *; }
 -dontwarn com.google.android.gms.tasks.**
+
+# Google Mobile Ads SDK and AD_ID permission
+-keep class com.google.android.gms.ads.** { *; }
+-keep class com.google.ads.** { *; }
+-dontwarn com.google.android.gms.ads.**
+-dontwarn com.google.ads.**
+
+# Google Play Services Ads Identifier
+-keep class com.google.android.gms.ads.identifier.** { *; }
+-dontwarn com.google.android.gms.ads.identifier.**
 
 # Flutter engine - R8 compatibility
 -keep class io.flutter.embedding.engine.deferredcomponents.** { *; }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../services/ad_service.dart';
+import '../services/subscription_service.dart';
 
 class BannerAdWidget extends StatefulWidget {
   const BannerAdWidget({super.key});
@@ -27,6 +29,16 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     // AdService'den banner ad oluştur
     final adService = AdService.instance;
     _bannerAd = adService.createBannerAd();
+    
+    // Premium kullanıcılar için null döner
+    if (_bannerAd == null) {
+      if (mounted) {
+        setState(() {
+          _isLoaded = false;
+        });
+      }
+      return;
+    }
     
     // Listener'ı güncelle
     _bannerAd = BannerAd(
@@ -63,6 +75,16 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
+    // Premium kontrolü - SubscriptionService kullanarak
+    try {
+      final subscriptionService = Get.find<SubscriptionService>();
+      if (subscriptionService.isAdFreeEnabled) {
+        return const SizedBox.shrink(); // Premium kullanıcı, reklam gösterme
+      }
+    } catch (e) {
+      // SubscriptionService henüz hazır değil, reklam göster
+    }
+    
     if (!_isLoaded || _bannerAd == null) {
       return const SizedBox.shrink(); // Reklam hazır değilse hiçbir şey gösterme
     }

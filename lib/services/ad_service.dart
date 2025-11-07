@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'storage_service.dart';
+import 'subscription_service.dart';
 
 class AdService extends GetxService with WidgetsBindingObserver {
   static AdService get instance => Get.find<AdService>();
@@ -47,6 +48,17 @@ class AdService extends GetxService with WidgetsBindingObserver {
     
     // App lifecycle'ı dinlemeye başla
     WidgetsBinding.instance.addObserver(this);
+  }
+
+  // Premium kontrolü
+  bool get _isAdFreeEnabled {
+    try {
+      final subscriptionService = Get.find<SubscriptionService>();
+      return subscriptionService.isAdFreeEnabled;
+    } catch (e) {
+      // SubscriptionService henüz initialize olmamış olabilir
+      return false;
+    }
   }
   
   // Storage'dan hedef tamamlama sayısını yükle
@@ -105,7 +117,13 @@ class AdService extends GetxService with WidgetsBindingObserver {
   }
   
   // Banner Ad Factory - Her çağrıda yeni ad oluşturur
-  BannerAd createBannerAd() {
+  BannerAd? createBannerAd() {
+    // Premium kullanıcılar için reklam gösterme
+    if (_isAdFreeEnabled) {
+      if (kDebugMode) print('🚫 Banner ad blocked - Premium user');
+      return null;
+    }
+    
     return BannerAd(
       adUnitId: _bannerAdUnitId,
       size: AdSize.banner,
@@ -156,6 +174,12 @@ class AdService extends GetxService with WidgetsBindingObserver {
   }
   
   Future<void> showInterstitialAd() async {
+    // Premium kullanıcılar için reklam gösterme
+    if (_isAdFreeEnabled) {
+      if (kDebugMode) print('🚫 Interstitial ad blocked - Premium user');
+      return;
+    }
+    
     if (_interstitialAd != null && _isInterstitialAdReady.value) {
       _interstitialAd?.fullScreenContentCallback = FullScreenContentCallback(
         onAdShowedFullScreenContent: (ad) {
@@ -209,6 +233,12 @@ class AdService extends GetxService with WidgetsBindingObserver {
   }
   
   Future<void> showAppOpenAd() async {
+    // Premium kullanıcılar için reklam gösterme
+    if (_isAdFreeEnabled) {
+      if (kDebugMode) print('🚫 App open ad blocked - Premium user');
+      return;
+    }
+    
     if (_appOpenAd != null && _isAppOpenAdReady.value) {
       _appOpenAd?.fullScreenContentCallback = FullScreenContentCallback(
         onAdShowedFullScreenContent: (ad) {

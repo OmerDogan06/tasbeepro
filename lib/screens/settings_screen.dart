@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:tasbeepro/screens/premium_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../services/sound_service.dart';
 import '../services/vibration_service.dart';
 import '../services/language_service.dart';
+import '../services/subscription_service.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../widgets/banner_ad_widget.dart';
@@ -149,6 +151,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate([
+                      // Premium Status
+                      _buildPremiumSection(context),
+                      
                       // Ses ve Titreşim Ayarları
                 _buildSectionHeader(
                   context,
@@ -2020,6 +2025,117 @@ class _SettingsScreenState extends State<SettingsScreen> {
         duration: const Duration(seconds: 3),
       );
     }
+  }
+
+  // Premium section builder
+  Widget _buildPremiumSection(BuildContext context) {
+    return GetX<SubscriptionService>(
+      builder: (subscriptionService) {
+        final isPremium = subscriptionService.isPremium;
+        final isTrialActive = subscriptionService.isTrialActive;
+        final statusText = subscriptionService.subscriptionStatusText;
+        
+        return Column(
+          children: [
+            _buildSectionHeader(
+              context,
+              isPremium ? 'Premium Aktif' : 'Premium',
+            ),
+            _buildIslamicCard([
+              Container(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: isPremium ? goldColor : goldColor.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            isPremium ? Icons.star : Icons.star_outline,
+                            color: isPremium ? Colors.white : goldColor,
+                            size: 24,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                isPremium ? 'Premium Üye' : 'Premium\'a Geç',
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: emeraldGreen,
+                                ),
+                              ),
+                              if (statusText.isNotEmpty) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  statusText,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: isTrialActive ? Colors.orange[700] : Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    
+                    if (!isPremium) ...[
+                      const SizedBox(height: 16),
+                      Container(
+                        width: double.infinity,
+                        height: 44,
+                        child: ElevatedButton(
+                          onPressed: () => Get.to(() => const PremiumScreen()),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: goldColor,
+                            foregroundColor: Colors.white,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: const Text(
+                            'Premium\'a Geç',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    
+                    if (isPremium) ...[
+                      const SizedBox(height: 12),
+                      const Text(
+                        '✨ Reklamsız deneyim\n🔔 Hatırlatıcılar\n📱 Ana ekran widget\'ı',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.green,
+                          height: 1.4,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ]),
+            const SizedBox(height: 16),
+          ],
+        );
+      },
+    );
   }
 }
 

@@ -3,7 +3,9 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:permission_handler/permission_handler.dart';
+import '../models/subscription_plan.dart';
 import 'storage_service.dart';
+import 'subscription_service.dart';
 import '../l10n/app_localizations.dart';
 
 class NotificationService extends GetxService {
@@ -117,6 +119,17 @@ class NotificationService extends GetxService {
     // Ana ekrana yönlendir
   }
 
+  // Premium kontrolü
+  bool _canUseReminders() {
+    try {
+      final subscriptionService = Get.find<SubscriptionService>();
+      return subscriptionService.canUseFeature(PremiumFeature.reminders);
+    } catch (e) {
+      // SubscriptionService henüz initialize olmamış olabilir
+      return false;
+    }
+  }
+
   Future<void> scheduleZikrReminder({
     required int id,
     required String title,
@@ -124,6 +137,11 @@ class NotificationService extends GetxService {
     required DateTime scheduledTime,
   }) async {
     final context = Get.context;
+    
+    // Premium kontrolü
+    if (!_canUseReminders()) {
+      throw Exception('Hatırlatıcı özelliği premium üyelik gerektirir');
+    }
     
     // Permission kontrolü
     if (!await _hasNotificationPermission()) {

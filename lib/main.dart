@@ -14,6 +14,7 @@ import 'services/notification_service.dart';
 import 'services/widget_service.dart';
 import 'services/language_service.dart';
 import 'services/permission_service.dart';
+import 'services/subscription_service.dart';
 import 'l10n/app_localizations.dart';
 
 void main() async {
@@ -42,10 +43,11 @@ void main() async {
   await Get.putAsync(() => LanguageService().init());
   Get.put(SoundService());
   Get.put(VibrationService());
-   Get.put(AdService()); // Reklam servisini başlat
- Get.put(NotificationService());
+  Get.put(AdService()); // Reklam servisini başlat
+  Get.put(NotificationService());
   Get.put(WidgetService());
   Get.put(PermissionService());
+  Get.put(SubscriptionService()); // Subscription servisini başlat
 
   // Controllers'ları başlat
   Get.put(CounterController());
