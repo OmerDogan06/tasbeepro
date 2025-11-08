@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:tasbeepro/widgets/islamic_snackbar.dart';
 import '../l10n/app_localizations.dart';
 import '../models/subscription_plan.dart';
 import '../services/subscription_service.dart';
@@ -16,6 +17,7 @@ class PremiumScreen extends StatefulWidget {
   static const goldColor = Color(0xFFD4AF37);
   static const lightGold = Color(0xFFF5E6A8);
   static const darkGreen = Color(0xFF1A3409);
+  
 
   @override
   State<PremiumScreen> createState() => _PremiumScreenState();
@@ -518,66 +520,48 @@ class _PremiumScreenState extends State<PremiumScreen> {
   }
 
   Widget _buildPromotionCodesSection(BuildContext context) {
+       const emeraldGreen = Color(0xFF2D5016);
+   const goldColor = Color(0xFFD4AF37);
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            PremiumScreen.lightGold.withAlpha(51),
-            PremiumScreen.goldColor.withAlpha(25),
+            const Color(0xFF1A3409).withAlpha(77),
+            emeraldGreen.withAlpha(51),
           ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: PremiumScreen.goldColor.withAlpha(125),
-          width: 1.5,
-        ),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
         boxShadow: [
           BoxShadow(
-            color: PremiumScreen.goldColor.withAlpha(51),
-            blurRadius: 15,
-            spreadRadius: 3,
+            color: goldColor.withAlpha(25),
+            blurRadius: 10,
+            spreadRadius: 2,
           ),
         ],
       ),
       child: Column(
         children: [
-          // Başlık
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: PremiumScreen.goldColor.withAlpha(102),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: PremiumScreen.goldColor,
-                    width: 1,
-                  ),
-                ),
-                child: const Icon(
-                  Icons.local_offer,
-                  color: PremiumScreen.emeraldGreen,
-                  size: 24,
-                ),
-              ),
-              const SizedBox(width: 12),
+              Icon(Icons.local_offer, color: goldColor, size: 22),
+              const SizedBox(width: 8),
               Text(
                 AppLocalizations.of(context)?.premiumPromotionCodes ??
                     'Özel Promosyon Kodları',
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
+                maxLines: 2,
               ),
             ],
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: 8),
 
           // Aylık abonelik promosyon kodu
           _buildPromotionCodeCard(
@@ -591,7 +575,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
             Colors.blue,
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
           // Yıllık abonelik promosyon kodu
           _buildPromotionCodeCard(
@@ -602,50 +586,28 @@ class _PremiumScreenState extends State<PremiumScreen> {
             AppLocalizations.of(context)?.premiumYearlySubscription ??
                 'Yıllık Abonelik',
             Icons.calendar_month,
-            PremiumScreen.goldColor,
+            goldColor,
             isRecommended: true,
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: PremiumScreen.emeraldGreen.withAlpha(77),
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: PremiumScreen.goldColor.withAlpha(77),
-                width: 1,
-              ),
+          Text(
+            '💡 ${AppLocalizations.of(context)?.premiumPromotionCodeInfo ?? 'Bu kodları abonelik satın alırken kullanarak ücretsiz deneme süresinden yararlanabilirsiniz'}',
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.white.withAlpha(204),
+              fontStyle: FontStyle.italic,
             ),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.info_outline,
-                  color: PremiumScreen.goldColor,
-                  size: 20,
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    AppLocalizations.of(context)?.premiumPromotionCodeInfo ??
-                        'Bu kodları abonelik satın alırken kullanarak ücretsiz deneme süresinden yararlanabilirsiniz',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.white,
-                      height: 1.3,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildPromotionCodeCard(
+
+   Widget _buildPromotionCodeCard(
     BuildContext context,
     String code,
     String trialPeriod,
@@ -654,71 +616,44 @@ class _PremiumScreenState extends State<PremiumScreen> {
     Color accentColor, {
     bool isRecommended = false,
   }) {
+         const emeraldGreen = Color(0xFF2D5016);
+   const goldColor = Color(0xFFD4AF37);
     return GestureDetector(
       onTap: () => _copyPromotionCode(code),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          gradient: isRecommended
-              ? LinearGradient(
-                  colors: [
-                    PremiumScreen.goldColor,
-                    PremiumScreen.lightGold,
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                )
-              : null,
-          color: isRecommended ? null : Colors.white.withAlpha(25),
-          borderRadius: BorderRadius.circular(16),
+          color: isRecommended
+              ? goldColor.withAlpha(25)
+              : Colors.white.withAlpha(13),
+          borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isRecommended
-                ? PremiumScreen.goldColor
-                : accentColor.withAlpha(125),
-            width: isRecommended ? 2 : 1.5,
+            color: isRecommended ? goldColor : accentColor,
+            width: isRecommended ? 2 : 1,
           ),
           boxShadow: isRecommended
               ? [
                   BoxShadow(
-                    color: PremiumScreen.goldColor.withAlpha(77),
-                    blurRadius: 12,
-                    spreadRadius: 2,
-                  ),
-                ]
-              : [
-                  BoxShadow(
-                    color: accentColor.withAlpha(25),
+                    color: goldColor.withAlpha(51),
                     blurRadius: 8,
                     spreadRadius: 1,
                   ),
-                ],
+                ]
+              : null,
         ),
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
-                color: isRecommended
-                    ? PremiumScreen.emeraldGreen.withAlpha(77)
-                    : accentColor.withAlpha(51),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: isRecommended
-                      ? PremiumScreen.emeraldGreen
-                      : accentColor,
-                  width: 1,
-                ),
+                color: accentColor.withAlpha(51),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: accentColor, width: 1),
               ),
-              child: Icon(
-                icon,
-                color: isRecommended
-                    ? PremiumScreen.goldColor
-                    : accentColor,
-                size: 24,
-              ),
+              child: Icon(icon, color: accentColor, size: 20),
             ),
 
-            const SizedBox(width: 16),
+            const SizedBox(width: 5),
 
             Expanded(
               child: Column(
@@ -726,72 +661,58 @@ class _PremiumScreenState extends State<PremiumScreen> {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        code,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: isRecommended
-                              ? PremiumScreen.emeraldGreen
-                              : Colors.white,
-                          letterSpacing: 1.2,
+                      Expanded(
+                        child: Text(
+                          code,
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: isRecommended ? goldColor : Colors.white,
+                            letterSpacing: 1,
+                            
+                          ),
                         ),
                       ),
                       if (isRecommended) ...[
-                        const SizedBox(width: 8),
+                        const SizedBox(width: 4),
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
-                            color: PremiumScreen.emeraldGreen,
-                            borderRadius: BorderRadius.circular(8),
+                            color: goldColor,
+                            borderRadius: BorderRadius.circular(6),
                           ),
-                          child: Text(
-                            AppLocalizations.of(context)
-                                    ?.premiumRecommended ??
-                                'ÖNERİLEN',
-                            style: const TextStyle(
-                              fontSize: 10,
+                          child:  Text(
+                            AppLocalizations.of(context)?.firstLaunchIntroRecommended ?? 'ÖNERİLEN',
+                            style: TextStyle(
+                              fontSize: 8,
                               fontWeight: FontWeight.bold,
-                              color: PremiumScreen.goldColor,
+                              color: emeraldGreen,
                             ),
                           ),
                         ),
                       ],
                     ],
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 2),
                   Text(
                     '$trialPeriod • $planType',
+                    maxLines: 2,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                       color: isRecommended
-                          ? PremiumScreen.emeraldGreen.withAlpha(204)
+                          ? Colors.white.withAlpha(230)
                           : Colors.white70,
-                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
               ),
             ),
 
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: isRecommended
-                    ? PremiumScreen.emeraldGreen.withAlpha(51)
-                    : Colors.white.withAlpha(25),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(
-                Icons.copy,
-                color: isRecommended
-                    ? PremiumScreen.goldColor
-                    : Colors.white70,
-                size: 20,
-              ),
+            Icon(
+              Icons.copy,
+              color: isRecommended ? goldColor : Colors.white70,
+              size: 20,
             ),
           ],
         ),
@@ -802,19 +723,12 @@ class _PremiumScreenState extends State<PremiumScreen> {
   void _copyPromotionCode(String code) {
     Clipboard.setData(ClipboardData(text: code));
     
-    Get.snackbar(
+   IslamicSnackbar.showInfo(
       AppLocalizations.of(context)?.premiumCodeCopied ?? '📋 Kod Kopyalandı',
       AppLocalizations.of(Get.context!)?.premiumCodeCopiedMessage(code) ?? 'Promosyon kodu "$code" panoya kopyalandı',
-      backgroundColor: PremiumScreen.goldColor.withAlpha(230),
-      colorText: PremiumScreen.emeraldGreen,
+    
       duration: const Duration(seconds: 3),
-      snackPosition: SnackPosition.BOTTOM,
-      margin: const EdgeInsets.all(16),
-      borderRadius: 12,
-      icon: const Icon(
-        Icons.check_circle,
-        color: PremiumScreen.emeraldGreen,
-      ),
+     
     );
   }
 }

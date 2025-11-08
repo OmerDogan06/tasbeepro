@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:tasbeepro/widgets/islamic_snackbar.dart';
 import 'dart:math' as math;
 
 import 'premium_screen.dart';
@@ -644,7 +645,7 @@ class _FirstLaunchPremiumIntroScreenState
 
   Widget _buildPromotionCodesSection(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -665,23 +666,24 @@ class _FirstLaunchPremiumIntroScreenState
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Icon(Icons.local_offer, color: goldColor, size: 24),
+              Icon(Icons.local_offer, color: goldColor, size: 22),
               const SizedBox(width: 8),
               Text(
                 AppLocalizations.of(context)?.premiumPromotionCodes ??
                     'Özel Promosyon Kodları',
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
+                maxLines: 2,
               ),
             ],
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
 
           // Aylık abonelik promosyon kodu
           _buildPromotionCodeCard(
@@ -738,7 +740,7 @@ class _FirstLaunchPremiumIntroScreenState
     return GestureDetector(
       onTap: () => _copyPromotionCode(code),
       child: Container(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: isRecommended
               ? goldColor.withAlpha(25)
@@ -761,7 +763,7 @@ class _FirstLaunchPremiumIntroScreenState
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 color: accentColor.withAlpha(51),
                 borderRadius: BorderRadius.circular(8),
@@ -770,7 +772,7 @@ class _FirstLaunchPremiumIntroScreenState
               child: Icon(icon, color: accentColor, size: 20),
             ),
 
-            const SizedBox(width: 12),
+            const SizedBox(width: 5),
 
             Expanded(
               child: Column(
@@ -778,25 +780,29 @@ class _FirstLaunchPremiumIntroScreenState
                 children: [
                   Row(
                     children: [
-                      Text(
-                        code,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: isRecommended ? goldColor : Colors.white,
-                          letterSpacing: 1,
+                      Expanded(
+                        child: Text(
+                          code,
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: isRecommended ? goldColor : Colors.white,
+                            letterSpacing: 1,
+                            
+                          ),
                         ),
                       ),
                       if (isRecommended) ...[
-                        const SizedBox(width: 8),
+                        const SizedBox(width: 4),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
                             color: goldColor,
                             borderRadius: BorderRadius.circular(6),
                           ),
-                          child: const Text(
-                            'ÖNERİLEN',
+                          child:  Text(
+                            AppLocalizations.of(context)?.firstLaunchIntroRecommended ?? 'ÖNERİLEN',
                             style: TextStyle(
                               fontSize: 8,
                               fontWeight: FontWeight.bold,
@@ -810,6 +816,7 @@ class _FirstLaunchPremiumIntroScreenState
                   const SizedBox(height: 2),
                   Text(
                     '$trialPeriod • $planType',
+                    maxLines: 2,
                     style: TextStyle(
                       fontSize: 12,
                       color: isRecommended
@@ -835,16 +842,12 @@ class _FirstLaunchPremiumIntroScreenState
   void _copyPromotionCode(String code) {
     Clipboard.setData(ClipboardData(text: code));
     
-    Get.snackbar(
+    IslamicSnackbar.showInfo(
       AppLocalizations.of(Get.context!)?.premiumCodeCopied ?? '📋 Kod Kopyalandı',
       AppLocalizations.of(Get.context!)?.premiumCodeCopiedMessage(code) ?? 'Promosyon kodu "$code" panoya kopyalandı',
-      backgroundColor: goldColor.withAlpha(230),
-      colorText: emeraldGreen,
+     
       duration: const Duration(seconds: 2),
-      snackPosition: SnackPosition.BOTTOM,
-      margin: const EdgeInsets.all(16),
-      borderRadius: 12,
-      icon: const Icon(Icons.check_circle, color: emeraldGreen),
+     
     );
   }
 
