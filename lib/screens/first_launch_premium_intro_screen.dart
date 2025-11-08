@@ -202,7 +202,7 @@ class _FirstLaunchPremiumIntroScreenState
         const Text(
           'Tasbee Pro',
           style: TextStyle(
-            fontSize: 36,
+            fontSize: 25,
             fontWeight: FontWeight.bold,
             color: Colors.white,
             letterSpacing: 2,
@@ -221,7 +221,7 @@ class _FirstLaunchPremiumIntroScreenState
         const Text(
           'Premium Dijital Tesbih Deneyimi',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 14,
             color: Colors.white70,
             letterSpacing: 0.5,
           ),
@@ -265,7 +265,7 @@ class _FirstLaunchPremiumIntroScreenState
         const Text(
           'Premium Özellikler',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
@@ -585,7 +585,7 @@ class _FirstLaunchPremiumIntroScreenState
                 backgroundColor: emeraldGreen,
                 foregroundColor: Colors.white,
                 elevation: 8,
-                shadowColor: goldColor.withAlpha(125),
+                shadowColor: Colors.transparent,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),

@@ -7,10 +7,7 @@ import '../services/subscription_service.dart';
 import 'home_screen.dart';
 
 class PremiumScreen extends StatelessWidget {
-  const PremiumScreen({
-    super.key,
-    this.fromFirstLaunch = false,
-  });
+  const PremiumScreen({super.key, this.fromFirstLaunch = false});
 
   final bool fromFirstLaunch;
 
@@ -20,27 +17,33 @@ class PremiumScreen extends StatelessWidget {
   static const lightGold = Color(0xFFF5E6A8);
   static const darkGreen = Color(0xFF1A3409);
 
-  Future<void> _handlePurchase(SubscriptionService controller, SubscriptionPlan plan) async {
+  Future<void> _handlePurchase(
+    SubscriptionService controller,
+    SubscriptionPlan plan,
+  ) async {
     // Önceki premium durumunu kaydet
     final wasPremium = controller.isPremium.value;
-    
+
     // Satın alma işlemini başlat
     final success = await controller.purchaseSubscription(plan);
-    
+
     if (success) {
       // Satın alma başlatıldıysa, premium durumunu dinle
       _startListeningForSuccess(controller, wasPremium);
     }
   }
 
-  void _startListeningForSuccess(SubscriptionService controller, bool wasPremium) {
+  void _startListeningForSuccess(
+    SubscriptionService controller,
+    bool wasPremium,
+  ) {
     // 5 saniye boyunca premium durumunu kontrol et
     int checkCount = 0;
     const maxChecks = 25; // 5 saniye (200ms * 25)
-    
+
     void checkPremiumStatus() {
       checkCount++;
-      
+
       // Eğer premium aktif olduysa ve önceden premium değildiyse
       if (!wasPremium && controller.isPremium.value) {
         if (fromFirstLaunch) {
@@ -51,13 +54,13 @@ class PremiumScreen extends StatelessWidget {
         }
         return; // Başarılı oldu, kontrol etmeyi durdur
       }
-      
+
       // Maksimum kontrol sayısına ulaşmadıysak devam et
       if (checkCount < maxChecks) {
         Future.delayed(const Duration(milliseconds: 200), checkPremiumStatus);
       }
     }
-    
+
     // İlk kontrolü başlat
     Future.delayed(const Duration(milliseconds: 500), checkPremiumStatus);
   }
@@ -91,12 +94,15 @@ class PremiumScreen extends StatelessWidget {
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
+                  pinned: true,
+
                   systemOverlayStyle: SystemUiOverlayStyle(
                     statusBarColor: Colors.transparent,
                     statusBarIconBrightness: Brightness.light,
                     systemNavigationBarColor: Color(0xFF1A3409),
                     systemNavigationBarIconBrightness: Brightness.light,
                   ),
+
                   backgroundColor: Colors.transparent,
                   elevation: 0,
                   leading: IconButton(
@@ -112,6 +118,18 @@ class PremiumScreen extends StatelessWidget {
                       ),
                     ),
                   ],
+                  flexibleSpace: Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xFF1A3409), // Dark green
+                          Color(0xFF2D5016), // Emerald green
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                    ),
+                  ),
                 ),
                 SliverToBoxAdapter(
                   child: Padding(
@@ -147,7 +165,7 @@ class PremiumScreen extends StatelessWidget {
                         const Text(
                           'Premium\'a Geçin',
                           style: TextStyle(
-                            fontSize: 32,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -156,30 +174,30 @@ class PremiumScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         const Text(
                           'Tam dijital tesbih deneyimi',
-                          style: TextStyle(fontSize: 18, color: Colors.white70),
+                          style: TextStyle(fontSize: 16, color: Colors.white70),
                           textAlign: TextAlign.center,
                         ),
-      
+
                         // Trial info removed since we don't have active trials in this simple version
                         const SizedBox(height: 32),
-      
+
                         // Features
                         _buildFeaturesList(),
-      
-                        const SizedBox(height: 32),
-      
+
+                        const SizedBox(height: 10),
+
                         // Pricing plans
                         _buildPricingPlans(controller),
-      
+
                         const SizedBox(height: 24),
-      
+
                         // Terms
                         const Text(
                           'Abonelik otomatik olarak yenilenecektir. İstediğiniz zaman iptal edebilirsiniz.',
                           style: TextStyle(fontSize: 12, color: Colors.white54),
                           textAlign: TextAlign.center,
                         ),
-      
+
                         const SizedBox(height: 32),
                       ],
                     ),
@@ -217,7 +235,7 @@ class PremiumScreen extends StatelessWidget {
           .map(
             (feature) => Container(
               margin: const EdgeInsets.only(bottom: 16),
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: lightGold.withAlpha(25),
                 borderRadius: BorderRadius.circular(12),
@@ -314,14 +332,10 @@ class PremiumScreen extends StatelessWidget {
     bool isRecommended = false,
   }) {
     return GestureDetector(
-      onTap: () => 
-       product != null
-          ? () =>
-          
-           _handlePurchase(controller, plan)
-          : null,
+      onTap: () =>
+          product != null ? () => _handlePurchase(controller, plan) : null,
       child: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           gradient: isRecommended
               ? const LinearGradient(
