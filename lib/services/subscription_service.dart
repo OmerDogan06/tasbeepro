@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:tasbeepro/models/subscription_plan.dart';
+import 'package:tasbeepro/screens/home_screen.dart';
 import 'package:tasbeepro/screens/premium_screen.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../l10n/app_localizations.dart';
@@ -11,6 +12,9 @@ import '../l10n/app_localizations.dart';
 import 'storage_service.dart';
 
 class SubscriptionService extends GetxController {
+ 
+  bool fromFirstLaunchX = false;
+
   static SubscriptionService get to => Get.find();
   
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
@@ -182,6 +186,10 @@ class SubscriptionService extends GetxController {
           context != null ? (AppLocalizations.of(context)?.purchaseSuccessTitle ?? 'Başarılı!') : 'Başarılı!',
           context != null ? (AppLocalizations.of(context)?.purchaseSuccessMessage ?? 'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.') : 'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.',
         );
+        if(fromFirstLaunchX == true){
+          fromFirstLaunchX = false;
+          Get.offAll(() => HomeScreen(), transition: Transition.rightToLeft);
+        }
       }
     } catch (e) {
       if (kDebugMode) {

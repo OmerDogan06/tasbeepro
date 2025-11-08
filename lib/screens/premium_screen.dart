@@ -5,9 +5,8 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import '../l10n/app_localizations.dart';
 import '../models/subscription_plan.dart';
 import '../services/subscription_service.dart';
-import 'home_screen.dart';
 
-class PremiumScreen extends StatelessWidget {
+class PremiumScreen extends StatefulWidget {
   const PremiumScreen({super.key, this.fromFirstLaunch = false});
 
   final bool fromFirstLaunch;
@@ -18,70 +17,45 @@ class PremiumScreen extends StatelessWidget {
   static const lightGold = Color(0xFFF5E6A8);
   static const darkGreen = Color(0xFF1A3409);
 
+  @override
+  State<PremiumScreen> createState() => _PremiumScreenState();
+}
+
+class _PremiumScreenState extends State<PremiumScreen> {
+  @override
+  void initState() {
+    if (widget.fromFirstLaunch) {
+      final controller = Get.find<SubscriptionService>();
+      controller.fromFirstLaunchX = true;
+    } else {
+      final controller = Get.find<SubscriptionService>();
+      controller.fromFirstLaunchX = false;
+    }
+    super.initState();
+  }
+
   Future<void> _handlePurchase(
     SubscriptionService controller,
     SubscriptionPlan plan,
   ) async {
     try {
-      debugPrint('🛒 Premium Screen: Purchase initiated for plan: ${plan.name}');
-      
+      debugPrint(
+        '🛒 Premium Screen: Purchase initiated for plan: ${plan.name}',
+      );
+
       // Önceki premium durumunu kaydet
       final wasPremium = controller.isPremium.value;
       debugPrint('🛒 Premium Screen: Was premium before: $wasPremium');
 
       // Satın alma işlemini başlat
-      debugPrint('🛒 Premium Screen: Calling controller.purchaseSubscription...');
+      debugPrint(
+        '🛒 Premium Screen: Calling controller.purchaseSubscription...',
+      );
       final success = await controller.purchaseSubscription(plan);
       debugPrint('🛒 Premium Screen: Purchase result: $success');
-
-      if (success) {
-        // Satın alma başlatıldıysa, premium durumunu dinle
-        debugPrint('🛒 Premium Screen: Starting to listen for success...');
-        _startListeningForSuccess(controller, wasPremium);
-      } else {
-        debugPrint('❌ Premium Screen: Purchase failed or was cancelled');
-      }
     } catch (e) {
       debugPrint('❌ Premium Screen: Error in _handlePurchase: $e');
     }
-  }
-
-  void _startListeningForSuccess(
-    SubscriptionService controller,
-    bool wasPremium,
-  ) {
-    debugPrint('🔄 Premium Screen: Started listening for purchase success...');
-    // 5 saniye boyunca premium durumunu kontrol et
-    int checkCount = 0;
-    const maxChecks = 25; // 5 saniye (200ms * 25)
-
-    void checkPremiumStatus() {
-      checkCount++;
-      debugPrint('🔄 Premium Screen: Check $checkCount/$maxChecks - Premium status: ${controller.isPremium.value}');
-
-      // Eğer premium aktif olduysa ve önceden premium değildiyse
-      if (!wasPremium && controller.isPremium.value) {
-        debugPrint('🎉 Premium Screen: Purchase successful! Premium activated.');
-        if (fromFirstLaunch) {
-          // First launch'tan geldiyse ana sayfaya yönlendir
-          debugPrint('🏠 Premium Screen: Redirecting to home screen...');
-          Future.delayed(const Duration(seconds: 1), () {
-            Get.offAll(() => const HomeScreen());
-          });
-        }
-        return; // Başarılı oldu, kontrol etmeyi durdur
-      }
-
-      // Maksimum kontrol sayısına ulaşmadıysak devam et
-      if (checkCount < maxChecks) {
-        Future.delayed(const Duration(milliseconds: 200), checkPremiumStatus);
-      } else {
-        debugPrint('⏰ Premium Screen: Stopped listening after $maxChecks checks');
-      }
-    }
-
-    // İlk kontrolü başlat
-    Future.delayed(const Duration(milliseconds: 500), checkPremiumStatus);
   }
 
   @override
@@ -132,7 +106,8 @@ class PremiumScreen extends StatelessWidget {
                     TextButton(
                       onPressed: () => controller.restorePurchases(),
                       child: Text(
-                        AppLocalizations.of(context)?.premiumRestorePurchases ?? 'Geri Yükle',
+                        AppLocalizations.of(context)?.premiumRestorePurchases ??
+                            'Geri Yükle',
                         style: const TextStyle(color: Colors.white),
                       ),
                     ),
@@ -162,13 +137,16 @@ class PremiumScreen extends StatelessWidget {
                           height: 100,
                           decoration: BoxDecoration(
                             gradient: RadialGradient(
-                              colors: [goldColor, lightGold],
+                              colors: [
+                                PremiumScreen.goldColor,
+                                PremiumScreen.lightGold,
+                              ],
                               center: Alignment.topLeft,
                             ),
                             shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
-                                color: goldColor.withAlpha(77),
+                                color: PremiumScreen.goldColor.withAlpha(77),
                                 blurRadius: 20,
                                 spreadRadius: 5,
                               ),
@@ -177,12 +155,13 @@ class PremiumScreen extends StatelessWidget {
                           child: const Icon(
                             Icons.auto_awesome,
                             size: 50,
-                            color: emeraldGreen,
+                            color: PremiumScreen.emeraldGreen,
                           ),
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          AppLocalizations.of(context)?.premiumTitle ?? 'Premium\'a Geçin',
+                          AppLocalizations.of(context)?.premiumTitle ??
+                              'Premium\'a Geçin',
                           style: const TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -192,8 +171,12 @@ class PremiumScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          AppLocalizations.of(context)?.premiumSubtitle ?? 'Tam dijital tesbih deneyimi',
-                          style: const TextStyle(fontSize: 16, color: Colors.white70),
+                          AppLocalizations.of(context)?.premiumSubtitle ??
+                              'Tam dijital tesbih deneyimi',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.white70,
+                          ),
                           textAlign: TextAlign.center,
                         ),
 
@@ -212,8 +195,12 @@ class PremiumScreen extends StatelessWidget {
 
                         // Terms
                         Text(
-                          AppLocalizations.of(context)?.premiumTerms ?? 'Abonelik otomatik olarak yenilenecektir. İstediğiniz zaman iptal edebilirsiniz.',
-                          style: const TextStyle(fontSize: 12, color: Colors.white54),
+                          AppLocalizations.of(context)?.premiumTerms ??
+                              'Abonelik otomatik olarak yenilenecektir. İstediğiniz zaman iptal edebilirsiniz.',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.white54,
+                          ),
                           textAlign: TextAlign.center,
                         ),
 
@@ -234,18 +221,30 @@ class PremiumScreen extends StatelessWidget {
     final features = [
       {
         'icon': Icons.block,
-        'title': AppLocalizations.of(context)?.premiumFeatureAdFreeTitle ?? 'Reklamsız Deneyim',
-        'description': AppLocalizations.of(context)?.premiumFeatureAdFreeDescription ?? 'Kesintisiz zikir deneyimi',
+        'title':
+            AppLocalizations.of(context)?.premiumFeatureAdFreeTitle ??
+            'Reklamsız Deneyim',
+        'description':
+            AppLocalizations.of(context)?.premiumFeatureAdFreeDescription ??
+            'Kesintisiz zikir deneyimi',
       },
       {
         'icon': Icons.notifications_active,
-        'title': AppLocalizations.of(context)?.premiumFeatureRemindersTitle ?? 'Hatırlatıcılar',
-        'description': AppLocalizations.of(context)?.premiumFeatureRemindersDescription ?? 'Özelleştirilebilir zikir hatırlatıcıları',
+        'title':
+            AppLocalizations.of(context)?.premiumFeatureRemindersTitle ??
+            'Hatırlatıcılar',
+        'description':
+            AppLocalizations.of(context)?.premiumFeatureRemindersDescription ??
+            'Özelleştirilebilir zikir hatırlatıcıları',
       },
       {
         'icon': Icons.widgets,
-        'title': AppLocalizations.of(context)?.premiumFeatureWidgetTitle ?? 'Ana Ekran Widget\'ı',
-        'description': AppLocalizations.of(context)?.premiumFeatureWidgetDescription ?? 'Android ana ekranında zikir sayacı',
+        'title':
+            AppLocalizations.of(context)?.premiumFeatureWidgetTitle ??
+            'Ana Ekran Widget\'ı',
+        'description':
+            AppLocalizations.of(context)?.premiumFeatureWidgetDescription ??
+            'Android ana ekranında zikir sayacı',
       },
     ];
 
@@ -256,9 +255,12 @@ class PremiumScreen extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 16),
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: lightGold.withAlpha(25),
+                color: PremiumScreen.lightGold.withAlpha(25),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: goldColor.withAlpha(77), width: 1),
+                border: Border.all(
+                  color: PremiumScreen.goldColor.withAlpha(77),
+                  width: 1,
+                ),
               ),
               child: Row(
                 children: [
@@ -266,13 +268,16 @@ class PremiumScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       gradient: RadialGradient(
-                        colors: [goldColor, lightGold],
+                        colors: [
+                          PremiumScreen.goldColor,
+                          PremiumScreen.lightGold,
+                        ],
                         center: Alignment.topLeft,
                       ),
                       borderRadius: BorderRadius.circular(8),
                       boxShadow: [
                         BoxShadow(
-                          color: goldColor.withAlpha(77),
+                          color: PremiumScreen.goldColor.withAlpha(77),
                           blurRadius: 8,
                           spreadRadius: 2,
                         ),
@@ -280,7 +285,7 @@ class PremiumScreen extends StatelessWidget {
                     ),
                     child: Icon(
                       feature['icon'] as IconData,
-                      color: emeraldGreen,
+                      color: PremiumScreen.emeraldGreen,
                       size: 24,
                     ),
                   ),
@@ -316,7 +321,10 @@ class PremiumScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPricingPlans(BuildContext context, SubscriptionService controller) {
+  Widget _buildPricingPlans(
+    BuildContext context,
+    SubscriptionService controller,
+  ) {
     final products = controller.availableProducts;
 
     return Column(
@@ -360,21 +368,23 @@ class PremiumScreen extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: isRecommended
               ? const LinearGradient(
-                  colors: [goldColor, lightGold],
+                  colors: [PremiumScreen.goldColor, PremiumScreen.lightGold],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 )
               : null,
-          color: isRecommended ? null : lightGold.withAlpha(25),
+          color: isRecommended ? null : PremiumScreen.lightGold.withAlpha(25),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isRecommended ? goldColor : goldColor.withAlpha(77),
+            color: isRecommended
+                ? PremiumScreen.goldColor
+                : PremiumScreen.goldColor.withAlpha(77),
             width: isRecommended ? 2 : 1,
           ),
           boxShadow: isRecommended
               ? [
                   BoxShadow(
-                    color: goldColor.withAlpha(77),
+                    color: PremiumScreen.goldColor.withAlpha(77),
                     blurRadius: 15,
                     spreadRadius: 3,
                   ),
@@ -392,7 +402,9 @@ class PremiumScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: isRecommended ? emeraldGreen : Colors.white,
+                    color: isRecommended
+                        ? PremiumScreen.emeraldGreen
+                        : Colors.white,
                   ),
                 ),
                 if (isRecommended)
@@ -402,20 +414,21 @@ class PremiumScreen extends StatelessWidget {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: emeraldGreen,
+                      color: PremiumScreen.emeraldGreen,
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: emeraldGreen.withAlpha(77),
+                          color: PremiumScreen.emeraldGreen.withAlpha(77),
                           blurRadius: 4,
                           spreadRadius: 1,
                         ),
                       ],
                     ),
                     child: Text(
-                      AppLocalizations.of(context)?.premiumRecommended ?? 'ÖNERİLEN',
+                      AppLocalizations.of(context)?.premiumRecommended ??
+                          'ÖNERİLEN',
                       style: const TextStyle(
-                        color: goldColor,
+                        color: PremiumScreen.goldColor,
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                       ),
@@ -435,17 +448,21 @@ class PremiumScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: isRecommended ? emeraldGreen : Colors.white,
+                      color: isRecommended
+                          ? PremiumScreen.emeraldGreen
+                          : Colors.white,
                     ),
                   ),
                   Text(
-                    plan == SubscriptionPlan.yearly 
-                        ? (AppLocalizations.of(context)?.premiumPerYear ?? '/yıl')
-                        : (AppLocalizations.of(context)?.premiumPerMonth ?? '/ay'),
+                    plan == SubscriptionPlan.yearly
+                        ? (AppLocalizations.of(context)?.premiumPerYear ??
+                              '/yıl')
+                        : (AppLocalizations.of(context)?.premiumPerMonth ??
+                              '/ay'),
                     style: TextStyle(
                       fontSize: 16,
                       color: isRecommended
-                          ? emeraldGreen.withAlpha(179)
+                          ? PremiumScreen.emeraldGreen.withAlpha(179)
                           : Colors.white70,
                     ),
                   ),
@@ -455,21 +472,25 @@ class PremiumScreen extends StatelessWidget {
               if (plan == SubscriptionPlan.yearly) ...[
                 const SizedBox(height: 4),
                 Text(
-                  AppLocalizations.of(context)?.premiumTwoMonthsFree ?? '2 ay ücretsiz',
+                  AppLocalizations.of(context)?.premiumTwoMonthsFree ??
+                      '2 ay ücretsiz',
                   style: TextStyle(
                     fontSize: 14,
-                    color: isRecommended ? emeraldGreen : goldColor,
+                    color: isRecommended
+                        ? PremiumScreen.emeraldGreen
+                        : PremiumScreen.goldColor,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
             ] else ...[
               Text(
-                AppLocalizations.of(context)?.premiumPriceLoading ?? 'Fiyat yükleniyor...',
+                AppLocalizations.of(context)?.premiumPriceLoading ??
+                    'Fiyat yükleniyor...',
                 style: TextStyle(
                   fontSize: 14,
                   color: isRecommended
-                      ? emeraldGreen.withAlpha(179)
+                      ? PremiumScreen.emeraldGreen.withAlpha(179)
                       : Colors.white70,
                 ),
               ),
@@ -481,7 +502,7 @@ class PremiumScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 color: isRecommended
-                    ? emeraldGreen.withAlpha(204)
+                    ? PremiumScreen.emeraldGreen.withAlpha(204)
                     : Colors.white70,
               ),
             ),
