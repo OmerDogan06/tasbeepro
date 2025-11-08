@@ -180,6 +180,7 @@ class SubscriptionService extends GetxController {
     await _loadProducts();
     // Aktif satın alımları kontrol et
     await _restorePurchases();
+    await _checkActivePurchases();
   }
 
   void _startListeningToPurchaseUpdates() {
