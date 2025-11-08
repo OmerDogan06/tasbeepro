@@ -38,6 +38,13 @@
     <string name="error_widget_update">Vidjetni yangilashda xato yuz berdi: %1$s</string>
     <string name="error_widget_ids">Vidjet ID\'larini olishda xato yuz berdi: %1$s</string>
     
+    <!-- Premium bildirmalari -->
+    <string name="premium_notification_channel_name">Premium bildirmalari</string>
+    <string name="premium_notification_channel_description">Premium funksiyalar bildirmalari</string>
+    <string name="premium_notification_title">Premium funksiya</string>
+    <string name="premium_notification_text">Vidjet funksiyalaridan foydalanish uchun Premium-ga o\'ting</string>
+    <string name="premium_notification_big_text">Vidjet hisoblagichi va sozlamalar funksiyalaridan foydalanish uchun Premium obuna kerak. Ilovani ochib Premium-ga o\'tishingiz mumkin.</string>
+    
     <!-- Zikr nomlari -->
     <string name="zikir_subhanallah">Subhanalloh</string>
     <string name="zikir_alhamdulillah">Alhamdulillah</string>

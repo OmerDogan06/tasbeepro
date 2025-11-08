@@ -251,6 +251,8 @@ class SubscriptionService extends GetxController {
         if(fromFirstLaunchX == true){
           fromFirstLaunchX = false;
           Get.offAll(() => HomeScreen(), transition: Transition.rightToLeft);
+        }else {
+          Get.back();
         }
       }
     } catch (e) {

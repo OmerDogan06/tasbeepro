@@ -38,6 +38,13 @@
     <string name="error_widget_update">ویجٹ اپ ڈیٹ کرتے وقت خرابی: %1$s</string>
     <string name="error_widget_ids">ویجٹ آئی ڈیز حاصل کرتے وقت خرابی: %1$s</string>
     
+    <!-- پریمیم اطلاعات -->
+    <string name="premium_notification_channel_name">پریمیم اطلاعات</string>
+    <string name="premium_notification_channel_description">پریمیم فیچرز کی اطلاعات</string>
+    <string name="premium_notification_title">پریمیم فیچر</string>
+    <string name="premium_notification_text">ویجٹ فیچرز استعمال کرنے کے لیے پریمیم میں اپگریڈ کریں</string>
+    <string name="premium_notification_big_text">ویجٹ کاؤنٹر اور سیٹنگز فیچرز استعمال کرنے کے لیے پریمیم سبسکرپشن ضروری ہے۔ آپ ایپ کھول کر پریمیم میں اپگریڈ کر سکتے ہیں۔</string>
+    
     <!-- اذکار کے نام -->
     <string name="zikir_subhanallah">سبحان اللہ</string>
     <string name="zikir_alhamdulillah">الحمد للہ</string>

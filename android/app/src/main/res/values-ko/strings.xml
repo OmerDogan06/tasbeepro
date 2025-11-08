@@ -38,6 +38,13 @@
     <string name="error_widget_update">위젯 업데이트 중 오류 발생: %1$s</string>
     <string name="error_widget_ids">위젯 ID 가져오기 중 오류 발생: %1$s</string>
     
+    <!-- 프리미엄 알림 -->
+    <string name="premium_notification_channel_name">프리미엄 알림</string>
+    <string name="premium_notification_channel_description">프리미엄 기능 알림</string>
+    <string name="premium_notification_title">프리미엄 기능</string>
+    <string name="premium_notification_text">위젯 기능을 사용하려면 프리미엄으로 업그레이드하세요</string>
+    <string name="premium_notification_big_text">위젯 카운터 및 설정 기능을 사용하려면 프리미엄 구독이 필요합니다. 앱을 열어서 프리미엄으로 업그레이드할 수 있습니다.</string>
+    
     <!-- 지크르 이름 -->
     <string name="zikir_subhanallah">수브하날라</string>
     <string name="zikir_alhamdulillah">알함둘릴라</string>

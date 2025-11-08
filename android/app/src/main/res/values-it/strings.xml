@@ -38,6 +38,13 @@
     <string name="error_widget_update">Errore durante l\'aggiornamento del widget: %1$s</string>
     <string name="error_widget_ids">Errore durante il recupero degli ID widget: %1$s</string>
     
+    <!-- Notifiche Premium -->
+    <string name="premium_notification_channel_name">Notifiche Premium</string>
+    <string name="premium_notification_channel_description">Notifiche delle funzionalità Premium</string>
+    <string name="premium_notification_title">Funzionalità Premium</string>
+    <string name="premium_notification_text">Passa a Premium per utilizzare le funzionalità del widget</string>
+    <string name="premium_notification_big_text">È richiesto un abbonamento Premium per utilizzare il contatore del widget e le impostazioni. Puoi aprire l\'app e passare a Premium.</string>
+    
     <!-- Zikir Isimleri -->
     <string name="zikir_subhanallah">Subhanallah</string>
     <string name="zikir_alhamdulillah">Alhamdulillah</string>

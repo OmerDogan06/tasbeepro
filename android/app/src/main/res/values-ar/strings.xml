@@ -38,6 +38,13 @@
     <string name="error_widget_update">حدث خطأ أثناء تحديث الأداة: %1$s</string>
     <string name="error_widget_ids">حدث خطأ أثناء الحصول على معرفات الأداة: %1$s</string>
     
+    <!-- إشعارات Premium -->
+    <string name="premium_notification_channel_name">إشعارات Premium</string>
+    <string name="premium_notification_channel_description">إشعارات ميزات Premium</string>
+    <string name="premium_notification_title">ميزة Premium</string>
+    <string name="premium_notification_text">قم بالترقية إلى Premium لاستخدام ميزات الأداة</string>
+    <string name="premium_notification_big_text">مطلوب اشتراك Premium لاستخدام ميزات عداد الأداة والإعدادات. يمكنك فتح التطبيق والترقية إلى Premium.</string>
+    
     <!-- أسماء الأذكار -->
     <string name="zikir_subhanallah">سبحان الله</string>
     <string name="zikir_alhamdulillah">الحمد لله</string>

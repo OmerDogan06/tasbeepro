@@ -38,6 +38,13 @@
     <string name="error_widget_update">เกิดข้อผิดพลาดขณะอัปเดตวิดเจ็ต: %1$s</string>
     <string name="error_widget_ids">เกิดข้อผิดพลาดขณะดึง ID วิดเจ็ต: %1$s</string>
     
+    <!-- การแจ้งเตือนพรีเมียม -->
+    <string name="premium_notification_channel_name">การแจ้งเตือนพรีเมียม</string>
+    <string name="premium_notification_channel_description">การแจ้งเตือนฟีเจอร์พรีเมียม</string>
+    <string name="premium_notification_title">ฟีเจอร์พรีเมียม</string>
+    <string name="premium_notification_text">อัปเกรดเป็นพรีเมียมเพื่อใช้ฟีเจอร์วิดเจ็ต</string>
+    <string name="premium_notification_big_text">จำเป็นต้องมีการสมัครพรีเมียมเพื่อใช้ตัวนับวิดเจ็ตและการตั้งค่า คุณสามารถเปิดแอปและอัปเกรดเป็นพรีเมียมได้</string>
+    
     <!-- ชื่อซิกร์ -->
     <string name="zikir_subhanallah">สุบฮานัลลอห์</string>
     <string name="zikir_alhamdulillah">อัลฮัมดุลิลลาห์</string>

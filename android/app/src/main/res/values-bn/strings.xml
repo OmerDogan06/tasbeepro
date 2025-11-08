@@ -38,6 +38,13 @@
     <string name="error_widget_update">উইজেট আপডেট করার সময় ত্রুটি: %1$s</string>
     <string name="error_widget_ids">উইজেট আইডি পেতে ত্রুটি: %1$s</string>
     
+    <!-- Premium বিজ্ঞপ্তি -->
+    <string name="premium_notification_channel_name">Premium বিজ্ঞপ্তি</string>
+    <string name="premium_notification_channel_description">Premium বৈশিষ্ট্যের বিজ্ঞপ্তি</string>
+    <string name="premium_notification_title">Premium বৈশিষ্ট্য</string>
+    <string name="premium_notification_text">উইজেট বৈশিষ্ট্য ব্যবহার করতে Premium এ আপগ্রেড করুন</string>
+    <string name="premium_notification_big_text">উইজেট কাউন্টার এবং সেটিংস বৈশিষ্ট্য ব্যবহার করতে Premium সাবস্ক্রিপশন প্রয়োজন। আপনি অ্যাপটি খুলে Premium এ আপগ্রেড করতে পারেন।</string>
+    
     <!-- জিকরের নাম -->
     <string name="zikir_subhanallah">সুবহানাল্লাহ</string>
     <string name="zikir_alhamdulillah">আলহামদুলিল্লাহ</string>

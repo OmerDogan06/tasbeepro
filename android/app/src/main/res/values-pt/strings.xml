@@ -38,6 +38,13 @@
     <string name="error_widget_update">Ocorreu um erro ao atualizar o widget: %1$s</string>
     <string name="error_widget_ids">Ocorreu um erro ao obter IDs do widget: %1$s</string>
     
+    <!-- Notificações Premium -->
+    <string name="premium_notification_channel_name">Notificações Premium</string>
+    <string name="premium_notification_channel_description">Notificações de funcionalidades Premium</string>
+    <string name="premium_notification_title">Funcionalidade Premium</string>
+    <string name="premium_notification_text">Atualize para Premium para usar as funcionalidades do widget</string>
+    <string name="premium_notification_big_text">É necessária uma subscrição Premium para usar o contador do widget e as definições. Pode abrir a aplicação e atualizar para Premium.</string>
+    
     <!-- Nomes de dhikr -->
     <string name="zikir_subhanallah">Subhanallah</string>
     <string name="zikir_alhamdulillah">Alhamdulillah</string>

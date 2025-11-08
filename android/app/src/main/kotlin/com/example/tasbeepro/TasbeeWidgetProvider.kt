@@ -511,10 +511,10 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val channel = NotificationChannel(
                     channelId,
-                    "Premium Bildirimleri",
+                    context.getString(R.string.premium_notification_channel_name),
                     NotificationManager.IMPORTANCE_DEFAULT
                 ).apply {
-                    description = "Premium özellik bildirimleri"
+                    description = context.getString(R.string.premium_notification_channel_description)
                     enableVibration(true)
                     vibrationPattern = longArrayOf(0, 300)
                 }
@@ -534,11 +534,11 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             // Bildirim oluştur
             val notification = NotificationCompat.Builder(context, channelId)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle("Premium Özellik")
-                .setContentText("Widget özelliklerini kullanmak için Premium'a geçin")
+                .setContentTitle(context.getString(R.string.premium_notification_title))
+                .setContentText(context.getString(R.string.premium_notification_text))
                 .setStyle(
                     NotificationCompat.BigTextStyle()
-                        .bigText("Widget'ın sayaç ve ayarlar özelliklerini kullanmak için Premium abonelik gereklidir. Uygulamayı açıp Premium'a geçebilirsiniz.")
+                        .bigText(context.getString(R.string.premium_notification_big_text))
                 )
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(appPendingIntent)

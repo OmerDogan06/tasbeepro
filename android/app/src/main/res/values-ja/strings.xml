@@ -38,6 +38,13 @@
     <string name="error_widget_update">ウィジェットの更新中にエラーが発生しました: %1$s</string>
     <string name="error_widget_ids">ウィジェットIDの取得中にエラーが発生しました: %1$s</string>
     
+    <!-- プレミアム通知 -->
+    <string name="premium_notification_channel_name">プレミアム通知</string>
+    <string name="premium_notification_channel_description">プレミアム機能の通知</string>
+    <string name="premium_notification_title">プレミアム機能</string>
+    <string name="premium_notification_text">ウィジェット機能を使用するにはプレミアムにアップグレードしてください</string>
+    <string name="premium_notification_big_text">ウィジェットのカウンターと設定機能を使用するには、プレミアムサブスクリプションが必要です。アプリを開いてプレミアムにアップグレードできます。</string>
+    
     <!-- ズィクル名 -->
     <string name="zikir_subhanallah">スブハーナッラー</string>
     <string name="zikir_alhamdulillah">アルハムドゥリッラー</string>

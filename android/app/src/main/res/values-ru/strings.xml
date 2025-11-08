@@ -38,6 +38,13 @@
     <string name="error_widget_update">Произошла ошибка при обновлении виджета: %1$s</string>
     <string name="error_widget_ids">Произошла ошибка при получении ID виджетов: %1$s</string>
     
+    <!-- Уведомления Premium -->
+    <string name="premium_notification_channel_name">Уведомления Premium</string>
+    <string name="premium_notification_channel_description">Уведомления о функциях Premium</string>
+    <string name="premium_notification_title">Функция Premium</string>
+    <string name="premium_notification_text">Обновитесь до Premium, чтобы использовать функции виджета</string>
+    <string name="premium_notification_big_text">Подписка Premium необходима для использования счетчика виджета и настроек. Вы можете открыть приложение и обновиться до Premium.</string>
+    
     <!-- Названия зикров -->
     <string name="zikir_subhanallah">Субханаллах</string>
     <string name="zikir_alhamdulillah">Альхамдулиллях</string>

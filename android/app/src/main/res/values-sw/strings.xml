@@ -38,6 +38,13 @@
     <string name="error_widget_update">Hitilafu wakati wa kusasisha widget: %1$s</string>
     <string name="error_widget_ids">Hitilafu wakati wa kupata vitambulisho vya widget: %1$s</string>
     
+    <!-- Arifa za Premium -->
+    <string name="premium_notification_channel_name">Arifa za Premium</string>
+    <string name="premium_notification_channel_description">Arifa za vipengele vya Premium</string>
+    <string name="premium_notification_title">Kipengele cha Premium</string>
+    <string name="premium_notification_text">Pandisha kwenda Premium ili kutumia vipengele vya widget</string>
+    <string name="premium_notification_big_text">Usajili wa Premium unahitajika ili kutumia kihesabu cha widget na mipangilio. Unaweza kufungua programu na kupandisha kwenda Premium.</string>
+    
     <!-- Zikir Isimleri -->
     <string name="zikir_subhanallah">Subhanallah</string>
     <string name="zikir_alhamdulillah">Alhamdulillah</string>

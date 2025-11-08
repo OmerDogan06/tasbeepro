@@ -38,6 +38,13 @@
     <string name="error_widget_update">Ralat berlaku semasa mengemaskini widget: %1$s</string>
     <string name="error_widget_ids">Ralat berlaku semasa mendapatkan ID widget: %1$s</string>
     
+    <!-- Pemberitahuan Premium -->
+    <string name="premium_notification_channel_name">Pemberitahuan Premium</string>
+    <string name="premium_notification_channel_description">Pemberitahuan ciri Premium</string>
+    <string name="premium_notification_title">Ciri Premium</string>
+    <string name="premium_notification_text">Naik taraf ke Premium untuk menggunakan ciri widget</string>
+    <string name="premium_notification_big_text">Langganan Premium diperlukan untuk menggunakan ciri kaunter dan tetapan widget. Anda boleh membuka aplikasi dan naik taraf ke Premium.</string>
+    
     <!-- Nama Zikir -->
     <string name="zikir_subhanallah">Subhanallah</string>
     <string name="zikir_alhamdulillah">Alhamdulillah</string>

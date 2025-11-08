@@ -38,6 +38,13 @@
     <string name="error_widget_update">Widget güncellenirken hata oluştu: %1$s</string>
     <string name="error_widget_ids">Widget ID\'leri alınırken hata oluştu: %1$s</string>
     
+    <!-- Premium Bildirimleri -->
+    <string name="premium_notification_channel_name">Premium Bildirimleri</string>
+    <string name="premium_notification_channel_description">Premium özellik bildirimleri</string>
+    <string name="premium_notification_title">Premium Özellik</string>
+    <string name="premium_notification_text">Widget özelliklerini kullanmak için Premium\'a geçin</string>
+    <string name="premium_notification_big_text">Widget\'ın sayaç ve ayarlar özelliklerini kullanmak için Premium abonelik gereklidir. Uygulamayı açıp Premium\'a geçebilirsiniz.</string>
+    
     <!-- Zikir Isimleri -->
     <string name="zikir_subhanallah">Subhanallah</string>
     <string name="zikir_alhamdulillah">Alhamdulillah</string>

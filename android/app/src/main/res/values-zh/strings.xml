@@ -38,6 +38,13 @@
     <string name="error_widget_update">更新小组件时出错：%1$s</string>
     <string name="error_widget_ids">获取小组件ID时出错：%1$s</string>
     
+    <!-- 高级通知 -->
+    <string name="premium_notification_channel_name">高级通知</string>
+    <string name="premium_notification_channel_description">高级功能通知</string>
+    <string name="premium_notification_title">高级功能</string>
+    <string name="premium_notification_text">升级到高级版以使用小组件功能</string>
+    <string name="premium_notification_big_text">使用小组件计数器和设置功能需要高级订阅。您可以打开应用程序并升级到高级版。</string>
+    
     <!-- Zikir Isimleri -->
     <string name="zikir_subhanallah">苏布哈纳拉</string>
     <string name="zikir_alhamdulillah">艾勒哈姆度利拉</string>

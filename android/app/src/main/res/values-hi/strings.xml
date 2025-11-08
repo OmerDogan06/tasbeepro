@@ -38,6 +38,13 @@
     <string name="error_widget_update">विजेट अपडेट करते समय त्रुटि: %1$s</string>
     <string name="error_widget_ids">विजेट आईडी प्राप्त करते समय त्रुटि: %1$s</string>
     
+    <!-- प्रीमियम सूचनाएं -->
+    <string name="premium_notification_channel_name">प्रीमियम सूचनाएं</string>
+    <string name="premium_notification_channel_description">प्रीमियम फीचर सूचनाएं</string>
+    <string name="premium_notification_title">प्रीमियम फीचर</string>
+    <string name="premium_notification_text">विजेट फीचर्स का उपयोग करने के लिए प्रीमियम में अपग्रेड करें</string>
+    <string name="premium_notification_big_text">विजेट काउंटर और सेटिंग्स फीचर्स का उपयोग करने के लिए प्रीमियम सब्स्क्रिप्शन आवश्यक है। आप ऐप खोलकर प्रीमियम में अपग्रेड कर सकते हैं।</string>
+    
     <!-- जिक्र के नाम -->
     <string name="zikir_subhanallah">सुब्हानअल्लाह</string>
     <string name="zikir_alhamdulillah">अल्हम्दुलिल्लाह</string>

@@ -38,6 +38,13 @@
     <string name="error_widget_update">در به‌روزرسانی ویجت خطایی رخ داد: %1$s</string>
     <string name="error_widget_ids">در دریافت شناسه‌های ویجت خطایی رخ داد: %1$s</string>
     
+    <!-- اعلان‌های پریمیوم -->
+    <string name="premium_notification_channel_name">اعلان‌های پریمیوم</string>
+    <string name="premium_notification_channel_description">اعلان‌های ویژگی‌های پریمیوم</string>
+    <string name="premium_notification_title">ویژگی پریمیوم</string>
+    <string name="premium_notification_text">برای استفاده از ویژگی‌های ویجت به پریمیوم ارتقا دهید</string>
+    <string name="premium_notification_big_text">برای استفاده از شمارنده ویجت و تنظیمات، اشتراک پریمیوم مورد نیاز است. می‌توانید برنامه را باز کنید و به پریمیوم ارتقا دهید.</string>
+    
     <!-- اسامی ذکر -->
     <string name="zikir_subhanallah">سبحان الله</string>
     <string name="zikir_alhamdulillah">الحمدلله</string>

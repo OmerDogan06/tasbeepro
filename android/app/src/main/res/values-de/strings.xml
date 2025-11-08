@@ -38,6 +38,13 @@
     <string name="error_widget_update">Ein Fehler ist beim Aktualisieren des Widgets aufgetreten: %1$s</string>
     <string name="error_widget_ids">Ein Fehler ist beim Abrufen der Widget-IDs aufgetreten: %1$s</string>
     
+    <!-- Premium-Benachrichtigungen -->
+    <string name="premium_notification_channel_name">Premium-Benachrichtigungen</string>
+    <string name="premium_notification_channel_description">Premium-Feature-Benachrichtigungen</string>
+    <string name="premium_notification_title">Premium-Feature</string>
+    <string name="premium_notification_text">Upgrade auf Premium, um Widget-Features zu nutzen</string>
+    <string name="premium_notification_big_text">Premium-Abonnement erforderlich, um Widget-Zähler und Einstellungen zu nutzen. Sie können die App öffnen und auf Premium upgraden.</string>
+    
     <!-- Dhikr-Namen -->
     <string name="zikir_subhanallah">Subhanallah</string>
     <string name="zikir_alhamdulillah">Alhamdulillah</string>
