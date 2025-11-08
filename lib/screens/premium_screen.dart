@@ -4,15 +4,63 @@ import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import '../models/subscription_plan.dart';
 import '../services/subscription_service.dart';
+import 'home_screen.dart';
 
 class PremiumScreen extends StatelessWidget {
-  const PremiumScreen({super.key});
+  const PremiumScreen({
+    super.key,
+    this.fromFirstLaunch = false,
+  });
+
+  final bool fromFirstLaunch;
 
   // İslami renk paleti
   static const emeraldGreen = Color(0xFF2D5016);
   static const goldColor = Color(0xFFD4AF37);
   static const lightGold = Color(0xFFF5E6A8);
   static const darkGreen = Color(0xFF1A3409);
+
+  Future<void> _handlePurchase(SubscriptionService controller, SubscriptionPlan plan) async {
+    // Önceki premium durumunu kaydet
+    final wasPremium = controller.isPremium.value;
+    
+    // Satın alma işlemini başlat
+    final success = await controller.purchaseSubscription(plan);
+    
+    if (success) {
+      // Satın alma başlatıldıysa, premium durumunu dinle
+      _startListeningForSuccess(controller, wasPremium);
+    }
+  }
+
+  void _startListeningForSuccess(SubscriptionService controller, bool wasPremium) {
+    // 5 saniye boyunca premium durumunu kontrol et
+    int checkCount = 0;
+    const maxChecks = 25; // 5 saniye (200ms * 25)
+    
+    void checkPremiumStatus() {
+      checkCount++;
+      
+      // Eğer premium aktif olduysa ve önceden premium değildiyse
+      if (!wasPremium && controller.isPremium.value) {
+        if (fromFirstLaunch) {
+          // First launch'tan geldiyse ana sayfaya yönlendir
+          Future.delayed(const Duration(seconds: 1), () {
+            Get.offAll(() => const HomeScreen());
+          });
+        }
+        return; // Başarılı oldu, kontrol etmeyi durdur
+      }
+      
+      // Maksimum kontrol sayısına ulaşmadıysak devam et
+      if (checkCount < maxChecks) {
+        Future.delayed(const Duration(milliseconds: 200), checkPremiumStatus);
+      }
+    }
+    
+    // İlk kontrolü başlat
+    Future.delayed(const Duration(milliseconds: 500), checkPremiumStatus);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +131,7 @@ class PremiumScreen extends StatelessWidget {
                             shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
-                                color: goldColor.withOpacity(0.3),
+                                color: goldColor.withAlpha(77),
                                 blurRadius: 20,
                                 spreadRadius: 5,
                               ),
@@ -171,9 +219,9 @@ class PremiumScreen extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 16),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: lightGold.withOpacity(0.1),
+                color: lightGold.withAlpha(25),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: goldColor.withOpacity(0.3), width: 1),
+                border: Border.all(color: goldColor.withAlpha(77), width: 1),
               ),
               child: Row(
                 children: [
@@ -187,7 +235,7 @@ class PremiumScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       boxShadow: [
                         BoxShadow(
-                          color: goldColor.withOpacity(0.3),
+                          color: goldColor.withAlpha(77),
                           blurRadius: 8,
                           spreadRadius: 2,
                         ),
@@ -266,8 +314,11 @@ class PremiumScreen extends StatelessWidget {
     bool isRecommended = false,
   }) {
     return GestureDetector(
-      onTap: product != null
-          ? () => controller.purchaseSubscription(plan)
+      onTap: () => 
+       product != null
+          ? () =>
+          
+           _handlePurchase(controller, plan)
           : null,
       child: Container(
         padding: const EdgeInsets.all(20),
@@ -279,16 +330,16 @@ class PremiumScreen extends StatelessWidget {
                   end: Alignment.bottomRight,
                 )
               : null,
-          color: isRecommended ? null : lightGold.withOpacity(0.1),
+          color: isRecommended ? null : lightGold.withAlpha(25),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isRecommended ? goldColor : goldColor.withOpacity(0.3),
+            color: isRecommended ? goldColor : goldColor.withAlpha(77),
             width: isRecommended ? 2 : 1,
           ),
           boxShadow: isRecommended
               ? [
                   BoxShadow(
-                    color: goldColor.withOpacity(0.3),
+                    color: goldColor.withAlpha(77),
                     blurRadius: 15,
                     spreadRadius: 3,
                   ),
@@ -320,7 +371,7 @@ class PremiumScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: emeraldGreen.withOpacity(0.3),
+                          color: emeraldGreen.withAlpha(77),
                           blurRadius: 4,
                           spreadRadius: 1,
                         ),
@@ -357,7 +408,7 @@ class PremiumScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       color: isRecommended
-                          ? emeraldGreen.withOpacity(0.7)
+                          ? emeraldGreen.withAlpha(179)
                           : Colors.white70,
                     ),
                   ),
@@ -381,7 +432,7 @@ class PremiumScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   color: isRecommended
-                      ? emeraldGreen.withOpacity(0.7)
+                      ? emeraldGreen.withAlpha(179)
                       : Colors.white70,
                 ),
               ),
@@ -393,7 +444,7 @@ class PremiumScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 color: isRecommended
-                    ? emeraldGreen.withOpacity(0.8)
+                    ? emeraldGreen.withAlpha(204)
                     : Colors.white70,
               ),
             ),

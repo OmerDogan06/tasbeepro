@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/counter_data.dart';
@@ -280,7 +281,7 @@ class StorageService extends GetxService {
       try {
         return SubscriptionStatus.fromJson(jsonDecode(jsonString));
       } catch (e) {
-        print('Error parsing subscription status: $e');
+        debugPrint('Error parsing subscription status: $e');
         return null;
       }
     }

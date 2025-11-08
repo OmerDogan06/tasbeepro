@@ -122,10 +122,10 @@ class _FirstLaunchPremiumIntroScreenState
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.1),
+                            color: Colors.white.withAlpha(25),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: goldColor.withOpacity(0.3),
+                              color: goldColor.withAlpha(77),
                               width: 1,
                             ),
                           ),
@@ -287,19 +287,19 @@ class _FirstLaunchPremiumIntroScreenState
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.white.withOpacity(0.1),
-                  Colors.white.withOpacity(0.05),
+                  Colors.white.withAlpha(25),
+                  Colors.white.withAlpha(13),
                 ],
               ),
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: goldColor.withOpacity(0.3), width: 1),
+              border: Border.all(color: goldColor.withAlpha(77), width: 1),
             ),
             child: Row(
               children: [
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: (feature['color'] as Color).withOpacity(0.2),
+                    color: (feature['color'] as Color).withAlpha(51),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       color: feature['color'] as Color,
@@ -341,7 +341,7 @@ class _FirstLaunchPremiumIntroScreenState
               ],
             ),
           );
-        }).toList(),
+        }),
       ],
     );
   }
@@ -351,10 +351,10 @@ class _FirstLaunchPremiumIntroScreenState
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [goldColor.withOpacity(0.2), goldColor.withOpacity(0.1)],
+          colors: [goldColor.withAlpha(51), goldColor.withAlpha(25)],
         ),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: goldColor.withOpacity(0.5), width: 1.5),
+        border: Border.all(color: goldColor.withAlpha(125), width: 1.5),
       ),
       child: Column(
         children: [
@@ -405,7 +405,7 @@ class _FirstLaunchPremiumIntroScreenState
             'Deneme süresinde istediğiniz zaman iptal edebilirsiniz.\nİptal etmezseniz otomatik olarak ücretli abonelik başlar.',
             style: TextStyle(
               fontSize: 12,
-              color: Colors.white.withOpacity(0.8),
+              color: Colors.white.withAlpha(204),
               height: 1.4,
             ),
             textAlign: TextAlign.center,
@@ -434,11 +434,11 @@ class _FirstLaunchPremiumIntroScreenState
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: isRecommended
-            ? goldColor.withOpacity(0.2)
-            : Colors.white.withOpacity(0.1),
+            ? goldColor.withAlpha(51)
+            : Colors.white.withAlpha(25),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isRecommended ? goldColor : Colors.white.withOpacity(0.3),
+          color: isRecommended ? goldColor : Colors.white.withAlpha(77),
           width: isRecommended ? 2 : 1,
         ),
       ),
@@ -526,7 +526,7 @@ class _FirstLaunchPremiumIntroScreenState
               style: TextStyle(
                 fontSize: 12,
                 color: isRecommended
-                    ? Colors.white.withOpacity(0.7)
+                    ? Colors.white.withAlpha(179)
                     : Colors.white60,
               ),
             ),
@@ -555,7 +555,7 @@ class _FirstLaunchPremiumIntroScreenState
                 backgroundColor: goldColor,
                 foregroundColor: emeraldGreen,
                 elevation: 8,
-                shadowColor: goldColor.withOpacity(0.5),
+                shadowColor: goldColor.withAlpha(125),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -585,7 +585,7 @@ class _FirstLaunchPremiumIntroScreenState
                 backgroundColor: emeraldGreen,
                 foregroundColor: Colors.white,
                 elevation: 8,
-                shadowColor: goldColor.withOpacity(0.5),
+                shadowColor: goldColor.withAlpha(125),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -614,7 +614,7 @@ class _FirstLaunchPremiumIntroScreenState
     storageService.setFirstLaunchCompleted();
 
     Get.to(
-      () => const PremiumScreen(),
+      () => const PremiumScreen(fromFirstLaunch: true),
       transition: Transition.rightToLeft,
       duration: const Duration(milliseconds: 300),
     );
@@ -654,7 +654,7 @@ class _FirstLaunchPremiumIntroScreenState
             'İlk 14 gün ücretsiz\n%$savings daha ekonomik',
             style: TextStyle(
               fontSize: 10,
-              color: isRecommended ? Colors.white.withOpacity(0.9) : Colors.white60,
+              color: isRecommended ? Colors.white.withAlpha(230) : Colors.white60,
               height: 1.2,
             ),
             textAlign: TextAlign.center,
@@ -668,7 +668,7 @@ class _FirstLaunchPremiumIntroScreenState
       description.isNotEmpty ? description : 'İlk ${planName.contains('Yıllık') ? '14' : '7'} gün ücretsiz\nSonra ${planName.contains('Yıllık') ? 'yıllık' : 'aylık'} ödeme',
       style: TextStyle(
         fontSize: 10,
-        color: isRecommended ? Colors.white.withOpacity(0.9) : Colors.white60,
+        color: isRecommended ? Colors.white.withAlpha(230) : Colors.white60,
         height: 1.2,
       ),
       textAlign: TextAlign.center,
@@ -692,7 +692,7 @@ class IslamicPatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = const Color(0xFF2D5016).withOpacity(0.3)
+      ..color = const Color(0xFF2D5016).withAlpha(77)
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
 

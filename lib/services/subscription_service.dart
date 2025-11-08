@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:tasbeepro/models/subscription_plan.dart';
+import 'package:tasbeepro/screens/premium_screen.dart';
+import '../widgets/islamic_snackbar.dart';
 
 import 'storage_service.dart';
 
@@ -11,7 +13,8 @@ class SubscriptionService extends GetxController {
   static SubscriptionService get to => Get.find();
   
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
-  final _isPremium = false.obs;
+  late StreamSubscription<List<PurchaseDetails>> _subscription;
+  final isPremium = false.obs;
   final _availableProducts = <ProductDetails>[].obs;
   final _isLoading = false.obs;
   
@@ -24,29 +27,35 @@ class SubscriptionService extends GetxController {
     yearlyPremiumId,
   };
   
-  // Getters
-  bool get isPremium => _isPremium.value;
+ 
   List<ProductDetails> get availableProducts => _availableProducts;
   bool get isLoading => _isLoading.value;
   
   // Premium özelliklere erişim kontrolü
-  bool get isAdFreeEnabled => _isPremium.value;
-  bool get areRemindersEnabled => _isPremium.value;
-  bool get isWidgetEnabled => _isPremium.value;
+  bool get isAdFreeEnabled => isPremium.value;
+  bool get areRemindersEnabled => isPremium.value;
+  bool get isWidgetEnabled => isPremium.value;
 
   @override
   Future<void> onInit() async {
     super.onInit();
     await _loadPremiumStatus();
     await _initializePurchases();
+    _startListeningToPurchaseUpdates();
+  }
+
+  @override
+  void onClose() {
+    _subscription.cancel();
+    super.onClose();
   }
 
   // Premium durumunu yükle
   Future<void> _loadPremiumStatus() async {
     try {
       final storageService = Get.find<StorageService>();
-      final isPremium = storageService.getPremiumStatus();
-      _isPremium.value = isPremium;
+      final isPremiumX = storageService.getPremiumStatus();
+      isPremium.value = isPremiumX;
       
       if (kDebugMode) {
         print('📱 Premium status loaded: $isPremium');
@@ -55,19 +64,42 @@ class SubscriptionService extends GetxController {
       if (kDebugMode) {
         print('❌ Error loading premium status: $e');
       }
-      _isPremium.value = false;
+      isPremium.value = false;
     }
   }
 
   // Premium durumunu güncelle (background service tarafından çağrılabilir)
   Future<void> refreshPremiumStatus() async {
-    final oldValue = _isPremium.value;
+    final oldValue = isPremium.value;
+    
+    // Önce storage'dan yükle
     await _loadPremiumStatus();
     
+    // Aktif satın alımları da kontrol et
+    await _checkActivePurchases();
+    
     // Eğer değer değiştiyse güncelle
-    if (oldValue != _isPremium.value) {
+    if (oldValue != isPremium.value) {
       if (kDebugMode) {
-        print('🔄 Premium status manually refreshed: $oldValue -> ${_isPremium.value}');
+        print('🔄 Premium status manually refreshed: $oldValue -> ${isPremium.value}');
+      }
+    }
+  }
+
+  // Aktif satın alımları kontrol et
+  Future<void> _checkActivePurchases() async {
+    try {
+      // RestorePurchases çağrısından sonra stream üzerinden güncellenecek
+      // Bu yüzden sadece restore işlemini başlat
+      await _inAppPurchase.restorePurchases();
+      
+      if (kDebugMode) {
+        print('🔄 Restore purchases initiated for active purchase check');
+      }
+      
+    } catch (e) {
+      if (kDebugMode) {
+        print('❌ Error checking active purchases: $e');
       }
     }
   }
@@ -83,6 +115,109 @@ class SubscriptionService extends GetxController {
     }
 
     await _loadProducts();
+    // Aktif satın alımları kontrol et
+    await _restorePurchases();
+  }
+
+  void _startListeningToPurchaseUpdates() {
+    _subscription = _inAppPurchase.purchaseStream.listen(
+      (List<PurchaseDetails> purchaseDetailsList) {
+        _handlePurchaseUpdates(purchaseDetailsList);
+      },
+      onDone: () {
+        if (kDebugMode) {
+          print('Purchase stream closed');
+        }
+      },
+      onError: (error) {
+        if (kDebugMode) {
+          print('Purchase stream error: $error');
+        }
+      },
+    );
+  }
+
+  Future<void> _handlePurchaseUpdates(List<PurchaseDetails> purchaseDetailsList) async {
+    for (final PurchaseDetails purchaseDetails in purchaseDetailsList) {
+      if (purchaseDetails.status == PurchaseStatus.pending) {
+        // Satın alma beklemede
+        _showPendingUI();
+      } else {
+        if (purchaseDetails.status == PurchaseStatus.error) {
+          // Hata durumu
+          _handleError(purchaseDetails.error!);
+        } else if (purchaseDetails.status == PurchaseStatus.purchased ||
+                   purchaseDetails.status == PurchaseStatus.restored) {
+          // Başarılı satın alma
+          await _handleSuccessfulPurchase(purchaseDetails);
+        }
+        
+        if (purchaseDetails.pendingCompletePurchase) {
+          await _inAppPurchase.completePurchase(purchaseDetails);
+        }
+      }
+    }
+  }
+
+  Future<void> _handleSuccessfulPurchase(PurchaseDetails purchaseDetails) async {
+    try {
+      final String productId = purchaseDetails.productID;
+      
+      // Eğer bu bizim premium ürünlerimizden biriyse
+      if (productIds.contains(productId)) {
+        // Premium durumunu aktif et
+        isPremium.value = true;
+        
+        // Storage'a kaydet
+        final storageService = Get.find<StorageService>();
+        await storageService.savePremiumStatus(true);
+        
+        if (kDebugMode) {
+          print('🎉 Premium activated for product: $productId');
+        }
+        
+        IslamicSnackbar.showSuccess(
+          'Başarılı!',
+          'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.',
+        );
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('❌ Error handling successful purchase: $e');
+      }
+    }
+  }
+
+  void _showPendingUI() {
+    IslamicSnackbar.showInfo(
+      'Satın alma işlemi',
+      'Satın alma işlemi devam ediyor. Lütfen bekleyin...',
+    );
+  }
+
+  void _handleError(IAPError error) {
+    String message = 'Satın alma işleminde hata oluştu.';
+    
+    switch (error.code) {
+      case 'user_cancelled':
+        message = 'Satın alma işlemi iptal edildi.';
+        break;
+      case 'payment_invalid':
+        message = 'Ödeme bilgileri geçersiz.';
+        break;
+      case 'product_not_available':
+        message = 'Ürün mevcut değil.';
+        break;
+    }
+    
+    if (kDebugMode) {
+      print('❌ Purchase error: ${error.code} - $message');
+    }
+    
+    IslamicSnackbar.showError(
+      'Hata',
+      message,
+    );
   }
 
   Future<void> _loadProducts() async {
@@ -134,14 +269,14 @@ class SubscriptionService extends GetxController {
       onConfirm: () {
         Get.back();
         // Premium satın alma sayfasına git
-      Get.toNamed('/premium');
+      Get.to(() => PremiumScreen(), transition: Transition.rightToLeft);
       },
     );
   }
 
   // Premium kontrol ve gerekirse dialog göster
   bool checkPremiumAccess({bool showDialog = true}) {
-    if (_isPremium.value) {
+    if (isPremium.value) {
       return true;
     }
     
@@ -157,16 +292,21 @@ class SubscriptionService extends GetxController {
     try {
       await refreshPremiumStatus();
       
-      Get.snackbar(
-        'Kontrol Tamamlandı',
-        'Premium durumunuz güncellendi: ${_isPremium.value ? "Aktif" : "Pasif"}',
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      if (isPremium.value) {
+        IslamicSnackbar.showSuccess(
+          'Kontrol Tamamlandı',
+          'Premium durumunuz güncellendi: Aktif ✨',
+        );
+      } else {
+        IslamicSnackbar.showInfo(
+          'Kontrol Tamamlandı',
+          'Premium durumunuz güncellendi: Pasif',
+        );
+      }
     } catch (e) {
-      Get.snackbar(
+      IslamicSnackbar.showError(
         'Hata',
-        'Premium durumu kontrol edilirken hata oluştu.',
-        snackPosition: SnackPosition.BOTTOM,
+        'Premium durumu kontrol edilirken hata oluştu. Lütfen daha sonra tekrar deneyin.',
       );
     }
   }
@@ -175,7 +315,6 @@ class SubscriptionService extends GetxController {
   bool get isTrialActive => false; // Artık deneme süresi yok
   String get trialStatusText => ''; // Artık deneme süresi metni yok
   
-  // Uyumluluk için boş method'lar - Premium screen kullanması için
   Future<bool> purchaseSubscription(SubscriptionPlan plan) async {
     if (plan == SubscriptionPlan.free) return false;
     
@@ -187,23 +326,32 @@ class SubscriptionService extends GetxController {
       );
       
       if (product == null) {
-        Get.snackbar(
+        IslamicSnackbar.showError(
           'Hata',
-          'Ürün bulunamadı.',
-          snackPosition: SnackPosition.BOTTOM,
+          'Ürün bulunamadı. Lütfen daha sonra tekrar deneyin.',
         );
         return false;
       }
       
+      if (kDebugMode) {
+        print('🛒 Purchasing product: ${product.id}');
+      }
+      
       final PurchaseParam purchaseParam = PurchaseParam(productDetails: product);
       bool success = await _inAppPurchase.buyNonConsumable(purchaseParam: purchaseParam);
+      
+      if (kDebugMode) {
+        print('🛒 Purchase initiated: $success');
+      }
+      
       return success;
     } catch (e) {
-      print('Error purchasing subscription: $e');
-      Get.snackbar(
+      if (kDebugMode) {
+        print('❌ Error purchasing subscription: $e');
+      }
+      IslamicSnackbar.showError(
         'Hata',
-        'Satın alma işleminde hata oluştu.',
-        snackPosition: SnackPosition.BOTTOM,
+        'Satın alma işleminde hata oluştu. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.',
       );
       return false;
     } finally {
@@ -211,17 +359,38 @@ class SubscriptionService extends GetxController {
     }
   }
 
-  Future<void> restorePurchases() async {
+  Future<void> _restorePurchases() async {
     try {
       await _inAppPurchase.restorePurchases();
     } catch (e) {
-      print('Error restoring purchases: $e');
+      if (kDebugMode) {
+        print('❌ Error restoring purchases: $e');
+      }
+    }
+  }
+
+  Future<void> restorePurchases() async {
+    try {
+      _isLoading.value = true;
+      await _restorePurchases();
+      
+      IslamicSnackbar.showSuccess(
+        'Başarılı',
+        'Satın alımlar geri yüklendi. Premium özellikleriniz kontrol ediliyor...',
+      );
+    } catch (e) {
+      IslamicSnackbar.showError(
+        'Hata',
+        'Satın alımlar geri yüklenirken hata oluştu. Lütfen internet bağlantınızı kontrol edin.',
+      );
+    } finally {
+      _isLoading.value = false;
     }
   }
 
   // Abonelik durumu metni
   String get subscriptionStatusText {
-    if (_isPremium.value) {
+    if (isPremium.value) {
       return 'Premium üyelik aktif';
     } else {
       return 'Premium ile daha fazla özellik';

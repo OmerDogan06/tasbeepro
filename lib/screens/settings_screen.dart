@@ -547,7 +547,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }) {
     return GetX<SubscriptionService>(
       builder: (subscriptionService) {
-        final isPremium = subscriptionService.isPremium;
+        final isPremium = subscriptionService.isPremium.value;
         final isLocked = isPremiumFeature && !isPremium;
         
         return Opacity(
@@ -687,7 +687,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       middleText: 'Bu özellik premium abonelik gerektirir.\nTüm özel özelliklerin kilidini açmak için premium\'a geçin.',
                       middleTextStyle: TextStyle(
-                        color: emeraldGreen.withOpacity(0.8),
+                        color: emeraldGreen.withAlpha(204),
                         fontSize: 14,
                       ),
                       backgroundColor: const Color(0xFFFFF9E6),
@@ -720,7 +720,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         onPressed: () => Get.back(),
                         child: Text(
                           'İptal',
-                          style: TextStyle(color: emeraldGreen.withOpacity(0.7)),
+                          style: TextStyle(color: emeraldGreen.withAlpha(179)),
                         ),
                       ),
                     );
@@ -1476,7 +1476,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   void _showWidgetInfoDialog(BuildContext context) {
     final subscriptionService = Get.find<SubscriptionService>();
-    final isPremium = subscriptionService.isPremium;
+    final isPremium = subscriptionService.isPremium.value;
     
     Get.dialog(
       Dialog(
@@ -1504,7 +1504,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             boxShadow: [
               BoxShadow(
                 color: isPremium 
-                    ? goldColor.withOpacity(0.3)
+                    ? goldColor.withAlpha(77)
                     : darkGreen.withAlpha(51),
                 blurRadius: 15,
                 offset: const Offset(0, 8),
@@ -1535,7 +1535,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: isPremium ? [
                               BoxShadow(
-                                color: goldColor.withOpacity(0.4),
+                                color: goldColor.withAlpha(102),
                                 blurRadius: 8,
                                 spreadRadius: 2,
                               ),
@@ -1580,7 +1580,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           color: emeraldGreen,
                           shadows: isPremium ? [
                             Shadow(
-                              color: goldColor.withOpacity(0.3),
+                              color: goldColor.withAlpha(77),
                               blurRadius: 2,
                               offset: const Offset(1, 1),
                             ),
@@ -1672,7 +1672,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     // Widget ekleme butonu
                     GetX<SubscriptionService>(
                       builder: (subscriptionService) {
-                        final isPremium = subscriptionService.isPremium;
+                        final isPremium = subscriptionService.isPremium.value;
                         
                         return SizedBox(
                           width: double.infinity,
@@ -1692,7 +1692,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       ),
                                       middleText: 'Ana ekran widget\'ı premium bir özelliktir.\nWidget\'ı kullanmak için premium\'a geçin.',
                                       middleTextStyle: TextStyle(
-                                        color: emeraldGreen.withOpacity(0.8),
+                                        color: emeraldGreen.withAlpha(204),
                                         fontSize: 14,
                                       ),
                                       backgroundColor: const Color(0xFFFFF9E6),
@@ -1726,7 +1726,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                         onPressed: () => Get.back(),
                                         child: Text(
                                           'İptal',
-                                          style: TextStyle(color: emeraldGreen.withOpacity(0.7)),
+                                          style: TextStyle(color: emeraldGreen.withAlpha(179)),
                                         ),
                                       ),
                                     );
@@ -2285,7 +2285,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget _buildPremiumSection(BuildContext context) {
     return GetX<SubscriptionService>(
       builder: (subscriptionService) {
-        final isPremium = subscriptionService.isPremium;
+        final isPremium = subscriptionService.isPremium.value;
         
         return Column(
           children: [
@@ -2321,7 +2321,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 boxShadow: [
                   BoxShadow(
                     color: isPremium 
-                        ? goldColor.withOpacity(0.4)
+                        ? goldColor.withAlpha(102)
                         : darkGreen.withAlpha(25),
                     blurRadius: isPremium ? 20 : 12,
                     offset: const Offset(0, 4),
@@ -2352,8 +2352,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             boxShadow: [
                               BoxShadow(
                                 color: isPremium 
-                                    ? emeraldGreen.withOpacity(0.4)
-                                    : goldColor.withOpacity(0.4),
+                                    ? emeraldGreen.withAlpha(102)
+                                    : goldColor.withAlpha(102),
                                 blurRadius: 10,
                                 spreadRadius: 2,
                               ),
@@ -2378,7 +2378,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   color: isPremium ? emeraldGreen : emeraldGreen,
                                   shadows: isPremium ? [
                                     Shadow(
-                                      color: goldColor.withOpacity(0.3),
+                                      color: goldColor.withAlpha(77),
                                       blurRadius: 2,
                                       offset: const Offset(1, 1),
                                     ),
@@ -2393,8 +2393,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: isPremium 
-                                      ? emeraldGreen.withOpacity(0.8)
-                                      : emeraldGreen.withOpacity(0.7),
+                                      ? emeraldGreen.withAlpha(204)
+                                      : emeraldGreen.withAlpha(179),
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -2408,28 +2408,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   gradient: isPremium
                                       ? LinearGradient(
                                           colors: [
-                                            emeraldGreen.withOpacity(0.2),
-                                            emeraldGreen.withOpacity(0.1),
+                                            emeraldGreen.withAlpha(51),
+                                            emeraldGreen.withAlpha(26),
                                           ],
                                         )
                                       : LinearGradient(
                                           colors: [
-                                            goldColor.withOpacity(0.3),
-                                            lightGold.withOpacity(0.4),
+                                            goldColor.withAlpha(77),
+                                            lightGold.withAlpha(102),
                                           ],
                                         ),
                                   borderRadius: BorderRadius.circular(10),
                                   border: Border.all(
                                     color: isPremium 
-                                        ? emeraldGreen.withOpacity(0.4)
-                                        : goldColor.withOpacity(0.6),
+                                        ? emeraldGreen.withAlpha(102)
+                                        : goldColor.withAlpha(153),
                                     width: 1.2,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
                                       color: isPremium 
-                                          ? emeraldGreen.withOpacity(0.2)
-                                          : goldColor.withOpacity(0.3),
+                                          ? emeraldGreen.withAlpha(51)
+                                          : goldColor.withAlpha(77),
                                       blurRadius: 4,
                                       offset: const Offset(0, 2),
                                     ),
@@ -2472,13 +2472,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: isPremium 
-                            ? emeraldGreen.withOpacity(0.1)
-                            : lightGold.withOpacity(0.3),
+                            ? emeraldGreen.withAlpha(26)
+                            : lightGold.withAlpha(77),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: isPremium 
-                              ? emeraldGreen.withOpacity(0.3)
-                              : goldColor.withOpacity(0.5),
+                              ? emeraldGreen.withAlpha(77)
+                              : goldColor.withAlpha(128),
                         ),
                       ),
                       child: Column(
@@ -2520,7 +2520,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           borderRadius: BorderRadius.circular(25),
                           boxShadow: [
                             BoxShadow(
-                              color: goldColor.withOpacity(0.4),
+                              color: goldColor.withAlpha(102),
                               blurRadius: 15,
                               spreadRadius: 2,
                             ),
@@ -2578,7 +2578,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
-                              color: emeraldGreen.withOpacity(0.3),
+                              color: emeraldGreen.withAlpha(77),
                               blurRadius: 10,
                               spreadRadius: 2,
                             ),
@@ -2625,7 +2625,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         center: Alignment.topLeft,
                       )
                     : RadialGradient(
-                        colors: [emeraldGreen.withOpacity(0.7), emeraldGreen],
+                        colors: [emeraldGreen.withAlpha(179), emeraldGreen],
                         center: Alignment.topLeft,
                       ),
                 borderRadius: BorderRadius.circular(8),
@@ -2646,7 +2646,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: isPremium ? emeraldGreen : emeraldGreen.withOpacity(0.8),
+                      color: isPremium ? emeraldGreen : emeraldGreen.withAlpha(204),
                     ),
                   ),
                   Text(
@@ -2654,8 +2654,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     style: TextStyle(
                       fontSize: 12,
                       color: isPremium 
-                          ? emeraldGreen.withOpacity(0.7)
-                          : emeraldGreen.withOpacity(0.6),
+                          ? emeraldGreen.withAlpha(179)
+                          : emeraldGreen.withAlpha(153),
                     ),
                   ),
                 ],
@@ -2679,8 +2679,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 colors: [
                   Colors.transparent,
                   isPremium 
-                      ? emeraldGreen.withOpacity(0.3)
-                      : goldColor.withOpacity(0.3),
+                      ? emeraldGreen.withAlpha(77)
+                      : goldColor.withAlpha(77),
                   Colors.transparent,
                 ],
               ),

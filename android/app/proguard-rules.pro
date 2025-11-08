@@ -6,11 +6,6 @@
 -keep class * extends android.app.IntentService
 -keep class * extends android.content.BroadcastReceiver
 
-# Foreground Services
--keep class * extends android.app.Service
--keep class androidx.work.** { *; }
--dontwarn androidx.work.**
-
 # Permission Handler
 -keep class com.baseflow.permissionhandler.** { *; }
 
