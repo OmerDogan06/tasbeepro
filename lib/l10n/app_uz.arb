@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "Narx yuklanmoqda...",
   "firstLaunchIntroSavingsText": "Dastlabki 14 kun bepul\n{savings}% tejamkor",
   "firstLaunchIntroStartPremium": "Premiumni Boshlash",
-  "firstLaunchIntroLaterButton": "Keyinroq"
+  "firstLaunchIntroLaterButton": "Keyinroq",
+  "premiumPromotionCodes": "Maxsus Promo Kodlar",
+  "premiumSevenDayTrial": "7 Kunlik Bepul Sinov",
+  "premiumFourteenDayTrial": "14 Kunlik Bepul Sinov",
+  "premiumMonthlySubscription": "Oylik Obuna",
+  "premiumYearlySubscription": "Yillik Obuna",
+  "premiumPromotionCodeInfo": "Bepul sinov muddatidan foydalanish uchun obuna sotib olishda ushbu kodlardan foydalaning",
+  "premiumCodeCopied": "📋 Kod Nusxalandi",
+  "premiumCodeCopiedMessage": "Promo kod \"{code}\" klipbordga nusxalandi"
 }

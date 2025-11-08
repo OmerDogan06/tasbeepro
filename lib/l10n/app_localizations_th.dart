@@ -1377,4 +1377,31 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'ภายหลัง';
+
+  @override
+  String get premiumPromotionCodes => 'รหัสโปรโมชั่นพิเศษ';
+
+  @override
+  String get premiumSevenDayTrial => 'ทดลองใช้ฟรี 7 วัน';
+
+  @override
+  String get premiumFourteenDayTrial => 'ทดลองใช้ฟรี 14 วัน';
+
+  @override
+  String get premiumMonthlySubscription => 'การสมัครรายเดือน';
+
+  @override
+  String get premiumYearlySubscription => 'การสมัครรายปี';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'ใช้รหัสเหล่านี้เมื่อซื้อการสมัครเพื่อใช้ประโยชน์จากช่วงทดลองใช้ฟรี';
+
+  @override
+  String get premiumCodeCopied => '📋 คัดลอกรหัสแล้ว';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'รหัสโปรโมชั่น \"$code\" คัดลอกไปยังคลิปบอร์ดแล้ว';
+  }
 }

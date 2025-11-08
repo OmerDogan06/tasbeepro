@@ -2697,6 +2697,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Later'**
   String get firstLaunchIntroLaterButton;
+
+  /// No description provided for @premiumPromotionCodes.
+  ///
+  /// In en, this message translates to:
+  /// **'Special Promotion Codes'**
+  String get premiumPromotionCodes;
+
+  /// No description provided for @premiumSevenDayTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'7 Days Free Trial'**
+  String get premiumSevenDayTrial;
+
+  /// No description provided for @premiumFourteenDayTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'14 Days Free Trial'**
+  String get premiumFourteenDayTrial;
+
+  /// No description provided for @premiumMonthlySubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Subscription'**
+  String get premiumMonthlySubscription;
+
+  /// No description provided for @premiumYearlySubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Subscription'**
+  String get premiumYearlySubscription;
+
+  /// No description provided for @premiumPromotionCodeInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Use these codes when purchasing subscription to benefit from free trial period'**
+  String get premiumPromotionCodeInfo;
+
+  /// No description provided for @premiumCodeCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'📋 Code Copied'**
+  String get premiumCodeCopied;
+
+  /// No description provided for @premiumCodeCopiedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Promotion code \"{code}\" copied to clipboard'**
+  String premiumCodeCopiedMessage(Object code);
 }
 
 class _AppLocalizationsDelegate

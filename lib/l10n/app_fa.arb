@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "در حال بارگیری قیمت...",
   "firstLaunchIntroSavingsText": "14 روز اول رایگان\n{savings}% اقتصادی‌تر",
   "firstLaunchIntroStartPremium": "شروع پریمیم",
-  "firstLaunchIntroLaterButton": "بعداً"
+  "firstLaunchIntroLaterButton": "بعداً",
+  "premiumPromotionCodes": "کدهای تبلیغاتی ویژه",
+  "premiumSevenDayTrial": "آزمایش رایگان 7 روزه",
+  "premiumFourteenDayTrial": "آزمایش رایگان 14 روزه",
+  "premiumMonthlySubscription": "اشتراک ماهانه",
+  "premiumYearlySubscription": "اشتراک سالانه",
+  "premiumPromotionCodeInfo": "برای بهره‌مندی از دوره آزمایش رایگان، هنگام خرید اشتراک از این کدها استفاده کنید",
+  "premiumCodeCopied": "📋 کد کپی شد",
+  "premiumCodeCopiedMessage": "کد تبلیغاتی \"{code}\" در کلیپ‌بورد کپی شد"
 }

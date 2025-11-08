@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "Загрузка цены...",
   "firstLaunchIntroSavingsText": "Первые 14 дней бесплатно\n{savings}% более экономично",
   "firstLaunchIntroStartPremium": "Начать Премиум",
-  "firstLaunchIntroLaterButton": "Позже"
+  "firstLaunchIntroLaterButton": "Позже",
+  "premiumPromotionCodes": "Специальные Промо-коды",
+  "premiumSevenDayTrial": "7 Дней Бесплатного Тестирования",
+  "premiumFourteenDayTrial": "14 Дней Бесплатного Тестирования",
+  "premiumMonthlySubscription": "Месячная Подписка",
+  "premiumYearlySubscription": "Годовая Подписка",
+  "premiumPromotionCodeInfo": "Используйте эти коды при покупке подписки, чтобы воспользоваться бесплатным пробным периодом",
+  "premiumCodeCopied": "📋 Код Скопирован",
+  "premiumCodeCopiedMessage": "Промо-код \"{code}\" скопирован в буфер обмена"
 }

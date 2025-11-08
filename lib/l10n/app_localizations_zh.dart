@@ -1316,4 +1316,30 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => '稍后';
+
+  @override
+  String get premiumPromotionCodes => '特殊优惠码';
+
+  @override
+  String get premiumSevenDayTrial => '7天免费试用';
+
+  @override
+  String get premiumFourteenDayTrial => '14天免费试用';
+
+  @override
+  String get premiumMonthlySubscription => '月度订阅';
+
+  @override
+  String get premiumYearlySubscription => '年度订阅';
+
+  @override
+  String get premiumPromotionCodeInfo => '购买订阅时使用这些代码以享受免费试用期';
+
+  @override
+  String get premiumCodeCopied => '📋 代码已复制';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return '优惠码 \"$code\" 已复制到剪贴板';
+  }
 }

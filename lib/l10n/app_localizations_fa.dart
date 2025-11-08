@@ -1377,4 +1377,31 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'بعداً';
+
+  @override
+  String get premiumPromotionCodes => 'کدهای تبلیغاتی ویژه';
+
+  @override
+  String get premiumSevenDayTrial => 'آزمایش رایگان 7 روزه';
+
+  @override
+  String get premiumFourteenDayTrial => 'آزمایش رایگان 14 روزه';
+
+  @override
+  String get premiumMonthlySubscription => 'اشتراک ماهانه';
+
+  @override
+  String get premiumYearlySubscription => 'اشتراک سالانه';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'برای بهره‌مندی از دوره آزمایش رایگان، هنگام خرید اشتراک از این کدها استفاده کنید';
+
+  @override
+  String get premiumCodeCopied => '📋 کد کپی شد';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'کد تبلیغاتی \"$code\" در کلیپ‌بورد کپی شد';
+  }
 }

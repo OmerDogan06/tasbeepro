@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "Memuat harga...",
   "firstLaunchIntroSavingsText": "14 hari pertama gratis\n{savings}% lebih ekonomis",
   "firstLaunchIntroStartPremium": "Mulai Premium",
-  "firstLaunchIntroLaterButton": "Nanti"
+  "firstLaunchIntroLaterButton": "Nanti",
+  "premiumPromotionCodes": "Kode Promosi Khusus",
+  "premiumSevenDayTrial": "Uji Coba Gratis 7 Hari",
+  "premiumFourteenDayTrial": "Uji Coba Gratis 14 Hari",
+  "premiumMonthlySubscription": "Langganan Bulanan",
+  "premiumYearlySubscription": "Langganan Tahunan",
+  "premiumPromotionCodeInfo": "Gunakan kode ini saat membeli langganan untuk mendapatkan manfaat dari periode uji coba gratis",
+  "premiumCodeCopied": "📋 Kode Disalin",
+  "premiumCodeCopiedMessage": "Kode promosi \"{code}\" disalin ke clipboard"
 }

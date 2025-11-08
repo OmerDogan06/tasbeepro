@@ -1390,4 +1390,31 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'পরে';
+
+  @override
+  String get premiumPromotionCodes => 'বিশেষ প্রমো কোড';
+
+  @override
+  String get premiumSevenDayTrial => '৭ দিনের ফ্রি ট্রায়াল';
+
+  @override
+  String get premiumFourteenDayTrial => '১৪ দিনের ফ্রি ট্রায়াল';
+
+  @override
+  String get premiumMonthlySubscription => 'মাসিক সাবস্ক্রিপশন';
+
+  @override
+  String get premiumYearlySubscription => 'বার্ষিক সাবস্ক্রিপশন';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'ফ্রি ট্রায়াল পিরিয়ড থেকে উপকৃত হতে সাবস্ক্রিপশন কেনার সময় এই কোডগুলি ব্যবহার করুন';
+
+  @override
+  String get premiumCodeCopied => '📋 কোড কপি হয়েছে';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'প্রমো কোড \"$code\" ক্লিপবোর্ডে কপি হয়েছে';
+  }
 }

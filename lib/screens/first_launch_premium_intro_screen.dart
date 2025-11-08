@@ -413,6 +413,11 @@ class _FirstLaunchPremiumIntroScreenState
             ),
             textAlign: TextAlign.center,
           ),
+
+          const SizedBox(height: 16),
+
+          // Promosyon kodları bölümü
+          _buildPromotionCodesSection(context),
         ],
       ),
     );
@@ -634,6 +639,212 @@ class _FirstLaunchPremiumIntroScreenState
       () => const HomeScreen(),
       transition: Transition.fadeIn,
       duration: const Duration(milliseconds: 800),
+    );
+  }
+
+  Widget _buildPromotionCodesSection(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            const Color(0xFF1A3409).withAlpha(77),
+            emeraldGreen.withAlpha(51),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
+        boxShadow: [
+          BoxShadow(
+            color: goldColor.withAlpha(25),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.local_offer, color: goldColor, size: 24),
+              const SizedBox(width: 8),
+              Text(
+                AppLocalizations.of(context)?.premiumPromotionCodes ??
+                    'Özel Promosyon Kodları',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 16),
+
+          // Aylık abonelik promosyon kodu
+          _buildPromotionCodeCard(
+            context,
+            'TasbeePro',
+            AppLocalizations.of(context)?.premiumSevenDayTrial ??
+                '7 Gün Ücretsiz Deneme',
+            AppLocalizations.of(context)?.premiumMonthlySubscription ??
+                'Aylık Abonelik',
+            Icons.calendar_view_week,
+            Colors.blue,
+          ),
+
+          const SizedBox(height: 12),
+
+          // Yıllık abonelik promosyon kodu
+          _buildPromotionCodeCard(
+            context,
+            'TasbeeProYearly',
+            AppLocalizations.of(context)?.premiumFourteenDayTrial ??
+                '14 Gün Ücretsiz Deneme',
+            AppLocalizations.of(context)?.premiumYearlySubscription ??
+                'Yıllık Abonelik',
+            Icons.calendar_month,
+            goldColor,
+            isRecommended: true,
+          ),
+
+          const SizedBox(height: 12),
+
+          Text(
+            '💡 ${AppLocalizations.of(context)?.premiumPromotionCodeInfo ?? 'Bu kodları abonelik satın alırken kullanarak ücretsiz deneme süresinden yararlanabilirsiniz'}',
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.white.withAlpha(204),
+              fontStyle: FontStyle.italic,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPromotionCodeCard(
+    BuildContext context,
+    String code,
+    String trialPeriod,
+    String planType,
+    IconData icon,
+    Color accentColor, {
+    bool isRecommended = false,
+  }) {
+    return GestureDetector(
+      onTap: () => _copyPromotionCode(code),
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: isRecommended
+              ? goldColor.withAlpha(25)
+              : Colors.white.withAlpha(13),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: isRecommended ? goldColor : accentColor,
+            width: isRecommended ? 2 : 1,
+          ),
+          boxShadow: isRecommended
+              ? [
+                  BoxShadow(
+                    color: goldColor.withAlpha(51),
+                    blurRadius: 8,
+                    spreadRadius: 1,
+                  ),
+                ]
+              : null,
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: accentColor.withAlpha(51),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: accentColor, width: 1),
+              ),
+              child: Icon(icon, color: accentColor, size: 20),
+            ),
+
+            const SizedBox(width: 12),
+
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        code,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: isRecommended ? goldColor : Colors.white,
+                          letterSpacing: 1,
+                        ),
+                      ),
+                      if (isRecommended) ...[
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: goldColor,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: const Text(
+                            'ÖNERİLEN',
+                            style: TextStyle(
+                              fontSize: 8,
+                              fontWeight: FontWeight.bold,
+                              color: emeraldGreen,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    '$trialPeriod • $planType',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: isRecommended
+                          ? Colors.white.withAlpha(230)
+                          : Colors.white70,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            Icon(
+              Icons.copy,
+              color: isRecommended ? goldColor : Colors.white70,
+              size: 20,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _copyPromotionCode(String code) {
+    Clipboard.setData(ClipboardData(text: code));
+    
+    Get.snackbar(
+      AppLocalizations.of(Get.context!)?.premiumCodeCopied ?? '📋 Kod Kopyalandı',
+      AppLocalizations.of(Get.context!)?.premiumCodeCopiedMessage(code) ?? 'Promosyon kodu "$code" panoya kopyalandı',
+      backgroundColor: goldColor.withAlpha(230),
+      colorText: emeraldGreen,
+      duration: const Duration(seconds: 2),
+      snackPosition: SnackPosition.BOTTOM,
+      margin: const EdgeInsets.all(16),
+      borderRadius: 12,
+      icon: const Icon(Icons.check_circle, color: emeraldGreen),
     );
   }
 

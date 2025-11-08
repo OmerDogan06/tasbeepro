@@ -1384,4 +1384,31 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'Daha Sonra';
+
+  @override
+  String get premiumPromotionCodes => 'Özel Promosyon Kodları';
+
+  @override
+  String get premiumSevenDayTrial => '7 Gün Ücretsiz Deneme';
+
+  @override
+  String get premiumFourteenDayTrial => '14 Gün Ücretsiz Deneme';
+
+  @override
+  String get premiumMonthlySubscription => 'Aylık Abonelik';
+
+  @override
+  String get premiumYearlySubscription => 'Yıllık Abonelik';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'Bu kodları abonelik satın alırken kullanarak ücretsiz deneme süresinden yararlanabilirsiniz';
+
+  @override
+  String get premiumCodeCopied => '📋 Kod Kopyalandı';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'Promosyon kodu \"$code\" panoya kopyalandı';
+  }
 }

@@ -1386,4 +1386,31 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'बाद में';
+
+  @override
+  String get premiumPromotionCodes => 'विशेष प्रोमो कोड';
+
+  @override
+  String get premiumSevenDayTrial => '7 दिन निःशुल्क परीक्षण';
+
+  @override
+  String get premiumFourteenDayTrial => '14 दिन निःशुल्क परीक्षण';
+
+  @override
+  String get premiumMonthlySubscription => 'मासिक सदस्यता';
+
+  @override
+  String get premiumYearlySubscription => 'वार्षिक सदस्यता';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'निःशुल्क परीक्षण अवधि का लाभ उठाने के लिए सदस्यता खरीदते समय इन कोडों का उपयोग करें';
+
+  @override
+  String get premiumCodeCopied => '📋 कोड कॉपी किया गया';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'प्रोमो कोड \"$code\" क्लिपबोर्ड में कॉपी किया गया';
+  }
 }

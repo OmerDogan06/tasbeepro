@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "Fiyat yükleniyor...",
   "firstLaunchIntroSavingsText": "İlk 14 gün ücretsiz\n%{savings} daha ekonomik",
   "firstLaunchIntroStartPremium": "Premium'a Başla",
-  "firstLaunchIntroLaterButton": "Daha Sonra"
+  "firstLaunchIntroLaterButton": "Daha Sonra",
+  "premiumPromotionCodes": "Özel Promosyon Kodları",
+  "premiumSevenDayTrial": "7 Gün Ücretsiz Deneme",
+  "premiumFourteenDayTrial": "14 Gün Ücretsiz Deneme",
+  "premiumMonthlySubscription": "Aylık Abonelik",
+  "premiumYearlySubscription": "Yıllık Abonelik",
+  "premiumPromotionCodeInfo": "Bu kodları abonelik satın alırken kullanarak ücretsiz deneme süresinden yararlanabilirsiniz",
+  "premiumCodeCopied": "📋 Kod Kopyalandı",
+  "premiumCodeCopiedMessage": "Promosyon kodu \"{code}\" panoya kopyalandı"
 }

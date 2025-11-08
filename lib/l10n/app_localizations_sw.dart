@@ -1402,4 +1402,31 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'Baadaye';
+
+  @override
+  String get premiumPromotionCodes => 'Nambari za Uuzaji Maalum';
+
+  @override
+  String get premiumSevenDayTrial => 'Majaribio ya Siku 7 Bila Malipo';
+
+  @override
+  String get premiumFourteenDayTrial => 'Majaribio ya Siku 14 Bila Malipo';
+
+  @override
+  String get premiumMonthlySubscription => 'Usajili wa Kila Mwezi';
+
+  @override
+  String get premiumYearlySubscription => 'Usajili wa Kila Mwaka';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'Tumia nambari hizi unaponunua usajili ili kufaidika na kipindi cha majaribio bila malipo';
+
+  @override
+  String get premiumCodeCopied => '📋 Nambari Imenakiliwa';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'Nambari ya uuzaji \"$code\" imenakiliwa kwenye clipboard';
+  }
 }

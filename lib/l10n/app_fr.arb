@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "Chargement du prix...",
   "firstLaunchIntroSavingsText": "14 premiers jours gratuits\n{savings}% plus économique",
   "firstLaunchIntroStartPremium": "Commencer Premium",
-  "firstLaunchIntroLaterButton": "Plus Tard"
+  "firstLaunchIntroLaterButton": "Plus Tard",
+  "premiumPromotionCodes": "Codes de Promotion Spéciaux",
+  "premiumSevenDayTrial": "Essai Gratuit de 7 Jours",
+  "premiumFourteenDayTrial": "Essai Gratuit de 14 Jours",
+  "premiumMonthlySubscription": "Abonnement Mensuel",
+  "premiumYearlySubscription": "Abonnement Annuel",
+  "premiumPromotionCodeInfo": "Utilisez ces codes lors de l'achat d'abonnement pour bénéficier de la période d'essai gratuite",
+  "premiumCodeCopied": "📋 Code Copié",
+  "premiumCodeCopiedMessage": "Code de promotion \"{code}\" copié dans le presse-papiers"
 }

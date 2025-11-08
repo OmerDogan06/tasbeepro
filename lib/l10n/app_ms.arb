@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "Memuatkan harga...",
   "firstLaunchIntroSavingsText": "14 hari pertama percuma\n{savings}% lebih ekonomik",
   "firstLaunchIntroStartPremium": "Mula Premium",
-  "firstLaunchIntroLaterButton": "Kemudian"
+  "firstLaunchIntroLaterButton": "Kemudian",
+  "premiumPromotionCodes": "Kod Promosi Istimewa",
+  "premiumSevenDayTrial": "Percubaan Percuma 7 Hari",
+  "premiumFourteenDayTrial": "Percubaan Percuma 14 Hari",
+  "premiumMonthlySubscription": "Langganan Bulanan",
+  "premiumYearlySubscription": "Langganan Tahunan",
+  "premiumPromotionCodeInfo": "Gunakan kod ini semasa membeli langganan untuk mendapat manfaat dari tempoh percubaan percuma",
+  "premiumCodeCopied": "📋 Kod Disalin",
+  "premiumCodeCopiedMessage": "Kod promosi \"{code}\" disalin ke papan keratan"
 }

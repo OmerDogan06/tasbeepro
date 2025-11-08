@@ -1396,4 +1396,31 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'Keyinroq';
+
+  @override
+  String get premiumPromotionCodes => 'Maxsus Promo Kodlar';
+
+  @override
+  String get premiumSevenDayTrial => '7 Kunlik Bepul Sinov';
+
+  @override
+  String get premiumFourteenDayTrial => '14 Kunlik Bepul Sinov';
+
+  @override
+  String get premiumMonthlySubscription => 'Oylik Obuna';
+
+  @override
+  String get premiumYearlySubscription => 'Yillik Obuna';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'Bepul sinov muddatidan foydalanish uchun obuna sotib olishda ushbu kodlardan foydalaning';
+
+  @override
+  String get premiumCodeCopied => '📋 Kod Nusxalandi';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'Promo kod \"$code\" klipbordga nusxalandi';
+  }
 }

@@ -1393,4 +1393,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'Позже';
+
+  @override
+  String get premiumPromotionCodes => 'Специальные Промо-коды';
+
+  @override
+  String get premiumSevenDayTrial => '7 Дней Бесплатного Тестирования';
+
+  @override
+  String get premiumFourteenDayTrial => '14 Дней Бесплатного Тестирования';
+
+  @override
+  String get premiumMonthlySubscription => 'Месячная Подписка';
+
+  @override
+  String get premiumYearlySubscription => 'Годовая Подписка';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'Используйте эти коды при покупке подписки, чтобы воспользоваться бесплатным пробным периодом';
+
+  @override
+  String get premiumCodeCopied => '📋 Код Скопирован';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'Промо-код \"$code\" скопирован в буфер обмена';
+  }
 }

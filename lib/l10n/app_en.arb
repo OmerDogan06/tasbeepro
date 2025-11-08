@@ -1601,5 +1601,13 @@
   "firstLaunchIntroPriceLoading": "Price loading...",
   "firstLaunchIntroSavingsText": "First 14 days free\n{savings}% more economical",
   "firstLaunchIntroStartPremium": "Start Premium",
-  "firstLaunchIntroLaterButton": "Later"
+  "firstLaunchIntroLaterButton": "Later",
+  "premiumPromotionCodes": "Special Promotion Codes",
+  "premiumSevenDayTrial": "7 Days Free Trial",
+  "premiumFourteenDayTrial": "14 Days Free Trial",
+  "premiumMonthlySubscription": "Monthly Subscription",
+  "premiumYearlySubscription": "Yearly Subscription",
+  "premiumPromotionCodeInfo": "Use these codes when purchasing subscription to benefit from free trial period",
+  "premiumCodeCopied": "📋 Code Copied",
+  "premiumCodeCopiedMessage": "Promotion code \"{code}\" copied to clipboard"
 }

@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "価格を読み込み中...",
   "firstLaunchIntroSavingsText": "最初の14日間無料\n{savings}%よりお得",
   "firstLaunchIntroStartPremium": "プレミアムを開始",
-  "firstLaunchIntroLaterButton": "後で"
+  "firstLaunchIntroLaterButton": "後で",
+  "premiumPromotionCodes": "特別プロモーションコード",
+  "premiumSevenDayTrial": "7日間無料トライアル",
+  "premiumFourteenDayTrial": "14日間無料トライアル",
+  "premiumMonthlySubscription": "月間サブスクリプション",
+  "premiumYearlySubscription": "年間サブスクリプション",
+  "premiumPromotionCodeInfo": "サブスクリプション購入時にこれらのコードを使用して無料トライアル期間をご利用ください",
+  "premiumCodeCopied": "📋 コードをコピーしました",
+  "premiumCodeCopiedMessage": "プロモーションコード \"{code}\" をクリップボードにコピーしました"
 }

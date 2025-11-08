@@ -1381,4 +1381,31 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'بعد میں';
+
+  @override
+  String get premiumPromotionCodes => 'خصوصی پروموشن کوڈز';
+
+  @override
+  String get premiumSevenDayTrial => '7 دن مفت ٹرائل';
+
+  @override
+  String get premiumFourteenDayTrial => '14 دن مفت ٹرائل';
+
+  @override
+  String get premiumMonthlySubscription => 'ماہانہ سبسکرپشن';
+
+  @override
+  String get premiumYearlySubscription => 'سالانہ سبسکرپشن';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'مفت آزمائشی مدت سے فائدہ اٹھانے کے لیے سبسکرپشن خریدتے وقت ان کوڈز کا استعمال کریں';
+
+  @override
+  String get premiumCodeCopied => '📋 کوڈ کاپی ہو گیا';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'پروموشن کوڈ \"$code\" کلپ بورڈ میں کاپی ہو گیا';
+  }
 }

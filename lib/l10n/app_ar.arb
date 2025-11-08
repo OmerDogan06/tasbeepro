@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "جارٍ تحميل السعر...",
   "firstLaunchIntroSavingsText": "أول 14 يوم مجاناً\nوفر {savings}% أكثر اقتصادية",
   "firstLaunchIntroStartPremium": "ابدأ المميز",
-  "firstLaunchIntroLaterButton": "لاحقاً"
+  "firstLaunchIntroLaterButton": "لاحقاً",
+  "premiumPromotionCodes": "رموز الترويج الخاصة",
+  "premiumSevenDayTrial": "تجربة مجانية لمدة 7 أيام",
+  "premiumFourteenDayTrial": "تجربة مجانية لمدة 14 يوم",
+  "premiumMonthlySubscription": "اشتراك شهري",
+  "premiumYearlySubscription": "اشتراك سنوي",
+  "premiumPromotionCodeInfo": "استخدم هذه الرموز عند شراء الاشتراك للاستفادة من فترة التجربة المجانية",
+  "premiumCodeCopied": "📋 تم نسخ الرمز",
+  "premiumCodeCopiedMessage": "تم نسخ رمز الترويج \"{code}\" إلى الحافظة"
 }

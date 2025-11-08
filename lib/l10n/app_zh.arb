@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "价格加载中...",
   "firstLaunchIntroSavingsText": "前14天免费\n节省{savings}%更经济",
   "firstLaunchIntroStartPremium": "开始高级版",
-  "firstLaunchIntroLaterButton": "稍后"
+  "firstLaunchIntroLaterButton": "稍后",
+  "premiumPromotionCodes": "特殊优惠码",
+  "premiumSevenDayTrial": "7天免费试用",
+  "premiumFourteenDayTrial": "14天免费试用",
+  "premiumMonthlySubscription": "月度订阅",
+  "premiumYearlySubscription": "年度订阅",
+  "premiumPromotionCodeInfo": "购买订阅时使用这些代码以享受免费试用期",
+  "premiumCodeCopied": "📋 代码已复制",
+  "premiumCodeCopiedMessage": "优惠码 \"{code}\" 已复制到剪贴板"
 }

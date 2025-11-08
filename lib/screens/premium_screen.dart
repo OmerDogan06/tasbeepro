@@ -193,6 +193,11 @@ class _PremiumScreenState extends State<PremiumScreen> {
 
                         const SizedBox(height: 24),
 
+                        // Promosyon kodları
+                        _buildPromotionCodesSection(context),
+
+                        const SizedBox(height: 24),
+
                         // Terms
                         Text(
                           AppLocalizations.of(context)?.premiumTerms ??
@@ -508,6 +513,307 @@ class _PremiumScreenState extends State<PremiumScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildPromotionCodesSection(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            PremiumScreen.lightGold.withAlpha(51),
+            PremiumScreen.goldColor.withAlpha(25),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: PremiumScreen.goldColor.withAlpha(125),
+          width: 1.5,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: PremiumScreen.goldColor.withAlpha(51),
+            blurRadius: 15,
+            spreadRadius: 3,
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          // Başlık
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: PremiumScreen.goldColor.withAlpha(102),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: PremiumScreen.goldColor,
+                    width: 1,
+                  ),
+                ),
+                child: const Icon(
+                  Icons.local_offer,
+                  color: PremiumScreen.emeraldGreen,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                AppLocalizations.of(context)?.premiumPromotionCodes ??
+                    'Özel Promosyon Kodları',
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 20),
+
+          // Aylık abonelik promosyon kodu
+          _buildPromotionCodeCard(
+            context,
+            'TasbeePro',
+            AppLocalizations.of(context)?.premiumSevenDayTrial ??
+                '7 Gün Ücretsiz Deneme',
+            AppLocalizations.of(context)?.premiumMonthlySubscription ??
+                'Aylık Abonelik',
+            Icons.calendar_view_week,
+            Colors.blue,
+          ),
+
+          const SizedBox(height: 16),
+
+          // Yıllık abonelik promosyon kodu
+          _buildPromotionCodeCard(
+            context,
+            'TasbeeProYearly',
+            AppLocalizations.of(context)?.premiumFourteenDayTrial ??
+                '14 Gün Ücretsiz Deneme',
+            AppLocalizations.of(context)?.premiumYearlySubscription ??
+                'Yıllık Abonelik',
+            Icons.calendar_month,
+            PremiumScreen.goldColor,
+            isRecommended: true,
+          ),
+
+          const SizedBox(height: 16),
+
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: PremiumScreen.emeraldGreen.withAlpha(77),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: PremiumScreen.goldColor.withAlpha(77),
+                width: 1,
+              ),
+            ),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.info_outline,
+                  color: PremiumScreen.goldColor,
+                  size: 20,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    AppLocalizations.of(context)?.premiumPromotionCodeInfo ??
+                        'Bu kodları abonelik satın alırken kullanarak ücretsiz deneme süresinden yararlanabilirsiniz',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                      height: 1.3,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPromotionCodeCard(
+    BuildContext context,
+    String code,
+    String trialPeriod,
+    String planType,
+    IconData icon,
+    Color accentColor, {
+    bool isRecommended = false,
+  }) {
+    return GestureDetector(
+      onTap: () => _copyPromotionCode(code),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          gradient: isRecommended
+              ? LinearGradient(
+                  colors: [
+                    PremiumScreen.goldColor,
+                    PremiumScreen.lightGold,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                )
+              : null,
+          color: isRecommended ? null : Colors.white.withAlpha(25),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: isRecommended
+                ? PremiumScreen.goldColor
+                : accentColor.withAlpha(125),
+            width: isRecommended ? 2 : 1.5,
+          ),
+          boxShadow: isRecommended
+              ? [
+                  BoxShadow(
+                    color: PremiumScreen.goldColor.withAlpha(77),
+                    blurRadius: 12,
+                    spreadRadius: 2,
+                  ),
+                ]
+              : [
+                  BoxShadow(
+                    color: accentColor.withAlpha(25),
+                    blurRadius: 8,
+                    spreadRadius: 1,
+                  ),
+                ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: isRecommended
+                    ? PremiumScreen.emeraldGreen.withAlpha(77)
+                    : accentColor.withAlpha(51),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: isRecommended
+                      ? PremiumScreen.emeraldGreen
+                      : accentColor,
+                  width: 1,
+                ),
+              ),
+              child: Icon(
+                icon,
+                color: isRecommended
+                    ? PremiumScreen.goldColor
+                    : accentColor,
+                size: 24,
+              ),
+            ),
+
+            const SizedBox(width: 16),
+
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        code,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: isRecommended
+                              ? PremiumScreen.emeraldGreen
+                              : Colors.white,
+                          letterSpacing: 1.2,
+                        ),
+                      ),
+                      if (isRecommended) ...[
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: PremiumScreen.emeraldGreen,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Text(
+                            AppLocalizations.of(context)
+                                    ?.premiumRecommended ??
+                                'ÖNERİLEN',
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: PremiumScreen.goldColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    '$trialPeriod • $planType',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: isRecommended
+                          ? PremiumScreen.emeraldGreen.withAlpha(204)
+                          : Colors.white70,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: isRecommended
+                    ? PremiumScreen.emeraldGreen.withAlpha(51)
+                    : Colors.white.withAlpha(25),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(
+                Icons.copy,
+                color: isRecommended
+                    ? PremiumScreen.goldColor
+                    : Colors.white70,
+                size: 20,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _copyPromotionCode(String code) {
+    Clipboard.setData(ClipboardData(text: code));
+    
+    Get.snackbar(
+      AppLocalizations.of(context)?.premiumCodeCopied ?? '📋 Kod Kopyalandı',
+      AppLocalizations.of(Get.context!)?.premiumCodeCopiedMessage(code) ?? 'Promosyon kodu "$code" panoya kopyalandı',
+      backgroundColor: PremiumScreen.goldColor.withAlpha(230),
+      colorText: PremiumScreen.emeraldGreen,
+      duration: const Duration(seconds: 3),
+      snackPosition: SnackPosition.BOTTOM,
+      margin: const EdgeInsets.all(16),
+      borderRadius: 12,
+      icon: const Icon(
+        Icons.check_circle,
+        color: PremiumScreen.emeraldGreen,
       ),
     );
   }

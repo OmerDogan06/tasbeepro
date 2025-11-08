@@ -1329,4 +1329,31 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => '後で';
+
+  @override
+  String get premiumPromotionCodes => '特別プロモーションコード';
+
+  @override
+  String get premiumSevenDayTrial => '7日間無料トライアル';
+
+  @override
+  String get premiumFourteenDayTrial => '14日間無料トライアル';
+
+  @override
+  String get premiumMonthlySubscription => '月間サブスクリプション';
+
+  @override
+  String get premiumYearlySubscription => '年間サブスクリプション';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'サブスクリプション購入時にこれらのコードを使用して無料トライアル期間をご利用ください';
+
+  @override
+  String get premiumCodeCopied => '📋 コードをコピーしました';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'プロモーションコード \"$code\" をクリップボードにコピーしました';
+  }
 }

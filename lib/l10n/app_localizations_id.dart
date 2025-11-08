@@ -1393,4 +1393,31 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'Nanti';
+
+  @override
+  String get premiumPromotionCodes => 'Kode Promosi Khusus';
+
+  @override
+  String get premiumSevenDayTrial => 'Uji Coba Gratis 7 Hari';
+
+  @override
+  String get premiumFourteenDayTrial => 'Uji Coba Gratis 14 Hari';
+
+  @override
+  String get premiumMonthlySubscription => 'Langganan Bulanan';
+
+  @override
+  String get premiumYearlySubscription => 'Langganan Tahunan';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'Gunakan kode ini saat membeli langganan untuk mendapatkan manfaat dari periode uji coba gratis';
+
+  @override
+  String get premiumCodeCopied => '📋 Kode Disalin';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'Kode promosi \"$code\" disalin ke clipboard';
+  }
 }

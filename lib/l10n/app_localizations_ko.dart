@@ -1332,4 +1332,30 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => '나중에';
+
+  @override
+  String get premiumPromotionCodes => '특별 프로모션 코드';
+
+  @override
+  String get premiumSevenDayTrial => '7일 무료 체험';
+
+  @override
+  String get premiumFourteenDayTrial => '14일 무료 체험';
+
+  @override
+  String get premiumMonthlySubscription => '월간 구독';
+
+  @override
+  String get premiumYearlySubscription => '연간 구독';
+
+  @override
+  String get premiumPromotionCodeInfo => '구독 구매 시 이 코드를 사용하여 무료 체험 기간 혜택을 받으세요';
+
+  @override
+  String get premiumCodeCopied => '📋 코드 복사됨';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return '프로모션 코드 \"$code\"가 클립보드에 복사되었습니다';
+  }
 }

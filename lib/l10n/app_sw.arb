@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "Inapakia bei...",
   "firstLaunchIntroSavingsText": "Siku 14 za kwanza bila malipo\n{savings}% ya kiuchumi zaidi",
   "firstLaunchIntroStartPremium": "Anza Premium",
-  "firstLaunchIntroLaterButton": "Baadaye"
+  "firstLaunchIntroLaterButton": "Baadaye",
+  "premiumPromotionCodes": "Nambari za Uuzaji Maalum",
+  "premiumSevenDayTrial": "Majaribio ya Siku 7 Bila Malipo",
+  "premiumFourteenDayTrial": "Majaribio ya Siku 14 Bila Malipo",
+  "premiumMonthlySubscription": "Usajili wa Kila Mwezi",
+  "premiumYearlySubscription": "Usajili wa Kila Mwaka",
+  "premiumPromotionCodeInfo": "Tumia nambari hizi unaponunua usajili ili kufaidika na kipindi cha majaribio bila malipo",
+  "premiumCodeCopied": "📋 Nambari Imenakiliwa",
+  "premiumCodeCopiedMessage": "Nambari ya uuzaji \"{code}\" imenakiliwa kwenye clipboard"
 }

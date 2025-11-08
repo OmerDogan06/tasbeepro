@@ -1362,4 +1362,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'لاحقاً';
+
+  @override
+  String get premiumPromotionCodes => 'رموز الترويج الخاصة';
+
+  @override
+  String get premiumSevenDayTrial => 'تجربة مجانية لمدة 7 أيام';
+
+  @override
+  String get premiumFourteenDayTrial => 'تجربة مجانية لمدة 14 يوم';
+
+  @override
+  String get premiumMonthlySubscription => 'اشتراك شهري';
+
+  @override
+  String get premiumYearlySubscription => 'اشتراك سنوي';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'استخدم هذه الرموز عند شراء الاشتراك للاستفادة من فترة التجربة المجانية';
+
+  @override
+  String get premiumCodeCopied => '📋 تم نسخ الرمز';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'تم نسخ رمز الترويج \"$code\" إلى الحافظة';
+  }
 }

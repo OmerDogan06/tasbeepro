@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "가격 로딩 중...",
   "firstLaunchIntroSavingsText": "처음 14일 무료\n{savings}% 더 경제적",
   "firstLaunchIntroStartPremium": "프리미엄 시작",
-  "firstLaunchIntroLaterButton": "나중에"
+  "firstLaunchIntroLaterButton": "나중에",
+  "premiumPromotionCodes": "특별 프로모션 코드",
+  "premiumSevenDayTrial": "7일 무료 체험",
+  "premiumFourteenDayTrial": "14일 무료 체험",
+  "premiumMonthlySubscription": "월간 구독",
+  "premiumYearlySubscription": "연간 구독",
+  "premiumPromotionCodeInfo": "구독 구매 시 이 코드를 사용하여 무료 체험 기간 혜택을 받으세요",
+  "premiumCodeCopied": "📋 코드 복사됨",
+  "premiumCodeCopiedMessage": "프로모션 코드 \"{code}\"가 클립보드에 복사되었습니다"
 }

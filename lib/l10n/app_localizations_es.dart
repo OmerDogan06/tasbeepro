@@ -1413,4 +1413,31 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get firstLaunchIntroLaterButton => 'Más Tarde';
+
+  @override
+  String get premiumPromotionCodes => 'Códigos de Promoción Especiales';
+
+  @override
+  String get premiumSevenDayTrial => 'Prueba Gratuita de 7 Días';
+
+  @override
+  String get premiumFourteenDayTrial => 'Prueba Gratuita de 14 Días';
+
+  @override
+  String get premiumMonthlySubscription => 'Suscripción Mensual';
+
+  @override
+  String get premiumYearlySubscription => 'Suscripción Anual';
+
+  @override
+  String get premiumPromotionCodeInfo =>
+      'Usa estos códigos al comprar la suscripción para beneficiarte del período de prueba gratuita';
+
+  @override
+  String get premiumCodeCopied => '📋 Código Copiado';
+
+  @override
+  String premiumCodeCopiedMessage(Object code) {
+    return 'Código de promoción \"$code\" copiado al portapapeles';
+  }
 }

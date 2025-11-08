@@ -426,5 +426,13 @@
   "firstLaunchIntroPriceLoading": "قیمت لوڈ ہو رہی ہے...",
   "firstLaunchIntroSavingsText": "پہلے 14 دن مفت\n{savings}% زیادہ اقتصادی",
   "firstLaunchIntroStartPremium": "پریمیم شروع کریں",
-  "firstLaunchIntroLaterButton": "بعد میں"
+  "firstLaunchIntroLaterButton": "بعد میں",
+  "premiumPromotionCodes": "خصوصی پروموشن کوڈز",
+  "premiumSevenDayTrial": "7 دن مفت ٹرائل",
+  "premiumFourteenDayTrial": "14 دن مفت ٹرائل",
+  "premiumMonthlySubscription": "ماہانہ سبسکرپشن",
+  "premiumYearlySubscription": "سالانہ سبسکرپشن",
+  "premiumPromotionCodeInfo": "مفت آزمائشی مدت سے فائدہ اٹھانے کے لیے سبسکرپشن خریدتے وقت ان کوڈز کا استعمال کریں",
+  "premiumCodeCopied": "📋 کوڈ کاپی ہو گیا",
+  "premiumCodeCopiedMessage": "پروموشن کوڈ \"{code}\" کلپ بورڈ میں کاپی ہو گیا"
 }
