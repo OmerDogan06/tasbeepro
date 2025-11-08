@@ -62,13 +62,13 @@ class SubscriptionService extends GetxController {
       final isPremiumX = storageService.getPremiumStatus();
       isPremium.value = isPremiumX;
       
-      if (kDebugMode) {
-        print('📱 Premium status loaded: $isPremium');
-      }
+     
+        debugPrint('📱 Premium status loaded: $isPremium');
+      
     } catch (e) {
-      if (kDebugMode) {
-        print('❌ Error loading premium status: $e');
-      }
+ 
+        debugPrint('❌ Error loading premium status: $e');
+      
       isPremium.value = false;
     }
   }
@@ -85,27 +85,85 @@ class SubscriptionService extends GetxController {
     
     // Eğer değer değiştiyse güncelle
     if (oldValue != isPremium.value) {
-      if (kDebugMode) {
-        print('🔄 Premium status manually refreshed: $oldValue -> ${isPremium.value}');
-      }
+     
+        debugPrint('🔄 Premium status manually refreshed: $oldValue -> ${isPremium.value}');
+      
     }
   }
 
   // Aktif satın alımları kontrol et
   Future<void> _checkActivePurchases() async {
     try {
-      // RestorePurchases çağrısından sonra stream üzerinden güncellenecek
-      // Bu yüzden sadece restore işlemini başlat
+     
+        debugPrint('🔄 Checking active purchases...');
+      
+      
+      // Restore işlemini başlat ve sonucu takip etmek için flag kullan
+      bool foundActivePremium = false;
+      
+      // Stream'i geçici olarak dinle
+      StreamSubscription<List<PurchaseDetails>>? tempSubscription;
+      final Completer<void> restoreCompleter = Completer<void>();
+      
+      tempSubscription = _inAppPurchase.purchaseStream.listen((purchaseDetailsList) {
+        for (final purchase in purchaseDetailsList) {
+          if (productIds.contains(purchase.productID) && 
+              (purchase.status == PurchaseStatus.purchased || 
+               purchase.status == PurchaseStatus.restored)) {
+            foundActivePremium = true;
+         
+              debugPrint('✅ Found active premium: ${purchase.productID}');
+            
+            break;
+          }
+        }
+        
+        // İlk response geldiğinde completer'ı tamamla
+        if (!restoreCompleter.isCompleted) {
+          restoreCompleter.complete();
+        }
+      });
+      
+      // Restore işlemini başlat
       await _inAppPurchase.restorePurchases();
       
-      if (kDebugMode) {
-        print('🔄 Restore purchases initiated for active purchase check');
+      // 3 saniye bekle veya stream response gelene kadar
+      await Future.any([
+        restoreCompleter.future,
+        Future.delayed(const Duration(seconds: 3))
+      ]);
+      
+      // Temp subscription'ı kapat
+      await tempSubscription.cancel();
+      
+      // Eğer aktif premium bulunamadı ve şu anki durum true ise false yap
+      if (!foundActivePremium && isPremium.value) {
+        isPremium.value = false;
+        final storageService = Get.find<StorageService>();
+        await storageService.savePremiumStatus(false);
+        
+     
+          debugPrint('✅ Premium status corrected to false - no active subscriptions found');
+        
+      } else if (foundActivePremium && !isPremium.value) {
+        // Aktif premium bulundu ama local durum false ise true yap
+        isPremium.value = true;
+        final storageService = Get.find<StorageService>();
+        await storageService.savePremiumStatus(true);
+        
+    
+          debugPrint('✅ Premium status corrected to true - active subscription found');
+        
       }
       
+    
+        debugPrint('🔄 Active purchase check completed. Premium: ${isPremium.value}');
+      
+      
     } catch (e) {
-      if (kDebugMode) {
-        print('❌ Error checking active purchases: $e');
-      }
+
+        debugPrint('❌ Error checking active purchases: $e');
+      
     }
   }
 
@@ -113,9 +171,9 @@ class SubscriptionService extends GetxController {
     final bool available = await _inAppPurchase.isAvailable();
     
     if (!available) {
-      if (kDebugMode) {
-        print('❌ In-app purchase servisi kullanılamıyor');
-      }
+    
+        debugPrint('❌ In-app purchase servisi kullanılamıyor');
+      
       return;
     }
 
@@ -130,14 +188,14 @@ class SubscriptionService extends GetxController {
         _handlePurchaseUpdates(purchaseDetailsList);
       },
       onDone: () {
-        if (kDebugMode) {
-          print('Purchase stream closed');
-        }
+     
+          debugPrint('Purchase stream closed');
+        
       },
       onError: (error) {
-        if (kDebugMode) {
-          print('Purchase stream error: $error');
-        }
+        
+          debugPrint('Purchase stream error: $error');
+        
       },
     );
   }
@@ -177,9 +235,9 @@ class SubscriptionService extends GetxController {
         final storageService = Get.find<StorageService>();
         await storageService.savePremiumStatus(true);
         
-        if (kDebugMode) {
-          print('🎉 Premium activated for product: $productId');
-        }
+       
+          debugPrint('🎉 Premium activated for product: $productId');
+        
         
         final context = Get.context;
         IslamicSnackbar.showSuccess(
@@ -195,9 +253,9 @@ class SubscriptionService extends GetxController {
         }
       }
     } catch (e) {
-      if (kDebugMode) {
-        print('❌ Error handling successful purchase: $e');
-      }
+  
+        debugPrint('❌ Error handling successful purchase: $e');
+      
     }
   }
 
@@ -239,9 +297,9 @@ class SubscriptionService extends GetxController {
       }
     }
     
-    if (kDebugMode) {
-      print('❌ Purchase error: ${error.code} - $message');
-    }
+  
+      debugPrint('❌ Purchase error: ${error.code} - $message');
+    
     
     IslamicSnackbar.showError(
       context != null ? (AppLocalizations.of(context)?.purchaseErrorTitle ?? 'Hata') : 'Hata',
@@ -257,9 +315,9 @@ class SubscriptionService extends GetxController {
           await _inAppPurchase.queryProductDetails(productIds);
 
       if (response.notFoundIDs.isNotEmpty) {
-        if (kDebugMode) {
-          print('⚠️ Bazı ürünler bulunamadı: ${response.notFoundIDs}');
-        }
+     
+          debugPrint('⚠️ Bazı ürünler bulunamadı: ${response.notFoundIDs}');
+        
       }
       
       if (response.productDetails.isNotEmpty) {
@@ -267,22 +325,22 @@ class SubscriptionService extends GetxController {
         
         // Ürün bilgilerini göster
         for (final product in response.productDetails) {
-          if (kDebugMode) {
-            print('💰 Price: ${product.price}');
-            print('💱 Currency: ${product.currencyCode}');
-            print('📝 Title: ${product.title}');
-            print('🆔 ID: ${product.id}');
-          }
+    
+            debugPrint('💰 Price: ${product.price}');
+            debugPrint('💱 Currency: ${product.currencyCode}');
+            debugPrint('📝 Title: ${product.title}');
+            debugPrint('🆔 ID: ${product.id}');
+          
         }
       } else {
-        if (kDebugMode) {
-          print('❌ Hiç ürün yüklenemedi');
-        }
+   
+          debugPrint('❌ Hiç ürün yüklenemedi');
+        
       }
     } catch (e) {
-      if (kDebugMode) {
-        print('❌ Ürünler yüklenirken hata: $e');
-      }
+  
+        debugPrint('❌ Ürünler yüklenirken hata: $e');
+      
     } finally {
       _isLoading.value = false;
     }
@@ -365,22 +423,22 @@ class SubscriptionService extends GetxController {
         return false;
       }
       
-      if (kDebugMode) {
-        print('🛒 Purchasing product: ${product.id}');
-      }
+    
+        debugPrint('🛒 Purchasing product: ${product.id}');
+      
       
       final PurchaseParam purchaseParam = PurchaseParam(productDetails: product);
       bool success = await _inAppPurchase.buyNonConsumable(purchaseParam: purchaseParam);
       
-      if (kDebugMode) {
-        print('🛒 Purchase initiated: $success');
-      }
+     
+        debugPrint('🛒 Purchase initiated: $success');
+      
       
       return success;
     } catch (e) {
-      if (kDebugMode) {
-        print('❌ Error purchasing subscription: $e');
-      }
+    
+        debugPrint('❌ Error purchasing subscription: $e');
+      
       final context = Get.context;
       IslamicSnackbar.showError(
         context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.purchaseErrorTitle ?? 'Hata') : 'Hata',
@@ -396,9 +454,9 @@ class SubscriptionService extends GetxController {
     try {
       await _inAppPurchase.restorePurchases();
     } catch (e) {
-      if (kDebugMode) {
-        print('❌ Error restoring purchases: $e');
-      }
+    
+        debugPrint('❌ Error restoring purchases: $e');
+      
     }
   }
 
