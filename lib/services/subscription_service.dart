@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:tasbeepro/models/subscription_plan.dart';
 import 'package:tasbeepro/screens/home_screen.dart';
@@ -142,6 +143,9 @@ class SubscriptionService extends GetxController {
         final storageService = Get.find<StorageService>();
         await storageService.savePremiumStatus(false);
         
+        // ✅ Widget'ları güncelle - Premium durumu false yapıldı
+        await _updateAllWidgets();
+        
      
           debugPrint('✅ Premium status corrected to false - no active subscriptions found');
         
@@ -150,6 +154,9 @@ class SubscriptionService extends GetxController {
         isPremium.value = true;
         final storageService = Get.find<StorageService>();
         await storageService.savePremiumStatus(true);
+        
+        // ✅ Widget'ları güncelle - Premium durumu true yapıldı
+        await _updateAllWidgets();
         
     
           debugPrint('✅ Premium status corrected to true - active subscription found');
@@ -236,24 +243,29 @@ class SubscriptionService extends GetxController {
         final storageService = Get.find<StorageService>();
         await storageService.savePremiumStatus(true);
         
+        // ✅ Widget'ları güncelle - Premium durumu değişti
+        await _updateAllWidgets();
+        
        
           debugPrint('🎉 Premium activated for product: $productId');
         
         
         final context = Get.context;
+        
+        // ✅ Önce navigate et, sonra snackbar göster
+        if(fromFirstLaunchX == true){
+          fromFirstLaunchX = false;
+          Get.offAll(() => HomeScreen(), transition: Transition.rightToLeft);
+        } else {
+          Get.back();
+        }
+        
+        // ✅ Navigation sonrası snackbar göster
+        await Future.delayed(const Duration(milliseconds: 300));
         IslamicSnackbar.showSuccess(
           context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.purchaseSuccessTitle ?? 'Başarılı!') : 'Başarılı!',
           context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.purchaseSuccessMessage ?? 'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.') : 'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.',
         );
-       await Future.delayed(const Duration(seconds: 2), () {
-         
-        });
-        if(fromFirstLaunchX == true){
-          fromFirstLaunchX = false;
-          Get.offAll(() => HomeScreen(), transition: Transition.rightToLeft);
-        }else {
-          Get.back();
-        }
       }
     } catch (e) {
   
@@ -491,6 +503,23 @@ class SubscriptionService extends GetxController {
       return context != null ? (AppLocalizations.of(context)?.subscriptionActiveStatus ?? 'Premium üyelik aktif') : 'Premium üyelik aktif';
     } else {
       return context != null ? (AppLocalizations.of(context)?.subscriptionInactiveStatus ?? 'Premium ile daha fazla özellik') : 'Premium ile daha fazla özellik';
+    }
+  }
+
+  // ✅ Tüm widget'ları güncelle - Premium durumu değiştiğinde çağrılır
+  Future<void> _updateAllWidgets() async {
+    try {
+      const platform = MethodChannel('com.skyforgestudios.tasbeepro/widget');
+      await platform.invokeMethod('updateAllWidgets');
+      
+      if (kDebugMode) {
+        debugPrint('🔄 All widgets updated after premium status change');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint('❌ Error updating widgets: $e');
+      }
+      // Widget güncellemesi başarısız olsa bile uygulama çalışmaya devam etsin
     }
   }
 }

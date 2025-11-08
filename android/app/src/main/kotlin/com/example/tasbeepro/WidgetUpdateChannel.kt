@@ -56,6 +56,15 @@ class WidgetUpdateChannel(private val context: Context) : MethodCallHandler {
                     result.error("WIDGET_PICKER_ERROR", "Widget picker açılamadı: ${e.message}", null)
                 }
             }
+            "updateAllWidgets" -> {
+                try {
+                    // Sadece widget'ları yeniden render et - premium durumu otomatik kontrol edilecek
+                    refreshAllWidgets()
+                    result.success(true)
+                } catch (e: Exception) {
+                    result.error("REFRESH_ERROR", "Widget'lar yenilenirken hata: ${e.message}", null)
+                }
+            }
             else -> {
                 result.notImplemented()
             }
@@ -133,6 +142,24 @@ class WidgetUpdateChannel(private val context: Context) : MethodCallHandler {
         } catch (e: Exception) {
             // Fallback: Manuel widget ekleme talimatları Flutter tarafında gösterilecek
             e.printStackTrace()
+        }
+    }
+
+    // ✅ Sadece widget'ları yenile - premium durumu otomatik kontrol edilecek
+    private fun refreshAllWidgets() {
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val componentName = ComponentName(context, TasbeeWidgetProvider::class.java)
+        val widgetIds = appWidgetManager.getAppWidgetIds(componentName)
+        
+        if (widgetIds.isNotEmpty()) {
+            // TasbeeWidgetProvider'ın onUpdate metodunu çağır
+            // Bu metod zaten premium durumunu kontrol ediyor
+            val intent = Intent(context, TasbeeWidgetProvider::class.java)
+            intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIds)
+            context.sendBroadcast(intent)
+            
+            android.util.Log.d("WidgetRefresh", "All widgets refreshed after premium status change: ${widgetIds.size} widgets")
         }
     }
 }
