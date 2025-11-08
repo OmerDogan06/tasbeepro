@@ -1122,4 +1122,168 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'پس از راه‌اندازی مجدد دستگاه، یک بار باز کردن برنامه، سیستم اعلان را تازه‌سازی می‌کند.';
+
+  @override
+  String get premiumRestorePurchases => 'بازیابی';
+
+  @override
+  String get premiumTitle => 'پریمیم شوید';
+
+  @override
+  String get premiumSubtitle => 'تجربه کامل تسبیح دیجیتال';
+
+  @override
+  String get premiumTerms =>
+      'اشتراک به طور خودکار تمدید می‌شود. می‌توانید هر زمان لغو کنید.';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'تجربه بدون تبلیغ';
+
+  @override
+  String get premiumFeatureAdFreeDescription => 'تجربه ذکر بدون وقفه';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'یادآورها';
+
+  @override
+  String get premiumFeatureRemindersDescription => 'یادآورهای ذکر قابل تنظیم';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'ویجت صفحه اصلی';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'شمارنده ذکر در صفحه اصلی اندروید';
+
+  @override
+  String get premiumRecommended => 'پیشنهادی';
+
+  @override
+  String get premiumPerYear => '/سال';
+
+  @override
+  String get premiumPerMonth => '/ماه';
+
+  @override
+  String get premiumTwoMonthsFree => '2 ماه رایگان';
+
+  @override
+  String get premiumPriceLoading => 'بارگیری قیمت...';
+
+  @override
+  String get subscriptionPlanFree => 'رایگان';
+
+  @override
+  String get subscriptionPlanMonthly => 'پریمیم ماهانه';
+
+  @override
+  String get subscriptionPlanYearly => 'پریمیم سالانه';
+
+  @override
+  String get subscriptionPlanFreeDescription => 'ویژگی‌های پایه (با تبلیغات)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'تمام ویژگی‌های پریمیم - ماهانه';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'تمام ویژگی‌های پریمیم - سالانه (2 ماه رایگان)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'تجربه بدون تبلیغ';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'یادآورها';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'ویجت صفحه اصلی';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'از برنامه بدون تبلیغات استفاده کنید';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'یادآورهای ذکر تنظیم کنید';
+
+  @override
+  String get premiumFeatureWidgetDesc =>
+      'از ویجت ذکر در صفحه اصلی استفاده کنید';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'تجربه پریمیم تسبیح دیجیتال';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'تجربه بدون تبلیغات';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'از تجربه بی‌وقفه ذکر و دعا لذت ببرید';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'یادآوری‌های هوشمند';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'یادآوری‌های قابل تنظیم نماز و ذکر';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'ویجت صفحه اصلی';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'دسترسی سریع در صفحه اصلی اندروید';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'امکانات نامحدود';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'تمام امکانات پریمیم و به‌روزرسانی‌های آینده';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'امکانات پریمیم';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'دوره آزمایشی رایگان';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7 روز';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14 روز';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'اشتراک ماهانه';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'اشتراک سالانه';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      '7 روز اول رایگان\nسپس پرداخت ماهانه';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      '14 روز اول رایگان\nسپس پرداخت سالانه';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'می‌توانید در هر زمان طی دوره آزمایشی لغو کنید.\nاگر لغو نکنید، اشتراک پولی به صورت خودکار شروع می‌شود.';
+
+  @override
+  String get firstLaunchIntroRecommended => 'توصیه شده';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'در حال بارگیری قیمت...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return '14 روز اول رایگان\n$savings% اقتصادی‌تر';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'شروع پریمیم';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'بعداً';
 }

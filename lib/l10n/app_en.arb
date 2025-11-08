@@ -1443,5 +1443,136 @@
   "notificationSettingsRestart": "Opening the app once after device restart refreshes the notification system.",
   "@notificationSettingsRestart": {
     "description": "Device restart tip"
-  }
+  },
+  "premiumRestorePurchases": "Restore",
+  "@premiumRestorePurchases": {
+    "description": "Restore purchases button text"
+  },
+  "premiumTitle": "Go Premium",
+  "@premiumTitle": {
+    "description": "Premium screen main title"
+  },
+  "premiumSubtitle": "Complete digital tasbih experience",
+  "@premiumSubtitle": {
+    "description": "Premium screen subtitle"
+  },
+  "premiumTerms": "Subscription will renew automatically. You can cancel anytime.",
+  "@premiumTerms": {
+    "description": "Premium subscription terms text"
+  },
+  "premiumFeatureAdFreeTitle": "Ad-Free Experience",
+  "@premiumFeatureAdFreeTitle": {
+    "description": "Ad-free feature title"
+  },
+  "premiumFeatureAdFreeDescription": "Uninterrupted zikr experience",
+  "@premiumFeatureAdFreeDescription": {
+    "description": "Ad-free feature description"
+  },
+  "premiumFeatureRemindersTitle": "Reminders",
+  "@premiumFeatureRemindersTitle": {
+    "description": "Reminders feature title"
+  },
+  "premiumFeatureRemindersDescription": "Customizable zikr reminders",
+  "@premiumFeatureRemindersDescription": {
+    "description": "Reminders feature description"
+  },
+  "premiumFeatureWidgetTitle": "Home Screen Widget",
+  "@premiumFeatureWidgetTitle": {
+    "description": "Widget feature title"
+  },
+  "premiumFeatureWidgetDescription": "Zikr counter on Android home screen",
+  "@premiumFeatureWidgetDescription": {
+    "description": "Widget feature description"
+  },
+  "premiumRecommended": "RECOMMENDED",
+  "@premiumRecommended": {
+    "description": "Recommended plan label"
+  },
+  "premiumPerYear": "/year",
+  "@premiumPerYear": {
+    "description": "Per year suffix"
+  },
+  "premiumPerMonth": "/month",
+  "@premiumPerMonth": {
+    "description": "Per month suffix"
+  },
+  "premiumTwoMonthsFree": "2 months free",
+  "@premiumTwoMonthsFree": {
+    "description": "Two months free text for yearly plan"
+  },
+  "premiumPriceLoading": "Loading price...",
+  "@premiumPriceLoading": {
+    "description": "Price loading text"
+  },
+  "subscriptionPlanFree": "Free",
+  "@subscriptionPlanFree": {
+    "description": "Free subscription plan name"
+  },
+  "subscriptionPlanMonthly": "Monthly Premium",
+  "@subscriptionPlanMonthly": {
+    "description": "Monthly premium plan name"
+  },
+  "subscriptionPlanYearly": "Yearly Premium",
+  "@subscriptionPlanYearly": {
+    "description": "Yearly premium plan name"
+  },
+  "subscriptionPlanFreeDescription": "Basic features (with ads)",
+  "@subscriptionPlanFreeDescription": {
+    "description": "Free plan description"
+  },
+  "subscriptionPlanMonthlyDescription": "All premium features - Monthly",
+  "@subscriptionPlanMonthlyDescription": {
+    "description": "Monthly plan description"
+  },
+  "subscriptionPlanYearlyDescription": "All premium features - Yearly (2 months free)",
+  "@subscriptionPlanYearlyDescription": {
+    "description": "Yearly plan description"
+  },
+  "premiumFeatureAdFreeDisplayName": "Ad-Free Experience",
+  "@premiumFeatureAdFreeDisplayName": {
+    "description": "Ad-free feature display name"
+  },
+  "premiumFeatureRemindersDisplayName": "Reminders",
+  "@premiumFeatureRemindersDisplayName": {
+    "description": "Reminders feature display name"
+  },
+  "premiumFeatureWidgetDisplayName": "Home Screen Widget",
+  "@premiumFeatureWidgetDisplayName": {
+    "description": "Widget feature display name"
+  },
+  "premiumFeatureAdFreeDesc": "Use app without ads",
+  "@premiumFeatureAdFreeDesc": {
+    "description": "Ad-free feature description"
+  },
+  "premiumFeatureRemindersDesc": "Set zikr reminders",
+  "@premiumFeatureRemindersDesc": {
+    "description": "Reminders feature description"
+  },
+  "premiumFeatureWidgetDesc": "Use zikr widget on home screen",
+  "@premiumFeatureWidgetDesc": {
+    "description": "Widget feature description"
+  },
+  "firstLaunchIntroSubtitle": "Premium Digital Tasbih Experience",
+  "firstLaunchIntroAdFreeTitle": "Ad-Free Experience",
+  "firstLaunchIntroAdFreeDescription": "Enjoy uninterrupted dhikr and prayer experience",
+  "firstLaunchIntroRemindersTitle": "Smart Reminders",
+  "firstLaunchIntroRemindersDescription": "Customizable prayer and dhikr reminders",
+  "firstLaunchIntroWidgetTitle": "Home Screen Widget",
+  "firstLaunchIntroWidgetDescription": "Quick access on Android home screen",
+  "firstLaunchIntroUnlimitedTitle": "Unlimited Features",
+  "firstLaunchIntroUnlimitedDescription": "All premium features and future updates",
+  "firstLaunchIntroPremiumFeatures": "Premium Features",
+  "firstLaunchIntroFreeTrial": "Free Trial Period",
+  "firstLaunchIntroSevenDays": "7 Days",
+  "firstLaunchIntroFourteenDays": "14 Days",
+  "firstLaunchIntroMonthlyPlan": "Monthly Subscription",
+  "firstLaunchIntroYearlyPlan": "Yearly Subscription",
+  "firstLaunchIntroTrialDescription": "First 7 days free\nThen monthly payment",
+  "firstLaunchIntroYearlyTrialDescription": "First 14 days free\nThen yearly payment",
+  "firstLaunchIntroTrialNote": "You can cancel anytime during trial period.\nIf you don't cancel, paid subscription starts automatically.",
+  "firstLaunchIntroRecommended": "RECOMMENDED",
+  "firstLaunchIntroPriceLoading": "Price loading...",
+  "firstLaunchIntroSavingsText": "First 14 days free\n{savings}% more economical",
+  "firstLaunchIntroStartPremium": "Start Premium",
+  "firstLaunchIntroLaterButton": "Later"
 }

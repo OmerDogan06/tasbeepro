@@ -1129,4 +1129,168 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'Cihaz yeniden başladıktan sonra uygulamayı bir kez açmak, bildirim sistemini yeniler.';
+
+  @override
+  String get premiumRestorePurchases => 'Geri Yükle';
+
+  @override
+  String get premiumTitle => 'Premium\'a Geçin';
+
+  @override
+  String get premiumSubtitle => 'Tam dijital tesbih deneyimi';
+
+  @override
+  String get premiumTerms =>
+      'Abonelik otomatik olarak yenilenecektir. İstediğiniz zaman iptal edebilirsiniz.';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'Reklamsız Deneyim';
+
+  @override
+  String get premiumFeatureAdFreeDescription => 'Kesintisiz zikir deneyimi';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'Hatırlatıcılar';
+
+  @override
+  String get premiumFeatureRemindersDescription =>
+      'Özelleştirilebilir zikir hatırlatıcıları';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'Ana Ekran Widget\'ı';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'Android ana ekranında zikir sayacı';
+
+  @override
+  String get premiumRecommended => 'ÖNERİLEN';
+
+  @override
+  String get premiumPerYear => '/yıl';
+
+  @override
+  String get premiumPerMonth => '/ay';
+
+  @override
+  String get premiumTwoMonthsFree => '2 ay ücretsiz';
+
+  @override
+  String get premiumPriceLoading => 'Fiyat yükleniyor...';
+
+  @override
+  String get subscriptionPlanFree => 'Ücretsiz';
+
+  @override
+  String get subscriptionPlanMonthly => 'Aylık Premium';
+
+  @override
+  String get subscriptionPlanYearly => 'Yıllık Premium';
+
+  @override
+  String get subscriptionPlanFreeDescription => 'Temel özellikler (reklamlı)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'Tüm premium özellikler - Aylık';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'Tüm premium özellikler - Yıllık (2 ay ücretsiz)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'Reklamsız Deneyim';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'Hatırlatıcılar';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'Ana Ekran Widget\'ı';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'Uygulamayı reklamsız kullanın';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'Zikir hatırlatıcıları ayarlayın';
+
+  @override
+  String get premiumFeatureWidgetDesc => 'Ana ekranda zikir widget\'ı kullanın';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'Premium Dijital Tesbih Deneyimi';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'Reklamsız Deneyim';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'Kesintisiz zikir ve dua deneyimi yaşayın';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'Akıllı Hatırlatıcılar';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'Özelleştirilebilir namaz ve zikir hatırlatıcıları';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'Ana Ekran Widget\'ı';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'Android ana ekranında hızlı erişim';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'Sınırsız Özellikler';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'Tüm premium özellikler ve gelecek güncellemeler';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'Premium Özellikler';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'Ücretsiz Deneme Süresi';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7 Gün';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14 Gün';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'Aylık Abonelik';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'Yıllık Abonelik';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      'İlk 7 gün ücretsiz\nSonra aylık ödeme';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      'İlk 14 gün ücretsiz\nSonra yıllık ödeme';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'Deneme süresinde istediğiniz zaman iptal edebilirsiniz.\nİptal etmezseniz otomatik olarak ücretli abonelik başlar.';
+
+  @override
+  String get firstLaunchIntroRecommended => 'ÖNERİLEN';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'Fiyat yükleniyor...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return 'İlk 14 gün ücretsiz\n%$savings daha ekonomik';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'Premium\'a Başla';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'Daha Sonra';
 }

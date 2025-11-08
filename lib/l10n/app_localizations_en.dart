@@ -1134,4 +1134,168 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'Opening the app once after device restart refreshes the notification system.';
+
+  @override
+  String get premiumRestorePurchases => 'Restore';
+
+  @override
+  String get premiumTitle => 'Go Premium';
+
+  @override
+  String get premiumSubtitle => 'Complete digital tasbih experience';
+
+  @override
+  String get premiumTerms =>
+      'Subscription will renew automatically. You can cancel anytime.';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'Ad-Free Experience';
+
+  @override
+  String get premiumFeatureAdFreeDescription => 'Uninterrupted zikr experience';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'Reminders';
+
+  @override
+  String get premiumFeatureRemindersDescription =>
+      'Customizable zikr reminders';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'Home Screen Widget';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'Zikr counter on Android home screen';
+
+  @override
+  String get premiumRecommended => 'RECOMMENDED';
+
+  @override
+  String get premiumPerYear => '/year';
+
+  @override
+  String get premiumPerMonth => '/month';
+
+  @override
+  String get premiumTwoMonthsFree => '2 months free';
+
+  @override
+  String get premiumPriceLoading => 'Loading price...';
+
+  @override
+  String get subscriptionPlanFree => 'Free';
+
+  @override
+  String get subscriptionPlanMonthly => 'Monthly Premium';
+
+  @override
+  String get subscriptionPlanYearly => 'Yearly Premium';
+
+  @override
+  String get subscriptionPlanFreeDescription => 'Basic features (with ads)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'All premium features - Monthly';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'All premium features - Yearly (2 months free)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'Ad-Free Experience';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'Reminders';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'Home Screen Widget';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'Use app without ads';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'Set zikr reminders';
+
+  @override
+  String get premiumFeatureWidgetDesc => 'Use zikr widget on home screen';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'Premium Digital Tasbih Experience';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'Ad-Free Experience';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'Enjoy uninterrupted dhikr and prayer experience';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'Smart Reminders';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'Customizable prayer and dhikr reminders';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'Home Screen Widget';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'Quick access on Android home screen';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'Unlimited Features';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'All premium features and future updates';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'Premium Features';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'Free Trial Period';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7 Days';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14 Days';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'Monthly Subscription';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'Yearly Subscription';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      'First 7 days free\nThen monthly payment';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      'First 14 days free\nThen yearly payment';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'You can cancel anytime during trial period.\nIf you don\'t cancel, paid subscription starts automatically.';
+
+  @override
+  String get firstLaunchIntroRecommended => 'RECOMMENDED';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'Price loading...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return 'First 14 days free\n$savings% more economical';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'Start Premium';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'Later';
 }

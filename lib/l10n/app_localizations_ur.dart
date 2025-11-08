@@ -1125,4 +1125,168 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'آلے کے دوبارہ شروع ہونے کے بعد ایپ کو ایک بار کھولنا اطلاع کے نظام کو تازہ کرتا ہے۔';
+
+  @override
+  String get premiumRestorePurchases => 'بحالی';
+
+  @override
+  String get premiumTitle => 'پریمیم بنیں';
+
+  @override
+  String get premiumSubtitle => 'مکمل ڈیجیٹل تسبیح تجربہ';
+
+  @override
+  String get premiumTerms =>
+      'سبسکرپشن خودکار طور پر تجدید ہوگی۔ آپ کسی بھی وقت منسوخ کر سکتے ہیں۔';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'اشتہارات سے پاک تجربہ';
+
+  @override
+  String get premiumFeatureAdFreeDescription => 'بلا رکاوٹ ذکر کا تجربہ';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'یاد دہانیاں';
+
+  @override
+  String get premiumFeatureRemindersDescription => 'حسب ضرورت ذکر یاد دہانیاں';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'ہوم اسکرین ویجٹ';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'اینڈرائیڈ ہوم اسکرین پر ذکر کاؤنٹر';
+
+  @override
+  String get premiumRecommended => 'تجویز کردہ';
+
+  @override
+  String get premiumPerYear => '/سال';
+
+  @override
+  String get premiumPerMonth => '/مہینہ';
+
+  @override
+  String get premiumTwoMonthsFree => '2 مہینے مفت';
+
+  @override
+  String get premiumPriceLoading => 'قیمت لوڈ ہو رہی ہے...';
+
+  @override
+  String get subscriptionPlanFree => 'مفت';
+
+  @override
+  String get subscriptionPlanMonthly => 'پریمیم ماہانہ';
+
+  @override
+  String get subscriptionPlanYearly => 'پریمیم سالانہ';
+
+  @override
+  String get subscriptionPlanFreeDescription =>
+      'بنیادی خصوصیات (اشتہارات کے ساتھ)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'تمام پریمیم خصوصیات - ماہانہ';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'تمام پریمیم خصوصیات - سالانہ (2 مہینے مفت)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'اشتہارات سے پاک تجربہ';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'یاد دہانیاں';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'ہوم اسکرین ویجٹ';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'ایپ کو اشتہارات کے بغیر استعمال کریں';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'ذکر کی یاد دہانیاں سیٹ کریں';
+
+  @override
+  String get premiumFeatureWidgetDesc => 'ہوم اسکرین پر ذکر ویجٹ استعمال کریں';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'پریمیم ڈیجیٹل تسبیح کا تجربہ';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'اشتہارات سے پاک تجربہ';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'بلا رکاوٹ ذکر اور دعا کا تجربہ کریں';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'ذہین یاد دہانیاں';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'قابل تشکیل نماز اور ذکر کی یاد دہانیاں';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'ہوم اسکرین ویجٹ';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'اینڈرائیڈ ہوم اسکرین پر فوری رسائی';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'لامحدود خصوصیات';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'تمام پریمیم خصوصیات اور مستقبل کی اپ ڈیٹس';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'پریمیم خصوصیات';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'مفت آزمائشی مدت';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7 دن';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14 دن';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'ماہانہ سبسکرپشن';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'سالانہ سبسکرپشن';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      'پہلے 7 دن مفت\nپھر ماہانہ ادائیگی';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      'پہلے 14 دن مفت\nپھر سالانہ ادائیگی';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'آپ آزمائشی مدت کے دوران کسی بھی وقت منسوخ کر سکتے ہیں۔\nاگر منسوخ نہیں کرتے تو خود بخود پیڈ سبسکرپشن شروع ہو جائے گی۔';
+
+  @override
+  String get firstLaunchIntroRecommended => 'تجویز کردہ';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'قیمت لوڈ ہو رہی ہے...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return 'پہلے 14 دن مفت\n$savings% زیادہ اقتصادی';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'پریمیم شروع کریں';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'بعد میں';
 }

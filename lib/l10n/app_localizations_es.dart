@@ -1151,4 +1151,172 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'Abrir la aplicación una vez después de reiniciar el dispositivo renueva el sistema de notificaciones.';
+
+  @override
+  String get premiumRestorePurchases => 'Restaurar';
+
+  @override
+  String get premiumTitle => 'Hazte Premium';
+
+  @override
+  String get premiumSubtitle => 'Experiencia completa de tasbih digital';
+
+  @override
+  String get premiumTerms =>
+      'La suscripción se renovará automáticamente. Puedes cancelar en cualquier momento.';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'Experiencia sin anuncios';
+
+  @override
+  String get premiumFeatureAdFreeDescription =>
+      'Experiencia de dhikr sin interrupciones';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'Recordatorios';
+
+  @override
+  String get premiumFeatureRemindersDescription =>
+      'Recordatorios de dhikr personalizables';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'Widget de pantalla de inicio';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'Contador de dhikr en la pantalla de inicio de Android';
+
+  @override
+  String get premiumRecommended => 'RECOMENDADO';
+
+  @override
+  String get premiumPerYear => '/año';
+
+  @override
+  String get premiumPerMonth => '/mes';
+
+  @override
+  String get premiumTwoMonthsFree => '2 meses gratis';
+
+  @override
+  String get premiumPriceLoading => 'Cargando precio...';
+
+  @override
+  String get subscriptionPlanFree => 'Gratis';
+
+  @override
+  String get subscriptionPlanMonthly => 'Premium Mensual';
+
+  @override
+  String get subscriptionPlanYearly => 'Premium Anual';
+
+  @override
+  String get subscriptionPlanFreeDescription =>
+      'Características básicas (con anuncios)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'Todas las características premium - Mensual';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'Todas las características premium - Anual (2 meses gratis)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'Experiencia sin anuncios';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'Recordatorios';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'Widget de pantalla de inicio';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'Usar la app sin anuncios';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'Configurar recordatorios de dhikr';
+
+  @override
+  String get premiumFeatureWidgetDesc =>
+      'Usar widget de dhikr en pantalla de inicio';
+
+  @override
+  String get firstLaunchIntroSubtitle =>
+      'Experiencia Premium de Tasbih Digital';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'Experiencia Sin Anuncios';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'Disfruta de una experiencia de dhikr y oración ininterrumpida';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'Recordatorios Inteligentes';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'Recordatorios de oración y dhikr personalizables';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'Widget de Pantalla de Inicio';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'Acceso rápido en la pantalla de inicio de Android';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'Funciones Ilimitadas';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'Todas las funciones premium y actualizaciones futuras';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'Funciones Premium';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'Período de Prueba Gratuito';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7 Días';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14 Días';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'Suscripción Mensual';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'Suscripción Anual';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      'Primeros 7 días gratis\nLuego pago mensual';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      'Primeros 14 días gratis\nLuego pago anual';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'Puedes cancelar en cualquier momento durante el período de prueba.\nSi no cancelas, la suscripción de pago comienza automáticamente.';
+
+  @override
+  String get firstLaunchIntroRecommended => 'RECOMENDADO';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'Cargando precio...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return 'Primeros 14 días gratis\n$savings% más económico';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'Comenzar Premium';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'Más Tarde';
 }

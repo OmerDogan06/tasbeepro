@@ -1136,4 +1136,169 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'Membuka aplikasi sekali setelah perangkat restart menyegarkan sistem notifikasi.';
+
+  @override
+  String get premiumRestorePurchases => 'Pulihkan';
+
+  @override
+  String get premiumTitle => 'Beralih ke Premium';
+
+  @override
+  String get premiumSubtitle => 'Pengalaman tasbih digital lengkap';
+
+  @override
+  String get premiumTerms =>
+      'Berlangganan akan diperpanjang otomatis. Anda dapat membatalkan kapan saja.';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'Pengalaman Bebas Iklan';
+
+  @override
+  String get premiumFeatureAdFreeDescription =>
+      'Pengalaman dzikir tanpa gangguan';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'Pengingat';
+
+  @override
+  String get premiumFeatureRemindersDescription =>
+      'Pengingat dzikir yang dapat disesuaikan';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'Widget Layar Utama';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'Penghitung dzikir di layar utama Android';
+
+  @override
+  String get premiumRecommended => 'DIREKOMENDASIKAN';
+
+  @override
+  String get premiumPerYear => '/tahun';
+
+  @override
+  String get premiumPerMonth => '/bulan';
+
+  @override
+  String get premiumTwoMonthsFree => '2 bulan gratis';
+
+  @override
+  String get premiumPriceLoading => 'Memuat harga...';
+
+  @override
+  String get subscriptionPlanFree => 'Gratis';
+
+  @override
+  String get subscriptionPlanMonthly => 'Premium Bulanan';
+
+  @override
+  String get subscriptionPlanYearly => 'Premium Tahunan';
+
+  @override
+  String get subscriptionPlanFreeDescription => 'Fitur dasar (dengan iklan)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'Semua fitur premium - Bulanan';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'Semua fitur premium - Tahunan (2 bulan gratis)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'Pengalaman Bebas Iklan';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'Pengingat';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'Widget Layar Utama';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'Gunakan aplikasi tanpa iklan';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'Atur pengingat dzikir';
+
+  @override
+  String get premiumFeatureWidgetDesc => 'Gunakan widget dzikir di layar utama';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'Pengalaman Premium Tasbih Digital';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'Pengalaman Bebas Iklan';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'Nikmati pengalaman dzikir dan doa tanpa gangguan';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'Pengingat Cerdas';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'Pengingat sholat dan dzikir yang dapat disesuaikan';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'Widget Layar Utama';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'Akses cepat di layar utama Android';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'Fitur Tak Terbatas';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'Semua fitur premium dan update masa depan';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'Fitur Premium';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'Periode Uji Coba Gratis';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7 Hari';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14 Hari';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'Langganan Bulanan';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'Langganan Tahunan';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      '7 hari pertama gratis\nKemudian pembayaran bulanan';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      '14 hari pertama gratis\nKemudian pembayaran tahunan';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'Anda dapat membatalkan kapan saja selama periode uji coba.\nJika tidak dibatalkan, langganan berbayar akan dimulai otomatis.';
+
+  @override
+  String get firstLaunchIntroRecommended => 'DIREKOMENDASIKAN';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'Memuat harga...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return '14 hari pertama gratis\n$savings% lebih ekonomis';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'Mulai Premium';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'Nanti';
 }

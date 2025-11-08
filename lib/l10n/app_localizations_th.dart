@@ -1123,4 +1123,169 @@ class AppLocalizationsTh extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'การเปิดแอปครั้งเดียวหลังจากรีสตาร์ทอุปกรณ์จะรีเฟรชระบบการแจ้งเตือน';
+
+  @override
+  String get premiumRestorePurchases => 'คืนค่า';
+
+  @override
+  String get premiumTitle => 'อัปเกรดเป็นพรีเมียม';
+
+  @override
+  String get premiumSubtitle => 'ประสบการณ์ตะสบีฮ์ดิจิทัลที่สมบูรณ์';
+
+  @override
+  String get premiumTerms =>
+      'การสมัครสมาชิกจะต่ออายุอัตโนมัติ คุณสามารถยกเลิกได้ตลอดเวลา';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'ประสบการณ์ปลอดโฆษณา';
+
+  @override
+  String get premiumFeatureAdFreeDescription =>
+      'ประสบการณ์ซิกรที่ไม่มีสิ่งรบกวน';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'การแจ้งเตือน';
+
+  @override
+  String get premiumFeatureRemindersDescription =>
+      'การแจ้งเตือนซิกรที่ปรับแต่งได้';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'วิดเจ็ตหน้าจอหลัก';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'เครื่องนับซิกรบนหน้าจอหลักของ Android';
+
+  @override
+  String get premiumRecommended => 'แนะนำ';
+
+  @override
+  String get premiumPerYear => '/ปี';
+
+  @override
+  String get premiumPerMonth => '/เดือน';
+
+  @override
+  String get premiumTwoMonthsFree => '2เดือนฟรี';
+
+  @override
+  String get premiumPriceLoading => 'กำลังโหลดราคา...';
+
+  @override
+  String get subscriptionPlanFree => 'ฟรี';
+
+  @override
+  String get subscriptionPlanMonthly => 'พรีเมียมรายเดือน';
+
+  @override
+  String get subscriptionPlanYearly => 'พรีเมียมรายปี';
+
+  @override
+  String get subscriptionPlanFreeDescription => 'คุณสมบัติพื้นฐาน (มีโฆษณา)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'คุณสมบัติพรีเมียมทั้งหมด - รายเดือน';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'คุณสมบัติพรีเมียมทั้งหมด - รายปี (2เดือนฟรี)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'ประสบการณ์ปลอดโฆษณา';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'การแจ้งเตือน';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'วิดเจ็ตหน้าจอหลัก';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'ใช้แอปโดยไม่มีโฆษณา';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'ตั้งการแจ้งเตือนซิกร์';
+
+  @override
+  String get premiumFeatureWidgetDesc => 'ใช้วิดเจ็ตซิกร์บนหน้าจอหลัก';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'ประสบการณ์พรีเมียมดิจิทัลตัสบีห์';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'ประสบการณ์ปลอดโฆษณา';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'เพลิดเพลินกับประสบการณ์ซิกร์และการสวดมนต์อย่างต่อเนื่อง';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'การแจ้งเตือนอัจฉริยะ';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'การแจ้งเตือนการละหมาดและซิกร์ที่ปรับแต่งได้';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'วิดเจ็ตหน้าจอหลัก';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'เข้าถึงได้อย่างรวดเร็วบนหน้าจอหลักของ Android';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'คุณสมบัติไม่จำกัด';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'คุณสมบัติพรีเมียมทั้งหมดและการอัพเดทในอนาคต';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'คุณสมบัติพรีเมียม';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'ช่วงทดลองใช้ฟรี';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7 วัน';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14 วัน';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'การสมัครรายเดือน';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'การสมัครรายปี';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      '7 วันแรกฟรี\nจากนั้นชำระเงินรายเดือน';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      '14 วันแรกฟรี\nจากนั้นชำระเงินรายปี';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'คุณสามารถยกเลิกได้ตลอดเวลาในช่วงทดลองใช้\nหากไม่ยกเลิก การสมัครแบบเสียเงินจะเริ่มโดยอัตโนมัติ';
+
+  @override
+  String get firstLaunchIntroRecommended => 'แนะนำ';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'กำลังโหลดราคา...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return '14 วันแรกฟรี\nประหยัดกว่า $savings%';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'เริ่มพรีเมียม';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'ภายหลัง';
 }

@@ -1135,4 +1135,170 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'Qurilmani qayta ishga tushirgandan keyin ilovani bir marta ochish bildirishnoma tizimini yangilaydi.';
+
+  @override
+  String get premiumRestorePurchases => 'Tiklash';
+
+  @override
+  String get premiumTitle => 'Premium bo\'ling';
+
+  @override
+  String get premiumSubtitle => 'To\'liq raqamli tasbeh tajribasi';
+
+  @override
+  String get premiumTerms =>
+      'Obuna avtomatik yangilanadi. Istalgan vaqtda bekor qilishingiz mumkin.';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'Reklamasiz tajriba';
+
+  @override
+  String get premiumFeatureAdFreeDescription => 'Uzluksiz zikr tajribasi';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'Eslatmalar';
+
+  @override
+  String get premiumFeatureRemindersDescription =>
+      'Moslashtirilishi mumkin bo\'lgan zikr eslatmalari';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'Asosiy ekran vidzheti';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'Android asosiy ekranida zikr hisoblagichi';
+
+  @override
+  String get premiumRecommended => 'TAVSIYA ETILADI';
+
+  @override
+  String get premiumPerYear => '/yil';
+
+  @override
+  String get premiumPerMonth => '/oy';
+
+  @override
+  String get premiumTwoMonthsFree => '2 oy bepul';
+
+  @override
+  String get premiumPriceLoading => 'Narx yuklanmoqda...';
+
+  @override
+  String get subscriptionPlanFree => 'Bepul';
+
+  @override
+  String get subscriptionPlanMonthly => 'Premium Oylik';
+
+  @override
+  String get subscriptionPlanYearly => 'Premium Yillik';
+
+  @override
+  String get subscriptionPlanFreeDescription =>
+      'Asosiy funksiyalar (reklamali)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'Barcha premium funksiyalar - Oylik';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'Barcha premium funksiyalar - Yillik (2 oy bepul)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'Reklamasiz tajriba';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'Eslatmalar';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'Asosiy ekran vidzheti';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'Ilovani reklamasiz ishlating';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'Zikr eslatmalarini o\'rnating';
+
+  @override
+  String get premiumFeatureWidgetDesc =>
+      'Asosiy ekranda zikr vidzhetini ishlating';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'Premium Raqamli Tasbeh Tajribasi';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'Reklamasiz Tajriba';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'Uzluksiz zikr va duo tajribasidan bahramand bo\'ling';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'Aqlli Eslatmalar';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'Moslashtirilgan namaz va zikr eslatmalari';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'Bosh Ekran Vidjeti';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'Android bosh ekranida tezkor kirish';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'Cheksiz Imkoniyatlar';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'Barcha premium funksiyalar va kelajakdagi yangilanishlar';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'Premium Funksiyalar';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'Bepul Sinov Muddati';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7 Kun';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14 Kun';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'Oylik Obuna';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'Yillik Obuna';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      'Dastlabki 7 kun bepul\nKeyin oylik to\'lov';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      'Dastlabki 14 kun bepul\nKeyin yillik to\'lov';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'Sinov muddatida istalgan vaqtda bekor qilishingiz mumkin.\nBekor qilmasangiz, pullik obuna avtomatik boshlanaadi.';
+
+  @override
+  String get firstLaunchIntroRecommended => 'TAVSIYA ETILADI';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'Narx yuklanmoqda...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return 'Dastlabki 14 kun bepul\n$savings% tejamkor';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'Premiumni Boshlash';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'Keyinroq';
 }

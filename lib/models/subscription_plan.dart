@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
+
 enum SubscriptionPlan {
   free('free'),
   monthly('tasbee_pro_premium_monthly'),
@@ -7,25 +10,25 @@ enum SubscriptionPlan {
   
   final String productId;
 
-  String get displayName {
+  String displayName(BuildContext context) {
     switch (this) {
       case SubscriptionPlan.free:
-        return 'Ücretsiz';
+        return AppLocalizations.of(context)?.subscriptionPlanFree ?? 'Ücretsiz';
       case SubscriptionPlan.monthly:
-        return 'Aylık Premium';
+        return AppLocalizations.of(context)?.subscriptionPlanMonthly ?? 'Aylık Premium';
       case SubscriptionPlan.yearly:
-        return 'Yıllık Premium';
+        return AppLocalizations.of(context)?.subscriptionPlanYearly ?? 'Yıllık Premium';
     }
   }
 
-  String get description {
+  String description(BuildContext context) {
     switch (this) {
       case SubscriptionPlan.free:
-        return 'Temel özellikler (reklamlı)';
+        return AppLocalizations.of(context)?.subscriptionPlanFreeDescription ?? 'Temel özellikler (reklamlı)';
       case SubscriptionPlan.monthly:
-        return 'Tüm premium özellikler - Aylık';
+        return AppLocalizations.of(context)?.subscriptionPlanMonthlyDescription ?? 'Tüm premium özellikler - Aylık';
       case SubscriptionPlan.yearly:
-        return 'Tüm premium özellikler - Yıllık (2 ay ücretsiz)';
+        return AppLocalizations.of(context)?.subscriptionPlanYearlyDescription ?? 'Tüm premium özellikler - Yıllık (2 ay ücretsiz)';
     }
   }
 
@@ -50,25 +53,25 @@ enum PremiumFeature {
   
   final String key;
 
-  String get displayName {
+  String displayName(BuildContext context) {
     switch (this) {
       case PremiumFeature.adFree:
-        return 'Reklamsız Deneyim';
+        return AppLocalizations.of(context)?.premiumFeatureAdFreeDisplayName ?? 'Reklamsız Deneyim';
       case PremiumFeature.reminders:
-        return 'Hatırlatıcılar';
+        return AppLocalizations.of(context)?.premiumFeatureRemindersDisplayName ?? 'Hatırlatıcılar';
       case PremiumFeature.androidWidget:
-        return 'Ana Ekran Widget\'ı';
+        return AppLocalizations.of(context)?.premiumFeatureWidgetDisplayName ?? 'Ana Ekran Widget\'ı';
     }
   }
 
-  String get description {
+  String description(BuildContext context) {
     switch (this) {
       case PremiumFeature.adFree:
-        return 'Uygulamayı reklamsız kullanın';
+        return AppLocalizations.of(context)?.premiumFeatureAdFreeDesc ?? 'Uygulamayı reklamsız kullanın';
       case PremiumFeature.reminders:
-        return 'Zikir hatırlatıcıları ayarlayın';
+        return AppLocalizations.of(context)?.premiumFeatureRemindersDesc ?? 'Zikir hatırlatıcıları ayarlayın';
       case PremiumFeature.androidWidget:
-        return 'Ana ekranda zikir widget\'ı kullanın';
+        return AppLocalizations.of(context)?.premiumFeatureWidgetDesc ?? 'Ana ekranda zikir widget\'ı kullanın';
     }
   }
 }

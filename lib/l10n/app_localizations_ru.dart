@@ -1137,4 +1137,169 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'После перезагрузки устройства однократное открытие приложения обновляет систему уведомлений.';
+
+  @override
+  String get premiumRestorePurchases => 'Восстановить';
+
+  @override
+  String get premiumTitle => 'Перейти на Premium';
+
+  @override
+  String get premiumSubtitle => 'Полный цифровой опыт тасбих';
+
+  @override
+  String get premiumTerms =>
+      'Подписка будет автоматически продлеваться. Вы можете отменить в любое время.';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'Без рекламы';
+
+  @override
+  String get premiumFeatureAdFreeDescription => 'Непрерывный опыт зикра';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'Напоминания';
+
+  @override
+  String get premiumFeatureRemindersDescription =>
+      'Настраиваемые напоминания о зикре';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'Виджет главного экрана';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'Счетчик зикра на главном экране Android';
+
+  @override
+  String get premiumRecommended => 'РЕКОМЕНДУЕТСЯ';
+
+  @override
+  String get premiumPerYear => '/год';
+
+  @override
+  String get premiumPerMonth => '/месяц';
+
+  @override
+  String get premiumTwoMonthsFree => '2 месяца бесплатно';
+
+  @override
+  String get premiumPriceLoading => 'Загрузка цены...';
+
+  @override
+  String get subscriptionPlanFree => 'Бесплатно';
+
+  @override
+  String get subscriptionPlanMonthly => 'Премиум Месячно';
+
+  @override
+  String get subscriptionPlanYearly => 'Премиум Годовой';
+
+  @override
+  String get subscriptionPlanFreeDescription => 'Базовые функции (с рекламой)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'Все премиум функции - Месячно';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'Все премиум функции - Годовой (2 месяца бесплатно)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'Без рекламы';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'Напоминания';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'Виджет главного экрана';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'Используйте приложение без рекламы';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'Настройте напоминания о зикре';
+
+  @override
+  String get premiumFeatureWidgetDesc =>
+      'Используйте виджет зикра на главном экране';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'Премиум Цифровой Опыт Тасбих';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'Опыт Без Рекламы';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'Наслаждайтесь непрерывным опытом зикра и молитвы';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'Умные Напоминания';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'Настраиваемые напоминания о молитве и зикре';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'Виджет Главного Экрана';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'Быстрый доступ на главном экране Android';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'Неограниченные Функции';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'Все премиум функции и будущие обновления';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'Премиум Функции';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'Бесплатный Пробный Период';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7 Дней';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14 Дней';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'Месячная Подписка';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'Годовая Подписка';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      'Первые 7 дней бесплатно\nЗатем ежемесячная оплата';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      'Первые 14 дней бесплатно\nЗатем ежегодная оплата';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'Вы можете отменить в любое время в течение пробного периода.\nЕсли не отмените, платная подписка начнется автоматически.';
+
+  @override
+  String get firstLaunchIntroRecommended => 'РЕКОМЕНДУЕТСЯ';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'Загрузка цены...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return 'Первые 14 дней бесплатно\n$savings% более экономично';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'Начать Премиум';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'Позже';
 }

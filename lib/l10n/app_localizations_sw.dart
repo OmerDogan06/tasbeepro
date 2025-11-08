@@ -1141,4 +1141,172 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'Kufungua programu mara moja baada ya kuanzisha upya kifaa kutaburudisha mfumo wa arifa.';
+
+  @override
+  String get premiumRestorePurchases => 'Rejesha';
+
+  @override
+  String get premiumTitle => 'Kuwa Premium';
+
+  @override
+  String get premiumSubtitle => 'Uzoefu kamili wa tasbih ya dijiti';
+
+  @override
+  String get premiumTerms =>
+      'Usajili utajumuishwa kiotomatiki. Unaweza kufuta wakati wowote.';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'Uzoefu bila matangazo';
+
+  @override
+  String get premiumFeatureAdFreeDescription =>
+      'Uzoefu wa dhikri bila kuvunjwa';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'Vikumbusho';
+
+  @override
+  String get premiumFeatureRemindersDescription =>
+      'Vikumbusho vya dhikri vilivyoweza kurekebishwa';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'Wijeti ya Skrini Kuu';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'Kihesabu cha dhikri kwenye skrini kuu ya Android';
+
+  @override
+  String get premiumRecommended => 'INASHAURIWA';
+
+  @override
+  String get premiumPerYear => '/mwaka';
+
+  @override
+  String get premiumPerMonth => '/mwezi';
+
+  @override
+  String get premiumTwoMonthsFree => 'Miezi 2 bila malipo';
+
+  @override
+  String get premiumPriceLoading => 'Inapakia bei...';
+
+  @override
+  String get subscriptionPlanFree => 'Bure';
+
+  @override
+  String get subscriptionPlanMonthly => 'Premium ya Kila Mwezi';
+
+  @override
+  String get subscriptionPlanYearly => 'Premium ya Kila Mwaka';
+
+  @override
+  String get subscriptionPlanFreeDescription =>
+      'Vipengele vya msingi (na matangazo)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'Vipengele vyote vya premium - Kila mwezi';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'Vipengele vyote vya premium - Kila mwaka (miezi 2 bila malipo)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'Uzoefu bila matangazo';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'Vikumbusho';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'Wijeti ya Skrini Kuu';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'Tumia programu bila matangazo';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'Weka vikumbusho vya dhikr';
+
+  @override
+  String get premiumFeatureWidgetDesc =>
+      'Tumia widget ya dhikr kwenye skrini ya kwanza';
+
+  @override
+  String get firstLaunchIntroSubtitle =>
+      'Uzoefu wa Premium wa Tasbih ya Kidijitali';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'Uzoefu bila Matangazo';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'Furahia uzoefu wa dhikr na dua bila kukatizwa';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'Vikumbusho Vyenye Akili';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'Vikumbusho vya sala na dhikr vinavyoweza kubadilishwa';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'Widget ya Skrini ya Kwanza';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'Ufikiaji wa haraka kwenye skrini ya kwanza ya Android';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'Vipengele Visivyo na Kikomo';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'Vipengele vyote vya premium na masasisho ya baadaye';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'Vipengele vya Premium';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'Kipindi cha Majaribio bila Malipo';
+
+  @override
+  String get firstLaunchIntroSevenDays => 'Siku 7';
+
+  @override
+  String get firstLaunchIntroFourteenDays => 'Siku 14';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'Usajili wa Kila Mwezi';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'Usajili wa Kila Mwaka';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      'Siku 7 za kwanza bila malipo\nKisha malipo ya kila mwezi';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      'Siku 14 za kwanza bila malipo\nKisha malipo ya kila mwaka';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'Unaweza kughairi wakati wowote wakati wa kipindi cha majaribio.\nUsipoghairi, usajili wa kulipa utaanza kiotomatiki.';
+
+  @override
+  String get firstLaunchIntroRecommended => 'INAPENDEKEZWA';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'Inapakia bei...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return 'Siku 14 za kwanza bila malipo\n$savings% ya kiuchumi zaidi';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'Anza Premium';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'Baadaye';
 }

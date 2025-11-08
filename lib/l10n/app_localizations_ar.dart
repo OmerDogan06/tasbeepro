@@ -1109,4 +1109,168 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'فتح التطبيق مرة واحدة بعد إعادة تشغيل الجهاز ينعش نظام الإشعارات.';
+
+  @override
+  String get premiumRestorePurchases => 'استرداد';
+
+  @override
+  String get premiumTitle => 'الترقية إلى المميز';
+
+  @override
+  String get premiumSubtitle => 'تجربة مسبحة رقمية كاملة';
+
+  @override
+  String get premiumTerms =>
+      'سيتم تجديد الاشتراك تلقائياً. يمكنك الإلغاء في أي وقت.';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'تجربة خالية من الإعلانات';
+
+  @override
+  String get premiumFeatureAdFreeDescription => 'تجربة ذكر بدون انقطاع';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'التذكيرات';
+
+  @override
+  String get premiumFeatureRemindersDescription => 'تذكيرات ذكر قابلة للتخصيص';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'ودجت الشاشة الرئيسية';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'عداد الذكر على الشاشة الرئيسية للأندرويد';
+
+  @override
+  String get premiumRecommended => 'موصى به';
+
+  @override
+  String get premiumPerYear => '/سنة';
+
+  @override
+  String get premiumPerMonth => '/شهر';
+
+  @override
+  String get premiumTwoMonthsFree => 'شهرين مجاناً';
+
+  @override
+  String get premiumPriceLoading => 'جاري تحميل السعر...';
+
+  @override
+  String get subscriptionPlanFree => 'مجاني';
+
+  @override
+  String get subscriptionPlanMonthly => 'مميز شهري';
+
+  @override
+  String get subscriptionPlanYearly => 'مميز سنوي';
+
+  @override
+  String get subscriptionPlanFreeDescription => 'الميزات الأساسية (مع إعلانات)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'جميع الميزات المميزة - شهرياً';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'جميع الميزات المميزة - سنوياً (شهرين مجاناً)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'تجربة خالية من الإعلانات';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'التذكيرات';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'ودجت الشاشة الرئيسية';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'استخدام التطبيق بدون إعلانات';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'تعيين تذكيرات الذكر';
+
+  @override
+  String get premiumFeatureWidgetDesc =>
+      'استخدام أداة الذكر على الشاشة الرئيسية';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'تجربة التسبيح الرقمي المميزة';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'تجربة خالية من الإعلانات';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'استمتع بتجربة ذكر ودعاء غير منقطعة';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'تذكيرات ذكية';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'تذكيرات صلاة وذكر قابلة للتخصيص';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'أداة الشاشة الرئيسية';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'وصول سريع على شاشة Android الرئيسية';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'مميزات لا محدودة';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'جميع المميزات المتقدمة والتحديثات المستقبلية';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'المميزات المتقدمة';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'فترة تجريبية مجانية';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7 أيام';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14 يوم';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'اشتراك شهري';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'اشتراك سنوي';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      'أول 7 أيام مجانية\nثم دفع شهري';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      'أول 14 يوم مجاناً\nثم دفع سنوي';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'يمكنك الإلغاء في أي وقت خلال الفترة التجريبية.\nإذا لم تلغ، يبدأ الاشتراك المدفوع تلقائياً.';
+
+  @override
+  String get firstLaunchIntroRecommended => 'مُوصى به';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'جارٍ تحميل السعر...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return 'أول 14 يوم مجاناً\nوفر $savings% أكثر اقتصادية';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'ابدأ المميز';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'لاحقاً';
 }

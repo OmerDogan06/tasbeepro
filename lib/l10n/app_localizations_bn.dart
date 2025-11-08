@@ -1133,4 +1133,169 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       'ডিভাইস রিস্টার্ট করার পর একবার অ্যাপ খোলা নোটিফিকেশন সিস্টেম রিফ্রেশ করে।';
+
+  @override
+  String get premiumRestorePurchases => 'পুনরুদ্ধার';
+
+  @override
+  String get premiumTitle => 'প্রিমিয়াম হন';
+
+  @override
+  String get premiumSubtitle => 'সম্পূর্ণ ডিজিটাল তাসবিহ অভিজ্ঞতা';
+
+  @override
+  String get premiumTerms =>
+      'সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে নবায়ন হবে। আপনি যে কোনো সময় বাতিল করতে পারেন।';
+
+  @override
+  String get premiumFeatureAdFreeTitle => 'বিজ্ঞাপন-মুক্ত অভিজ্ঞতা';
+
+  @override
+  String get premiumFeatureAdFreeDescription => 'নিরবচ্ছিন্ন যিকির অভিজ্ঞতা';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'অনুস্মারক';
+
+  @override
+  String get premiumFeatureRemindersDescription =>
+      'কাস্টমাইজেবল যিকির অনুস্মারক';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'হোম স্ক্রিন উইজেট';
+
+  @override
+  String get premiumFeatureWidgetDescription =>
+      'অ্যান্ড্রয়েড হোম স্ক্রিনে যিকির কাউন্টার';
+
+  @override
+  String get premiumRecommended => 'প্রস্তাবিত';
+
+  @override
+  String get premiumPerYear => '/বছর';
+
+  @override
+  String get premiumPerMonth => '/মাস';
+
+  @override
+  String get premiumTwoMonthsFree => '২ মাস বিনামূল্যে';
+
+  @override
+  String get premiumPriceLoading => 'দাম লোড হচ্ছে...';
+
+  @override
+  String get subscriptionPlanFree => 'বিনামূল্যে';
+
+  @override
+  String get subscriptionPlanMonthly => 'প্রিমিয়াম মাসিক';
+
+  @override
+  String get subscriptionPlanYearly => 'প্রিমিয়াম বার্ষিক';
+
+  @override
+  String get subscriptionPlanFreeDescription => 'মৌলিক বৈশিষ্ট্য (বিজ্ঞাপন সহ)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription =>
+      'সমস্ত প্রিমিয়াম বৈশিষ্ট্য - মাসিক';
+
+  @override
+  String get subscriptionPlanYearlyDescription =>
+      'সমস্ত প্রিমিয়াম বৈশিষ্ট্য - বার্ষিক (২ মাস বিনামূল্যে)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => 'বিজ্ঞাপন-মুক্ত অভিজ্ঞতা';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'অনুস্মারক';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'হোম স্ক্রিন উইজেট';
+
+  @override
+  String get premiumFeatureAdFreeDesc => 'বিজ্ঞাপন ছাড়া অ্যাপ ব্যবহার করুন';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'জিকির রিমাইন্ডার সেট করুন';
+
+  @override
+  String get premiumFeatureWidgetDesc =>
+      'হোম স্ক্রিনে জিকির উইজেট ব্যবহার করুন';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'প্রিমিয়াম ডিজিটাল তাসবিহ অভিজ্ঞতা';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => 'বিজ্ঞাপনমুক্ত অভিজ্ঞতা';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription =>
+      'নিরবচ্ছিন্ন জিকির এবং দোয়ার অভিজ্ঞতা উপভোগ করুন';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'স্মার্ট রিমাইন্ডার';
+
+  @override
+  String get firstLaunchIntroRemindersDescription =>
+      'কাস্টমাইজযোগ্য নামাজ এবং জিকির রিমাইন্ডার';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'হোম স্ক্রিন উইজেট';
+
+  @override
+  String get firstLaunchIntroWidgetDescription =>
+      'অ্যান্ড্রয়েড হোম স্ক্রিনে দ্রুত অ্যাক্সেস';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => 'সীমাহীন ফিচার';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription =>
+      'সমস্ত প্রিমিয়াম ফিচার এবং ভবিষ্যতের আপডেট';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'প্রিমিয়াম ফিচার';
+
+  @override
+  String get firstLaunchIntroFreeTrial => 'ফ্রি ট্রায়াল পিরিয়ড';
+
+  @override
+  String get firstLaunchIntroSevenDays => '৭ দিন';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '১৪ দিন';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => 'মাসিক সাবস্ক্রিপশন';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => 'বার্ষিক সাবস্ক্রিপশন';
+
+  @override
+  String get firstLaunchIntroTrialDescription =>
+      'প্রথম ৭ দিন ফ্রি\nতারপর মাসিক পেমেন্ট';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription =>
+      'প্রথম ১৪ দিন ফ্রি\nতারপর বার্ষিক পেমেন্ট';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'আপনি ট্রায়াল পিরিয়ডের সময় যেকোনো সময় বাতিল করতে পারেন।\nবাতিল না করলে পেইড সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে শুরু হবে।';
+
+  @override
+  String get firstLaunchIntroRecommended => 'প্রস্তাবিত';
+
+  @override
+  String get firstLaunchIntroPriceLoading => 'মূল্য লোড হচ্ছে...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return 'প্রথম ১৪ দিন ফ্রি\n$savings% বেশি সাশ্রয়ী';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'প্রিমিয়াম শুরু করুন';
+
+  @override
+  String get firstLaunchIntroLaterButton => 'পরে';
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+import '../l10n/app_localizations.dart';
 import '../models/subscription_plan.dart';
 import '../services/subscription_service.dart';
 import 'home_screen.dart';
@@ -112,9 +113,9 @@ class PremiumScreen extends StatelessWidget {
                   actions: [
                     TextButton(
                       onPressed: () => controller.restorePurchases(),
-                      child: const Text(
-                        'Geri Yükle',
-                        style: TextStyle(color: Colors.white),
+                      child: Text(
+                        AppLocalizations.of(context)?.premiumRestorePurchases ?? 'Geri Yükle',
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ),
                   ],
@@ -162,9 +163,9 @@ class PremiumScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        const Text(
-                          'Premium\'a Geçin',
-                          style: TextStyle(
+                        Text(
+                          AppLocalizations.of(context)?.premiumTitle ?? 'Premium\'a Geçin',
+                          style: const TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -172,9 +173,9 @@ class PremiumScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 8),
-                        const Text(
-                          'Tam dijital tesbih deneyimi',
-                          style: TextStyle(fontSize: 16, color: Colors.white70),
+                        Text(
+                          AppLocalizations.of(context)?.premiumSubtitle ?? 'Tam dijital tesbih deneyimi',
+                          style: const TextStyle(fontSize: 16, color: Colors.white70),
                           textAlign: TextAlign.center,
                         ),
 
@@ -182,19 +183,19 @@ class PremiumScreen extends StatelessWidget {
                         const SizedBox(height: 32),
 
                         // Features
-                        _buildFeaturesList(),
+                        _buildFeaturesList(context),
 
                         const SizedBox(height: 10),
 
                         // Pricing plans
-                        _buildPricingPlans(controller),
+                        _buildPricingPlans(context, controller),
 
                         const SizedBox(height: 24),
 
                         // Terms
-                        const Text(
-                          'Abonelik otomatik olarak yenilenecektir. İstediğiniz zaman iptal edebilirsiniz.',
-                          style: TextStyle(fontSize: 12, color: Colors.white54),
+                        Text(
+                          AppLocalizations.of(context)?.premiumTerms ?? 'Abonelik otomatik olarak yenilenecektir. İstediğiniz zaman iptal edebilirsiniz.',
+                          style: const TextStyle(fontSize: 12, color: Colors.white54),
                           textAlign: TextAlign.center,
                         ),
 
@@ -211,22 +212,22 @@ class PremiumScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFeaturesList() {
+  Widget _buildFeaturesList(BuildContext context) {
     final features = [
       {
         'icon': Icons.block,
-        'title': 'Reklamsız Deneyim',
-        'description': 'Kesintisiz zikir deneyimi',
+        'title': AppLocalizations.of(context)?.premiumFeatureAdFreeTitle ?? 'Reklamsız Deneyim',
+        'description': AppLocalizations.of(context)?.premiumFeatureAdFreeDescription ?? 'Kesintisiz zikir deneyimi',
       },
       {
         'icon': Icons.notifications_active,
-        'title': 'Hatırlatıcılar',
-        'description': 'Özelleştirilebilir zikir hatırlatıcıları',
+        'title': AppLocalizations.of(context)?.premiumFeatureRemindersTitle ?? 'Hatırlatıcılar',
+        'description': AppLocalizations.of(context)?.premiumFeatureRemindersDescription ?? 'Özelleştirilebilir zikir hatırlatıcıları',
       },
       {
         'icon': Icons.widgets,
-        'title': 'Ana Ekran Widget\'ı',
-        'description': 'Android ana ekranında zikir sayacı',
+        'title': AppLocalizations.of(context)?.premiumFeatureWidgetTitle ?? 'Ana Ekran Widget\'ı',
+        'description': AppLocalizations.of(context)?.premiumFeatureWidgetDescription ?? 'Android ana ekranında zikir sayacı',
       },
     ];
 
@@ -297,13 +298,14 @@ class PremiumScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPricingPlans(SubscriptionService controller) {
+  Widget _buildPricingPlans(BuildContext context, SubscriptionService controller) {
     final products = controller.availableProducts;
 
     return Column(
       children: [
         // Yearly plan (recommended)
         _buildPricingCard(
+          context,
           controller,
           SubscriptionPlan.yearly,
           products.firstWhereOrNull(
@@ -315,6 +317,7 @@ class PremiumScreen extends StatelessWidget {
 
         // Monthly plan
         _buildPricingCard(
+          context,
           controller,
           SubscriptionPlan.monthly,
           products.firstWhereOrNull(
@@ -326,6 +329,7 @@ class PremiumScreen extends StatelessWidget {
   }
 
   Widget _buildPricingCard(
+    BuildContext context,
     SubscriptionService controller,
     SubscriptionPlan plan,
     ProductDetails? product, {
@@ -367,9 +371,9 @@ class PremiumScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  plan.displayName,
+                  plan.displayName(context),
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: isRecommended ? emeraldGreen : Colors.white,
                   ),
@@ -391,9 +395,9 @@ class PremiumScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: const Text(
-                      'ÖNERİLEN',
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)?.premiumRecommended ?? 'ÖNERİLEN',
+                      style: const TextStyle(
                         color: goldColor,
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -418,7 +422,9 @@ class PremiumScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    plan == SubscriptionPlan.yearly ? '/yıl' : '/ay',
+                    plan == SubscriptionPlan.yearly 
+                        ? (AppLocalizations.of(context)?.premiumPerYear ?? '/yıl')
+                        : (AppLocalizations.of(context)?.premiumPerMonth ?? '/ay'),
                     style: TextStyle(
                       fontSize: 16,
                       color: isRecommended
@@ -432,7 +438,7 @@ class PremiumScreen extends StatelessWidget {
               if (plan == SubscriptionPlan.yearly) ...[
                 const SizedBox(height: 4),
                 Text(
-                  '2 ay ücretsiz',
+                  AppLocalizations.of(context)?.premiumTwoMonthsFree ?? '2 ay ücretsiz',
                   style: TextStyle(
                     fontSize: 14,
                     color: isRecommended ? emeraldGreen : goldColor,
@@ -442,9 +448,9 @@ class PremiumScreen extends StatelessWidget {
               ],
             ] else ...[
               Text(
-                'Fiyat yükleniyor...',
+                AppLocalizations.of(context)?.premiumPriceLoading ?? 'Fiyat yükleniyor...',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   color: isRecommended
                       ? emeraldGreen.withAlpha(179)
                       : Colors.white70,
@@ -454,7 +460,7 @@ class PremiumScreen extends StatelessWidget {
 
             const SizedBox(height: 12),
             Text(
-              plan.description,
+              plan.description(context),
               style: TextStyle(
                 fontSize: 14,
                 color: isRecommended

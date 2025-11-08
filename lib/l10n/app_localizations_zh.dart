@@ -1083,4 +1083,156 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get notificationSettingsRestart => '设备重启后打开应用一次会刷新通知系统。';
+
+  @override
+  String get premiumRestorePurchases => '恢复';
+
+  @override
+  String get premiumTitle => '升级为高级版';
+
+  @override
+  String get premiumSubtitle => '完整的数字念珠体验';
+
+  @override
+  String get premiumTerms => '订阅将自动续订。您可以随时取消。';
+
+  @override
+  String get premiumFeatureAdFreeTitle => '无广告体验';
+
+  @override
+  String get premiumFeatureAdFreeDescription => '不间断的赞念体验';
+
+  @override
+  String get premiumFeatureRemindersTitle => '提醒';
+
+  @override
+  String get premiumFeatureRemindersDescription => '可自定义的赞念提醒';
+
+  @override
+  String get premiumFeatureWidgetTitle => '主屏幕小部件';
+
+  @override
+  String get premiumFeatureWidgetDescription => 'Android主屏幕上的赞念计数器';
+
+  @override
+  String get premiumRecommended => '推荐';
+
+  @override
+  String get premiumPerYear => '/年';
+
+  @override
+  String get premiumPerMonth => '/月';
+
+  @override
+  String get premiumTwoMonthsFree => '2个月免费';
+
+  @override
+  String get premiumPriceLoading => '价格加载中...';
+
+  @override
+  String get subscriptionPlanFree => '免费';
+
+  @override
+  String get subscriptionPlanMonthly => '高级版月付';
+
+  @override
+  String get subscriptionPlanYearly => '高级版年付';
+
+  @override
+  String get subscriptionPlanFreeDescription => '基础功能（含广告）';
+
+  @override
+  String get subscriptionPlanMonthlyDescription => '所有高级功能 - 月付';
+
+  @override
+  String get subscriptionPlanYearlyDescription => '所有高级功能 - 年付（2个月免费）';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => '无广告体验';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => '提醒';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => '主屏幕小部件';
+
+  @override
+  String get premiumFeatureAdFreeDesc => '无广告使用应用';
+
+  @override
+  String get premiumFeatureRemindersDesc => '设置念珠提醒';
+
+  @override
+  String get premiumFeatureWidgetDesc => '在主屏幕使用念珠小部件';
+
+  @override
+  String get firstLaunchIntroSubtitle => '高级数字念珠体验';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => '无广告体验';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription => '享受不间断的念珠和祈祷体验';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => '智能提醒';
+
+  @override
+  String get firstLaunchIntroRemindersDescription => '可定制的祈祷和念珠提醒';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => '主屏幕小部件';
+
+  @override
+  String get firstLaunchIntroWidgetDescription => 'Android主屏幕快速访问';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => '无限功能';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription => '所有高级功能和未来更新';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => '高级功能';
+
+  @override
+  String get firstLaunchIntroFreeTrial => '免费试用期';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7天';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14天';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => '月度订阅';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => '年度订阅';
+
+  @override
+  String get firstLaunchIntroTrialDescription => '前7天免费\n然后月度付款';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription => '前14天免费\n然后年度付款';
+
+  @override
+  String get firstLaunchIntroTrialNote => '您可以在试用期内随时取消。\n如果不取消，付费订阅将自动开始。';
+
+  @override
+  String get firstLaunchIntroRecommended => '推荐';
+
+  @override
+  String get firstLaunchIntroPriceLoading => '价格加载中...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return '前14天免费\n节省$savings%更经济';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => '开始高级版';
+
+  @override
+  String get firstLaunchIntroLaterButton => '稍后';
 }

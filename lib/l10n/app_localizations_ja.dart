@@ -1091,4 +1091,157 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get notificationSettingsRestart => 'デバイス再起動後、アプリを一度開くと通知システムが更新されます。';
+
+  @override
+  String get premiumRestorePurchases => '復元';
+
+  @override
+  String get premiumTitle => 'プレミアムにアップグレード';
+
+  @override
+  String get premiumSubtitle => '完全なデジタル数珠体験';
+
+  @override
+  String get premiumTerms => 'サブスクリプションは自動的に更新されます。いつでもキャンセルできます。';
+
+  @override
+  String get premiumFeatureAdFreeTitle => '広告なし体験';
+
+  @override
+  String get premiumFeatureAdFreeDescription => '中断のないズィクル体験';
+
+  @override
+  String get premiumFeatureRemindersTitle => 'リマインダー';
+
+  @override
+  String get premiumFeatureRemindersDescription => 'カスタマイズ可能なズィクルリマインダー';
+
+  @override
+  String get premiumFeatureWidgetTitle => 'ホーム画面ウィジェット';
+
+  @override
+  String get premiumFeatureWidgetDescription => 'Androidホーム画面のズィクルカウンター';
+
+  @override
+  String get premiumRecommended => 'おすすめ';
+
+  @override
+  String get premiumPerYear => '/年';
+
+  @override
+  String get premiumPerMonth => '/月';
+
+  @override
+  String get premiumTwoMonthsFree => '2ヶ月無料';
+
+  @override
+  String get premiumPriceLoading => '価格を読み込み中...';
+
+  @override
+  String get subscriptionPlanFree => '無料';
+
+  @override
+  String get subscriptionPlanMonthly => 'プレミアム月額';
+
+  @override
+  String get subscriptionPlanYearly => 'プレミアム年額';
+
+  @override
+  String get subscriptionPlanFreeDescription => '基本機能（広告あり）';
+
+  @override
+  String get subscriptionPlanMonthlyDescription => 'すべてのプレミアム機能 - 月額';
+
+  @override
+  String get subscriptionPlanYearlyDescription => 'すべてのプレミアム機能 - 年額（2ヶ月無料）';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => '広告なし体験';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => 'リマインダー';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => 'ホーム画面ウィジェット';
+
+  @override
+  String get premiumFeatureAdFreeDesc => '広告なしでアプリを使用';
+
+  @override
+  String get premiumFeatureRemindersDesc => 'ズィクルのリマインダーを設定';
+
+  @override
+  String get premiumFeatureWidgetDesc => 'ホーム画面でズィクルウィジェットを使用';
+
+  @override
+  String get firstLaunchIntroSubtitle => 'プレミアムデジタル数珠体験';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => '広告なし体験';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription => '中断のないズィクルと祈りの体験をお楽しみください';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => 'スマートリマインダー';
+
+  @override
+  String get firstLaunchIntroRemindersDescription => 'カスタマイズ可能な祈りとズィクルのリマインダー';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => 'ホーム画面ウィジェット';
+
+  @override
+  String get firstLaunchIntroWidgetDescription => 'Androidホーム画面での素早いアクセス';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => '無制限の機能';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription => 'すべてのプレミアム機能と将来のアップデート';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => 'プレミアム機能';
+
+  @override
+  String get firstLaunchIntroFreeTrial => '無料トライアル期間';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7日間';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14日間';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => '月間サブスクリプション';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => '年間サブスクリプション';
+
+  @override
+  String get firstLaunchIntroTrialDescription => '最初の7日間無料\nその後月額支払い';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription => '最初の14日間無料\nその後年額支払い';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      'トライアル期間中はいつでもキャンセルできます。\nキャンセルしない場合、有料サブスクリプションが自動的に開始されます。';
+
+  @override
+  String get firstLaunchIntroRecommended => 'おすすめ';
+
+  @override
+  String get firstLaunchIntroPriceLoading => '価格を読み込み中...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return '最初の14日間無料\n$savings%よりお得';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => 'プレミアムを開始';
+
+  @override
+  String get firstLaunchIntroLaterButton => '後で';
 }

@@ -249,9 +249,9 @@ class NotificationService extends GetxService {
     required String message,
   }) async {
     final context = Get.context;
-    
+    final id = DateTime.now().millisecondsSinceEpoch ~/ 1000; // Unique ID
     await scheduleZikrReminder(
-      id: 1,
+      id: id,
       title: context != null 
           ? (AppLocalizations.of(context)?.notificationZikirTime ?? 'Zikir Zamanı 🕌')
           : 'Zikir Zamanı 🕌',

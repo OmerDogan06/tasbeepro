@@ -2235,6 +2235,306 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Opening the app once after device restart refreshes the notification system.'**
   String get notificationSettingsRestart;
+
+  /// Restore purchases button text
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get premiumRestorePurchases;
+
+  /// Premium screen main title
+  ///
+  /// In en, this message translates to:
+  /// **'Go Premium'**
+  String get premiumTitle;
+
+  /// Premium screen subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Complete digital tasbih experience'**
+  String get premiumSubtitle;
+
+  /// Premium subscription terms text
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription will renew automatically. You can cancel anytime.'**
+  String get premiumTerms;
+
+  /// Ad-free feature title
+  ///
+  /// In en, this message translates to:
+  /// **'Ad-Free Experience'**
+  String get premiumFeatureAdFreeTitle;
+
+  /// Ad-free feature description
+  ///
+  /// In en, this message translates to:
+  /// **'Uninterrupted zikr experience'**
+  String get premiumFeatureAdFreeDescription;
+
+  /// Reminders feature title
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders'**
+  String get premiumFeatureRemindersTitle;
+
+  /// Reminders feature description
+  ///
+  /// In en, this message translates to:
+  /// **'Customizable zikr reminders'**
+  String get premiumFeatureRemindersDescription;
+
+  /// Widget feature title
+  ///
+  /// In en, this message translates to:
+  /// **'Home Screen Widget'**
+  String get premiumFeatureWidgetTitle;
+
+  /// Widget feature description
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr counter on Android home screen'**
+  String get premiumFeatureWidgetDescription;
+
+  /// Recommended plan label
+  ///
+  /// In en, this message translates to:
+  /// **'RECOMMENDED'**
+  String get premiumRecommended;
+
+  /// Per year suffix
+  ///
+  /// In en, this message translates to:
+  /// **'/year'**
+  String get premiumPerYear;
+
+  /// Per month suffix
+  ///
+  /// In en, this message translates to:
+  /// **'/month'**
+  String get premiumPerMonth;
+
+  /// Two months free text for yearly plan
+  ///
+  /// In en, this message translates to:
+  /// **'2 months free'**
+  String get premiumTwoMonthsFree;
+
+  /// Price loading text
+  ///
+  /// In en, this message translates to:
+  /// **'Loading price...'**
+  String get premiumPriceLoading;
+
+  /// Free subscription plan name
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get subscriptionPlanFree;
+
+  /// Monthly premium plan name
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Premium'**
+  String get subscriptionPlanMonthly;
+
+  /// Yearly premium plan name
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Premium'**
+  String get subscriptionPlanYearly;
+
+  /// Free plan description
+  ///
+  /// In en, this message translates to:
+  /// **'Basic features (with ads)'**
+  String get subscriptionPlanFreeDescription;
+
+  /// Monthly plan description
+  ///
+  /// In en, this message translates to:
+  /// **'All premium features - Monthly'**
+  String get subscriptionPlanMonthlyDescription;
+
+  /// Yearly plan description
+  ///
+  /// In en, this message translates to:
+  /// **'All premium features - Yearly (2 months free)'**
+  String get subscriptionPlanYearlyDescription;
+
+  /// Ad-free feature display name
+  ///
+  /// In en, this message translates to:
+  /// **'Ad-Free Experience'**
+  String get premiumFeatureAdFreeDisplayName;
+
+  /// Reminders feature display name
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders'**
+  String get premiumFeatureRemindersDisplayName;
+
+  /// Widget feature display name
+  ///
+  /// In en, this message translates to:
+  /// **'Home Screen Widget'**
+  String get premiumFeatureWidgetDisplayName;
+
+  /// Ad-free feature description
+  ///
+  /// In en, this message translates to:
+  /// **'Use app without ads'**
+  String get premiumFeatureAdFreeDesc;
+
+  /// Reminders feature description
+  ///
+  /// In en, this message translates to:
+  /// **'Set zikr reminders'**
+  String get premiumFeatureRemindersDesc;
+
+  /// Widget feature description
+  ///
+  /// In en, this message translates to:
+  /// **'Use zikr widget on home screen'**
+  String get premiumFeatureWidgetDesc;
+
+  /// No description provided for @firstLaunchIntroSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Digital Tasbih Experience'**
+  String get firstLaunchIntroSubtitle;
+
+  /// No description provided for @firstLaunchIntroAdFreeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ad-Free Experience'**
+  String get firstLaunchIntroAdFreeTitle;
+
+  /// No description provided for @firstLaunchIntroAdFreeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Enjoy uninterrupted dhikr and prayer experience'**
+  String get firstLaunchIntroAdFreeDescription;
+
+  /// No description provided for @firstLaunchIntroRemindersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart Reminders'**
+  String get firstLaunchIntroRemindersTitle;
+
+  /// No description provided for @firstLaunchIntroRemindersDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Customizable prayer and dhikr reminders'**
+  String get firstLaunchIntroRemindersDescription;
+
+  /// No description provided for @firstLaunchIntroWidgetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Home Screen Widget'**
+  String get firstLaunchIntroWidgetTitle;
+
+  /// No description provided for @firstLaunchIntroWidgetDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick access on Android home screen'**
+  String get firstLaunchIntroWidgetDescription;
+
+  /// No description provided for @firstLaunchIntroUnlimitedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited Features'**
+  String get firstLaunchIntroUnlimitedTitle;
+
+  /// No description provided for @firstLaunchIntroUnlimitedDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'All premium features and future updates'**
+  String get firstLaunchIntroUnlimitedDescription;
+
+  /// No description provided for @firstLaunchIntroPremiumFeatures.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Features'**
+  String get firstLaunchIntroPremiumFeatures;
+
+  /// No description provided for @firstLaunchIntroFreeTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Trial Period'**
+  String get firstLaunchIntroFreeTrial;
+
+  /// No description provided for @firstLaunchIntroSevenDays.
+  ///
+  /// In en, this message translates to:
+  /// **'7 Days'**
+  String get firstLaunchIntroSevenDays;
+
+  /// No description provided for @firstLaunchIntroFourteenDays.
+  ///
+  /// In en, this message translates to:
+  /// **'14 Days'**
+  String get firstLaunchIntroFourteenDays;
+
+  /// No description provided for @firstLaunchIntroMonthlyPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Subscription'**
+  String get firstLaunchIntroMonthlyPlan;
+
+  /// No description provided for @firstLaunchIntroYearlyPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly Subscription'**
+  String get firstLaunchIntroYearlyPlan;
+
+  /// No description provided for @firstLaunchIntroTrialDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'First 7 days free\nThen monthly payment'**
+  String get firstLaunchIntroTrialDescription;
+
+  /// No description provided for @firstLaunchIntroYearlyTrialDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'First 14 days free\nThen yearly payment'**
+  String get firstLaunchIntroYearlyTrialDescription;
+
+  /// No description provided for @firstLaunchIntroTrialNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You can cancel anytime during trial period.\nIf you don\'t cancel, paid subscription starts automatically.'**
+  String get firstLaunchIntroTrialNote;
+
+  /// No description provided for @firstLaunchIntroRecommended.
+  ///
+  /// In en, this message translates to:
+  /// **'RECOMMENDED'**
+  String get firstLaunchIntroRecommended;
+
+  /// No description provided for @firstLaunchIntroPriceLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Price loading...'**
+  String get firstLaunchIntroPriceLoading;
+
+  /// No description provided for @firstLaunchIntroSavingsText.
+  ///
+  /// In en, this message translates to:
+  /// **'First 14 days free\n{savings}% more economical'**
+  String firstLaunchIntroSavingsText(Object savings);
+
+  /// No description provided for @firstLaunchIntroStartPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Premium'**
+  String get firstLaunchIntroStartPremium;
+
+  /// No description provided for @firstLaunchIntroLaterButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get firstLaunchIntroLaterButton;
 }
 
 class _AppLocalizationsDelegate

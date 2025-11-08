@@ -1093,4 +1093,157 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get notificationSettingsRestart =>
       '기기 재시작 후 앱을 한 번 열면 알림 시스템이 새로고침됩니다.';
+
+  @override
+  String get premiumRestorePurchases => '복원';
+
+  @override
+  String get premiumTitle => '프리미엄으로 업그레이드';
+
+  @override
+  String get premiumSubtitle => '완벽한 디지털 타스비흐 경험';
+
+  @override
+  String get premiumTerms => '구독은 자동으로 갱신됩니다. 언제든지 취소할 수 있습니다.';
+
+  @override
+  String get premiumFeatureAdFreeTitle => '광고 없는 경험';
+
+  @override
+  String get premiumFeatureAdFreeDescription => '중단 없는 지크르 경험';
+
+  @override
+  String get premiumFeatureRemindersTitle => '알림';
+
+  @override
+  String get premiumFeatureRemindersDescription => '맞춤형 지크르 알림';
+
+  @override
+  String get premiumFeatureWidgetTitle => '홈 화면 위젯';
+
+  @override
+  String get premiumFeatureWidgetDescription => '안드로이드 홈 화면의 지크르 카운터';
+
+  @override
+  String get premiumRecommended => '추천';
+
+  @override
+  String get premiumPerYear => '/년';
+
+  @override
+  String get premiumPerMonth => '/월';
+
+  @override
+  String get premiumTwoMonthsFree => '2개월 무료';
+
+  @override
+  String get premiumPriceLoading => '가격 로딩 중...';
+
+  @override
+  String get subscriptionPlanFree => '무료';
+
+  @override
+  String get subscriptionPlanMonthly => '프리미엄 월간';
+
+  @override
+  String get subscriptionPlanYearly => '프리미엄 연간';
+
+  @override
+  String get subscriptionPlanFreeDescription => '기본 기능 (광고 포함)';
+
+  @override
+  String get subscriptionPlanMonthlyDescription => '모든 프리미엄 기능 - 월간';
+
+  @override
+  String get subscriptionPlanYearlyDescription => '모든 프리미엄 기능 - 연간 (2개월 무료)';
+
+  @override
+  String get premiumFeatureAdFreeDisplayName => '광고 없는 경험';
+
+  @override
+  String get premiumFeatureRemindersDisplayName => '알림';
+
+  @override
+  String get premiumFeatureWidgetDisplayName => '홈 화면 위젯';
+
+  @override
+  String get premiumFeatureAdFreeDesc => '광고 없이 앱 사용';
+
+  @override
+  String get premiumFeatureRemindersDesc => '지크르 알림 설정';
+
+  @override
+  String get premiumFeatureWidgetDesc => '홈 화면에서 지크르 위젯 사용';
+
+  @override
+  String get firstLaunchIntroSubtitle => '프리미엄 디지털 타스비 경험';
+
+  @override
+  String get firstLaunchIntroAdFreeTitle => '광고 없는 경험';
+
+  @override
+  String get firstLaunchIntroAdFreeDescription => '중단 없는 지크르와 기도 경험을 즐기세요';
+
+  @override
+  String get firstLaunchIntroRemindersTitle => '스마트 알림';
+
+  @override
+  String get firstLaunchIntroRemindersDescription => '사용자 정의 가능한 기도와 지크르 알림';
+
+  @override
+  String get firstLaunchIntroWidgetTitle => '홈 화면 위젯';
+
+  @override
+  String get firstLaunchIntroWidgetDescription => 'Android 홈 화면에서 빠른 접근';
+
+  @override
+  String get firstLaunchIntroUnlimitedTitle => '무제한 기능';
+
+  @override
+  String get firstLaunchIntroUnlimitedDescription => '모든 프리미엄 기능과 향후 업데이트';
+
+  @override
+  String get firstLaunchIntroPremiumFeatures => '프리미엄 기능';
+
+  @override
+  String get firstLaunchIntroFreeTrial => '무료 체험 기간';
+
+  @override
+  String get firstLaunchIntroSevenDays => '7일';
+
+  @override
+  String get firstLaunchIntroFourteenDays => '14일';
+
+  @override
+  String get firstLaunchIntroMonthlyPlan => '월간 구독';
+
+  @override
+  String get firstLaunchIntroYearlyPlan => '연간 구독';
+
+  @override
+  String get firstLaunchIntroTrialDescription => '처음 7일 무료\n그 다음 월 결제';
+
+  @override
+  String get firstLaunchIntroYearlyTrialDescription => '처음 14일 무료\n그 다음 연간 결제';
+
+  @override
+  String get firstLaunchIntroTrialNote =>
+      '체험 기간 중 언제든지 취소할 수 있습니다.\n취소하지 않으면 유료 구독이 자동으로 시작됩니다.';
+
+  @override
+  String get firstLaunchIntroRecommended => '추천';
+
+  @override
+  String get firstLaunchIntroPriceLoading => '가격 로딩 중...';
+
+  @override
+  String firstLaunchIntroSavingsText(Object savings) {
+    return '처음 14일 무료\n$savings% 더 경제적';
+  }
+
+  @override
+  String get firstLaunchIntroStartPremium => '프리미엄 시작';
+
+  @override
+  String get firstLaunchIntroLaterButton => '나중에';
 }

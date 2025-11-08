@@ -7,6 +7,7 @@ import 'premium_screen.dart';
 import 'home_screen.dart';
 import '../services/storage_service.dart';
 import '../services/subscription_service.dart';
+import '../l10n/app_localizations.dart';
 
 class FirstLaunchPremiumIntroScreen extends StatefulWidget {
   const FirstLaunchPremiumIntroScreen({super.key});
@@ -164,7 +165,7 @@ class _FirstLaunchPremiumIntroScreenState
                         // Premium features
                         FadeTransition(
                           opacity: _fadeAnimation,
-                          child: _buildFeaturesSection(),
+                          child: _buildFeaturesSection(context),
                         ),
 
                         const SizedBox(height: 10),
@@ -172,7 +173,7 @@ class _FirstLaunchPremiumIntroScreenState
                         // Deneme süresi bilgisi
                         FadeTransition(
                           opacity: _fadeAnimation,
-                          child: _buildTrialInfoSection(),
+                          child: _buildTrialInfoSection(context),
                         ),
 
                         const SizedBox(height: 0),
@@ -184,7 +185,7 @@ class _FirstLaunchPremiumIntroScreenState
                 // Action buttons
                 FadeTransition(
                   opacity: _fadeAnimation,
-                  child: _buildActionButtons(),
+                  child: _buildActionButtons(context),
                 ),
               ],
             ),
@@ -218,9 +219,9 @@ class _FirstLaunchPremiumIntroScreenState
 
         const SizedBox(height: 0),
 
-        const Text(
-          'Premium Dijital Tesbih Deneyimi',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)?.firstLaunchIntroSubtitle ?? 'Premium Dijital Tesbih Deneyimi',
+          style: const TextStyle(
             fontSize: 14,
             color: Colors.white70,
             letterSpacing: 0.5,
@@ -231,30 +232,30 @@ class _FirstLaunchPremiumIntroScreenState
     );
   }
 
-  Widget _buildFeaturesSection() {
+  Widget _buildFeaturesSection(BuildContext context) {
     final features = [
       {
         'icon': Icons.block_outlined,
-        'title': 'Reklamsız Deneyim',
-        'description': 'Kesintisiz zikir ve dua deneyimi yaşayın',
+        'title': AppLocalizations.of(context)?.firstLaunchIntroAdFreeTitle ?? 'Reklamsız Deneyim',
+        'description': AppLocalizations.of(context)?.firstLaunchIntroAdFreeDescription ?? 'Kesintisiz zikir ve dua deneyimi yaşayın',
         'color': Colors.red,
       },
       {
         'icon': Icons.notifications_active_outlined,
-        'title': 'Akıllı Hatırlatıcılar',
-        'description': 'Özelleştirilebilir namaz ve zikir hatırlatıcıları',
+        'title': AppLocalizations.of(context)?.firstLaunchIntroRemindersTitle ?? 'Akıllı Hatırlatıcılar',
+        'description': AppLocalizations.of(context)?.firstLaunchIntroRemindersDescription ?? 'Özelleştirilebilir namaz ve zikir hatırlatıcıları',
         'color': Colors.blue,
       },
       {
         'icon': Icons.widgets_outlined,
-        'title': 'Ana Ekran Widget\'ı',
-        'description': 'Android ana ekranında hızlı erişim',
+        'title': AppLocalizations.of(context)?.firstLaunchIntroWidgetTitle ?? 'Ana Ekran Widget\'ı',
+        'description': AppLocalizations.of(context)?.firstLaunchIntroWidgetDescription ?? 'Android ana ekranında hızlı erişim',
         'color': Colors.green,
       },
       {
         'icon': Icons.cloud_sync_outlined,
-        'title': 'Sınırsız Özellikler',
-        'description': 'Tüm premium özellikler ve gelecek güncellemeler',
+        'title': AppLocalizations.of(context)?.firstLaunchIntroUnlimitedTitle ?? 'Sınırsız Özellikler',
+        'description': AppLocalizations.of(context)?.firstLaunchIntroUnlimitedDescription ?? 'Tüm premium özellikler ve gelecek güncellemeler',
         'color': goldColor,
       },
     ];
@@ -262,9 +263,9 @@ class _FirstLaunchPremiumIntroScreenState
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Premium Özellikler',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)?.firstLaunchIntroPremiumFeatures ?? 'Premium Özellikler',
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -346,7 +347,7 @@ class _FirstLaunchPremiumIntroScreenState
     );
   }
 
-  Widget _buildTrialInfoSection() {
+  Widget _buildTrialInfoSection(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
@@ -363,9 +364,9 @@ class _FirstLaunchPremiumIntroScreenState
             children: [
               Icon(Icons.timer_outlined, color: goldColor, size: 24),
               const SizedBox(width: 8),
-              const Text(
-                'Ücretsiz Deneme Süresi',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)?.firstLaunchIntroFreeTrial ?? 'Ücretsiz Deneme Süresi',
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -380,18 +381,20 @@ class _FirstLaunchPremiumIntroScreenState
               children: [
                 Expanded(
                   child: _buildTrialOption(
-                    '7 Gün',
-                    'Aylık Abonelik',
-                    'İlk 7 gün ücretsiz\nSonra aylık ödeme',
+                    context,
+                    AppLocalizations.of(context)?.firstLaunchIntroSevenDays ?? '7 Gün',
+                    AppLocalizations.of(context)?.firstLaunchIntroMonthlyPlan ?? 'Aylık Abonelik',
+                    AppLocalizations.of(context)?.firstLaunchIntroTrialDescription ?? 'İlk 7 gün ücretsiz\nSonra aylık ödeme',
                     Icons.calendar_view_week,
                   ),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: _buildTrialOption(
-                    '14 Gün',
-                    'Yıllık Abonelik',
-                    '',
+                    context,
+                    AppLocalizations.of(context)?.firstLaunchIntroFourteenDays ?? '14 Gün',
+                    AppLocalizations.of(context)?.firstLaunchIntroYearlyPlan ?? 'Yıllık Abonelik',
+                    AppLocalizations.of(context)?.firstLaunchIntroYearlyTrialDescription ?? 'İlk 14 gün ücretsiz\nSonra yıllık ödeme',
                     Icons.calendar_month,
                     isRecommended: true,
                   ),
@@ -402,7 +405,7 @@ class _FirstLaunchPremiumIntroScreenState
           const SizedBox(height: 16),
 
           Text(
-            'Deneme süresinde istediğiniz zaman iptal edebilirsiniz.\nİptal etmezseniz otomatik olarak ücretli abonelik başlar.',
+            AppLocalizations.of(context)?.firstLaunchIntroTrialNote ?? 'Deneme süresinde istediğiniz zaman iptal edebilirsiniz.\nİptal etmezseniz otomatik olarak ücretli abonelik başlar.',
             style: TextStyle(
               fontSize: 12,
               color: Colors.white.withAlpha(204),
@@ -416,6 +419,7 @@ class _FirstLaunchPremiumIntroScreenState
   }
 
   Widget _buildTrialOption(
+    BuildContext context,
     String days,
     String planName,
     String description,
@@ -452,9 +456,9 @@ class _FirstLaunchPremiumIntroScreenState
                 color: goldColor,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Text(
-                'ÖNERİLEN',
-                style: TextStyle(
+              child: Text(
+                AppLocalizations.of(context)?.firstLaunchIntroRecommended ?? 'ÖNERİLEN',
+                style: const TextStyle(
                   fontSize: 10,
                   fontWeight: FontWeight.bold,
                   color: emeraldGreen,
@@ -522,7 +526,7 @@ class _FirstLaunchPremiumIntroScreenState
             )
           else
             Text(
-              'Fiyat yükleniyor...',
+              AppLocalizations.of(context)?.firstLaunchIntroPriceLoading ?? 'Fiyat yükleniyor...',
               style: TextStyle(
                 fontSize: 12,
                 color: isRecommended
@@ -534,13 +538,13 @@ class _FirstLaunchPremiumIntroScreenState
           const SizedBox(height: 6),
 
           // Dinamik açıklama ve ekonomik hesaplama
-          _buildDynamicDescription(controller, planName, description, isRecommended),
+          _buildDynamicDescription(context, controller, planName, description, isRecommended),
         ],
       ),
     );
   }
 
-  Widget _buildActionButtons() {
+  Widget _buildActionButtons(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Column(
@@ -565,9 +569,9 @@ class _FirstLaunchPremiumIntroScreenState
                 children: [
                   const Icon(Icons.star, size: 24),
                   const SizedBox(width: 8),
-                  const Text(
-                    'Premium\'a Başla',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  Text(
+                    AppLocalizations.of(context)?.firstLaunchIntroStartPremium ?? 'Premium\'a Başla',
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -595,9 +599,9 @@ class _FirstLaunchPremiumIntroScreenState
                 children: [
                   const Icon(Icons.arrow_forward, size: 24),
                   const SizedBox(width: 8),
-                  const Text(
-                    'Daha Sonra',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                  Text(
+                    AppLocalizations.of(context)?.firstLaunchIntroLaterButton ?? 'Daha Sonra',
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                 ],
               ),
@@ -633,10 +637,10 @@ class _FirstLaunchPremiumIntroScreenState
     );
   }
 
-  Widget _buildDynamicDescription(SubscriptionService controller, String planName, String description, bool isRecommended) {
+  Widget _buildDynamicDescription(BuildContext context, SubscriptionService controller, String planName, String description, bool isRecommended) {
     final products = controller.availableProducts;
     
-    if (planName.contains('Yıllık')) {
+    if (planName.contains(AppLocalizations.of(context)?.firstLaunchIntroYearlyPlan ?? 'Yıllık')) {
       // Yıllık plan için ekonomik hesaplama
       final yearlyProduct = products.firstWhereOrNull((p) => p.id == 'tasbee_pro_premium_yearly');
       final monthlyProduct = products.firstWhereOrNull((p) => p.id == 'tasbee_pro_premium_monthly');
@@ -651,7 +655,7 @@ class _FirstLaunchPremiumIntroScreenState
           final savings = ((monthlyTotal - yearlyPrice) / monthlyTotal * 100).round();
           
           return Text(
-            'İlk 14 gün ücretsiz\n%$savings daha ekonomik',
+            (AppLocalizations.of(context)?.firstLaunchIntroSavingsText(savings) ?? 'İlk 14 gün ücretsiz\n$savings% daha ekonomik'),
             style: TextStyle(
               fontSize: 10,
               color: isRecommended ? Colors.white.withAlpha(230) : Colors.white60,
@@ -664,8 +668,11 @@ class _FirstLaunchPremiumIntroScreenState
     }
     
     // Varsayılan açıklama
+    final isYearly = planName.contains(AppLocalizations.of(context)?.firstLaunchIntroYearlyPlan ?? 'Yıllık');
+    final defaultText = 'İlk ${isYearly ? '14' : '7'} gün ücretsiz\nSonra ${isYearly ? 'yıllık' : 'aylık'} ödeme';
+    
     return Text(
-      description.isNotEmpty ? description : 'İlk ${planName.contains('Yıllık') ? '14' : '7'} gün ücretsiz\nSonra ${planName.contains('Yıllık') ? 'yıllık' : 'aylık'} ödeme',
+      description.isNotEmpty ? description : defaultText,
       style: TextStyle(
         fontSize: 10,
         color: isRecommended ? Colors.white.withAlpha(230) : Colors.white60,
