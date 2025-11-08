@@ -1181,7 +1181,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get premiumRestorePurchases => '復元';
 
   @override
-  String get premiumTitle => 'プレミアムにアップグレード';
+  String get premiumTitle => '💎 プレミアム';
 
   @override
   String get premiumSubtitle => '完全なデジタル数珠体験';
@@ -1196,7 +1196,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get premiumFeatureAdFreeDescription => '中断のないズィクル体験';
 
   @override
-  String get premiumFeatureRemindersTitle => 'リマインダー';
+  String get premiumFeatureRemindersTitle => 'スマートリマインダー';
 
   @override
   String get premiumFeatureRemindersDescription => 'カスタマイズ可能なズィクルリマインダー';
@@ -1250,13 +1250,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'ホーム画面ウィジェット';
 
   @override
-  String get premiumFeatureAdFreeDesc => '広告なしでアプリを使用';
+  String get premiumFeatureAdFreeDesc => '中断のないズィクルと祈り';
 
   @override
-  String get premiumFeatureRemindersDesc => 'ズィクルのリマインダーを設定';
+  String get premiumFeatureRemindersDesc => 'カスタマイズ可能な通知';
 
   @override
-  String get premiumFeatureWidgetDesc => 'ホーム画面でズィクルウィジェットを使用';
+  String get premiumFeatureWidgetDesc => 'クイックアクセスとカウンター';
 
   @override
   String get firstLaunchIntroSubtitle => 'プレミアムデジタル数珠体験';
@@ -1356,4 +1356,63 @@ class AppLocalizationsJa extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'プロモーションコード \"$code\" をクリップボードにコピーしました';
   }
+
+  @override
+  String get proLabel => 'プロ';
+
+  @override
+  String get premiumFeatureLocked => 'プレミアム機能 - プレミアムにアップグレードしてロック解除';
+
+  @override
+  String get premiumFeatureDialogTitle => 'プレミアム機能 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'この機能にはプレミアムサブスクリプションが必要です。\nすべての特別機能のロックを解除するにはプレミアムにアップグレードしてください。';
+
+  @override
+  String get upgradeConfirm => 'プレミアムにする';
+
+  @override
+  String get premiumActiveTitle => '✨ プレミアム有効 ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 プレミアムメンバー 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 プレミアムにする';
+
+  @override
+  String get premiumActiveDescription => '完全なデジタル数珠体験';
+
+  @override
+  String get premiumUpgradeDescription => '広告なしと特別機能';
+
+  @override
+  String get premiumMembershipActive => 'プレミアムメンバーシップ有効';
+
+  @override
+  String get premiumUpgradeDiscountText => 'プレミアムにする - 60%節約';
+
+  @override
+  String get premiumUpgradeButton => 'プレミアムにする';
+
+  @override
+  String get premiumMembershipActiveStatus => 'あなたのプレミアムメンバーシップが有効です';
+
+  @override
+  String get widgetInfoTitlePremium => 'タスビーウィジェットについて 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'タスビーウィジェットについて 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'プレミアム機能 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'ホーム画面ウィジェットはプレミアム機能です。\nウィジェットを使用するにはプレミアムにアップグレードしてください。';
+
+  @override
+  String get widgetPremiumRequired => 'プレミアムが必要';
 }

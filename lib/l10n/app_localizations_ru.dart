@@ -1233,7 +1233,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get premiumRestorePurchases => 'Восстановить';
 
   @override
-  String get premiumTitle => 'Перейти на Premium';
+  String get premiumTitle => '💎 Премиум';
 
   @override
   String get premiumSubtitle => 'Полный цифровой опыт тасбих';
@@ -1243,20 +1243,20 @@ class AppLocalizationsRu extends AppLocalizations {
       'Подписка будет автоматически продлеваться. Вы можете отменить в любое время.';
 
   @override
-  String get premiumFeatureAdFreeTitle => 'Без рекламы';
+  String get premiumFeatureAdFreeTitle => 'Опыт Без Рекламы';
 
   @override
   String get premiumFeatureAdFreeDescription => 'Непрерывный опыт зикра';
 
   @override
-  String get premiumFeatureRemindersTitle => 'Напоминания';
+  String get premiumFeatureRemindersTitle => 'Умные Напоминания';
 
   @override
   String get premiumFeatureRemindersDescription =>
       'Настраиваемые напоминания о зикре';
 
   @override
-  String get premiumFeatureWidgetTitle => 'Виджет главного экрана';
+  String get premiumFeatureWidgetTitle => 'Виджет Домашнего Экрана';
 
   @override
   String get premiumFeatureWidgetDescription =>
@@ -1307,14 +1307,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'Виджет главного экрана';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'Используйте приложение без рекламы';
+  String get premiumFeatureAdFreeDesc => 'Непрерывный зикр и молитва';
 
   @override
-  String get premiumFeatureRemindersDesc => 'Настройте напоминания о зикре';
+  String get premiumFeatureRemindersDesc => 'Настраиваемые уведомления';
 
   @override
-  String get premiumFeatureWidgetDesc =>
-      'Используйте виджет зикра на главном экране';
+  String get premiumFeatureWidgetDesc => 'Быстрый доступ и счетчик';
 
   @override
   String get firstLaunchIntroSubtitle => 'Премиум Цифровой Опыт Тасбих';
@@ -1420,4 +1419,64 @@ class AppLocalizationsRu extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'Промо-код \"$code\" скопирован в буфер обмена';
   }
+
+  @override
+  String get proLabel => 'ПРО';
+
+  @override
+  String get premiumFeatureLocked =>
+      'Премиум-функция - Обновите до премиум для разблокировки';
+
+  @override
+  String get premiumFeatureDialogTitle => 'Премиум-функция 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'Эта функция требует премиум-подписку.\nОбновите до премиум, чтобы разблокировать все специальные функции.';
+
+  @override
+  String get upgradeConfirm => 'Перейти на Премиум';
+
+  @override
+  String get premiumActiveTitle => '✨ Премиум Активен ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 Премиум Участник 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 Перейти на Премиум';
+
+  @override
+  String get premiumActiveDescription => 'Полный опыт цифровых четок';
+
+  @override
+  String get premiumUpgradeDescription => 'Без рекламы и специальные функции';
+
+  @override
+  String get premiumMembershipActive => 'Премиум Членство Активно';
+
+  @override
+  String get premiumUpgradeDiscountText => 'Перейти на Премиум - 60% Экономии';
+
+  @override
+  String get premiumUpgradeButton => 'Перейти на Премиум';
+
+  @override
+  String get premiumMembershipActiveStatus => 'Ваше Премиум Членство Активно';
+
+  @override
+  String get widgetInfoTitlePremium => 'О Виджете Тасбее 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'О Виджете Тасбее 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'Премиум-функция 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'Виджет домашнего экрана - это премиум-функция.\nОбновите до премиум, чтобы использовать виджет.';
+
+  @override
+  String get widgetPremiumRequired => 'Требуется Премиум';
 }

@@ -1169,7 +1169,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get premiumRestorePurchases => '恢复';
 
   @override
-  String get premiumTitle => '升级为高级版';
+  String get premiumTitle => '💎 高级版';
 
   @override
   String get premiumSubtitle => '完整的数字念珠体验';
@@ -1184,7 +1184,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get premiumFeatureAdFreeDescription => '不间断的赞念体验';
 
   @override
-  String get premiumFeatureRemindersTitle => '提醒';
+  String get premiumFeatureRemindersTitle => '智能提醒';
 
   @override
   String get premiumFeatureRemindersDescription => '可自定义的赞念提醒';
@@ -1238,13 +1238,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => '主屏幕小部件';
 
   @override
-  String get premiumFeatureAdFreeDesc => '无广告使用应用';
+  String get premiumFeatureAdFreeDesc => '不间断的赞美和祈祷';
 
   @override
-  String get premiumFeatureRemindersDesc => '设置念珠提醒';
+  String get premiumFeatureRemindersDesc => '可自定义通知';
 
   @override
-  String get premiumFeatureWidgetDesc => '在主屏幕使用念珠小部件';
+  String get premiumFeatureWidgetDesc => '快速访问和计数器';
 
   @override
   String get firstLaunchIntroSubtitle => '高级数字念珠体验';
@@ -1342,4 +1342,61 @@ class AppLocalizationsZh extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return '优惠码 \"$code\" 已复制到剪贴板';
   }
+
+  @override
+  String get proLabel => '专业版';
+
+  @override
+  String get premiumFeatureLocked => '高级功能 - 升级到高级版解锁';
+
+  @override
+  String get premiumFeatureDialogTitle => '高级功能 💎';
+
+  @override
+  String get premiumFeatureDialogMessage => '此功能需要高级订阅。\n升级到高级版以解锁所有特殊功能。';
+
+  @override
+  String get upgradeConfirm => '升级到高级版';
+
+  @override
+  String get premiumActiveTitle => '✨ 高级版已激活 ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 高级会员 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 升级到高级版';
+
+  @override
+  String get premiumActiveDescription => '完整的数字念珠体验';
+
+  @override
+  String get premiumUpgradeDescription => '无广告和特殊功能';
+
+  @override
+  String get premiumMembershipActive => '高级会员已激活';
+
+  @override
+  String get premiumUpgradeDiscountText => '升级到高级版 - 节省60%';
+
+  @override
+  String get premiumUpgradeButton => '升级到高级版';
+
+  @override
+  String get premiumMembershipActiveStatus => '您的高级会员已激活';
+
+  @override
+  String get widgetInfoTitlePremium => '关于念珠小部件 📱';
+
+  @override
+  String get widgetInfoTitleFree => '关于念珠小部件 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => '高级功能 💎';
+
+  @override
+  String get widgetPremiumDialogMessage => '主屏幕小部件是高级功能。\n升级到高级版以使用小部件。';
+
+  @override
+  String get widgetPremiumRequired => '需要高级版';
 }

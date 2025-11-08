@@ -1239,7 +1239,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get premiumRestorePurchases => 'Rejesha';
 
   @override
-  String get premiumTitle => 'Kuwa Premium';
+  String get premiumTitle => '💎 Premium';
 
   @override
   String get premiumSubtitle => 'Uzoefu kamili wa tasbih ya dijiti';
@@ -1249,21 +1249,21 @@ class AppLocalizationsSw extends AppLocalizations {
       'Usajili utajumuishwa kiotomatiki. Unaweza kufuta wakati wowote.';
 
   @override
-  String get premiumFeatureAdFreeTitle => 'Uzoefu bila matangazo';
+  String get premiumFeatureAdFreeTitle => 'Uzoefu Bila Matangazo';
 
   @override
   String get premiumFeatureAdFreeDescription =>
       'Uzoefu wa dhikri bila kuvunjwa';
 
   @override
-  String get premiumFeatureRemindersTitle => 'Vikumbusho';
+  String get premiumFeatureRemindersTitle => 'Vikumbusho Mahiri';
 
   @override
   String get premiumFeatureRemindersDescription =>
       'Vikumbusho vya dhikri vilivyoweza kurekebishwa';
 
   @override
-  String get premiumFeatureWidgetTitle => 'Wijeti ya Skrini Kuu';
+  String get premiumFeatureWidgetTitle => 'Widget ya Skrini Kuu';
 
   @override
   String get premiumFeatureWidgetDescription =>
@@ -1315,14 +1315,13 @@ class AppLocalizationsSw extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'Wijeti ya Skrini Kuu';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'Tumia programu bila matangazo';
+  String get premiumFeatureAdFreeDesc => 'Dhikri na dua bila kukatizwa';
 
   @override
-  String get premiumFeatureRemindersDesc => 'Weka vikumbusho vya dhikr';
+  String get premiumFeatureRemindersDesc => 'Arifa za kubinafsisha';
 
   @override
-  String get premiumFeatureWidgetDesc =>
-      'Tumia widget ya dhikr kwenye skrini ya kwanza';
+  String get premiumFeatureWidgetDesc => 'Ufikiaji wa haraka na kihesabu';
 
   @override
   String get firstLaunchIntroSubtitle =>
@@ -1429,4 +1428,66 @@ class AppLocalizationsSw extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'Nambari ya uuzaji \"$code\" imenakiliwa kwenye clipboard';
   }
+
+  @override
+  String get proLabel => 'PRO';
+
+  @override
+  String get premiumFeatureLocked =>
+      'Kipengele cha premium - Pandisha kwenda premium ili kufungua';
+
+  @override
+  String get premiumFeatureDialogTitle => 'Kipengele cha Premium 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'Kipengele hiki kinahitaji usajili wa premium.\nPandisha kwenda premium ili kufungua vipengele vyote maalum.';
+
+  @override
+  String get upgradeConfirm => 'Nenda Premium';
+
+  @override
+  String get premiumActiveTitle => '✨ Premium Inaendelea ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 Mwanachama wa Premium 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 Nenda Premium';
+
+  @override
+  String get premiumActiveDescription =>
+      'Uzoefu kamili wa tasbee ya kidijitali';
+
+  @override
+  String get premiumUpgradeDescription => 'Bila matangazo na vipengele maalum';
+
+  @override
+  String get premiumMembershipActive => 'Uanachama wa Premium Unaendelea';
+
+  @override
+  String get premiumUpgradeDiscountText => 'Nenda Premium - Okoa 60%';
+
+  @override
+  String get premiumUpgradeButton => 'Nenda Premium';
+
+  @override
+  String get premiumMembershipActiveStatus =>
+      'Uanachama wako wa Premium Unaendelea';
+
+  @override
+  String get widgetInfoTitlePremium => 'Kuhusu Widget ya Tasbee 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'Kuhusu Widget ya Tasbee 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'Kipengele cha Premium 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'Widget ya skrini kuu ni kipengele cha premium.\nPandisha kwenda premium ili kutumia widget.';
+
+  @override
+  String get widgetPremiumRequired => 'Premium Inahitajika';
 }

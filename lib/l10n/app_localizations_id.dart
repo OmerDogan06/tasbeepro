@@ -1233,7 +1233,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get premiumRestorePurchases => 'Pulihkan';
 
   @override
-  String get premiumTitle => 'Beralih ke Premium';
+  String get premiumTitle => '💎 Premium';
 
   @override
   String get premiumSubtitle => 'Pengalaman tasbih digital lengkap';
@@ -1250,7 +1250,7 @@ class AppLocalizationsId extends AppLocalizations {
       'Pengalaman dzikir tanpa gangguan';
 
   @override
-  String get premiumFeatureRemindersTitle => 'Pengingat';
+  String get premiumFeatureRemindersTitle => 'Pengingat Cerdas';
 
   @override
   String get premiumFeatureRemindersDescription =>
@@ -1308,13 +1308,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'Widget Layar Utama';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'Gunakan aplikasi tanpa iklan';
+  String get premiumFeatureAdFreeDesc => 'Dzikir dan doa tanpa gangguan';
 
   @override
-  String get premiumFeatureRemindersDesc => 'Atur pengingat dzikir';
+  String get premiumFeatureRemindersDesc => 'Notifikasi yang dapat disesuaikan';
 
   @override
-  String get premiumFeatureWidgetDesc => 'Gunakan widget dzikir di layar utama';
+  String get premiumFeatureWidgetDesc => 'Akses cepat dan penghitung';
 
   @override
   String get firstLaunchIntroSubtitle => 'Pengalaman Premium Tasbih Digital';
@@ -1420,4 +1420,64 @@ class AppLocalizationsId extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'Kode promosi \"$code\" disalin ke clipboard';
   }
+
+  @override
+  String get proLabel => 'PRO';
+
+  @override
+  String get premiumFeatureLocked =>
+      'Fitur premium - Upgrade ke premium untuk membuka';
+
+  @override
+  String get premiumFeatureDialogTitle => 'Fitur Premium 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'Fitur ini memerlukan langganan premium.\nUpgrade ke premium untuk membuka semua fitur khusus.';
+
+  @override
+  String get upgradeConfirm => 'Ke Premium';
+
+  @override
+  String get premiumActiveTitle => '✨ Premium Aktif ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 Anggota Premium 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 Ke Premium';
+
+  @override
+  String get premiumActiveDescription => 'Pengalaman tasbih digital lengkap';
+
+  @override
+  String get premiumUpgradeDescription => 'Bebas iklan dan fitur khusus';
+
+  @override
+  String get premiumMembershipActive => 'Keanggotaan Premium Aktif';
+
+  @override
+  String get premiumUpgradeDiscountText => 'Ke Premium - Hemat 60%';
+
+  @override
+  String get premiumUpgradeButton => 'Ke Premium';
+
+  @override
+  String get premiumMembershipActiveStatus => 'Keanggotaan Premium Anda Aktif';
+
+  @override
+  String get widgetInfoTitlePremium => 'Tentang Widget Tasbee 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'Tentang Widget Tasbee 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'Fitur Premium 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'Widget layar utama adalah fitur premium.\nUpgrade ke premium untuk menggunakan widget.';
+
+  @override
+  String get widgetPremiumRequired => 'Premium Diperlukan';
 }

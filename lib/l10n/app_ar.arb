@@ -434,5 +434,32 @@
   "premiumYearlySubscription": "اشتراك سنوي",
   "premiumPromotionCodeInfo": "استخدم هذه الرموز عند شراء الاشتراك للاستفادة من فترة التجربة المجانية",
   "premiumCodeCopied": "📋 تم نسخ الرمز",
-  "premiumCodeCopiedMessage": "تم نسخ رمز الترويج \"{code}\" إلى الحافظة"
+  "premiumCodeCopiedMessage": "تم نسخ رمز الترويج \"{code}\" إلى الحافظة",
+  "proLabel": "مميز",
+  "premiumFeatureLocked": "ميزة مميزة - قم بالترقية للمميز لإلغاء القفل",
+  "premiumFeatureDialogTitle": "ميزة مميزة 💎",
+  "premiumFeatureDialogMessage": "هذه الميزة تتطلب اشتراكاً مميزاً.\nقم بالترقية للمميز لفتح جميع الميزات الخاصة.",
+  "upgradeConfirm": "انتقل للمميز",
+  "cancel": "إلغاء",
+  "premiumActiveTitle": "✨ المميز نشط ✨",
+  "premiumTitle": "💎 مميز",
+  "premiumActiveStatus": "🌟 عضو مميز 🌟",
+  "premiumUpgradeTitle": "💎 انتقل للمميز",
+  "premiumActiveDescription": "تجربة المسبحة الرقمية الكاملة",
+  "premiumUpgradeDescription": "بدون إعلانات وميزات خاصة",
+  "premiumMembershipActive": "العضوية المميزة نشطة",
+  "premiumUpgradeDiscountText": "انتقل للمميز - وفر 60%",
+  "premiumFeatureAdFreeTitle": "تجربة بدون إعلانات",
+  "premiumFeatureAdFreeDesc": "ذكر ودعاء دون انقطاع",
+  "premiumFeatureRemindersTitle": "تذكيرات ذكية",
+  "premiumFeatureRemindersDesc": "إشعارات قابلة للتخصيص",
+  "premiumFeatureWidgetTitle": "ودجت الشاشة الرئيسية",
+  "premiumFeatureWidgetDesc": "وصول سريع وعداد",
+  "premiumUpgradeButton": "انتقل للمميز",
+  "premiumMembershipActiveStatus": "عضويتك المميزة نشطة",
+  "widgetInfoTitlePremium": "حول ودجت المسبحة 📱",
+  "widgetInfoTitleFree": "حول ودجت المسبحة 🔒",
+  "widgetPremiumDialogTitle": "ميزة مميزة 💎",
+  "widgetPremiumDialogMessage": "ودجت الشاشة الرئيسية ميزة مميزة.\nقم بالترقية للمميز لاستخدام الودجت.",
+  "widgetPremiumRequired": "مطلوب مميز"
 }

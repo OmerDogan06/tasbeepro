@@ -1217,7 +1217,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get premiumRestorePurchases => 'คืนค่า';
 
   @override
-  String get premiumTitle => 'อัปเกรดเป็นพรีเมียม';
+  String get premiumTitle => '💎 พรีเมียม';
 
   @override
   String get premiumSubtitle => 'ประสบการณ์ตะสบีฮ์ดิจิทัลที่สมบูรณ์';
@@ -1227,14 +1227,14 @@ class AppLocalizationsTh extends AppLocalizations {
       'การสมัครสมาชิกจะต่ออายุอัตโนมัติ คุณสามารถยกเลิกได้ตลอดเวลา';
 
   @override
-  String get premiumFeatureAdFreeTitle => 'ประสบการณ์ปลอดโฆษณา';
+  String get premiumFeatureAdFreeTitle => 'ประสบการณ์ไร้โฆษณา';
 
   @override
   String get premiumFeatureAdFreeDescription =>
       'ประสบการณ์ซิกรที่ไม่มีสิ่งรบกวน';
 
   @override
-  String get premiumFeatureRemindersTitle => 'การแจ้งเตือน';
+  String get premiumFeatureRemindersTitle => 'การแจ้งเตือนอัจฉริยะ';
 
   @override
   String get premiumFeatureRemindersDescription =>
@@ -1292,13 +1292,13 @@ class AppLocalizationsTh extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'วิดเจ็ตหน้าจอหลัก';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'ใช้แอปโดยไม่มีโฆษณา';
+  String get premiumFeatureAdFreeDesc => 'ซิกรูและการสวดมนต์อย่างต่อเนื่อง';
 
   @override
-  String get premiumFeatureRemindersDesc => 'ตั้งการแจ้งเตือนซิกร์';
+  String get premiumFeatureRemindersDesc => 'การแจ้งเตือนที่ปรับแต่งได้';
 
   @override
-  String get premiumFeatureWidgetDesc => 'ใช้วิดเจ็ตซิกร์บนหน้าจอหลัก';
+  String get premiumFeatureWidgetDesc => 'เข้าถึงอย่างรวดเร็วและตัวนับ';
 
   @override
   String get firstLaunchIntroSubtitle => 'ประสบการณ์พรีเมียมดิจิทัลตัสบีห์';
@@ -1404,4 +1404,64 @@ class AppLocalizationsTh extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'รหัสโปรโมชั่น \"$code\" คัดลอกไปยังคลิปบอร์ดแล้ว';
   }
+
+  @override
+  String get proLabel => 'โปร';
+
+  @override
+  String get premiumFeatureLocked =>
+      'คุณสมบัติพรีเมียม - อัปเกรดเป็นพรีเมียมเพื่อปลดล็อก';
+
+  @override
+  String get premiumFeatureDialogTitle => 'คุณสมบัติพรีเมียม 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'คุณสมบัตินี้ต้องการการสมัครพรีเมียม\nอัปเกรดเป็นพรีเมียมเพื่อปลดล็อกคุณสมบัติพิเศษทั้งหมด';
+
+  @override
+  String get upgradeConfirm => 'ไปที่พรีเมียม';
+
+  @override
+  String get premiumActiveTitle => '✨ พรีเมียมเปิดใช้งาน ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 สมาชิกพรีเมียม 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 ไปที่พรีเมียม';
+
+  @override
+  String get premiumActiveDescription => 'ประสบการณ์ตาสบีห์ดิจิทัลที่สมบูรณ์';
+
+  @override
+  String get premiumUpgradeDescription => 'ไม่มีโฆษณาและคุณสมบัติพิเศษ';
+
+  @override
+  String get premiumMembershipActive => 'สมาชิกพรีเมียมเปิดใช้งาน';
+
+  @override
+  String get premiumUpgradeDiscountText => 'ไปที่พรีเมียม - ประหยัด 60%';
+
+  @override
+  String get premiumUpgradeButton => 'ไปที่พรีเมียม';
+
+  @override
+  String get premiumMembershipActiveStatus => 'สมาชิกพรีเมียมของคุณเปิดใช้งาน';
+
+  @override
+  String get widgetInfoTitlePremium => 'เกี่ยวกับวิดเจ็ตตาสบีห์ 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'เกี่ยวกับวิดเจ็ตตาสบีห์ 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'คุณสมบัติพรีเมียม 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'วิดเจ็ตหน้าจอหลักเป็นคุณสมบัติพรีเมียม\nอัปเกรดเป็นพรีเมียมเพื่อใช้วิดเจ็ต';
+
+  @override
+  String get widgetPremiumRequired => 'ต้องการพรีเมียม';
 }

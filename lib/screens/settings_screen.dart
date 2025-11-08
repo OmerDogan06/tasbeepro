@@ -631,7 +631,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      'PRO',
+                     AppLocalizations.of(context)?.proLabel ?? 'PRO',
                       style: TextStyle(
                         color: isLocked ? Colors.white : emeraldGreen,
                         fontSize: 10,
@@ -642,7 +642,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
             subtitle: Text(
-              isLocked ? 'Premium özellik - Kilidi açmak için premium olun' : subtitle,
+              isLocked ? (AppLocalizations.of(context)?.premiumFeatureLocked ?? 'Premium özellik - Kilidi açmak için premium olun') : subtitle,
               style: TextStyle(
                 color: isLocked 
                     ? Colors.red.shade600 
@@ -680,12 +680,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ? () {
                     HapticFeedback.lightImpact();
                     Get.defaultDialog(
-                      title: 'Premium Özellik 💎',
+                      title: AppLocalizations.of(context)?.premiumFeatureDialogTitle ?? 'Premium Özellik 💎',
                       titleStyle: const TextStyle(
                         color: emeraldGreen,
                         fontWeight: FontWeight.bold,
                       ),
-                      middleText: 'Bu özellik premium abonelik gerektirir.\nTüm özel özelliklerin kilidini açmak için premium\'a geçin.',
+                      middleText: AppLocalizations.of(context)?.premiumFeatureDialogMessage ?? 'Bu özellik premium abonelik gerektirir.\nTüm özel özelliklerin kilidini açmak için premium\'a geçin.',
                       middleTextStyle: TextStyle(
                         color: emeraldGreen.withAlpha(204),
                         fontSize: 14,
@@ -710,8 +710,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             shadowColor: Colors.transparent,
                             foregroundColor: emeraldGreen,
                           ),
-                          child: const Text(
-                            'Premium\'a Geç',
+                          child: Text(
+                            AppLocalizations.of(context)?.upgradeConfirm ?? 'Premium\'a Geç',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -719,7 +719,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       cancel: TextButton(
                         onPressed: () => Get.back(),
                         child: Text(
-                          'İptal',
+                          AppLocalizations.of(context)?.cancel ?? 'İptal',
                           style: TextStyle(color: emeraldGreen.withAlpha(179)),
                         ),
                       ),
@@ -1572,8 +1572,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     Expanded(
                       child: Text(
                         isPremium
-                            ? (AppLocalizations.of(context)?.widgetInfoTitle ?? 'Tasbee Widget Hakkında 📱')
-                            : 'Tasbee Widget Hakkında �',
+                            ? (AppLocalizations.of(context)?.widgetInfoTitlePremium ?? 'Tasbee Widget Hakkında 📱')
+                            : (AppLocalizations.of(context)?.widgetInfoTitleFree ?? 'Tasbee Widget Hakkında 🔒'),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -1685,12 +1685,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 : () {
                                     HapticFeedback.lightImpact();
                                     Get.defaultDialog(
-                                      title: 'Premium Özellik 💎',
+                                      title: AppLocalizations.of(context)?.widgetPremiumDialogTitle ?? 'Premium Özellik 💎',
                                       titleStyle: const TextStyle(
                                         color: emeraldGreen,
                                         fontWeight: FontWeight.bold,
                                       ),
-                                      middleText: 'Ana ekran widget\'ı premium bir özelliktir.\nWidget\'ı kullanmak için premium\'a geçin.',
+                                      middleText: AppLocalizations.of(context)?.widgetPremiumDialogMessage ?? 'Ana ekran widget\'ı premium bir özelliktir.\nWidget\'ı kullanmak için premium\'a geçin.',
                                       middleTextStyle: TextStyle(
                                         color: emeraldGreen.withAlpha(204),
                                         fontSize: 14,
@@ -1716,8 +1716,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                             shadowColor: Colors.transparent,
                                             foregroundColor: emeraldGreen,
                                           ),
-                                          child: const Text(
-                                            'Premium\'a Geç',
+                                          child: Text(
+                                            AppLocalizations.of(context)?.upgradeConfirm ?? 'Premium\'a Geç',
                                             style: TextStyle(fontWeight: FontWeight.bold),
                                           ),
                                         ),
@@ -1725,7 +1725,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       cancel: TextButton(
                                         onPressed: () => Get.back(),
                                         child: Text(
-                                          'İptal',
+                                          AppLocalizations.of(context)?.cancel ?? 'İptal',
                                           style: TextStyle(color: emeraldGreen.withAlpha(179)),
                                         ),
                                       ),
@@ -1747,7 +1747,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             label: Text(
                               isPremium 
                                   ? (AppLocalizations.of(context)?.widgetAddTitle ?? 'Widget Ekle')
-                                  : 'Premium Gerekli',
+                                  : (AppLocalizations.of(context)?.widgetPremiumRequired ?? 'Premium Gerekli'),
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
@@ -2291,7 +2291,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           children: [
             _buildSectionHeader(
               context,
-              isPremium ? '✨ Premium Aktif ✨' : '💎 Premium',
+              isPremium ? (AppLocalizations.of(context)?.premiumActiveTitle ?? '✨ Premium Aktif ✨') : (AppLocalizations.of(context)?.premiumTitle ?? '💎 Premium'),
             ),
             Container(
               margin: const EdgeInsets.only(bottom: 16),
@@ -2371,7 +2371,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                isPremium ? '🌟 Premium Üye 🌟' : '💎 Premium\'a Geçin',
+                                isPremium ? (AppLocalizations.of(context)?.premiumActiveStatus ?? '🌟 Premium Üye 🌟') : (AppLocalizations.of(context)?.premiumUpgradeTitle ?? '💎 Premium\'a Geçin'),
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -2388,8 +2388,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               const SizedBox(height: 4),
                               Text(
                                 isPremium 
-                                    ? 'Tam dijital tesbih deneyimi'
-                                    : 'Reklamsız ve özel özellikler',
+                                    ? (AppLocalizations.of(context)?.premiumActiveDescription ?? 'Tam dijital tesbih deneyimi')
+                                    : (AppLocalizations.of(context)?.premiumUpgradeDescription ?? 'Reklamsız ve özel özellikler'),
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: isPremium 
@@ -2447,8 +2447,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                     Expanded(
                                       child: Text(
                                         isPremium 
-                                            ? 'Premium Üyelik Aktif'
-                                            : 'Premium\'a Geçin - %60 Tasarruf',
+                                            ? (AppLocalizations.of(context)?.premiumMembershipActive ?? 'Premium Üyelik Aktif')
+                                            : (AppLocalizations.of(context)?.premiumUpgradeDiscountText ?? 'Premium\'a Geçin - %60 Tasarruf'),
                                         style: TextStyle(
                                           fontSize: 12,
                                           color: isPremium ? emeraldGreen : emeraldGreen,
@@ -2486,20 +2486,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           _buildPremiumFeature(
                             isPremium,
                             Icons.block,
-                            'Reklamsız Deneyim',
-                            'Kesintisiz zikir ve dua',
+                            AppLocalizations.of(context)?.premiumFeatureAdFreeTitle ?? 'Reklamsız Deneyim',
+                            AppLocalizations.of(context)?.premiumFeatureAdFreeDesc ?? 'Kesintisiz zikir ve dua',
                           ),
                           _buildPremiumFeature(
                             isPremium,
                             Icons.notifications_active,
-                            'Akıllı Hatırlatıcılar',
-                            'Özelleştirilebilir bildirimler',
+                            AppLocalizations.of(context)?.premiumFeatureRemindersTitle ?? 'Akıllı Hatırlatıcılar',
+                            AppLocalizations.of(context)?.premiumFeatureRemindersDesc ?? 'Özelleştirilebilir bildirimler',
                           ),
                           _buildPremiumFeature(
                             isPremium,
                             Icons.widgets,
-                            'Ana Ekran Widget\'ı',
-                            'Hızlı erişim ve sayaç',
+                            AppLocalizations.of(context)?.premiumFeatureWidgetTitle ?? 'Ana Ekran Widget\'ı',
+                            AppLocalizations.of(context)?.premiumFeatureWidgetDesc ?? 'Hızlı erişim ve sayaç',
                             isLast: true,
                           ),
                         ],
@@ -2547,8 +2547,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 size: 24,
                               ),
                               const SizedBox(width: 8),
-                              const Text(
-                                'Premium\'a Geçin',
+                              Text(
+                                AppLocalizations.of(context)?.premiumUpgradeButton ?? 'Premium\'a Geçin',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -2584,14 +2584,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ),
                           ],
                         ),
-                        child: const Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.check_circle, color: goldColor, size: 20),
-                            SizedBox(width: 8),
+                            const Icon(Icons.check_circle, color: goldColor, size: 20),
+                            const SizedBox(width: 8),
                             Text(
-                              'Premium Üyeliğiniz Aktif',
-                              style: TextStyle(
+                              AppLocalizations.of(context)?.premiumMembershipActiveStatus ?? 'Premium Üyeliğiniz Aktif',
+                              style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 color: goldColor,

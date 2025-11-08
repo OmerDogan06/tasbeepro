@@ -1235,7 +1235,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get premiumRestorePurchases => 'Tiklash';
 
   @override
-  String get premiumTitle => 'Premium bo\'ling';
+  String get premiumTitle => '💎 Premium';
 
   @override
   String get premiumSubtitle => 'To\'liq raqamli tasbeh tajribasi';
@@ -1245,20 +1245,20 @@ class AppLocalizationsUz extends AppLocalizations {
       'Obuna avtomatik yangilanadi. Istalgan vaqtda bekor qilishingiz mumkin.';
 
   @override
-  String get premiumFeatureAdFreeTitle => 'Reklamasiz tajriba';
+  String get premiumFeatureAdFreeTitle => 'Reklamasiz Tajriba';
 
   @override
   String get premiumFeatureAdFreeDescription => 'Uzluksiz zikr tajribasi';
 
   @override
-  String get premiumFeatureRemindersTitle => 'Eslatmalar';
+  String get premiumFeatureRemindersTitle => 'Aqlli Eslatmalar';
 
   @override
   String get premiumFeatureRemindersDescription =>
       'Moslashtirilishi mumkin bo\'lgan zikr eslatmalari';
 
   @override
-  String get premiumFeatureWidgetTitle => 'Asosiy ekran vidzheti';
+  String get premiumFeatureWidgetTitle => 'Bosh Ekran Vidjeti';
 
   @override
   String get premiumFeatureWidgetDescription =>
@@ -1310,14 +1310,14 @@ class AppLocalizationsUz extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'Asosiy ekran vidzheti';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'Ilovani reklamasiz ishlating';
+  String get premiumFeatureAdFreeDesc => 'Uzluksiz zikr va duo';
 
   @override
-  String get premiumFeatureRemindersDesc => 'Zikr eslatmalarini o\'rnating';
+  String get premiumFeatureRemindersDesc =>
+      'Sozlash mumkin bo\'lgan bildirishnomalar';
 
   @override
-  String get premiumFeatureWidgetDesc =>
-      'Asosiy ekranda zikr vidzhetini ishlating';
+  String get premiumFeatureWidgetDesc => 'Tez kirish va hisoblagich';
 
   @override
   String get firstLaunchIntroSubtitle => 'Premium Raqamli Tasbeh Tajribasi';
@@ -1423,4 +1423,65 @@ class AppLocalizationsUz extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'Promo kod \"$code\" klipbordga nusxalandi';
   }
+
+  @override
+  String get proLabel => 'PRO';
+
+  @override
+  String get premiumFeatureLocked =>
+      'Premium xususiyat - Qulfni ochish uchun premiumga yangilang';
+
+  @override
+  String get premiumFeatureDialogTitle => 'Premium Xususiyat 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'Bu xususiyat premium obuna talab qiladi.\nBarcha maxsus xususiyatlarni ochish uchun premiumga yangilang.';
+
+  @override
+  String get upgradeConfirm => 'Premiumga O\'tish';
+
+  @override
+  String get premiumActiveTitle => '✨ Premium Faol ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 Premium A\'zo 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 Premiumga O\'tish';
+
+  @override
+  String get premiumActiveDescription => 'To\'liq raqamli tasbeh tajribasi';
+
+  @override
+  String get premiumUpgradeDescription => 'Reklamasiz va maxsus xususiyatlar';
+
+  @override
+  String get premiumMembershipActive => 'Premium A\'zolik Faol';
+
+  @override
+  String get premiumUpgradeDiscountText => 'Premiumga O\'tish - 60% Tejamkor';
+
+  @override
+  String get premiumUpgradeButton => 'Premiumga O\'tish';
+
+  @override
+  String get premiumMembershipActiveStatus =>
+      'Sizning Premium A\'zoligingiz Faol';
+
+  @override
+  String get widgetInfoTitlePremium => 'Tasbee Vidjeti Haqida 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'Tasbee Vidjeti Haqida 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'Premium Xususiyat 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'Bosh ekran vidjeti premium xususiyatdir.\nVidjeti ishlatish uchun premiumga yangilang.';
+
+  @override
+  String get widgetPremiumRequired => 'Premium Talab Qilinadi';
 }

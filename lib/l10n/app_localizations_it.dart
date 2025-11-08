@@ -1252,7 +1252,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get premiumRestorePurchases => 'Ripristina';
 
   @override
-  String get premiumTitle => 'Diventa Premium';
+  String get premiumTitle => '💎 Premium';
 
   @override
   String get premiumSubtitle => 'Esperienza completa di tasbih digitale';
@@ -1262,20 +1262,20 @@ class AppLocalizationsIt extends AppLocalizations {
       'L\'abbonamento si rinnoverà automaticamente. Puoi annullare in qualsiasi momento.';
 
   @override
-  String get premiumFeatureAdFreeTitle => 'Esperienza senza pubblicità';
+  String get premiumFeatureAdFreeTitle => 'Esperienza Senza Pubblicità';
 
   @override
   String get premiumFeatureAdFreeDescription => 'Esperienza dhikr ininterrotta';
 
   @override
-  String get premiumFeatureRemindersTitle => 'Promemoria';
+  String get premiumFeatureRemindersTitle => 'Promemoria Intelligenti';
 
   @override
   String get premiumFeatureRemindersDescription =>
       'Promemoria dhikr personalizzabili';
 
   @override
-  String get premiumFeatureWidgetTitle => 'Widget schermata principale';
+  String get premiumFeatureWidgetTitle => 'Widget Schermata Principale';
 
   @override
   String get premiumFeatureWidgetDescription =>
@@ -1327,14 +1327,13 @@ class AppLocalizationsIt extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'Widget schermata principale';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'Usa l\'app senza pubblicità';
+  String get premiumFeatureAdFreeDesc => 'Dhikr e preghiera ininterrotti';
 
   @override
-  String get premiumFeatureRemindersDesc => 'Imposta promemoria dhikr';
+  String get premiumFeatureRemindersDesc => 'Notifiche personalizzabili';
 
   @override
-  String get premiumFeatureWidgetDesc =>
-      'Usa widget dhikr sulla schermata iniziale';
+  String get premiumFeatureWidgetDesc => 'Accesso rapido e contatore';
 
   @override
   String get firstLaunchIntroSubtitle => 'Esperienza Premium Tasbih Digitale';
@@ -1440,4 +1439,67 @@ class AppLocalizationsIt extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'Codice promozionale \"$code\" copiato negli appunti';
   }
+
+  @override
+  String get proLabel => 'PRO';
+
+  @override
+  String get premiumFeatureLocked =>
+      'Funzione premium - Aggiorna a premium per sbloccare';
+
+  @override
+  String get premiumFeatureDialogTitle => 'Funzione Premium 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'Questa funzione richiede un abbonamento premium.\nAggiorna a premium per sbloccare tutte le funzioni speciali.';
+
+  @override
+  String get upgradeConfirm => 'Vai a Premium';
+
+  @override
+  String get premiumActiveTitle => '✨ Premium Attivo ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 Membro Premium 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 Vai a Premium';
+
+  @override
+  String get premiumActiveDescription =>
+      'Esperienza completa del rosario digitale';
+
+  @override
+  String get premiumUpgradeDescription =>
+      'Senza pubblicità e funzioni speciali';
+
+  @override
+  String get premiumMembershipActive => 'Abbonamento Premium Attivo';
+
+  @override
+  String get premiumUpgradeDiscountText => 'Vai a Premium - 60% di Risparmio';
+
+  @override
+  String get premiumUpgradeButton => 'Vai a Premium';
+
+  @override
+  String get premiumMembershipActiveStatus =>
+      'Il Tuo Abbonamento Premium è Attivo';
+
+  @override
+  String get widgetInfoTitlePremium => 'Informazioni sul Widget Tasbee 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'Informazioni sul Widget Tasbee 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'Funzione Premium 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'Il widget della schermata principale è una funzione premium.\nAggiorna a premium per utilizzare il widget.';
+
+  @override
+  String get widgetPremiumRequired => 'Premium Richiesto';
 }

@@ -1225,7 +1225,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get premiumRestorePurchases => 'Geri Yükle';
 
   @override
-  String get premiumTitle => 'Premium\'a Geçin';
+  String get premiumTitle => '💎 Premium';
 
   @override
   String get premiumSubtitle => 'Tam dijital tesbih deneyimi';
@@ -1241,7 +1241,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get premiumFeatureAdFreeDescription => 'Kesintisiz zikir deneyimi';
 
   @override
-  String get premiumFeatureRemindersTitle => 'Hatırlatıcılar';
+  String get premiumFeatureRemindersTitle => 'Akıllı Hatırlatıcılar';
 
   @override
   String get premiumFeatureRemindersDescription =>
@@ -1299,13 +1299,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'Ana Ekran Widget\'ı';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'Uygulamayı reklamsız kullanın';
+  String get premiumFeatureAdFreeDesc => 'Kesintisiz zikir ve dua';
 
   @override
-  String get premiumFeatureRemindersDesc => 'Zikir hatırlatıcıları ayarlayın';
+  String get premiumFeatureRemindersDesc => 'Özelleştirilebilir bildirimler';
 
   @override
-  String get premiumFeatureWidgetDesc => 'Ana ekranda zikir widget\'ı kullanın';
+  String get premiumFeatureWidgetDesc => 'Hızlı erişim ve sayaç';
 
   @override
   String get firstLaunchIntroSubtitle => 'Premium Dijital Tesbih Deneyimi';
@@ -1411,4 +1411,64 @@ class AppLocalizationsTr extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'Promosyon kodu \"$code\" panoya kopyalandı';
   }
+
+  @override
+  String get proLabel => 'PRO';
+
+  @override
+  String get premiumFeatureLocked =>
+      'Premium özellik - Kilidi açmak için premium olun';
+
+  @override
+  String get premiumFeatureDialogTitle => 'Premium Özellik 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'Bu özellik premium abonelik gerektirir.\nTüm özel özelliklerin kilidini açmak için premium\'a geçin.';
+
+  @override
+  String get upgradeConfirm => 'Premium\'a Geç';
+
+  @override
+  String get premiumActiveTitle => '✨ Premium Aktif ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 Premium Üye 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 Premium\'a Geçin';
+
+  @override
+  String get premiumActiveDescription => 'Tam dijital tesbih deneyimi';
+
+  @override
+  String get premiumUpgradeDescription => 'Reklamsız ve özel özellikler';
+
+  @override
+  String get premiumMembershipActive => 'Premium Üyelik Aktif';
+
+  @override
+  String get premiumUpgradeDiscountText => 'Premium\'a Geçin - %60 Tasarruf';
+
+  @override
+  String get premiumUpgradeButton => 'Premium\'a Geçin';
+
+  @override
+  String get premiumMembershipActiveStatus => 'Premium Üyeliğiniz Aktif';
+
+  @override
+  String get widgetInfoTitlePremium => 'Tasbee Widget Hakkında 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'Tasbee Widget Hakkında 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'Premium Özellik 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'Ana ekran widget\'ı premium bir özelliktir.\nWidget\'ı kullanmak için premium\'a geçin.';
+
+  @override
+  String get widgetPremiumRequired => 'Premium Gerekli';
 }

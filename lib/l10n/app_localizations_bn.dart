@@ -1230,7 +1230,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get premiumRestorePurchases => 'পুনরুদ্ধার';
 
   @override
-  String get premiumTitle => 'প্রিমিয়াম হন';
+  String get premiumTitle => '💎 প্রিমিয়াম';
 
   @override
   String get premiumSubtitle => 'সম্পূর্ণ ডিজিটাল তাসবিহ অভিজ্ঞতা';
@@ -1240,13 +1240,13 @@ class AppLocalizationsBn extends AppLocalizations {
       'সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে নবায়ন হবে। আপনি যে কোনো সময় বাতিল করতে পারেন।';
 
   @override
-  String get premiumFeatureAdFreeTitle => 'বিজ্ঞাপন-মুক্ত অভিজ্ঞতা';
+  String get premiumFeatureAdFreeTitle => 'বিজ্ঞাপনমুক্ত অভিজ্ঞতা';
 
   @override
   String get premiumFeatureAdFreeDescription => 'নিরবচ্ছিন্ন যিকির অভিজ্ঞতা';
 
   @override
-  String get premiumFeatureRemindersTitle => 'অনুস্মারক';
+  String get premiumFeatureRemindersTitle => 'স্মার্ট রিমাইন্ডার';
 
   @override
   String get premiumFeatureRemindersDescription =>
@@ -1304,14 +1304,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'হোম স্ক্রিন উইজেট';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'বিজ্ঞাপন ছাড়া অ্যাপ ব্যবহার করুন';
+  String get premiumFeatureAdFreeDesc => 'নিরবচ্ছিন্ন জিকির এবং দোয়া';
 
   @override
-  String get premiumFeatureRemindersDesc => 'জিকির রিমাইন্ডার সেট করুন';
+  String get premiumFeatureRemindersDesc => 'কাস্টমাইজেবল নোটিফিকেশন';
 
   @override
-  String get premiumFeatureWidgetDesc =>
-      'হোম স্ক্রিনে জিকির উইজেট ব্যবহার করুন';
+  String get premiumFeatureWidgetDesc => 'দ্রুত অ্যাক্সেস এবং কাউন্টার';
 
   @override
   String get firstLaunchIntroSubtitle => 'প্রিমিয়াম ডিজিটাল তাসবিহ অভিজ্ঞতা';
@@ -1417,4 +1416,65 @@ class AppLocalizationsBn extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'প্রমো কোড \"$code\" ক্লিপবোর্ডে কপি হয়েছে';
   }
+
+  @override
+  String get proLabel => 'প্রো';
+
+  @override
+  String get premiumFeatureLocked =>
+      'প্রিমিয়াম ফিচার - আনলক করতে প্রিমিয়ামে আপগ্রেড করুন';
+
+  @override
+  String get premiumFeatureDialogTitle => 'প্রিমিয়াম ফিচার 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'এই ফিচারটির জন্য প্রিমিয়াম সাবস্ক্রিপশন প্রয়োজন।\nসব বিশেষ ফিচার আনলক করতে প্রিমিয়ামে আপগ্রেড করুন।';
+
+  @override
+  String get upgradeConfirm => 'প্রিমিয়ামে যান';
+
+  @override
+  String get premiumActiveTitle => '✨ প্রিমিয়াম সক্রিয় ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 প্রিমিয়াম সদস্য 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 প্রিমিয়ামে যান';
+
+  @override
+  String get premiumActiveDescription => 'সম্পূর্ণ ডিজিটাল তাসবিহ অভিজ্ঞতা';
+
+  @override
+  String get premiumUpgradeDescription => 'বিজ্ঞাপনমুক্ত এবং বিশেষ ফিচার';
+
+  @override
+  String get premiumMembershipActive => 'প্রিমিয়াম সদস্যপদ সক্রিয়';
+
+  @override
+  String get premiumUpgradeDiscountText => 'প্রিমিয়ামে যান - ৬০% সাশ্রয়';
+
+  @override
+  String get premiumUpgradeButton => 'প্রিমিয়ামে যান';
+
+  @override
+  String get premiumMembershipActiveStatus =>
+      'আপনার প্রিমিয়াম সদস্যপদ সক্রিয়';
+
+  @override
+  String get widgetInfoTitlePremium => 'তাসবিহ উইজেট সম্পর্কে 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'তাসবিহ উইজেট সম্পর্কে 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'প্রিমিয়াম ফিচার 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'হোম স্ক্রিন উইজেট একটি প্রিমিয়াম ফিচার।\nউইজেট ব্যবহার করতে প্রিমিয়ামে আপগ্রেড করুন।';
+
+  @override
+  String get widgetPremiumRequired => 'প্রিমিয়াম প্রয়োজন';
 }

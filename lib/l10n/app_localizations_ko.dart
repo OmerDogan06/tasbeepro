@@ -1184,7 +1184,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get premiumRestorePurchases => '복원';
 
   @override
-  String get premiumTitle => '프리미엄으로 업그레이드';
+  String get premiumTitle => '💎 프리미엄';
 
   @override
   String get premiumSubtitle => '완벽한 디지털 타스비흐 경험';
@@ -1199,7 +1199,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get premiumFeatureAdFreeDescription => '중단 없는 지크르 경험';
 
   @override
-  String get premiumFeatureRemindersTitle => '알림';
+  String get premiumFeatureRemindersTitle => '스마트 알림';
 
   @override
   String get premiumFeatureRemindersDescription => '맞춤형 지크르 알림';
@@ -1253,13 +1253,13 @@ class AppLocalizationsKo extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => '홈 화면 위젯';
 
   @override
-  String get premiumFeatureAdFreeDesc => '광고 없이 앱 사용';
+  String get premiumFeatureAdFreeDesc => '중단없는 지크르와 기도';
 
   @override
-  String get premiumFeatureRemindersDesc => '지크르 알림 설정';
+  String get premiumFeatureRemindersDesc => '사용자 정의 가능한 알림';
 
   @override
-  String get premiumFeatureWidgetDesc => '홈 화면에서 지크르 위젯 사용';
+  String get premiumFeatureWidgetDesc => '빠른 접근 및 카운터';
 
   @override
   String get firstLaunchIntroSubtitle => '프리미엄 디지털 타스비 경험';
@@ -1358,4 +1358,63 @@ class AppLocalizationsKo extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return '프로모션 코드 \"$code\"가 클립보드에 복사되었습니다';
   }
+
+  @override
+  String get proLabel => '프로';
+
+  @override
+  String get premiumFeatureLocked => '프리미엄 기능 - 잠금 해제하려면 프리미엄으로 업그레이드';
+
+  @override
+  String get premiumFeatureDialogTitle => '프리미엄 기능 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      '이 기능은 프리미엄 구독이 필요합니다.\n모든 특별 기능을 잠금 해제하려면 프리미엄으로 업그레이드하세요.';
+
+  @override
+  String get upgradeConfirm => '프리미엄으로 가기';
+
+  @override
+  String get premiumActiveTitle => '✨ 프리미엄 활성 ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 프리미엄 회원 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 프리미엄으로 가기';
+
+  @override
+  String get premiumActiveDescription => '완전한 디지털 염주 경험';
+
+  @override
+  String get premiumUpgradeDescription => '광고 없음 및 특별 기능';
+
+  @override
+  String get premiumMembershipActive => '프리미엄 멤버십 활성';
+
+  @override
+  String get premiumUpgradeDiscountText => '프리미엄으로 가기 - 60% 절약';
+
+  @override
+  String get premiumUpgradeButton => '프리미엄으로 가기';
+
+  @override
+  String get premiumMembershipActiveStatus => '귀하의 프리미엄 멤버십이 활성화되었습니다';
+
+  @override
+  String get widgetInfoTitlePremium => '타스비 위젯 정보 📱';
+
+  @override
+  String get widgetInfoTitleFree => '타스비 위젯 정보 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => '프리미엄 기능 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      '홈 화면 위젯은 프리미엄 기능입니다.\n위젯을 사용하려면 프리미엄으로 업그레이드하세요.';
+
+  @override
+  String get widgetPremiumRequired => '프리미엄 필요';
 }

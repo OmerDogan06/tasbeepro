@@ -1253,7 +1253,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get premiumRestorePurchases => 'Wiederherstellen';
 
   @override
-  String get premiumTitle => 'Premium werden';
+  String get premiumTitle => '💎 Premium';
 
   @override
   String get premiumSubtitle => 'Vollständige digitale Tasbih-Erfahrung';
@@ -1270,14 +1270,14 @@ class AppLocalizationsDe extends AppLocalizations {
       'Ununterbrochene Dhikr-Erfahrung';
 
   @override
-  String get premiumFeatureRemindersTitle => 'Erinnerungen';
+  String get premiumFeatureRemindersTitle => 'Intelligente Erinnerungen';
 
   @override
   String get premiumFeatureRemindersDescription =>
       'Anpassbare Dhikr-Erinnerungen';
 
   @override
-  String get premiumFeatureWidgetTitle => 'Startbildschirm-Widget';
+  String get premiumFeatureWidgetTitle => 'Homescreen-Widget';
 
   @override
   String get premiumFeatureWidgetDescription =>
@@ -1328,14 +1328,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'Startbildschirm-Widget';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'App ohne Werbung nutzen';
+  String get premiumFeatureAdFreeDesc => 'Ununterbrochenes Dhikr und Gebet';
 
   @override
-  String get premiumFeatureRemindersDesc => 'Dhikr-Erinnerungen einstellen';
+  String get premiumFeatureRemindersDesc => 'Anpassbare Benachrichtigungen';
 
   @override
-  String get premiumFeatureWidgetDesc =>
-      'Dhikr-Widget auf dem Startbildschirm verwenden';
+  String get premiumFeatureWidgetDesc => 'Schneller Zugriff und Zähler';
 
   @override
   String get firstLaunchIntroSubtitle => 'Premium Digitale Tasbih Erfahrung';
@@ -1441,4 +1440,66 @@ class AppLocalizationsDe extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'Aktionscode \"$code\" in die Zwischenablage kopiert';
   }
+
+  @override
+  String get proLabel => 'PRO';
+
+  @override
+  String get premiumFeatureLocked =>
+      'Premium-Funktion - Upgrade auf Premium zum Freischalten';
+
+  @override
+  String get premiumFeatureDialogTitle => 'Premium-Funktion 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'Diese Funktion erfordert ein Premium-Abonnement.\nUpgrade auf Premium, um alle besonderen Funktionen freizuschalten.';
+
+  @override
+  String get upgradeConfirm => 'Premium werden';
+
+  @override
+  String get premiumActiveTitle => '✨ Premium Aktiv ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 Premium-Mitglied 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 Premium werden';
+
+  @override
+  String get premiumActiveDescription =>
+      'Vollständige digitale Gebetskette Erfahrung';
+
+  @override
+  String get premiumUpgradeDescription => 'Werbefrei und spezielle Funktionen';
+
+  @override
+  String get premiumMembershipActive => 'Premium-Mitgliedschaft Aktiv';
+
+  @override
+  String get premiumUpgradeDiscountText => 'Premium werden - 60% Ersparnis';
+
+  @override
+  String get premiumUpgradeButton => 'Premium werden';
+
+  @override
+  String get premiumMembershipActiveStatus =>
+      'Ihre Premium-Mitgliedschaft ist Aktiv';
+
+  @override
+  String get widgetInfoTitlePremium => 'Über Tasbee-Widget 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'Über Tasbee-Widget 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'Premium-Funktion 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'Das Homescreen-Widget ist eine Premium-Funktion.\nUpgrade auf Premium, um das Widget zu nutzen.';
+
+  @override
+  String get widgetPremiumRequired => 'Premium Erforderlich';
 }

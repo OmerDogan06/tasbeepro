@@ -1232,7 +1232,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get premiumRestorePurchases => 'Restore';
 
   @override
-  String get premiumTitle => 'Go Premium';
+  String get premiumTitle => '💎 Premium';
 
   @override
   String get premiumSubtitle => 'Complete digital tasbih experience';
@@ -1248,7 +1248,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get premiumFeatureAdFreeDescription => 'Uninterrupted zikr experience';
 
   @override
-  String get premiumFeatureRemindersTitle => 'Reminders';
+  String get premiumFeatureRemindersTitle => 'Smart Reminders';
 
   @override
   String get premiumFeatureRemindersDescription =>
@@ -1306,13 +1306,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'Home Screen Widget';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'Use app without ads';
+  String get premiumFeatureAdFreeDesc => 'Uninterrupted zikr and prayer';
 
   @override
-  String get premiumFeatureRemindersDesc => 'Set zikr reminders';
+  String get premiumFeatureRemindersDesc => 'Customizable notifications';
 
   @override
-  String get premiumFeatureWidgetDesc => 'Use zikr widget on home screen';
+  String get premiumFeatureWidgetDesc => 'Quick access and counter';
 
   @override
   String get firstLaunchIntroSubtitle => 'Premium Digital Tasbih Experience';
@@ -1418,4 +1418,65 @@ class AppLocalizationsEn extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'Promotion code \"$code\" copied to clipboard';
   }
+
+  @override
+  String get proLabel => 'PRO';
+
+  @override
+  String get premiumFeatureLocked =>
+      'Premium feature - Upgrade to premium to unlock';
+
+  @override
+  String get premiumFeatureDialogTitle => 'Premium Feature 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'This feature requires premium subscription.\nUpgrade to premium to unlock all special features.';
+
+  @override
+  String get upgradeConfirm => 'Go Premium';
+
+  @override
+  String get premiumActiveTitle => '✨ Premium Active ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 Premium Member 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 Go Premium';
+
+  @override
+  String get premiumActiveDescription => 'Complete digital tasbee experience';
+
+  @override
+  String get premiumUpgradeDescription => 'Ad-free and special features';
+
+  @override
+  String get premiumMembershipActive => 'Premium Membership Active';
+
+  @override
+  String get premiumUpgradeDiscountText => 'Go Premium - 60% Savings';
+
+  @override
+  String get premiumUpgradeButton => 'Go Premium';
+
+  @override
+  String get premiumMembershipActiveStatus =>
+      'Your Premium Membership is Active';
+
+  @override
+  String get widgetInfoTitlePremium => 'Tasbee Widget About 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'Tasbee Widget About 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'Premium Feature 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'Home screen widget is a premium feature.\nUpgrade to premium to use the widget.';
+
+  @override
+  String get widgetPremiumRequired => 'Premium Required';
 }

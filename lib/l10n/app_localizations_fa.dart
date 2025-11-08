@@ -1218,7 +1218,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get premiumRestorePurchases => 'بازیابی';
 
   @override
-  String get premiumTitle => 'پریمیم شوید';
+  String get premiumTitle => '💎 پرمیوم';
 
   @override
   String get premiumSubtitle => 'تجربه کامل تسبیح دیجیتال';
@@ -1228,13 +1228,13 @@ class AppLocalizationsFa extends AppLocalizations {
       'اشتراک به طور خودکار تمدید می‌شود. می‌توانید هر زمان لغو کنید.';
 
   @override
-  String get premiumFeatureAdFreeTitle => 'تجربه بدون تبلیغ';
+  String get premiumFeatureAdFreeTitle => 'تجربه بدون تبلیغات';
 
   @override
   String get premiumFeatureAdFreeDescription => 'تجربه ذکر بدون وقفه';
 
   @override
-  String get premiumFeatureRemindersTitle => 'یادآورها';
+  String get premiumFeatureRemindersTitle => 'یادآورهای هوشمند';
 
   @override
   String get premiumFeatureRemindersDescription => 'یادآورهای ذکر قابل تنظیم';
@@ -1291,14 +1291,13 @@ class AppLocalizationsFa extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'ویجت صفحه اصلی';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'از برنامه بدون تبلیغات استفاده کنید';
+  String get premiumFeatureAdFreeDesc => 'ذکر و دعای بی‌وقفه';
 
   @override
-  String get premiumFeatureRemindersDesc => 'یادآورهای ذکر تنظیم کنید';
+  String get premiumFeatureRemindersDesc => 'اعلان‌های قابل تنظیم';
 
   @override
-  String get premiumFeatureWidgetDesc =>
-      'از ویجت ذکر در صفحه اصلی استفاده کنید';
+  String get premiumFeatureWidgetDesc => 'دسترسی سریع و شمارنده';
 
   @override
   String get firstLaunchIntroSubtitle => 'تجربه پریمیم تسبیح دیجیتال';
@@ -1404,4 +1403,64 @@ class AppLocalizationsFa extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'کد تبلیغاتی \"$code\" در کلیپ‌بورد کپی شد';
   }
+
+  @override
+  String get proLabel => 'حرفه‌ای';
+
+  @override
+  String get premiumFeatureLocked =>
+      'ویژگی پرمیوم - برای باز کردن قفل به پرمیوم ارتقا دهید';
+
+  @override
+  String get premiumFeatureDialogTitle => 'ویژگی پرمیوم 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'این ویژگی نیازمند اشتراک پرمیوم است.\nبرای باز کردن قفل همه ویژگی‌های ویژه به پرمیوم ارتقا دهید.';
+
+  @override
+  String get upgradeConfirm => 'به پرمیوم برو';
+
+  @override
+  String get premiumActiveTitle => '✨ پرمیوم فعال ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 عضو پرمیوم 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 به پرمیوم برو';
+
+  @override
+  String get premiumActiveDescription => 'تجربه کامل تسبیح دیجیتال';
+
+  @override
+  String get premiumUpgradeDescription => 'بدون تبلیغات و ویژگی‌های ویژه';
+
+  @override
+  String get premiumMembershipActive => 'عضویت پرمیوم فعال';
+
+  @override
+  String get premiumUpgradeDiscountText => 'به پرمیوم برو - ۶۰٪ صرفه‌جویی';
+
+  @override
+  String get premiumUpgradeButton => 'به پرمیوم برو';
+
+  @override
+  String get premiumMembershipActiveStatus => 'عضویت پرمیوم شما فعال است';
+
+  @override
+  String get widgetInfoTitlePremium => 'درباره ویجت تسبیح 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'درباره ویجت تسبیح 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'ویژگی پرمیوم 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'ویجت صفحه اصلی یک ویژگی پرمیوم است.\nبرای استفاده از ویجت به پرمیوم ارتقا دهید.';
+
+  @override
+  String get widgetPremiumRequired => 'پرمیوم مورد نیاز';
 }

@@ -1203,7 +1203,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get premiumRestorePurchases => 'استرداد';
 
   @override
-  String get premiumTitle => 'الترقية إلى المميز';
+  String get premiumTitle => '💎 مميز';
 
   @override
   String get premiumSubtitle => 'تجربة مسبحة رقمية كاملة';
@@ -1213,13 +1213,13 @@ class AppLocalizationsAr extends AppLocalizations {
       'سيتم تجديد الاشتراك تلقائياً. يمكنك الإلغاء في أي وقت.';
 
   @override
-  String get premiumFeatureAdFreeTitle => 'تجربة خالية من الإعلانات';
+  String get premiumFeatureAdFreeTitle => 'تجربة بدون إعلانات';
 
   @override
   String get premiumFeatureAdFreeDescription => 'تجربة ذكر بدون انقطاع';
 
   @override
-  String get premiumFeatureRemindersTitle => 'التذكيرات';
+  String get premiumFeatureRemindersTitle => 'تذكيرات ذكية';
 
   @override
   String get premiumFeatureRemindersDescription => 'تذكيرات ذكر قابلة للتخصيص';
@@ -1276,14 +1276,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'ودجت الشاشة الرئيسية';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'استخدام التطبيق بدون إعلانات';
+  String get premiumFeatureAdFreeDesc => 'ذكر ودعاء دون انقطاع';
 
   @override
-  String get premiumFeatureRemindersDesc => 'تعيين تذكيرات الذكر';
+  String get premiumFeatureRemindersDesc => 'إشعارات قابلة للتخصيص';
 
   @override
-  String get premiumFeatureWidgetDesc =>
-      'استخدام أداة الذكر على الشاشة الرئيسية';
+  String get premiumFeatureWidgetDesc => 'وصول سريع وعداد';
 
   @override
   String get firstLaunchIntroSubtitle => 'تجربة التسبيح الرقمي المميزة';
@@ -1389,4 +1388,64 @@ class AppLocalizationsAr extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'تم نسخ رمز الترويج \"$code\" إلى الحافظة';
   }
+
+  @override
+  String get proLabel => 'مميز';
+
+  @override
+  String get premiumFeatureLocked =>
+      'ميزة مميزة - قم بالترقية للمميز لإلغاء القفل';
+
+  @override
+  String get premiumFeatureDialogTitle => 'ميزة مميزة 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'هذه الميزة تتطلب اشتراكاً مميزاً.\nقم بالترقية للمميز لفتح جميع الميزات الخاصة.';
+
+  @override
+  String get upgradeConfirm => 'انتقل للمميز';
+
+  @override
+  String get premiumActiveTitle => '✨ المميز نشط ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 عضو مميز 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 انتقل للمميز';
+
+  @override
+  String get premiumActiveDescription => 'تجربة المسبحة الرقمية الكاملة';
+
+  @override
+  String get premiumUpgradeDescription => 'بدون إعلانات وميزات خاصة';
+
+  @override
+  String get premiumMembershipActive => 'العضوية المميزة نشطة';
+
+  @override
+  String get premiumUpgradeDiscountText => 'انتقل للمميز - وفر 60%';
+
+  @override
+  String get premiumUpgradeButton => 'انتقل للمميز';
+
+  @override
+  String get premiumMembershipActiveStatus => 'عضويتك المميزة نشطة';
+
+  @override
+  String get widgetInfoTitlePremium => 'حول ودجت المسبحة 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'حول ودجت المسبحة 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'ميزة مميزة 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'ودجت الشاشة الرئيسية ميزة مميزة.\nقم بالترقية للمميز لاستخدام الودجت.';
+
+  @override
+  String get widgetPremiumRequired => 'مطلوب مميز';
 }

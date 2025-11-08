@@ -1222,7 +1222,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get premiumRestorePurchases => 'بحالی';
 
   @override
-  String get premiumTitle => 'پریمیم بنیں';
+  String get premiumTitle => '💎 پریمیم';
 
   @override
   String get premiumSubtitle => 'مکمل ڈیجیٹل تسبیح تجربہ';
@@ -1232,13 +1232,13 @@ class AppLocalizationsUr extends AppLocalizations {
       'سبسکرپشن خودکار طور پر تجدید ہوگی۔ آپ کسی بھی وقت منسوخ کر سکتے ہیں۔';
 
   @override
-  String get premiumFeatureAdFreeTitle => 'اشتہارات سے پاک تجربہ';
+  String get premiumFeatureAdFreeTitle => 'اشتہار فری تجربہ';
 
   @override
   String get premiumFeatureAdFreeDescription => 'بلا رکاوٹ ذکر کا تجربہ';
 
   @override
-  String get premiumFeatureRemindersTitle => 'یاد دہانیاں';
+  String get premiumFeatureRemindersTitle => 'سمارٹ یاد دہانیاں';
 
   @override
   String get premiumFeatureRemindersDescription => 'حسب ضرورت ذکر یاد دہانیاں';
@@ -1296,13 +1296,13 @@ class AppLocalizationsUr extends AppLocalizations {
   String get premiumFeatureWidgetDisplayName => 'ہوم اسکرین ویجٹ';
 
   @override
-  String get premiumFeatureAdFreeDesc => 'ایپ کو اشتہارات کے بغیر استعمال کریں';
+  String get premiumFeatureAdFreeDesc => 'بلا رکاوٹ ذکر اور دعا';
 
   @override
-  String get premiumFeatureRemindersDesc => 'ذکر کی یاد دہانیاں سیٹ کریں';
+  String get premiumFeatureRemindersDesc => 'قابل تخصیص اطلاعات';
 
   @override
-  String get premiumFeatureWidgetDesc => 'ہوم اسکرین پر ذکر ویجٹ استعمال کریں';
+  String get premiumFeatureWidgetDesc => 'فوری رسائی اور کاؤنٹر';
 
   @override
   String get firstLaunchIntroSubtitle => 'پریمیم ڈیجیٹل تسبیح کا تجربہ';
@@ -1408,4 +1408,64 @@ class AppLocalizationsUr extends AppLocalizations {
   String premiumCodeCopiedMessage(Object code) {
     return 'پروموشن کوڈ \"$code\" کلپ بورڈ میں کاپی ہو گیا';
   }
+
+  @override
+  String get proLabel => 'پرو';
+
+  @override
+  String get premiumFeatureLocked =>
+      'پریمیم فیچر - انلاک کرنے کے لیے پریمیم میں اپگریڈ کریں';
+
+  @override
+  String get premiumFeatureDialogTitle => 'پریمیم فیچر 💎';
+
+  @override
+  String get premiumFeatureDialogMessage =>
+      'یہ فیچر پریمیم سبسکرپشن کی ضرورت ہے۔\nتمام خصوصی فیچرز انلاک کرنے کے لیے پریمیم میں اپگریڈ کریں۔';
+
+  @override
+  String get upgradeConfirm => 'پریمیم میں جائیں';
+
+  @override
+  String get premiumActiveTitle => '✨ پریمیم فعال ✨';
+
+  @override
+  String get premiumActiveStatus => '🌟 پریمیم ممبر 🌟';
+
+  @override
+  String get premiumUpgradeTitle => '💎 پریمیم میں جائیں';
+
+  @override
+  String get premiumActiveDescription => 'مکمل ڈیجیٹل تسبیح تجربہ';
+
+  @override
+  String get premiumUpgradeDescription => 'اشتہار فری اور خصوصی فیچرز';
+
+  @override
+  String get premiumMembershipActive => 'پریمیم ممبرشپ فعال';
+
+  @override
+  String get premiumUpgradeDiscountText => 'پریمیم میں جائیں - 60% بچت';
+
+  @override
+  String get premiumUpgradeButton => 'پریمیم میں جائیں';
+
+  @override
+  String get premiumMembershipActiveStatus => 'آپ کی پریمیم ممبرشپ فعال ہے';
+
+  @override
+  String get widgetInfoTitlePremium => 'تسبیح ویجٹ کے بارے میں 📱';
+
+  @override
+  String get widgetInfoTitleFree => 'تسبیح ویجٹ کے بارے میں 🔒';
+
+  @override
+  String get widgetPremiumDialogTitle => 'پریمیم فیچر 💎';
+
+  @override
+  String get widgetPremiumDialogMessage =>
+      'ہوم اسکرین ویجٹ ایک پریمیم فیچر ہے۔\nویجٹ استعمال کرنے کے لیے پریمیم میں اپگریڈ کریں۔';
+
+  @override
+  String get widgetPremiumRequired => 'پریمیم ضروری';
 }

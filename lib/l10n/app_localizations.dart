@@ -2407,7 +2407,7 @@ abstract class AppLocalizations {
   /// Premium screen main title
   ///
   /// In en, this message translates to:
-  /// **'Go Premium'**
+  /// **'💎 Premium'**
   String get premiumTitle;
 
   /// Premium screen subtitle
@@ -2437,7 +2437,7 @@ abstract class AppLocalizations {
   /// Reminders feature title
   ///
   /// In en, this message translates to:
-  /// **'Reminders'**
+  /// **'Smart Reminders'**
   String get premiumFeatureRemindersTitle;
 
   /// Reminders feature description
@@ -2545,19 +2545,19 @@ abstract class AppLocalizations {
   /// Ad-free feature description
   ///
   /// In en, this message translates to:
-  /// **'Use app without ads'**
+  /// **'Uninterrupted zikr and prayer'**
   String get premiumFeatureAdFreeDesc;
 
   /// Reminders feature description
   ///
   /// In en, this message translates to:
-  /// **'Set zikr reminders'**
+  /// **'Customizable notifications'**
   String get premiumFeatureRemindersDesc;
 
   /// Widget feature description
   ///
   /// In en, this message translates to:
-  /// **'Use zikr widget on home screen'**
+  /// **'Quick access and counter'**
   String get premiumFeatureWidgetDesc;
 
   /// No description provided for @firstLaunchIntroSubtitle.
@@ -2745,6 +2745,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Promotion code \"{code}\" copied to clipboard'**
   String premiumCodeCopiedMessage(Object code);
+
+  /// No description provided for @proLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'PRO'**
+  String get proLabel;
+
+  /// No description provided for @premiumFeatureLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium feature - Upgrade to premium to unlock'**
+  String get premiumFeatureLocked;
+
+  /// No description provided for @premiumFeatureDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Feature 💎'**
+  String get premiumFeatureDialogTitle;
+
+  /// No description provided for @premiumFeatureDialogMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature requires premium subscription.\nUpgrade to premium to unlock all special features.'**
+  String get premiumFeatureDialogMessage;
+
+  /// No description provided for @upgradeConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Go Premium'**
+  String get upgradeConfirm;
+
+  /// No description provided for @premiumActiveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'✨ Premium Active ✨'**
+  String get premiumActiveTitle;
+
+  /// No description provided for @premiumActiveStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'🌟 Premium Member 🌟'**
+  String get premiumActiveStatus;
+
+  /// No description provided for @premiumUpgradeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'💎 Go Premium'**
+  String get premiumUpgradeTitle;
+
+  /// No description provided for @premiumActiveDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete digital tasbee experience'**
+  String get premiumActiveDescription;
+
+  /// No description provided for @premiumUpgradeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Ad-free and special features'**
+  String get premiumUpgradeDescription;
+
+  /// No description provided for @premiumMembershipActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Membership Active'**
+  String get premiumMembershipActive;
+
+  /// No description provided for @premiumUpgradeDiscountText.
+  ///
+  /// In en, this message translates to:
+  /// **'Go Premium - 60% Savings'**
+  String get premiumUpgradeDiscountText;
+
+  /// No description provided for @premiumUpgradeButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Go Premium'**
+  String get premiumUpgradeButton;
+
+  /// No description provided for @premiumMembershipActiveStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Premium Membership is Active'**
+  String get premiumMembershipActiveStatus;
+
+  /// No description provided for @widgetInfoTitlePremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbee Widget About 📱'**
+  String get widgetInfoTitlePremium;
+
+  /// No description provided for @widgetInfoTitleFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbee Widget About 🔒'**
+  String get widgetInfoTitleFree;
+
+  /// No description provided for @widgetPremiumDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Feature 💎'**
+  String get widgetPremiumDialogTitle;
+
+  /// No description provided for @widgetPremiumDialogMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Home screen widget is a premium feature.\nUpgrade to premium to use the widget.'**
+  String get widgetPremiumDialogMessage;
+
+  /// No description provided for @widgetPremiumRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Required'**
+  String get widgetPremiumRequired;
 }
 
 class _AppLocalizationsDelegate
