@@ -183,9 +183,12 @@ class SubscriptionService extends GetxController {
         
         final context = Get.context;
         IslamicSnackbar.showSuccess(
-          context != null ? (AppLocalizations.of(context)?.purchaseSuccessTitle ?? 'Başarılı!') : 'Başarılı!',
-          context != null ? (AppLocalizations.of(context)?.purchaseSuccessMessage ?? 'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.') : 'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.',
+          context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.purchaseSuccessTitle ?? 'Başarılı!') : 'Başarılı!',
+          context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.purchaseSuccessMessage ?? 'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.') : 'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.',
         );
+       await Future.delayed(const Duration(seconds: 2), () {
+         
+        });
         if(fromFirstLaunchX == true){
           fromFirstLaunchX = false;
           Get.offAll(() => HomeScreen(), transition: Transition.rightToLeft);
@@ -322,19 +325,19 @@ class SubscriptionService extends GetxController {
       
       if (isPremium.value) {
         IslamicSnackbar.showSuccess(
-          context != null ? (AppLocalizations.of(context)?.subscriptionCheckTitle ?? 'Kontrol Tamamlandı') : 'Kontrol Tamamlandı',
-          context != null ? (AppLocalizations.of(context)?.subscriptionCheckActiveMessage ?? 'Premium durumunuz güncellendi: Aktif ✨') : 'Premium durumunuz güncellendi: Aktif ✨',
+          context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.subscriptionCheckTitle ?? 'Kontrol Tamamlandı') : 'Kontrol Tamamlandı',
+          context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.subscriptionCheckActiveMessage ?? 'Premium durumunuz güncellendi: Aktif ✨') : 'Premium durumunuz güncellendi: Aktif ✨',
         );
       } else {
         IslamicSnackbar.showInfo(
-          context != null ? (AppLocalizations.of(context)?.subscriptionCheckTitle ?? 'Kontrol Tamamlandı') : 'Kontrol Tamamlandı',
-          context != null ? (AppLocalizations.of(context)?.subscriptionCheckInactiveMessage ?? 'Premium durumunuz güncellendi: Pasif') : 'Premium durumunuz güncellendi: Pasif',
+          context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.subscriptionCheckTitle ?? 'Kontrol Tamamlandı') : 'Kontrol Tamamlandı',
+          context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.subscriptionCheckInactiveMessage ?? 'Premium durumunuz güncellendi: Pasif') : 'Premium durumunuz güncellendi: Pasif',
         );
       }
     } catch (e) {
       IslamicSnackbar.showError(
-        context != null ? (AppLocalizations.of(context)?.purchaseErrorTitle ?? 'Hata') : 'Hata',
-        context != null ? (AppLocalizations.of(context)?.subscriptionCheckErrorMessage ?? 'Premium durumu kontrol edilirken hata oluştu. Lütfen daha sonra tekrar deneyin.') : 'Premium durumu kontrol edilirken hata oluştu. Lütfen daha sonra tekrar deneyin.',
+        context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.purchaseErrorTitle ?? 'Hata') : 'Hata',
+        context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.subscriptionCheckErrorMessage ?? 'Premium durumu kontrol edilirken hata oluştu. Lütfen daha sonra tekrar deneyin.') : 'Premium durumu kontrol edilirken hata oluştu. Lütfen daha sonra tekrar deneyin.',
       );
     }
   }
@@ -380,8 +383,8 @@ class SubscriptionService extends GetxController {
       }
       final context = Get.context;
       IslamicSnackbar.showError(
-        context != null ? (AppLocalizations.of(context)?.purchaseErrorTitle ?? 'Hata') : 'Hata',
-        context != null ? (AppLocalizations.of(context)?.purchaseNetworkErrorMessage ?? 'Satın alma işleminde hata oluştu. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.') : 'Satın alma işleminde hata oluştu. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.',
+        context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.purchaseErrorTitle ?? 'Hata') : 'Hata',
+        context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.purchaseNetworkErrorMessage ?? 'Satın alma işleminde hata oluştu. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.') : 'Satın alma işleminde hata oluştu. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.',
       );
       return false;
     } finally {
@@ -406,14 +409,14 @@ class SubscriptionService extends GetxController {
       
       final context = Get.context;
       IslamicSnackbar.showSuccess(
-        context != null ? (AppLocalizations.of(context)?.restorePurchaseSuccessTitle ?? 'Başarılı') : 'Başarılı',
-        context != null ? (AppLocalizations.of(context)?.restorePurchaseSuccessMessage ?? 'Satın alımlar geri yüklendi. Premium özellikleriniz kontrol ediliyor...') : 'Satın alımlar geri yüklendi. Premium özellikleriniz kontrol ediliyor...',
+        context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.restorePurchaseSuccessTitle ?? 'Başarılı') : 'Başarılı',
+        context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.restorePurchaseSuccessMessage ?? 'Satın alımlar geri yüklendi. Premium özellikleriniz kontrol ediliyor...') : 'Satın alımlar geri yüklendi. Premium özellikleriniz kontrol ediliyor...',
       );
     } catch (e) {
       final context = Get.context;
       IslamicSnackbar.showError(
-        context != null ? (AppLocalizations.of(context)?.restorePurchaseErrorTitle ?? 'Hata') : 'Hata',
-        context != null ? (AppLocalizations.of(context)?.restorePurchaseErrorMessage ?? 'Satın alımlar geri yüklenirken hata oluştu. Lütfen internet bağlantınızı kontrol edin.') : 'Satın alımlar geri yüklenirken hata oluştu. Lütfen internet bağlantınızı kontrol edin.',
+        context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.restorePurchaseErrorTitle ?? 'Hata') : 'Hata',
+        context != null ? (AppLocalizations.of(context.mounted ? context : Get.context!)?.restorePurchaseErrorMessage ?? 'Satın alımlar geri yüklenirken hata oluştu. Lütfen internet bağlantınızı kontrol edin.') : 'Satın alımlar geri yüklenirken hata oluştu. Lütfen internet bağlantınızı kontrol edin.',
       );
     } finally {
       _isLoading.value = false;
