@@ -959,6 +959,99 @@ class AppLocalizationsSw extends AppLocalizations {
       'Ni wakati wa dhikiri ya kila siku! Subhanallah, Alhamdulillah, Allahu Akbar';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'Kipengele cha ukumbusho kinahitaji uanachama wa premium';
+
+  @override
+  String get purchaseSuccessTitle => 'Imefaulu!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'Usajili wako wa premium umeamilishwa. Vipengele vyote vya premium sasa vimepatikana.';
+
+  @override
+  String get purchasePendingTitle => 'Mchakato wa Ununuzi';
+
+  @override
+  String get purchasePendingMessage =>
+      'Mchakato wa ununuzi unaendelea. Tafadhali subiri...';
+
+  @override
+  String get purchaseErrorDefault =>
+      'Hitilafu imetokea katika mchakato wa ununuzi.';
+
+  @override
+  String get purchaseErrorCancelled => 'Mchakato wa ununuzi umeghairiwa.';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'Taarifa za malipo si sahihi.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'Bidhaa haipatikani.';
+
+  @override
+  String get purchaseErrorTitle => 'Hitilafu';
+
+  @override
+  String get premiumFeatureTitle => 'Kipengele cha Premium';
+
+  @override
+  String get premiumFeatureMessage =>
+      'Kipengele hiki kinahitaji usajili wa premium.';
+
+  @override
+  String get premiumFeatureConfirm => 'Nenda kwa Premium';
+
+  @override
+  String get premiumFeatureCancel => 'Ghairi';
+
+  @override
+  String get subscriptionCheckTitle => 'Ukaguzi Umekamilika';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'Hali yako ya premium imesasishwa: Hai ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'Hali yako ya premium imesasishwa: Haikai';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'Hitilafu imetokea wakati wa kukagua hali ya premium. Tafadhali jaribu baadaye.';
+
+  @override
+  String get productNotFoundTitle => 'Hitilafu';
+
+  @override
+  String get productNotFoundMessage =>
+      'Bidhaa haijapatikana. Tafadhali jaribu baadaye.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'Hitilafu imetokea wakati wa ununuzi. Tafadhali kagua muunganisho wako wa intaneti na ujaribu tena.';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'Imefaulu';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'Ununuzi umerejelewa. Kukagua vipengele vyako vya premium...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'Hitilafu';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'Hitilafu imetokea wakati wa kurejesha ununuzi. Tafadhali kagua muunganisho wako wa intaneti.';
+
+  @override
+  String get subscriptionActiveStatus => 'Uanachama wa premium ni hai';
+
+  @override
+  String get subscriptionInactiveStatus => 'Vipengele zaidi na Premium';
+
+  @override
   String get settingsPermissions => 'Ruhusa';
 
   @override

@@ -954,6 +954,99 @@ class AppLocalizationsEn extends AppLocalizations {
       'Daily zikr time has come! SubhanAllah, Alhamdulillah, Allahu Akbar';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'Reminder feature requires premium membership';
+
+  @override
+  String get purchaseSuccessTitle => 'Success!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'Your premium subscription has been activated. All premium features are now available to you.';
+
+  @override
+  String get purchasePendingTitle => 'Purchase Process';
+
+  @override
+  String get purchasePendingMessage =>
+      'Purchase process is ongoing. Please wait...';
+
+  @override
+  String get purchaseErrorDefault =>
+      'An error occurred during the purchase process.';
+
+  @override
+  String get purchaseErrorCancelled => 'Purchase process was cancelled.';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'Payment information is invalid.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'Product not available.';
+
+  @override
+  String get purchaseErrorTitle => 'Error';
+
+  @override
+  String get premiumFeatureTitle => 'Premium Feature';
+
+  @override
+  String get premiumFeatureMessage =>
+      'This feature requires premium subscription.';
+
+  @override
+  String get premiumFeatureConfirm => 'Go Premium';
+
+  @override
+  String get premiumFeatureCancel => 'Cancel';
+
+  @override
+  String get subscriptionCheckTitle => 'Check Completed';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'Your premium status has been updated: Active ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'Your premium status has been updated: Inactive';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'An error occurred while checking premium status. Please try again later.';
+
+  @override
+  String get productNotFoundTitle => 'Error';
+
+  @override
+  String get productNotFoundMessage =>
+      'Product not found. Please try again later.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'An error occurred during purchase. Please check your internet connection and try again.';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'Success';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'Purchases restored. Checking your premium features...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'Error';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'An error occurred while restoring purchases. Please check your internet connection.';
+
+  @override
+  String get subscriptionActiveStatus => 'Premium membership active';
+
+  @override
+  String get subscriptionInactiveStatus => 'More features with Premium';
+
+  @override
   String get settingsPermissions => 'Permissions';
 
   @override

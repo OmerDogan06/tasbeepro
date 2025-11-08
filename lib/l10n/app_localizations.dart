@@ -1912,6 +1912,168 @@ abstract class AppLocalizations {
   /// **'Daily zikr time has come! SubhanAllah, Alhamdulillah, Allahu Akbar'**
   String get notificationDetailedMessage;
 
+  /// No description provided for @reminderFeatureRequiresPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder feature requires premium membership'**
+  String get reminderFeatureRequiresPremium;
+
+  /// No description provided for @purchaseSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Success!'**
+  String get purchaseSuccessTitle;
+
+  /// No description provided for @purchaseSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your premium subscription has been activated. All premium features are now available to you.'**
+  String get purchaseSuccessMessage;
+
+  /// No description provided for @purchasePendingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase Process'**
+  String get purchasePendingTitle;
+
+  /// No description provided for @purchasePendingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase process is ongoing. Please wait...'**
+  String get purchasePendingMessage;
+
+  /// No description provided for @purchaseErrorDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred during the purchase process.'**
+  String get purchaseErrorDefault;
+
+  /// No description provided for @purchaseErrorCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase process was cancelled.'**
+  String get purchaseErrorCancelled;
+
+  /// No description provided for @purchaseErrorInvalidPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment information is invalid.'**
+  String get purchaseErrorInvalidPayment;
+
+  /// No description provided for @purchaseErrorProductNotAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Product not available.'**
+  String get purchaseErrorProductNotAvailable;
+
+  /// No description provided for @purchaseErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get purchaseErrorTitle;
+
+  /// No description provided for @premiumFeatureTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Feature'**
+  String get premiumFeatureTitle;
+
+  /// No description provided for @premiumFeatureMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature requires premium subscription.'**
+  String get premiumFeatureMessage;
+
+  /// No description provided for @premiumFeatureConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Go Premium'**
+  String get premiumFeatureConfirm;
+
+  /// No description provided for @premiumFeatureCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get premiumFeatureCancel;
+
+  /// No description provided for @subscriptionCheckTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Completed'**
+  String get subscriptionCheckTitle;
+
+  /// No description provided for @subscriptionCheckActiveMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your premium status has been updated: Active ✨'**
+  String get subscriptionCheckActiveMessage;
+
+  /// No description provided for @subscriptionCheckInactiveMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your premium status has been updated: Inactive'**
+  String get subscriptionCheckInactiveMessage;
+
+  /// No description provided for @subscriptionCheckErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while checking premium status. Please try again later.'**
+  String get subscriptionCheckErrorMessage;
+
+  /// No description provided for @productNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get productNotFoundTitle;
+
+  /// No description provided for @productNotFoundMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Product not found. Please try again later.'**
+  String get productNotFoundMessage;
+
+  /// No description provided for @purchaseNetworkErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred during purchase. Please check your internet connection and try again.'**
+  String get purchaseNetworkErrorMessage;
+
+  /// No description provided for @restorePurchaseSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get restorePurchaseSuccessTitle;
+
+  /// No description provided for @restorePurchaseSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchases restored. Checking your premium features...'**
+  String get restorePurchaseSuccessMessage;
+
+  /// No description provided for @restorePurchaseErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get restorePurchaseErrorTitle;
+
+  /// No description provided for @restorePurchaseErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while restoring purchases. Please check your internet connection.'**
+  String get restorePurchaseErrorMessage;
+
+  /// No description provided for @subscriptionActiveStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium membership active'**
+  String get subscriptionActiveStatus;
+
+  /// No description provided for @subscriptionInactiveStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'More features with Premium'**
+  String get subscriptionInactiveStatus;
+
   /// Settings permissions section title
   ///
   /// In en, this message translates to:

@@ -923,7 +923,92 @@ class AppLocalizationsJa extends AppLocalizations {
       '毎日のズィクルの時間です！スブハーナッラー、アルハムドゥリッラー、アッラーフ・アクバル';
 
   @override
-  String get settingsPermissions => '許可';
+  String get reminderFeatureRequiresPremium => 'リマインダー機能にはプレミアムメンバーシップが必要です';
+
+  @override
+  String get purchaseSuccessTitle => '成功！';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'プレミアムサブスクリプションが有効になりました。すべてのプレミアム機能が利用可能になりました。';
+
+  @override
+  String get purchasePendingTitle => '購入プロセス';
+
+  @override
+  String get purchasePendingMessage => '購入プロセスが進行中です。お待ちください...';
+
+  @override
+  String get purchaseErrorDefault => '購入プロセス中にエラーが発生しました。';
+
+  @override
+  String get purchaseErrorCancelled => '購入プロセスがキャンセルされました。';
+
+  @override
+  String get purchaseErrorInvalidPayment => '支払い情報が無効です。';
+
+  @override
+  String get purchaseErrorProductNotAvailable => '商品は利用できません。';
+
+  @override
+  String get purchaseErrorTitle => 'エラー';
+
+  @override
+  String get premiumFeatureTitle => 'プレミアム機能';
+
+  @override
+  String get premiumFeatureMessage => 'この機能にはプレミアムサブスクリプションが必要です。';
+
+  @override
+  String get premiumFeatureConfirm => 'プレミアムにする';
+
+  @override
+  String get premiumFeatureCancel => 'キャンセル';
+
+  @override
+  String get subscriptionCheckTitle => 'チェック完了';
+
+  @override
+  String get subscriptionCheckActiveMessage => 'プレミアムステータスが更新されました：アクティブ ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage => 'プレミアムステータスが更新されました：非アクティブ';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'プレミアムステータスのチェック中にエラーが発生しました。後でもう一度お試しください。';
+
+  @override
+  String get productNotFoundTitle => 'エラー';
+
+  @override
+  String get productNotFoundMessage => '商品が見つかりません。後でもう一度お試しください。';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      '購入中にエラーが発生しました。インターネット接続を確認して、もう一度お試しください。';
+
+  @override
+  String get restorePurchaseSuccessTitle => '成功';
+
+  @override
+  String get restorePurchaseSuccessMessage => '購入が復元されました。プレミアム機能をチェックしています...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'エラー';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      '購入の復元中にエラーが発生しました。インターネット接続を確認してください。';
+
+  @override
+  String get subscriptionActiveStatus => 'プレミアムメンバーシップアクティブ';
+
+  @override
+  String get subscriptionInactiveStatus => 'プレミアムでより多くの機能';
+
+  @override
+  String get settingsPermissions => '権限';
 
   @override
   String get settingsPermissionsTitle => 'アプリの許可';

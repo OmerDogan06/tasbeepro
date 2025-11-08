@@ -950,7 +950,102 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get notificationDetailedMessage =>
-      'Kundalik zikr qilish vaqti keldi! Subhanalloh, Alhamdulillah, Allohu akbar';
+      'Kundalik zikr vaqti keldi! Subhanalloh, Alhamdulilloh, Allohu akbar';
+
+  @override
+  String get reminderFeatureRequiresPremium =>
+      'Eslatma funksiyasi uchun premium a\'zolik talab qilinadi';
+
+  @override
+  String get purchaseSuccessTitle => 'Muvaffaqiyat!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'Premium obunangiz faollashtirildi. Barcha premium xususiyatlar endi mavjud.';
+
+  @override
+  String get purchasePendingTitle => 'Sotib olish jarayoni';
+
+  @override
+  String get purchasePendingMessage =>
+      'Sotib olish jarayoni davom etmoqda. Iltimos kuting...';
+
+  @override
+  String get purchaseErrorDefault =>
+      'Sotib olish jarayonida xatolik yuz berdi.';
+
+  @override
+  String get purchaseErrorCancelled => 'Sotib olish jarayoni bekor qilindi.';
+
+  @override
+  String get purchaseErrorInvalidPayment =>
+      'To\'lov ma\'lumotlari noto\'g\'ri.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'Mahsulot mavjud emas.';
+
+  @override
+  String get purchaseErrorTitle => 'Xatolik';
+
+  @override
+  String get premiumFeatureTitle => 'Premium Xususiyat';
+
+  @override
+  String get premiumFeatureMessage =>
+      'Bu xususiyat premium obuna talab qiladi.';
+
+  @override
+  String get premiumFeatureConfirm => 'Premiumga o\'tish';
+
+  @override
+  String get premiumFeatureCancel => 'Bekor qilish';
+
+  @override
+  String get subscriptionCheckTitle => 'Tekshiruv tugallandi';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'Premium holatangiz yangilandi: Faol ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'Premium holatangiz yangilandi: Faol emas';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'Premium holatni tekshirishda xatolik yuz berdi. Keyinroq qayta urinib ko\'ring.';
+
+  @override
+  String get productNotFoundTitle => 'Xatolik';
+
+  @override
+  String get productNotFoundMessage =>
+      'Mahsulot topilmadi. Keyinroq qayta urinib ko\'ring.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'Sotib olishda xatolik yuz berdi. Internet ulanishingizni tekshiring va qayta urinib ko\'ring.';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'Muvaffaqiyat';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'Xaridlar tiklandi. Premium xususiyatlaringiz tekshirilmoqda...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'Xatolik';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'Xaridlarni tiklashda xatolik yuz berdi. Internet ulanishingizni tekshiring.';
+
+  @override
+  String get subscriptionActiveStatus => 'Premium a\'zolik faol';
+
+  @override
+  String get subscriptionInactiveStatus =>
+      'Premium bilan ko\'proq imkoniyatlar';
 
   @override
   String get settingsPermissions => 'Ruxsatlar';

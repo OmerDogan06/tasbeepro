@@ -22,15 +22,27 @@ class PremiumScreen extends StatelessWidget {
     SubscriptionService controller,
     SubscriptionPlan plan,
   ) async {
-    // Önceki premium durumunu kaydet
-    final wasPremium = controller.isPremium.value;
+    try {
+      debugPrint('🛒 Premium Screen: Purchase initiated for plan: ${plan.name}');
+      
+      // Önceki premium durumunu kaydet
+      final wasPremium = controller.isPremium.value;
+      debugPrint('🛒 Premium Screen: Was premium before: $wasPremium');
 
-    // Satın alma işlemini başlat
-    final success = await controller.purchaseSubscription(plan);
+      // Satın alma işlemini başlat
+      debugPrint('🛒 Premium Screen: Calling controller.purchaseSubscription...');
+      final success = await controller.purchaseSubscription(plan);
+      debugPrint('🛒 Premium Screen: Purchase result: $success');
 
-    if (success) {
-      // Satın alma başlatıldıysa, premium durumunu dinle
-      _startListeningForSuccess(controller, wasPremium);
+      if (success) {
+        // Satın alma başlatıldıysa, premium durumunu dinle
+        debugPrint('🛒 Premium Screen: Starting to listen for success...');
+        _startListeningForSuccess(controller, wasPremium);
+      } else {
+        debugPrint('❌ Premium Screen: Purchase failed or was cancelled');
+      }
+    } catch (e) {
+      debugPrint('❌ Premium Screen: Error in _handlePurchase: $e');
     }
   }
 
@@ -38,17 +50,21 @@ class PremiumScreen extends StatelessWidget {
     SubscriptionService controller,
     bool wasPremium,
   ) {
+    debugPrint('🔄 Premium Screen: Started listening for purchase success...');
     // 5 saniye boyunca premium durumunu kontrol et
     int checkCount = 0;
     const maxChecks = 25; // 5 saniye (200ms * 25)
 
     void checkPremiumStatus() {
       checkCount++;
+      debugPrint('🔄 Premium Screen: Check $checkCount/$maxChecks - Premium status: ${controller.isPremium.value}');
 
       // Eğer premium aktif olduysa ve önceden premium değildiyse
       if (!wasPremium && controller.isPremium.value) {
+        debugPrint('🎉 Premium Screen: Purchase successful! Premium activated.');
         if (fromFirstLaunch) {
           // First launch'tan geldiyse ana sayfaya yönlendir
+          debugPrint('🏠 Premium Screen: Redirecting to home screen...');
           Future.delayed(const Duration(seconds: 1), () {
             Get.offAll(() => const HomeScreen());
           });
@@ -59,6 +75,8 @@ class PremiumScreen extends StatelessWidget {
       // Maksimum kontrol sayısına ulaşmadıysak devam et
       if (checkCount < maxChecks) {
         Future.delayed(const Duration(milliseconds: 200), checkPremiumStatus);
+      } else {
+        debugPrint('⏰ Premium Screen: Stopped listening after $maxChecks checks');
       }
     }
 
@@ -336,8 +354,7 @@ class PremiumScreen extends StatelessWidget {
     bool isRecommended = false,
   }) {
     return GestureDetector(
-      onTap: () =>
-          product != null ? () => _handlePurchase(controller, plan) : null,
+      onTap: product != null ? () => _handlePurchase(controller, plan) : null,
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(

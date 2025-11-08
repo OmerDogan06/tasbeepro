@@ -949,6 +949,98 @@ class AppLocalizationsHi extends AppLocalizations {
       'दैनिक जिक्र का समय आ गया! सुब्हानअल्लाह, अल्हम्दुलिल्लाह, अल्लाहु अकबर';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'रिमाइंडर सुविधा के लिए प्रीमियम सदस्यता आवश्यक है';
+
+  @override
+  String get purchaseSuccessTitle => 'सफल!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'आपकी प्रीमियम सदस्यता सक्रिय हो गई है। सभी प्रीमियम सुविधाएं अब उपलब्ध हैं।';
+
+  @override
+  String get purchasePendingTitle => 'खरीदारी प्रक्रिया';
+
+  @override
+  String get purchasePendingMessage =>
+      'खरीदारी प्रक्रिया चल रही है। कृपया प्रतीक्षा करें...';
+
+  @override
+  String get purchaseErrorDefault => 'खरीदारी प्रक्रिया में त्रुटि हुई।';
+
+  @override
+  String get purchaseErrorCancelled => 'खरीदारी प्रक्रिया रद्द कर दी गई।';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'भुगतान जानकारी अमान्य है।';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'उत्पाद उपलब्ध नहीं है।';
+
+  @override
+  String get purchaseErrorTitle => 'त्रुटि';
+
+  @override
+  String get premiumFeatureTitle => 'प्रीमियम सुविधा';
+
+  @override
+  String get premiumFeatureMessage =>
+      'इस सुविधा के लिए प्रीमियम सदस्यता आवश्यक है।';
+
+  @override
+  String get premiumFeatureConfirm => 'प्रीमियम में जाएं';
+
+  @override
+  String get premiumFeatureCancel => 'रद्द करें';
+
+  @override
+  String get subscriptionCheckTitle => 'जांच पूर्ण';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'आपकी प्रीमियम स्थिति अपडेट हुई: सक्रिय ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'आपकी प्रीमियम स्थिति अपडेट हुई: निष्क्रिय';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'प्रीमियम स्थिति जांचने में त्रुटि हुई। कृपया बाद में पुनः प्रयास करें।';
+
+  @override
+  String get productNotFoundTitle => 'त्रुटि';
+
+  @override
+  String get productNotFoundMessage =>
+      'उत्पाद नहीं मिला। कृपया बाद में पुनः प्रयास करें।';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'खरीदारी में त्रुटि हुई। कृपया अपना इंटरनेट कनेक्शन जांचें और पुनः प्रयास करें।';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'सफल';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'खरीदारी पुनर्स्थापित हुई। आपकी प्रीमियम सुविधाएं जांची जा रही हैं...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'त्रुटि';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'खरीदारी पुनर्स्थापना में त्रुटि हुई। कृपया अपना इंटरनेट कनेक्शन जांचें।';
+
+  @override
+  String get subscriptionActiveStatus => 'प्रीमियम सदस्यता सक्रिय';
+
+  @override
+  String get subscriptionInactiveStatus => 'प्रीमियम के साथ अधिक सुविधाएं';
+
+  @override
   String get settingsPermissions => 'अनुमतियां';
 
   @override

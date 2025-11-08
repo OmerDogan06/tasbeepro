@@ -942,6 +942,97 @@ class AppLocalizationsFa extends AppLocalizations {
       'زمان ذکر روزانه فرا رسیده! سبحان‌الله، الحمدلله، الله اکبر';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'قابلیت یادآوری نیاز به عضویت ویژه دارد';
+
+  @override
+  String get purchaseSuccessTitle => 'موفق!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'اشتراک ویژه شما فعال شد. تمام ویژگی‌های پریمیوم اکنون در دسترس هستند.';
+
+  @override
+  String get purchasePendingTitle => 'فرآیند خرید';
+
+  @override
+  String get purchasePendingMessage =>
+      'فرآیند خرید در حال انجام است. لطفاً صبر کنید...';
+
+  @override
+  String get purchaseErrorDefault => 'خطایی در فرآیند خرید رخ داد.';
+
+  @override
+  String get purchaseErrorCancelled => 'فرآیند خرید لغو شد.';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'اطلاعات پرداخت نامعتبر است.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'محصول در دسترس نیست.';
+
+  @override
+  String get purchaseErrorTitle => 'خطا';
+
+  @override
+  String get premiumFeatureTitle => 'ویژگی پریمیوم';
+
+  @override
+  String get premiumFeatureMessage => 'این ویژگی نیاز به اشتراک ویژه دارد.';
+
+  @override
+  String get premiumFeatureConfirm => 'ارتقا به پریمیوم';
+
+  @override
+  String get premiumFeatureCancel => 'لغو';
+
+  @override
+  String get subscriptionCheckTitle => 'بررسی تکمیل شد';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'وضعیت پریمیوم شما به‌روزرسانی شد: فعال ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'وضعیت پریمیوم شما به‌روزرسانی شد: غیرفعال';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'خطایی در بررسی وضعیت پریمیوم رخ داد. لطفاً بعداً دوباره تلاش کنید.';
+
+  @override
+  String get productNotFoundTitle => 'خطا';
+
+  @override
+  String get productNotFoundMessage =>
+      'محصول یافت نشد. لطفاً بعداً دوباره تلاش کنید.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'خطایی در خرید رخ داد. لطفاً اتصال اینترنت خود را بررسی کنید و دوباره تلاش کنید.';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'موفق';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'خریدها بازیابی شدند. ویژگی‌های پریمیوم شما بررسی می‌شوند...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'خطا';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'خطایی در بازیابی خریدها رخ داد. لطفاً اتصال اینترنت خود را بررسی کنید.';
+
+  @override
+  String get subscriptionActiveStatus => 'عضویت ویژه فعال';
+
+  @override
+  String get subscriptionInactiveStatus => 'ویژگی‌های بیشتر با پریمیوم';
+
+  @override
   String get settingsPermissions => 'مجوزها';
 
   @override

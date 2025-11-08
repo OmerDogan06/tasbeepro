@@ -919,6 +919,87 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notificationDetailedMessage => '是时候进行每日念珠了！苏布哈纳拉，艾勒哈姆度利拉，安拉胡艾克巴尔';
 
   @override
+  String get reminderFeatureRequiresPremium => '提醒功能需要高级会员';
+
+  @override
+  String get purchaseSuccessTitle => '成功！';
+
+  @override
+  String get purchaseSuccessMessage => '您的高级订阅已激活。所有高级功能现已可用。';
+
+  @override
+  String get purchasePendingTitle => '购买流程';
+
+  @override
+  String get purchasePendingMessage => '购买流程正在进行中。请稍候...';
+
+  @override
+  String get purchaseErrorDefault => '购买过程中发生错误。';
+
+  @override
+  String get purchaseErrorCancelled => '购买流程已取消。';
+
+  @override
+  String get purchaseErrorInvalidPayment => '支付信息无效。';
+
+  @override
+  String get purchaseErrorProductNotAvailable => '产品不可用。';
+
+  @override
+  String get purchaseErrorTitle => '错误';
+
+  @override
+  String get premiumFeatureTitle => '高级功能';
+
+  @override
+  String get premiumFeatureMessage => '此功能需要高级订阅。';
+
+  @override
+  String get premiumFeatureConfirm => '升级到高级版';
+
+  @override
+  String get premiumFeatureCancel => '取消';
+
+  @override
+  String get subscriptionCheckTitle => '检查完成';
+
+  @override
+  String get subscriptionCheckActiveMessage => '您的高级状态已更新：激活 ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage => '您的高级状态已更新：未激活';
+
+  @override
+  String get subscriptionCheckErrorMessage => '检查高级状态时发生错误。请稍后重试。';
+
+  @override
+  String get productNotFoundTitle => '错误';
+
+  @override
+  String get productNotFoundMessage => '未找到产品。请稍后重试。';
+
+  @override
+  String get purchaseNetworkErrorMessage => '购买过程中发生错误。请检查您的网络连接并重试。';
+
+  @override
+  String get restorePurchaseSuccessTitle => '成功';
+
+  @override
+  String get restorePurchaseSuccessMessage => '购买已恢复。正在检查您的高级功能...';
+
+  @override
+  String get restorePurchaseErrorTitle => '错误';
+
+  @override
+  String get restorePurchaseErrorMessage => '恢复购买时发生错误。请检查您的网络连接。';
+
+  @override
+  String get subscriptionActiveStatus => '高级会员激活';
+
+  @override
+  String get subscriptionInactiveStatus => '高级版提供更多功能';
+
+  @override
   String get settingsPermissions => '权限';
 
   @override

@@ -976,6 +976,101 @@ class AppLocalizationsFr extends AppLocalizations {
       'L\'heure du dhikr quotidien est arrivée! SubhanAllah, Alhamdulillah, Allahu Akbar';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'La fonction de rappel nécessite un abonnement premium';
+
+  @override
+  String get purchaseSuccessTitle => 'Succès !';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'Votre abonnement premium a été activé. Toutes les fonctionnalités premium sont maintenant disponibles.';
+
+  @override
+  String get purchasePendingTitle => 'Processus d\'achat';
+
+  @override
+  String get purchasePendingMessage =>
+      'Le processus d\'achat est en cours. Veuillez patienter...';
+
+  @override
+  String get purchaseErrorDefault =>
+      'Une erreur s\'est produite lors du processus d\'achat.';
+
+  @override
+  String get purchaseErrorCancelled => 'Le processus d\'achat a été annulé.';
+
+  @override
+  String get purchaseErrorInvalidPayment =>
+      'Les informations de paiement ne sont pas valides.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'Produit non disponible.';
+
+  @override
+  String get purchaseErrorTitle => 'Erreur';
+
+  @override
+  String get premiumFeatureTitle => 'Fonctionnalité Premium';
+
+  @override
+  String get premiumFeatureMessage =>
+      'Cette fonctionnalité nécessite un abonnement premium.';
+
+  @override
+  String get premiumFeatureConfirm => 'Passer au Premium';
+
+  @override
+  String get premiumFeatureCancel => 'Annuler';
+
+  @override
+  String get subscriptionCheckTitle => 'Vérification terminée';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'Votre statut premium a été mis à jour : Actif ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'Votre statut premium a été mis à jour : Inactif';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'Une erreur s\'est produite lors de la vérification du statut premium. Veuillez réessayer plus tard.';
+
+  @override
+  String get productNotFoundTitle => 'Erreur';
+
+  @override
+  String get productNotFoundMessage =>
+      'Produit introuvable. Veuillez réessayer plus tard.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'Une erreur s\'est produite lors de l\'achat. Veuillez vérifier votre connexion internet et réessayer.';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'Succès';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'Achats restaurés. Vérification de vos fonctionnalités premium...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'Erreur';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'Une erreur s\'est produite lors de la restauration des achats. Veuillez vérifier votre connexion internet.';
+
+  @override
+  String get subscriptionActiveStatus => 'Abonnement premium actif';
+
+  @override
+  String get subscriptionInactiveStatus =>
+      'Plus de fonctionnalités avec Premium';
+
+  @override
   String get settingsPermissions => 'Permissions';
 
   @override

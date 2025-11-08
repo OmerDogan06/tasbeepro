@@ -947,6 +947,95 @@ class AppLocalizationsTh extends AppLocalizations {
       'ถึงเวลาทำซิกร์รายวันแล้ว! สุบฮานัลลอห์, อัลฮัมดุลิลลาห์, อัลลาฮู อักบาร์';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'ฟีเจอร์เตือนความจำต้องการสมาชิกพรีเมี่ยม';
+
+  @override
+  String get purchaseSuccessTitle => 'สำเร็จ!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'การสมัครพรีเมี่ยมของคุณได้รับการเปิดใช้งาน ฟีเจอร์พรีเมี่ยมทั้งหมดพร้อมใช้งานแล้ว';
+
+  @override
+  String get purchasePendingTitle => 'กระบวนการซื้อ';
+
+  @override
+  String get purchasePendingMessage => 'กระบวนการซื้อกำลังดำเนินการ กรุณารอ...';
+
+  @override
+  String get purchaseErrorDefault => 'เกิดข้อผิดพลาดในกระบวนการซื้อ';
+
+  @override
+  String get purchaseErrorCancelled => 'กระบวนการซื้อถูกยกเลิก';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'ข้อมูลการชำระเงินไม่ถูกต้อง';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'สินค้าไม่พร้อมใช้งาน';
+
+  @override
+  String get purchaseErrorTitle => 'ข้อผิดพลาด';
+
+  @override
+  String get premiumFeatureTitle => 'ฟีเจอร์พรีเมี่ยม';
+
+  @override
+  String get premiumFeatureMessage => 'ฟีเจอร์นี้ต้องการการสมัครพรีเมี่ยม';
+
+  @override
+  String get premiumFeatureConfirm => 'อัปเกรดเป็นพรีเมี่ยม';
+
+  @override
+  String get premiumFeatureCancel => 'ยกเลิก';
+
+  @override
+  String get subscriptionCheckTitle => 'ตรวจสอบเสร็จสิ้น';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'สถานะพรีเมี่ยมของคุณได้รับการอัปเดต: ใช้งานอยู่ ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'สถานะพรีเมี่ยมของคุณได้รับการอัปเดต: ไม่ใช้งาน';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'เกิดข้อผิดพลาดขณะตรวจสอบสถานะพรีเมี่ยม กรุณาลองใหม่ภายหลัง';
+
+  @override
+  String get productNotFoundTitle => 'ข้อผิดพลาด';
+
+  @override
+  String get productNotFoundMessage => 'ไม่พบสินค้า กรุณาลองใหม่ภายหลัง';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'เกิดข้อผิดพลาดขณะซื้อ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตและลองใหม่';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'สำเร็จ';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'คืนค่าการซื้อเสร็จสิ้น กำลังตรวจสอบฟีเจอร์พรีเมี่ยมของคุณ...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'ข้อผิดพลาด';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'เกิดข้อผิดพลาดขณะคืนค่าการซื้อ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต';
+
+  @override
+  String get subscriptionActiveStatus => 'สมาชิกพรีเมี่ยมใช้งานอยู่';
+
+  @override
+  String get subscriptionInactiveStatus => 'ฟีเจอร์เพิ่มเติมกับพรีเมี่ยม';
+
+  @override
   String get settingsPermissions => 'สิทธิ์';
 
   @override

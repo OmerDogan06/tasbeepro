@@ -946,6 +946,98 @@ class AppLocalizationsUr extends AppLocalizations {
       'روزانہ ذکر کا وقت آ گیا! سبحان اللہ، الحمد للہ، اللہ اکبر';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'یاد دہانی کی خصوصیت کے لیے پریمیم ممبرشپ درکار ہے';
+
+  @override
+  String get purchaseSuccessTitle => 'کامیاب!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'آپ کی پریمیم سبسکرپشن فعال ہو گئی ہے۔ تمام پریمیم خصوصیات اب دستیاب ہیں۔';
+
+  @override
+  String get purchasePendingTitle => 'خریداری کا عمل';
+
+  @override
+  String get purchasePendingMessage =>
+      'خریداری کا عمل جاری ہے۔ براہ کرم انتظار کریں...';
+
+  @override
+  String get purchaseErrorDefault => 'خریداری کے عمل میں خرابی ہوئی۔';
+
+  @override
+  String get purchaseErrorCancelled => 'خریداری کا عمل منسوخ کر دیا گیا۔';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'ادائیگی کی معلومات غلط ہیں۔';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'پروڈکٹ دستیاب نہیں ہے۔';
+
+  @override
+  String get purchaseErrorTitle => 'خرابی';
+
+  @override
+  String get premiumFeatureTitle => 'پریمیم خصوصیت';
+
+  @override
+  String get premiumFeatureMessage =>
+      'اس خصوصیت کے لیے پریمیم سبسکرپشن درکار ہے۔';
+
+  @override
+  String get premiumFeatureConfirm => 'پریمیم میں جائیں';
+
+  @override
+  String get premiumFeatureCancel => 'منسوخ';
+
+  @override
+  String get subscriptionCheckTitle => 'چیک مکمل';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'آپ کی پریمیم حالت اپ ڈیٹ ہو گئی: فعال ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'آپ کی پریمیم حالت اپ ڈیٹ ہو گئی: غیر فعال';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'پریمیم حالت چیک کرتے وقت خرابی ہوئی۔ بعد میں دوبارہ کوشش کریں۔';
+
+  @override
+  String get productNotFoundTitle => 'خرابی';
+
+  @override
+  String get productNotFoundMessage =>
+      'پروڈکٹ نہیں ملا۔ بعد میں دوبارہ کوشش کریں۔';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'خریداری میں خرابی ہوئی۔ اپنا انٹرنیٹ کنکشن چیک کریں اور دوبارہ کوشش کریں۔';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'کامیاب';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'خریداری بحال ہو گئی۔ آپ کی پریمیم خصوصیات چیک کی جا رہی ہیں...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'خرابی';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'خریداری بحال کرتے وقت خرابی ہوئی۔ اپنا انٹرنیٹ کنکشن چیک کریں۔';
+
+  @override
+  String get subscriptionActiveStatus => 'پریمیم ممبرشپ فعال';
+
+  @override
+  String get subscriptionInactiveStatus => 'پریمیم کے ساتھ زیادہ خصوصیات';
+
+  @override
   String get settingsPermissions => 'اجازات';
 
   @override

@@ -953,7 +953,99 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get notificationDetailedMessage =>
-      'Waktunya dzikir harian! Subhanallah, Alhamdulillah, Allahu Akbar';
+      'Waktunya dzikir harian! SubhanAllah, Alhamdulillah, Allahu Akbar';
+
+  @override
+  String get reminderFeatureRequiresPremium =>
+      'Fitur pengingat memerlukan keanggotaan premium';
+
+  @override
+  String get purchaseSuccessTitle => 'Berhasil!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'Langganan premium Anda telah diaktifkan. Semua fitur premium sekarang tersedia.';
+
+  @override
+  String get purchasePendingTitle => 'Proses Pembelian';
+
+  @override
+  String get purchasePendingMessage =>
+      'Proses pembelian sedang berlangsung. Mohon tunggu...';
+
+  @override
+  String get purchaseErrorDefault =>
+      'Terjadi kesalahan dalam proses pembelian.';
+
+  @override
+  String get purchaseErrorCancelled => 'Proses pembelian dibatalkan.';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'Informasi pembayaran tidak valid.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'Produk tidak tersedia.';
+
+  @override
+  String get purchaseErrorTitle => 'Kesalahan';
+
+  @override
+  String get premiumFeatureTitle => 'Fitur Premium';
+
+  @override
+  String get premiumFeatureMessage => 'Fitur ini memerlukan langganan premium.';
+
+  @override
+  String get premiumFeatureConfirm => 'Beralih ke Premium';
+
+  @override
+  String get premiumFeatureCancel => 'Batal';
+
+  @override
+  String get subscriptionCheckTitle => 'Pemeriksaan Selesai';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'Status premium Anda telah diperbarui: Aktif ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'Status premium Anda telah diperbarui: Tidak Aktif';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'Terjadi kesalahan saat memeriksa status premium. Silakan coba lagi nanti.';
+
+  @override
+  String get productNotFoundTitle => 'Kesalahan';
+
+  @override
+  String get productNotFoundMessage =>
+      'Produk tidak ditemukan. Silakan coba lagi nanti.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'Terjadi kesalahan saat pembelian. Silakan periksa koneksi internet dan coba lagi.';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'Berhasil';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'Pembelian dipulihkan. Memeriksa fitur premium Anda...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'Kesalahan';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'Terjadi kesalahan saat memulihkan pembelian. Silakan periksa koneksi internet.';
+
+  @override
+  String get subscriptionActiveStatus => 'Keanggotaan premium aktif';
+
+  @override
+  String get subscriptionInactiveStatus => 'Lebih banyak fitur dengan Premium';
 
   @override
   String get settingsPermissions => 'Izin';

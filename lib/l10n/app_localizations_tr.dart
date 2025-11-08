@@ -949,6 +949,97 @@ class AppLocalizationsTr extends AppLocalizations {
       'Günlük zikir yapma zamanı geldi! SubhanAllah, Alhamdulillah, Allahu Akbar';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'Hatırlatıcı özelliği premium üyelik gerektirir';
+
+  @override
+  String get purchaseSuccessTitle => 'Başarılı!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.';
+
+  @override
+  String get purchasePendingTitle => 'Satın alma işlemi';
+
+  @override
+  String get purchasePendingMessage =>
+      'Satın alma işlemi devam ediyor. Lütfen bekleyin...';
+
+  @override
+  String get purchaseErrorDefault => 'Satın alma işleminde hata oluştu.';
+
+  @override
+  String get purchaseErrorCancelled => 'Satın alma işlemi iptal edildi.';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'Ödeme bilgileri geçersiz.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'Ürün mevcut değil.';
+
+  @override
+  String get purchaseErrorTitle => 'Hata';
+
+  @override
+  String get premiumFeatureTitle => 'Premium Özellik';
+
+  @override
+  String get premiumFeatureMessage => 'Bu özellik premium abonelik gerektirir.';
+
+  @override
+  String get premiumFeatureConfirm => 'Premium\'a Geç';
+
+  @override
+  String get premiumFeatureCancel => 'İptal';
+
+  @override
+  String get subscriptionCheckTitle => 'Kontrol Tamamlandı';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'Premium durumunuz güncellendi: Aktif ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'Premium durumunuz güncellendi: Pasif';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'Premium durumu kontrol edilirken hata oluştu. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get productNotFoundTitle => 'Hata';
+
+  @override
+  String get productNotFoundMessage =>
+      'Ürün bulunamadı. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'Satın alma işleminde hata oluştu. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'Başarılı';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'Satın alımlar geri yüklendi. Premium özellikleriniz kontrol ediliyor...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'Hata';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'Satın alımlar geri yüklenirken hata oluştu. Lütfen internet bağlantınızı kontrol edin.';
+
+  @override
+  String get subscriptionActiveStatus => 'Premium üyelik aktif';
+
+  @override
+  String get subscriptionInactiveStatus => 'Premium ile daha fazla özellik';
+
+  @override
   String get settingsPermissions => 'İzinler';
 
   @override

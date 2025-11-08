@@ -952,6 +952,98 @@ class AppLocalizationsBn extends AppLocalizations {
       'দৈনিক জিকিরের সময় এসেছে! সুবহানাল্লাহ, আলহামদুলিল্লাহ, আল্লাহু আকবার';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'স্মারক বৈশিষ্ট্যের জন্য প্রিমিয়াম সদস্যপদ প্রয়োজন';
+
+  @override
+  String get purchaseSuccessTitle => 'সফল!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'আপনার প্রিমিয়াম সাবস্ক্রিপশন সক্রিয় করা হয়েছে। সমস্ত প্রিমিয়াম বৈশিষ্ট্য এখন উপলব্ধ।';
+
+  @override
+  String get purchasePendingTitle => 'ক্রয় প্রক্রিয়া';
+
+  @override
+  String get purchasePendingMessage =>
+      'ক্রয় প্রক্রিয়া চলমান। অনুগ্রহ করে অপেক্ষা করুন...';
+
+  @override
+  String get purchaseErrorDefault => 'ক্রয় প্রক্রিয়ায় একটি ত্রুটি ঘটেছে।';
+
+  @override
+  String get purchaseErrorCancelled => 'ক্রয় প্রক্রিয়া বাতিল করা হয়েছে।';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'পেমেন্ট তথ্য বৈধ নয়।';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'পণ্য উপলব্ধ নেই।';
+
+  @override
+  String get purchaseErrorTitle => 'ত্রুটি';
+
+  @override
+  String get premiumFeatureTitle => 'প্রিমিয়াম বৈশিষ্ট্য';
+
+  @override
+  String get premiumFeatureMessage =>
+      'এই বৈশিষ্ট্যের জন্য প্রিমিয়াম সাবস্ক্রিপশন প্রয়োজন।';
+
+  @override
+  String get premiumFeatureConfirm => 'প্রিমিয়ামে যান';
+
+  @override
+  String get premiumFeatureCancel => 'বাতিল';
+
+  @override
+  String get subscriptionCheckTitle => 'চেক সম্পন্ন';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'আপনার প্রিমিয়াম স্ট্যাটাস আপডেট করা হয়েছে: সক্রিয় ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'আপনার প্রিমিয়াম স্ট্যাটাস আপডেট করা হয়েছে: নিষ্ক্রিয়';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'প্রিমিয়াম স্ট্যাটাস চেক করার সময় একটি ত্রুটি ঘটেছে। পরে আবার চেষ্টা করুন।';
+
+  @override
+  String get productNotFoundTitle => 'ত্রুটি';
+
+  @override
+  String get productNotFoundMessage =>
+      'পণ্য পাওয়া যায়নি। পরে আবার চেষ্টা করুন।';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'ক্রয়ের সময় একটি ত্রুটি ঘটেছে। আপনার ইন্টারনেট সংযোগ চেক করুন এবং আবার চেষ্টা করুন।';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'সফল';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'ক্রয় পুনরুদ্ধার করা হয়েছে। আপনার প্রিমিয়াম বৈশিষ্ট্য চেক করা হচ্ছে...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'ত্রুটি';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'ক্রয় পুনরুদ্ধার করার সময় একটি ত্রুটি ঘটেছে। আপনার ইন্টারনেট সংযোগ চেক করুন।';
+
+  @override
+  String get subscriptionActiveStatus => 'প্রিমিয়াম সদস্যপদ সক্রিয়';
+
+  @override
+  String get subscriptionInactiveStatus => 'প্রিমিয়ামের সাথে আরও বৈশিষ্ট্য';
+
+  @override
   String get settingsPermissions => 'অনুমতি';
 
   @override

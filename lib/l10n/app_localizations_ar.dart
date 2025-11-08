@@ -932,6 +932,95 @@ class AppLocalizationsAr extends AppLocalizations {
       'حان وقت الذكر اليومي! سبحان الله، الحمد لله، الله أكبر';
 
   @override
+  String get reminderFeatureRequiresPremium => 'ميزة التذكير تتطلب عضوية مميزة';
+
+  @override
+  String get purchaseSuccessTitle => 'نجح!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'تم تفعيل اشتراكك المميز. جميع الميزات المميزة متاحة لك الآن.';
+
+  @override
+  String get purchasePendingTitle => 'عملية الشراء';
+
+  @override
+  String get purchasePendingMessage => 'عملية الشراء جارية. يرجى الانتظار...';
+
+  @override
+  String get purchaseErrorDefault => 'حدث خطأ أثناء عملية الشراء.';
+
+  @override
+  String get purchaseErrorCancelled => 'تم إلغاء عملية الشراء.';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'معلومات الدفع غير صحيحة.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'المنتج غير متوفر.';
+
+  @override
+  String get purchaseErrorTitle => 'خطأ';
+
+  @override
+  String get premiumFeatureTitle => 'ميزة مميزة';
+
+  @override
+  String get premiumFeatureMessage => 'هذه الميزة تتطلب اشتراك مميز.';
+
+  @override
+  String get premiumFeatureConfirm => 'الترقية للمميز';
+
+  @override
+  String get premiumFeatureCancel => 'إلغاء';
+
+  @override
+  String get subscriptionCheckTitle => 'اكتمل الفحص';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'تم تحديث حالة العضوية المميزة: نشط ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'تم تحديث حالة العضوية المميزة: غير نشط';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'حدث خطأ أثناء فحص حالة العضوية المميزة. يرجى المحاولة مرة أخرى لاحقاً.';
+
+  @override
+  String get productNotFoundTitle => 'خطأ';
+
+  @override
+  String get productNotFoundMessage =>
+      'لم يتم العثور على المنتج. يرجى المحاولة مرة أخرى لاحقاً.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'حدث خطأ أثناء الشراء. يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى.';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'نجح';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'تم استرداد المشتريات. جاري فحص ميزاتك المميزة...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'خطأ';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'حدث خطأ أثناء استرداد المشتريات. يرجى التحقق من اتصال الإنترنت.';
+
+  @override
+  String get subscriptionActiveStatus => 'العضوية المميزة نشطة';
+
+  @override
+  String get subscriptionInactiveStatus => 'المزيد من الميزات مع المميز';
+
+  @override
   String get settingsPermissions => 'الأذونات';
 
   @override

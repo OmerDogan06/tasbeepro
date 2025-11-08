@@ -956,6 +956,97 @@ class AppLocalizationsMs extends AppLocalizations {
       'Masa untuk zikir harian! Subhanallah, Alhamdulillah, Allahu Akbar';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'Ciri peringatan memerlukan keahlian premium';
+
+  @override
+  String get purchaseSuccessTitle => 'Berjaya!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'Langganan premium anda telah diaktifkan. Semua ciri premium kini tersedia.';
+
+  @override
+  String get purchasePendingTitle => 'Proses Pembelian';
+
+  @override
+  String get purchasePendingMessage =>
+      'Proses pembelian sedang berlangsung. Sila tunggu...';
+
+  @override
+  String get purchaseErrorDefault => 'Ralat berlaku semasa proses pembelian.';
+
+  @override
+  String get purchaseErrorCancelled => 'Proses pembelian dibatalkan.';
+
+  @override
+  String get purchaseErrorInvalidPayment => 'Maklumat pembayaran tidak sah.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'Produk tidak tersedia.';
+
+  @override
+  String get purchaseErrorTitle => 'Ralat';
+
+  @override
+  String get premiumFeatureTitle => 'Ciri Premium';
+
+  @override
+  String get premiumFeatureMessage => 'Ciri ini memerlukan langganan premium.';
+
+  @override
+  String get premiumFeatureConfirm => 'Naik taraf ke Premium';
+
+  @override
+  String get premiumFeatureCancel => 'Batal';
+
+  @override
+  String get subscriptionCheckTitle => 'Semakan Selesai';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'Status premium anda telah dikemas kini: Aktif ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'Status premium anda telah dikemas kini: Tidak Aktif';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'Ralat berlaku semasa memeriksa status premium. Sila cuba lagi kemudian.';
+
+  @override
+  String get productNotFoundTitle => 'Ralat';
+
+  @override
+  String get productNotFoundMessage =>
+      'Produk tidak dijumpai. Sila cuba lagi kemudian.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'Ralat berlaku semasa pembelian. Sila periksa sambungan internet dan cuba lagi.';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'Berjaya';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'Pembelian dipulihkan. Memeriksa ciri premium anda...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'Ralat';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'Ralat berlaku semasa memulihkan pembelian. Sila periksa sambungan internet.';
+
+  @override
+  String get subscriptionActiveStatus => 'Keahlian premium aktif';
+
+  @override
+  String get subscriptionInactiveStatus => 'Lebih banyak ciri dengan Premium';
+
+  @override
   String get settingsPermissions => 'Kebenaran';
 
   @override

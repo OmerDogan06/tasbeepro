@@ -920,7 +920,93 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get notificationDetailedMessage =>
-      '매일 지크르 시간입니다! 수브하날라, 알함둘릴라, 알라후 아크바르';
+      '일일 지크르 시간이 왔습니다! 수브하날라, 알함둘릴라, 알라후 아크바르';
+
+  @override
+  String get reminderFeatureRequiresPremium => '알림 기능에는 프리미엄 멤버십이 필요합니다';
+
+  @override
+  String get purchaseSuccessTitle => '성공!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      '프리미엄 구독이 활성화되었습니다. 모든 프리미엄 기능을 이용하실 수 있습니다.';
+
+  @override
+  String get purchasePendingTitle => '구매 과정';
+
+  @override
+  String get purchasePendingMessage => '구매 과정이 진행 중입니다. 잠시 기다려주세요...';
+
+  @override
+  String get purchaseErrorDefault => '구매 과정에서 오류가 발생했습니다.';
+
+  @override
+  String get purchaseErrorCancelled => '구매 과정이 취소되었습니다.';
+
+  @override
+  String get purchaseErrorInvalidPayment => '결제 정보가 유효하지 않습니다.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => '상품을 사용할 수 없습니다.';
+
+  @override
+  String get purchaseErrorTitle => '오류';
+
+  @override
+  String get premiumFeatureTitle => '프리미엄 기능';
+
+  @override
+  String get premiumFeatureMessage => '이 기능은 프리미엄 구독이 필요합니다.';
+
+  @override
+  String get premiumFeatureConfirm => '프리미엄으로 업그레이드';
+
+  @override
+  String get premiumFeatureCancel => '취소';
+
+  @override
+  String get subscriptionCheckTitle => '확인 완료';
+
+  @override
+  String get subscriptionCheckActiveMessage => '프리미엄 상태가 업데이트되었습니다: 활성 ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage => '프리미엄 상태가 업데이트되었습니다: 비활성';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      '프리미엄 상태 확인 중 오류가 발생했습니다. 나중에 다시 시도해주세요.';
+
+  @override
+  String get productNotFoundTitle => '오류';
+
+  @override
+  String get productNotFoundMessage => '상품을 찾을 수 없습니다. 나중에 다시 시도해주세요.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      '구매 중 오류가 발생했습니다. 인터넷 연결을 확인하고 다시 시도해주세요.';
+
+  @override
+  String get restorePurchaseSuccessTitle => '성공';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      '구매가 복원되었습니다. 프리미엄 기능을 확인하고 있습니다...';
+
+  @override
+  String get restorePurchaseErrorTitle => '오류';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      '구매 복원 중 오류가 발생했습니다. 인터넷 연결을 확인해주세요.';
+
+  @override
+  String get subscriptionActiveStatus => '프리미엄 멤버십 활성';
+
+  @override
+  String get subscriptionInactiveStatus => '프리미엄으로 더 많은 기능';
 
   @override
   String get settingsPermissions => '권한';

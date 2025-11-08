@@ -140,7 +140,9 @@ class NotificationService extends GetxService {
     
     // Premium kontrolü
     if (!_canUseReminders()) {
-      throw Exception('Hatırlatıcı özelliği premium üyelik gerektirir');
+      throw Exception(context != null 
+          ? (context.mounted ? AppLocalizations.of(context)?.reminderFeatureRequiresPremium : 'Hatırlatıcı özelliği premium üyelik gerektirir')!
+          : 'Hatırlatıcı özelliği premium üyelik gerektirir');
     }
     
     // Permission kontrolü

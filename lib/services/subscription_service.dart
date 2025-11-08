@@ -6,6 +6,7 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:tasbeepro/models/subscription_plan.dart';
 import 'package:tasbeepro/screens/premium_screen.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../l10n/app_localizations.dart';
 
 import 'storage_service.dart';
 
@@ -176,9 +177,10 @@ class SubscriptionService extends GetxController {
           print('🎉 Premium activated for product: $productId');
         }
         
+        final context = Get.context;
         IslamicSnackbar.showSuccess(
-          'Başarılı!',
-          'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.',
+          context != null ? (AppLocalizations.of(context)?.purchaseSuccessTitle ?? 'Başarılı!') : 'Başarılı!',
+          context != null ? (AppLocalizations.of(context)?.purchaseSuccessMessage ?? 'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.') : 'Premium aboneliğiniz aktifleştirildi. Tüm premium özellikler artık kullanımınıza açık.',
         );
       }
     } catch (e) {
@@ -189,25 +191,41 @@ class SubscriptionService extends GetxController {
   }
 
   void _showPendingUI() {
+    final context = Get.context;
     IslamicSnackbar.showInfo(
-      'Satın alma işlemi',
-      'Satın alma işlemi devam ediyor. Lütfen bekleyin...',
+      context != null ? (AppLocalizations.of(context)?.purchasePendingTitle ?? 'Satın alma işlemi') : 'Satın alma işlemi',
+      context != null ? (AppLocalizations.of(context)?.purchasePendingMessage ?? 'Satın alma işlemi devam ediyor. Lütfen bekleyin...') : 'Satın alma işlemi devam ediyor. Lütfen bekleyin...',
     );
   }
 
   void _handleError(IAPError error) {
-    String message = 'Satın alma işleminde hata oluştu.';
+    final context = Get.context;
+    String message = context != null ? (AppLocalizations.of(context)?.purchaseErrorDefault ?? 'Satın alma işleminde hata oluştu.') : 'Satın alma işleminde hata oluştu.';
     
-    switch (error.code) {
-      case 'user_cancelled':
-        message = 'Satın alma işlemi iptal edildi.';
-        break;
-      case 'payment_invalid':
-        message = 'Ödeme bilgileri geçersiz.';
-        break;
-      case 'product_not_available':
-        message = 'Ürün mevcut değil.';
-        break;
+    if (context != null) {
+      switch (error.code) {
+        case 'user_cancelled':
+          message = AppLocalizations.of(context)?.purchaseErrorCancelled ?? 'Satın alma işlemi iptal edildi.';
+          break;
+        case 'payment_invalid':
+          message = AppLocalizations.of(context)?.purchaseErrorInvalidPayment ?? 'Ödeme bilgileri geçersiz.';
+          break;
+        case 'product_not_available':
+          message = AppLocalizations.of(context)?.purchaseErrorProductNotAvailable ?? 'Ürün mevcut değil.';
+          break;
+      }
+    } else {
+      switch (error.code) {
+        case 'user_cancelled':
+          message = 'Satın alma işlemi iptal edildi.';
+          break;
+        case 'payment_invalid':
+          message = 'Ödeme bilgileri geçersiz.';
+          break;
+        case 'product_not_available':
+          message = 'Ürün mevcut değil.';
+          break;
+      }
     }
     
     if (kDebugMode) {
@@ -215,7 +233,7 @@ class SubscriptionService extends GetxController {
     }
     
     IslamicSnackbar.showError(
-      'Hata',
+      context != null ? (AppLocalizations.of(context)?.purchaseErrorTitle ?? 'Hata') : 'Hata',
       message,
     );
   }
@@ -261,11 +279,12 @@ class SubscriptionService extends GetxController {
 
   // Premium özellik kullanmaya çalışırken çağrılacak
   void showPremiumDialog() {
+    final context = Get.context;
     Get.defaultDialog(
-      title: 'Premium Özellik',
-      middleText: 'Bu özellik premium abonelik gerektirir.',
-      textConfirm: 'Premium\'a Geç',
-      textCancel: 'İptal',
+      title: context != null ? (AppLocalizations.of(context)?.premiumFeatureTitle ?? 'Premium Özellik') : 'Premium Özellik',
+      middleText: context != null ? (AppLocalizations.of(context)?.premiumFeatureMessage ?? 'Bu özellik premium abonelik gerektirir.') : 'Bu özellik premium abonelik gerektirir.',
+      textConfirm: context != null ? (AppLocalizations.of(context)?.premiumFeatureConfirm ?? 'Premium\'a Geç') : 'Premium\'a Geç',
+      textCancel: context != null ? (AppLocalizations.of(context)?.premiumFeatureCancel ?? 'İptal') : 'İptal',
       onConfirm: () {
         Get.back();
         // Premium satın alma sayfasına git
@@ -289,24 +308,25 @@ class SubscriptionService extends GetxController {
 
   // Test için manuel subscription check
   Future<void> forceCheckSubscription() async {
+    final context = Get.context;
     try {
       await refreshPremiumStatus();
       
       if (isPremium.value) {
         IslamicSnackbar.showSuccess(
-          'Kontrol Tamamlandı',
-          'Premium durumunuz güncellendi: Aktif ✨',
+          context != null ? (AppLocalizations.of(context)?.subscriptionCheckTitle ?? 'Kontrol Tamamlandı') : 'Kontrol Tamamlandı',
+          context != null ? (AppLocalizations.of(context)?.subscriptionCheckActiveMessage ?? 'Premium durumunuz güncellendi: Aktif ✨') : 'Premium durumunuz güncellendi: Aktif ✨',
         );
       } else {
         IslamicSnackbar.showInfo(
-          'Kontrol Tamamlandı',
-          'Premium durumunuz güncellendi: Pasif',
+          context != null ? (AppLocalizations.of(context)?.subscriptionCheckTitle ?? 'Kontrol Tamamlandı') : 'Kontrol Tamamlandı',
+          context != null ? (AppLocalizations.of(context)?.subscriptionCheckInactiveMessage ?? 'Premium durumunuz güncellendi: Pasif') : 'Premium durumunuz güncellendi: Pasif',
         );
       }
     } catch (e) {
       IslamicSnackbar.showError(
-        'Hata',
-        'Premium durumu kontrol edilirken hata oluştu. Lütfen daha sonra tekrar deneyin.',
+        context != null ? (AppLocalizations.of(context)?.purchaseErrorTitle ?? 'Hata') : 'Hata',
+        context != null ? (AppLocalizations.of(context)?.subscriptionCheckErrorMessage ?? 'Premium durumu kontrol edilirken hata oluştu. Lütfen daha sonra tekrar deneyin.') : 'Premium durumu kontrol edilirken hata oluştu. Lütfen daha sonra tekrar deneyin.',
       );
     }
   }
@@ -326,9 +346,10 @@ class SubscriptionService extends GetxController {
       );
       
       if (product == null) {
+        final context = Get.context;
         IslamicSnackbar.showError(
-          'Hata',
-          'Ürün bulunamadı. Lütfen daha sonra tekrar deneyin.',
+          context != null ? (AppLocalizations.of(context)?.productNotFoundTitle ?? 'Hata') : 'Hata',
+          context != null ? (AppLocalizations.of(context)?.productNotFoundMessage ?? 'Ürün bulunamadı. Lütfen daha sonra tekrar deneyin.') : 'Ürün bulunamadı. Lütfen daha sonra tekrar deneyin.',
         );
         return false;
       }
@@ -349,9 +370,10 @@ class SubscriptionService extends GetxController {
       if (kDebugMode) {
         print('❌ Error purchasing subscription: $e');
       }
+      final context = Get.context;
       IslamicSnackbar.showError(
-        'Hata',
-        'Satın alma işleminde hata oluştu. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.',
+        context != null ? (AppLocalizations.of(context)?.purchaseErrorTitle ?? 'Hata') : 'Hata',
+        context != null ? (AppLocalizations.of(context)?.purchaseNetworkErrorMessage ?? 'Satın alma işleminde hata oluştu. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.') : 'Satın alma işleminde hata oluştu. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.',
       );
       return false;
     } finally {
@@ -374,14 +396,16 @@ class SubscriptionService extends GetxController {
       _isLoading.value = true;
       await _restorePurchases();
       
+      final context = Get.context;
       IslamicSnackbar.showSuccess(
-        'Başarılı',
-        'Satın alımlar geri yüklendi. Premium özellikleriniz kontrol ediliyor...',
+        context != null ? (AppLocalizations.of(context)?.restorePurchaseSuccessTitle ?? 'Başarılı') : 'Başarılı',
+        context != null ? (AppLocalizations.of(context)?.restorePurchaseSuccessMessage ?? 'Satın alımlar geri yüklendi. Premium özellikleriniz kontrol ediliyor...') : 'Satın alımlar geri yüklendi. Premium özellikleriniz kontrol ediliyor...',
       );
     } catch (e) {
+      final context = Get.context;
       IslamicSnackbar.showError(
-        'Hata',
-        'Satın alımlar geri yüklenirken hata oluştu. Lütfen internet bağlantınızı kontrol edin.',
+        context != null ? (AppLocalizations.of(context)?.restorePurchaseErrorTitle ?? 'Hata') : 'Hata',
+        context != null ? (AppLocalizations.of(context)?.restorePurchaseErrorMessage ?? 'Satın alımlar geri yüklenirken hata oluştu. Lütfen internet bağlantınızı kontrol edin.') : 'Satın alımlar geri yüklenirken hata oluştu. Lütfen internet bağlantınızı kontrol edin.',
       );
     } finally {
       _isLoading.value = false;
@@ -390,10 +414,11 @@ class SubscriptionService extends GetxController {
 
   // Abonelik durumu metni
   String get subscriptionStatusText {
+    final context = Get.context;
     if (isPremium.value) {
-      return 'Premium üyelik aktif';
+      return context != null ? (AppLocalizations.of(context)?.subscriptionActiveStatus ?? 'Premium üyelik aktif') : 'Premium üyelik aktif';
     } else {
-      return 'Premium ile daha fazla özellik';
+      return context != null ? (AppLocalizations.of(context)?.subscriptionInactiveStatus ?? 'Premium ile daha fazla özellik') : 'Premium ile daha fazla özellik';
     }
   }
 }

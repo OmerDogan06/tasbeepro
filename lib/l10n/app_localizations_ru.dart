@@ -954,6 +954,97 @@ class AppLocalizationsRu extends AppLocalizations {
       'Пришло время ежедневного зикра! Субханаллах, Альхамдулиллях, Аллаху акбар';
 
   @override
+  String get reminderFeatureRequiresPremium =>
+      'Функция напоминаний требует премиум-членства';
+
+  @override
+  String get purchaseSuccessTitle => 'Успешно!';
+
+  @override
+  String get purchaseSuccessMessage =>
+      'Ваша премиум-подписка активирована. Все премиум-функции теперь доступны.';
+
+  @override
+  String get purchasePendingTitle => 'Процесс покупки';
+
+  @override
+  String get purchasePendingMessage =>
+      'Процесс покупки продолжается. Пожалуйста, подождите...';
+
+  @override
+  String get purchaseErrorDefault => 'Произошла ошибка в процессе покупки.';
+
+  @override
+  String get purchaseErrorCancelled => 'Процесс покупки был отменен.';
+
+  @override
+  String get purchaseErrorInvalidPayment =>
+      'Платежная информация недействительна.';
+
+  @override
+  String get purchaseErrorProductNotAvailable => 'Продукт недоступен.';
+
+  @override
+  String get purchaseErrorTitle => 'Ошибка';
+
+  @override
+  String get premiumFeatureTitle => 'Премиум-функция';
+
+  @override
+  String get premiumFeatureMessage => 'Эта функция требует премиум-подписку.';
+
+  @override
+  String get premiumFeatureConfirm => 'Перейти на Премиум';
+
+  @override
+  String get premiumFeatureCancel => 'Отмена';
+
+  @override
+  String get subscriptionCheckTitle => 'Проверка завершена';
+
+  @override
+  String get subscriptionCheckActiveMessage =>
+      'Ваш премиум-статус обновлен: Активен ✨';
+
+  @override
+  String get subscriptionCheckInactiveMessage =>
+      'Ваш премиум-статус обновлен: Неактивен';
+
+  @override
+  String get subscriptionCheckErrorMessage =>
+      'Произошла ошибка при проверке премиум-статуса. Попробуйте позже.';
+
+  @override
+  String get productNotFoundTitle => 'Ошибка';
+
+  @override
+  String get productNotFoundMessage => 'Продукт не найден. Попробуйте позже.';
+
+  @override
+  String get purchaseNetworkErrorMessage =>
+      'Произошла ошибка при покупке. Проверьте интернет-соединение и попробуйте снова.';
+
+  @override
+  String get restorePurchaseSuccessTitle => 'Успешно';
+
+  @override
+  String get restorePurchaseSuccessMessage =>
+      'Покупки восстановлены. Проверка ваших премиум-функций...';
+
+  @override
+  String get restorePurchaseErrorTitle => 'Ошибка';
+
+  @override
+  String get restorePurchaseErrorMessage =>
+      'Произошла ошибка при восстановлении покупок. Проверьте интернет-соединение.';
+
+  @override
+  String get subscriptionActiveStatus => 'Премиум-членство активно';
+
+  @override
+  String get subscriptionInactiveStatus => 'Больше функций с Премиум';
+
+  @override
   String get settingsPermissions => 'Разрешения';
 
   @override
