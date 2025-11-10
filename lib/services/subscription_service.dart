@@ -62,7 +62,7 @@ class SubscriptionService extends GetxController {
       final storageService = Get.find<StorageService>();
       final isPremiumX = storageService.getPremiumStatus();
       isPremium.value = isPremiumX;
-      
+      isPremium.refresh();
      
         debugPrint('📱 Premium status loaded: $isPremium');
       
@@ -71,6 +71,7 @@ class SubscriptionService extends GetxController {
         debugPrint('❌ Error loading premium status: $e');
       
       isPremium.value = false;
+      isPremium.refresh();
     }
   }
 
@@ -140,6 +141,7 @@ class SubscriptionService extends GetxController {
       // Eğer aktif premium bulunamadı ve şu anki durum true ise false yap
       if (!foundActivePremium && isPremium.value) {
         isPremium.value = false;
+        isPremium.refresh();
         final storageService = Get.find<StorageService>();
         await storageService.savePremiumStatus(false);
         
@@ -152,6 +154,7 @@ class SubscriptionService extends GetxController {
       } else if (foundActivePremium && !isPremium.value) {
         // Aktif premium bulundu ama local durum false ise true yap
         isPremium.value = true;
+        isPremium.refresh();
         final storageService = Get.find<StorageService>();
         await storageService.savePremiumStatus(true);
         
@@ -238,6 +241,7 @@ class SubscriptionService extends GetxController {
       if (productIds.contains(productId)) {
         // Premium durumunu aktif et
         isPremium.value = true;
+        isPremium.refresh();
         
         // Storage'a kaydet
         final storageService = Get.find<StorageService>();

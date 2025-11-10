@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:tasbeepro/services/subscription_service.dart';
 import 'dart:math' as math;
 import 'home_screen.dart';
 import 'first_launch_premium_intro_screen.dart';
@@ -99,8 +100,9 @@ class _SplashScreenState extends State<SplashScreen>
 
   void _navigateBasedOnFirstLaunch() {
     final storageService = Get.find<StorageService>();
+    final subscriptionService = Get.find<SubscriptionService>();
     
-    if (storageService.isFirstLaunch()) {
+    if (storageService.isFirstLaunch() && !subscriptionService.isPremium.value) {
       // İlk açılış - Premium tanıtım sayfasına git
       Get.offAll(
         () => const FirstLaunchPremiumIntroScreen(),
