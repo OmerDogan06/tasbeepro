@@ -15,6 +15,7 @@ import 'storage_service.dart';
 class SubscriptionService extends GetxController {
  
   bool fromFirstLaunchX = false;
+   bool fromPremiumScreenX = false;
 
   static SubscriptionService get to => Get.find();
   
@@ -81,6 +82,16 @@ class SubscriptionService extends GetxController {
     
     // Önce storage'dan yükle
     await _loadPremiumStatus();
+    
+    // İnternet bağlantısı varsa ürün bilgilerini ve satın alımları güncelle
+    final bool available = await _inAppPurchase.isAvailable();
+    if (available) {
+      // ✅ Ürün fiyatlarını ve bilgilerini yükle (internet geldiğinde önemli)
+      await _loadProducts();
+      
+      // ✅ Satın alımları restore et (offline -> online geçişinde gerekli)
+      await _restorePurchases();
+    }
     
     // Aktif satın alımları da kontrol et
     await _checkActivePurchases();
@@ -275,7 +286,10 @@ class SubscriptionService extends GetxController {
           fromFirstLaunchX = false;
           Get.offAll(() => HomeScreen(), transition: Transition.rightToLeft);
         } else {
-          Get.back();
+          if(fromPremiumScreenX == true){
+            fromPremiumScreenX = false;
+            Get.back();
+          }
         }
         
         // ✅ Navigation sonrası snackbar göster

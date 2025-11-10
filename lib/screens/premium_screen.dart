@@ -29,9 +29,11 @@ class _PremiumScreenState extends State<PremiumScreen> {
     if (widget.fromFirstLaunch) {
       final controller = Get.find<SubscriptionService>();
       controller.fromFirstLaunchX = true;
+      controller.fromPremiumScreenX = true;
     } else {
       final controller = Get.find<SubscriptionService>();
       controller.fromFirstLaunchX = false;
+      controller.fromPremiumScreenX = true;
     }
     super.initState();
   }
@@ -58,6 +60,14 @@ class _PremiumScreenState extends State<PremiumScreen> {
     } catch (e) {
       debugPrint('❌ Premium Screen: Error in _handlePurchase: $e');
     }
+  }
+
+  @override
+  void dispose() {
+    final controller = Get.find<SubscriptionService>();
+    controller.fromFirstLaunchX = false;
+    controller.fromPremiumScreenX = false;
+    super.dispose();
   }
 
   @override
