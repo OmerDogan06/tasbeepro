@@ -107,7 +107,7 @@ class SubscriptionService extends GetxController {
       StreamSubscription<List<PurchaseDetails>>? tempSubscription;
       final Completer<void> restoreCompleter = Completer<void>();
       
-      tempSubscription = _inAppPurchase.purchaseStream.listen((purchaseDetailsList) {
+      tempSubscription = _inAppPurchase.purchaseStream.listen((purchaseDetailsList) async {
         for (final purchase in purchaseDetailsList) {
           if (productIds.contains(purchase.productID) && 
               (purchase.status == PurchaseStatus.purchased || 
@@ -115,6 +115,20 @@ class SubscriptionService extends GetxController {
             foundActivePremium = true;
          
               debugPrint('✅ Found active premium: ${purchase.productID}');
+            
+            // ✅ Google Play'den satın alınan ürünler için completePurchase çağır
+            if (purchase.pendingCompletePurchase) {
+              try {
+                await _inAppPurchase.completePurchase(purchase);
+                if (kDebugMode) {
+                  debugPrint('✅ Completed pending purchase from Google Play: ${purchase.productID}');
+                }
+              } catch (e) {
+                if (kDebugMode) {
+                  debugPrint('❌ Failed to complete pending purchase: $e');
+                }
+              }
+            }
             
             break;
           }
