@@ -253,12 +253,12 @@ class _FirstLaunchPremiumIntroScreenState
         'description': AppLocalizations.of(context)?.firstLaunchIntroWidgetDescription ?? 'Android ana ekranında hızlı erişim',
         'color': Colors.green,
       },
-      {
-        'icon': Icons.cloud_sync_outlined,
-        'title': AppLocalizations.of(context)?.firstLaunchIntroUnlimitedTitle ?? 'Sınırsız Özellikler',
-        'description': AppLocalizations.of(context)?.firstLaunchIntroUnlimitedDescription ?? 'Tüm premium özellikler ve gelecek güncellemeler',
-        'color': goldColor,
-      },
+      // {
+      //   'icon': Icons.cloud_sync_outlined,
+      //   'title': AppLocalizations.of(context)?.firstLaunchIntroUnlimitedTitle ?? 'Sınırsız Özellikler',
+      //   'description': AppLocalizations.of(context)?.firstLaunchIntroUnlimitedDescription ?? 'Tüm premium özellikler ve gelecek güncellemeler',
+      //   'color': goldColor,
+      // },
     ];
 
     return Column(

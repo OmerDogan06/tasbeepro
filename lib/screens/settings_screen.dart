@@ -15,6 +15,7 @@ import 'reminder_screen.dart';
 import 'custom_reminder_times_screen.dart';
 import 'widget_stats_screen.dart';
 import 'permissions_screen.dart';
+import 'quran_reading_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -253,6 +254,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         )?.settingsLanguageSubtitle ??
                         'Uygulama dilini değiştir',
                     onTap: () => _showLanguageDialog(context),
+                    direction: direction
+                  ),
+                ]),
+
+                const SizedBox(height: 24),
+
+                // Kur'an Okuma
+                _buildSectionHeader(
+                  context,
+                  'Kur\'an Okuma 📖',
+                ),
+                _buildIslamicCard([
+                  _buildIslamicListTile(
+                    icon: Icons.menu_book,
+                    title: 'Kur\'an Okuma',
+                    subtitle: 'Kur\'an-ı Kerim\'i okuyun ve sureler arasında gezinin',
+                    onTap: () => Get.to(
+                      () => const QuranReadingScreen(),
+                      transition: Transition.rightToLeft,
+                      duration: const Duration(milliseconds: 300),
+                    ),
                     direction: direction
                   ),
                 ]),
