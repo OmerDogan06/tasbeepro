@@ -1460,7 +1460,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get premiumMembershipActive => 'Premium A\'zolik Faol';
 
   @override
-  String get premiumUpgradeDiscountText => 'Premiumga O\'tish - 60% Tejamkor';
+  String get premiumUpgradeDiscountText =>
+      'Premiumga O\'ting va barcha imtiyozlardan bahramand bo\'ling';
 
   @override
   String get premiumUpgradeButton => 'Premiumga O\'tish';

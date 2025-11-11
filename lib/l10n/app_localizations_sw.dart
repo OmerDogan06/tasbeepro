@@ -1466,7 +1466,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get premiumMembershipActive => 'Uanachama wa Premium Unaendelea';
 
   @override
-  String get premiumUpgradeDiscountText => 'Nenda Premium - Okoa 60%';
+  String get premiumUpgradeDiscountText =>
+      'Nenda Premium na ufurahie faida zote';
 
   @override
   String get premiumUpgradeButton => 'Nenda Premium';

@@ -1377,7 +1377,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get premiumMembershipActive => '高级会员已激活';
 
   @override
-  String get premiumUpgradeDiscountText => '升级到高级版 - 节省60%';
+  String get premiumUpgradeDiscountText => '升级到高级版并享受所有优势';
 
   @override
   String get premiumUpgradeButton => '升级到高级版';

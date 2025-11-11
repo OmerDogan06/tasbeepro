@@ -1394,7 +1394,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get premiumMembershipActive => '프리미엄 멤버십 활성';
 
   @override
-  String get premiumUpgradeDiscountText => '프리미엄으로 가기 - 60% 절약';
+  String get premiumUpgradeDiscountText => '프리미엄으로 가기 및 모든 혜택 누리기';
 
   @override
   String get premiumUpgradeButton => '프리미엄으로 가기';

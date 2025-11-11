@@ -1445,7 +1445,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get premiumMembershipActive => 'پریمیم ممبرشپ فعال';
 
   @override
-  String get premiumUpgradeDiscountText => 'پریمیم میں جائیں - 60% بچت';
+  String get premiumUpgradeDiscountText =>
+      'پریمیم میں جائیں اور تمام فوائد سے لطف اٹھائیں';
 
   @override
   String get premiumUpgradeButton => 'پریمیم میں جائیں';

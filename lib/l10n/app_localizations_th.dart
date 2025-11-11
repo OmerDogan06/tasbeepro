@@ -1441,7 +1441,8 @@ class AppLocalizationsTh extends AppLocalizations {
   String get premiumMembershipActive => 'สมาชิกพรีเมียมเปิดใช้งาน';
 
   @override
-  String get premiumUpgradeDiscountText => 'ไปที่พรีเมียม - ประหยัด 60%';
+  String get premiumUpgradeDiscountText =>
+      'ไปที่พรีเมียมและเพลิดเพลินกับสิทธิประโยชน์ทั้งหมด';
 
   @override
   String get premiumUpgradeButton => 'ไปที่พรีเมียม';

@@ -1478,7 +1478,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get premiumMembershipActive => 'Premium-Mitgliedschaft Aktiv';
 
   @override
-  String get premiumUpgradeDiscountText => 'Premium werden - 60% Ersparnis';
+  String get premiumUpgradeDiscountText =>
+      'Premium werden und alle Vorteile genießen';
 
   @override
   String get premiumUpgradeButton => 'Premium werden';

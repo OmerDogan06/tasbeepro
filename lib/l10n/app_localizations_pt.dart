@@ -1475,7 +1475,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get premiumMembershipActive => 'Subscrição Premium Ativa';
 
   @override
-  String get premiumUpgradeDiscountText => 'Ir para Premium - 60% de Poupança';
+  String get premiumUpgradeDiscountText =>
+      'Ir para Premium e aproveitar todos os benefícios';
 
   @override
   String get premiumUpgradeButton => 'Ir para Premium';

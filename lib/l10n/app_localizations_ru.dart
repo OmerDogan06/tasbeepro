@@ -1456,7 +1456,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get premiumMembershipActive => 'Премиум Членство Активно';
 
   @override
-  String get premiumUpgradeDiscountText => 'Перейти на Премиум - 60% Экономии';
+  String get premiumUpgradeDiscountText =>
+      'Перейти на Премиум и наслаждаться всеми преимуществами';
 
   @override
   String get premiumUpgradeButton => 'Перейти на Премиум';

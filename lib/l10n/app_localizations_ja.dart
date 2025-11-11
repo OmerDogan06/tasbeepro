@@ -1392,7 +1392,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get premiumMembershipActive => 'プレミアムメンバーシップ有効';
 
   @override
-  String get premiumUpgradeDiscountText => 'プレミアムにする - 60%節約';
+  String get premiumUpgradeDiscountText => 'プレミアムにしてすべての特典を楽しむ';
 
   @override
   String get premiumUpgradeButton => 'プレミアムにする';

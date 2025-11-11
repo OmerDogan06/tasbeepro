@@ -1440,7 +1440,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get premiumMembershipActive => 'عضویت پرمیوم فعال';
 
   @override
-  String get premiumUpgradeDiscountText => 'به پرمیوم برو - ۶۰٪ صرفه‌جویی';
+  String get premiumUpgradeDiscountText =>
+      'به پرمیوم برو و از همه مزایا بهره‌مند شو';
 
   @override
   String get premiumUpgradeButton => 'به پرمیوم برو';

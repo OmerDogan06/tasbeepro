@@ -1457,7 +1457,8 @@ class AppLocalizationsMs extends AppLocalizations {
   String get premiumMembershipActive => 'Keahlian Premium Aktif';
 
   @override
-  String get premiumUpgradeDiscountText => 'Ke Premium - Jimat 60%';
+  String get premiumUpgradeDiscountText =>
+      'Ke Premium dan nikmati semua faedah';
 
   @override
   String get premiumUpgradeButton => 'Ke Premium';

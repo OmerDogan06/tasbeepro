@@ -1489,7 +1489,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get premiumUpgradeDiscountText =>
-      'Passer au Premium - 60% d\'Économies';
+      'Passer au Premium et profiter de tous les avantages';
 
   @override
   String get premiumUpgradeButton => 'Passer au Premium';

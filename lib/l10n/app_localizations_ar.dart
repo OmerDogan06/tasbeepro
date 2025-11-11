@@ -1425,7 +1425,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get premiumMembershipActive => 'العضوية المميزة نشطة';
 
   @override
-  String get premiumUpgradeDiscountText => 'انتقل للمميز - وفر 60%';
+  String get premiumUpgradeDiscountText => 'انتقل للمميز واستمتع بجميع المزايا';
 
   @override
   String get premiumUpgradeButton => 'انتقل للمميز';

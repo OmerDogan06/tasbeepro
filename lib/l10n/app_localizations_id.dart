@@ -1457,7 +1457,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get premiumMembershipActive => 'Keanggotaan Premium Aktif';
 
   @override
-  String get premiumUpgradeDiscountText => 'Ke Premium - Hemat 60%';
+  String get premiumUpgradeDiscountText =>
+      'Ke Premium dan nikmati semua manfaat';
 
   @override
   String get premiumUpgradeButton => 'Ke Premium';

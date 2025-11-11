@@ -1448,7 +1448,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get premiumMembershipActive => 'Premium Üyelik Aktif';
 
   @override
-  String get premiumUpgradeDiscountText => 'Premium\'a Geçin - %60 Tasarruf';
+  String get premiumUpgradeDiscountText =>
+      'Premium\'a Geçin ve tüm avantajlardan yararlanın';
 
   @override
   String get premiumUpgradeButton => 'Premium\'a Geçin';

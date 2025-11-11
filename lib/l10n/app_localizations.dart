@@ -2815,7 +2815,7 @@ abstract class AppLocalizations {
   /// No description provided for @premiumUpgradeDiscountText.
   ///
   /// In en, this message translates to:
-  /// **'Go Premium - 60% Savings'**
+  /// **'Go Premium and enjoy all benefits'**
   String get premiumUpgradeDiscountText;
 
   /// No description provided for @premiumUpgradeButton.

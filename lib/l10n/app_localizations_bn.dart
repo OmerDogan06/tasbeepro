@@ -1453,7 +1453,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get premiumMembershipActive => 'প্রিমিয়াম সদস্যপদ সক্রিয়';
 
   @override
-  String get premiumUpgradeDiscountText => 'প্রিমিয়ামে যান - ৬০% সাশ্রয়';
+  String get premiumUpgradeDiscountText =>
+      'প্রিমিয়ামে যান এবং সমস্ত সুবিধা উপভোগ করুন';
 
   @override
   String get premiumUpgradeButton => 'প্রিমিয়ামে যান';
