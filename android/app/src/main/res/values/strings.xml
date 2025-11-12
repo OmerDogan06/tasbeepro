@@ -48,6 +48,24 @@
     <!-- Zikir Names -->
     <string name="zikir_subhanallah">Subhanallah</string>
     <string name="zikir_alhamdulillah">Alhamdulillah</string>
+    
+    <!-- Quran Widget -->
+    <string name="quran_title">Quran</string>
+    <string name="quran_widget_config_title">Quran Widget Settings</string>
+    <string name="quran_widget_description">Read Quran verses on your home screen</string>
+    <string name="sura_selection">Sura Selection</string>
+    <string name="sura_selection_description">Choose the sura to start reading from</string>
+    <string name="font_size_setting">Font Size</string>
+    <string name="font_size_setting_description">Adjust the text size for better reading</string>
+    <string name="font_size_label">Font Size: %1$d</string>
+    <string name="small_text">Small</string>
+    <string name="large_text">Large</string>
+    <string name="current_ayah">Current Verse</string>
+    <string name="total_ayahs">Total Verses</string>
+    <string name="sura_progress">Sura Progress</string>
+    <string name="open_quran">Open Quran</string>
+    <string name="previous_ayah">Previous Verse</string>
+    <string name="next_ayah">Next Verse</string>
     <string name="zikir_allahu_akbar">Allahu Akbar</string>
     <string name="zikir_la_ilaha_illallah">La ilaha illAllah</string>
     <string name="zikir_estaghfirullah">Astaghfirullah</string>

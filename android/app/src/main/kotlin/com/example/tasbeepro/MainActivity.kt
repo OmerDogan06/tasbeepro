@@ -30,6 +30,32 @@ class MainActivity : FlutterActivity() {
             "widget_database"
         ).setMethodCallHandler(widgetDatabaseChannel)
         
+        // Widget intent channel'ını kaydet
+        MethodChannel(
+            flutterEngine.dartExecutor.binaryMessenger,
+            "com.skyforgestudios.tasbeepro/widget"
+        ).setMethodCallHandler { call, result ->
+            when (call.method) {
+                "getInitialIntent" -> {
+                    val intentData = mutableMapOf<String, Any>()
+                    
+                    // Intent'ten Kuran widget verilerini al
+                    if (intent?.getBooleanExtra("open_quran", false) == true) {
+                        intentData["open_quran"] = true
+                        val suraNumber = intent?.getIntExtra("sura_number", 1) ?: 1
+                        intentData["sura_number"] = suraNumber
+                        
+                        // Intent'i temizle (tekrar kullanılmasın)
+                        intent?.removeExtra("open_quran")
+                        intent?.removeExtra("sura_number")
+                    }
+                    
+                    result.success(if (intentData.isEmpty()) null else intentData)
+                }
+                else -> result.notImplemented()
+            }
+        }
+        
         // Sound channel'ını kaydet
         MethodChannel(
             flutterEngine.dartExecutor.binaryMessenger,

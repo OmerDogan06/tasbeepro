@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:padding="8dp">
+
+    <!-- Header: Kuran ve ayarlar butonu -->
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/app_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/quran_title"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#2D5016" />
+
+        <ImageButton
+            android:id="@+id/settings_button"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_settings"
+            android:scaleType="centerInside"
+            android:padding="2dp"
+            android:contentDescription="@string/widget_settings_desc" />
+
+    </LinearLayout>
+
+    <!-- Sure bilgisi -->
+    <LinearLayout
+        android:id="@+id/sura_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_layout"
+        android:orientation="vertical"
+        android:background="@drawable/widget_zikr_background"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/sura_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Al-Fatiha"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#F5E6A8"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/sura_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Sure"
+            android:textSize="11sp"
+            android:textColor="#E0D4B8"
+            android:gravity="center"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+
+    <!-- ListView ile Kuran ayetleri -->
+    <ListView
+        android:id="@+id/ayah_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sura_info_layout"
+        android:layout_above="@id/controls_layout"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/widget_ayah_background"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="4dp"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:scrollbarStyle="outsideOverlay" />
+
+    <!-- Kontrol butonları -->
+    <LinearLayout
+        android:id="@+id/controls_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <!-- Önceki sure butonu -->
+        <ImageButton
+            android:id="@+id/previous_sura_button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/widget_nav_button_background"
+            android:src="@drawable/ic_arrow_back"
+            android:scaleType="centerInside"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Previous Sura" />
+
+        <!-- Ana buton - Uygulamayı aç -->
+        <LinearLayout
+            android:id="@+id/open_app_button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="2"
+            android:background="@drawable/widget_main_button_background"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_book_open"
+                android:layout_marginEnd="6dp"
+                android:tint="#F5E6A8" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open_quran"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#F5E6A8" />
+
+        </LinearLayout>
+
+        <!-- Sonraki sure butonu -->
+        <ImageButton
+            android:id="@+id/next_sura_button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/widget_nav_button_background"
+            android:src="@drawable/ic_arrow_forward"
+            android:scaleType="centerInside"
+            android:layout_marginStart="4dp"
+            android:contentDescription="Next Sura" />
+
+    </LinearLayout>
+
+</RelativeLayout>

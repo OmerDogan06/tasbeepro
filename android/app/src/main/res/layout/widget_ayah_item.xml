@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ayah_item_background"
+    android:padding="12dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="6dp"
+    android:layout_marginTop="2dp">
+
+    <!-- Ayet numarası - İslami tasarım -->
+    <TextView
+        android:id="@+id/ayah_number"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/ayah_number_background"
+        android:gravity="center"
+        android:textSize="11sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp" />
+
+    <!-- Ayet metni - İslami tipografi -->
+    <TextView
+        android:id="@+id/ayah_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ayah_number"
+        android:layout_toEndOf="@id/ayah_number"
+        android:layout_centerVertical="true"
+        android:textSize="16sp"
+        android:textColor="#1B3B0A"
+        android:gravity="right"
+        android:lineSpacingMultiplier="1.8"
+        android:padding="6dp"
+        android:fontFamily="serif" />
+
+</RelativeLayout>

@@ -129,6 +129,33 @@
                 android:resource="@xml/tasbee_widget_info" />
         </receiver>
         
+        <!-- Quran Widget Configuration Activity -->
+        <activity
+            android:name=".QuranWidgetConfigActivity"
+            android:label="@string/quran_widget_config_title"
+            android:exported="false"
+            android:theme="@style/WidgetConfigTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Quran Widget Provider -->
+        <receiver android:name=".QuranWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/quran_widget_info" />
+        </receiver>
+        
+        <!-- Quran List Service for Widget -->
+        <service android:name=".QuranListService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="false" />
+        
        
         
         <!-- Don't delete the meta-data below.
@@ -141,7 +168,7 @@
           <!--Production ID : ca-app-pub-8365973392717077~8118430681 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8365973392717077~8118430681"/>
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
             
         <!-- Indicate that this app uses the Advertising ID -->
         <meta-data
