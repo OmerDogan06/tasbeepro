@@ -463,5 +463,14 @@
   "widgetInfoTitleFree": "Über Tasbee-Widget 🔒",
   "widgetPremiumDialogTitle": "Premium-Funktion 💎",
   "widgetPremiumDialogMessage": "Das Homescreen-Widget ist eine Premium-Funktion.\nUpgrade auf Premium, um das Widget zu nutzen.",
-  "widgetPremiumRequired": "Premium Erforderlich"
+  "widgetPremiumRequired": "Premium Erforderlich",
+  "quranFontSize": "Schriftgröße",
+  "quranSuraSelection": "Sura-Auswahl",
+  "quranNoDataFound": "Keine Daten gefunden",
+  "quranPreviousSura": "Vorherige Sura",
+  "quranNextSura": "Nächste Sura",
+  "quranVerseCount": "Anzahl der Verse",
+  "quranFontSizeLabel": "Schriftgröße",
+  "quranFontSizeSmall": "Klein",
+  "quranFontSizeLarge": "Groß"
 }

@@ -463,5 +463,14 @@
   "widgetInfoTitleFree": "타스비 위젯 정보 🔒",
   "widgetPremiumDialogTitle": "프리미엄 기능 💎",
   "widgetPremiumDialogMessage": "홈 화면 위젯은 프리미엄 기능입니다.\n위젯을 사용하려면 프리미엄으로 업그레이드하세요.",
-  "widgetPremiumRequired": "프리미엄 필요"
+  "widgetPremiumRequired": "프리미엄 필요",
+  "quranFontSize": "폰트 크기",
+  "quranSuraSelection": "장 선택",
+  "quranNoDataFound": "데이터를 찾을 수 없습니다",
+  "quranPreviousSura": "이전 장",
+  "quranNextSura": "다음 장",
+  "quranVerseCount": "구절 수",
+  "quranFontSizeLabel": "폰트 크기",
+  "quranFontSizeSmall": "작음",
+  "quranFontSizeLarge": "큼"
 }

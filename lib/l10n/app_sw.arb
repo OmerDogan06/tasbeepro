@@ -463,5 +463,14 @@
   "widgetInfoTitleFree": "Kuhusu Widget ya Tasbee 🔒",
   "widgetPremiumDialogTitle": "Kipengele cha Premium 💎",
   "widgetPremiumDialogMessage": "Widget ya skrini kuu ni kipengele cha premium.\nPandisha kwenda premium ili kutumia widget.",
-  "widgetPremiumRequired": "Premium Inahitajika"
+  "widgetPremiumRequired": "Premium Inahitajika",
+  "quranFontSize": "Ukubwa wa Fonti",
+  "quranSuraSelection": "Uchaguzi wa Sura",
+  "quranNoDataFound": "Hakuna data iliyopatikana",
+  "quranPreviousSura": "Sura ya Awali",
+  "quranNextSura": "Sura Ijayo",
+  "quranVerseCount": "Idadi ya Mstari",
+  "quranFontSizeLabel": "Ukubwa wa Fonti",
+  "quranFontSizeSmall": "Ndogo",
+  "quranFontSizeLarge": "Kubwa"
 }

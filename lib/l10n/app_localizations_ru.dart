@@ -1487,4 +1487,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get widgetPremiumRequired => 'Требуется Премиум';
+
+  @override
+  String get quranFontSize => 'Размер Шрифта';
+
+  @override
+  String get quranSuraSelection => 'Выбор Суры';
+
+  @override
+  String get quranNoDataFound => 'Данные не найдены';
+
+  @override
+  String get quranPreviousSura => 'Предыдущая Сура';
+
+  @override
+  String get quranNextSura => 'Следующая Сура';
+
+  @override
+  String get quranVerseCount => 'Количество Аятов';
+
+  @override
+  String get quranFontSizeLabel => 'Размер Шрифта';
+
+  @override
+  String get quranFontSizeSmall => 'Маленький';
+
+  @override
+  String get quranFontSizeLarge => 'Большой';
 }

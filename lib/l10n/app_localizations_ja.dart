@@ -1421,4 +1421,31 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get widgetPremiumRequired => 'プレミアムが必要';
+
+  @override
+  String get quranFontSize => 'フォントサイズ';
+
+  @override
+  String get quranSuraSelection => '章の選択';
+
+  @override
+  String get quranNoDataFound => 'データが見つかりません';
+
+  @override
+  String get quranPreviousSura => '前の章';
+
+  @override
+  String get quranNextSura => '次の章';
+
+  @override
+  String get quranVerseCount => '節の数';
+
+  @override
+  String get quranFontSizeLabel => 'フォントサイズ';
+
+  @override
+  String get quranFontSizeSmall => '小';
+
+  @override
+  String get quranFontSizeLarge => '大';
 }

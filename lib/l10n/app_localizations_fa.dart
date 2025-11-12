@@ -1471,4 +1471,31 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get widgetPremiumRequired => 'پرمیوم مورد نیاز';
+
+  @override
+  String get quranFontSize => 'اندازه فونت';
+
+  @override
+  String get quranSuraSelection => 'انتخاب سوره';
+
+  @override
+  String get quranNoDataFound => 'داده‌ای یافت نشد';
+
+  @override
+  String get quranPreviousSura => 'سوره قبلی';
+
+  @override
+  String get quranNextSura => 'سوره بعدی';
+
+  @override
+  String get quranVerseCount => 'تعداد آیات';
+
+  @override
+  String get quranFontSizeLabel => 'اندازه فونت';
+
+  @override
+  String get quranFontSizeSmall => 'کوچک';
+
+  @override
+  String get quranFontSizeLarge => 'بزرگ';
 }

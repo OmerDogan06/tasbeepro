@@ -305,4 +305,13 @@ class StorageService extends GetxService {
   bool isFirstLaunch() {
     return !(_prefs.getBool('first_launch_completed') ?? false);
   }
+
+  // Quran font size
+  Future<void> saveQuranFontSize(double fontSize) async {
+    await _prefs.setDouble('quran_font_size', fontSize);
+  }
+  
+  double getQuranFontSize() {
+    return _prefs.getDouble('quran_font_size') ?? 22.0; // Varsayılan font boyutu
+  }
 }

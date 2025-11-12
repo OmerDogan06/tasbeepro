@@ -1644,5 +1644,14 @@
   "widgetInfoTitleFree": "Tasbee Widget About 🔒",
   "widgetPremiumDialogTitle": "Premium Feature 💎",
   "widgetPremiumDialogMessage": "Home screen widget is a premium feature.\nUpgrade to premium to use the widget.",
-  "widgetPremiumRequired": "Premium Required"
+  "widgetPremiumRequired": "Premium Required",
+  "quranFontSize": "Font Size",
+  "quranSuraSelection": "Sura Selection",
+  "quranNoDataFound": "No data found",
+  "quranPreviousSura": "Previous Sura",
+  "quranNextSura": "Next Sura",
+  "quranVerseCount": "Verse Count",
+  "quranFontSizeLabel": "Font Size",
+  "quranFontSizeSmall": "Small",
+  "quranFontSizeLarge": "Large"
 }

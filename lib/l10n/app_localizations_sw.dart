@@ -1498,4 +1498,31 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get widgetPremiumRequired => 'Premium Inahitajika';
+
+  @override
+  String get quranFontSize => 'Ukubwa wa Fonti';
+
+  @override
+  String get quranSuraSelection => 'Uchaguzi wa Sura';
+
+  @override
+  String get quranNoDataFound => 'Hakuna data iliyopatikana';
+
+  @override
+  String get quranPreviousSura => 'Sura ya Awali';
+
+  @override
+  String get quranNextSura => 'Sura Ijayo';
+
+  @override
+  String get quranVerseCount => 'Idadi ya Mstari';
+
+  @override
+  String get quranFontSizeLabel => 'Ukubwa wa Fonti';
+
+  @override
+  String get quranFontSizeSmall => 'Ndogo';
+
+  @override
+  String get quranFontSizeLarge => 'Kubwa';
 }

@@ -463,5 +463,14 @@
   "widgetInfoTitleFree": "关于念珠小部件 🔒",
   "widgetPremiumDialogTitle": "高级功能 💎",
   "widgetPremiumDialogMessage": "主屏幕小部件是高级功能。\n升级到高级版以使用小部件。",
-  "widgetPremiumRequired": "需要高级版"
+  "widgetPremiumRequired": "需要高级版",
+  "quranFontSize": "字体大小",
+  "quranSuraSelection": "章节选择",
+  "quranNoDataFound": "未找到数据",
+  "quranPreviousSura": "上一章",
+  "quranNextSura": "下一章",
+  "quranVerseCount": "经文数量",
+  "quranFontSizeLabel": "字体大小",
+  "quranFontSizeSmall": "小",
+  "quranFontSizeLarge": "大"
 }

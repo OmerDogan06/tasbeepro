@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'dart:math' as math;
 import '../constants/sura_names.dart';
+import '../l10n/app_localizations.dart';
+import '../services/storage_service.dart';
 
 class QuranReadingScreen extends StatefulWidget {
   final int? initialSura;
@@ -33,7 +36,16 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
   void initState() {
     super.initState();
     currentSura = widget.initialSura ?? 1;
+    _loadSavedFontSize();
     _loadQuranData();
+  }
+
+  // Font boyutunu storage'dan yükle
+  void _loadSavedFontSize() {
+    final savedFontSize = StorageService.to.getQuranFontSize();
+    setState(() {
+      ayahFontSize = savedFontSize;
+    });
   }
 
   @override
@@ -167,7 +179,8 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        'Font Boyutu',
+                        AppLocalizations.of(context)?.quranFontSize ??
+                            'Font Boyutu',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -211,7 +224,7 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                         SizedBox(height: 8),
                         // Size label
                         Text(
-                          'Font Boyutu: ${ayahFontSize.toInt()}',
+                          '${AppLocalizations.of(context)?.quranFontSizeLabel ?? 'Font Boyutu'}: ${ayahFontSize.toInt()}',
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -244,6 +257,8 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                                 ayahFontSize = value;
                               });
                               setState(() {});
+                              // Font boyutunu storage'a kaydet
+                              StorageService.to.saveQuranFontSize(value);
                             },
                           ),
                         ),
@@ -255,14 +270,14 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Küçük (16)',
+                              '${AppLocalizations.of(context)?.quranFontSizeSmall ?? 'Küçük'} (16)',
                               style: TextStyle(
                                 fontSize: 12,
                                 color: emeraldGreen.withAlpha(153),
                               ),
                             ),
                             Text(
-                              'Büyük (36)',
+                              '${AppLocalizations.of(context)?.quranFontSizeLarge ?? 'Büyük'} (36)',
                               style: TextStyle(
                                 fontSize: 12,
                                 color: emeraldGreen.withAlpha(153),
@@ -332,7 +347,8 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        'Sure Seçimi',
+                        AppLocalizations.of(context)?.quranSuraSelection ??
+                            'Sure Seçimi',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -414,10 +430,23 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                                 borderRadius: BorderRadius.circular(12),
                                 onTap: () {
                                   setState(() {
+                                    isLoading = true;
+                                  });
+
+                                  setState(() {
                                     currentSura = suraNumber;
                                     _loadCurrentSura();
                                   });
                                   Get.back();
+                                  Future.delayed(
+                                    const Duration(milliseconds: 300),
+                                    () {
+                                      setState(() {
+                                        isLoading = false;
+                                      });
+                                    },
+                                  );
+
                                   HapticFeedback.selectionClick();
                                 },
                                 child: Padding(
@@ -610,7 +639,10 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                 Container(
                   height: 40,
                   width: 40,
-                  margin: EdgeInsets.only(right: direction == TextDirection.ltr ? 8 : 0, left: direction == TextDirection.rtl ? 8 : 0),
+                  margin: EdgeInsets.only(
+                    right: direction == TextDirection.ltr ? 8 : 0,
+                    left: direction == TextDirection.rtl ? 8 : 0,
+                  ),
                   decoration: BoxDecoration(
                     gradient: const RadialGradient(
                       colors: [lightGold, goldColor],
@@ -657,7 +689,8 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
             : currentSuraAyahs.isEmpty
             ? Center(
                 child: Text(
-                  'Veri bulunamadı',
+                  AppLocalizations.of(context)?.quranNoDataFound ??
+                      'Veri bulunamadı',
                   style: const TextStyle(fontSize: 16, color: emeraldGreen),
                 ),
               )
@@ -696,7 +729,11 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                           _buildNavButton(
                             icon: Icons.chevron_left,
                             onTap: currentSura > 1 ? _goToPreviousSura : null,
-                            tooltip: 'Önceki Sure',
+                            tooltip:
+                                AppLocalizations.of(
+                                  context,
+                                )?.quranPreviousSura ??
+                                'Önceki Sure',
                           ),
 
                           Expanded(
@@ -704,7 +741,7 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                               child: Column(
                                 children: [
                                   Text(
-                                    'Ayet Sayısı: ${currentSuraAyahs.length}',
+                                    '${AppLocalizations.of(context)?.quranVerseCount ?? 'Ayet Sayısı'}: ${currentSuraAyahs.length}',
                                     style: const TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
@@ -727,7 +764,9 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                           _buildNavButton(
                             icon: Icons.chevron_right,
                             onTap: currentSura < 114 ? _goToNextSura : null,
-                            tooltip: 'Sonraki Sure',
+                            tooltip:
+                                AppLocalizations.of(context)?.quranNextSura ??
+                                'Sonraki Sure',
                           ),
                         ],
                       ),
@@ -761,7 +800,9 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                         borderRadius: BorderRadius.circular(14),
                         child: ScrollbarTheme(
                           data: ScrollbarThemeData(
-                            thumbColor: WidgetStateProperty.all( const Color(0xFF0D4F3C)),
+                            thumbColor: WidgetStateProperty.all(
+                              const Color(0xFF0D4F3C),
+                            ),
                             trackColor: WidgetStateProperty.all(goldColor),
                             trackBorderColor: WidgetStateProperty.all(
                               goldColor,
@@ -839,14 +880,14 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
     // Responsive card sizing calculation
     final screenWidth = MediaQuery.of(context).size.width;
     final cardWidth = screenWidth - 32; // Account for margins
-    
+
     // Dynamic height based on text length and font size
     final textLength = ayah['text'].toString().length;
     final baseHeight = 120.0;
     final additionalHeight = (textLength / 50) * ayahFontSize * 0.8;
     final calculatedHeight = baseHeight + additionalHeight;
     final cardHeight = calculatedHeight.clamp(120.0, 400.0);
-    
+
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       child: CustomPaint(
@@ -917,9 +958,9 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                           ),
                         ),
                       ),
-                      
+
                       const SizedBox(width: 16),
-                      
+
                       // Decorative line
                       Expanded(
                         child: Container(
@@ -942,17 +983,22 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
 
                 // Arabic text with enhanced styling
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   child: Text(
                     ayah['text'],
-                    
+
                     style: TextStyle(
                       fontSize: ayahFontSize,
                       height: 2.2,
-                      color: const Color(0xFF0A2818), // Darker green for better contrast
+                      color: const Color(
+                        0xFF0A2818,
+                      ), // Darker green for better contrast
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Amiri',
-                      
+                      letterSpacing: 0.5,
                       shadows: [
                         Shadow(
                           color: Colors.white.withAlpha(128),
@@ -978,12 +1024,7 @@ class AyahCardPainter extends CustomPainter {
   final int ayahNumber;
   final bool isEvenCard;
 
-
-  AyahCardPainter({
-    required this.ayahNumber,
-    required this.isEvenCard,
-
-  });
+  AyahCardPainter({required this.ayahNumber, required this.isEvenCard});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -999,7 +1040,7 @@ class AyahCardPainter extends CustomPainter {
     final shadowPaint = Paint()
       ..color = darkForest.withAlpha(77)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 12);
-    
+
     final shadowRect = RRect.fromRectAndRadius(
       rect.translate(0, 6),
       Radius.circular(radius),
@@ -1016,7 +1057,7 @@ class AyahCardPainter extends CustomPainter {
           ]
         : [
             const Color(0xFFF8F6F0), // Açık krem
-            const Color(0xFFF0E9D2), // Altın krem  
+            const Color(0xFFF0E9D2), // Altın krem
             const Color(0xFFE8DCC0), // Koyu altın krem
             const Color(0xFFE0D4B8), // En koyu krem
           ];
@@ -1028,8 +1069,7 @@ class AyahCardPainter extends CustomPainter {
       stops: const [0.0, 0.3, 0.7, 1.0],
     );
 
-    final cardPaint = Paint()
-      ..shader = gradient.createShader(rect);
+    final cardPaint = Paint()..shader = gradient.createShader(rect);
 
     final cardRect = RRect.fromRectAndRadius(rect, Radius.circular(radius));
     canvas.drawRRect(cardRect, cardPaint);
@@ -1062,11 +1102,10 @@ class AyahCardPainter extends CustomPainter {
   }
 
   void _drawIslamicCardPattern(Canvas canvas, Size size) {
-
     const royalGold = Color(0xFFFFD700);
-    
+
     final center = Offset(size.width / 2, size.height / 2);
-    
+
     // Subtle radial lines from corners
     final linePaint = Paint()
       ..color = const Color.fromARGB(255, 216, 187, 143)
@@ -1079,12 +1118,8 @@ class AyahCardPainter extends CustomPainter {
       final startY = 20.0;
       final endX = startX + 20 * math.cos(angle);
       final endY = startY + 20 * math.sin(angle);
-      
-      canvas.drawLine(
-        Offset(startX, startY),
-        Offset(endX, endY),
-        linePaint,
-      );
+
+      canvas.drawLine(Offset(startX, startY), Offset(endX, endY), linePaint);
     }
 
     // Bottom-right corner lines
@@ -1094,12 +1129,8 @@ class AyahCardPainter extends CustomPainter {
       final startY = size.height - 20.0;
       final endX = startX + 20 * math.cos(angle);
       final endY = startY + 20 * math.sin(angle);
-      
-      canvas.drawLine(
-        Offset(startX, startY),
-        Offset(endX, endY),
-        linePaint,
-      );
+
+      canvas.drawLine(Offset(startX, startY), Offset(endX, endY), linePaint);
     }
 
     // Central geometric pattern
@@ -1110,11 +1141,7 @@ class AyahCardPainter extends CustomPainter {
 
     // Concentric circles
     for (int i = 1; i <= 3; i++) {
-      canvas.drawCircle(
-        center,
-        i * 15.0,
-        patternPaint,
-      );
+      canvas.drawCircle(center, i * 15.0, patternPaint);
     }
 
     // Geometric diamond in center
@@ -1134,7 +1161,6 @@ class AyahCardPainter extends CustomPainter {
   }
 
   void _drawCornerDecorations(Canvas canvas, Size size) {
-
     // Corner arc decorations
     final cornerPaint = Paint()
       ..color = const Color.fromARGB(255, 156, 152, 132)
@@ -1167,29 +1193,18 @@ class AyahCardPainter extends CustomPainter {
 
     // Top-right dots
     for (int i = 0; i < 3; i++) {
-      canvas.drawCircle(
-        Offset(size.width - 16 - (i * 8), 16),
-        1.5,
-        dotPaint,
-      );
+      canvas.drawCircle(Offset(size.width - 16 - (i * 8), 16), 1.5, dotPaint);
     }
 
     // Bottom-left dots
     for (int i = 0; i < 3; i++) {
-      canvas.drawCircle(
-        Offset(16 + (i * 8), size.height - 16),
-        1.5,
-        dotPaint,
-      );
+      canvas.drawCircle(Offset(16 + (i * 8), size.height - 16), 1.5, dotPaint);
     }
   }
 
   @override
   bool shouldRepaint(AyahCardPainter oldDelegate) {
     return oldDelegate.ayahNumber != ayahNumber ||
-           oldDelegate.isEvenCard != isEvenCard;
-            
+        oldDelegate.isEvenCard != isEvenCard;
   }
 }
-
-

@@ -463,5 +463,14 @@
   "widgetInfoTitleFree": "Tasbee Vidjeti Haqida 🔒",
   "widgetPremiumDialogTitle": "Premium Xususiyat 💎",
   "widgetPremiumDialogMessage": "Bosh ekran vidjeti premium xususiyatdir.\nVidjeti ishlatish uchun premiumga yangilang.",
-  "widgetPremiumRequired": "Premium Talab Qilinadi"
+  "widgetPremiumRequired": "Premium Talab Qilinadi",
+  "quranFontSize": "Shrift O'lchami",
+  "quranSuraSelection": "Sura Tanlash",
+  "quranNoDataFound": "Ma'lumot topilmadi",
+  "quranPreviousSura": "Oldingi Sura",
+  "quranNextSura": "Keyingi Sura",
+  "quranVerseCount": "Oyatlar Soni",
+  "quranFontSizeLabel": "Shrift O'lchami",
+  "quranFontSizeSmall": "Kichik",
+  "quranFontSizeLarge": "Katta"
 }

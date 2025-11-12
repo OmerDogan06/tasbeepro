@@ -1507,4 +1507,31 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get widgetPremiumRequired => 'Premium Necessário';
+
+  @override
+  String get quranFontSize => 'Tamanho da Fonte';
+
+  @override
+  String get quranSuraSelection => 'Seleção de Sura';
+
+  @override
+  String get quranNoDataFound => 'Nenhum dado encontrado';
+
+  @override
+  String get quranPreviousSura => 'Sura Anterior';
+
+  @override
+  String get quranNextSura => 'Próxima Sura';
+
+  @override
+  String get quranVerseCount => 'Número de Versos';
+
+  @override
+  String get quranFontSizeLabel => 'Tamanho da Fonte';
+
+  @override
+  String get quranFontSizeSmall => 'Pequeno';
+
+  @override
+  String get quranFontSizeLarge => 'Grande';
 }

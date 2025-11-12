@@ -1405,4 +1405,31 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get widgetPremiumRequired => '需要高级版';
+
+  @override
+  String get quranFontSize => '字体大小';
+
+  @override
+  String get quranSuraSelection => '章节选择';
+
+  @override
+  String get quranNoDataFound => '未找到数据';
+
+  @override
+  String get quranPreviousSura => '上一章';
+
+  @override
+  String get quranNextSura => '下一章';
+
+  @override
+  String get quranVerseCount => '经文数量';
+
+  @override
+  String get quranFontSizeLabel => '字体大小';
+
+  @override
+  String get quranFontSizeSmall => '小';
+
+  @override
+  String get quranFontSizeLarge => '大';
 }

@@ -463,5 +463,14 @@
   "widgetInfoTitleFree": "Tentang Widget Tasbee 🔒",
   "widgetPremiumDialogTitle": "Ciri Premium 💎",
   "widgetPremiumDialogMessage": "Widget skrin utama adalah ciri premium.\nNaik taraf ke premium untuk menggunakan widget.",
-  "widgetPremiumRequired": "Premium Diperlukan"
+  "widgetPremiumRequired": "Premium Diperlukan",
+  "quranFontSize": "Saiz Font",
+  "quranSuraSelection": "Pilihan Surah",
+  "quranNoDataFound": "Tiada data dijumpai",
+  "quranPreviousSura": "Surah Sebelum",
+  "quranNextSura": "Surah Seterusnya",
+  "quranVerseCount": "Bilangan Ayat",
+  "quranFontSizeLabel": "Saiz Font",
+  "quranFontSizeSmall": "Kecil",
+  "quranFontSizeLarge": "Besar"
 }

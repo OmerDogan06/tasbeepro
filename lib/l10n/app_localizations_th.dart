@@ -1472,4 +1472,31 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get widgetPremiumRequired => 'ต้องการพรีเมียม';
+
+  @override
+  String get quranFontSize => 'ขนาดตัวอักษร';
+
+  @override
+  String get quranSuraSelection => 'เลือกสุเราะห์';
+
+  @override
+  String get quranNoDataFound => 'ไม่พบข้อมูล';
+
+  @override
+  String get quranPreviousSura => 'สุเราะห์ก่อนหน้า';
+
+  @override
+  String get quranNextSura => 'สุเราะห์ถัดไป';
+
+  @override
+  String get quranVerseCount => 'จำนวนอายะห์';
+
+  @override
+  String get quranFontSizeLabel => 'ขนาดตัวอักษร';
+
+  @override
+  String get quranFontSizeSmall => 'เล็ก';
+
+  @override
+  String get quranFontSizeLarge => 'ใหญ่';
 }

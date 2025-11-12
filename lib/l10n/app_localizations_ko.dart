@@ -1423,4 +1423,31 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get widgetPremiumRequired => '프리미엄 필요';
+
+  @override
+  String get quranFontSize => '폰트 크기';
+
+  @override
+  String get quranSuraSelection => '장 선택';
+
+  @override
+  String get quranNoDataFound => '데이터를 찾을 수 없습니다';
+
+  @override
+  String get quranPreviousSura => '이전 장';
+
+  @override
+  String get quranNextSura => '다음 장';
+
+  @override
+  String get quranVerseCount => '구절 수';
+
+  @override
+  String get quranFontSizeLabel => '폰트 크기';
+
+  @override
+  String get quranFontSizeSmall => '작음';
+
+  @override
+  String get quranFontSizeLarge => '큼';
 }

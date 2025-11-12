@@ -463,5 +463,14 @@
   "widgetInfoTitleFree": "Sobre o Widget Tasbee 🔒",
   "widgetPremiumDialogTitle": "Funcionalidade Premium 💎",
   "widgetPremiumDialogMessage": "O widget do ecrã inicial é uma funcionalidade premium.\nAtualize para premium para usar o widget.",
-  "widgetPremiumRequired": "Premium Necessário"
+  "widgetPremiumRequired": "Premium Necessário",
+  "quranFontSize": "Tamanho da Fonte",
+  "quranSuraSelection": "Seleção de Sura",
+  "quranNoDataFound": "Nenhum dado encontrado",
+  "quranPreviousSura": "Sura Anterior",
+  "quranNextSura": "Próxima Sura",
+  "quranVerseCount": "Número de Versos",
+  "quranFontSizeLabel": "Tamanho da Fonte",
+  "quranFontSizeSmall": "Pequeno",
+  "quranFontSizeLarge": "Grande"
 }

@@ -463,5 +463,14 @@
   "widgetInfoTitleFree": "Tasbee Widget Hakkında 🔒",
   "widgetPremiumDialogTitle": "Premium Özellik 💎",
   "widgetPremiumDialogMessage": "Ana ekran widget'ı premium bir özelliktir.\nWidget'ı kullanmak için premium'a geçin.",
-  "widgetPremiumRequired": "Premium Gerekli"
+  "widgetPremiumRequired": "Premium Gerekli",
+  "quranFontSize": "Font Boyutu",
+  "quranSuraSelection": "Sure Seçimi",
+  "quranNoDataFound": "Veri bulunamadı",
+  "quranPreviousSura": "Önceki Sure",
+  "quranNextSura": "Sonraki Sure",
+  "quranVerseCount": "Ayet Sayısı",
+  "quranFontSizeLabel": "Font Boyutu",
+  "quranFontSizeSmall": "Küçük",
+  "quranFontSizeLarge": "Büyük"
 }

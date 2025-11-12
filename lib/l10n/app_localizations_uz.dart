@@ -1492,4 +1492,31 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get widgetPremiumRequired => 'Premium Talab Qilinadi';
+
+  @override
+  String get quranFontSize => 'Shrift O\'lchami';
+
+  @override
+  String get quranSuraSelection => 'Sura Tanlash';
+
+  @override
+  String get quranNoDataFound => 'Ma\'lumot topilmadi';
+
+  @override
+  String get quranPreviousSura => 'Oldingi Sura';
+
+  @override
+  String get quranNextSura => 'Keyingi Sura';
+
+  @override
+  String get quranVerseCount => 'Oyatlar Soni';
+
+  @override
+  String get quranFontSizeLabel => 'Shrift O\'lchami';
+
+  @override
+  String get quranFontSizeSmall => 'Kichik';
+
+  @override
+  String get quranFontSizeLarge => 'Katta';
 }

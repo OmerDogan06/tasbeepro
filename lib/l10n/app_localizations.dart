@@ -2871,6 +2871,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Premium Required'**
   String get widgetPremiumRequired;
+
+  /// No description provided for @quranFontSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Font Size'**
+  String get quranFontSize;
+
+  /// No description provided for @quranSuraSelection.
+  ///
+  /// In en, this message translates to:
+  /// **'Sura Selection'**
+  String get quranSuraSelection;
+
+  /// No description provided for @quranNoDataFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No data found'**
+  String get quranNoDataFound;
+
+  /// No description provided for @quranPreviousSura.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous Sura'**
+  String get quranPreviousSura;
+
+  /// No description provided for @quranNextSura.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Sura'**
+  String get quranNextSura;
+
+  /// No description provided for @quranVerseCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Verse Count'**
+  String get quranVerseCount;
+
+  /// No description provided for @quranFontSizeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Font Size'**
+  String get quranFontSizeLabel;
+
+  /// No description provided for @quranFontSizeSmall.
+  ///
+  /// In en, this message translates to:
+  /// **'Small'**
+  String get quranFontSizeSmall;
+
+  /// No description provided for @quranFontSizeLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'Large'**
+  String get quranFontSizeLarge;
 }
 
 class _AppLocalizationsDelegate

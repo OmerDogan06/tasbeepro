@@ -1480,4 +1480,31 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get widgetPremiumRequired => 'प्रीमियम आवश्यक';
+
+  @override
+  String get quranFontSize => 'फ़ॉन्ट आकार';
+
+  @override
+  String get quranSuraSelection => 'सूरह चयन';
+
+  @override
+  String get quranNoDataFound => 'कोई डेटा नहीं मिला';
+
+  @override
+  String get quranPreviousSura => 'पिछली सूरह';
+
+  @override
+  String get quranNextSura => 'अगली सूरह';
+
+  @override
+  String get quranVerseCount => 'आयत संख्या';
+
+  @override
+  String get quranFontSizeLabel => 'फ़ॉन्ट आकार';
+
+  @override
+  String get quranFontSizeSmall => 'छोटा';
+
+  @override
+  String get quranFontSizeLarge => 'बड़ा';
 }

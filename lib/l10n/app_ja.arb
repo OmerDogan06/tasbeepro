@@ -463,5 +463,14 @@
   "widgetInfoTitleFree": "タスビーウィジェットについて 🔒",
   "widgetPremiumDialogTitle": "プレミアム機能 💎",
   "widgetPremiumDialogMessage": "ホーム画面ウィジェットはプレミアム機能です。\nウィジェットを使用するにはプレミアムにアップグレードしてください。",
-  "widgetPremiumRequired": "プレミアムが必要"
+  "widgetPremiumRequired": "プレミアムが必要",
+  "quranFontSize": "フォントサイズ",
+  "quranSuraSelection": "章の選択",
+  "quranNoDataFound": "データが見つかりません",
+  "quranPreviousSura": "前の章",
+  "quranNextSura": "次の章",
+  "quranVerseCount": "節の数",
+  "quranFontSizeLabel": "フォントサイズ",
+  "quranFontSizeSmall": "小",
+  "quranFontSizeLarge": "大"
 }

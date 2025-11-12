@@ -463,5 +463,14 @@
   "widgetInfoTitleFree": "تسبیح ویجٹ کے بارے میں 🔒",
   "widgetPremiumDialogTitle": "پریمیم فیچر 💎",
   "widgetPremiumDialogMessage": "ہوم اسکرین ویجٹ ایک پریمیم فیچر ہے۔\nویجٹ استعمال کرنے کے لیے پریمیم میں اپگریڈ کریں۔",
-  "widgetPremiumRequired": "پریمیم ضروری"
+  "widgetPremiumRequired": "پریمیم ضروری",
+  "quranFontSize": "فونٹ سائز",
+  "quranSuraSelection": "سورہ کا انتخاب",
+  "quranNoDataFound": "کوئی ڈیٹا نہیں ملا",
+  "quranPreviousSura": "پچھلا سورہ",
+  "quranNextSura": "اگلا سورہ",
+  "quranVerseCount": "آیات کی تعداد",
+  "quranFontSizeLabel": "فونٹ سائز",
+  "quranFontSizeSmall": "چھوٹا",
+  "quranFontSizeLarge": "بڑا"
 }
