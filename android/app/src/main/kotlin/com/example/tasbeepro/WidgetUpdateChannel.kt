@@ -56,6 +56,22 @@ class WidgetUpdateChannel(private val context: Context) : MethodCallHandler {
                     result.error("WIDGET_PICKER_ERROR", "Widget picker açılamadı: ${e.message}", null)
                 }
             }
+            "openQuranWidgetPicker" -> {
+                try {
+                    openQuranWidgetPicker()
+                    result.success(null)
+                } catch (e: Exception) {
+                    result.error("QURAN_WIDGET_PICKER_ERROR", "Kur'an widget picker açılamadı: ${e.message}", null)
+                }
+            }
+            "getInitialIntent" -> {
+                try {
+                    val intentData = getInitialIntentData()
+                    result.success(intentData)
+                } catch (e: Exception) {
+                    result.error("INTENT_ERROR", "Intent verisi alınamadı: ${e.message}", null)
+                }
+            }
             "updateAllWidgets" -> {
                 try {
                     // Sadece widget'ları yeniden render et - premium durumu otomatik kontrol edilecek
@@ -131,17 +147,70 @@ class WidgetUpdateChannel(private val context: Context) : MethodCallHandler {
             val myProvider = ComponentName(context, TasbeeWidgetProvider::class.java)
             
             if (appWidgetManager.isRequestPinAppWidgetSupported) {
-                // Android 8.0+ için pin widget özelliği
+                // Android 8.0+ için pin widget özelliği - Bu çalışıyor!
                 appWidgetManager.requestPinAppWidget(myProvider, null, null)
             } else {
                 // Eski Android sürümleri için widget picker'ı aç
-                val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_PICK)
-                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
+                val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_PICK).apply {
+                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
                 context.startActivity(intent)
             }
         } catch (e: Exception) {
             // Fallback: Manuel widget ekleme talimatları Flutter tarafında gösterilecek
             e.printStackTrace()
+            android.util.Log.e("WidgetPicker", "Widget picker açılamadı: ${e.message}")
+        }
+    }
+
+    private fun openQuranWidgetPicker() {
+        try {
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            val quranProvider = ComponentName(context, QuranWidgetProvider::class.java)
+            
+            if (appWidgetManager.isRequestPinAppWidgetSupported) {
+                // Android 8.0+ için pin widget özelliği - Kur'an widget'ı
+                appWidgetManager.requestPinAppWidget(quranProvider, null, null)
+            } else {
+                // Eski Android sürümleri için widget picker'ı aç
+                val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_PICK).apply {
+                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                context.startActivity(intent)
+            }
+        } catch (e: Exception) {
+            // Fallback: Manuel widget ekleme talimatları Flutter tarafında gösterilecek
+            e.printStackTrace()
+            android.util.Log.e("QuranWidgetPicker", "Kur'an widget picker açılamadı: ${e.message}")
+        }
+    }
+
+    private fun getInitialIntentData(): Map<String, Any>? {
+        try {
+            val intentData = mutableMapOf<String, Any>()
+            
+            if (context is android.app.Activity) {
+                val activity = context as android.app.Activity
+                val intent = activity.intent
+                
+                // Intent'ten Kuran widget verilerini al
+                if (intent?.getBooleanExtra("open_quran", false) == true) {
+                    intentData["open_quran"] = true
+                    val suraNumber = intent.getIntExtra("sura_number", 1)
+                    intentData["sura_number"] = suraNumber
+                    
+                    // Intent'i temizle (tekrar kullanılmasın)
+                    intent.removeExtra("open_quran")
+                    intent.removeExtra("sura_number")
+                }
+            }
+            
+            return if (intentData.isEmpty()) null else intentData
+        } catch (e: Exception) {
+            android.util.Log.e("IntentData", "Intent verisi alınırken hata: ${e.message}")
+            return null
         }
     }
 

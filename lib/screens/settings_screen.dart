@@ -277,6 +277,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     direction: direction
                   ),
+                  _buildDivider(),
+                  _buildIslamicListTile(
+                    icon: Icons.widgets,
+                    title: 'Kur\'an Widget Ekle',
+                    subtitle: 'Ana ekrana Kur\'an okuma widget\'ı ekleyin',
+                    onTap: () => _addQuranWidgetToHomeScreen(),
+                    direction: direction
+                  ),
                 ]),
 
                 const SizedBox(height: 24),
@@ -1843,14 +1851,50 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void _addWidgetToHomeScreen() async {
     try {
       HapticFeedback.lightImpact();
+      print("DEBUG: Tasbih widget ekleme başladı");
 
-      // Android widget picker'ını açmak için platform channel kullanıyoruz
+      // Eski çalışan yaklaşım - parametre yok
       const platform = MethodChannel('com.skyforgestudios.tasbeepro/widget');
-      await platform.invokeMethod('openWidgetPicker');
+      print("DEBUG: Platform channel oluşturuldu");
+      
+      final result = await platform.invokeMethod('openWidgetPicker');
+      print("DEBUG: Platform channel sonucu: $result");
+      
+     
     } catch (e) {
+      print("DEBUG: Platform channel hatası: $e");
+      
       // Platform channel başarısız olursa manual talimatlar göster
       HapticFeedback.lightImpact();
-      if (!mounted) return; // ✅ widget hala yaşıyor mu kontrol et
+      if (!mounted) return;
+      IslamicSnackbar.showSuccess(
+        AppLocalizations.of(context)?.widgetAddSuccess ?? 'Widget Ekleme',
+        AppLocalizations.of(context)?.widgetAddSuccessMessage ??
+            'Ana ekranınızda boş bir alana uzun basın ve "Widget\'lar" seçeneğini seçin. Ardından "Tasbee Pro" widget\'ını bulup ekleyin.',
+        duration: const Duration(seconds: 5),
+      );
+    }
+  }
+
+  void _addQuranWidgetToHomeScreen() async {
+    try {
+      HapticFeedback.lightImpact();
+      print("DEBUG: Kur'an widget ekleme başladı");
+
+      // Kur'an widget için ayrı method
+      const platform = MethodChannel('com.skyforgestudios.tasbeepro/widget');
+      print("DEBUG: Platform channel oluşturuldu");
+      
+      final result = await platform.invokeMethod('openQuranWidgetPicker');
+      print("DEBUG: Platform channel sonucu: $result");
+      
+     
+    } catch (e) {
+      print("DEBUG: Platform channel hatası: $e");
+      
+      // Platform channel başarısız olursa manual talimatlar göster
+      HapticFeedback.lightImpact();
+      if (!mounted) return;
       IslamicSnackbar.showSuccess(
         AppLocalizations.of(context)?.widgetAddSuccess ?? 'Widget Ekleme',
         AppLocalizations.of(context)?.widgetAddSuccessMessage ??
