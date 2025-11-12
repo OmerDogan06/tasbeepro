@@ -88,6 +88,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settingsLanguageSubtitle => 'アプリの言語を変更';
 
   @override
+  String get settingsQuranReading => 'クルアーン読書 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle => '聖なるクルアーンを読み、章間を移動する';
+
+  @override
   String get vibrationOff => 'オフ';
 
   @override

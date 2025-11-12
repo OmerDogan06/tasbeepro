@@ -91,6 +91,13 @@ class AppLocalizationsSw extends AppLocalizations {
   String get settingsLanguageSubtitle => 'Badilisha lugha ya programu';
 
   @override
+  String get settingsQuranReading => 'Kusoma Qurani 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'Soma Qurani takatifu na vinjari kati ya sura';
+
+  @override
   String get vibrationOff => 'Imezimwa';
 
   @override

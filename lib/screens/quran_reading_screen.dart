@@ -505,6 +505,7 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
   Widget build(BuildContext context) {
     final locale = Localizations.localeOf(context).languageCode;
     final suraName = SuraNames.getSuraName(currentSura - 1, locale);
+    TextDirection direction = Directionality.of(context);
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
@@ -609,7 +610,7 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                 Container(
                   height: 40,
                   width: 40,
-                  margin: const EdgeInsets.only(right: 8),
+                  margin: EdgeInsets.only(right: direction == TextDirection.ltr ? 8 : 0, left: direction == TextDirection.rtl ? 8 : 0),
                   decoration: BoxDecoration(
                     gradient: const RadialGradient(
                       colors: [lightGold, goldColor],
@@ -760,7 +761,7 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                         borderRadius: BorderRadius.circular(14),
                         child: ScrollbarTheme(
                           data: ScrollbarThemeData(
-                            thumbColor: WidgetStateProperty.all(goldColor),
+                            thumbColor: WidgetStateProperty.all( const Color(0xFF0D4F3C)),
                             trackColor: WidgetStateProperty.all(goldColor),
                             trackBorderColor: WidgetStateProperty.all(
                               goldColor,
@@ -944,12 +945,14 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   child: Text(
                     ayah['text'],
+                    
                     style: TextStyle(
                       fontSize: ayahFontSize,
                       height: 2.2,
                       color: const Color(0xFF0A2818), // Darker green for better contrast
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Amiri',
+                      
                       shadows: [
                         Shadow(
                           color: Colors.white.withAlpha(128),

@@ -88,6 +88,12 @@ class AppLocalizationsKo extends AppLocalizations {
   String get settingsLanguageSubtitle => '앱 언어 변경';
 
   @override
+  String get settingsQuranReading => '꾸란 읽기 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle => '성스러운 꾸란을 읽고 수라 간을 탐색하세요';
+
+  @override
   String get vibrationOff => '끔';
 
   @override

@@ -90,6 +90,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get settingsLanguageSubtitle => 'Uygulama dilini değiştir';
 
   @override
+  String get settingsQuranReading => 'Kur\'an Okuma 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'Kur\'an-ı Kerim\'i okuyun ve sureler arasında gezinin';
+
+  @override
   String get vibrationOff => 'Kapalı';
 
   @override

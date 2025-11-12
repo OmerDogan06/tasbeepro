@@ -90,6 +90,13 @@ class AppLocalizationsIt extends AppLocalizations {
   String get settingsLanguageSubtitle => 'Cambia lingua dell\'applicazione';
 
   @override
+  String get settingsQuranReading => 'Lettura del Corano 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'Leggi il Sacro Corano e naviga tra le sure';
+
+  @override
   String get vibrationOff => 'Spento';
 
   @override

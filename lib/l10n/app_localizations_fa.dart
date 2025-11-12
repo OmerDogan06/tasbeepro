@@ -90,6 +90,13 @@ class AppLocalizationsFa extends AppLocalizations {
   String get settingsLanguageSubtitle => 'زبان برنامه را تغییر دهید';
 
   @override
+  String get settingsQuranReading => 'خواندن قرآن 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'قرآن مجید را بخوانید و بین سوره‌ها حرکت کنید';
+
+  @override
   String get vibrationOff => 'خاموش';
 
   @override

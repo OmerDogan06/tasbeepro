@@ -88,6 +88,13 @@ class AppLocalizationsTh extends AppLocalizations {
   String get settingsLanguageSubtitle => 'เปลี่ยนภาษาของแอป';
 
   @override
+  String get settingsQuranReading => 'การอ่านอัลกุรอาน 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'อ่านอัลกุรอานศักดิ์สิทธิ์และสำรวจระหว่างสุเราะห์';
+
+  @override
   String get vibrationOff => 'ปิด';
 
   @override

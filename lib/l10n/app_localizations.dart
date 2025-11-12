@@ -292,6 +292,18 @@ abstract class AppLocalizations {
   /// **'Change app language'**
   String get settingsLanguageSubtitle;
 
+  /// Quran reading section title
+  ///
+  /// In en, this message translates to:
+  /// **'Quran Reading 📖'**
+  String get settingsQuranReading;
+
+  /// Quran reading section subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Read the Holy Quran and navigate between surahs'**
+  String get settingsQuranReadingSubtitle;
+
   /// Vibration off option
   ///
   /// In en, this message translates to:

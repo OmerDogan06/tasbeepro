@@ -101,6 +101,14 @@
   "@settingsLanguageSubtitle": {
     "description": "Language setting subtitle"
   },
+  "settingsQuranReading": "Quran Reading 📖",
+  "@settingsQuranReading": {
+    "description": "Quran reading section title"
+  },
+  "settingsQuranReadingSubtitle": "Read the Holy Quran and navigate between surahs",
+  "@settingsQuranReadingSubtitle": {
+    "description": "Quran reading section subtitle"
+  },
   "vibrationOff": "Off",
   "@vibrationOff": {
     "description": "Vibration off option"

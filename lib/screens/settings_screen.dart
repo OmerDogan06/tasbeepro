@@ -263,13 +263,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 // Kur'an Okuma
                 _buildSectionHeader(
                   context,
-                  'Kur\'an Okuma 📖',
+                  AppLocalizations.of(context)?.settingsQuranReading ?? 'Kur\'an Okuma 📖',
                 ),
                 _buildIslamicCard([
                   _buildIslamicListTile(
                     icon: Icons.menu_book,
-                    title: 'Kur\'an Okuma',
-                    subtitle: 'Kur\'an-ı Kerim\'i okuyun ve sureler arasında gezinin',
+                    title: AppLocalizations.of(context)?.settingsQuranReading.replaceAll('📖', '') ?? 'Kur\'an Okuma',
+                    subtitle: AppLocalizations.of(context)?.settingsQuranReadingSubtitle ?? 'Kur\'an-ı Kerim\'i okuyun ve sureler arasında gezinin',
                     onTap: () => Get.to(
                       () => const QuranReadingScreen(),
                       transition: Transition.rightToLeft,

@@ -91,6 +91,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get settingsLanguageSubtitle => 'Ilova tilini o\'zgartirish';
 
   @override
+  String get settingsQuranReading => 'Qur\'on o\'qish 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'Muqaddas Qur\'onni o\'qing va suralar orasida harakatlaning';
+
+  @override
   String get vibrationOff => 'O\'chiq';
 
   @override

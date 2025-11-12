@@ -90,6 +90,13 @@ class AppLocalizationsMs extends AppLocalizations {
   String get settingsLanguageSubtitle => 'Tukar bahasa aplikasi';
 
   @override
+  String get settingsQuranReading => 'Bacaan Al-Quran 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'Baca Al-Quran yang suci dan navigasi antara surah';
+
+  @override
   String get vibrationOff => 'Mati';
 
   @override

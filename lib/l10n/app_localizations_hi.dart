@@ -90,6 +90,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get settingsLanguageSubtitle => 'एप्लिकेशन की भाषा बदलें';
 
   @override
+  String get settingsQuranReading => 'कुरान पाठ 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'पवित्र कुरान पढ़ें और सूरों के बीच नेविगेट करें';
+
+  @override
   String get vibrationOff => 'बंद';
 
   @override

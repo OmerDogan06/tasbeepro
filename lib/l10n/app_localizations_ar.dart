@@ -89,6 +89,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get settingsLanguageSubtitle => 'تغيير لغة التطبيق';
 
   @override
+  String get settingsQuranReading => 'قراءة القرآن 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'اقرأ القرآن الكريم وتنقل بين السور';
+
+  @override
   String get vibrationOff => 'إيقاف';
 
   @override

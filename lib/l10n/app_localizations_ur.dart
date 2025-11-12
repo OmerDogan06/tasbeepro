@@ -89,6 +89,13 @@ class AppLocalizationsUr extends AppLocalizations {
   String get settingsLanguageSubtitle => 'ایپلیکیشن کی زبان تبدیل کریں';
 
   @override
+  String get settingsQuranReading => 'قرآن پاک کی تلاوت 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'قرآن مجید پڑھیں اور سورتوں کے درمیان نیویگیٹ کریں';
+
+  @override
   String get vibrationOff => 'بند';
 
   @override

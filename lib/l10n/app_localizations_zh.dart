@@ -88,6 +88,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settingsLanguageSubtitle => '更改应用语言';
 
   @override
+  String get settingsQuranReading => '古兰经阅读 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle => '阅读神圣的古兰经并在章节间导航';
+
+  @override
   String get vibrationOff => '关闭';
 
   @override

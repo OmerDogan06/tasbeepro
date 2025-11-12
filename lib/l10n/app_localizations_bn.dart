@@ -90,6 +90,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get settingsLanguageSubtitle => 'অ্যাপ্লিকেশনের ভাষা পরিবর্তন করুন';
 
   @override
+  String get settingsQuranReading => 'কুরআন পাঠ 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'পবিত্র কুরআন পড়ুন এবং সূরাগুলির মধ্যে নেভিগেট করুন';
+
+  @override
   String get vibrationOff => 'বন্ধ';
 
   @override

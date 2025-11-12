@@ -91,6 +91,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settingsLanguageSubtitle => 'Изменить язык приложения';
 
   @override
+  String get settingsQuranReading => 'Чтение Корана 📖';
+
+  @override
+  String get settingsQuranReadingSubtitle =>
+      'Читайте Священный Коран и перемещайтесь между сурами';
+
+  @override
   String get vibrationOff => 'Выключено';
 
   @override
