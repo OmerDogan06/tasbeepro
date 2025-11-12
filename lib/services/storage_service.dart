@@ -314,4 +314,71 @@ class StorageService extends GetxService {
   double getQuranFontSize() {
     return _prefs.getDouble('quran_font_size') ?? 22.0; // Varsayılan font boyutu
   }
+
+  // Quran reading progress - Last read position
+  Future<void> saveQuranLastPosition({
+    required int suraNumber,
+    required int ayahNumber,
+    double? scrollPosition,
+  }) async {
+    await _prefs.setInt('quran_last_sura', suraNumber);
+    await _prefs.setInt('quran_last_ayah', ayahNumber);
+    if (scrollPosition != null) {
+      await _prefs.setDouble('quran_last_scroll_position', scrollPosition);
+    }
+    // Son okuma tarihini de kaydet
+    await _prefs.setString('quran_last_read_date', DateTime.now().toIso8601String());
+  }
+
+  Map<String, dynamic> getQuranLastPosition() {
+    return {
+      'suraNumber': _prefs.getInt('quran_last_sura') ?? 1,
+      'ayahNumber': _prefs.getInt('quran_last_ayah') ?? 1,
+      'scrollPosition': _prefs.getDouble('quran_last_scroll_position') ?? 0.0,
+      'lastReadDate': _prefs.getString('quran_last_read_date'),
+    };
+  }
+
+  // Clear last position (when user wants to start from beginning)
+  Future<void> clearQuranLastPosition() async {
+    await _prefs.remove('quran_last_sura');
+    await _prefs.remove('quran_last_ayah');
+    await _prefs.remove('quran_last_scroll_position');
+    await _prefs.remove('quran_last_read_date');
+  }
+
+  // Sure bazında okuma durumu (hangi sure'nin kaçıncı ayetinde kaldı)
+  Future<void> saveSuraReadingProgress(int suraNumber, int lastAyahRead) async {
+    await _prefs.setInt('sura_${suraNumber}_progress', lastAyahRead);
+    await _prefs.setString('sura_${suraNumber}_last_read', DateTime.now().toIso8601String());
+  }
+
+  Map<String, dynamic> getSuraReadingProgress(int suraNumber) {
+    return {
+      'lastAyahRead': _prefs.getInt('sura_${suraNumber}_progress') ?? 1,
+      'lastReadDate': _prefs.getString('sura_${suraNumber}_last_read'),
+    };
+  }
+
+  // Tamamlanan sure'leri kaydet
+  Future<void> markSuraAsCompleted(int suraNumber) async {
+    List<String> completedSuras = _prefs.getStringList('completed_suras') ?? [];
+    String suraKey = suraNumber.toString();
+    if (!completedSuras.contains(suraKey)) {
+      completedSuras.add(suraKey);
+      await _prefs.setStringList('completed_suras', completedSuras);
+    }
+    // Tamamlanma tarihini kaydet
+    await _prefs.setString('sura_${suraNumber}_completed_date', DateTime.now().toIso8601String());
+  }
+
+  List<int> getCompletedSuras() {
+    List<String> completedSuras = _prefs.getStringList('completed_suras') ?? [];
+    return completedSuras.map((e) => int.tryParse(e) ?? 0).where((e) => e > 0).toList();
+  }
+
+  bool isSuraCompleted(int suraNumber) {
+    List<int> completed = getCompletedSuras();
+    return completed.contains(suraNumber);
+  }
 }

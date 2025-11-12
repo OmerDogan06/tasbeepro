@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
+import 'dart:async';
 import '../constants/sura_names.dart';
 import '../l10n/app_localizations.dart';
 import '../services/storage_service.dart';
@@ -19,11 +20,16 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
   List<Map<String, dynamic>> quranData = [];
   List<Map<String, dynamic>> currentSuraAyahs = [];
   int currentSura = 1;
+  int currentVisibleAyah = 1; // Şu anda görünen ayet
   bool isLoading = true;
   PageController pageController = PageController();
   ScrollController scrollController = ScrollController();
   ScrollController suraListScrollController = ScrollController();
   double ayahFontSize = 22.0; // Default font size
+  
+  // Scroll position tracking
+  Timer? _scrollEndTimer;
+  bool _hasScrolledToLastPosition = false;
 
   // İslami renk paleti
   static const emeraldGreen = Color(0xFF2D5016);
@@ -36,7 +42,9 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
     super.initState();
     currentSura = widget.initialSura ?? 1;
     _loadSavedFontSize();
+    _loadLastReadPosition();
     _loadQuranData();
+    _setupScrollListener();
   }
 
   // Font boyutunu storage'dan yükle
@@ -47,8 +55,115 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
     });
   }
 
+  // Son okuma pozisyonunu yükle
+  void _loadLastReadPosition() {
+    if (widget.initialSura == null) {
+      // Eğer belirli bir sure ile açılmadıysa, son kaldığı yeri yükle
+      final lastPosition = StorageService.to.getQuranLastPosition();
+      currentSura = lastPosition['suraNumber'] as int;
+      currentVisibleAyah = lastPosition['ayahNumber'] as int;
+    }
+  }
+
+  // Scroll listener kurma
+  void _setupScrollListener() {
+    scrollController.addListener(() {
+      _onScrollChange();
+    });
+  }
+
+  // Scroll değişiklik dinleyicisi
+  void _onScrollChange() {
+    // Timer'ı iptal et ve yeni bir timer başlat
+    _scrollEndTimer?.cancel();
+    _scrollEndTimer = Timer(const Duration(milliseconds: 500), () {
+      _detectCurrentVisibleAyah();
+      _saveCurrentPosition();
+    });
+  }
+
+  // Şu anda görünen ayeti tespit et
+  void _detectCurrentVisibleAyah() {
+    if (currentSuraAyahs.isEmpty || !scrollController.hasClients) return;
+    
+    final viewportHeight = scrollController.position.viewportDimension;
+    final scrollOffset = scrollController.offset;
+    final viewportMiddle = scrollOffset + (viewportHeight / 2);
+    
+    // Her ayetin yaklaşık pozisyonunu hesapla
+    const ayahCardHeight = 180.0; // Ortalama kart yüksekliği
+    const cardSpacing = 20.0;
+    
+    int estimatedAyahIndex = (viewportMiddle / (ayahCardHeight + cardSpacing)).round();
+    estimatedAyahIndex = estimatedAyahIndex.clamp(0, currentSuraAyahs.length - 1);
+    
+    final newVisibleAyah = currentSuraAyahs[estimatedAyahIndex]['ayah'] as int;
+    
+    if (newVisibleAyah != currentVisibleAyah) {
+      setState(() {
+        currentVisibleAyah = newVisibleAyah;
+      });
+    }
+  }
+
+  // Mevcut pozisyonu kaydet
+  void _saveCurrentPosition() {
+    if (currentSura > 0 && currentVisibleAyah > 0 && scrollController.hasClients) {
+      StorageService.to.saveQuranLastPosition(
+        suraNumber: currentSura,
+        ayahNumber: currentVisibleAyah,
+        scrollPosition: scrollController.offset,
+      );
+      
+      // Sure bazında ilerlemeyi de kaydet
+      StorageService.to.saveSuraReadingProgress(currentSura, currentVisibleAyah);
+    }
+  }
+
+  // Kaydedilen pozisyona kaydır
+  void _scrollToLastPosition() {
+    if (_hasScrolledToLastPosition || currentSuraAyahs.isEmpty) return;
+    
+    final lastPosition = StorageService.to.getQuranLastPosition();
+    final savedSura = lastPosition['suraNumber'] as int;
+    final savedAyah = lastPosition['ayahNumber'] as int;
+    final savedScrollPosition = lastPosition['scrollPosition'] as double;
+    
+    // Eğer aynı sure'deyse ve kaydedilen ayet mevcutsa
+    if (savedSura == currentSura && savedAyah > 1) {
+      Future.delayed(const Duration(milliseconds: 300), () {
+        if (scrollController.hasClients) {
+          // Önce kaydedilen scroll pozisyonuna git
+          if (savedScrollPosition > 0) {
+            scrollController.animateTo(
+              savedScrollPosition,
+              duration: const Duration(milliseconds: 800),
+              curve: Curves.easeInOut,
+            );
+          } else {
+            // Scroll pozisyonu yoksa ayete göre hesapla
+            final ayahIndex = currentSuraAyahs.indexWhere((ayah) => ayah['ayah'] == savedAyah);
+            if (ayahIndex >= 0) {
+              const ayahCardHeight = 180.0;
+              const cardSpacing = 20.0;
+              final targetOffset = ayahIndex * (ayahCardHeight + cardSpacing);
+              
+              scrollController.animateTo(
+                targetOffset,
+                duration: const Duration(milliseconds: 800),
+                curve: Curves.easeInOut,
+              );
+            }
+          }
+        }
+        _hasScrolledToLastPosition = true;
+      });
+    }
+  }
+
   @override
   void dispose() {
+    _scrollEndTimer?.cancel();
     pageController.dispose();
     scrollController.dispose();
     suraListScrollController.dispose();
@@ -97,32 +212,40 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
     await Future.delayed(Duration(milliseconds: 300));
     setState(() {
       isLoading = false;
+      _hasScrolledToLastPosition = false; // Reset scroll flag
     });
+    
+    // Son pozisyona kaydır
+    _scrollToLastPosition();
   }
 
   void _goToPreviousSura() async {
-    suraListScrollController.jumpTo(
-      suraListScrollController.initialScrollOffset,
-    );
     setState(() {
       isLoading = true;
     });
     if (currentSura > 1) {
       currentSura--;
+      currentVisibleAyah = 1; // Yeni sure'ye geçerken ilk ayetten başla
       HapticFeedback.lightImpact();
     }
     await _loadCurrentSura();
   }
 
   void _goToNextSura() async {
-    suraListScrollController.jumpTo(
-      suraListScrollController.initialScrollOffset,
-    );
+    // Mevcut sure'yi tamamlandı olarak işaretle
+    if (currentSuraAyahs.isNotEmpty) {
+      final lastAyah = currentSuraAyahs.last['ayah'] as int;
+      if (currentVisibleAyah >= lastAyah - 2) { // Son 2 ayetteyse tamamlandı say
+        StorageService.to.markSuraAsCompleted(currentSura);
+      }
+    }
+    
     setState(() {
       isLoading = true;
     });
     if (currentSura < 114) {
       currentSura++;
+      currentVisibleAyah = 1; // Yeni sure'ye geçerken ilk ayetten başla
       HapticFeedback.lightImpact();
     }
     await _loadCurrentSura();
@@ -395,10 +518,10 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                       trackBorderColor: WidgetStateProperty.all(goldColor),
                     ),
                     child: Scrollbar(
-                      controller: scrollController,
+                      controller: suraListScrollController,
                       thumbVisibility: true,
                       child: ListView.builder(
-                        controller: scrollController,
+                        controller: suraListScrollController,
                         padding: const EdgeInsets.all(8),
                         itemCount: 114,
                         itemBuilder: (context, index) {
@@ -427,24 +550,26 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                               color: Colors.transparent,
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(12),
-                                onTap: () {
+                                onTap: () async {
+                                  // Yeni sure'yi storage'a kaydet
+                                  StorageService.to.saveQuranLastPosition(
+                                    suraNumber: suraNumber,
+                                    ayahNumber: 1,
+                                    scrollPosition: 0.0,
+                                  );
+                                  
                                   setState(() {
                                     isLoading = true;
                                   });
 
                                   setState(() {
                                     currentSura = suraNumber;
-                                    _loadCurrentSura();
+                                    currentVisibleAyah = 1; // Yeni sure seçildiğinde ilk ayetten başla
                                   });
+                                  
                                   Get.back();
-                                  Future.delayed(
-                                    const Duration(milliseconds: 300),
-                                    () {
-                                      setState(() {
-                                        isLoading = false;
-                                      });
-                                    },
-                                  );
+                                  
+                                  await _loadCurrentSura();
 
                                   HapticFeedback.selectionClick();
                                 },
@@ -548,6 +673,7 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
           preferredSize: const Size.fromHeight(56),
           child: SafeArea(
             child: AppBar(
+              titleSpacing:0,
               leading: Container(
                 margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
@@ -600,25 +726,20 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
-                          Icons.menu_book,
-                          color: emeraldGreen,
-                          size: 18,
-                        ),
-                        const SizedBox(width: 8),
+                   
                         Expanded(
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Text(
-                              '$currentSura. $suraName',
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: emeraldGreen,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
+                                  '$currentSura. $suraName',
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: emeraldGreen,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                                          ),
                         ),
                         const SizedBox(width: 4),
                         const Icon(
@@ -693,89 +814,12 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                   style: const TextStyle(fontSize: 16, color: emeraldGreen),
                 ),
               )
-            : Column(
-                children: [
-                  // Navigation controls
-                  Container(
-                    margin: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
-                      ),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: goldColor.withAlpha(77),
-                        width: 1.5,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: darkGreen.withAlpha(25),
-                          blurRadius: 8,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 4,
-                      ),
-                      child: Row(
-                        children: [
-                          // Previous button
-                          _buildNavButton(
-                            icon: Icons.chevron_left,
-                            onTap: currentSura > 1 ? _goToPreviousSura : null,
-                            tooltip:
-                                AppLocalizations.of(
-                                  context,
-                                )?.quranPreviousSura ??
-                                'Önceki Sure',
-                          ),
-
-                          Expanded(
-                            child: Center(
-                              child: Column(
-                                children: [
-                                  Text(
-                                    '${AppLocalizations.of(context)?.quranVerseCount ?? 'Ayet Sayısı'}: ${currentSuraAyahs.length}',
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: emeraldGreen,
-                                    ),
-                                  ),
-                                  Text(
-                                    '$currentSura / 114',
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      color: emeraldGreen.withAlpha(153),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-
-                          // Next button
-                          _buildNavButton(
-                            icon: Icons.chevron_right,
-                            onTap: currentSura < 114 ? _goToNextSura : null,
-                            tooltip:
-                                AppLocalizations.of(context)?.quranNextSura ??
-                                'Sonraki Sure',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  // Quran content
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+            : SafeArea(
+              child: Column(
+                  children: [
+                    // Navigation controls
+                    Container(
+                      margin: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           begin: Alignment.topLeft,
@@ -795,37 +839,116 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                           ),
                         ],
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(14),
-                        child: ScrollbarTheme(
-                          data: ScrollbarThemeData(
-                            thumbColor: WidgetStateProperty.all(
-                              const Color(0xFF0D4F3C),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 4,
+                        ),
+                        child: Row(
+                          children: [
+                            // Previous button
+                            _buildNavButton(
+                              icon: Icons.chevron_left,
+                              onTap: currentSura > 1 ? _goToPreviousSura : null,
+                              tooltip:
+                                  AppLocalizations.of(
+                                    context,
+                                  )?.quranPreviousSura ??
+                                  'Önceki Sure',
                             ),
-                            trackColor: WidgetStateProperty.all(goldColor),
-                            trackBorderColor: WidgetStateProperty.all(
-                              goldColor,
+              
+                            Expanded(
+                              child: Center(
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      '${AppLocalizations.of(context)?.quranVerseCount ?? 'Ayet Sayısı'}: ${currentSuraAyahs.length}',
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                        color: emeraldGreen,
+                                      ),
+                                    ),
+                                    Text(
+                                      '$currentSura / 114',
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        color: emeraldGreen.withAlpha(153),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
                             ),
+              
+                            // Next button
+                            _buildNavButton(
+                              icon: Icons.chevron_right,
+                              onTap: currentSura < 114 ? _goToNextSura : null,
+                              tooltip:
+                                  AppLocalizations.of(context)?.quranNextSura ??
+                                  'Sonraki Sure',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+              
+                    // Quran content
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [Color(0xFFFFFDF7), Color(0xFFF5F3E8)],
                           ),
-                          child: Scrollbar(
-                            thumbVisibility: true,
-                            controller: suraListScrollController,
-                            child: ListView.builder(
-                              controller: suraListScrollController,
-                              padding: const EdgeInsets.all(8),
-                              itemCount: currentSuraAyahs.length,
-                              itemBuilder: (context, index) {
-                                final ayah = currentSuraAyahs[index];
-                                return _buildAyahCard(ayah, index);
-                              },
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color: goldColor.withAlpha(77),
+                            width: 1.5,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: darkGreen.withAlpha(25),
+                              blurRadius: 8,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(14),
+                          child: ScrollbarTheme(
+                            data: ScrollbarThemeData(
+                              thumbColor: WidgetStateProperty.all(
+                                const Color(0xFF0D4F3C),
+                              ),
+                              trackColor: WidgetStateProperty.all(goldColor),
+                              trackBorderColor: WidgetStateProperty.all(
+                                goldColor,
+                              ),
+                            ),
+                            child: Scrollbar(
+                              thumbVisibility: true,
+                              controller: scrollController,
+                              child: ListView.builder(
+                                controller: scrollController,
+                                padding: const EdgeInsets.all(8),
+                                itemCount: currentSuraAyahs.length,
+                                itemBuilder: (context, index) {
+                                  final ayah = currentSuraAyahs[index];
+                                  return _buildAyahCard(ayah, index);
+                                },
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+            ),
       ),
     );
   }
@@ -987,7 +1110,15 @@ class _QuranReadingScreenState extends State<QuranReadingScreen> {
                     vertical: 4,
                   ),
                   child: Text(
-                    ayah['text'],
+                    // ۞ işaretini baştan kaldırıp sona ekle
+                    () {
+                      String text = ayah['text'].toString();
+                      if (text.contains('۞')) {
+                        // ۞ işaretini kaldır ve sonuna ekle
+                        text = '${text.replaceAll('۞', '').trim()} ۞';
+                      }
+                      return text;
+                    }(),
 
                     style: TextStyle(
                       fontSize: ayahFontSize,
