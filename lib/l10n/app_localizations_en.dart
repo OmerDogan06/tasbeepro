@@ -1513,4 +1513,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'Large';
+
+  @override
+  String get settingsQuranWidget => 'Add Quran Widget';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'Add Quran reading widget to home screen';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'Quran Home Widget';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'Read Quran directly from your home screen';
 }

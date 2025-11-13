@@ -472,5 +472,9 @@
   "quranVerseCount": "Número de Versos",
   "quranFontSizeLabel": "Tamanho da Fonte",
   "quranFontSizeSmall": "Pequeno",
-  "quranFontSizeLarge": "Grande"
+  "quranFontSizeLarge": "Grande",
+  "settingsQuranWidget": "Adicionar Widget do Alcorão",
+  "settingsQuranWidgetSubtitle": "Adicione o widget de leitura do Alcorão à tela inicial",
+  "premiumFeatureQuranWidgetTitle": "Widget do Alcorão da Tela Inicial",
+  "premiumFeatureQuranWidgetDescription": "Leia o Alcorão diretamente da sua tela inicial"
 }

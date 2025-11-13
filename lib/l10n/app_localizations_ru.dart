@@ -1514,4 +1514,18 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'Большой';
+
+  @override
+  String get settingsQuranWidget => 'Добавить Виджет Корана';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'Добавьте виджет чтения Корана на главный экран';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'Виджет Корана Главного Экрана';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'Читайте Коран прямо с главного экрана';
 }

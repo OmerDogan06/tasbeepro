@@ -472,5 +472,9 @@
   "quranVerseCount": "تعداد آیات",
   "quranFontSizeLabel": "اندازه فونت",
   "quranFontSizeSmall": "کوچک",
-  "quranFontSizeLarge": "بزرگ"
+  "quranFontSizeLarge": "بزرگ",
+  "settingsQuranWidget": "افزودن ویجت قرآن",
+  "settingsQuranWidgetSubtitle": "ویجت خواندن قرآن را به صفحه اصلی اضافه کنید",
+  "premiumFeatureQuranWidgetTitle": "ویجت قرآن صفحه اصلی",
+  "premiumFeatureQuranWidgetDescription": "قرآن را مستقیماً از صفحه اصلی خود بخوانید"
 }

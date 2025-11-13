@@ -1653,5 +1653,21 @@
   "quranVerseCount": "Verse Count",
   "quranFontSizeLabel": "Font Size",
   "quranFontSizeSmall": "Small",
-  "quranFontSizeLarge": "Large"
+  "quranFontSizeLarge": "Large",
+  "settingsQuranWidget": "Add Quran Widget",
+  "@settingsQuranWidget": {
+    "description": "Settings option to add Quran widget to home screen"
+  },
+  "settingsQuranWidgetSubtitle": "Add Quran reading widget to home screen",
+  "@settingsQuranWidgetSubtitle": {
+    "description": "Subtitle for Quran widget settings option"
+  },
+  "premiumFeatureQuranWidgetTitle": "Quran Home Widget",
+  "@premiumFeatureQuranWidgetTitle": {
+    "description": "Title for Quran widget premium feature"
+  },
+  "premiumFeatureQuranWidgetDescription": "Read Quran directly from your home screen",
+  "@premiumFeatureQuranWidgetDescription": {
+    "description": "Description for Quran widget premium feature"
+  }
 }

@@ -472,5 +472,9 @@
   "quranVerseCount": "Ayet Sayısı",
   "quranFontSizeLabel": "Font Boyutu",
   "quranFontSizeSmall": "Küçük",
-  "quranFontSizeLarge": "Büyük"
+  "quranFontSizeLarge": "Büyük",
+  "settingsQuranWidget": "Kur'an Widget Ekle",
+  "settingsQuranWidgetSubtitle": "Ana ekrana Kur'an okuma widget'ı ekleyin",
+  "premiumFeatureQuranWidgetTitle": "Kur'an Ana Ekran Widget'ı",
+  "premiumFeatureQuranWidgetDescription": "Ana ekranınızdan doğrudan Kur'an okuyun"
 }

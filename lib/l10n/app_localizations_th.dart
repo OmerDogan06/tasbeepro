@@ -1499,4 +1499,18 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'ใหญ่';
+
+  @override
+  String get settingsQuranWidget => 'เพิ่มวิดเจ็ตอัลกุรอาน';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'เพิ่มวิดเจ็ตการอ่านอัลกุรอานไปยังหน้าจอหลัก';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'วิดเจ็ตอัลกุรอานหน้าจอหลัก';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'อ่านอัลกุรอานโดยตรงจากหน้าจอของคุณ';
 }

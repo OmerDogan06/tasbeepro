@@ -472,5 +472,9 @@
   "quranVerseCount": "Idadi ya Mstari",
   "quranFontSizeLabel": "Ukubwa wa Fonti",
   "quranFontSizeSmall": "Ndogo",
-  "quranFontSizeLarge": "Kubwa"
+  "quranFontSizeLarge": "Kubwa",
+  "settingsQuranWidget": "Ongeza Widget ya Qurani",
+  "settingsQuranWidgetSubtitle": "Ongeza widget ya kusoma Qurani kwenye skrini kuu",
+  "premiumFeatureQuranWidgetTitle": "Widget ya Qurani ya Skrini Kuu",
+  "premiumFeatureQuranWidgetDescription": "Soma Qurani moja kwa moja kutoka skrini yako kuu"
 }

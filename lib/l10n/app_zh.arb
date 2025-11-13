@@ -472,5 +472,9 @@
   "quranVerseCount": "经文数量",
   "quranFontSizeLabel": "字体大小",
   "quranFontSizeSmall": "小",
-  "quranFontSizeLarge": "大"
+  "quranFontSizeLarge": "大",
+  "settingsQuranWidget": "添加古兰经小部件",
+  "settingsQuranWidgetSubtitle": "将古兰经阅读小部件添加到主屏幕",
+  "premiumFeatureQuranWidgetTitle": "古兰经主屏幕小部件",
+  "premiumFeatureQuranWidgetDescription": "直接从主屏幕阅读古兰经"
 }

@@ -1519,4 +1519,18 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'Katta';
+
+  @override
+  String get settingsQuranWidget => 'Qur\'on Vijetini Qo\'shish';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'Bosh ekranga Qur\'on o\'qish vijetini qo\'shing';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'Qur\'on Bosh Ekran Vijeti';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'Bosh ekraningizdan to\'g\'ridan-to\'g\'ri Qur\'on o\'qing';
 }

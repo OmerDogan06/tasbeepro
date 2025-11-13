@@ -472,5 +472,9 @@
   "quranVerseCount": "Anzahl der Verse",
   "quranFontSizeLabel": "Schriftgröße",
   "quranFontSizeSmall": "Klein",
-  "quranFontSizeLarge": "Groß"
+  "quranFontSizeLarge": "Groß",
+  "settingsQuranWidget": "Koran-Widget hinzufügen",
+  "settingsQuranWidgetSubtitle": "Fügen Sie das Koran-Lese-Widget zum Startbildschirm hinzu",
+  "premiumFeatureQuranWidgetTitle": "Koran-Startbildschirm-Widget",
+  "premiumFeatureQuranWidgetDescription": "Lesen Sie den Koran direkt von Ihrem Startbildschirm"
 }

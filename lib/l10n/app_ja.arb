@@ -472,5 +472,9 @@
   "quranVerseCount": "節の数",
   "quranFontSizeLabel": "フォントサイズ",
   "quranFontSizeSmall": "小",
-  "quranFontSizeLarge": "大"
+  "quranFontSizeLarge": "大",
+  "settingsQuranWidget": "コーランウィジェットを追加",
+  "settingsQuranWidgetSubtitle": "ホーム画面にコーラン読書ウィジェットを追加する",
+  "premiumFeatureQuranWidgetTitle": "コーランホーム画面ウィジェット",
+  "premiumFeatureQuranWidgetDescription": "ホーム画面から直接コーランを読む"
 }

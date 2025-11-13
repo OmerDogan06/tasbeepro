@@ -280,10 +280,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   _buildDivider(),
                   _buildIslamicListTile(
                     icon: Icons.widgets,
-                    title: 'Kur\'an Widget Ekle',
-                    subtitle: 'Ana ekrana Kur\'an okuma widget\'ı ekleyin',
+                    title: AppLocalizations.of(context)?.settingsQuranWidget ?? 'Kur\'an Widget Ekle',
+                    subtitle: AppLocalizations.of(context)?.settingsQuranWidgetSubtitle ?? 'Ana ekrana Kur\'an okuma widget\'ı ekleyin',
                     onTap: () => _addQuranWidgetToHomeScreen(),
-                    direction: direction
+                    direction: direction,
+                    isPremiumFeature: true,
                   ),
                 ]),
 

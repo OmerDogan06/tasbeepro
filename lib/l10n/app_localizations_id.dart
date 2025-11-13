@@ -1515,4 +1515,18 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'Besar';
+
+  @override
+  String get settingsQuranWidget => 'Tambah Widget Quran';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'Tambahkan widget pembacaan Quran ke layar utama';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'Widget Quran Layar Utama';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'Baca Quran langsung dari layar utama Anda';
 }

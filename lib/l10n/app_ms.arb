@@ -472,5 +472,9 @@
   "quranVerseCount": "Bilangan Ayat",
   "quranFontSizeLabel": "Saiz Font",
   "quranFontSizeSmall": "Kecil",
-  "quranFontSizeLarge": "Besar"
+  "quranFontSizeLarge": "Besar",
+  "settingsQuranWidget": "Tambah Widget Al-Quran",
+  "settingsQuranWidgetSubtitle": "Tambahkan widget bacaan Al-Quran ke skrin utama",
+  "premiumFeatureQuranWidgetTitle": "Widget Al-Quran Skrin Utama",
+  "premiumFeatureQuranWidgetDescription": "Baca Al-Quran terus dari skrin utama anda"
 }

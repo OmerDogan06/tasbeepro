@@ -472,5 +472,9 @@
   "quranVerseCount": "عدد الآيات",
   "quranFontSizeLabel": "حجم الخط",
   "quranFontSizeSmall": "صغير",
-  "quranFontSizeLarge": "كبير"
+  "quranFontSizeLarge": "كبير",
+  "settingsQuranWidget": "إضافة ودجت القرآن",
+  "settingsQuranWidgetSubtitle": "أضف ودجت قراءة القرآن إلى الشاشة الرئيسية",
+  "premiumFeatureQuranWidgetTitle": "ودجت القرآن للشاشة الرئيسية",
+  "premiumFeatureQuranWidgetDescription": "اقرأ القرآن مباشرة من شاشتك الرئيسية"
 }

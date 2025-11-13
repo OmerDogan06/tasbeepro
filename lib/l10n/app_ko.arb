@@ -472,5 +472,9 @@
   "quranVerseCount": "구절 수",
   "quranFontSizeLabel": "폰트 크기",
   "quranFontSizeSmall": "작음",
-  "quranFontSizeLarge": "큼"
+  "quranFontSizeLarge": "큼",
+  "settingsQuranWidget": "꾸란 위젯 추가",
+  "settingsQuranWidgetSubtitle": "홈 화면에 꾸란 읽기 위젯을 추가하세요",
+  "premiumFeatureQuranWidgetTitle": "꾸란 홈 화면 위젯",
+  "premiumFeatureQuranWidgetDescription": "홈 화면에서 직접 꾸란을 읽으세요"
 }

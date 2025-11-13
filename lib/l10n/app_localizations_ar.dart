@@ -1482,4 +1482,18 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'كبير';
+
+  @override
+  String get settingsQuranWidget => 'إضافة ودجت القرآن';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'أضف ودجت قراءة القرآن إلى الشاشة الرئيسية';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'ودجت القرآن للشاشة الرئيسية';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'اقرأ القرآن مباشرة من شاشتك الرئيسية';
 }

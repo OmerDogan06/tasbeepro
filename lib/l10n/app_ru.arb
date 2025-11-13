@@ -472,5 +472,9 @@
   "quranVerseCount": "Количество Аятов",
   "quranFontSizeLabel": "Размер Шрифта",
   "quranFontSizeSmall": "Маленький",
-  "quranFontSizeLarge": "Большой"
+  "quranFontSizeLarge": "Большой",
+  "settingsQuranWidget": "Добавить Виджет Корана",
+  "settingsQuranWidgetSubtitle": "Добавьте виджет чтения Корана на главный экран",
+  "premiumFeatureQuranWidgetTitle": "Виджет Корана Главного Экрана",
+  "premiumFeatureQuranWidgetDescription": "Читайте Коран прямо с главного экрана"
 }

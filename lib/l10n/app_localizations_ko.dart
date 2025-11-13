@@ -1450,4 +1450,16 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => '큼';
+
+  @override
+  String get settingsQuranWidget => '꾸란 위젯 추가';
+
+  @override
+  String get settingsQuranWidgetSubtitle => '홈 화면에 꾸란 읽기 위젯을 추가하세요';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => '꾸란 홈 화면 위젯';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription => '홈 화면에서 직접 꾸란을 읽으세요';
 }

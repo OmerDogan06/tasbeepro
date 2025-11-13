@@ -1534,4 +1534,19 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'Grande';
+
+  @override
+  String get settingsQuranWidget => 'Adicionar Widget do Alcorão';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'Adicione o widget de leitura do Alcorão à tela inicial';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle =>
+      'Widget do Alcorão da Tela Inicial';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'Leia o Alcorão diretamente da sua tela inicial';
 }

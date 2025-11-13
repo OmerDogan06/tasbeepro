@@ -472,5 +472,9 @@
   "quranVerseCount": "Oyatlar Soni",
   "quranFontSizeLabel": "Shrift O'lchami",
   "quranFontSizeSmall": "Kichik",
-  "quranFontSizeLarge": "Katta"
+  "quranFontSizeLarge": "Katta",
+  "settingsQuranWidget": "Qur'on Vijetini Qo'shish",
+  "settingsQuranWidgetSubtitle": "Bosh ekranga Qur'on o'qish vijetini qo'shing",
+  "premiumFeatureQuranWidgetTitle": "Qur'on Bosh Ekran Vijeti",
+  "premiumFeatureQuranWidgetDescription": "Bosh ekraningizdan to'g'ridan-to'g'ri Qur'on o'qing"
 }

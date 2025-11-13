@@ -1525,4 +1525,18 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'Kubwa';
+
+  @override
+  String get settingsQuranWidget => 'Ongeza Widget ya Qurani';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'Ongeza widget ya kusoma Qurani kwenye skrini kuu';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'Widget ya Qurani ya Skrini Kuu';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'Soma Qurani moja kwa moja kutoka skrini yako kuu';
 }

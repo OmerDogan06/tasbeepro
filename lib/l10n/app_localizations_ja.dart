@@ -1448,4 +1448,16 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => '大';
+
+  @override
+  String get settingsQuranWidget => 'コーランウィジェットを追加';
+
+  @override
+  String get settingsQuranWidgetSubtitle => 'ホーム画面にコーラン読書ウィジェットを追加する';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'コーランホーム画面ウィジェット';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription => 'ホーム画面から直接コーランを読む';
 }

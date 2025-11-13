@@ -1506,4 +1506,18 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'Büyük';
+
+  @override
+  String get settingsQuranWidget => 'Kur\'an Widget Ekle';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'Ana ekrana Kur\'an okuma widget\'ı ekleyin';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'Kur\'an Ana Ekran Widget\'ı';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'Ana ekranınızdan doğrudan Kur\'an okuyun';
 }

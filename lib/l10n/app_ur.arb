@@ -472,5 +472,9 @@
   "quranVerseCount": "آیات کی تعداد",
   "quranFontSizeLabel": "فونٹ سائز",
   "quranFontSizeSmall": "چھوٹا",
-  "quranFontSizeLarge": "بڑا"
+  "quranFontSizeLarge": "بڑا",
+  "settingsQuranWidget": "قرآن وجیٹ شامل کریں",
+  "settingsQuranWidgetSubtitle": "گھر کی اسکرین پر قرآن پڑھنے کا وجیٹ شامل کریں",
+  "premiumFeatureQuranWidgetTitle": "قرآن ہوم اسکرین وجیٹ",
+  "premiumFeatureQuranWidgetDescription": "اپنی ہوم اسکرین سے براہ راست قرآن پڑھیں"
 }

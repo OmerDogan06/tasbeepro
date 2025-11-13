@@ -472,5 +472,9 @@
   "quranVerseCount": "Numero di Versi",
   "quranFontSizeLabel": "Dimensione Font",
   "quranFontSizeSmall": "Piccolo",
-  "quranFontSizeLarge": "Grande"
+  "quranFontSizeLarge": "Grande",
+  "settingsQuranWidget": "Aggiungi Widget Corano",
+  "settingsQuranWidgetSubtitle": "Aggiungi il widget di lettura del Corano alla schermata principale",
+  "premiumFeatureQuranWidgetTitle": "Widget Corano Schermata Principale",
+  "premiumFeatureQuranWidgetDescription": "Leggi il Corano direttamente dalla tua schermata principale"
 }

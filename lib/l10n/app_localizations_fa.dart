@@ -1498,4 +1498,18 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'بزرگ';
+
+  @override
+  String get settingsQuranWidget => 'افزودن ویجت قرآن';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'ویجت خواندن قرآن را به صفحه اصلی اضافه کنید';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'ویجت قرآن صفحه اصلی';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'قرآن را مستقیماً از صفحه اصلی خود بخوانید';
 }

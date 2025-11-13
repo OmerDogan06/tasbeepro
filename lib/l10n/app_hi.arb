@@ -472,5 +472,9 @@
   "quranVerseCount": "आयत संख्या",
   "quranFontSizeLabel": "फ़ॉन्ट आकार",
   "quranFontSizeSmall": "छोटा",
-  "quranFontSizeLarge": "बड़ा"
+  "quranFontSizeLarge": "बड़ा",
+  "settingsQuranWidget": "कुरान विजेट जोड़ें",
+  "settingsQuranWidgetSubtitle": "होम स्क्रीन पर कुरान पढ़ने का विजेट जोड़ें",
+  "premiumFeatureQuranWidgetTitle": "कुरान होम स्क्रीन विजेट",
+  "premiumFeatureQuranWidgetDescription": "अपनी होम स्क्रीन से सीधे कुरान पढ़ें"
 }

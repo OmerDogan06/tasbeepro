@@ -472,5 +472,9 @@
   "quranVerseCount": "จำนวนอายะห์",
   "quranFontSizeLabel": "ขนาดตัวอักษร",
   "quranFontSizeSmall": "เล็ก",
-  "quranFontSizeLarge": "ใหญ่"
+  "quranFontSizeLarge": "ใหญ่",
+  "settingsQuranWidget": "เพิ่มวิดเจ็ตอัลกุรอาน",
+  "settingsQuranWidgetSubtitle": "เพิ่มวิดเจ็ตการอ่านอัลกุรอานไปยังหน้าจอหลัก",
+  "premiumFeatureQuranWidgetTitle": "วิดเจ็ตอัลกุรอานหน้าจอหลัก",
+  "premiumFeatureQuranWidgetDescription": "อ่านอัลกุรอานโดยตรงจากหน้าจอของคุณ"
 }

@@ -1536,4 +1536,19 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'Grande';
+
+  @override
+  String get settingsQuranWidget => 'Agregar Widget del Corán';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'Agregue el widget de lectura del Corán a la pantalla de inicio';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle =>
+      'Widget del Corán de Pantalla de Inicio';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'Lea el Corán directamente desde su pantalla de inicio';
 }

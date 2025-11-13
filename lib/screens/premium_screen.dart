@@ -263,6 +263,15 @@ class _PremiumScreenState extends State<PremiumScreen> {
             AppLocalizations.of(context)?.premiumFeatureWidgetDescription ??
             'Android ana ekranında zikir sayacı',
       },
+      {
+        'icon': Icons.menu_book,
+        'title':
+            AppLocalizations.of(context)?.premiumFeatureQuranWidgetTitle ??
+            'Kur\'an Ana Ekran Widget\'ı',
+        'description':
+            AppLocalizations.of(context)?.premiumFeatureQuranWidgetDescription ??
+            'Ana ekranınızdan doğrudan Kur\'an okuyun',
+      },
     ];
 
     return Column(

@@ -2925,6 +2925,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Large'**
   String get quranFontSizeLarge;
+
+  /// Settings option to add Quran widget to home screen
+  ///
+  /// In en, this message translates to:
+  /// **'Add Quran Widget'**
+  String get settingsQuranWidget;
+
+  /// Subtitle for Quran widget settings option
+  ///
+  /// In en, this message translates to:
+  /// **'Add Quran reading widget to home screen'**
+  String get settingsQuranWidgetSubtitle;
+
+  /// Title for Quran widget premium feature
+  ///
+  /// In en, this message translates to:
+  /// **'Quran Home Widget'**
+  String get premiumFeatureQuranWidgetTitle;
+
+  /// Description for Quran widget premium feature
+  ///
+  /// In en, this message translates to:
+  /// **'Read Quran directly from your home screen'**
+  String get premiumFeatureQuranWidgetDescription;
 }
 
 class _AppLocalizationsDelegate

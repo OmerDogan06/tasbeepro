@@ -253,6 +253,12 @@ class _FirstLaunchPremiumIntroScreenState
         'description': AppLocalizations.of(context)?.firstLaunchIntroWidgetDescription ?? 'Android ana ekranında hızlı erişim',
         'color': Colors.green,
       },
+      {
+        'icon': Icons.menu_book_outlined,
+        'title': AppLocalizations.of(context)?.premiumFeatureQuranWidgetTitle ?? 'Kur\'an Ana Ekran Widget\'ı',
+        'description': AppLocalizations.of(context)?.premiumFeatureQuranWidgetDescription ?? 'Ana ekranınızdan doğrudan Kur\'an okuyun',
+        'color': goldColor,
+      },
       // {
       //   'icon': Icons.cloud_sync_outlined,
       //   'title': AppLocalizations.of(context)?.firstLaunchIntroUnlimitedTitle ?? 'Sınırsız Özellikler',

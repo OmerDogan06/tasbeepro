@@ -1503,4 +1503,18 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'بڑا';
+
+  @override
+  String get settingsQuranWidget => 'قرآن وجیٹ شامل کریں';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'گھر کی اسکرین پر قرآن پڑھنے کا وجیٹ شامل کریں';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'قرآن ہوم اسکرین وجیٹ';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'اپنی ہوم اسکرین سے براہ راست قرآن پڑھیں';
 }

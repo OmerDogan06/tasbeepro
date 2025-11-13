@@ -1432,4 +1432,16 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => '大';
+
+  @override
+  String get settingsQuranWidget => '添加古兰经小部件';
+
+  @override
+  String get settingsQuranWidgetSubtitle => '将古兰经阅读小部件添加到主屏幕';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => '古兰经主屏幕小部件';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription => '直接从主屏幕阅读古兰经';
 }

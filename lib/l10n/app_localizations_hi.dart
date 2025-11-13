@@ -1507,4 +1507,18 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get quranFontSizeLarge => 'बड़ा';
+
+  @override
+  String get settingsQuranWidget => 'कुरान विजेट जोड़ें';
+
+  @override
+  String get settingsQuranWidgetSubtitle =>
+      'होम स्क्रीन पर कुरान पढ़ने का विजेट जोड़ें';
+
+  @override
+  String get premiumFeatureQuranWidgetTitle => 'कुरान होम स्क्रीन विजेट';
+
+  @override
+  String get premiumFeatureQuranWidgetDescription =>
+      'अपनी होम स्क्रीन से सीधे कुरान पढ़ें';
 }
