@@ -138,8 +138,8 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             ACTION_COUNTER_CLICK -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    // Premium kontrolü tekrar yap (güvenlik için)
-                    if (checkPremiumStatus(context)) {
+                    // Widget erişim kontrolü tekrar yap (Premium VEYA Reward)
+                    if (canUseWidget(context)) {
                         incrementCounter(localizedContext, appWidgetId)
                     } else {
                         showPremiumNotification(localizedContext)
@@ -155,8 +155,8 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             ACTION_SETTINGS_CLICK -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    // Premium kontrolü tekrar yap (güvenlik için)
-                    if (checkPremiumStatus(context)) {
+                    // Widget erişim kontrolü tekrar yap (güvenlik için)
+                    if (canUseWidget(context)) {
                         openWidgetSettings(context, appWidgetId) // Settings için orijinal context kullan
                     } else {
                         showPremiumNotification(localizedContext)
@@ -217,11 +217,13 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
     }
 
     private fun setClickIntents(context: Context, views: RemoteViews, appWidgetId: Int) {
-        // Premium durumunu kontrol et
-        val isPremium = checkPremiumStatus(context)
+        // Widget erişim durumunu kontrol et
+        val canUse = canUseWidget(context)
         
-        if (isPremium) {
-            // Counter button click - Premium kullanıcı
+        Log.d(TAG, "Setting click intents for widget $appWidgetId - canUse: $canUse")
+        
+        if (canUse) {
+            // Counter button click - Erişim izni var
             val counterIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
                 action = ACTION_COUNTER_CLICK
                 putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
@@ -232,7 +234,7 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             )
             views.setOnClickPendingIntent(R.id.counter_button, counterPendingIntent)
 
-            // Settings button click - Premium kullanıcı
+            // Settings button click - Erişim izni var
             val settingsIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
                 action = ACTION_SETTINGS_CLICK
                 putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
@@ -242,8 +244,12 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
             views.setOnClickPendingIntent(R.id.settings_button, settingsPendingIntent)
+            
+            // Widget görünümünü aktif hale getir
+            views.setInt(R.id.counter_button, "setBackgroundResource", R.drawable.widget_new_counter_button)
+            views.setFloat(R.id.counter_button, "setAlpha", 1.0f)
         } else {
-            // Premium olmayan kullanıcı - Sadece premium uyarısı göster
+            // Widget kullanamayan kullanıcı - Premium uyarısı göster
             val premiumIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
                 action = "SHOW_PREMIUM_NOTIFICATION"
                 putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
@@ -254,6 +260,12 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             )
             views.setOnClickPendingIntent(R.id.counter_button, premiumPendingIntent)
             views.setOnClickPendingIntent(R.id.settings_button, premiumPendingIntent)
+            
+            // Widget görünümünü pasif hale getir (görsel geri bildirim)
+            views.setFloat(R.id.counter_button, "setAlpha", 0.6f)
+            
+            // Counter button'da premium mesajı göster
+            views.setTextViewText(R.id.dokun_text, context.getString(R.string.widget_premium_required))
         }
 
         // Reset button - Her zaman aktif (ücretsiz özellik)
@@ -497,6 +509,37 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             prefs.getBoolean("flutter.is_premium", false)
         } catch (e: Exception) {
             Log.e(TAG, "Premium durum kontrol hatası: ${e.message}")
+            false
+        }
+    }
+
+    // Widget erişim kontrolü - Premium VEYA Reward (24 saat süresi ile)
+    private fun canUseWidget(context: Context): Boolean {
+        return try {
+            val prefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
+            val isPremium = prefs.getBoolean("flutter.is_premium", false)
+            
+            if (isPremium) {
+                Log.d(TAG, "Widget erişim kontrolü - Premium aktif")
+                return true
+            }
+            
+            // Reward süresi kontrolü
+            val rewardUnlockedAt = prefs.getLong("flutter.reward_dhikr_widget_unlocked_at", 0)
+            if (rewardUnlockedAt > 0) {
+                val unlockedTime = rewardUnlockedAt
+                val currentTime = System.currentTimeMillis()
+                val hoursPassed = (currentTime - unlockedTime) / (1000 * 60 * 60)
+                
+                val isStillValid = hoursPassed < 24
+                Log.d(TAG, "Widget erişim kontrolü - Reward: $isStillValid (${hoursPassed.toInt()}/24 saat geçti)")
+                return isStillValid
+            }
+            
+            Log.d(TAG, "Widget erişim kontrolü - Erişim yok")
+            return false
+        } catch (e: Exception) {
+            Log.e(TAG, "Widget erişim kontrol hatası: ${e.message}")
             false
         }
     }

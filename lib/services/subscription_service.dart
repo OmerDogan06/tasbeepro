@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:tasbeepro/models/subscription_plan.dart';
 import 'package:tasbeepro/screens/home_screen.dart';
@@ -11,6 +12,7 @@ import '../widgets/islamic_snackbar.dart';
 import '../l10n/app_localizations.dart';
 
 import 'storage_service.dart';
+import 'reward_service.dart';
 
 class SubscriptionService extends GetxController {
  
@@ -39,9 +41,96 @@ class SubscriptionService extends GetxController {
   bool get isLoading => _isLoading.value;
   
   // Premium özelliklere erişim kontrolü
+  // NOT: Reklamsız deneyim sadece premium ile gelir, reward sistemi yoktur
   bool get isAdFreeEnabled => isPremium.value;
-  bool get areRemindersEnabled => isPremium.value;
-  bool get isWidgetEnabled => isPremium.value;
+  
+  // Reward sistemli özellikler (Premium VEYA Reward ile açılır)
+  bool get isDhikrWidgetEnabled {
+    if (isPremium.value) {
+      debugPrint("🟢 isDhikrWidgetEnabled: true (Premium)");
+      return true;
+    }
+    try {
+      if (Get.isRegistered<RewardService>()) {
+        final rewardService = Get.find<RewardService>();
+        final isUnlocked = rewardService.isDhikrWidgetUnlocked;
+        debugPrint("🟡 isDhikrWidgetEnabled: $isUnlocked (Reward)");
+        return isUnlocked;
+      } else {
+        debugPrint("🔴 isDhikrWidgetEnabled: false (RewardService not registered)");
+        return false;
+      }
+    } catch (e) {
+      debugPrint("❌ isDhikrWidgetEnabled error: $e");
+      return false; // RewardService henüz yüklenmemiş
+    }
+  }
+  
+  bool get isQuranWidgetEnabled {
+    if (isPremium.value) {
+      debugPrint("🟢 isQuranWidgetEnabled: true (Premium)");
+      return true;
+    }
+    try {
+      if (Get.isRegistered<RewardService>()) {
+        final rewardService = Get.find<RewardService>();
+        final isUnlocked = rewardService.isQuranWidgetUnlocked;
+        debugPrint("🟡 isQuranWidgetEnabled: $isUnlocked (Reward)");
+        return isUnlocked;
+      } else {
+        debugPrint("🔴 isQuranWidgetEnabled: false (RewardService not registered)");
+        return false;
+      }
+    } catch (e) {
+      debugPrint("❌ isQuranWidgetEnabled error: $e");
+      return false; // RewardService henz yklenmemi
+    }
+  }
+  
+  bool get areRemindersEnabled {
+    if (isPremium.value) {
+      debugPrint("🟢 areRemindersEnabled: true (Premium)");
+      return true;
+    }
+    try {
+      if (Get.isRegistered<RewardService>()) {
+        final rewardService = Get.find<RewardService>();
+        final isUnlocked = rewardService.isRemindersUnlocked;
+        debugPrint("🟡 areRemindersEnabled: $isUnlocked (Reward)");
+        return isUnlocked;
+      } else {
+        debugPrint("🔴 areRemindersEnabled: false (RewardService not registered)");
+        return false;
+      }
+    } catch (e) {
+      debugPrint("❌ areRemindersEnabled error: $e");
+      return false; // RewardService henz yklenmemi
+    }
+  }
+  
+  bool get areReminderTimesEnabled {
+    if (isPremium.value) {
+      debugPrint("🟢 areReminderTimesEnabled: true (Premium)");
+      return true;
+    }
+    try {
+      if (Get.isRegistered<RewardService>()) {
+        final rewardService = Get.find<RewardService>();
+        final isUnlocked = rewardService.isReminderTimesUnlocked;
+        debugPrint("🟡 areReminderTimesEnabled: $isUnlocked (Reward)");
+        return isUnlocked;
+      } else {
+        debugPrint("🔴 areReminderTimesEnabled: false (RewardService not registered)");
+        return false;
+      }
+    } catch (e) {
+      debugPrint("❌ areReminderTimesEnabled error: $e");
+      return false; // RewardService henz yklenmemi
+    }
+  }
+  
+  // Eski method - geriye uyumluluk için
+  bool get isWidgetEnabled => isDhikrWidgetEnabled || isQuranWidgetEnabled;
 
   @override
   Future<void> onInit() async {
@@ -404,8 +493,102 @@ class SubscriptionService extends GetxController {
       onConfirm: () {
         Get.back();
         // Premium satın alma sayfasına git
-      Get.to(() => PremiumScreen(), transition: Transition.rightToLeft);
+        Get.to(() => PremiumScreen(), transition: Transition.rightToLeft);
       },
+    );
+  }
+  
+  // Reward sistemi olan özellikler için özel dialog
+  void showFeatureOptionsDialog(String featureType) {
+    String featureName = '';
+    switch (featureType) {
+      case 'dhikr_widget':
+        featureName = 'Zikir Widget\'ı';
+        break;
+      case 'quran_widget':
+        featureName = 'Kuran Widget\'ı';
+        break;
+      case 'reminders':
+        featureName = 'Hatırlatıcılar';
+        break;
+      case 'reminder_times':
+        featureName = 'Hatırlatma Saatleri';
+        break;
+    }
+    
+    Get.defaultDialog(
+      title: '$featureName Özelliği',
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Bu özelliği kullanmak için iki seçeneğiniz var:',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 16),
+          ),
+          SizedBox(height: 20),
+          
+          // Seçenek 1: Premium (Kalıcı + Reklamsız)
+          Container(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: () {
+                Get.back();
+                Get.to(() => PremiumScreen(), transition: Transition.rightToLeft);
+              },
+              icon: Icon(Icons.diamond, color: Colors.white),
+              label: Text(
+                'Premium Satın Al\n(Tüm özellikler + Reklamsız)',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+                padding: EdgeInsets.symmetric(vertical: 12),
+              ),
+            ),
+          ),
+          
+          SizedBox(height: 12),
+          
+          // Seçenek 2: Reklam İzle (Geçici)
+          Container(
+            width: double.infinity,
+            child: OutlinedButton.icon(
+              onPressed: () {
+                Get.back();
+                // TODO: RewardService implementasyonu sonrası aktifleştirilecek
+                // RewardService.to.showRewardAdDialog(featureType);
+                IslamicSnackbar.showInfo(
+                  'Yakında!',
+                  'Ödüllü reklam sistemi çok yakında aktif olacak.',
+                );
+              },
+              icon: Icon(Icons.play_circle_filled, color: Colors.green),
+              label: Text(
+                '3 Reklam İzle\n(24 Saat Erişim)',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.green),
+              ),
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(color: Colors.green),
+                padding: EdgeInsets.symmetric(vertical: 12),
+              ),
+            ),
+          ),
+          
+          SizedBox(height: 8),
+          Text(
+            '* Ödüllü reklam ile sadece seçilen özellik açılır,\nuygulama içi reklamlar devam eder.',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey[600],
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -417,6 +600,65 @@ class SubscriptionService extends GetxController {
     
     if (showDialog) {
       showPremiumDialog();
+    }
+    
+    return false;
+  }
+  
+  // Özellik kontrolü - reward sistemi olan özellikler için
+  bool checkFeatureAccess(String featureType, {bool showDialog = true}) {
+    // Premium ise tüm özellikler açık
+    if (isPremium.value) {
+      return true;
+    }
+    
+    // Reward durumunu kontrol et (şimdilik false, RewardService implementasyonu sonrası aktifleştirilecek)
+    // bool hasRewardAccess = false;
+    // switch (featureType) {
+    //   case 'dhikr_widget':
+    //     hasRewardAccess = RewardService.to.isDhikrWidgetUnlocked;
+    //     break;
+    //   case 'quran_widget':
+    //     hasRewardAccess = RewardService.to.isQuranWidgetUnlocked;
+    //     break;
+    //   case 'reminders':
+    //     hasRewardAccess = RewardService.to.isRemindersUnlocked;
+    //     break;
+    //   case 'reminder_times':
+    //     hasRewardAccess = RewardService.to.isReminderTimesUnlocked;
+    //     break;
+    // }
+    // 
+    // if (hasRewardAccess) {
+    //   return true;
+    // }
+    
+    // Ne premium ne de reward erişimi yoksa dialog göster
+    if (showDialog) {
+      showFeatureOptionsDialog(featureType);
+    }
+    
+    return false;
+  }
+  
+  // Reklamsız deneyim için özel kontrol (sadece premium)
+  bool checkAdFreeAccess({bool showDialog = true}) {
+    if (isPremium.value) {
+      return true;
+    }
+    
+    if (showDialog) {
+      // Reklamsız deneyim için sadece premium dialog göster
+      Get.defaultDialog(
+        title: 'Reklamsız Deneyim',
+        middleText: 'Reklamsız deneyim sadece Premium abonelik ile kullanılabilir.',
+        textConfirm: 'Premium\'a Geç',
+        textCancel: 'İptal',
+        onConfirm: () {
+          Get.back();
+          Get.to(() => PremiumScreen(), transition: Transition.rightToLeft);
+        },
+      );
     }
     
     return false;
@@ -538,14 +780,89 @@ class SubscriptionService extends GetxController {
     }
   }
 
-  // ✅ Tüm widget'ları güncelle - Premium durumu değiştiğinde çağrılır
+  // ✅ Tüm widget'ları güncelle - Premium veya Reward durumu değiştiğinde çağrılır
   Future<void> _updateAllWidgets() async {
     try {
       const platform = MethodChannel('com.skyforgestudios.tasbeepro/widget');
-      await platform.invokeMethod('updateAllWidgets');
+      
+      // Reward durumlarını al (RewardService varsa)
+      bool dhikrByReward = false;
+      bool quranByReward = false;
+      bool remindersByReward = false;
+      bool reminderTimesByReward = false;
+      
+      // Reward unlock time bilgileri (Android widget'larda 24 saat kontrolü için)
+      int? dhikrUnlockTime;
+      int? quranUnlockTime;
+      int? remindersUnlockTime;
+      int? reminderTimesUnlockTime;
+      
+      try {
+        if (Get.isRegistered<RewardService>()) {
+          final rewardService = Get.find<RewardService>();
+          if (!isPremium.value) {
+            dhikrByReward = rewardService.isDhikrWidgetUnlocked;
+            quranByReward = rewardService.isQuranWidgetUnlocked;
+            remindersByReward = rewardService.isRemindersUnlocked;
+            reminderTimesByReward = rewardService.isReminderTimesUnlocked;
+            
+            // Reward unlock time'larını al (millisecondsSinceEpoch)
+            if (dhikrByReward) {
+              dhikrUnlockTime = rewardService.dhikrWidgetStatus.unlockedAt?.millisecondsSinceEpoch;
+            }
+            if (quranByReward) {
+              quranUnlockTime = rewardService.quranWidgetStatus.unlockedAt?.millisecondsSinceEpoch;
+            }
+            if (remindersByReward) {
+              remindersUnlockTime = rewardService.remindersStatus.unlockedAt?.millisecondsSinceEpoch;
+            }
+            if (reminderTimesByReward) {
+              reminderTimesUnlockTime = rewardService.reminderTimesStatus.unlockedAt?.millisecondsSinceEpoch;
+            }
+          }
+        }
+      } catch (e) {
+        if (kDebugMode) {
+          debugPrint('❌ Error getting reward status: $e');
+        }
+      }
+      
+      // Widget'lara gönderilecek durum bilgileri
+      final widgetData = {
+        // Premium durumu
+        'isPremium': isPremium.value,
+        
+        // Reward durumları
+        'isDhikrWidgetByReward': dhikrByReward,
+        'isQuranWidgetByReward': quranByReward,
+        'isRemindersByReward': remindersByReward,
+        'isReminderTimesByReward': reminderTimesByReward,
+        
+        // Toplam erişim durumları (Premium VEYA Reward)
+        'canUseDhikrWidget': isPremium.value || dhikrByReward,
+        'canUseQuranWidget': isPremium.value || quranByReward,
+        'canUseReminders': isPremium.value || remindersByReward,
+        'canUseReminderTimes': isPremium.value || reminderTimesByReward,
+        
+        // Reward unlock time bilgileri (Android widget'larda 24 saat kontrolü için)
+        if (dhikrUnlockTime != null) 'dhikrWidgetUnlockTime': dhikrUnlockTime,
+        if (quranUnlockTime != null) 'quranWidgetUnlockTime': quranUnlockTime,
+        if (remindersUnlockTime != null) 'remindersUnlockTime': remindersUnlockTime,
+        if (reminderTimesUnlockTime != null) 'reminderTimesUnlockTime': reminderTimesUnlockTime,
+        
+        // Reklamsız deneyim sadece premium ile
+        'isAdFree': isPremium.value,
+      };
+      
+      await platform.invokeMethod('updateAllWidgets', widgetData);
       
       if (kDebugMode) {
-        debugPrint('🔄 All widgets updated after premium status change');
+        debugPrint('🔄 All widgets updated:');
+        debugPrint('  Premium: ${isPremium.value}');
+        debugPrint('  DhikrWidget: ${isPremium.value || dhikrByReward} (Premium: ${isPremium.value}, Reward: $dhikrByReward, UnlockTime: $dhikrUnlockTime)');
+        debugPrint('  QuranWidget: ${isPremium.value || quranByReward} (Premium: ${isPremium.value}, Reward: $quranByReward, UnlockTime: $quranUnlockTime)');
+        debugPrint('  Reminders: ${isPremium.value || remindersByReward} (Premium: ${isPremium.value}, Reward: $remindersByReward, UnlockTime: $remindersUnlockTime)');
+        debugPrint('  ReminderTimes: ${isPremium.value || reminderTimesByReward} (Premium: ${isPremium.value}, Reward: $reminderTimesByReward, UnlockTime: $reminderTimesUnlockTime)');
       }
     } catch (e) {
       if (kDebugMode) {
@@ -553,5 +870,10 @@ class SubscriptionService extends GetxController {
       }
       // Widget güncellemesi başarısız olsa bile uygulama çalışmaya devam etsin
     }
+  }
+  
+  // Public widget güncelleme metodu - RewardService tarafından çağrılabilir
+  Future<void> updateAllWidgets() async {
+    await _updateAllWidgets();
   }
 }

@@ -147,8 +147,8 @@ class QuranWidgetProvider : AppWidgetProvider() {
             ACTION_PREVIOUS_SURA -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    // Premium kontrolü
-                    if (checkPremiumStatus(context)) {
+                    // Widget erişim kontrolü
+                    if (canUseWidget(context)) {
                         previousSura(localizedContext, appWidgetId)
                     } else {
                         showPremiumNotification(localizedContext)
@@ -158,8 +158,8 @@ class QuranWidgetProvider : AppWidgetProvider() {
             ACTION_NEXT_SURA -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    // Premium kontrolü
-                    if (checkPremiumStatus(context)) {
+                    // Widget erişim kontrolü
+                    if (canUseWidget(context)) {
                         nextSura(localizedContext, appWidgetId)
                     } else {
                         showPremiumNotification(localizedContext)
@@ -175,8 +175,8 @@ class QuranWidgetProvider : AppWidgetProvider() {
             ACTION_SETTINGS_CLICK -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    // Premium kontrolü
-                    if (checkPremiumStatus(context)) {
+                    // Widget erişim kontrolü
+                    if (canUseWidget(context)) {
                         openQuranWidgetSettings(context, appWidgetId)
                     } else {
                         showPremiumNotification(localizedContext)
@@ -197,11 +197,11 @@ class QuranWidgetProvider : AppWidgetProvider() {
         val views = RemoteViews(context.packageName, R.layout.quran_widget)
         val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         
-        // Premium durumunu kontrol et
-        val isPremium = checkPremiumStatus(context)
+        // Widget erişim durumunu kontrol et (Premium VEYA Reward)
+        val canUse = canUseWidget(context)
 
-        if (isPremium) {
-            // Premium kullanıcı - Normal içerik göster
+        if (canUse) {
+            // Widget kullanabilen kullanıcı - Normal içerik göster
             // Verileri SharedPreferences'tan al
             val currentSura = prefs.getInt(KEY_CURRENT_SURA + appWidgetId, 1)
             val fontSize = prefs.getFloat(KEY_FONT_SIZE + appWidgetId, 16.0f)
@@ -219,13 +219,20 @@ class QuranWidgetProvider : AppWidgetProvider() {
             
             // ListView boş view ayarla
             views.setEmptyView(R.id.ayah_list, android.R.id.empty)
+            views.setViewVisibility(R.id.ayah_list, android.view.View.VISIBLE)
+            
+            // Widget'ı aktif görünümde tut
+            views.setFloat(R.id.sura_info_layout, "setAlpha", 1.0f)
         } else {
-            // Premium olmayan kullanıcı - Premium mesajı göster
+            // Widget kullanamayan kullanıcı - Premium mesajı göster
             views.setTextViewText(R.id.sura_name, context.getString(R.string.quran_premium_feature_title))
             views.setTextViewText(R.id.sura_info, context.getString(R.string.quran_premium_feature_subtitle))
             
             // ListView'i gizle - boş adapter
             views.setViewVisibility(R.id.ayah_list, android.view.View.GONE)
+            
+            // Widget'ı pasif görünümde göster
+            views.setFloat(R.id.sura_info_layout, "setAlpha", 0.7f)
         }
 
         // Buton click intent'lerini ayarla
@@ -234,18 +241,20 @@ class QuranWidgetProvider : AppWidgetProvider() {
         // Widget'ı güncelle
         appWidgetManager.updateAppWidget(appWidgetId, views)
         
-        // Premium ise ListView'i güncelle
-        if (isPremium) {
+        // Erişim izni varsa ListView'i güncelle
+        if (canUse) {
             appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.ayah_list)
         }
     }
 
     private fun setupButtonClicks(context: Context, views: RemoteViews, appWidgetId: Int) {
-        // Premium durumunu kontrol et
-        val isPremium = checkPremiumStatus(context)
+        // Widget erişim durumunu kontrol et
+        val canUse = canUseWidget(context)
         
-        if (isPremium) {
-            // Premium kullanıcı - Normal işlevler
+        Log.d(TAG, "Setting up Quran widget button clicks for widget $appWidgetId - canUse: $canUse")
+        
+        if (canUse) {
+            // Widget kullanabilen kullanıcı - Normal işlevler
             // Önceki sure butonu
             val previousIntent = Intent(context, QuranWidgetProvider::class.java).apply {
                 action = ACTION_PREVIOUS_SURA
@@ -278,8 +287,13 @@ class QuranWidgetProvider : AppWidgetProvider() {
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
             views.setOnClickPendingIntent(R.id.settings_button, settingsPendingIntent)
+            
+            // Butonları aktif görünümde tut
+            views.setFloat(R.id.previous_sura_button, "setAlpha", 1.0f)
+            views.setFloat(R.id.next_sura_button, "setAlpha", 1.0f)
+            views.setFloat(R.id.settings_button, "setAlpha", 1.0f)
         } else {
-            // Premium olmayan kullanıcı - Sadece premium uyarısı göster
+            // Widget kullanamayan kullanıcı - Premium uyarısı göster
             val premiumIntent = Intent(context, QuranWidgetProvider::class.java).apply {
                 action = "SHOW_PREMIUM_NOTIFICATION"
                 putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
@@ -291,6 +305,11 @@ class QuranWidgetProvider : AppWidgetProvider() {
             views.setOnClickPendingIntent(R.id.previous_sura_button, premiumPendingIntent)
             views.setOnClickPendingIntent(R.id.next_sura_button, premiumPendingIntent)
             views.setOnClickPendingIntent(R.id.settings_button, premiumPendingIntent)
+            
+            // Butonları pasif görünümde göster
+            views.setFloat(R.id.previous_sura_button, "setAlpha", 0.6f)
+            views.setFloat(R.id.next_sura_button, "setAlpha", 0.6f)
+            views.setFloat(R.id.settings_button, "setAlpha", 0.6f)
         }
     }
 
@@ -439,6 +458,37 @@ class QuranWidgetProvider : AppWidgetProvider() {
             prefs.getBoolean("flutter.is_premium", false)
         } catch (e: Exception) {
             Log.e("QuranWidget", "Premium durum kontrol hatası: ${e.message}")
+            false
+        }
+    }
+
+    // Widget erişim kontrolü - Premium VEYA Reward (24 saat süresi ile)
+    private fun canUseWidget(context: Context): Boolean {
+        return try {
+            val prefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
+            val isPremium = prefs.getBoolean("flutter.is_premium", false)
+            
+            if (isPremium) {
+                Log.d(TAG, "QuranWidget erişim kontrolü - Premium aktif")
+                return true
+            }
+            
+            // Reward süresi kontrolü
+            val rewardUnlockedAt = prefs.getLong("flutter.reward_quran_widget_unlocked_at", 0)
+            if (rewardUnlockedAt > 0) {
+                val unlockedTime = rewardUnlockedAt
+                val currentTime = System.currentTimeMillis()
+                val hoursPassed = (currentTime - unlockedTime) / (1000 * 60 * 60)
+                
+                val isStillValid = hoursPassed < 24
+                Log.d(TAG, "QuranWidget erişim kontrolü - Reward: $isStillValid (${hoursPassed.toInt()}/24 saat geçti)")
+                return isStillValid
+            }
+            
+            Log.d(TAG, "QuranWidget erişim kontrolü - Erişim yok")
+            return false
+        } catch (e: Exception) {
+            Log.e(TAG, "QuranWidget erişim kontrol hatası: ${e.message}")
             false
         }
     }

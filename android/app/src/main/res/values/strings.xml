@@ -44,6 +44,7 @@
     <string name="premium_notification_title">Premium Feature</string>
     <string name="premium_notification_text">Upgrade to Premium to use widget features</string>
     <string name="premium_notification_big_text">Premium subscription is required to use widget counter and settings features. You can open the app and upgrade to Premium.</string>
+    <string name="widget_premium_required">Premium</string>
     
     <!-- Zikir Names -->
     <string name="zikir_subhanallah">Subhanallah</string>

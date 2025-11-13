@@ -16,6 +16,7 @@ import 'services/language_service.dart';
 import 'services/permission_service.dart';
 import 'services/subscription_service.dart';
 import 'services/network_subscription_service.dart';
+import 'services/reward_service.dart';
 import 'l10n/app_localizations.dart';
 
 void main() async {
@@ -50,6 +51,7 @@ void main() async {
   Get.put(PermissionService());
   Get.put(SubscriptionService()); // Subscription servisini başlat
   Get.put(NetworkSubscriptionService()); // Network subscription servisini başlat
+  Get.put(RewardService()); // Reward servisini başlat
 
   // Controllers'ları başlat
   Get.put(CounterController());

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,8 @@ import '../services/sound_service.dart';
 import '../services/vibration_service.dart';
 import '../services/language_service.dart';
 import '../services/subscription_service.dart';
+import '../services/storage_service.dart'; // RewardFeatureType enum için
+import '../services/reward_service.dart'; // RewardService için
 import '../l10n/app_localizations.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../widgets/banner_ad_widget.dart';
@@ -152,6 +155,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate([
+                      
+                      // Ödüllü Reklam Sistemi (Ücretsiz Kullanıcılar için)
+                      GetX<SubscriptionService>(
+                        builder: (subscriptionService) {
+                          final isPremium = subscriptionService.isPremium.value;
+                          
+                          // Premium kullanıcılar için bu bölümü gösterme
+                          if (isPremium) {
+                            return const SizedBox.shrink();
+                          }
+                          
+                          return Column(
+                            children: [
+                              _buildSectionHeader(
+                                context,
+                                '🎁 Ödüllü Reklamlarla Özellikler',
+                              ),
+                              _buildRewardSystemCard(),
+                              const SizedBox(height: 24),
+                            ],
+                          );
+                        },
+                      ),
+                      
                       // Premium Status
                       _buildPremiumSection(context),
                       
@@ -285,6 +312,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     onTap: () => _addQuranWidgetToHomeScreen(),
                     direction: direction,
                     isPremiumFeature: true,
+                    rewardFeatureType: RewardFeatureType.quranWidget,
                   ),
                 ]),
 
@@ -404,6 +432,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     direction: direction,
                     isPremiumFeature: true,
+                    rewardFeatureType: RewardFeatureType.reminders,
                   ),
                   _buildDivider(),
                   _buildIslamicListTile(
@@ -423,6 +452,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     direction: direction,
                     isPremiumFeature: true,
+                    rewardFeatureType: RewardFeatureType.reminderTimes
                   ),
                 ]),
 
@@ -451,6 +481,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                     direction: direction,
                     isPremiumFeature: true,
+                    rewardFeatureType: RewardFeatureType.dhikrWidget,
                   ),
                   _buildDivider(),
                   _buildIslamicListTile(
@@ -466,6 +497,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     onTap: () => _showWidgetInfoDialog(context),
                     direction: direction,
                     isPremiumFeature: true,
+                    rewardFeatureType: RewardFeatureType.dhikrWidget
                   ),
                 ]),
 
@@ -575,11 +607,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
     required VoidCallback onTap,
     required TextDirection direction,
     bool isPremiumFeature = false,
+    RewardFeatureType? rewardFeatureType,
   }) {
     return GetX<SubscriptionService>(
       builder: (subscriptionService) {
         final isPremium = subscriptionService.isPremium.value;
-        final isLocked = isPremiumFeature && !isPremium;
+        
+        // Reward feature kontrolü
+        bool isRewardFeatureEnabled = true;
+        if (rewardFeatureType != null) {
+          print("DEBUG: rewardFeatureType = $rewardFeatureType");
+          switch (rewardFeatureType) {
+            case RewardFeatureType.dhikrWidget:
+              isRewardFeatureEnabled = subscriptionService.isDhikrWidgetEnabled;
+              print("DEBUG: isDhikrWidgetEnabled = $isRewardFeatureEnabled");
+              break;
+            case RewardFeatureType.quranWidget:
+              isRewardFeatureEnabled = subscriptionService.isQuranWidgetEnabled;
+              print("DEBUG: isQuranWidgetEnabled = $isRewardFeatureEnabled");
+              break;
+            case RewardFeatureType.reminders:
+              isRewardFeatureEnabled = subscriptionService.areRemindersEnabled;
+              print("DEBUG: areRemindersEnabled = $isRewardFeatureEnabled");
+              break;
+            case RewardFeatureType.reminderTimes:
+              isRewardFeatureEnabled = subscriptionService.areReminderTimesEnabled;
+              print("DEBUG: areReminderTimesEnabled = $isRewardFeatureEnabled");
+              break;
+          }
+        } else {
+          print("DEBUG: rewardFeatureType is NULL");
+        }
+        
+        // Feature kilitli mi? (Premium değil VE reward feature da aktif değil)
+        final isLocked = isPremiumFeature && !isPremium && !isRewardFeatureEnabled;
         
         return Opacity(
           opacity: isLocked ? 0.6 : 1.0,
@@ -673,7 +734,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
             subtitle: Text(
-              isLocked ? (AppLocalizations.of(context)?.premiumFeatureLocked ?? 'Premium özellik - Kilidi açmak için premium olun') : subtitle,
+              isLocked ? (rewardFeatureType != null 
+                  ? 'Reklam izleyerek veya premium olarak bu özelliği açabilirsiniz'
+                  : (AppLocalizations.of(context)?.premiumFeatureLocked ?? 'Premium özellik - Kilidi açmak için premium olun')) 
+                : subtitle,
               style: TextStyle(
                 color: isLocked 
                     ? Colors.red.shade600 
@@ -1508,6 +1572,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void _showWidgetInfoDialog(BuildContext context) {
     final subscriptionService = Get.find<SubscriptionService>();
     final isPremium = subscriptionService.isPremium.value;
+    final isDhikrWidgetEnabled = subscriptionService.isDhikrWidgetEnabled;
+    final canUseWidget = isPremium || isDhikrWidgetEnabled;
     
     Get.dialog(
       Dialog(
@@ -1516,7 +1582,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Container(
           constraints: const BoxConstraints(maxWidth: 400),
           decoration: BoxDecoration(
-            gradient: isPremium 
+            gradient: canUseWidget 
                 ? const LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -1529,17 +1595,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: isPremium ? goldColor : goldColor.withAlpha(102), 
-              width: isPremium ? 2 : 1.5
+              color: canUseWidget ? goldColor : goldColor.withAlpha(102), 
+              width: canUseWidget ? 2 : 1.5
             ),
             boxShadow: [
               BoxShadow(
-                color: isPremium 
+                color: canUseWidget 
                     ? goldColor.withAlpha(77)
                     : darkGreen.withAlpha(51),
                 blurRadius: 15,
                 offset: const Offset(0, 8),
-                spreadRadius: isPremium ? 2 : 0,
+                spreadRadius: canUseWidget ? 2 : 0,
               ),
             ],
           ),
@@ -1556,7 +1622,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         Container(
                           padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                            gradient: isPremium 
+                            gradient: canUseWidget 
                                 ? const RadialGradient(
                                     colors: [goldColor, lightGold],
                                   )
@@ -1564,7 +1630,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                     colors: [lightGold, goldColor],
                                   ),
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: isPremium ? [
+                            boxShadow: canUseWidget ? [
                               BoxShadow(
                                 color: goldColor.withAlpha(102),
                                 blurRadius: 8,
@@ -1578,7 +1644,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             size: 20,
                           ),
                         ),
-                        if (!isPremium)
+                        if (!canUseWidget)
                           Positioned(
                             right: -2,
                             top: -2,
@@ -1602,14 +1668,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     const SizedBox(width: 6),
                     Expanded(
                       child: Text(
-                        isPremium
+                        canUseWidget
                             ? (AppLocalizations.of(context)?.widgetInfoTitlePremium ?? 'Tasbee Widget Hakkında 📱')
                             : (AppLocalizations.of(context)?.widgetInfoTitleFree ?? 'Tasbee Widget Hakkında 🔒'),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: emeraldGreen,
-                          shadows: isPremium ? [
+                          shadows: canUseWidget ? [
                             Shadow(
                               color: goldColor.withAlpha(77),
                               blurRadius: 2,
@@ -1704,11 +1770,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     GetX<SubscriptionService>(
                       builder: (subscriptionService) {
                         final isPremium = subscriptionService.isPremium.value;
+                        final isDhikrWidgetEnabled = subscriptionService.isDhikrWidgetEnabled;
+                        final canUseWidget = isPremium || isDhikrWidgetEnabled;
                         
                         return SizedBox(
                           width: double.infinity,
                           child: ElevatedButton.icon(
-                            onPressed: isPremium 
+                            onPressed: canUseWidget 
                                 ? () {
                                     Navigator.of(context).pop();
                                     _addWidgetToHomeScreen();
@@ -1721,7 +1789,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                         color: emeraldGreen,
                                         fontWeight: FontWeight.bold,
                                       ),
-                                      middleText: AppLocalizations.of(context)?.widgetPremiumDialogMessage ?? 'Ana ekran widget\'ı premium bir özelliktir.\nWidget\'ı kullanmak için premium\'a geçin.',
+                                      middleText: AppLocalizations.of(context)?.widgetPremiumDialogMessage ?? 'Ana ekran widget\'ı premium bir özelliktir.\nWidget\'ı kullanmak için premium\'a geçin veya reklam izleyerek açabilirsiniz.',
                                       middleTextStyle: TextStyle(
                                         color: emeraldGreen.withAlpha(204),
                                         fontSize: 14,
@@ -1763,20 +1831,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                     );
                                   },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: isPremium ? goldColor : Colors.grey.shade400,
-                              foregroundColor: isPremium ? emeraldGreen : Colors.grey.shade600,
+                              backgroundColor: canUseWidget ? goldColor : Colors.grey.shade400,
+                              foregroundColor: canUseWidget ? emeraldGreen : Colors.grey.shade600,
                               padding: const EdgeInsets.symmetric(vertical: 12),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              elevation: isPremium ? 4 : 1,
+                              elevation: canUseWidget ? 4 : 1,
                             ),
                             icon: Icon(
-                              isPremium ? Icons.add_to_home_screen : Icons.lock,
+                              canUseWidget ? Icons.add_to_home_screen : Icons.lock,
                               size: 20,
                             ),
                             label: Text(
-                              isPremium 
+                              canUseWidget 
                                   ? (AppLocalizations.of(context)?.widgetAddTitle ?? 'Widget Ekle')
                                   : (AppLocalizations.of(context)?.widgetPremiumRequired ?? 'Premium Gerekli'),
                               style: TextStyle(
@@ -2757,6 +2825,282 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ],
       ],
     );
+  }
+
+  // Reward system card builder
+  Widget _buildRewardSystemCard() {
+    try {
+      return _buildIslamicCard([
+        // Zikir Widget'ı
+        _buildRewardFeatureTile(
+          icon: Icons.auto_awesome,
+          title: 'Zikir Widget\'ı',
+          featureType: RewardFeatureType.dhikrWidget,
+          onWatchAd: () => _watchAdForFeature(RewardFeatureType.dhikrWidget),
+        ),
+        
+        _buildDivider(),
+        
+        // Kuran Widget'ı
+        _buildRewardFeatureTile(
+          icon: Icons.menu_book,
+          title: 'Kuran Widget\'ı',
+          featureType: RewardFeatureType.quranWidget,
+          onWatchAd: () => _watchAdForFeature(RewardFeatureType.quranWidget),
+        ),
+        
+        _buildDivider(),
+        
+        // Hatırlatıcılar
+        _buildRewardFeatureTile(
+          icon: Icons.notifications_active,
+          title: 'Hatırlatıcılar',
+          featureType: RewardFeatureType.reminders,
+          onWatchAd: () => _watchAdForFeature(RewardFeatureType.reminders),
+        ),
+        
+        _buildDivider(),
+        
+        // Hatırlatma Saatleri
+        _buildRewardFeatureTile(
+          icon: Icons.schedule,
+          title: 'Hatırlatma Saatleri',
+          featureType: RewardFeatureType.reminderTimes,
+          onWatchAd: () => _watchAdForFeature(RewardFeatureType.reminderTimes),
+        ),
+        
+        // Bilgilendirme
+        Container(
+          margin: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Colors.blue.withAlpha(26),
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.blue.withAlpha(77)),
+          ),
+          child: Row(
+            children: [
+              Icon(Icons.info_outline, color: Colors.blue, size: 20),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  'Her özellik için 3 reklam izleyerek 24 saat süreyle o özelliği kullanabilirsiniz.',
+                  style: TextStyle(
+                    color: Colors.blue[800],
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ]);
+    } catch (e) {
+      return _buildIslamicCard([
+        Container(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            'Reward sistemi yükleniyor...',
+            style: TextStyle(color: emeraldGreen.withAlpha(179)),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ]);
+    }
+  }
+  
+  Widget _buildRewardFeatureTile({
+    required IconData icon,
+    required String title,
+    required RewardFeatureType featureType,
+    required VoidCallback onWatchAd,
+  }) {
+    // RewardService'ten dinamik olarak status alınacak
+    bool isUnlocked = false;
+    int adsWatched = 0;
+    String progressText = 'Yükleniyor...';
+    double progress = 0.0;
+    
+    try {
+      // RewardService'i güvenli şekilde bul
+      if (Get.isRegistered<RewardService>()) {
+        final rewardService = Get.find<RewardService>();
+        
+        // Feature type'a göre status'u belirle
+        RewardFeatureStatus status;
+        switch (featureType) {
+          case RewardFeatureType.dhikrWidget:
+            status = rewardService.dhikrWidgetStatus;
+            break;
+          case RewardFeatureType.quranWidget:
+            status = rewardService.quranWidgetStatus;
+            break;
+          case RewardFeatureType.reminders:
+            status = rewardService.remindersStatus;
+            break;
+          case RewardFeatureType.reminderTimes:
+            status = rewardService.reminderTimesStatus;
+            break;
+        }
+        
+        isUnlocked = status.isUnlocked;
+        adsWatched = status.adsWatched;
+        progress = adsWatched / 3.0;
+        progressText = isUnlocked 
+          ? status.getProgressText()
+          : '$adsWatched/3 reklam';
+      }
+    } catch (e) {
+      // Service henüz hazır değil, default değerleri kullan
+      if (kDebugMode) {
+        debugPrint('RewardService not ready yet: $e');
+      }
+    }
+    
+    final int remainingAds = 3 - adsWatched;
+    
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Row(
+        children: [
+          // Özellik ikonu
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              gradient: isUnlocked 
+                  ? const LinearGradient(colors: [Colors.green, Colors.lightGreen])
+                  : const RadialGradient(colors: [lightGold, goldColor], center: Alignment(-0.2, -0.2)),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(
+              isUnlocked ? Icons.check_circle : icon,
+              color: isUnlocked ? Colors.white : emeraldGreen,
+              size: 20,
+            ),
+          ),
+          
+          const SizedBox(width: 12),
+          
+          // Özellik bilgisi
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: emeraldGreen,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  progressText,
+                  style: TextStyle(
+                    color: emeraldGreen.withAlpha(179),
+                    fontSize: 11,
+                  ),
+                ),
+                // Progress bar
+                if (!isUnlocked)
+                  Container(
+                    margin: const EdgeInsets.only(top: 4),
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                    child: FractionallySizedBox(
+                      widthFactor: progress,
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: goldColor,
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          
+          const SizedBox(width: 8),
+          
+          // Reklam izle butonu
+          if (!isUnlocked)
+            ElevatedButton.icon(
+              onPressed: onWatchAd,
+              icon: const Icon(Icons.play_circle_filled, size: 16),
+              label: Text(
+                '$remainingAds Reklam',
+                style: const TextStyle(fontSize: 11),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                minimumSize: const Size(0, 28),
+              ),
+            )
+          else
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.green.withAlpha(51),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.check, color: Colors.green, size: 14),
+                  const SizedBox(width: 4),
+                  Text(
+                    'Aktif',
+                    style: TextStyle(
+                      color: Colors.green[800],
+                      fontSize: 11,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+  
+  Future<void> _watchAdForFeature(RewardFeatureType featureType) async {
+    try {
+      // RewardService'i doğru tip ile bul
+      if (!Get.isRegistered<RewardService>()) {
+        IslamicSnackbar.showError(
+          'Servis Hatası',
+          'Reward servisi henüz hazır değil. Lütfen uygulamayı yeniden başlatın.',
+        );
+        return;
+      }
+      
+      final rewardService = Get.find<RewardService>();
+      final success = await rewardService.showRewardedAd(featureType);
+      
+      if (!success) {
+        IslamicSnackbar.showError(
+          'Reklam Hatası',
+          'Reklam şu anda hazırlanmıyor. Lütfen birkaç saniye sonra tekrar deneyin.',
+        );
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint('Error watching ad for feature: $e');
+      }
+      IslamicSnackbar.showError(
+        'Hata',
+        'Reklam izlenirken bir hata oluştu. Lütfen tekrar deneyin.',
+      );
+    }
   }
 }
 

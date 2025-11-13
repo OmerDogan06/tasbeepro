@@ -16,6 +16,10 @@ class AdService extends GetxService with WidgetsBindingObserver {
   AppOpenAd? _appOpenAd;
   final _isAppOpenAdReady = false.obs;
   
+  // Rewarded Ad
+  RewardedAd? _rewardedAd;
+  final _isRewardedAdReady = false.obs;
+  
   // Ad IDs - Sadece Android
   static String get _bannerAdUnitId => kDebugMode 
     ? 'ca-app-pub-3940256099942544/6300978111' // Test ID
@@ -28,10 +32,15 @@ class AdService extends GetxService with WidgetsBindingObserver {
   static String get _appOpenAdUnitId => kDebugMode
     ? 'ca-app-pub-3940256099942544/9257395921' // Test ID
     : 'ca-app-pub-8365973392717077/7002566230'; // Gerçek Android App Open ID
+    
+  static String get _rewardedAdUnitId => kDebugMode 
+    ? 'ca-app-pub-3940256099942544/5224354917' // Test ID
+    : 'ca-app-pub-8365973392717077/1234567890'; // TODO: Gerçek Rewarded Ad ID ekle
   
   // Getters
   bool get isInterstitialAdReady => _isInterstitialAdReady.value;
   bool get isAppOpenAdReady => _isAppOpenAdReady.value;
+  bool get isRewardedAdReady => _isRewardedAdReady.value;
   
   // Target completion tracking
   final _completedTargetsCount = 0.obs;
@@ -87,6 +96,7 @@ class AdService extends GetxService with WidgetsBindingObserver {
     
     _loadInterstitialAd();
     _loadAppOpenAd();
+    _loadRewardedAd();
   }
   
   // App Lifecycle Management
@@ -266,6 +276,78 @@ class AdService extends GetxService with WidgetsBindingObserver {
     }
   }
   
+  // Rewarded Ad Methods
+  void _loadRewardedAd() {
+    RewardedAd.load(
+      adUnitId: _rewardedAdUnitId,
+      request: const AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+        onAdLoaded: (ad) {
+          _rewardedAd = ad;
+          _isRewardedAdReady.value = true;
+          if (kDebugMode) print('✅ Rewarded ad loaded successfully');
+        },
+        onAdFailedToLoad: (error) {
+          _isRewardedAdReady.value = false;
+          _rewardedAd = null;
+          if (kDebugMode) print('❌ Rewarded ad failed to load: $error');
+          
+          // Retry after 30 seconds
+          Future.delayed(const Duration(seconds: 30), () {
+            _loadRewardedAd();
+          });
+        },
+      ),
+    );
+  }
+  
+  Future<bool> showRewardedAd(Function(int, String) onUserEarnedReward) async {
+    // Premium kullanıcılar için reklam gösterme
+    if (_isAdFreeEnabled) {
+      if (kDebugMode) print('🚫 Rewarded ad blocked - Premium user');
+      return false;
+    }
+    
+    if (_rewardedAd != null && _isRewardedAdReady.value) {
+      bool rewardEarned = false;
+      
+      _rewardedAd?.fullScreenContentCallback = FullScreenContentCallback(
+        onAdShowedFullScreenContent: (ad) {
+          if (kDebugMode) print('🎬 Rewarded ad showed full screen content');
+        },
+        onAdDismissedFullScreenContent: (ad) {
+          if (kDebugMode) print('✅ Rewarded ad dismissed');
+          ad.dispose();
+          _rewardedAd = null;
+          _isRewardedAdReady.value = false;
+          _loadRewardedAd(); // Load new ad
+        },
+        onAdFailedToShowFullScreenContent: (ad, error) {
+          if (kDebugMode) print('❌ Rewarded ad failed to show: $error');
+          ad.dispose();
+          _rewardedAd = null;
+          _isRewardedAdReady.value = false;
+          _loadRewardedAd(); // Load new ad
+        },
+      );
+      
+      await _rewardedAd?.show(
+        onUserEarnedReward: (ad, reward) {
+          if (kDebugMode) {
+            print('🎉 User earned reward: ${reward.amount} ${reward.type}');
+          }
+          rewardEarned = true;
+          onUserEarnedReward(reward.amount.toInt(), reward.type);
+        },
+      );
+      
+      return rewardEarned;
+    } else {
+      if (kDebugMode) print('❌ Rewarded ad not ready');
+      return false;
+    }
+  }
+  
   // Target completion tracking methods
   void onTargetCompleted() {
     onUserAction('hedef_tamamlama');
@@ -320,6 +402,7 @@ class AdService extends GetxService with WidgetsBindingObserver {
     
     _interstitialAd?.dispose();
     _appOpenAd?.dispose();
+    _rewardedAd?.dispose();
     super.onClose();
   }
 }

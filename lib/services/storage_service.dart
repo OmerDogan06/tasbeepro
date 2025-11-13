@@ -6,6 +6,14 @@ import '../models/counter_data.dart';
 import '../models/subscription_plan.dart';
 import '../models/zikr.dart';
 
+// RewardFeatureType enum for reward system
+enum RewardFeatureType {
+  dhikrWidget,
+  quranWidget, 
+  reminders,
+  reminderTimes
+}
+
 class StorageService extends GetxService {
   static StorageService get to => Get.find();
   late SharedPreferences _prefs;
@@ -268,6 +276,55 @@ class StorageService extends GetxService {
   
   int getCompletedTargetsCount() {
     return _prefs.getInt('completed_targets_count') ?? 0;
+  }
+
+  // Reward system - Feature rewards
+  Future<void> saveRewardAdsWatched(RewardFeatureType featureType, int count) async {
+    final key = _getRewardKey(featureType, 'ads_watched');
+    await _prefs.setInt(key, count);
+  }
+  
+  int getRewardAdsWatched(RewardFeatureType featureType) {
+    final key = _getRewardKey(featureType, 'ads_watched');
+    return _prefs.getInt(key) ?? 0;
+  }
+  
+  Future<void> saveRewardUnlockedAt(RewardFeatureType featureType, DateTime unlockedAt) async {
+    final key = _getRewardKey(featureType, 'unlocked_at');
+    await _prefs.setInt(key, unlockedAt.millisecondsSinceEpoch);
+  }
+  
+  DateTime? getRewardUnlockedAt(RewardFeatureType featureType) {
+    final key = _getRewardKey(featureType, 'unlocked_at');
+    final millis = _prefs.getInt(key);
+    return millis != null ? DateTime.fromMillisecondsSinceEpoch(millis) : null;
+  }
+  
+  Future<void> clearRewardStatus(RewardFeatureType featureType) async {
+    final adsKey = _getRewardKey(featureType, 'ads_watched');
+    final unlockedKey = _getRewardKey(featureType, 'unlocked_at');
+    await _prefs.remove(adsKey);
+    await _prefs.remove(unlockedKey);
+  }
+  
+  String _getRewardKey(RewardFeatureType featureType, String suffix) {
+    final prefix = _getRewardPrefix(featureType);
+    return '${prefix}$suffix';
+  }
+  
+  String _getRewardPrefix(RewardFeatureType featureType) {
+    switch (featureType.toString()) {
+      case 'RewardFeatureType.dhikrWidget':
+        return 'reward_dhikr_widget_';
+      case 'RewardFeatureType.quranWidget':
+        return 'reward_quran_widget_';
+      case 'RewardFeatureType.reminders':
+        return 'reward_reminders_';
+      case 'RewardFeatureType.reminderTimes':
+        return 'reward_reminder_times_';
+      default:
+        return 'reward_unknown_';
+    }
   }
 
   // Subscription status

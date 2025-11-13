@@ -37,8 +37,8 @@ class QuranListViewFactory(
     }
 
     override fun onDataSetChanged() {
-        // Premium kontrol
-        if (!checkPremiumStatus()) {
+        // Widget erişim kontrolü (Premium VEYA Reward)
+        if (!canUseWidget()) {
             ayahs = emptyList()
             return
         }
@@ -47,10 +47,14 @@ class QuranListViewFactory(
         val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val currentSura = prefs.getInt(KEY_CURRENT_SURA + appWidgetId, 1)
         
+        Log.d("QuranListService", "Loading sura $currentSura for widget $appWidgetId")
+        
         // QuranDatabase'den ayetleri al
         val quranDatabase = QuranDatabase(context)
         val suraData = quranDatabase.getSuraData(currentSura)
         ayahs = suraData.ayahs
+        
+        Log.d("QuranListService", "Loaded ${ayahs.size} ayahs for sura $currentSura")
     }
 
     override fun onDestroy() {
@@ -107,13 +111,44 @@ class QuranListViewFactory(
         return true
     }
     
-    // Premium durumu kontrol et
+    // Premium durumu kontrol et (eski metot - artık kullanılmıyor)
     private fun checkPremiumStatus(): Boolean {
         return try {
             val prefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
             prefs.getBoolean("flutter.is_premium", false)
         } catch (e: Exception) {
             Log.e("QuranListService", "Premium durum kontrol hatası: ${e.message}")
+            false
+        }
+    }
+    
+    // Widget erişim kontrolü - Premium VEYA Reward (24 saat süresi ile)
+    private fun canUseWidget(): Boolean {
+        return try {
+            val prefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
+            val isPremium = prefs.getBoolean("flutter.is_premium", false)
+            
+            if (isPremium) {
+                Log.d("QuranListService", "Widget erişim kontrolü - Premium aktif")
+                return true
+            }
+            
+            // Reward süresi kontrolü
+            val rewardUnlockedAt = prefs.getLong("flutter.reward_quran_widget_unlocked_at", 0)
+            if (rewardUnlockedAt > 0) {
+                val unlockedTime = rewardUnlockedAt
+                val currentTime = System.currentTimeMillis()
+                val hoursPassed = (currentTime - unlockedTime) / (1000 * 60 * 60)
+                
+                val isStillValid = hoursPassed < 24
+                Log.d("QuranListService", "Widget erişim kontrolü - Reward: $isStillValid (${hoursPassed.toInt()}/24 saat geçti)")
+                return isStillValid
+            }
+            
+            Log.d("QuranListService", "Widget erişim kontrolü - Erişim yok")
+            return false
+        } catch (e: Exception) {
+            Log.e("QuranListService", "Widget erişim kontrol hatası: ${e.message}")
             false
         }
     }
