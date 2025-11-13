@@ -3,10 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/ayah_item_background"
-    android:padding="12dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
-    android:layout_marginBottom="6dp"
+    android:layout_marginBottom="3dp"
     android:layout_marginTop="2dp">
 
     <!-- Ayet numarası - İslami tasarım -->
