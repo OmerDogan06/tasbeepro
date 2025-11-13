@@ -226,16 +226,7 @@ class QuranWidgetProvider : AppWidgetProvider() {
         )
         views.setOnClickPendingIntent(R.id.next_sura_button, nextPendingIntent)
 
-        // Uygulamayı aç butonu
-        val openAppIntent = Intent(context, QuranWidgetProvider::class.java).apply {
-            action = ACTION_OPEN_APP
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        }
-        val openAppPendingIntent = PendingIntent.getBroadcast(
-            context, appWidgetId * 10 + 3, openAppIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-        views.setOnClickPendingIntent(R.id.open_app_button, openAppPendingIntent)
+    
 
         // Ayarlar butonu
         val settingsIntent = Intent(context, QuranWidgetProvider::class.java).apply {
