@@ -196,4 +196,10 @@
     <string name="sura_name_112">Le Monothéisme Pur</string>
     <string name="sura_name_113">L\'Aube naissante</string>
     <string name="sura_name_114">Les Hommes</string>
+    
+    <!-- Messages de la Fonctionnalité Premium du Widget Coran -->
+    <string name="quran_premium_feature_title">Fonctionnalité Premium 💎</string>
+    <string name="quran_premium_feature_subtitle">La lecture du Coran est une fonctionnalité premium</string>
+    <string name="quran_premium_notification_title">Widget Coran - Fonctionnalité Premium 💎</string>
+    <string name="quran_premium_notification_text">Cette fonctionnalité nécessite un abonnement premium. Appuyez et passez au premium!</string>
 </resources>

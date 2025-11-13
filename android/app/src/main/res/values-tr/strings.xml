@@ -196,4 +196,10 @@
     <string name="sura_name_112">İhlâs</string>
     <string name="sura_name_113">Felak</string>
     <string name="sura_name_114">Nâs</string>
+    
+    <!-- Kuran Widget Premium Mesajları -->
+    <string name="quran_premium_feature_title">Premium Özellik 💎</string>
+    <string name="quran_premium_feature_subtitle">Kur\'an okuma premium özelliğidir</string>
+    <string name="quran_premium_notification_title">Kur\'an Widget - Premium Özellik 💎</string>
+    <string name="quran_premium_notification_text">Bu özellik premium abonelik gerektirir. Tıklayın ve premium\'a geçin!</string>
 </resources>

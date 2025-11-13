@@ -197,4 +197,10 @@
     <string name="sura_name_112">The Purity</string>
     <string name="sura_name_113">The Daybreak</string>
     <string name="sura_name_114">Mankind</string>
+    
+    <!-- Quran Widget Premium Messages -->
+    <string name="quran_premium_feature_title">Premium Feature 💎</string>
+    <string name="quran_premium_feature_subtitle">Quran reading is a premium feature</string>
+    <string name="quran_premium_notification_title">Quran Widget - Premium Feature 💎</string>
+    <string name="quran_premium_notification_text">This feature requires premium subscription. Tap and upgrade to premium!</string>
 </resources>

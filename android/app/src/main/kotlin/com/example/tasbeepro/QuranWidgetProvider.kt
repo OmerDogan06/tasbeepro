@@ -11,6 +11,10 @@ import android.util.Log
 import android.content.res.Configuration
 import java.util.Locale
 import com.skyforgestudios.tasbeepro.R
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
+import androidx.core.app.NotificationCompat
 
 class QuranWidgetProvider : AppWidgetProvider() {
 
@@ -143,13 +147,23 @@ class QuranWidgetProvider : AppWidgetProvider() {
             ACTION_PREVIOUS_SURA -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    previousSura(localizedContext, appWidgetId)
+                    // Premium kontrolü
+                    if (checkPremiumStatus(context)) {
+                        previousSura(localizedContext, appWidgetId)
+                    } else {
+                        showPremiumNotification(localizedContext)
+                    }
                 }
             }
             ACTION_NEXT_SURA -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    nextSura(localizedContext, appWidgetId)
+                    // Premium kontrolü
+                    if (checkPremiumStatus(context)) {
+                        nextSura(localizedContext, appWidgetId)
+                    } else {
+                        showPremiumNotification(localizedContext)
+                    }
                 }
             }
             ACTION_OPEN_APP -> {
@@ -161,8 +175,16 @@ class QuranWidgetProvider : AppWidgetProvider() {
             ACTION_SETTINGS_CLICK -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
-                    openQuranWidgetSettings(context, appWidgetId)
+                    // Premium kontrolü
+                    if (checkPremiumStatus(context)) {
+                        openQuranWidgetSettings(context, appWidgetId)
+                    } else {
+                        showPremiumNotification(localizedContext)
+                    }
                 }
+            }
+            "SHOW_PREMIUM_NOTIFICATION" -> {
+                showPremiumNotification(localizedContext)
             }
         }
     }
@@ -174,24 +196,37 @@ class QuranWidgetProvider : AppWidgetProvider() {
     ) {
         val views = RemoteViews(context.packageName, R.layout.quran_widget)
         val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-
-        // Verileri SharedPreferences'tan al
-        val currentSura = prefs.getInt(KEY_CURRENT_SURA + appWidgetId, 1)
-        val fontSize = prefs.getFloat(KEY_FONT_SIZE + appWidgetId, 16.0f)
-
-        // Sure bilgilerini güncelle
-        val suraName = getSuraName(context, currentSura)
-        views.setTextViewText(R.id.sura_name, suraName)
-        views.setTextViewText(R.id.sura_info, "$currentSura. Sure")
         
-        // ListView için adapter intent'ini ayarla
-        val serviceIntent = Intent(context, QuranListService::class.java).apply {
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+        // Premium durumunu kontrol et
+        val isPremium = checkPremiumStatus(context)
+
+        if (isPremium) {
+            // Premium kullanıcı - Normal içerik göster
+            // Verileri SharedPreferences'tan al
+            val currentSura = prefs.getInt(KEY_CURRENT_SURA + appWidgetId, 1)
+            val fontSize = prefs.getFloat(KEY_FONT_SIZE + appWidgetId, 16.0f)
+
+            // Sure bilgilerini güncelle
+            val suraName = getSuraName(context, currentSura)
+            views.setTextViewText(R.id.sura_name, suraName)
+            views.setTextViewText(R.id.sura_info, "$currentSura. Sure")
+            
+            // ListView için adapter intent'ini ayarla
+            val serviceIntent = Intent(context, QuranListService::class.java).apply {
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            }
+            views.setRemoteAdapter(R.id.ayah_list, serviceIntent)
+            
+            // ListView boş view ayarla
+            views.setEmptyView(R.id.ayah_list, android.R.id.empty)
+        } else {
+            // Premium olmayan kullanıcı - Premium mesajı göster
+            views.setTextViewText(R.id.sura_name, context.getString(R.string.quran_premium_feature_title))
+            views.setTextViewText(R.id.sura_info, context.getString(R.string.quran_premium_feature_subtitle))
+            
+            // ListView'i gizle - boş adapter
+            views.setViewVisibility(R.id.ayah_list, android.view.View.GONE)
         }
-        views.setRemoteAdapter(R.id.ayah_list, serviceIntent)
-        
-        // ListView boş view ayarla
-        views.setEmptyView(R.id.ayah_list, android.R.id.empty)
 
         // Buton click intent'lerini ayarla
         setupButtonClicks(context, views, appWidgetId)
@@ -199,45 +234,64 @@ class QuranWidgetProvider : AppWidgetProvider() {
         // Widget'ı güncelle
         appWidgetManager.updateAppWidget(appWidgetId, views)
         
-        // ListView'i güncelle
-        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.ayah_list)
+        // Premium ise ListView'i güncelle
+        if (isPremium) {
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.ayah_list)
+        }
     }
 
     private fun setupButtonClicks(context: Context, views: RemoteViews, appWidgetId: Int) {
-        // Önceki sure butonu
-        val previousIntent = Intent(context, QuranWidgetProvider::class.java).apply {
-            action = ACTION_PREVIOUS_SURA
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        }
-        val previousPendingIntent = PendingIntent.getBroadcast(
-            context, appWidgetId * 10 + 1, previousIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-        views.setOnClickPendingIntent(R.id.previous_sura_button, previousPendingIntent)
+        // Premium durumunu kontrol et
+        val isPremium = checkPremiumStatus(context)
+        
+        if (isPremium) {
+            // Premium kullanıcı - Normal işlevler
+            // Önceki sure butonu
+            val previousIntent = Intent(context, QuranWidgetProvider::class.java).apply {
+                action = ACTION_PREVIOUS_SURA
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            }
+            val previousPendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId * 10 + 1, previousIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            views.setOnClickPendingIntent(R.id.previous_sura_button, previousPendingIntent)
 
-        // Sonraki sure butonu
-        val nextIntent = Intent(context, QuranWidgetProvider::class.java).apply {
-            action = ACTION_NEXT_SURA
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        }
-        val nextPendingIntent = PendingIntent.getBroadcast(
-            context, appWidgetId * 10 + 2, nextIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-        views.setOnClickPendingIntent(R.id.next_sura_button, nextPendingIntent)
+            // Sonraki sure butonu
+            val nextIntent = Intent(context, QuranWidgetProvider::class.java).apply {
+                action = ACTION_NEXT_SURA
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            }
+            val nextPendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId * 10 + 2, nextIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            views.setOnClickPendingIntent(R.id.next_sura_button, nextPendingIntent)
 
-    
-
-        // Ayarlar butonu
-        val settingsIntent = Intent(context, QuranWidgetProvider::class.java).apply {
-            action = ACTION_SETTINGS_CLICK
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            // Ayarlar butonu
+            val settingsIntent = Intent(context, QuranWidgetProvider::class.java).apply {
+                action = ACTION_SETTINGS_CLICK
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            }
+            val settingsPendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId * 10 + 4, settingsIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            views.setOnClickPendingIntent(R.id.settings_button, settingsPendingIntent)
+        } else {
+            // Premium olmayan kullanıcı - Sadece premium uyarısı göster
+            val premiumIntent = Intent(context, QuranWidgetProvider::class.java).apply {
+                action = "SHOW_PREMIUM_NOTIFICATION"
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            }
+            val premiumPendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId * 10 + 1, premiumIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            views.setOnClickPendingIntent(R.id.previous_sura_button, premiumPendingIntent)
+            views.setOnClickPendingIntent(R.id.next_sura_button, premiumPendingIntent)
+            views.setOnClickPendingIntent(R.id.settings_button, premiumPendingIntent)
         }
-        val settingsPendingIntent = PendingIntent.getBroadcast(
-            context, appWidgetId * 10 + 4, settingsIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
-        views.setOnClickPendingIntent(R.id.settings_button, settingsPendingIntent)
     }
 
     private fun previousSura(context: Context, appWidgetId: Int) {
@@ -377,6 +431,64 @@ class QuranWidgetProvider : AppWidgetProvider() {
     override fun onDisabled(context: Context) {
         // Son widget kaldırıldığında
     }
+    
+    // Premium durumu kontrol et (SharedPreferences'tan)
+    private fun checkPremiumStatus(context: Context): Boolean {
+        return try {
+            val prefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
+            prefs.getBoolean("flutter.is_premium", false)
+        } catch (e: Exception) {
+            Log.e("QuranWidget", "Premium durum kontrol hatası: ${e.message}")
+            false
+        }
+    }
+
+    // Premium bildirimi göster
+    private fun showPremiumNotification(context: Context) {
+        try {
+            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+            val channelId = "quran_premium_notification_channel"
+            
+            // Bildirim kanalı oluştur (Android 8.0+)
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                val channel = android.app.NotificationChannel(
+                    channelId,
+                    context.getString(R.string.quran_premium_feature_title),
+                    android.app.NotificationManager.IMPORTANCE_DEFAULT
+                ).apply {
+                    description = context.getString(R.string.quran_premium_feature_subtitle)
+                    enableVibration(true)
+                    vibrationPattern = longArrayOf(0, 250, 250, 250)
+                }
+                notificationManager.createNotificationChannel(channel)
+            }
+            
+            // Premium ekranına yönlendiren intent
+            val intent = Intent(context, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                putExtra("navigate_to", "premium")
+            }
+            
+            val pendingIntent = PendingIntent.getActivity(
+                context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            
+            val notification = NotificationCompat.Builder(context, channelId)
+                .setContentTitle(context.getString(R.string.quran_premium_notification_title))
+                .setContentText(context.getString(R.string.quran_premium_notification_text))
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setVibrate(longArrayOf(0, 250, 250, 250))
+                .build()
+            
+            notificationManager.notify(System.currentTimeMillis().toInt(), notification)
+        } catch (e: Exception) {
+            Log.e("QuranWidget", "Premium bildirim gösterme hatası: ${e.message}")
+        }
+    }
 }
 
 // Kuran veritabanı sınıfı
@@ -472,6 +584,64 @@ class QuranDatabase(private val context: Context) {
                 )
                 else -> listOf("سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلَا إِلَٰهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ")
             }
+        }
+    }
+    
+    // Premium durumu kontrol et (SharedPreferences'tan)
+    private fun checkPremiumStatus(context: Context): Boolean {
+        return try {
+            val prefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
+            prefs.getBoolean("flutter.is_premium", false)
+        } catch (e: Exception) {
+            Log.e("QuranWidget", "Premium durum kontrol hatası: ${e.message}")
+            false
+        }
+    }
+
+    // Premium bildirimi göster
+    private fun showPremiumNotification(context: Context) {
+        try {
+            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val channelId = "quran_premium_notification_channel"
+            
+            // Bildirim kanalı oluştur (Android 8.0+)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val channel = NotificationChannel(
+                    channelId,
+                    "Kur'an Premium Özellikleri",
+                    NotificationManager.IMPORTANCE_DEFAULT
+                ).apply {
+                    description = "Kur'an widget premium özellik bildirimleri"
+                    enableVibration(true)
+                    vibrationPattern = longArrayOf(0, 250, 250, 250)
+                }
+                notificationManager.createNotificationChannel(channel)
+            }
+            
+            // Premium ekranına yönlendiren intent
+            val intent = Intent(context, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                putExtra("navigate_to", "premium")
+            }
+            
+            val pendingIntent = PendingIntent.getActivity(
+                context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            
+            val notification = NotificationCompat.Builder(context, channelId)
+                .setContentTitle(context.getString(R.string.quran_premium_notification_title))
+                .setContentText(context.getString(R.string.quran_premium_notification_text))
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setVibrate(longArrayOf(0, 250, 250, 250))
+                .build()
+            
+            notificationManager.notify(System.currentTimeMillis().toInt(), notification)
+        } catch (e: Exception) {
+            Log.e("QuranWidget", "Premium bildirim gösterme hatası: ${e.message}")
         }
     }
 }

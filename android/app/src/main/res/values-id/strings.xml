@@ -195,5 +195,11 @@
     <string name="sura_name_111">Al-Masad</string>
     <string name="sura_name_112">Al-Ikhlas</string>
     <string name="sura_name_113">Al-Falaq</string>
-    <string name="sura_name_114">An-Nas</string>
+    <string name="sura_name_114">An-Naas</string>
+    
+    <!-- Pesan Fitur Premium Widget Quran -->
+    <string name="quran_premium_feature_title">Fitur Premium 💎</string>
+    <string name="quran_premium_feature_subtitle">Membaca Al-Quran adalah fitur premium</string>
+    <string name="quran_premium_notification_title">Widget Al-Quran - Fitur Premium 💎</string>
+    <string name="quran_premium_notification_text">Fitur ini memerlukan langganan premium. Ketuk dan upgrade ke premium!</string>
 </resources>

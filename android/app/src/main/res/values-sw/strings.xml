@@ -195,5 +195,11 @@
     <string name="sura_name_111">Al-Masad</string>
     <string name="sura_name_112">Al-Ikhlas</string>
     <string name="sura_name_113">Al-Falaq</string>
-    <string name="sura_name_114">An-Nas</string>
+        <string name="sura_name_114">Watu</string>
+    
+    <!-- Ujumbe wa Kipengele cha Premium cha Widget ya Qurani -->
+    <string name="quran_premium_feature_title">Kipengele cha Premium 💎</string>
+    <string name="quran_premium_feature_subtitle">Kusoma Qurani ni kipengele cha premium</string>
+    <string name="quran_premium_notification_title">Widget ya Qurani - Kipengele cha Premium 💎</string>
+    <string name="quran_premium_notification_text">Kipengele hiki kinahitaji uuzaji wa premium. Gonga na pandisha hadi premium!</string>
 </resources>

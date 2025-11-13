@@ -198,4 +198,10 @@
     <string name="sura_name_112">الإخلاص</string>
     <string name="sura_name_113">الفلق</string>
     <string name="sura_name_114">الناس</string>
+    
+    <!-- رسائل الميزة المميزة لودجة القرآن -->
+    <string name="quran_premium_feature_title">ميزة مميزة 💎</string>
+    <string name="quran_premium_feature_subtitle">قراءة القرآن ميزة مميزة</string>
+    <string name="quran_premium_notification_title">ودجة القرآن - ميزة مميزة 💎</string>
+    <string name="quran_premium_notification_text">هذه الميزة تتطلب اشتراك مميز. اضغط وترقى للنسخة المميزة!</string>
 </resources>

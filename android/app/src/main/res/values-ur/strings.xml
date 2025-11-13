@@ -196,4 +196,10 @@
     <string name="sura_name_112">الاخلاص</string>
     <string name="sura_name_113">الفلق</string>
     <string name="sura_name_114">الناس</string>
+    
+    <!-- قرآن ویجٹ پریمیم پیغامات -->
+    <string name="quran_premium_feature_title">پریمیم فیچر 💎</string>
+    <string name="quran_premium_feature_subtitle">قرآن پڑھنا ایک پریمیم فیچر ہے</string>
+    <string name="quran_premium_notification_title">قرآن ویجٹ - پریمیم فیچر 💎</string>
+    <string name="quran_premium_notification_text">اس فیچر کے لیے پریمیم سبسکرپشن درکار ہے۔ ٹیپ کریں اور پریمیم میں اپگریڈ کریں!</string>
 </resources>

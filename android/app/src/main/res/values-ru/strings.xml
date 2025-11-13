@@ -196,4 +196,10 @@
     <string name="sura_name_112">Искренность</string>
     <string name="sura_name_113">Рассвет</string>
     <string name="sura_name_114">Люди</string>
+    
+    <!-- Премиум сообщения виджета Корана -->
+    <string name="quran_premium_feature_title">Премиум функция 💎</string>
+    <string name="quran_premium_feature_subtitle">Чтение Корана - это премиум функция</string>
+    <string name="quran_premium_notification_title">Виджет Корана - Премиум функция 💎</string>
+    <string name="quran_premium_notification_text">Эта функция требует премиум подписку. Нажмите и обновитесь до премиум!</string>
 </resources>

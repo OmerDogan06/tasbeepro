@@ -196,4 +196,10 @@
     <string name="sura_name_112">La Purezza</string>
     <string name="sura_name_113">L\'Alba</string>
     <string name="sura_name_114">Gli Uomini</string>
+    
+    <!-- Messaggi Premium del Widget del Corano -->
+    <string name="quran_premium_feature_title">Funzione Premium 💎</string>
+    <string name="quran_premium_feature_subtitle">Leggere il Corano è una funzione premium</string>
+    <string name="quran_premium_notification_title">Widget del Corano - Funzione Premium 💎</string>
+    <string name="quran_premium_notification_text">Questa funzione richiede un abbonamento premium. Tocca e aggiorna a premium!</string>
 </resources>

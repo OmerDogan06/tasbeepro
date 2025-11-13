@@ -6,6 +6,7 @@ import android.content.Intent
 import android.view.Gravity
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
+import android.util.Log
 
 class QuranListService : RemoteViewsService() {
     override fun onGetViewFactory(intent: Intent): RemoteViewsFactory {
@@ -36,6 +37,12 @@ class QuranListViewFactory(
     }
 
     override fun onDataSetChanged() {
+        // Premium kontrol
+        if (!checkPremiumStatus()) {
+            ayahs = emptyList()
+            return
+        }
+        
         // Veri güncellendiğinde çağrılır
         val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val currentSura = prefs.getInt(KEY_CURRENT_SURA + appWidgetId, 1)
@@ -98,5 +105,16 @@ class QuranListViewFactory(
 
     override fun hasStableIds(): Boolean {
         return true
+    }
+    
+    // Premium durumu kontrol et
+    private fun checkPremiumStatus(): Boolean {
+        return try {
+            val prefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
+            prefs.getBoolean("flutter.is_premium", false)
+        } catch (e: Exception) {
+            Log.e("QuranListService", "Premium durum kontrol hatası: ${e.message}")
+            false
+        }
     }
 }

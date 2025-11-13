@@ -196,4 +196,10 @@
     <string name="sura_name_112">Die Aufrichtigkeit</string>
     <string name="sura_name_113">Das Morgengrauen</string>
     <string name="sura_name_114">Die Menschen</string>
+    
+    <!-- Quran Widget Premium-Nachrichten -->
+    <string name="quran_premium_feature_title">Premium-Funktion 💎</string>
+    <string name="quran_premium_feature_subtitle">Das Lesen des Korans ist eine Premium-Funktion</string>
+    <string name="quran_premium_notification_title">Koran Widget - Premium-Funktion 💎</string>
+    <string name="quran_premium_notification_text">Diese Funktion erfordert ein Premium-Abonnement. Tippen Sie und upgraden Sie auf Premium!</string>
 </resources>

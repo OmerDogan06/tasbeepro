@@ -195,5 +195,11 @@
     <string name="sura_name_111">알 마사드</string>
     <string name="sura_name_112">알 이클라스</string>
     <string name="sura_name_113">알 팔라크</string>
-    <string name="sura_name_114">안 나스</string>
+    <string name="sura_name_114">사람들</string>
+    
+    <!-- 쿠란 위젯 프리미엄 메시지 -->
+    <string name="quran_premium_feature_title">프리미엄 기능 💎</string>
+    <string name="quran_premium_feature_subtitle">쿠란 읽기는 프리미엄 기능입니다</string>
+    <string name="quran_premium_notification_title">쿠란 위젯 - 프리미엄 기능 💎</string>
+    <string name="quran_premium_notification_text">이 기능은 프리미엄 구독이 필요합니다. 탭하고 프리미엄으로 업그레이드하세요!</string>
 </resources>
