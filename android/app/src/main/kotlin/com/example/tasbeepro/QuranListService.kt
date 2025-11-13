@@ -58,7 +58,14 @@ class QuranListViewFactory(
         val views = RemoteViews(context.packageName, R.layout.widget_ayah_item)
         
         if (position < ayahs.size) {
-            val ayahText = ayahs[position].trim()
+            var ayahText = ayahs[position].trim()
+            
+            // ۞ işaretini kontrol et ve işle (Flutter kodundaki ile aynı mantık)
+            if (ayahText.contains("۞")) {
+                // ۞ işaretini kaldır ve sonuna ekle
+                ayahText = "${ayahText.replace("۞", "").trim()} ۞"
+            }
+            
             views.setTextViewText(R.id.ayah_text, ayahText)
             
             // Ayet numarasını göster (1'den başlayarak)
