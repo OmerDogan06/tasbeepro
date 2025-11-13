@@ -476,5 +476,63 @@
   "settingsQuranWidget": "Ongeza Widget ya Qurani",
   "settingsQuranWidgetSubtitle": "Ongeza widget ya kusoma Qurani kwenye skrini kuu",
   "premiumFeatureQuranWidgetTitle": "Widget ya Qurani ya Skrini Kuu",
-  "premiumFeatureQuranWidgetDescription": "Soma Qurani moja kwa moja kutoka skrini yako kuu"
+  "premiumFeatureQuranWidgetDescription": "Soma Qurani moja kwa moja kutoka skrini yako kuu",
+  "rewardSystemTitle": "🎁 Vipengele vya Matangazo ya Zawadi",
+  "rewardDhikrWidget": "Widget ya Dhikiri",
+  "rewardQuranWidget": "Widget ya Qurani",
+  "rewardReminders": "Vikumbusho",
+  "rewardReminderTimes": "Nyakati za Vikumbusho",
+  "rewardSystemInfo": "Unaweza kutumia kila kipengele kwa masaa 24 kwa kuangalia matangazo 3 kwa kila kipengele.",
+  "rewardFeatureUnlockMessage": "Unaweza kufungua kipengele hiki kwa kuangalia matangazo au kuwa mtumiaji wa bei ya juu",
+  "rewardAdsProgress": "{adsWatched}/3 matangazo",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "Matangazo {remainingAds}",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "Inatumika",
+  "rewardServiceError": "Hitilafu ya Huduma",
+  "rewardServiceNotReady": "Huduma ya zawadi bado haijaandaliwa. Tafadhali anzisha upya programu.",
+  "rewardAdError": "Hitilafu ya Matangazo",
+  "rewardAdNotReady": "Tangazo bado halijaandaliwa sasa. Tafadhali jaribu tena baada ya sekunde chache.",
+  "rewardError": "Hitilafu",
+  "rewardAdWatchError": "Hitilafu imetokea wakati wa kuangalia tangazo. Tafadhali jaribu tena.",
+  "rewardSystemLoading": "Mfumo wa zawadi unachukua...",
+  "rewardHoursLeft": "Masaa {hoursLeft} yamebaki",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "Zawadi Inapatikana!",
+  "rewardFeatureUnlocked": "{featureName} imefunguliwa kwa masaa 24!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "Tazama matangazo {remainingAds} zaidi ili kufungua kipengele hiki.",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "Kuandaa Tangazo",
+  "rewardAdNotReadyMessage": "Tangazo bado halijaandaliwa. Tafadhali subiri sekunde chache na ujaribu tena."
 }

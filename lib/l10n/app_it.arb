@@ -476,5 +476,63 @@
   "settingsQuranWidget": "Aggiungi Widget Corano",
   "settingsQuranWidgetSubtitle": "Aggiungi il widget di lettura del Corano alla schermata principale",
   "premiumFeatureQuranWidgetTitle": "Widget Corano Schermata Principale",
-  "premiumFeatureQuranWidgetDescription": "Leggi il Corano direttamente dalla tua schermata principale"
+  "premiumFeatureQuranWidgetDescription": "Leggi il Corano direttamente dalla tua schermata principale",
+  "rewardSystemTitle": "🎁 Funzionalità con Annunci Premiati",
+  "rewardDhikrWidget": "Widget Dhikr",
+  "rewardQuranWidget": "Widget Corano",
+  "rewardReminders": "Promemoria",
+  "rewardReminderTimes": "Orari Promemoria",
+  "rewardSystemInfo": "Puoi utilizzare ogni funzionalità per 24 ore guardando 3 annunci per funzionalità.",
+  "rewardFeatureUnlockMessage": "Puoi sbloccare questa funzionalità guardando annunci o diventando premium",
+  "rewardAdsProgress": "{adsWatched}/3 annunci",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} Annunci",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "Attivo",
+  "rewardServiceError": "Errore del Servizio",
+  "rewardServiceNotReady": "Il servizio di ricompense non è ancora pronto. Per favore riavvia l'app.",
+  "rewardAdError": "Errore Annuncio",
+  "rewardAdNotReady": "L'annuncio non è pronto ora. Per favore riprova tra qualche secondo.",
+  "rewardError": "Errore",
+  "rewardAdWatchError": "Si è verificato un errore durante la visione dell'annuncio. Per favore riprova.",
+    "rewardSystemLoading": "Sistema di ricompense in caricamento...",
+  "rewardHoursLeft": "{hoursLeft} ore rimanenti",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "Ricompensa Ottenuta!",
+  "rewardFeatureUnlocked": "{featureName} sbloccato per 24 ore!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "Guarda {remainingAds} pubblicità in più per sbloccare questa funzione.",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "Preparazione Pubblicità",
+  "rewardAdNotReadyMessage": "La pubblicità non è ancora pronta. Aspetta qualche secondo e riprova."
 }

@@ -2,8 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:tasbeepro/services/subscription_service.dart';
 import '../widgets/islamic_snackbar.dart';
+import '../l10n/app_localizations.dart';
 import 'storage_service.dart';
 import 'ad_service.dart';
+import 'language_service.dart';
 
 // Reward feature status model
 class RewardFeatureStatus {
@@ -25,13 +27,38 @@ class RewardFeatureStatus {
   String getProgressText() {
     if (isUnlocked) {
       final hoursLeft = 24 - DateTime.now().difference(unlockedAt!).inHours;
-      return '$hoursLeft saat kaldı';
+      try {
+        final languageService = Get.find<LanguageService>();
+        final locale = languageService.currentLocale;
+        final localizations = lookupAppLocalizations(locale);
+        return localizations.rewardHoursLeft(hoursLeft);
+      } catch (e) {
+        return '$hoursLeft saat kaldı';
+      }
     }
-    return '$adsWatched/3 reklam';
+    try {
+      final languageService = Get.find<LanguageService>();
+      final locale = languageService.currentLocale;
+      final localizations = lookupAppLocalizations(locale);
+      return localizations.rewardAdsProgress(adsWatched);
+    } catch (e) {
+      return '$adsWatched/3 reklam';
+    }
   }
 }
 
 class RewardService extends GetxService {
+  // Helper method to get current localized strings dynamically
+  AppLocalizations? get _localizations {
+    try {
+      final languageService = Get.find<LanguageService>();
+      final locale = languageService.currentLocale;
+      return lookupAppLocalizations(locale);
+    } catch (e) {
+      return null;
+    }
+  }
+
   // Feature status reactive variables
   final _dhikrWidgetStatus = Rx<RewardFeatureStatus>(
     RewardFeatureStatus(featureType: RewardFeatureType.dhikrWidget, adsWatched: 0)
@@ -62,6 +89,26 @@ class RewardService extends GetxService {
     super.onInit();
     await _loadAllFeatureStatuses();
     _scheduleCleanupExpiredRewards();
+    _setupLanguageListener();
+  }
+
+  // Dil değişikliklerini dinle
+  void _setupLanguageListener() {
+    try {
+      final languageService = Get.find<LanguageService>();
+      // Dil değiştiğinde UI'ı güncelle
+      languageService.currentLanguageRx.listen((_) {
+        // Observable değerleri refresh et ki UI güncellensin
+        _dhikrWidgetStatus.refresh();
+        _quranWidgetStatus.refresh();
+        _remindersStatus.refresh();
+        _reminderTimesStatus.refresh();
+      });
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint('❌ Error setting up language listener: $e');
+      }
+    }
   }
 
   // Storage'dan tüm feature durumlarını yükle
@@ -122,8 +169,8 @@ class RewardService extends GetxService {
       
       if (!success) {
         IslamicSnackbar.showError(
-          'Reklam Hazırlanıyor',
-          'Reklam henüz hazır değil. Lütfen birkaç saniye bekleyip tekrar deneyin.',
+          _localizations?.rewardAdPreparing ?? 'Reklam Hazırlanıyor',
+          _localizations?.rewardAdNotReadyMessage ?? 'Reklam henüz hazır değil. Lütfen birkaç saniye bekleyip tekrar deneyin.',
         );
       }
       
@@ -134,8 +181,8 @@ class RewardService extends GetxService {
       }
       
       IslamicSnackbar.showError(
-        'Reklam Hatası',
-        'Reklam izlenirken bir hata oluştu. Lütfen tekrar deneyin.',
+        _localizations?.rewardAdError ?? 'Reklam Hatası',
+        _localizations?.rewardAdWatchError ?? 'Reklam izlenirken bir hata oluştu. Lütfen tekrar deneyin.',
       );
       
       return false;
@@ -201,10 +248,10 @@ class RewardService extends GetxService {
       
       // Başarı mesajı göster
       IslamicSnackbar.showSuccess(
-        'Ödül Kazanıldı!',
+        _localizations?.rewardEarned ?? 'Ödül Kazanıldı!',
         newUnlockedAt != null 
-          ? '${_getFeatureName(featureType)} 24 saat boyunca açıldı!'
-          : '${3 - newAdsWatched} reklam daha izleyerek bu özelliği açabilirsiniz.',
+          ? (_localizations?.rewardFeatureUnlocked(_getFeatureName(featureType)) ?? '${_getFeatureName(featureType)} 24 saat boyunca açıldı!')
+          : (_localizations?.rewardAdsRemaining(3 - newAdsWatched) ?? '${3 - newAdsWatched} reklam daha izleyerek bu özelliği açabilirsiniz.'),
       );
       
     } catch (e) {
@@ -217,13 +264,13 @@ class RewardService extends GetxService {
   String _getFeatureName(RewardFeatureType featureType) {
     switch (featureType) {
       case RewardFeatureType.dhikrWidget:
-        return 'Zikir Widget\'ı';
+        return _localizations?.rewardDhikrWidget ?? 'Zikir Widget\'ı';
       case RewardFeatureType.quranWidget:
-        return 'Kuran Widget\'ı';
+        return _localizations?.rewardQuranWidget ?? 'Kuran Widget\'ı';
       case RewardFeatureType.reminders:
-        return 'Hatırlatıcılar';
+        return _localizations?.rewardReminders ?? 'Hatırlatıcılar';
       case RewardFeatureType.reminderTimes:
-        return 'Hatırlatma Saatleri';
+        return _localizations?.rewardReminderTimes ?? 'Hatırlatma Saatleri';
     }
   }
 

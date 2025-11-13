@@ -1526,4 +1526,89 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'আপনার হোম স্ক্রিন থেকে সরাসরি কুরআন পড়ুন';
+
+  @override
+  String get rewardSystemTitle => '🎁 বিজ্ঞাপনযুক্ত বৈশিষ্ট্য';
+
+  @override
+  String get rewardDhikrWidget => 'জিকির উইজেট';
+
+  @override
+  String get rewardQuranWidget => 'কুরআন উইজেট';
+
+  @override
+  String get rewardReminders => 'রিমাইন্ডার';
+
+  @override
+  String get rewardReminderTimes => 'রিমাইন্ডারের সময়';
+
+  @override
+  String get rewardSystemInfo =>
+      'আপনি প্রতিটি বৈশিষ্ট্যের জন্য ৩টি বিজ্ঞাপন দেখে ২ৄ ঘন্টার জন্য ব্যবহার করতে পারেন।';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'আপনি বিজ্ঞাপন দেখে অথবা প্রিমিয়াম হয়ে এই বৈশিষ্ট্য আনলক করতে পারেন';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/৩ বিজ্ঞাপন';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds বিজ্ঞাপন';
+  }
+
+  @override
+  String get rewardFeatureActive => 'সক্রিয়';
+
+  @override
+  String get rewardServiceError => 'সেবা ত্রুটি';
+
+  @override
+  String get rewardServiceNotReady =>
+      'পুরস্কার সেবা এখনো প্রস্তুত নয়। দয়া করে অ্যাপ পুনরায় চালু করুন।';
+
+  @override
+  String get rewardAdError => 'বিজ্ঞাপন ত্রুটি';
+
+  @override
+  String get rewardAdNotReady =>
+      'বিজ্ঞাপন এখন প্রস্তুত নয়। কয়েক সেকেন্ড পর আবার চেষ্টা করুন।';
+
+  @override
+  String get rewardError => 'ত্রুটি';
+
+  @override
+  String get rewardAdWatchError =>
+      'বিজ্ঞাপন দেখার সময় ত্রুটি হয়েছে। দয়া করে আবার চেষ্টা করুন।';
+
+  @override
+  String get rewardSystemLoading => 'পুরস্কার সিস্টেম লোড হচ্ছে...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft ঘন্টা বাকি';
+  }
+
+  @override
+  String get rewardEarned => 'পুরস্কার পেয়েছেন!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName ২৪ ঘন্টার জন্য আনলক হয়েছে!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'এই ফিচার আনলক করতে আরও $remainingAdsটি বিজ্ঞাপন দেখুন।';
+  }
+
+  @override
+  String get rewardAdPreparing => 'বিজ্ঞাপন প্রস্তুত হচ্ছে';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'বিজ্ঞাপন এখনও প্রস্তুত নয়। কয়েক সেকেন্ড অপেক্ষা করুন এবং আবার চেষ্টা করুন।';
 }

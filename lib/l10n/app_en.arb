@@ -1669,5 +1669,122 @@
   "premiumFeatureQuranWidgetDescription": "Read Quran directly from your home screen",
   "@premiumFeatureQuranWidgetDescription": {
     "description": "Description for Quran widget premium feature"
+  },
+  "rewardSystemTitle": "🎁 Features with Rewarded Ads",
+  "@rewardSystemTitle": {
+    "description": "Section header for reward system features"
+  },
+  "rewardDhikrWidget": "Dhikr Widget",
+  "@rewardDhikrWidget": {
+    "description": "Dhikr widget feature title"
+  },
+  "rewardQuranWidget": "Quran Widget",
+  "@rewardQuranWidget": {
+    "description": "Quran widget feature title"
+  },
+  "rewardReminders": "Reminders",
+  "@rewardReminders": {
+    "description": "Reminders feature title"
+  },
+  "rewardReminderTimes": "Reminder Times",
+  "@rewardReminderTimes": {
+    "description": "Reminder times feature title"
+  },
+  "rewardSystemInfo": "You can use each feature for 24 hours by watching 3 ads per feature.",
+  "@rewardSystemInfo": {
+    "description": "Information about how reward system works"
+  },
+  "rewardFeatureUnlockMessage": "You can unlock this feature by watching ads or becoming premium",
+  "@rewardFeatureUnlockMessage": {
+    "description": "Message for locked features that can be unlocked with ads"
+  },
+  "rewardAdsProgress": "{adsWatched}/3 ads",
+  "@rewardAdsProgress": {
+    "description": "Progress text showing ads watched",
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} Ads",
+  "@rewardWatchAdButton": {
+    "description": "Watch ad button text",
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "Active",
+  "@rewardFeatureActive": {
+    "description": "Status text for active reward features"
+  },
+  "rewardServiceError": "Service Error",
+  "@rewardServiceError": {
+    "description": "Error title for reward service issues"
+  },
+  "rewardServiceNotReady": "Reward service is not ready yet. Please restart the app.",
+  "@rewardServiceNotReady": {
+    "description": "Error message when reward service is not ready"
+  },
+  "rewardAdError": "Ad Error",
+  "@rewardAdError": {
+    "description": "Error title for ad-related issues"
+  },
+  "rewardAdNotReady": "Ad is not ready right now. Please try again in a few seconds.",
+  "@rewardAdNotReady": {
+    "description": "Error message when ad is not ready"
+  },
+  "rewardError": "Error",
+  "@rewardError": {
+    "description": "Generic error title for reward system"
+  },
+  "rewardAdWatchError": "An error occurred while watching the ad. Please try again.",
+  "@rewardAdWatchError": {
+    "description": "Error message when ad watching fails"
+  },
+  "rewardSystemLoading": "Reward system loading...",
+  "@rewardSystemLoading": {
+    "description": "Loading message for reward system"
+  },
+  "rewardHoursLeft": "{hoursLeft} hours left",
+  "@rewardHoursLeft": {
+    "description": "Hours remaining for reward feature",
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "Reward Earned!",
+  "@rewardEarned": {
+    "description": "Title when user earns a reward"
+  },
+  "rewardFeatureUnlocked": "{featureName} unlocked for 24 hours!",
+  "@rewardFeatureUnlocked": {
+    "description": "Message when feature is unlocked",
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "Watch {remainingAds} more ads to unlock this feature.",
+  "@rewardAdsRemaining": {
+    "description": "Message showing remaining ads needed",
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "Ad Preparing",
+  "@rewardAdPreparing": {
+    "description": "Title when ad is being prepared"
+  },
+  "rewardAdNotReadyMessage": "Ad is not ready yet. Please wait a few seconds and try again.",
+  "@rewardAdNotReadyMessage": {
+    "description": "Message when ad is not ready"
   }
 }

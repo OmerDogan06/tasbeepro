@@ -1533,4 +1533,89 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'Bosh ekraningizdan to\'g\'ridan-to\'g\'ri Qur\'on o\'qing';
+
+  @override
+  String get rewardSystemTitle => '🎁 Reklama bilan Xususiyatlar';
+
+  @override
+  String get rewardDhikrWidget => 'Zikr Vijeti';
+
+  @override
+  String get rewardQuranWidget => 'Qur\'on Vijeti';
+
+  @override
+  String get rewardReminders => 'Eslatmalar';
+
+  @override
+  String get rewardReminderTimes => 'Eslatma Vaqtlari';
+
+  @override
+  String get rewardSystemInfo =>
+      'Har bir xususiyatni 3 ta reklama ko\'rish orqali 24 soat davomida ishlatishingiz mumkin.';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'Siz reklamalarni ko\'rish yoki premium bo\'lish orqali bu xususiyatni ochishingiz mumkin';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 reklama';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds Reklama';
+  }
+
+  @override
+  String get rewardFeatureActive => 'Faol';
+
+  @override
+  String get rewardServiceError => 'Xizmat Xatosi';
+
+  @override
+  String get rewardServiceNotReady =>
+      'Mukofot xizmati hali tayyor emas. Iltimos, ilovani qayta ishga tushiring.';
+
+  @override
+  String get rewardAdError => 'Reklama Xatosi';
+
+  @override
+  String get rewardAdNotReady =>
+      'Reklama hozir tayyor emas. Bir necha soniyadan keyin qayta urinib ko\'ring.';
+
+  @override
+  String get rewardError => 'Xato';
+
+  @override
+  String get rewardAdWatchError =>
+      'Reklamani ko\'rishda xato yuz berdi. Iltimos, qayta urinib ko\'ring.';
+
+  @override
+  String get rewardSystemLoading => 'Mukofot tizimi yuklanmoqda...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft soat qoldi';
+  }
+
+  @override
+  String get rewardEarned => 'Mukofot Olindi!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName 24 soatga ochildi!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'Bu xususiyatni ochish uchun yana $remainingAds ta reklama ko\'ring.';
+  }
+
+  @override
+  String get rewardAdPreparing => 'Reklama Tayyorlanmoqda';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'Reklama hali tayyor emas. Bir necha soniya kuting va qayta urinib ko\'ring.';
 }

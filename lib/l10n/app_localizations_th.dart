@@ -1513,4 +1513,87 @@ class AppLocalizationsTh extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'อ่านอัลกุรอานโดยตรงจากหน้าจอของคุณ';
+
+  @override
+  String get rewardSystemTitle => '🎁 ฟีเจอร์ที่มีโฆษณารางวัล';
+
+  @override
+  String get rewardDhikrWidget => 'วิดเจ็ตซิกร์';
+
+  @override
+  String get rewardQuranWidget => 'วิดเจ็ตอัลกุรอาน';
+
+  @override
+  String get rewardReminders => 'การแจ้งเตือน';
+
+  @override
+  String get rewardReminderTimes => 'เวลาแจ้งเตือน';
+
+  @override
+  String get rewardSystemInfo =>
+      'คุณสามารถใช้แต่ละฟีเจอร์เป็นเวลา 24 ชั่วโมงโดยดูโฆษณา 3 ครั้งต่อฟีเจอร์';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'คุณสามารถปลดล็อกฟีเจอร์นี้โดยดูโฆษณาหรือสมัครพรีเมียม';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 โฆษณา';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds โฆษณา';
+  }
+
+  @override
+  String get rewardFeatureActive => 'ใช้งานได้';
+
+  @override
+  String get rewardServiceError => 'ข้อผิดพลาดของบริการ';
+
+  @override
+  String get rewardServiceNotReady => 'ระบบรางวัลยังไม่พร้อม กรุณารีสตาร์ทแอป';
+
+  @override
+  String get rewardAdError => 'ข้อผิดพลาดของโฆษณา';
+
+  @override
+  String get rewardAdNotReady => 'โฆษณายังไม่พร้อม กรุณาลองใหม่ในอีกสักครู่';
+
+  @override
+  String get rewardError => 'ข้อผิดพลาด';
+
+  @override
+  String get rewardAdWatchError =>
+      'เกิดข้อผิดพลาดขณะดูโฆษณา กรุณาลองใหม่อีกครั้ง';
+
+  @override
+  String get rewardSystemLoading => 'กำลังโหลดระบบรางวัล...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return 'เหลือ $hoursLeft ชั่วโมง';
+  }
+
+  @override
+  String get rewardEarned => 'ได้รับรางวัล!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName ปลดล็อกเป็นเวลา 24 ชั่วโมง!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'ดูโฆษณาอีก $remainingAds รายการเพื่อปลดล็อกฟีเจอร์นี้';
+  }
+
+  @override
+  String get rewardAdPreparing => 'กำลังเตรียมโฆษณา';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'โฆษณายังไม่พร้อม กรุณารอสักครู่แล้วลองใหม่อีกครั้ง';
 }

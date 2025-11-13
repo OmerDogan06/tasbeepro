@@ -476,5 +476,63 @@
   "settingsQuranWidget": "Kur'an Widget Ekle",
   "settingsQuranWidgetSubtitle": "Ana ekrana Kur'an okuma widget'ı ekleyin",
   "premiumFeatureQuranWidgetTitle": "Kur'an Ana Ekran Widget'ı",
-  "premiumFeatureQuranWidgetDescription": "Ana ekranınızdan doğrudan Kur'an okuyun"
+  "premiumFeatureQuranWidgetDescription": "Ana ekranınızdan doğrudan Kur'an okuyun",
+  "rewardSystemTitle": "🎁 Ödüllü Reklamlarla Özellikler",
+  "rewardDhikrWidget": "Zikir Widget'ı",
+  "rewardQuranWidget": "Kuran Widget'ı",
+  "rewardReminders": "Hatırlatıcılar",
+  "rewardReminderTimes": "Hatırlatma Saatleri",
+  "rewardSystemInfo": "Her özellik için 3 reklam izleyerek 24 saat süreyle o özelliği kullanabilirsiniz.",
+  "rewardFeatureUnlockMessage": "Reklam izleyerek veya premium olarak bu özelliği açabilirsiniz",
+  "rewardAdsProgress": "{adsWatched}/3 reklam",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} Reklam",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "Aktif",
+  "rewardServiceError": "Servis Hatası",
+  "rewardServiceNotReady": "Reward servisi henüz hazır değil. Lütfen uygulamayı yeniden başlatın.",
+  "rewardAdError": "Reklam Hatası",
+  "rewardAdNotReady": "Reklam şu anda hazırlanmıyor. Lütfen birkaç saniye sonra tekrar deneyin.",
+  "rewardError": "Hata",
+  "rewardAdWatchError": "Reklam izlenirken bir hata oluştu. Lütfen tekrar deneyin.",
+  "rewardSystemLoading": "Reward sistemi yükleniyor...",
+  "rewardHoursLeft": "{hoursLeft} saat kaldı",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "Ödül Kazanıldı!",
+  "rewardFeatureUnlocked": "{featureName} 24 saat boyunca açıldı!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "{remainingAds} reklam daha izleyerek bu özelliği açabilirsiniz.",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "Reklam Hazırlanıyor",
+  "rewardAdNotReadyMessage": "Reklam henüz hazır değil. Lütfen birkaç saniye bekleyip tekrar deneyin."
 }

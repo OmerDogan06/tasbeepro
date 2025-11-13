@@ -476,5 +476,63 @@
   "settingsQuranWidget": "إضافة ودجت القرآن",
   "settingsQuranWidgetSubtitle": "أضف ودجت قراءة القرآن إلى الشاشة الرئيسية",
   "premiumFeatureQuranWidgetTitle": "ودجت القرآن للشاشة الرئيسية",
-  "premiumFeatureQuranWidgetDescription": "اقرأ القرآن مباشرة من شاشتك الرئيسية"
+  "premiumFeatureQuranWidgetDescription": "اقرأ القرآن مباشرة من شاشتك الرئيسية",
+  "rewardSystemTitle": "🎁 الميزات مع الإعلانات المكافأة",
+  "rewardDhikrWidget": "ويدجت الذكر",
+  "rewardQuranWidget": "ويدجت القرآن",
+  "rewardReminders": "التذكيرات",
+  "rewardReminderTimes": "أوقات التذكير",
+  "rewardSystemInfo": "يمكنك استخدام كل ميزة لمدة 24 ساعة من خلال مشاهدة 3 إعلانات لكل ميزة.",
+  "rewardFeatureUnlockMessage": "يمكنك إلغاء قفل هذه الميزة من خلال مشاهدة الإعلانات أو أن تصبح مميزًا",
+  "rewardAdsProgress": "{adsWatched}/3 إعلانات",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} إعلانات",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "نشط",
+  "rewardServiceError": "خطأ في الخدمة",
+  "rewardServiceNotReady": "خدمة المكافآت غير جاهزة بعد. يرجى إعادة تشغيل التطبيق.",
+  "rewardAdError": "خطأ في الإعلان",
+  "rewardAdNotReady": "الإعلان غير جاهز الآن. يرجى المحاولة مرة أخرى خلال بضع ثوان.",
+  "rewardError": "خطأ",
+  "rewardAdWatchError": "حدث خطأ أثناء مشاهدة الإعلان. يرجى المحاولة مرة أخرى.",
+  "rewardSystemLoading": "نظام المكافآت يتم التحميل...",
+  "rewardHoursLeft": "{hoursLeft} ساعة متبقية",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "تم كسب المكافأة!",
+  "rewardFeatureUnlocked": "تم إلغاء قفل {featureName} لمدة 24 ساعة!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "شاهد {remainingAds} إعلانات أخرى لإلغاء قفل هذه الميزة.",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "الإعلان قيد التحضير",
+  "rewardAdNotReadyMessage": "الإعلان غير جاهز بعد. يرجى الانتظار بضع ثوان والمحاولة مرة أخرى."
 }

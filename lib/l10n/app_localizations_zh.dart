@@ -1444,4 +1444,83 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get premiumFeatureQuranWidgetDescription => '直接从主屏幕阅读古兰经';
+
+  @override
+  String get rewardSystemTitle => '🎁 奖励广告功能';
+
+  @override
+  String get rewardDhikrWidget => '念珠小部件';
+
+  @override
+  String get rewardQuranWidget => '古兰经小部件';
+
+  @override
+  String get rewardReminders => '提醒';
+
+  @override
+  String get rewardReminderTimes => '提醒时间';
+
+  @override
+  String get rewardSystemInfo => '您可以通过观看每个功能3个广告来使用每个功能24小时。';
+
+  @override
+  String get rewardFeatureUnlockMessage => '您可以通过观看广告或成为高级用户来解锁此功能';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 广告';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds 广告';
+  }
+
+  @override
+  String get rewardFeatureActive => '已激活';
+
+  @override
+  String get rewardServiceError => '服务错误';
+
+  @override
+  String get rewardServiceNotReady => '奖励服务尚未准备就绪。请重新启动应用程序。';
+
+  @override
+  String get rewardAdError => '广告错误';
+
+  @override
+  String get rewardAdNotReady => '广告现在还没准备好。请几秒钟后再试。';
+
+  @override
+  String get rewardError => '错误';
+
+  @override
+  String get rewardAdWatchError => '观看广告时发生错误。请重试。';
+
+  @override
+  String get rewardSystemLoading => '奖励系统加载中...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '还剩 $hoursLeft 小时';
+  }
+
+  @override
+  String get rewardEarned => '获得奖励!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName 已解锁24小时!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return '再观看 $remainingAds 个广告即可解锁此功能。';
+  }
+
+  @override
+  String get rewardAdPreparing => '广告准备中';
+
+  @override
+  String get rewardAdNotReadyMessage => '广告尚未准备好。请等待几秒钟后重试。';
 }

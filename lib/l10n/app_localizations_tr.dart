@@ -1520,4 +1520,89 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'Ana ekranınızdan doğrudan Kur\'an okuyun';
+
+  @override
+  String get rewardSystemTitle => '🎁 Ödüllü Reklamlarla Özellikler';
+
+  @override
+  String get rewardDhikrWidget => 'Zikir Widget\'ı';
+
+  @override
+  String get rewardQuranWidget => 'Kuran Widget\'ı';
+
+  @override
+  String get rewardReminders => 'Hatırlatıcılar';
+
+  @override
+  String get rewardReminderTimes => 'Hatırlatma Saatleri';
+
+  @override
+  String get rewardSystemInfo =>
+      'Her özellik için 3 reklam izleyerek 24 saat süreyle o özelliği kullanabilirsiniz.';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'Reklam izleyerek veya premium olarak bu özelliği açabilirsiniz';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 reklam';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds Reklam';
+  }
+
+  @override
+  String get rewardFeatureActive => 'Aktif';
+
+  @override
+  String get rewardServiceError => 'Servis Hatası';
+
+  @override
+  String get rewardServiceNotReady =>
+      'Reward servisi henüz hazır değil. Lütfen uygulamayı yeniden başlatın.';
+
+  @override
+  String get rewardAdError => 'Reklam Hatası';
+
+  @override
+  String get rewardAdNotReady =>
+      'Reklam şu anda hazırlanmıyor. Lütfen birkaç saniye sonra tekrar deneyin.';
+
+  @override
+  String get rewardError => 'Hata';
+
+  @override
+  String get rewardAdWatchError =>
+      'Reklam izlenirken bir hata oluştu. Lütfen tekrar deneyin.';
+
+  @override
+  String get rewardSystemLoading => 'Reward sistemi yükleniyor...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft saat kaldı';
+  }
+
+  @override
+  String get rewardEarned => 'Ödül Kazanıldı!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName 24 saat boyunca açıldı!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return '$remainingAds reklam daha izleyerek bu özelliği açabilirsiniz.';
+  }
+
+  @override
+  String get rewardAdPreparing => 'Reklam Hazırlanıyor';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'Reklam henüz hazır değil. Lütfen birkaç saniye bekleyip tekrar deneyin.';
 }

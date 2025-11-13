@@ -170,7 +170,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             children: [
                               _buildSectionHeader(
                                 context,
-                                '🎁 Ödüllü Reklamlarla Özellikler',
+                                AppLocalizations.of(context)?.rewardSystemTitle ?? '🎁 Ödüllü Reklamlarla Özellikler',
                               ),
                               _buildRewardSystemCard(),
                               const SizedBox(height: 24),
@@ -735,7 +735,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             subtitle: Text(
               isLocked ? (rewardFeatureType != null 
-                  ? 'Reklam izleyerek veya premium olarak bu özelliği açabilirsiniz'
+                  ? (AppLocalizations.of(context)?.rewardFeatureUnlockMessage ?? 'Reklam izleyerek veya premium olarak bu özelliği açabilirsiniz')
                   : (AppLocalizations.of(context)?.premiumFeatureLocked ?? 'Premium özellik - Kilidi açmak için premium olun')) 
                 : subtitle,
               style: TextStyle(
@@ -2834,7 +2834,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // Zikir Widget'ı
         _buildRewardFeatureTile(
           icon: Icons.auto_awesome,
-          title: 'Zikir Widget\'ı',
+          title: AppLocalizations.of(context)?.rewardDhikrWidget ?? 'Zikir Widget\'ı',
           featureType: RewardFeatureType.dhikrWidget,
           onWatchAd: () => _watchAdForFeature(RewardFeatureType.dhikrWidget),
         ),
@@ -2844,7 +2844,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // Kuran Widget'ı
         _buildRewardFeatureTile(
           icon: Icons.menu_book,
-          title: 'Kuran Widget\'ı',
+          title: AppLocalizations.of(context)?.rewardQuranWidget ?? 'Kuran Widget\'ı',
           featureType: RewardFeatureType.quranWidget,
           onWatchAd: () => _watchAdForFeature(RewardFeatureType.quranWidget),
         ),
@@ -2854,7 +2854,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // Hatırlatıcılar
         _buildRewardFeatureTile(
           icon: Icons.notifications_active,
-          title: 'Hatırlatıcılar',
+          title: AppLocalizations.of(context)?.rewardReminders ?? 'Hatırlatıcılar',
           featureType: RewardFeatureType.reminders,
           onWatchAd: () => _watchAdForFeature(RewardFeatureType.reminders),
         ),
@@ -2864,7 +2864,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // Hatırlatma Saatleri
         _buildRewardFeatureTile(
           icon: Icons.schedule,
-          title: 'Hatırlatma Saatleri',
+          title: AppLocalizations.of(context)?.rewardReminderTimes ?? 'Hatırlatma Saatleri',
           featureType: RewardFeatureType.reminderTimes,
           onWatchAd: () => _watchAdForFeature(RewardFeatureType.reminderTimes),
         ),
@@ -2884,7 +2884,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Her özellik için 3 reklam izleyerek 24 saat süreyle o özelliği kullanabilirsiniz.',
+                  AppLocalizations.of(context)?.rewardSystemInfo ?? 'Her özellik için 3 reklam izleyerek 24 saat süreyle o özelliği kullanabilirsiniz.',
                   style: TextStyle(
                     color: Colors.blue[800],
                     fontSize: 12,
@@ -2900,7 +2900,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         Container(
           padding: const EdgeInsets.all(16),
           child: Text(
-            'Reward sistemi yükleniyor...',
+            AppLocalizations.of(context)?.rewardSystemLoading ?? 'Reward sistemi yükleniyor...',
             style: TextStyle(color: emeraldGreen.withAlpha(179)),
             textAlign: TextAlign.center,
           ),
@@ -2918,7 +2918,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     // RewardService'ten dinamik olarak status alınacak
     bool isUnlocked = false;
     int adsWatched = 0;
-    String progressText = 'Yükleniyor...';
+    String progressText = AppLocalizations.of(context)?.loading ?? 'Yükleniyor...';
     double progress = 0.0;
     
     try {
@@ -2948,7 +2948,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         progress = adsWatched / 3.0;
         progressText = isUnlocked 
           ? status.getProgressText()
-          : '$adsWatched/3 reklam';
+          : (AppLocalizations.of(context)?.rewardAdsProgress(adsWatched) ?? '$adsWatched/3 reklam');
       }
     } catch (e) {
       // Service henüz hazır değil, default değerleri kullan
@@ -3034,7 +3034,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: onWatchAd,
               icon: const Icon(Icons.play_circle_filled, size: 16),
               label: Text(
-                '$remainingAds Reklam',
+                AppLocalizations.of(context)?.rewardWatchAdButton(remainingAds) ?? '$remainingAds Reklam',
                 style: const TextStyle(fontSize: 11),
               ),
               style: ElevatedButton.styleFrom(
@@ -3057,7 +3057,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   Icon(Icons.check, color: Colors.green, size: 14),
                   const SizedBox(width: 4),
                   Text(
-                    'Aktif',
+                    AppLocalizations.of(context)?.rewardFeatureActive ?? 'Aktif',
                     style: TextStyle(
                       color: Colors.green[800],
                       fontSize: 11,
@@ -3077,8 +3077,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       // RewardService'i doğru tip ile bul
       if (!Get.isRegistered<RewardService>()) {
         IslamicSnackbar.showError(
-          'Servis Hatası',
-          'Reward servisi henüz hazır değil. Lütfen uygulamayı yeniden başlatın.',
+          AppLocalizations.of(context)?.rewardServiceError ?? 'Servis Hatası',
+          AppLocalizations.of(context)?.rewardServiceNotReady ?? 'Reward servisi henüz hazır değil. Lütfen uygulamayı yeniden başlatın.',
         );
         return;
       }
@@ -3088,8 +3088,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       
       if (!success) {
         IslamicSnackbar.showError(
-          'Reklam Hatası',
-          'Reklam şu anda hazırlanmıyor. Lütfen birkaç saniye sonra tekrar deneyin.',
+          AppLocalizations.of(context)?.rewardAdError ?? 'Reklam Hatası',
+          AppLocalizations.of(context)?.rewardAdNotReady ?? 'Reklam şu anda hazırlanmıyor. Lütfen birkaç saniye sonra tekrar deneyin.',
         );
       }
     } catch (e) {
@@ -3097,8 +3097,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         debugPrint('Error watching ad for feature: $e');
       }
       IslamicSnackbar.showError(
-        'Hata',
-        'Reklam izlenirken bir hata oluştu. Lütfen tekrar deneyin.',
+        AppLocalizations.of(context)?.rewardError ?? 'Hata',
+        AppLocalizations.of(context)?.rewardAdWatchError ?? 'Reklam izlenirken bir hata oluştu. Lütfen tekrar deneyin.',
       );
     }
   }

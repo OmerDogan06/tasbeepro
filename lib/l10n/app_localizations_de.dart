@@ -1551,4 +1551,89 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'Lesen Sie den Koran direkt von Ihrem Startbildschirm';
+
+  @override
+  String get rewardSystemTitle => '🎁 Funktionen mit Belohnungsanzeigen';
+
+  @override
+  String get rewardDhikrWidget => 'Dhikr-Widget';
+
+  @override
+  String get rewardQuranWidget => 'Koran-Widget';
+
+  @override
+  String get rewardReminders => 'Erinnerungen';
+
+  @override
+  String get rewardReminderTimes => 'Erinnerungszeiten';
+
+  @override
+  String get rewardSystemInfo =>
+      'Sie können jede Funktion 24 Stunden lang nutzen, indem Sie 3 Anzeigen pro Funktion ansehen.';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'Sie können diese Funktion durch das Ansehen von Anzeigen oder durch Premium freischalten';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 Anzeigen';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds Anzeigen';
+  }
+
+  @override
+  String get rewardFeatureActive => 'Aktiv';
+
+  @override
+  String get rewardServiceError => 'Service-Fehler';
+
+  @override
+  String get rewardServiceNotReady =>
+      'Der Belohnungsservice ist noch nicht bereit. Bitte starten Sie die App neu.';
+
+  @override
+  String get rewardAdError => 'Anzeigen-Fehler';
+
+  @override
+  String get rewardAdNotReady =>
+      'Die Anzeige ist gerade nicht bereit. Bitte versuchen Sie es in wenigen Sekunden erneut.';
+
+  @override
+  String get rewardError => 'Fehler';
+
+  @override
+  String get rewardAdWatchError =>
+      'Beim Ansehen der Anzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+
+  @override
+  String get rewardSystemLoading => 'Belohnungssystem wird geladen...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft Stunden übrig';
+  }
+
+  @override
+  String get rewardEarned => 'Belohnung Erhalten!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName für 24 Stunden freigeschaltet!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'Schauen Sie $remainingAds weitere Anzeigen, um diese Funktion freizuschalten.';
+  }
+
+  @override
+  String get rewardAdPreparing => 'Anzeige wird vorbereitet';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'Die Anzeige ist noch nicht bereit. Bitte warten Sie ein paar Sekunden und versuchen Sie es erneut.';
 }

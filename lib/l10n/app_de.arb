@@ -476,5 +476,63 @@
   "settingsQuranWidget": "Koran-Widget hinzufügen",
   "settingsQuranWidgetSubtitle": "Fügen Sie das Koran-Lese-Widget zum Startbildschirm hinzu",
   "premiumFeatureQuranWidgetTitle": "Koran-Startbildschirm-Widget",
-  "premiumFeatureQuranWidgetDescription": "Lesen Sie den Koran direkt von Ihrem Startbildschirm"
+  "premiumFeatureQuranWidgetDescription": "Lesen Sie den Koran direkt von Ihrem Startbildschirm",
+  "rewardSystemTitle": "🎁 Funktionen mit Belohnungsanzeigen",
+  "rewardDhikrWidget": "Dhikr-Widget",
+  "rewardQuranWidget": "Koran-Widget",
+  "rewardReminders": "Erinnerungen",
+  "rewardReminderTimes": "Erinnerungszeiten",
+  "rewardSystemInfo": "Sie können jede Funktion 24 Stunden lang nutzen, indem Sie 3 Anzeigen pro Funktion ansehen.",
+  "rewardFeatureUnlockMessage": "Sie können diese Funktion durch das Ansehen von Anzeigen oder durch Premium freischalten",
+  "rewardAdsProgress": "{adsWatched}/3 Anzeigen",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} Anzeigen",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "Aktiv",
+  "rewardServiceError": "Service-Fehler",
+  "rewardServiceNotReady": "Der Belohnungsservice ist noch nicht bereit. Bitte starten Sie die App neu.",
+  "rewardAdError": "Anzeigen-Fehler",
+  "rewardAdNotReady": "Die Anzeige ist gerade nicht bereit. Bitte versuchen Sie es in wenigen Sekunden erneut.",
+  "rewardError": "Fehler",
+  "rewardAdWatchError": "Beim Ansehen der Anzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+  "rewardSystemLoading": "Belohnungssystem wird geladen...",
+  "rewardHoursLeft": "{hoursLeft} Stunden übrig",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "Belohnung Erhalten!",
+  "rewardFeatureUnlocked": "{featureName} für 24 Stunden freigeschaltet!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "Schauen Sie {remainingAds} weitere Anzeigen, um diese Funktion freizuschalten.",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "Anzeige wird vorbereitet",
+  "rewardAdNotReadyMessage": "Die Anzeige ist noch nicht bereit. Bitte warten Sie ein paar Sekunden und versuchen Sie es erneut."
 }

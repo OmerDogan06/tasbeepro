@@ -476,5 +476,63 @@
   "settingsQuranWidget": "Tambah Widget Al-Quran",
   "settingsQuranWidgetSubtitle": "Tambahkan widget bacaan Al-Quran ke skrin utama",
   "premiumFeatureQuranWidgetTitle": "Widget Al-Quran Skrin Utama",
-  "premiumFeatureQuranWidgetDescription": "Baca Al-Quran terus dari skrin utama anda"
+  "premiumFeatureQuranWidgetDescription": "Baca Al-Quran terus dari skrin utama anda",
+  "rewardSystemTitle": "🎁 Ciri dengan Iklan Ganjaran",
+  "rewardDhikrWidget": "Widget Zikir",
+  "rewardQuranWidget": "Widget Al-Quran",
+  "rewardReminders": "Peringatan",
+  "rewardReminderTimes": "Masa Peringatan",
+  "rewardSystemInfo": "Anda boleh menggunakan setiap ciri selama 24 jam dengan menonton 3 iklan bagi setiap ciri.",
+  "rewardFeatureUnlockMessage": "Anda boleh membuka kunci ciri ini dengan menonton iklan atau menjadi premium",
+  "rewardAdsProgress": "{adsWatched}/3 iklan",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} Iklan",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "Aktif",
+  "rewardServiceError": "Ralat Perkhidmatan",
+  "rewardServiceNotReady": "Perkhidmatan ganjaran belum bersedia. Sila mula semula aplikasi.",
+  "rewardAdError": "Ralat Iklan",
+  "rewardAdNotReady": "Iklan belum bersedia sekarang. Sila cuba lagi dalam beberapa saat.",
+  "rewardError": "Ralat",
+  "rewardAdWatchError": "Ralat berlaku semasa menonton iklan. Sila cuba lagi.",
+  "rewardSystemLoading": "Sistem ganjaran sedang memuatkan...",
+  "rewardHoursLeft": "{hoursLeft} jam lagi",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "Ganjaran Diperoleh!",
+  "rewardFeatureUnlocked": "{featureName} dibuka kunci selama 24 jam!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "Tonton {remainingAds} iklan lagi untuk membuka kunci ciri ini.",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "Menyediakan Iklan",
+  "rewardAdNotReadyMessage": "Iklan belum sedia. Sila tunggu beberapa saat dan cuba lagi."
 }

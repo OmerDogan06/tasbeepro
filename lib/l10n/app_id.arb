@@ -476,5 +476,63 @@
   "settingsQuranWidget": "Tambah Widget Quran",
   "settingsQuranWidgetSubtitle": "Tambahkan widget pembacaan Quran ke layar utama",
   "premiumFeatureQuranWidgetTitle": "Widget Quran Layar Utama",
-  "premiumFeatureQuranWidgetDescription": "Baca Quran langsung dari layar utama Anda"
+  "premiumFeatureQuranWidgetDescription": "Baca Quran langsung dari layar utama Anda",
+  "rewardSystemTitle": "🎁 Fitur dengan Iklan Berhadiah",
+  "rewardDhikrWidget": "Widget Dzikir",
+  "rewardQuranWidget": "Widget Quran",
+  "rewardReminders": "Pengingat",
+  "rewardReminderTimes": "Waktu Pengingat",
+  "rewardSystemInfo": "Anda dapat menggunakan setiap fitur selama 24 jam dengan menonton 3 iklan per fitur.",
+  "rewardFeatureUnlockMessage": "Anda dapat membuka fitur ini dengan menonton iklan atau menjadi premium",
+  "rewardAdsProgress": "{adsWatched}/3 iklan",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} Iklan",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "Aktif",
+  "rewardServiceError": "Kesalahan Layanan",
+  "rewardServiceNotReady": "Layanan hadiah belum siap. Silakan restart aplikasi.",
+  "rewardAdError": "Kesalahan Iklan",
+  "rewardAdNotReady": "Iklan belum siap saat ini. Silakan coba lagi dalam beberapa detik.",
+  "rewardError": "Kesalahan",
+  "rewardAdWatchError": "Terjadi kesalahan saat menonton iklan. Silakan coba lagi.",
+    "rewardSystemLoading": "Sistem hadiah memuat...",
+  "rewardHoursLeft": "{hoursLeft} jam tersisa",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "Hadiah Diperoleh!",
+  "rewardFeatureUnlocked": "{featureName} terbuka untuk 24 jam!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "Tonton {remainingAds} iklan lagi untuk membuka fitur ini.",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "Menyiapkan Iklan",
+  "rewardAdNotReadyMessage": "Iklan belum siap. Harap tunggu beberapa detik dan coba lagi."
 }

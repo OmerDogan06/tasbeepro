@@ -1521,4 +1521,89 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'अपनी होम स्क्रीन से सीधे कुरान पढ़ें';
+
+  @override
+  String get rewardSystemTitle => '🎁 पुरस्कृत विज्ञापन से मिलने वाली सुविधाएं';
+
+  @override
+  String get rewardDhikrWidget => 'जिक्र विजेट';
+
+  @override
+  String get rewardQuranWidget => 'कुरान विजेट';
+
+  @override
+  String get rewardReminders => 'रिमाइंडर';
+
+  @override
+  String get rewardReminderTimes => 'रिमाइंडर का समय';
+
+  @override
+  String get rewardSystemInfo =>
+      'आप हर फीचर के लिए 3 विज्ञापन देखकर 24 घंटे तक हर फीचर का उपयोग कर सकते हैं।';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'आप विज्ञापन देखकर या प्रीमियम बनकर इस सुविधा को अनलॉक कर सकते हैं';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 विज्ञापन';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds विज्ञापन';
+  }
+
+  @override
+  String get rewardFeatureActive => 'सक्रिय';
+
+  @override
+  String get rewardServiceError => 'सेवा त्रुटि';
+
+  @override
+  String get rewardServiceNotReady =>
+      'पुरस्कार सेवा अभी तैयार नहीं है। कृपया ऐप को पुनः आरंभ करें।';
+
+  @override
+  String get rewardAdError => 'विज्ञापन त्रुटि';
+
+  @override
+  String get rewardAdNotReady =>
+      'विज्ञापन अभी तैयार नहीं है। कृपया कुछ सेकंड बाद पुनः प्रयास करें।';
+
+  @override
+  String get rewardError => 'त्रुटि';
+
+  @override
+  String get rewardAdWatchError =>
+      'विज्ञापन देखते समय त्रुटि आई। कृपया पुनः प्रयास करें।';
+
+  @override
+  String get rewardSystemLoading => 'रिवॉर्ड सिस्टम लोड हो रहा है...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft घंटे बचे';
+  }
+
+  @override
+  String get rewardEarned => 'रिवॉर्ड मिला!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName 24 घंटों के लिए अनलॉक हुआ!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'इस फीचर को अनलॉक करने के लिए $remainingAds और विज्ञापन देखें।';
+  }
+
+  @override
+  String get rewardAdPreparing => 'विज्ञापन तैयार हो रहा है';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'विज्ञापन अभी तैयार नहीं है। कुछ सेकंड प्रतीक्षा करें और फिर कोशिश करें।';
 }

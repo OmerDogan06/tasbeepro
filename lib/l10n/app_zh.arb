@@ -476,5 +476,63 @@
   "settingsQuranWidget": "添加古兰经小部件",
   "settingsQuranWidgetSubtitle": "将古兰经阅读小部件添加到主屏幕",
   "premiumFeatureQuranWidgetTitle": "古兰经主屏幕小部件",
-  "premiumFeatureQuranWidgetDescription": "直接从主屏幕阅读古兰经"
+  "premiumFeatureQuranWidgetDescription": "直接从主屏幕阅读古兰经",
+  "rewardSystemTitle": "🎁 奖励广告功能",
+  "rewardDhikrWidget": "念珠小部件",
+  "rewardQuranWidget": "古兰经小部件",
+  "rewardReminders": "提醒",
+  "rewardReminderTimes": "提醒时间",
+  "rewardSystemInfo": "您可以通过观看每个功能3个广告来使用每个功能24小时。",
+  "rewardFeatureUnlockMessage": "您可以通过观看广告或成为高级用户来解锁此功能",
+  "rewardAdsProgress": "{adsWatched}/3 广告",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} 广告",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "已激活",
+  "rewardServiceError": "服务错误",
+  "rewardServiceNotReady": "奖励服务尚未准备就绪。请重新启动应用程序。",
+  "rewardAdError": "广告错误",
+  "rewardAdNotReady": "广告现在还没准备好。请几秒钟后再试。",
+  "rewardError": "错误",
+  "rewardAdWatchError": "观看广告时发生错误。请重试。",
+  "rewardSystemLoading": "奖励系统加载中...",
+  "rewardHoursLeft": "还剩 {hoursLeft} 小时",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "获得奖励!",
+  "rewardFeatureUnlocked": "{featureName} 已解锁24小时!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "再观看 {remainingAds} 个广告即可解锁此功能。",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "广告准备中",
+  "rewardAdNotReadyMessage": "广告尚未准备好。请等待几秒钟后重试。"
 }

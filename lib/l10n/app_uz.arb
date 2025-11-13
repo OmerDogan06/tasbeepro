@@ -476,5 +476,63 @@
   "settingsQuranWidget": "Qur'on Vijetini Qo'shish",
   "settingsQuranWidgetSubtitle": "Bosh ekranga Qur'on o'qish vijetini qo'shing",
   "premiumFeatureQuranWidgetTitle": "Qur'on Bosh Ekran Vijeti",
-  "premiumFeatureQuranWidgetDescription": "Bosh ekraningizdan to'g'ridan-to'g'ri Qur'on o'qing"
+  "premiumFeatureQuranWidgetDescription": "Bosh ekraningizdan to'g'ridan-to'g'ri Qur'on o'qing",
+  "rewardSystemTitle": "🎁 Reklama bilan Xususiyatlar",
+  "rewardDhikrWidget": "Zikr Vijeti",
+  "rewardQuranWidget": "Qur'on Vijeti",
+  "rewardReminders": "Eslatmalar",
+  "rewardReminderTimes": "Eslatma Vaqtlari",
+  "rewardSystemInfo": "Har bir xususiyatni 3 ta reklama ko'rish orqali 24 soat davomida ishlatishingiz mumkin.",
+  "rewardFeatureUnlockMessage": "Siz reklamalarni ko'rish yoki premium bo'lish orqali bu xususiyatni ochishingiz mumkin",
+  "rewardAdsProgress": "{adsWatched}/3 reklama",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} Reklama",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "Faol",
+  "rewardServiceError": "Xizmat Xatosi",
+  "rewardServiceNotReady": "Mukofot xizmati hali tayyor emas. Iltimos, ilovani qayta ishga tushiring.",
+  "rewardAdError": "Reklama Xatosi",
+  "rewardAdNotReady": "Reklama hozir tayyor emas. Bir necha soniyadan keyin qayta urinib ko'ring.",
+  "rewardError": "Xato",
+  "rewardAdWatchError": "Reklamani ko'rishda xato yuz berdi. Iltimos, qayta urinib ko'ring.",
+  "rewardSystemLoading": "Mukofot tizimi yuklanmoqda...",
+  "rewardHoursLeft": "{hoursLeft} soat qoldi",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "Mukofot Olindi!",
+  "rewardFeatureUnlocked": "{featureName} 24 soatga ochildi!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "Bu xususiyatni ochish uchun yana {remainingAds} ta reklama ko'ring.",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "Reklama Tayyorlanmoqda",
+  "rewardAdNotReadyMessage": "Reklama hali tayyor emas. Bir necha soniya kuting va qayta urinib ko'ring."
 }

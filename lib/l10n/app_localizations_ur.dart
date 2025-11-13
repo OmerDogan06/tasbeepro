@@ -1517,4 +1517,89 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'اپنی ہوم اسکرین سے براہ راست قرآن پڑھیں';
+
+  @override
+  String get rewardSystemTitle => '🎁 اشتہاری خصوصیات';
+
+  @override
+  String get rewardDhikrWidget => 'ذکر وجیٹ';
+
+  @override
+  String get rewardQuranWidget => 'قرآن وجیٹ';
+
+  @override
+  String get rewardReminders => 'یاددہانیاں';
+
+  @override
+  String get rewardReminderTimes => 'یاددہانی کے اوقات';
+
+  @override
+  String get rewardSystemInfo =>
+      'آپ ہر فیچر کے لیے ۳ اشتہار دیکھ کر ۲۴ گھنٹے استعمال کر سکتے ہیں۔';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'آپ اشتہار دیکھ کر یا پریمیم بن کر یہ فیچر کھول سکتے ہیں';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/۳ اشتہار';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds اشتہار';
+  }
+
+  @override
+  String get rewardFeatureActive => 'فعال';
+
+  @override
+  String get rewardServiceError => 'سروس کی خرابی';
+
+  @override
+  String get rewardServiceNotReady =>
+      'انعامی سروس ابھی تیار نہیں ہے۔ برائے کرم ایپ دوبارہ شروع کریں۔';
+
+  @override
+  String get rewardAdError => 'اشتہار کی خرابی';
+
+  @override
+  String get rewardAdNotReady =>
+      'اشتہار ابھی تیار نہیں ہے۔ کچھ سیکنڈ بعد دوبارہ کوشش کریں۔';
+
+  @override
+  String get rewardError => 'خرابی';
+
+  @override
+  String get rewardAdWatchError =>
+      'اشتہار دیکھنے میں خرابی ہوئی۔ برائے کرم دوبارہ کوشش کریں۔';
+
+  @override
+  String get rewardSystemLoading => 'انعامی نظام لوڈ ہو رہا ہے...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft گھنٹے باقی';
+  }
+
+  @override
+  String get rewardEarned => 'انعام حاصل!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName 24 گھنٹوں کے لیے ان لاک ہوا!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'اس فیچر کو ان لاک کرنے کے لیے $remainingAds اور اشتہارات دیکھیں۔';
+  }
+
+  @override
+  String get rewardAdPreparing => 'اشتہار تیار ہو رہا ہے';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'اشتہار ابھی تیار نہیں ہے۔ کچھ سیکنڈ انتظار کریں اور پھر کوشش کریں۔';
 }

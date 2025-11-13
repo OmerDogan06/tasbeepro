@@ -1512,4 +1512,89 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'قرآن را مستقیماً از صفحه اصلی خود بخوانید';
+
+  @override
+  String get rewardSystemTitle => '🎁 ویژگی‌های تبلیغات جایزه‌دار';
+
+  @override
+  String get rewardDhikrWidget => 'ویجت ذکر';
+
+  @override
+  String get rewardQuranWidget => 'ویجت قرآن';
+
+  @override
+  String get rewardReminders => 'یادآوری‌ها';
+
+  @override
+  String get rewardReminderTimes => 'زمان‌های یادآوری';
+
+  @override
+  String get rewardSystemInfo =>
+      'شما می‌توانید هر ویژگی را به مدت ۲۴ ساعت با تماشای ۳ تبلیغ به ازای هر ویژگی استفاده کنید۔';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'شما می‌توانید با تماشای تبلیغات یا پریمیوم شدن این ویژگی را باز کنید';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/۳ تبلیغ';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds تبلیغ';
+  }
+
+  @override
+  String get rewardFeatureActive => 'فعال';
+
+  @override
+  String get rewardServiceError => 'خطای سرویس';
+
+  @override
+  String get rewardServiceNotReady =>
+      'سرویس جوایز هنوز آماده نیست۔ لطفاً برنامه را مجدداً راه‌اندازی کنید۔';
+
+  @override
+  String get rewardAdError => 'خطای تبلیغ';
+
+  @override
+  String get rewardAdNotReady =>
+      'تبلیغ اکنون آماده نیست۔ لطفاً چند ثانیه دیگر تلاش کنید۔';
+
+  @override
+  String get rewardError => 'خطا';
+
+  @override
+  String get rewardAdWatchError =>
+      'خطایی در حین تماشای تبلیغ رخ داد۔ لطفاً دوباره تلاش کنید۔';
+
+  @override
+  String get rewardSystemLoading => 'سیستم پاداش در حال بارگیری...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft ساعت مانده';
+  }
+
+  @override
+  String get rewardEarned => 'پاداش به دست آمد!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName برای 24 ساعت باز شد!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return '$remainingAds تبلیغ دیگر ببینید تا این ویژگی باز شود۔';
+  }
+
+  @override
+  String get rewardAdPreparing => 'آماده کردن تبلیغ';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'تبلیغ هنوز آماده نیست۔ لطفاً چند ثانیه صبر کنید و دوباره تلاش کنید۔';
 }

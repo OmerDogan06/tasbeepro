@@ -2949,6 +2949,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Read Quran directly from your home screen'**
   String get premiumFeatureQuranWidgetDescription;
+
+  /// Section header for reward system features
+  ///
+  /// In en, this message translates to:
+  /// **'🎁 Features with Rewarded Ads'**
+  String get rewardSystemTitle;
+
+  /// Dhikr widget feature title
+  ///
+  /// In en, this message translates to:
+  /// **'Dhikr Widget'**
+  String get rewardDhikrWidget;
+
+  /// Quran widget feature title
+  ///
+  /// In en, this message translates to:
+  /// **'Quran Widget'**
+  String get rewardQuranWidget;
+
+  /// Reminders feature title
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders'**
+  String get rewardReminders;
+
+  /// Reminder times feature title
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder Times'**
+  String get rewardReminderTimes;
+
+  /// Information about how reward system works
+  ///
+  /// In en, this message translates to:
+  /// **'You can use each feature for 24 hours by watching 3 ads per feature.'**
+  String get rewardSystemInfo;
+
+  /// Message for locked features that can be unlocked with ads
+  ///
+  /// In en, this message translates to:
+  /// **'You can unlock this feature by watching ads or becoming premium'**
+  String get rewardFeatureUnlockMessage;
+
+  /// Progress text showing ads watched
+  ///
+  /// In en, this message translates to:
+  /// **'{adsWatched}/3 ads'**
+  String rewardAdsProgress(int adsWatched);
+
+  /// Watch ad button text
+  ///
+  /// In en, this message translates to:
+  /// **'{remainingAds} Ads'**
+  String rewardWatchAdButton(int remainingAds);
+
+  /// Status text for active reward features
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get rewardFeatureActive;
+
+  /// Error title for reward service issues
+  ///
+  /// In en, this message translates to:
+  /// **'Service Error'**
+  String get rewardServiceError;
+
+  /// Error message when reward service is not ready
+  ///
+  /// In en, this message translates to:
+  /// **'Reward service is not ready yet. Please restart the app.'**
+  String get rewardServiceNotReady;
+
+  /// Error title for ad-related issues
+  ///
+  /// In en, this message translates to:
+  /// **'Ad Error'**
+  String get rewardAdError;
+
+  /// Error message when ad is not ready
+  ///
+  /// In en, this message translates to:
+  /// **'Ad is not ready right now. Please try again in a few seconds.'**
+  String get rewardAdNotReady;
+
+  /// Generic error title for reward system
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get rewardError;
+
+  /// Error message when ad watching fails
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while watching the ad. Please try again.'**
+  String get rewardAdWatchError;
+
+  /// Loading message for reward system
+  ///
+  /// In en, this message translates to:
+  /// **'Reward system loading...'**
+  String get rewardSystemLoading;
+
+  /// Hours remaining for reward feature
+  ///
+  /// In en, this message translates to:
+  /// **'{hoursLeft} hours left'**
+  String rewardHoursLeft(int hoursLeft);
+
+  /// Title when user earns a reward
+  ///
+  /// In en, this message translates to:
+  /// **'Reward Earned!'**
+  String get rewardEarned;
+
+  /// Message when feature is unlocked
+  ///
+  /// In en, this message translates to:
+  /// **'{featureName} unlocked for 24 hours!'**
+  String rewardFeatureUnlocked(String featureName);
+
+  /// Message showing remaining ads needed
+  ///
+  /// In en, this message translates to:
+  /// **'Watch {remainingAds} more ads to unlock this feature.'**
+  String rewardAdsRemaining(int remainingAds);
+
+  /// Title when ad is being prepared
+  ///
+  /// In en, this message translates to:
+  /// **'Ad Preparing'**
+  String get rewardAdPreparing;
+
+  /// Message when ad is not ready
+  ///
+  /// In en, this message translates to:
+  /// **'Ad is not ready yet. Please wait a few seconds and try again.'**
+  String get rewardAdNotReadyMessage;
 }
 
 class _AppLocalizationsDelegate

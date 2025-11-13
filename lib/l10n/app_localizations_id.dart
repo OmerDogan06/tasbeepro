@@ -1529,4 +1529,89 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'Baca Quran langsung dari layar utama Anda';
+
+  @override
+  String get rewardSystemTitle => '🎁 Fitur dengan Iklan Berhadiah';
+
+  @override
+  String get rewardDhikrWidget => 'Widget Dzikir';
+
+  @override
+  String get rewardQuranWidget => 'Widget Quran';
+
+  @override
+  String get rewardReminders => 'Pengingat';
+
+  @override
+  String get rewardReminderTimes => 'Waktu Pengingat';
+
+  @override
+  String get rewardSystemInfo =>
+      'Anda dapat menggunakan setiap fitur selama 24 jam dengan menonton 3 iklan per fitur.';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'Anda dapat membuka fitur ini dengan menonton iklan atau menjadi premium';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 iklan';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds Iklan';
+  }
+
+  @override
+  String get rewardFeatureActive => 'Aktif';
+
+  @override
+  String get rewardServiceError => 'Kesalahan Layanan';
+
+  @override
+  String get rewardServiceNotReady =>
+      'Layanan hadiah belum siap. Silakan restart aplikasi.';
+
+  @override
+  String get rewardAdError => 'Kesalahan Iklan';
+
+  @override
+  String get rewardAdNotReady =>
+      'Iklan belum siap saat ini. Silakan coba lagi dalam beberapa detik.';
+
+  @override
+  String get rewardError => 'Kesalahan';
+
+  @override
+  String get rewardAdWatchError =>
+      'Terjadi kesalahan saat menonton iklan. Silakan coba lagi.';
+
+  @override
+  String get rewardSystemLoading => 'Sistem hadiah memuat...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft jam tersisa';
+  }
+
+  @override
+  String get rewardEarned => 'Hadiah Diperoleh!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName terbuka untuk 24 jam!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'Tonton $remainingAds iklan lagi untuk membuka fitur ini.';
+  }
+
+  @override
+  String get rewardAdPreparing => 'Menyiapkan Iklan';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'Iklan belum siap. Harap tunggu beberapa detik dan coba lagi.';
 }

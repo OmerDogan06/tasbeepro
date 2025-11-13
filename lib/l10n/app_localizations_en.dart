@@ -1527,4 +1527,89 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'Read Quran directly from your home screen';
+
+  @override
+  String get rewardSystemTitle => '🎁 Features with Rewarded Ads';
+
+  @override
+  String get rewardDhikrWidget => 'Dhikr Widget';
+
+  @override
+  String get rewardQuranWidget => 'Quran Widget';
+
+  @override
+  String get rewardReminders => 'Reminders';
+
+  @override
+  String get rewardReminderTimes => 'Reminder Times';
+
+  @override
+  String get rewardSystemInfo =>
+      'You can use each feature for 24 hours by watching 3 ads per feature.';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'You can unlock this feature by watching ads or becoming premium';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 ads';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds Ads';
+  }
+
+  @override
+  String get rewardFeatureActive => 'Active';
+
+  @override
+  String get rewardServiceError => 'Service Error';
+
+  @override
+  String get rewardServiceNotReady =>
+      'Reward service is not ready yet. Please restart the app.';
+
+  @override
+  String get rewardAdError => 'Ad Error';
+
+  @override
+  String get rewardAdNotReady =>
+      'Ad is not ready right now. Please try again in a few seconds.';
+
+  @override
+  String get rewardError => 'Error';
+
+  @override
+  String get rewardAdWatchError =>
+      'An error occurred while watching the ad. Please try again.';
+
+  @override
+  String get rewardSystemLoading => 'Reward system loading...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft hours left';
+  }
+
+  @override
+  String get rewardEarned => 'Reward Earned!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName unlocked for 24 hours!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'Watch $remainingAds more ads to unlock this feature.';
+  }
+
+  @override
+  String get rewardAdPreparing => 'Ad Preparing';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'Ad is not ready yet. Please wait a few seconds and try again.';
 }

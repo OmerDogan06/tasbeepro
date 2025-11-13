@@ -476,5 +476,63 @@
   "settingsQuranWidget": "قرآن وجیٹ شامل کریں",
   "settingsQuranWidgetSubtitle": "گھر کی اسکرین پر قرآن پڑھنے کا وجیٹ شامل کریں",
   "premiumFeatureQuranWidgetTitle": "قرآن ہوم اسکرین وجیٹ",
-  "premiumFeatureQuranWidgetDescription": "اپنی ہوم اسکرین سے براہ راست قرآن پڑھیں"
+  "premiumFeatureQuranWidgetDescription": "اپنی ہوم اسکرین سے براہ راست قرآن پڑھیں",
+  "rewardSystemTitle": "🎁 اشتہاری خصوصیات",
+  "rewardDhikrWidget": "ذکر وجیٹ",
+  "rewardQuranWidget": "قرآن وجیٹ",
+  "rewardReminders": "یاددہانیاں",
+  "rewardReminderTimes": "یاددہانی کے اوقات",
+  "rewardSystemInfo": "آپ ہر فیچر کے لیے ۳ اشتہار دیکھ کر ۲۴ گھنٹے استعمال کر سکتے ہیں۔",
+  "rewardFeatureUnlockMessage": "آپ اشتہار دیکھ کر یا پریمیم بن کر یہ فیچر کھول سکتے ہیں",
+  "rewardAdsProgress": "{adsWatched}/۳ اشتہار",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} اشتہار",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "فعال",
+  "rewardServiceError": "سروس کی خرابی",
+  "rewardServiceNotReady": "انعامی سروس ابھی تیار نہیں ہے۔ برائے کرم ایپ دوبارہ شروع کریں۔",
+  "rewardAdError": "اشتہار کی خرابی",
+  "rewardAdNotReady": "اشتہار ابھی تیار نہیں ہے۔ کچھ سیکنڈ بعد دوبارہ کوشش کریں۔",
+  "rewardError": "خرابی",
+  "rewardAdWatchError": "اشتہار دیکھنے میں خرابی ہوئی۔ برائے کرم دوبارہ کوشش کریں۔",
+  "rewardSystemLoading": "انعامی نظام لوڈ ہو رہا ہے...",
+  "rewardHoursLeft": "{hoursLeft} گھنٹے باقی",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "انعام حاصل!",
+  "rewardFeatureUnlocked": "{featureName} 24 گھنٹوں کے لیے ان لاک ہوا!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "اس فیچر کو ان لاک کرنے کے لیے {remainingAds} اور اشتہارات دیکھیں۔",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "اشتہار تیار ہو رہا ہے",
+  "rewardAdNotReadyMessage": "اشتہار ابھی تیار نہیں ہے۔ کچھ سیکنڈ انتظار کریں اور پھر کوشش کریں۔"
 }

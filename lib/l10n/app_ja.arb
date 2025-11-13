@@ -476,5 +476,63 @@
   "settingsQuranWidget": "コーランウィジェットを追加",
   "settingsQuranWidgetSubtitle": "ホーム画面にコーラン読書ウィジェットを追加する",
   "premiumFeatureQuranWidgetTitle": "コーランホーム画面ウィジェット",
-  "premiumFeatureQuranWidgetDescription": "ホーム画面から直接コーランを読む"
+  "premiumFeatureQuranWidgetDescription": "ホーム画面から直接コーランを読む",
+  "rewardSystemTitle": "🎁 報酬広告機能",
+  "rewardDhikrWidget": "ズィクルウィジェット",
+  "rewardQuranWidget": "コーランウィジェット",
+  "rewardReminders": "リマインダー",
+  "rewardReminderTimes": "リマインダー時刻",
+  "rewardSystemInfo": "各機能につき3つの広告を視聴することで、24時間各機能を使用できます。",
+  "rewardFeatureUnlockMessage": "広告を視聴するかプレミアムになることで、この機能のロックを解除できます",
+  "rewardAdsProgress": "{adsWatched}/3 広告",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} 広告",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "アクティブ",
+  "rewardServiceError": "サービスエラー",
+  "rewardServiceNotReady": "報酬サービスはまだ準備できていません。アプリを再起動してください。",
+  "rewardAdError": "広告エラー",
+  "rewardAdNotReady": "広告は今すぐには準備できていません。数秒後にもう一度お試しください。",
+  "rewardError": "エラー",
+  "rewardAdWatchError": "広告の視聴中にエラーが発生しました。もう一度お試しください。",
+  "rewardSystemLoading": "報酬システム読み込み中...",
+  "rewardHoursLeft": "残り {hoursLeft} 時間",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "報酬獲得!",
+  "rewardFeatureUnlocked": "{featureName} が24時間解除されました!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "この機能を解除するには、さらに {remainingAds} 個の広告をご覧ください。",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "広告準備中",
+  "rewardAdNotReadyMessage": "広告の準備がまだできていません。数秒お待ちいただき、もう一度お試しください。"
 }

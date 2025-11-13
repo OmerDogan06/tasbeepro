@@ -1539,4 +1539,89 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'Soma Qurani moja kwa moja kutoka skrini yako kuu';
+
+  @override
+  String get rewardSystemTitle => '🎁 Vipengele vya Matangazo ya Zawadi';
+
+  @override
+  String get rewardDhikrWidget => 'Widget ya Dhikiri';
+
+  @override
+  String get rewardQuranWidget => 'Widget ya Qurani';
+
+  @override
+  String get rewardReminders => 'Vikumbusho';
+
+  @override
+  String get rewardReminderTimes => 'Nyakati za Vikumbusho';
+
+  @override
+  String get rewardSystemInfo =>
+      'Unaweza kutumia kila kipengele kwa masaa 24 kwa kuangalia matangazo 3 kwa kila kipengele.';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'Unaweza kufungua kipengele hiki kwa kuangalia matangazo au kuwa mtumiaji wa bei ya juu';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 matangazo';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return 'Matangazo $remainingAds';
+  }
+
+  @override
+  String get rewardFeatureActive => 'Inatumika';
+
+  @override
+  String get rewardServiceError => 'Hitilafu ya Huduma';
+
+  @override
+  String get rewardServiceNotReady =>
+      'Huduma ya zawadi bado haijaandaliwa. Tafadhali anzisha upya programu.';
+
+  @override
+  String get rewardAdError => 'Hitilafu ya Matangazo';
+
+  @override
+  String get rewardAdNotReady =>
+      'Tangazo bado halijaandaliwa sasa. Tafadhali jaribu tena baada ya sekunde chache.';
+
+  @override
+  String get rewardError => 'Hitilafu';
+
+  @override
+  String get rewardAdWatchError =>
+      'Hitilafu imetokea wakati wa kuangalia tangazo. Tafadhali jaribu tena.';
+
+  @override
+  String get rewardSystemLoading => 'Mfumo wa zawadi unachukua...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return 'Masaa $hoursLeft yamebaki';
+  }
+
+  @override
+  String get rewardEarned => 'Zawadi Inapatikana!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName imefunguliwa kwa masaa 24!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'Tazama matangazo $remainingAds zaidi ili kufungua kipengele hiki.';
+  }
+
+  @override
+  String get rewardAdPreparing => 'Kuandaa Tangazo';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'Tangazo bado halijaandaliwa. Tafadhali subiri sekunde chache na ujaribu tena.';
 }

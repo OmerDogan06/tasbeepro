@@ -1496,4 +1496,89 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'اقرأ القرآن مباشرة من شاشتك الرئيسية';
+
+  @override
+  String get rewardSystemTitle => '🎁 الميزات مع الإعلانات المكافأة';
+
+  @override
+  String get rewardDhikrWidget => 'ويدجت الذكر';
+
+  @override
+  String get rewardQuranWidget => 'ويدجت القرآن';
+
+  @override
+  String get rewardReminders => 'التذكيرات';
+
+  @override
+  String get rewardReminderTimes => 'أوقات التذكير';
+
+  @override
+  String get rewardSystemInfo =>
+      'يمكنك استخدام كل ميزة لمدة 24 ساعة من خلال مشاهدة 3 إعلانات لكل ميزة.';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'يمكنك إلغاء قفل هذه الميزة من خلال مشاهدة الإعلانات أو أن تصبح مميزًا';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 إعلانات';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds إعلانات';
+  }
+
+  @override
+  String get rewardFeatureActive => 'نشط';
+
+  @override
+  String get rewardServiceError => 'خطأ في الخدمة';
+
+  @override
+  String get rewardServiceNotReady =>
+      'خدمة المكافآت غير جاهزة بعد. يرجى إعادة تشغيل التطبيق.';
+
+  @override
+  String get rewardAdError => 'خطأ في الإعلان';
+
+  @override
+  String get rewardAdNotReady =>
+      'الإعلان غير جاهز الآن. يرجى المحاولة مرة أخرى خلال بضع ثوان.';
+
+  @override
+  String get rewardError => 'خطأ';
+
+  @override
+  String get rewardAdWatchError =>
+      'حدث خطأ أثناء مشاهدة الإعلان. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get rewardSystemLoading => 'نظام المكافآت يتم التحميل...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft ساعة متبقية';
+  }
+
+  @override
+  String get rewardEarned => 'تم كسب المكافأة!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return 'تم إلغاء قفل $featureName لمدة 24 ساعة!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'شاهد $remainingAds إعلانات أخرى لإلغاء قفل هذه الميزة.';
+  }
+
+  @override
+  String get rewardAdPreparing => 'الإعلان قيد التحضير';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'الإعلان غير جاهز بعد. يرجى الانتظار بضع ثوان والمحاولة مرة أخرى.';
 }

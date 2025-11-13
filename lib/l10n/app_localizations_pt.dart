@@ -1549,4 +1549,90 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'Leia o Alcorão diretamente da sua tela inicial';
+
+  @override
+  String get rewardSystemTitle =>
+      '🎁 Funcionalidades com Anúncios Recompensados';
+
+  @override
+  String get rewardDhikrWidget => 'Widget de Dhikr';
+
+  @override
+  String get rewardQuranWidget => 'Widget do Alcorão';
+
+  @override
+  String get rewardReminders => 'Lembretes';
+
+  @override
+  String get rewardReminderTimes => 'Horários dos Lembretes';
+
+  @override
+  String get rewardSystemInfo =>
+      'Pode usar cada funcionalidade por 24 horas assistindo a 3 anúncios por funcionalidade.';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'Pode desbloquear esta funcionalidade assistindo anúncios ou tornando-se premium';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 anúncios';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds Anúncios';
+  }
+
+  @override
+  String get rewardFeatureActive => 'Ativo';
+
+  @override
+  String get rewardServiceError => 'Erro do Serviço';
+
+  @override
+  String get rewardServiceNotReady =>
+      'O serviço de recompensas ainda não está pronto. Por favor, reinicie a aplicação.';
+
+  @override
+  String get rewardAdError => 'Erro do Anúncio';
+
+  @override
+  String get rewardAdNotReady =>
+      'O anúncio não está pronto agora. Tente novamente em alguns segundos.';
+
+  @override
+  String get rewardError => 'Erro';
+
+  @override
+  String get rewardAdWatchError =>
+      'Ocorreu um erro ao assistir o anúncio. Por favor, tente novamente.';
+
+  @override
+  String get rewardSystemLoading => 'Sistema de recompensas carregando...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft horas restantes';
+  }
+
+  @override
+  String get rewardEarned => 'Recompensa Ganha!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName desbloqueado por 24 horas!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'Assista $remainingAds anúncios a mais para desbloquear esta função.';
+  }
+
+  @override
+  String get rewardAdPreparing => 'Preparando Anúncio';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'O anúncio ainda não está pronto. Aguarde alguns segundos e tente novamente.';
 }

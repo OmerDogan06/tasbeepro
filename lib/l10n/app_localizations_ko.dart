@@ -1462,4 +1462,85 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get premiumFeatureQuranWidgetDescription => '홈 화면에서 직접 꾸란을 읽으세요';
+
+  @override
+  String get rewardSystemTitle => '🎁 보상 광고 기능';
+
+  @override
+  String get rewardDhikrWidget => '지크르 위젯';
+
+  @override
+  String get rewardQuranWidget => '꾸란 위젯';
+
+  @override
+  String get rewardReminders => '리마인더';
+
+  @override
+  String get rewardReminderTimes => '리마인더 시간';
+
+  @override
+  String get rewardSystemInfo => '각 기능당 3개의 광고를 시청하여 24시간 동안 각 기능을 사용할 수 있습니다.';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      '광고를 시청하거나 프리미엄이 되어 이 기능을 잠금 해제할 수 있습니다';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 광고';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds 광고';
+  }
+
+  @override
+  String get rewardFeatureActive => '활성';
+
+  @override
+  String get rewardServiceError => '서비스 오류';
+
+  @override
+  String get rewardServiceNotReady => '보상 서비스가 아직 준비되지 않았습니다. 앱을 다시 시작해 주세요.';
+
+  @override
+  String get rewardAdError => '광고 오류';
+
+  @override
+  String get rewardAdNotReady => '광고가 지금 준비되지 않았습니다. 몇 초 후에 다시 시도해 주세요.';
+
+  @override
+  String get rewardError => '오류';
+
+  @override
+  String get rewardAdWatchError => '광고 시청 중 오류가 발생했습니다. 다시 시도해 주세요.';
+
+  @override
+  String get rewardSystemLoading => '보상 시스템 로딩 중...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft시간 남음';
+  }
+
+  @override
+  String get rewardEarned => '보상 획득!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName이(가) 24시간 동안 잠금 해제되었습니다!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return '이 기능을 잠금 해제하려면 $remainingAds개의 광고를 더 시청하세요.';
+  }
+
+  @override
+  String get rewardAdPreparing => '광고 준비 중';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      '광고가 아직 준비되지 않았습니다. 몇 초 기다린 후 다시 시도해 주세요.';
 }

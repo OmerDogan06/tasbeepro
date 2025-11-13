@@ -1528,4 +1528,89 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get premiumFeatureQuranWidgetDescription =>
       'Читайте Коран прямо с главного экрана';
+
+  @override
+  String get rewardSystemTitle => '🎁 Функции с Награждающей Рекламой';
+
+  @override
+  String get rewardDhikrWidget => 'Виджет Зикра';
+
+  @override
+  String get rewardQuranWidget => 'Виджет Корана';
+
+  @override
+  String get rewardReminders => 'Напоминания';
+
+  @override
+  String get rewardReminderTimes => 'Время Напоминаний';
+
+  @override
+  String get rewardSystemInfo =>
+      'Вы можете использовать каждую функцию в течение 24 часов, посмотрев 3 рекламы за функцию.';
+
+  @override
+  String get rewardFeatureUnlockMessage =>
+      'Вы можете разблокировать эту функцию, посмотрев рекламу или став премиум пользователем';
+
+  @override
+  String rewardAdsProgress(int adsWatched) {
+    return '$adsWatched/3 реклам';
+  }
+
+  @override
+  String rewardWatchAdButton(int remainingAds) {
+    return '$remainingAds Реклам';
+  }
+
+  @override
+  String get rewardFeatureActive => 'Активно';
+
+  @override
+  String get rewardServiceError => 'Ошибка Службы';
+
+  @override
+  String get rewardServiceNotReady =>
+      'Служба наград пока не готова. Пожалуйста, перезапустите приложение.';
+
+  @override
+  String get rewardAdError => 'Ошибка Рекламы';
+
+  @override
+  String get rewardAdNotReady =>
+      'Реклама сейчас не готова. Пожалуйста, попробуйте через несколько секунд.';
+
+  @override
+  String get rewardError => 'Ошибка';
+
+  @override
+  String get rewardAdWatchError =>
+      'Произошла ошибка при просмотре рекламы. Пожалуйста, попробуйте еще раз.';
+
+  @override
+  String get rewardSystemLoading => 'Система наград загружается...';
+
+  @override
+  String rewardHoursLeft(int hoursLeft) {
+    return '$hoursLeft часов осталось';
+  }
+
+  @override
+  String get rewardEarned => 'Награда Получена!';
+
+  @override
+  String rewardFeatureUnlocked(String featureName) {
+    return '$featureName разблокировано на 24 часа!';
+  }
+
+  @override
+  String rewardAdsRemaining(int remainingAds) {
+    return 'Посмотрите ещё $remainingAds рекламы, чтобы разблокировать эту функцию.';
+  }
+
+  @override
+  String get rewardAdPreparing => 'Подготовка Рекламы';
+
+  @override
+  String get rewardAdNotReadyMessage =>
+      'Реклама ещё не готова. Подождите несколько секунд и попробуйте снова.';
 }

@@ -476,5 +476,63 @@
   "settingsQuranWidget": "꾸란 위젯 추가",
   "settingsQuranWidgetSubtitle": "홈 화면에 꾸란 읽기 위젯을 추가하세요",
   "premiumFeatureQuranWidgetTitle": "꾸란 홈 화면 위젯",
-  "premiumFeatureQuranWidgetDescription": "홈 화면에서 직접 꾸란을 읽으세요"
+  "premiumFeatureQuranWidgetDescription": "홈 화면에서 직접 꾸란을 읽으세요",
+  "rewardSystemTitle": "🎁 보상 광고 기능",
+  "rewardDhikrWidget": "지크르 위젯",
+  "rewardQuranWidget": "꾸란 위젯",
+  "rewardReminders": "리마인더",
+  "rewardReminderTimes": "리마인더 시간",
+  "rewardSystemInfo": "각 기능당 3개의 광고를 시청하여 24시간 동안 각 기능을 사용할 수 있습니다.",
+  "rewardFeatureUnlockMessage": "광고를 시청하거나 프리미엄이 되어 이 기능을 잠금 해제할 수 있습니다",
+  "rewardAdsProgress": "{adsWatched}/3 광고",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} 광고",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "활성",
+  "rewardServiceError": "서비스 오류",
+  "rewardServiceNotReady": "보상 서비스가 아직 준비되지 않았습니다. 앱을 다시 시작해 주세요.",
+  "rewardAdError": "광고 오류",
+  "rewardAdNotReady": "광고가 지금 준비되지 않았습니다. 몇 초 후에 다시 시도해 주세요.",
+  "rewardError": "오류",
+  "rewardAdWatchError": "광고 시청 중 오류가 발생했습니다. 다시 시도해 주세요.",
+  "rewardSystemLoading": "보상 시스템 로딩 중...",
+  "rewardHoursLeft": "{hoursLeft}시간 남음",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "보상 획득!",
+  "rewardFeatureUnlocked": "{featureName}이(가) 24시간 동안 잠금 해제되었습니다!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "이 기능을 잠금 해제하려면 {remainingAds}개의 광고를 더 시청하세요.",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "광고 준비 중",
+  "rewardAdNotReadyMessage": "광고가 아직 준비되지 않았습니다. 몇 초 기다린 후 다시 시도해 주세요."
 }

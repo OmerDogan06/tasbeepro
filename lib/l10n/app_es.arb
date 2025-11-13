@@ -476,5 +476,63 @@
   "settingsQuranWidget": "Agregar Widget del Corán",
   "settingsQuranWidgetSubtitle": "Agregue el widget de lectura del Corán a la pantalla de inicio",
   "premiumFeatureQuranWidgetTitle": "Widget del Corán de Pantalla de Inicio",
-  "premiumFeatureQuranWidgetDescription": "Lea el Corán directamente desde su pantalla de inicio"
+  "premiumFeatureQuranWidgetDescription": "Lea el Corán directamente desde su pantalla de inicio",
+  "rewardSystemTitle": "🎁 Funciones con Anuncios Recompensados",
+  "rewardDhikrWidget": "Widget de Dhikr",
+  "rewardQuranWidget": "Widget del Corán",
+  "rewardReminders": "Recordatorios",
+  "rewardReminderTimes": "Horarios de Recordatorio",
+  "rewardSystemInfo": "Puedes usar cada función durante 24 horas viendo 3 anuncios por función.",
+  "rewardFeatureUnlockMessage": "Puedes desbloquear esta función viendo anuncios o volviéndote premium",
+  "rewardAdsProgress": "{adsWatched}/3 anuncios",
+  "@rewardAdsProgress": {
+    "placeholders": {
+      "adsWatched": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardWatchAdButton": "{remainingAds} Anuncios",
+  "@rewardWatchAdButton": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardFeatureActive": "Activo",
+  "rewardServiceError": "Error del Servicio",
+  "rewardServiceNotReady": "El servicio de recompensas aún no está listo. Por favor reinicia la aplicación.",
+  "rewardAdError": "Error de Anuncio",
+  "rewardAdNotReady": "El anuncio no está listo ahora. Por favor inténtalo de nuevo en unos segundos.",
+  "rewardError": "Error",
+  "rewardAdWatchError": "Ocurrió un error al ver el anuncio. Por favor inténtalo de nuevo.",
+    "rewardSystemLoading": "Sistema de recompensas cargando...",
+  "rewardHoursLeft": "{hoursLeft} horas restantes",
+  "@rewardHoursLeft": {
+    "placeholders": {
+      "hoursLeft": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardEarned": "¡Recompensa Obtenida!",
+  "rewardFeatureUnlocked": "¡{featureName} desbloqueado por 24 horas!",
+  "@rewardFeatureUnlocked": {
+    "placeholders": {
+      "featureName": {
+        "type": "String"
+      }
+    }
+  },
+  "rewardAdsRemaining": "Mira {remainingAds} anuncios más para desbloquear esta función.",
+  "@rewardAdsRemaining": {
+    "placeholders": {
+      "remainingAds": {
+        "type": "int"
+      }
+    }
+  },
+  "rewardAdPreparing": "Preparando Anuncio",
+  "rewardAdNotReadyMessage": "El anuncio no está listo aún. Por favor espera unos segundos e inténtalo de nuevo."
 }
