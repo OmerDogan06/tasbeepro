@@ -22,8 +22,6 @@ class QuranWidgetConfigActivity : Activity() {
     private lateinit var suraSpinner: Spinner
     private lateinit var fontSizeSeekBar: SeekBar
     private lateinit var fontSizeLabel: TextView
-    private lateinit var previewSuraName: TextView
-    private lateinit var previewText: TextView
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
 
@@ -56,8 +54,6 @@ class QuranWidgetConfigActivity : Activity() {
         suraSpinner = findViewById(R.id.sura_spinner)
         fontSizeSeekBar = findViewById(R.id.font_size_seekbar)
         fontSizeLabel = findViewById(R.id.font_size_label)
-        previewSuraName = findViewById(R.id.preview_sura_name)
-        previewText = findViewById(R.id.preview_text)
         saveButton = findViewById(R.id.save_button)
         cancelButton = findViewById(R.id.cancel_button)
     }
@@ -76,7 +72,7 @@ class QuranWidgetConfigActivity : Activity() {
 
         suraSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                updatePreview()
+                // Sure seçimi yapıldı
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -90,7 +86,6 @@ class QuranWidgetConfigActivity : Activity() {
         fontSizeSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 fontSizeLabel.text = getString(R.string.font_size_label, progress)
-                updatePreview()
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
@@ -119,32 +114,6 @@ class QuranWidgetConfigActivity : Activity() {
         
         // Font boyutunu ayarla
         fontSizeSeekBar.progress = fontSize.toInt()
-        
-        updatePreview()
-    }
-
-    private fun updatePreview() {
-        val selectedSura = suraSpinner.selectedItemPosition + 1
-        val fontSize = fontSizeSeekBar.progress.toFloat()
-
-        // Önizleme metinlerini güncelle
-        val suraName = getSuraName(selectedSura)
-        previewSuraName.text = suraName
-        previewSuraName.textSize = fontSize
-
-        // Gerçek sure metninin başlangıcını göster
-        val quranDatabase = QuranDatabase(this)
-        val suraData = quranDatabase.getSuraData(selectedSura)
-        val previewText = if (suraData.ayahs.isNotEmpty()) {
-            // İlk birkaç ayeti göster
-            suraData.ayahs.take(3).joinToString(" ۝ ") { it.trim() } + 
-            if (suraData.ayahs.size > 3) " ..." else ""
-        } else {
-            "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ"
-        }
-        
-        this.previewText.text = previewText
-        this.previewText.textSize = fontSize
     }
 
     private fun saveConfiguration() {

@@ -177,60 +177,6 @@
 
         </LinearLayout>
 
-        <!-- Widget Önizleme -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/setting_card_background"
-            android:padding="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/widget_preview_title"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#2D5016"
-                android:layout_marginBottom="12dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:background="@drawable/preview_background"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/preview_sura_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Al-Fatiha"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#2D5016"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="serif" />
-
-                <TextView
-                    android:id="@+id/preview_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ"
-                    android:textSize="14sp"
-                    android:textColor="#2D5016"
-                    android:gravity="center"
-                    android:textDirection="rtl"
-                    android:fontFamily="serif" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
         <!-- Butonlar -->
         <LinearLayout
             android:layout_width="match_parent"
