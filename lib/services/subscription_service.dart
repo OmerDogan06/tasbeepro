@@ -137,6 +137,7 @@ class SubscriptionService extends GetxController {
     super.onInit();
     await _loadPremiumStatus();
     await _initializePurchases();
+    await _updateAllWidgets();
     _startListeningToPurchaseUpdates();
   }
 
