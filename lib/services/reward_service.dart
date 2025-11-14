@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:tasbeepro/services/subscription_service.dart';
@@ -6,6 +7,7 @@ import '../l10n/app_localizations.dart';
 import 'storage_service.dart';
 import 'ad_service.dart';
 import 'language_service.dart';
+import 'package:http/http.dart' as http;
 
 // Reward feature status model
 class RewardFeatureStatus {
@@ -57,6 +59,43 @@ class RewardService extends GetxService {
     } catch (e) {
       return null;
     }
+  }
+
+  // Google'dan gerçek zamanı al
+  Future<DateTime> _getNetworkTime() async {
+    try {
+      final response = await http.head(
+        Uri.parse('https://www.google.com'),
+        headers: {'User-Agent': 'Mozilla/5.0 (compatible; TasbeePro/1.0)'},
+      ).timeout(const Duration(seconds: 10));
+      
+      final dateHeader = response.headers['date'];
+      if (dateHeader != null) {
+        if (kDebugMode) {
+          debugPrint('📅 Date header from Google: $dateHeader');
+        }
+        
+        final networkTimeUtc = HttpDate.parse(dateHeader);
+        final networkTimeLocal = networkTimeUtc.toLocal();
+        
+        if (kDebugMode) {
+          debugPrint('🌐 Network time from Google (UTC): $networkTimeUtc');
+          debugPrint('🌐 Network time from Google (Local): $networkTimeLocal');
+          debugPrint('📱 Local time: ${DateTime.now()}');
+          debugPrint('⏰ Time difference: ${DateTime.now().difference(networkTimeLocal).inSeconds} seconds');
+        }
+        
+        return networkTimeLocal;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint('❌ Error fetching network time from Google: $e');
+        debugPrint('⚠️ Falling back to system time');
+      }
+    }
+    
+    // Hata durumunda sistem saatini kullan
+    return DateTime.now();
   }
 
   // Feature status reactive variables
@@ -139,7 +178,7 @@ class RewardService extends GetxService {
     final adsWatched = storageService.getRewardAdsWatched(featureType);
     final unlockedAt = storageService.getRewardUnlockedAt(featureType);
     
-    // Süresi dolmuşsa temizle
+    // Süresi dolmuşsa temizle (sistem saati ile kontrol - UI için)
     if (unlockedAt != null && DateTime.now().difference(unlockedAt).inHours >= 24) {
       _clearFeatureStatus(featureType, storageService);
       return RewardFeatureStatus(featureType: featureType, adsWatched: 0);
@@ -200,11 +239,12 @@ class RewardService extends GetxService {
       
       if (newAdsWatched >= 3) {
         // 3. reklam izlendi - özelliği aç
-        newUnlockedAt = DateTime.now();
+        newUnlockedAt = await _getNetworkTime();
         newAdsWatched = 0; // Sayacı sıfırla
         
         if (kDebugMode) {
           debugPrint('🎉 Feature unlocked: ${_getFeatureName(featureType)} for 24 hours');
+          debugPrint('🕐 Unlocked at network time: $newUnlockedAt');
         }
       }
       
