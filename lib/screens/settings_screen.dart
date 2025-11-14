@@ -316,6 +316,71 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ]),
 
+                // Android 12+ Widget Uyarısı - Kur'an Widget için
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Color(0xFFFFF8E1), Color(0xFFFFE0B2)],
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: Colors.orange.withAlpha(128),
+                      width: 1,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.orange.withAlpha(77),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: Colors.orange.withAlpha(51),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Icon(
+                          Icons.warning_amber,
+                          color: Colors.orange.shade700,
+                          size: 20,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)?.widgetAndroid12WarningTitle ?? 'Android Sürüm Uyarısı',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.orange.shade800,
+                                fontSize: 13,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              AppLocalizations.of(context)?.widgetAndroid12Warning ?? 'Ana ekran widget\'larının sorunsuz çalışması için en az Android 12 (API 31) gereklidir.',
+                              style: TextStyle(
+                                color: Colors.orange.shade700,
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
                 const SizedBox(height: 24),
 
                 // Hatırlatıcılar (Pro Özelliği)
@@ -500,6 +565,71 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     rewardFeatureType: RewardFeatureType.dhikrWidget
                   ),
                 ]),
+
+                // Android 12+ Widget Uyarısı - Dhikr Widget için
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Color(0xFFFFF8E1), Color(0xFFFFE0B2)],
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: Colors.orange.withAlpha(128),
+                      width: 1,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.orange.withAlpha(77),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: Colors.orange.withAlpha(51),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Icon(
+                          Icons.warning_amber,
+                          color: Colors.orange.shade700,
+                          size: 20,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)?.widgetAndroid12WarningTitle ?? 'Android Sürüm Uyarısı',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.orange.shade800,
+                                fontSize: 13,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              AppLocalizations.of(context)?.widgetAndroid12Warning ?? 'Ana ekran widget\'larının sorunsuz çalışması için en az Android 12 (API 31) gereklidir.',
+                              style: TextStyle(
+                                color: Colors.orange.shade700,
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
 
                 const SizedBox(height: 24),
 

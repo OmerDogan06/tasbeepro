@@ -1505,7 +1505,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get settingsQuranWidgetSubtitle =>
-      'เพิ่มวิดเจ็ตการอ่านอัลกุรอานไปยังหน้าจอหลัก';
+      'เพิ่มวิดเจ็ตการอ่านอัลกุรอานลงในหน้าจอหลักของคุณ';
 
   @override
   String get premiumFeatureQuranWidgetTitle => 'วิดเจ็ตอัลกุรอานหน้าจอหลัก';
@@ -1596,4 +1596,11 @@ class AppLocalizationsTh extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'โฆษณายังไม่พร้อม กรุณารอสักครู่แล้วลองใหม่อีกครั้ง';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'วิดเจ็ตหน้าจอหลักต้องการ Android 12 (API 31) ขึ้นไปเพื่อการทำงานที่เหมาะสม';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'คำเตือนเวอร์ชัน Android';
 }

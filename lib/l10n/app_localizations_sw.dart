@@ -1531,7 +1531,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get settingsQuranWidgetSubtitle =>
-      'Ongeza widget ya kusoma Qurani kwenye skrini kuu';
+      'Ongeza wijeti ya kusoma Quran kwenye skrini yako ya nyumbani';
 
   @override
   String get premiumFeatureQuranWidgetTitle => 'Widget ya Qurani ya Skrini Kuu';
@@ -1624,4 +1624,11 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'Tangazo bado halijaandaliwa. Tafadhali subiri sekunde chache na ujaribu tena.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'Wijeti za skrini ya kwanza zinahitaji angalau Android 12 (API 31) kwa utendaji sahihi.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Onyo la Toleo la Android';
 }

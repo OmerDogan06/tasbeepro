@@ -534,5 +534,7 @@
     }
   },
   "rewardAdPreparing": "الإعلان قيد التحضير",
-  "rewardAdNotReadyMessage": "الإعلان غير جاهز بعد. يرجى الانتظار بضع ثوان والمحاولة مرة أخرى."
+  "rewardAdNotReadyMessage": "الإعلان غير جاهز بعد. يرجى الانتظار بضع ثوان والمحاولة مرة أخرى.",
+  "widgetAndroid12Warning": "تتطلب عناصر الشاشة الرئيسية نظام Android 12 (API 31) على الأقل للعمل بشكل صحيح.",
+  "widgetAndroid12WarningTitle": "تحذير إصدار Android"
 }

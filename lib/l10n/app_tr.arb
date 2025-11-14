@@ -534,5 +534,7 @@
     }
   },
   "rewardAdPreparing": "Reklam Hazırlanıyor",
-  "rewardAdNotReadyMessage": "Reklam henüz hazır değil. Lütfen birkaç saniye bekleyip tekrar deneyin."
+  "rewardAdNotReadyMessage": "Reklam henüz hazır değil. Lütfen birkaç saniye bekleyip tekrar deneyin.",
+  "widgetAndroid12Warning": "Ana ekran widget'larının sorunsuz çalışması için en az Android 12 (API 31) gereklidir.",
+  "widgetAndroid12WarningTitle": "Android Sürüm Uyarısı"
 }

@@ -1597,4 +1597,11 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'تبلیغ هنوز آماده نیست۔ لطفاً چند ثانیه صبر کنید و دوباره تلاش کنید۔';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'ویجت‌های صفحه اصلی برای عملکرد مناسب حداقل به Android 12 (API 31) نیاز دارند.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'هشدار نسخه Android';
 }

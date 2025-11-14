@@ -1541,4 +1541,11 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       '広告の準備がまだできていません。数秒お待ちいただき、もう一度お試しください。';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'ホーム画面ウィジェットが正常に機能するには、少なくともAndroid 12 (API 31)が必要です。';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Androidバージョン警告';
 }

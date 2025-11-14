@@ -1581,4 +1581,11 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'الإعلان غير جاهز بعد. يرجى الانتظار بضع ثوان والمحاولة مرة أخرى.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'تتطلب عناصر الشاشة الرئيسية نظام Android 12 (API 31) على الأقل للعمل بشكل صحيح.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'تحذير إصدار Android';
 }

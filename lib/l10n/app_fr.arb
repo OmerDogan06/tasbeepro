@@ -534,5 +534,7 @@
     }
   },
   "rewardAdPreparing": "Préparation de la Publicité",
-  "rewardAdNotReadyMessage": "La publicité n'est pas encore prête. Veuillez attendre quelques secondes et réessayer."
+  "rewardAdNotReadyMessage": "La publicité n'est pas encore prête. Veuillez attendre quelques secondes et réessayer.",
+  "widgetAndroid12Warning": "Les widgets d'écran d'accueil nécessitent au moins Android 12 (API 31) pour un fonctionnement correct.",
+  "widgetAndroid12WarningTitle": "Avertissement de version Android"
 }

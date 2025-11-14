@@ -1520,7 +1520,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get settingsQuranWidgetSubtitle =>
-      'Добавьте виджет чтения Корана на главный экран';
+      'Добавить виджет чтения Корана на главный экран';
 
   @override
   String get premiumFeatureQuranWidgetTitle => 'Виджет Корана Главного Экрана';
@@ -1613,4 +1613,11 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'Реклама ещё не готова. Подождите несколько секунд и попробуйте снова.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'Виджеты главного экрана требуют как минимум Android 12 (API 31) для правильной работы.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Предупреждение о версии Android';
 }

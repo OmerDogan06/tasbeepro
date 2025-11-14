@@ -1612,4 +1612,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'Ad is not ready yet. Please wait a few seconds and try again.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'Home screen widgets require at least Android 12 (API 31) for proper functionality.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Android Version Warning';
 }

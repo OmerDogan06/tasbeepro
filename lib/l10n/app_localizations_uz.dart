@@ -1525,7 +1525,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get settingsQuranWidgetSubtitle =>
-      'Bosh ekranga Qur\'on o\'qish vijetini qo\'shing';
+      'Bosh ekraningizga Qur\'on o\'qish vidjeti qo\'shing';
 
   @override
   String get premiumFeatureQuranWidgetTitle => 'Qur\'on Bosh Ekran Vijeti';
@@ -1618,4 +1618,11 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'Reklama hali tayyor emas. Bir necha soniya kuting va qayta urinib ko\'ring.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'Bosh ekran vidjetlari to\'g\'ri ishlash uchun kamida Android 12 (API 31) talab qiladi.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Android versiyasi ogohlantirishi';
 }

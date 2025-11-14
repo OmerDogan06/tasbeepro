@@ -3087,6 +3087,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ad is not ready yet. Please wait a few seconds and try again.'**
   String get rewardAdNotReadyMessage;
+
+  /// No description provided for @widgetAndroid12Warning.
+  ///
+  /// In en, this message translates to:
+  /// **'Home screen widgets require at least Android 12 (API 31) for proper functionality.'**
+  String get widgetAndroid12Warning;
+
+  /// No description provided for @widgetAndroid12WarningTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Android Version Warning'**
+  String get widgetAndroid12WarningTitle;
 }
 
 class _AppLocalizationsDelegate

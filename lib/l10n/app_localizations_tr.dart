@@ -1605,4 +1605,11 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'Reklam henüz hazır değil. Lütfen birkaç saniye bekleyip tekrar deneyin.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'Ana ekran widget\'larının sorunsuz çalışması için en az Android 12 (API 31) gereklidir.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Android Sürüm Uyarısı';
 }

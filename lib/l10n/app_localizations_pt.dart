@@ -1540,7 +1540,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get settingsQuranWidgetSubtitle =>
-      'Adicione o widget de leitura do Alcorão à tela inicial';
+      'Adicione um widget de leitura do Alcorão à sua tela inicial';
 
   @override
   String get premiumFeatureQuranWidgetTitle =>
@@ -1635,4 +1635,11 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'O anúncio ainda não está pronto. Aguarde alguns segundos e tente novamente.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'Os widgets da tela inicial requerem pelo menos Android 12 (API 31) para funcionalidade adequada.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Aviso de versão Android';
 }

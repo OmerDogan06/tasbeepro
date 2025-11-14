@@ -1636,4 +1636,11 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'Die Anzeige ist noch nicht bereit. Bitte warten Sie ein paar Sekunden und versuchen Sie es erneut.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'Home-Screen-Widgets benötigen mindestens Android 12 (API 31) für ordnungsgemäße Funktionalität.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Android-Version Warnung';
 }

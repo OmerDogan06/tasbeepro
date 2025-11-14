@@ -1636,4 +1636,11 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'El anuncio no está listo aún. Por favor espera unos segundos e inténtalo de nuevo.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'Los widgets de pantalla de inicio requieren al menos Android 12 (API 31) para un funcionamiento adecuado.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Advertencia de versión Android';
 }

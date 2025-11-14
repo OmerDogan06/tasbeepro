@@ -1437,7 +1437,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settingsQuranWidget => '添加古兰经小部件';
 
   @override
-  String get settingsQuranWidgetSubtitle => '将古兰经阅读小部件添加到主屏幕';
+  String get settingsQuranWidgetSubtitle => '将古兰经阅读小部件添加到您的主屏幕';
 
   @override
   String get premiumFeatureQuranWidgetTitle => '古兰经主屏幕小部件';
@@ -1523,4 +1523,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get rewardAdNotReadyMessage => '广告尚未准备好。请等待几秒钟后重试。';
+
+  @override
+  String get widgetAndroid12Warning => '主屏幕小部件需要至少 Android 12 (API 31) 才能正常运行。';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Android 版本警告';
 }

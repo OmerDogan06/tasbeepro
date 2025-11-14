@@ -1786,5 +1786,7 @@
   "rewardAdNotReadyMessage": "Ad is not ready yet. Please wait a few seconds and try again.",
   "@rewardAdNotReadyMessage": {
     "description": "Message when ad is not ready"
-  }
+  },
+  "widgetAndroid12Warning": "Home screen widgets require at least Android 12 (API 31) for proper functionality.",
+  "widgetAndroid12WarningTitle": "Android Version Warning"
 }

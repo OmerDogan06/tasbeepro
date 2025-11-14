@@ -1610,5 +1610,12 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get rewardAdNotReadyMessage =>
-      'বিজ্ঞাপন এখনও প্রস্তুত নয়। কয়েক সেকেন্ড অপেক্ষা করুন এবং আবার চেষ্টা করুন।';
+      'বিজ্ঞাপন এখনও প্রস্তুত নয়। কয়েক সেকেন্ড অপেক্ষা করুন এবং আবার চেষ্টা করুন।';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'হোম স্ক্রিন উইজেটগুলির সঠিক কার্যকারিতার জন্য কমপক্ষে Android 12 (API 31) প্রয়োজন।';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Android সংস্করণ সতর্কতা';
 }

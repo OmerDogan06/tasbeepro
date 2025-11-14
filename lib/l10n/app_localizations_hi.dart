@@ -1513,7 +1513,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get settingsQuranWidgetSubtitle =>
-      'होम स्क्रीन पर कुरान पढ़ने का विजेट जोड़ें';
+      'अपनी होम स्क्रीन पर कुरान रीडिंग विजेट जोड़ें';
 
   @override
   String get premiumFeatureQuranWidgetTitle => 'कुरान होम स्क्रीन विजेट';
@@ -1606,4 +1606,11 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'विज्ञापन अभी तैयार नहीं है। कुछ सेकंड प्रतीक्षा करें और फिर कोशिश करें।';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'होम स्क्रीन विजेट्स के लिए उचित कार्यक्षमता के लिए कम से कम Android 12 (API 31) की आवश्यकता होती है।';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Android संस्करण चेतावनी';
 }

@@ -1521,7 +1521,7 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get settingsQuranWidgetSubtitle =>
-      'Tambahkan widget bacaan Al-Quran ke skrin utama';
+      'Tambah widget pembacaan Al-Quran ke skrin utama anda';
 
   @override
   String get premiumFeatureQuranWidgetTitle => 'Widget Al-Quran Skrin Utama';
@@ -1614,4 +1614,11 @@ class AppLocalizationsMs extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'Iklan belum sedia. Sila tunggu beberapa saat dan cuba lagi.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'Widget skrin utama memerlukan sekurang-kurangnya Android 12 (API 31) untuk kefungsian yang betul.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Amaran Versi Android';
 }

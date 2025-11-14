@@ -1509,7 +1509,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get settingsQuranWidgetSubtitle =>
-      'گھر کی اسکرین پر قرآن پڑھنے کا وجیٹ شامل کریں';
+      'اپنی ہوم اسکرین میں قرآن پڑھنے کا ویجٹ شامل کریں';
 
   @override
   String get premiumFeatureQuranWidgetTitle => 'قرآن ہوم اسکرین وجیٹ';
@@ -1602,4 +1602,11 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       'اشتہار ابھی تیار نہیں ہے۔ کچھ سیکنڈ انتظار کریں اور پھر کوشش کریں۔';
+
+  @override
+  String get widgetAndroid12Warning =>
+      'ہوم اسکرین ویجٹس کو مناسب فعالیت کے لیے کم از کم Android 12 (API 31) کی ضرورت ہے۔';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Android ورژن کی خبردار';
 }

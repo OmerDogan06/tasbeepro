@@ -1455,7 +1455,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get settingsQuranWidget => '꾸란 위젯 추가';
 
   @override
-  String get settingsQuranWidgetSubtitle => '홈 화면에 꾸란 읽기 위젯을 추가하세요';
+  String get settingsQuranWidgetSubtitle => '홈 화면에 코란 읽기 위젯 추가';
 
   @override
   String get premiumFeatureQuranWidgetTitle => '꾸란 홈 화면 위젯';
@@ -1543,4 +1543,11 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get rewardAdNotReadyMessage =>
       '광고가 아직 준비되지 않았습니다. 몇 초 기다린 후 다시 시도해 주세요.';
+
+  @override
+  String get widgetAndroid12Warning =>
+      '홈 화면 위젯이 제대로 작동하려면 최소한 Android 12 (API 31)가 필요합니다.';
+
+  @override
+  String get widgetAndroid12WarningTitle => 'Android 버전 경고';
 }
