@@ -168,7 +168,7 @@
           <!--Production ID : ca-app-pub-8365973392717077~8118430681 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-8365973392717077~8118430681"/>
             
         <!-- Indicate that this app uses the Advertising ID -->
         <meta-data
