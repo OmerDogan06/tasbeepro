@@ -535,6 +535,14 @@ class QuranWidgetProvider : AppWidgetProvider() {
                 .build()
             
             notificationManager.notify(System.currentTimeMillis().toInt(), notification)
+            
+            // Premium bildirim gönderildikten sonra widget'ları yenile
+            try {
+                val widgetUpdateChannel = WidgetUpdateChannel(context)
+                widgetUpdateChannel.refreshWidgetsAfterNotification()
+            } catch (e: Exception) {
+                // Widget yenileme hatası log'lanabilir ama bildirim işlemini etkilemez
+            }
         } catch (e: Exception) {
             Log.e("QuranWidget", "Premium bildirim gösterme hatası: ${e.message}")
         }
@@ -690,6 +698,14 @@ class QuranDatabase(private val context: Context) {
                 .build()
             
             notificationManager.notify(System.currentTimeMillis().toInt(), notification)
+            
+            // Premium bildirim gönderildikten sonra widget'ları yenile
+            try {
+                val widgetUpdateChannel = WidgetUpdateChannel(context)
+                widgetUpdateChannel.refreshWidgetsAfterNotification()
+            } catch (e: Exception) {
+                // Widget yenileme hatası log'lanabilir ama bildirim işlemini etkilemez
+            }
         } catch (e: Exception) {
             Log.e("QuranWidget", "Premium bildirim gösterme hatası: ${e.message}")
         }

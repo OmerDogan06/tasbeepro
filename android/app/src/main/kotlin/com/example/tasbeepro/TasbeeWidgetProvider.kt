@@ -412,6 +412,14 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
                 .build()
             
             notificationManager.notify(notificationId, notification)
+            
+            // Bildirim gönderildikten sonra widget'ları yenile
+            try {
+                val widgetUpdateChannel = WidgetUpdateChannel(context)
+                widgetUpdateChannel.refreshWidgetsAfterNotification()
+            } catch (e: Exception) {
+                // Widget yenileme hatası log'lanabilir ama bildirim işlemini etkilemez
+            }
         } catch (e: Exception) {
             // Notification gösterilemezse sessizce devam et
         }
@@ -590,6 +598,14 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
                 .build()
 
             notificationManager.notify(System.currentTimeMillis().toInt(), notification)
+            
+            // Premium bildirim gönderildikten sonra widget'ları yenile
+            try {
+                val widgetUpdateChannel = WidgetUpdateChannel(context)
+                widgetUpdateChannel.refreshWidgetsAfterNotification()
+            } catch (e: Exception) {
+                // Widget yenileme hatası log'lanabilir ama bildirim işlemini etkilemez
+            }
             
         } catch (e: Exception) {
             Log.e(TAG, "Premium bildirim hatası: ${e.message}")

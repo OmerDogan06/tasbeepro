@@ -284,6 +284,11 @@ class WidgetUpdateChannel(private val context: Context) : MethodCallHandler {
         }
     }
     
+    // ✅ Bildirim sonrası widget güncelleme için public method
+    fun refreshWidgetsAfterNotification() {
+        refreshAllWidgets()
+    }
+    
     // Widget erişim durumlarını SharedPreferences'a kaydet
     private fun saveWidgetAccessStatus(widgetData: Map<String, Any>) {
         try {
