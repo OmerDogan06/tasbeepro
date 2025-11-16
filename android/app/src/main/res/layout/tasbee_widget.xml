@@ -228,13 +228,25 @@
 
         </LinearLayout>
 
-        <!-- Progress bar ve reset butonu yan yana -->
+        <!-- Progress bar ve butonlar yan yana -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_marginBottom="8dp">
+
+            <!-- Undo butonu - İkon olarak -->
+            <ImageButton
+                android:id="@+id/undo_button"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/widget_reset_button_background"
+                android:src="@drawable/ic_undo"
+                android:scaleType="centerInside"
+                android:padding="4dp"
+                android:layout_marginRight="8dp"
+                android:contentDescription="@string/widget_undo_desc" />
 
             <ProgressBar
                 android:id="@+id/progress_bar"

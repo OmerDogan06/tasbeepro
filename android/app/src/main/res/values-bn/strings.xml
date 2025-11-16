@@ -18,8 +18,9 @@
     <string name="cancel">বাতিল</string>
     <string name="widget_settings_desc">সেটিংস</string>
     <string name="widget_counter_desc">জিকর কাউন্টার</string>
-    <string name="widget_tap_text">ট্যাপ</string>
+    <string name="widget_tap_text">ট্যাপ করুন</string>
     <string name="widget_reset_desc">কাউন্টার রিসেট</string>
+    <string name="widget_undo_desc">শেষ গণনা পূর্বাবস্থায় ফিরিয়ে আনুন</string>
     <string name="widget_config_title">উইজেট সেটিংস</string>
     <string name="zikr_type_description">উইজেটে প্রদর্শিত হওয়া জিকরের ধরন নির্বাচন করুন</string>
     <string name="target_count_description">আপনার দৈনিক জিকর লক্ষ্য সংখ্যা নির্ধারণ করুন</string>

@@ -18,9 +18,10 @@
     <string name="cancel">Cancelar</string>
     <string name="widget_settings_desc">Configuración</string>
     <string name="widget_counter_desc">Contador de dhikr</string>
-    <string name="widget_tap_text">TOCAR</string>
+    <string name="widget_tap_text">TOQUE</string>
     <string name="widget_reset_desc">Restablecer contador</string>
-    <string name="widget_config_title">Configuración de widget</string>
+    <string name="widget_undo_desc">Deshacer último conteo</string>
+    <string name="widget_config_title">Configuración del Widget</string>
     <string name="zikr_type_description">Selecciona el tipo de dhikr para mostrar en el widget</string>
     <string name="target_count_description">Establece la meta diaria de cantidad de dhikr</string>
     <string name="sound_settings_title">🔊 Configuración de sonido</string>

@@ -18,8 +18,9 @@
     <string name="cancel">Batal</string>
     <string name="widget_settings_desc">Tetapan</string>
     <string name="widget_counter_desc">Pengira zikir</string>
-    <string name="widget_tap_text">KETIK</string>
+    <string name="widget_tap_text">KETUK</string>
     <string name="widget_reset_desc">Set semula pengira</string>
+    <string name="widget_undo_desc">Buat asal kiraan terakhir</string>
     <string name="widget_config_title">Tetapan Widget</string>
     <string name="zikr_type_description">Pilih jenis zikir yang akan dipaparkan dalam widget</string>
     <string name="target_count_description">Tetapkan sasaran bilangan zikir harian anda</string>

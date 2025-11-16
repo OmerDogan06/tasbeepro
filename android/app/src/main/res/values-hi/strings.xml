@@ -20,6 +20,7 @@
     <string name="widget_counter_desc">जिक्र काउंटर</string>
     <string name="widget_tap_text">टैप करें</string>
     <string name="widget_reset_desc">काउंटर रीसेट करें</string>
+    <string name="widget_undo_desc">अंतिम गिनती पूर्ववत करें</string>
     <string name="widget_config_title">विजेट सेटिंग्स</string>
     <string name="zikr_type_description">विजेट में प्रदर्शित होने वाले जिक्र का प्रकार चुनें</string>
     <string name="target_count_description">अपना दैनिक जिक्र लक्ष्य निर्धारित करें</string>

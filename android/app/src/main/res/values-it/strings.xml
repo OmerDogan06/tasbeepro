@@ -20,6 +20,7 @@
     <string name="widget_counter_desc">Contatore dhikr</string>
     <string name="widget_tap_text">TOCCA</string>
     <string name="widget_reset_desc">Reimposta contatore</string>
+    <string name="widget_undo_desc">Annulla ultimo conteggio</string>
     <string name="widget_config_title">Impostazioni Widget</string>
     <string name="zikr_type_description">Seleziona il tipo di dhikr da mostrare nel widget</string>
     <string name="target_count_description">Imposta il numero obiettivo di dhikr giornalieri</string>

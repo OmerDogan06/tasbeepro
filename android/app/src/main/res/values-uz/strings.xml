@@ -20,6 +20,7 @@
     <string name="widget_counter_desc">Zikr hisoblagich</string>
     <string name="widget_tap_text">BOSING</string>
     <string name="widget_reset_desc">Hisoblagichni qayta o\'rnatish</string>
+    <string name="widget_undo_desc">Oxirgi hisobni bekor qilish</string>
     <string name="widget_config_title">Vidjet sozlamalari</string>
     <string name="zikr_type_description">Vidjetda ko\'rsatiladigan zikr turini tanlang</string>
     <string name="target_count_description">Kundalik maqsad zikr sonini belgilang</string>

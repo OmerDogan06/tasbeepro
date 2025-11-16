@@ -1239,6 +1239,10 @@ class _StatsScreenState extends State<StatsScreen>
         final storageService = Get.find<StorageService>();
         await storageService.clearAllStatistics();
 
+        // Mevcut sayacı da sıfırla
+        await controller.reset();
+        controller.dailyTotal.value = 0;
+
         // Controller'ı güncelle ve sayfayı yenile
         setState(() {
           controller = Get.find<CounterController>();

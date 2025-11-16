@@ -18,9 +18,10 @@
     <string name="cancel">取消</string>
     <string name="widget_settings_desc">设置</string>
     <string name="widget_counter_desc">念珠计数器</string>
-    <string name="widget_tap_text">触摸</string>
+    <string name="widget_tap_text">点击</string>
     <string name="widget_reset_desc">重置计数器</string>
-    <string name="widget_config_title">小组件设置</string>
+    <string name="widget_undo_desc">撤销上次计数</string>
+    <string name="widget_config_title">小部件设置</string>
     <string name="zikr_type_description">选择在小组件中显示的念珠类型</string>
     <string name="target_count_description">设置每日目标念珠数量</string>
     <string name="sound_settings_title">🔊 声音设置</string>

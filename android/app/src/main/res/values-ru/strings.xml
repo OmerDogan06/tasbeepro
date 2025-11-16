@@ -18,8 +18,9 @@
     <string name="cancel">Отмена</string>
     <string name="widget_settings_desc">Настройки</string>
     <string name="widget_counter_desc">Счетчик зикра</string>
-    <string name="widget_tap_text">КОСНИТЕСЬ</string>
+    <string name="widget_tap_text">НАЖМИТЕ</string>
     <string name="widget_reset_desc">Сбросить счетчик</string>
+    <string name="widget_undo_desc">Отменить последний подсчет</string>
     <string name="widget_config_title">Настройки виджета</string>
     <string name="zikr_type_description">Выберите тип зикра для отображения в виджете</string>
     <string name="target_count_description">Определите ежедневную цель количества зикров</string>

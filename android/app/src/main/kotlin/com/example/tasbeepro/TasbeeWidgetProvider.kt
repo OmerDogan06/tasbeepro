@@ -24,6 +24,7 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         private const val TAG = "TasbeeWidget"
         private const val ACTION_COUNTER_CLICK = "ACTION_COUNTER_CLICK"
         private const val ACTION_RESET_CLICK = "ACTION_RESET_CLICK"
+        private const val ACTION_UNDO_CLICK = "ACTION_UNDO_CLICK"
         private const val ACTION_SETTINGS_CLICK = "ACTION_SETTINGS_CLICK"
         private const val PREF_NAME = "TasbeeWidgetPrefs"
         private const val KEY_COUNT = "count_"
@@ -152,6 +153,17 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
                     resetCounter(localizedContext, appWidgetId)
                 }
             }
+            ACTION_UNDO_CLICK -> {
+                val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
+                if (appWidgetId != -1) {
+                    // Widget erişim kontrolü tekrar yap (Premium VEYA Reward)
+                    if (canUseWidget(context)) {
+                        decrementCounter(localizedContext, appWidgetId)
+                    } else {
+                        showPremiumNotification(localizedContext)
+                    }
+                }
+            }
             ACTION_SETTINGS_CLICK -> {
                 val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
                 if (appWidgetId != -1) {
@@ -268,6 +280,31 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
             views.setTextViewText(R.id.dokun_text, context.getString(R.string.widget_premium_required))
         }
 
+        // Undo button - Premium kontrolü ile
+        if (canUseWidget(context)) {
+            val undoIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
+                action = ACTION_UNDO_CLICK
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            }
+            val undoPendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId * 10 + 4, undoIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            views.setOnClickPendingIntent(R.id.undo_button, undoPendingIntent)
+            views.setFloat(R.id.undo_button, "setAlpha", 1.0f)
+        } else {
+            val premiumIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
+                action = "SHOW_PREMIUM_NOTIFICATION"
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            }
+            val premiumPendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId * 10 + 4, premiumIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            views.setOnClickPendingIntent(R.id.undo_button, premiumPendingIntent)
+            views.setFloat(R.id.undo_button, "setAlpha", 0.6f)
+        }
+        
         // Reset button - Her zaman aktif (ücretsiz özellik)
         val resetIntent = Intent(context, TasbeeWidgetProvider::class.java).apply {
             action = ACTION_RESET_CLICK
@@ -327,6 +364,40 @@ class TasbeeWidgetProvider : AppWidgetProvider() {
         prefs.edit().putInt(KEY_COUNT + appWidgetId, 0).apply()
         
         Log.d(TAG, "Widget sayacı sıfırlandı (veritabanı kayıtları korundu)")
+        
+        // Widget'ı güncelle
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        updateAppWidget(context, appWidgetManager, appWidgetId)
+    }
+
+    private fun decrementCounter(context: Context, appWidgetId: Int) {
+        val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val currentCount = prefs.getInt(KEY_COUNT + appWidgetId, 0)
+        
+        // Sayaç 0'dan küçük olamaz
+        if (currentCount <= 0) {
+            Log.d(TAG, "Sayaç zaten 0, geri alma yapılamaz")
+            return
+        }
+        
+        val target = prefs.getInt(KEY_TARGET + appWidgetId, 33)
+        val zikrId = prefs.getString(KEY_ZIKR_ID + appWidgetId, "subhanallah") ?: "subhanallah"
+        
+        // Zikir adını her zaman güncel dilden al
+        val zikrName = getLocalizedZikirName(context, zikrId)
+        
+        // Sayacı bir azalt
+        val newCount = currentCount - 1
+        
+        prefs.edit().putInt(KEY_COUNT + appWidgetId, newCount).apply()
+        
+        // **ÖNEMLİ: Geri alma işlemi için negatif count ile kayıt ekle**
+        try {
+            val recordId = database.addWidgetZikrRecord(zikrId, zikrName, -1)
+            Log.d(TAG, "Widget geri alma kaydedildi: $zikrName (ID: $zikrId) - Record ID: $recordId")
+        } catch (e: Exception) {
+            Log.e(TAG, "Veritabanına geri alma kaydetme hatası: ${e.message}")
+        }
         
         // Widget'ı güncelle
         val appWidgetManager = AppWidgetManager.getInstance(context)

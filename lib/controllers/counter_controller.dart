@@ -21,7 +21,7 @@ class CounterController extends GetxController {
   
   final _count = 0.obs;
   final _target = 33.obs;
-  final _dailyTotal = 0.obs;
+  final dailyTotal = 0.obs;
   final _isAnimating = false.obs;
   
   final _completedTargets = 0.obs; // Tamamlanan hedef sayısını takip et
@@ -50,7 +50,6 @@ class CounterController extends GetxController {
   
   int get count => _count.value;
   int get target => _target.value;
-  int get dailyTotal => _dailyTotal.value;
   bool get isAnimating => _isAnimating.value;
   List<int> get targetOptions => _targetOptions.toList();
   double get progress => target > 0 ? (count / target).clamp(0.0, 1.0) : 0.0;
@@ -81,7 +80,7 @@ class CounterController extends GetxController {
     }
     
     // Load daily total (tüm zikirlerden)
-    _dailyTotal.value = _storage.getTotalDailyCount();
+    dailyTotal.value = _storage.getTotalDailyCount();
     
     // Load custom targets
     loadCustomTargets();
@@ -107,7 +106,7 @@ class CounterController extends GetxController {
     await _storage.saveDailyZikrCount(_currentZikrId.value, currentDailyCount + 1);
     
     // Toplam günlük sayıyı güncelle
-    _dailyTotal.value = _storage.getTotalDailyCount();
+    dailyTotal.value = _storage.getTotalDailyCount();
 
     // Save data
     final counterData = CounterData(
@@ -152,7 +151,7 @@ class CounterController extends GetxController {
       }
       
       // Toplam günlük sayıyı güncelle
-      _dailyTotal.value = _storage.getTotalDailyCount();
+      dailyTotal.value = _storage.getTotalDailyCount();
 
       // Save data
       final counterData = CounterData(

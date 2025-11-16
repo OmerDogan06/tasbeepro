@@ -20,7 +20,8 @@
     <string name="widget_counter_desc">ذکر کاؤنٹر</string>
     <string name="widget_tap_text">ٹیپ کریں</string>
     <string name="widget_reset_desc">کاؤنٹر ری سیٹ کریں</string>
-    <string name="widget_config_title">ویجٹ کی ترتیبات</string>
+    <string name="widget_undo_desc">آخری گنتی واپس لیں</string>
+    <string name="widget_config_title">وڈجیٹ کی ترتیبات</string>
     <string name="zikr_type_description">ویجٹ میں دکھائے جانے والے ذکر کی قسم منتخب کریں</string>
     <string name="target_count_description">اپنا روزانہ ذکر کا ہدف مقرر کریں</string>
     <string name="sound_settings_title">🔊 آواز کی ترتیبات</string>
