@@ -541,6 +541,13 @@
   },
   "rewardAdPreparing": "Préparation de la Publicité",
   "rewardAdNotReadyMessage": "La publicité n'est pas encore prête. Veuillez attendre quelques secondes et réessayer.",
-  "widgetAndroid12Warning": "Les widgets d'écran d'accueil nécessitent au moins Android 12 (API 31) pour un fonctionnement correct.",
-  "widgetAndroid12WarningTitle": "Avertissement de version Android"
+  "widgetAndroid12Warning": "Les widgets d'écran d'accueil nécessitent au moins Android 12 (API 31) pour fonctionner correctement.",
+  "widgetAndroid12WarningTitle": "Avertissement de version Android",
+  "exportPDF": "Enregistrer au format PDF",
+  "resetStats": "Réinitialiser toutes les statistiques",
+  "resetStatsTitle": "Réinitialiser les statistiques",
+  "resetStatsMessage": "Êtes-vous sûr de vouloir réinitialiser toutes les statistiques ? Cette action ne peut pas être annulée.",
+  "resetStatsConfirm": "Réinitialiser",
+  "resetStatsCancel": "Annuler",
+  "resetStatsSuccess": "Toutes les statistiques ont été réinitialisées avec succès"
 }

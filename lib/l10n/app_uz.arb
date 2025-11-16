@@ -542,5 +542,12 @@
     }
   },
   "rewardAdPreparing": "Reklama Tayyorlanmoqda",
-  "rewardAdNotReadyMessage": "Reklama hali tayyor emas. Bir necha soniya kuting va qayta urinib ko'ring."
+  "rewardAdNotReadyMessage": "Reklama hali tayyor emas. Bir necha soniya kuting va qayta urinib ko'ring.",
+  "exportPDF": "PDF sifatida saqlash",
+  "resetStats": "Barcha statistikani tiklash",
+  "resetStatsTitle": "Statistikani tiklash",
+  "resetStatsMessage": "Barcha statistikani tiklashni xohlaysizmi? Bu amalni bekor qilib bo'lmaydi.",
+  "resetStatsConfirm": "Tiklash",
+  "resetStatsCancel": "Bekor qilish",
+  "resetStatsSuccess": "Barcha statistika muvaffaqiyatli tiklandi"
 }

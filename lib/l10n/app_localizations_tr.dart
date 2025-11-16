@@ -1622,8 +1622,30 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get widgetAndroid12Warning =>
-      'Ana ekran widget\'larının sorunsuz çalışması için en az Android 12 (API 31) gereklidir.';
+      'Ana ekran widget\'ları düzgün çalışması için en az Android 12 (API 31) gerektirir.';
 
   @override
   String get widgetAndroid12WarningTitle => 'Android Sürüm Uyarısı';
+
+  @override
+  String get exportPDF => 'PDF Olarak Kaydet';
+
+  @override
+  String get resetStats => 'Tüm İstatistikleri Sıfırla';
+
+  @override
+  String get resetStatsTitle => 'İstatistikleri Sıfırla';
+
+  @override
+  String get resetStatsMessage =>
+      'Tüm istatistikleri sıfırlamak istediğinizden emin misiniz? Bu işlem geri alınamaz.';
+
+  @override
+  String get resetStatsConfirm => 'Sıfırla';
+
+  @override
+  String get resetStatsCancel => 'İptal';
+
+  @override
+  String get resetStatsSuccess => 'Tüm istatistikler başarıyla sıfırlandı';
 }

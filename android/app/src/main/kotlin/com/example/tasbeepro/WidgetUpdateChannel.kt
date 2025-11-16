@@ -84,6 +84,22 @@ class WidgetUpdateChannel(private val context: Context) : MethodCallHandler {
                     result.error("REFRESH_ERROR", "Widget'lar yenilenirken hata: ${e.message}", null)
                 }
             }
+            "clearWidgetStats" -> {
+                try {
+                    // Tüm widget'ların count değerlerini sıfırla
+                    resetAllWidgetCounters()
+                    
+                    // Widget'ları güncelle
+                    refreshAllWidgets()
+                    
+                    result.success(mapOf(
+                        "success" to true,
+                        "message" to "Widget statistics cleared and widgets refreshed"
+                    ))
+                } catch (e: Exception) {
+                    result.error("CLEAR_STATS_ERROR", "Widget istatistikleri sıfırlanırken hata: ${e.message}", null)
+                }
+            }
             else -> {
                 result.notImplemented()
             }
@@ -287,6 +303,25 @@ class WidgetUpdateChannel(private val context: Context) : MethodCallHandler {
     // ✅ Bildirim sonrası widget güncelleme için public method
     fun refreshWidgetsAfterNotification() {
         refreshAllWidgets()
+    }
+    
+    // Tüm widget'ların sayaç değerlerini sıfırla
+    private fun resetAllWidgetCounters() {
+        val prefs = context.getSharedPreferences("TasbeeWidgetPrefs", Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val componentName = ComponentName(context, TasbeeWidgetProvider::class.java)
+        val widgetIds = appWidgetManager.getAppWidgetIds(componentName)
+        
+        // Her widget için count değerini sıfırla
+        for (widgetId in widgetIds) {
+            editor.putInt("count_$widgetId", 0)
+        }
+        
+        editor.apply()
+        
+        android.util.Log.d("WidgetReset", "Tüm widget sayaçları sıfırlandı: ${widgetIds.size} widget")
     }
     
     // Widget erişim durumlarını SharedPreferences'a kaydet

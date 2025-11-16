@@ -1657,4 +1657,27 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Advertencia de versión Android';
+
+  @override
+  String get exportPDF => 'Guardar como PDF';
+
+  @override
+  String get resetStats => 'Restablecer todas las estadísticas';
+
+  @override
+  String get resetStatsTitle => 'Restablecer estadísticas';
+
+  @override
+  String get resetStatsMessage =>
+      '¿Estás seguro de que quieres restablecer todas las estadísticas? Esta acción no se puede deshacer.';
+
+  @override
+  String get resetStatsConfirm => 'Restablecer';
+
+  @override
+  String get resetStatsCancel => 'Cancelar';
+
+  @override
+  String get resetStatsSuccess =>
+      'Todas las estadísticas se han restablecido correctamente';
 }

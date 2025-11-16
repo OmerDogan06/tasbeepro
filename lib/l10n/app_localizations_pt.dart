@@ -1656,4 +1656,27 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Aviso de versão Android';
+
+  @override
+  String get exportPDF => 'Salvar como PDF';
+
+  @override
+  String get resetStats => 'Redefinir todas as estatísticas';
+
+  @override
+  String get resetStatsTitle => 'Redefinir estatísticas';
+
+  @override
+  String get resetStatsMessage =>
+      'Tem certeza de que deseja redefinir todas as estatísticas? Esta ação não pode ser desfeita.';
+
+  @override
+  String get resetStatsConfirm => 'Redefinir';
+
+  @override
+  String get resetStatsCancel => 'Cancelar';
+
+  @override
+  String get resetStatsSuccess =>
+      'Todas as estatísticas foram redefinidas com sucesso';
 }

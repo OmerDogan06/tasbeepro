@@ -241,6 +241,18 @@ class StorageService extends GetxService {
     return getZikrCountForDateRange(zikrId, startOfYear, endOfYear);
   }
 
+  // Tüm istatistikleri sıfırla
+  Future<void> clearAllStatistics() async {
+    final keys = _prefs.getKeys();
+    final keysToRemove = keys.where((key) => 
+      key.startsWith('counter_') || 
+      key.startsWith('daily_')
+    ).toList();
+    
+    for (final key in keysToRemove) {
+      await _prefs.remove(key);
+    }
+  }
 
   
   // Custom reminder times

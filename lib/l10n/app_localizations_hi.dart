@@ -1627,4 +1627,26 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Android संस्करण चेतावनी';
+
+  @override
+  String get exportPDF => 'PDF के रूप में सहेजें';
+
+  @override
+  String get resetStats => 'सभी सांख्यिकी रीसेट करें';
+
+  @override
+  String get resetStatsTitle => 'सांख्यिकी रीसेट करें';
+
+  @override
+  String get resetStatsMessage =>
+      'क्या आप निश्चित हैं कि आप सभी सांख्यिकी रीसेट करना चाहते हैं? यह कार्यवाई पूर्ववत नहीं की जा सकती।';
+
+  @override
+  String get resetStatsConfirm => 'रीसेट';
+
+  @override
+  String get resetStatsCancel => 'रद्द करें';
+
+  @override
+  String get resetStatsSuccess => 'सभी सांख्यिकी सफलतापूर्वक रीसेट हो गई';
 }

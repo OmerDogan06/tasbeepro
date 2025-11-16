@@ -71,6 +71,25 @@ class WidgetService extends GetxService {
     }
   }
 
+  // Tüm widget kayıtlarını sil (Android native SQLite'tan)
+  Future<void> clearAllWidgetStats() async {
+    try {
+      // Android SQLite'tan tüm kayıtları sil
+      final result = await _channel.invokeMethod('clearAllRecords');
+      debugPrint('✅ Tüm widget kayıtları silindi: $result');
+      
+      // Widget'ları yenile (hem veri hem görünüm)
+      await _updateChannel.invokeMethod('clearWidgetStats');
+      debugPrint('✅ Widget\'lar güncellendi');
+      
+      // Widget verilerini de güncelle
+      await updateWidgetData();
+    } catch (e) {
+      debugPrint('❌ Widget kayıtları silinirken hata: $e');
+      rethrow;
+    }
+  }
+
   // Widget'a veri gönder
   Future<void> sendDataToWidget({
     required String zikrId,

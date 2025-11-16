@@ -1635,4 +1635,27 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Amaran Versi Android';
+
+  @override
+  String get exportPDF => 'Simpan sebagai PDF';
+
+  @override
+  String get resetStats => 'Tetapkan Semula Semua Statistik';
+
+  @override
+  String get resetStatsTitle => 'Tetapkan Semula Statistik';
+
+  @override
+  String get resetStatsMessage =>
+      'Adakah anda pasti mahu menetapkan semula semua statistik? Tindakan ini tidak boleh dibatalkan.';
+
+  @override
+  String get resetStatsConfirm => 'Tetapkan Semula';
+
+  @override
+  String get resetStatsCancel => 'Batal';
+
+  @override
+  String get resetStatsSuccess =>
+      'Semua statistik telah berjaya ditetapkan semula';
 }

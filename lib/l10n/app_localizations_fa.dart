@@ -1614,8 +1614,30 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get widgetAndroid12Warning =>
-      'ویجت‌های صفحه اصلی برای عملکرد مناسب حداقل به Android 12 (API 31) نیاز دارند.';
+      'ویجت‌های صفحه اصلی برای عملکرد مناسب حداقل به Android 12 (API 31) نیاز دارند۔';
 
   @override
   String get widgetAndroid12WarningTitle => 'هشدار نسخه Android';
+
+  @override
+  String get exportPDF => 'ذخیره به عنوان PDF';
+
+  @override
+  String get resetStats => 'بازنشانی تمام آمارها';
+
+  @override
+  String get resetStatsTitle => 'بازنشانی آمارها';
+
+  @override
+  String get resetStatsMessage =>
+      'آیا مطمئن هستید که می‌خواهید تمام آمارها را بازنشانی کنید؟ این عمل قابل بازگشت نیست۔';
+
+  @override
+  String get resetStatsConfirm => 'بازنشانی';
+
+  @override
+  String get resetStatsCancel => 'لغو';
+
+  @override
+  String get resetStatsSuccess => 'تمام آمارها با موفقیت بازنشانی شدند';
 }

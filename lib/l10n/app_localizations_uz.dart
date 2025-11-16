@@ -1639,4 +1639,26 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Android versiyasi ogohlantirishi';
+
+  @override
+  String get exportPDF => 'PDF sifatida saqlash';
+
+  @override
+  String get resetStats => 'Barcha statistikani tiklash';
+
+  @override
+  String get resetStatsTitle => 'Statistikani tiklash';
+
+  @override
+  String get resetStatsMessage =>
+      'Barcha statistikani tiklashni xohlaysizmi? Bu amalni bekor qilib bo\'lmaydi.';
+
+  @override
+  String get resetStatsConfirm => 'Tiklash';
+
+  @override
+  String get resetStatsCancel => 'Bekor qilish';
+
+  @override
+  String get resetStatsSuccess => 'Barcha statistika muvaffaqiyatli tiklandi';
 }

@@ -1617,4 +1617,26 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'คำเตือนเวอร์ชัน Android';
+
+  @override
+  String get exportPDF => 'บันทึกเป็น PDF';
+
+  @override
+  String get resetStats => 'รีเซ็ตสถิติทั้งหมด';
+
+  @override
+  String get resetStatsTitle => 'รีเซ็ตสถิติ';
+
+  @override
+  String get resetStatsMessage =>
+      'คุณแน่ใจหรือไม่ว่าต้องการรีเซ็ตสถิติทั้งหมด? การกระทำนี้ไม่สามารถย้อนกลับได้';
+
+  @override
+  String get resetStatsConfirm => 'รีเซ็ต';
+
+  @override
+  String get resetStatsCancel => 'ยกเลิก';
+
+  @override
+  String get resetStatsSuccess => 'รีเซ็ตสถิติทั้งหมดสำเร็จแล้ว';
 }

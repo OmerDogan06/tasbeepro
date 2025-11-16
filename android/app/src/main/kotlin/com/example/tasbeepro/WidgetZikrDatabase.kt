@@ -156,6 +156,14 @@ class WidgetZikrDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_
         
         return stats
     }
+
+    /**
+     * Tüm widget kayıtlarını sil
+     */
+    fun clearAllRecords(): Int {
+        val db = writableDatabase
+        return db.delete(TABLE_WIDGET_ZIKR, null, null)
+    }
 }
 
 /**

@@ -12,6 +12,7 @@ import '../controllers/widget_stats_controller.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../widgets/banner_ad_widget.dart';
 import '../services/ad_service.dart';
+import '../services/widget_service.dart';
 import '../l10n/app_localizations.dart';
 
 class WidgetStatsScreen extends StatefulWidget {
@@ -113,7 +114,7 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                 ),
               ),
               actions: [
-                // PDF Export Button
+                // PopupMenu Button
                 Container(
                   width: 40,
                   height: 40,
@@ -134,60 +135,124 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
                       ),
                     ],
                   ),
-                  child: IconButton(
+                  child: PopupMenuButton<String>(
                     padding: EdgeInsets.zero,
-                    style: ButtonStyle(
-                      padding: WidgetStateProperty.all(EdgeInsets.zero),
-                      overlayColor: WidgetStateProperty.all(Colors.transparent),
+                    icon: const Icon(
+                      Icons.more_vert,
+                      color: emeraldGreen,
+                      size: 20,
                     ),
-                    icon: _isExportingPDF
-                        ? SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              color: emeraldGreen,
-                              strokeWidth: 2,
+                    color: const Color(0xFFF8F6F0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(color: goldColor.withAlpha(102), width: 1.5),
+                    ),
+                    offset: const Offset(0, 50),
+                    itemBuilder: (context) => [
+                      // PDF Export Option
+                      PopupMenuItem<String>(
+                        value: 'pdf',
+                        enabled: !_isExportingPDF,
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(6),
+                              decoration: BoxDecoration(
+                                gradient: const RadialGradient(
+                                  colors: [lightGold, goldColor],
+                                  center: Alignment(-0.2, -0.2),
+                                ),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: const Icon(
+                                Icons.picture_as_pdf,
+                                color: emeraldGreen,
+                                size: 16,
+                              ),
                             ),
-                          )
-                        : const Icon(
-                            Icons.picture_as_pdf,
-                            color: emeraldGreen,
-                            size: 20,
-                          ),
-                    onPressed: _isExportingPDF
-                        ? null
-                        : () {
-                            String currentPeriod;
-                            switch (_tabController.index) {
-                              case 0:
-                                currentPeriod =
-                                    AppLocalizations.of(context)?.statsDaily ??
-                                    'Günlük';
-                                break;
-                              case 1:
-                                currentPeriod =
-                                    AppLocalizations.of(context)?.statsWeekly ??
-                                    'Haftalık';
-                                break;
-                              case 2:
-                                currentPeriod =
-                                    AppLocalizations.of(
-                                      context,
-                                    )?.statsMonthly ??
-                                    'Aylık';
-                                break;
-                              case 3:
-                                currentPeriod =
-                                    AppLocalizations.of(context)?.statsYearly ??
-                                    'Yıllık';
-                                break;
-                              default:
-                                currentPeriod =
-                                    AppLocalizations.of(context)?.statsDaily ??
-                                    'Günlük';
-                            }
-                            _exportToPDF(currentPeriod, context);
-                          },
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                AppLocalizations.of(context)?.exportPDF ?? 'PDF Olarak Kaydet',
+                                style: const TextStyle(
+                                  color: emeraldGreen,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            if (_isExportingPDF)
+                              const SizedBox(
+                                width: 16,
+                                height: 16,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: emeraldGreen,
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                      // Divider
+                      const PopupMenuDivider(),
+                      // Reset Stats Option
+                      PopupMenuItem<String>(
+                        value: 'reset',
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(6),
+                              decoration: BoxDecoration(
+                                color: Colors.red.withAlpha(51),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: const Icon(
+                                Icons.delete_sweep,
+                                color: Colors.red,
+                                size: 16,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                AppLocalizations.of(context)?.resetStats ?? 'Tüm İstatistikleri Sıfırla',
+                                style: const TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                    onSelected: (value) {
+                      if (value == 'pdf') {
+                        // PDF Export
+                        String currentPeriod;
+                        switch (_tabController.index) {
+                          case 0:
+                            currentPeriod = AppLocalizations.of(context)?.statsDaily ?? 'Günlük';
+                            break;
+                          case 1:
+                            currentPeriod = AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık';
+                            break;
+                          case 2:
+                            currentPeriod = AppLocalizations.of(context)?.statsMonthly ?? 'Aylık';
+                            break;
+                          case 3:
+                            currentPeriod = AppLocalizations.of(context)?.statsYearly ?? 'Yıllık';
+                            break;
+                          default:
+                            currentPeriod = AppLocalizations.of(context)?.statsDaily ?? 'Günlük';
+                        }
+                        _exportToPDF(currentPeriod, context);
+                      } else if (value == 'reset') {
+                        // Reset All Stats
+                        _showResetConfirmDialog();
+                      }
+                    },
                   ),
                 ),
               ],
@@ -804,6 +869,225 @@ class _WidgetStatsScreenState extends State<WidgetStatsScreen>
     
     // Varsayılan Latin karakterler
     return (defaultFont ?? pw.Font.helvetica());
+  }
+
+  // Tüm widget istatistiklerini sıfırlama onay dialogu
+  void _showResetConfirmDialog() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(20),
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 320),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+            ),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
+            boxShadow: [
+              BoxShadow(
+                color: darkGreen.withAlpha(51),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: const RadialGradient(
+                          colors: [lightGold, goldColor],
+                          center: Alignment(-0.2, -0.2),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Icon(
+                        Icons.warning_rounded,
+                        color: Colors.red,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        AppLocalizations.of(context)?.resetStatsTitle ?? 'İstatistikleri Sıfırla',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: emeraldGreen,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              
+              // Divider
+              Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      goldColor.withAlpha(77),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+              
+              // Content
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                child: Text(
+                  AppLocalizations.of(context)?.resetStatsMessage ?? 
+                    'Tüm istatistikleri sıfırlamak istediğinizden emin misiniz? Bu işlem geri alınamaz.',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: emeraldGreen.withAlpha(179),
+                    height: 1.4,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              
+              // Divider
+              Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      goldColor.withAlpha(77),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+              
+              // Actions
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    // İptal butonu
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: goldColor.withAlpha(102),
+                            width: 1,
+                          ),
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(8),
+                            onTap: () => Navigator.of(context).pop(false),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Text(
+                                AppLocalizations.of(context)?.resetStatsCancel ?? 'İptal',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: emeraldGreen.withAlpha(179),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    // Sıfırla butonu
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Colors.red, Color(0xFFD32F2F)],
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.red.withAlpha(77),
+                              blurRadius: 4,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(8),
+                            onTap: () => Navigator.of(context).pop(true),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Text(
+                                AppLocalizations.of(context)?.resetStatsConfirm ?? 'Sıfırla',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    if (confirmed == true) {
+      try {
+        // WidgetService'den istatistikleri temizle
+        final widgetService = Get.find<WidgetService>();
+        await widgetService.clearAllWidgetStats();
+        
+        // Sayfayı yenile
+        setState(() {});
+        
+        // Başarı mesajı göster
+        IslamicSnackbar.showSuccess(
+          AppLocalizations.of(context)?.resetStatsConfirm ?? 'Sıfırla',
+          AppLocalizations.of(context)?.resetStatsSuccess ??
+              'Tüm istatistikler başarıyla sıfırlandı',
+        );
+      } catch (e) {
+        // Hata durumunda snackbar göster
+      IslamicSnackbar.showError(
+          AppLocalizations.of(context)?.statsError ??
+              'Hata',
+         AppLocalizations.of(context)?.statsError ??
+              'Hata',
+       
+        );
+      }
+    }
   }
 
   Future<void> _exportToPDF(String period, BuildContext buildContext) async {

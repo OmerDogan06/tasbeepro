@@ -1633,4 +1633,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Android Version Warning';
+
+  @override
+  String get exportPDF => 'Save as PDF';
+
+  @override
+  String get resetStats => 'Reset All Statistics';
+
+  @override
+  String get resetStatsTitle => 'Reset Statistics';
+
+  @override
+  String get resetStatsMessage =>
+      'Are you sure you want to reset all statistics? This action cannot be undone.';
+
+  @override
+  String get resetStatsConfirm => 'Reset';
+
+  @override
+  String get resetStatsCancel => 'Cancel';
+
+  @override
+  String get resetStatsSuccess => 'All statistics have been reset successfully';
 }

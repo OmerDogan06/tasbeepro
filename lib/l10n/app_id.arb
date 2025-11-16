@@ -542,5 +542,12 @@
     }
   },
   "rewardAdPreparing": "Menyiapkan Iklan",
-  "rewardAdNotReadyMessage": "Iklan belum siap. Harap tunggu beberapa detik dan coba lagi."
+  "rewardAdNotReadyMessage": "Iklan belum siap. Harap tunggu beberapa detik dan coba lagi.",
+  "exportPDF": "Simpan sebagai PDF",
+  "resetStats": "Setel Ulang Semua Statistik",
+  "resetStatsTitle": "Setel Ulang Statistik",
+  "resetStatsMessage": "Apakah Anda yakin ingin mengatur ulang semua statistik? Tindakan ini tidak dapat dibatalkan.",
+  "resetStatsConfirm": "Setel Ulang",
+  "resetStatsCancel": "Batal",
+  "resetStatsSuccess": "Semua statistik telah berhasil disetel ulang"
 }

@@ -541,6 +541,34 @@
   },
   "rewardAdPreparing": "Reklam Hazırlanıyor",
   "rewardAdNotReadyMessage": "Reklam henüz hazır değil. Lütfen birkaç saniye bekleyip tekrar deneyin.",
-  "widgetAndroid12Warning": "Ana ekran widget'larının sorunsuz çalışması için en az Android 12 (API 31) gereklidir.",
-  "widgetAndroid12WarningTitle": "Android Sürüm Uyarısı"
+  "widgetAndroid12Warning": "Ana ekran widget'ları düzgün çalışması için en az Android 12 (API 31) gerektirir.",
+  "widgetAndroid12WarningTitle": "Android Sürüm Uyarısı",
+  "exportPDF": "PDF Olarak Kaydet",
+  "@exportPDF": {
+    "description": "PDF export menu option"
+  },
+  "resetStats": "Tüm İstatistikleri Sıfırla",
+  "@resetStats": {
+    "description": "Reset statistics menu option"
+  },
+  "resetStatsTitle": "İstatistikleri Sıfırla",
+  "@resetStatsTitle": {
+    "description": "Reset statistics dialog title"
+  },
+  "resetStatsMessage": "Tüm istatistikleri sıfırlamak istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+  "@resetStatsMessage": {
+    "description": "Reset statistics dialog message"
+  },
+  "resetStatsConfirm": "Sıfırla",
+  "@resetStatsConfirm": {
+    "description": "Reset statistics dialog confirm button"
+  },
+  "resetStatsCancel": "İptal",
+  "@resetStatsCancel": {
+    "description": "Reset statistics dialog cancel button"
+  },
+  "resetStatsSuccess": "Tüm istatistikler başarıyla sıfırlandı",
+  "@resetStatsSuccess": {
+    "description": "Success message after resetting statistics"
+  }
 }

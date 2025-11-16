@@ -542,5 +542,12 @@
     }
   },
   "rewardAdPreparing": "광고 준비 중",
-  "rewardAdNotReadyMessage": "광고가 아직 준비되지 않았습니다. 몇 초 기다린 후 다시 시도해 주세요."
+  "rewardAdNotReadyMessage": "광고가 아직 준비되지 않았습니다. 몇 초 기다린 후 다시 시도해 주세요.",
+  "exportPDF": "PDF로 저장",
+  "resetStats": "모든 통계 재설정",
+  "resetStatsTitle": "통계 재설정",
+  "resetStatsMessage": "모든 통계를 재설정하시겠습니까? 이 작업은 취소할 수 없습니다.",
+  "resetStatsConfirm": "재설정",
+  "resetStatsCancel": "취소",
+  "resetStatsSuccess": "모든 통계가 성공적으로 재설정되었습니다"
 }

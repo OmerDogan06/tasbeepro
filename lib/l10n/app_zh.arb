@@ -542,5 +542,12 @@
     }
   },
   "rewardAdPreparing": "广告准备中",
-  "rewardAdNotReadyMessage": "广告尚未准备好。请等待几秒钟后重试。"
+  "rewardAdNotReadyMessage": "广告尚未准备好。请等待几秒钟后重试。",
+  "exportPDF": "保存为PDF",
+  "resetStats": "重置所有统计",
+  "resetStatsTitle": "重置统计",
+  "resetStatsMessage": "您确定要重置所有统计信息吗？此操作不可撤销。",
+  "resetStatsConfirm": "重置",
+  "resetStatsCancel": "取消",
+  "resetStatsSuccess": "所有统计信息已成功重置"
 }

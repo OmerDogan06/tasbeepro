@@ -1665,8 +1665,31 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get widgetAndroid12Warning =>
-      'Les widgets d\'écran d\'accueil nécessitent au moins Android 12 (API 31) pour un fonctionnement correct.';
+      'Les widgets d\'écran d\'accueil nécessitent au moins Android 12 (API 31) pour fonctionner correctement.';
 
   @override
   String get widgetAndroid12WarningTitle => 'Avertissement de version Android';
+
+  @override
+  String get exportPDF => 'Enregistrer au format PDF';
+
+  @override
+  String get resetStats => 'Réinitialiser toutes les statistiques';
+
+  @override
+  String get resetStatsTitle => 'Réinitialiser les statistiques';
+
+  @override
+  String get resetStatsMessage =>
+      'Êtes-vous sûr de vouloir réinitialiser toutes les statistiques ? Cette action ne peut pas être annulée.';
+
+  @override
+  String get resetStatsConfirm => 'Réinitialiser';
+
+  @override
+  String get resetStatsCancel => 'Annuler';
+
+  @override
+  String get resetStatsSuccess =>
+      'Toutes les statistiques ont été réinitialisées avec succès';
 }

@@ -1602,4 +1602,26 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'تحذير إصدار Android';
+
+  @override
+  String get exportPDF => 'حفظ كملف PDF';
+
+  @override
+  String get resetStats => 'إعادة تعيين جميع الإحصائيات';
+
+  @override
+  String get resetStatsTitle => 'إعادة تعيين الإحصائيات';
+
+  @override
+  String get resetStatsMessage =>
+      'هل أنت متأكد أنك تريد إعادة تعيين جميع الإحصائيات؟ لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get resetStatsConfirm => 'إعادة تعيين';
+
+  @override
+  String get resetStatsCancel => 'إلغاء';
+
+  @override
+  String get resetStatsSuccess => 'تم إعادة تعيين جميع الإحصائيات بنجاح';
 }

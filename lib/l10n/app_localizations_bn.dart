@@ -1628,8 +1628,30 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get widgetAndroid12Warning =>
-      'হোম স্ক্রিন উইজেটগুলির সঠিক কার্যকারিতার জন্য কমপক্ষে Android 12 (API 31) প্রয়োজন।';
+      'হোম স্ক্রিন উইজেটগুলির সঠিক কার্যকারিতার জন্য কমপক্ষে Android 12 (API 31) প্রয়োজন।';
 
   @override
   String get widgetAndroid12WarningTitle => 'Android সংস্করণ সতর্কতা';
+
+  @override
+  String get exportPDF => 'PDF হিসেবে সংরক্ষণ করুন';
+
+  @override
+  String get resetStats => 'সমস্ত পরিসংখ্যান রিসেট করুন';
+
+  @override
+  String get resetStatsTitle => 'পরিসংখ্যান রিসেট করুন';
+
+  @override
+  String get resetStatsMessage =>
+      'আপনি কি নিশ্চিত যে আপনি সমস্ত পরিসংখ্যান রিসেট করতে চান? এই কার্যটি পূর্বাবস্থায় ফিরিয়ে আনা যাবে না।';
+
+  @override
+  String get resetStatsConfirm => 'রিসেট';
+
+  @override
+  String get resetStatsCancel => 'বাতিল';
+
+  @override
+  String get resetStatsSuccess => 'সমস্ত পরিসংখ্যান সফলভাবে রিসেট করা হয়েছে';
 }

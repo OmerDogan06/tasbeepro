@@ -542,5 +542,12 @@
   "rewardAdPreparing": "Preparando Anuncio",
   "rewardAdNotReadyMessage": "El anuncio no está listo aún. Por favor espera unos segundos e inténtalo de nuevo.",
   "widgetAndroid12Warning": "Los widgets de pantalla de inicio requieren al menos Android 12 (API 31) para un funcionamiento adecuado.",
-  "widgetAndroid12WarningTitle": "Advertencia de versión Android"
+  "widgetAndroid12WarningTitle": "Advertencia de versión Android",
+  "exportPDF": "Guardar como PDF",
+  "resetStats": "Restablecer todas las estadísticas",
+  "resetStatsTitle": "Restablecer estadísticas",
+  "resetStatsMessage": "¿Estás seguro de que quieres restablecer todas las estadísticas? Esta acción no se puede deshacer.",
+  "resetStatsConfirm": "Restablecer",
+  "resetStatsCancel": "Cancelar",
+  "resetStatsSuccess": "Todas las estadísticas se han restablecido correctamente"
 }

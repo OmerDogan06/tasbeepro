@@ -12,8 +12,8 @@ import '../controllers/counter_controller.dart';
 import '../widgets/islamic_snackbar.dart';
 import '../widgets/banner_ad_widget.dart';
 import '../services/ad_service.dart';
+import '../services/storage_service.dart';
 import '../l10n/app_localizations.dart';
-
 
 class StatsScreen extends StatefulWidget {
   const StatsScreen({super.key});
@@ -39,7 +39,6 @@ class _StatsScreenState extends State<StatsScreen>
     dataload();
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
-
   }
 
   @override
@@ -48,87 +47,57 @@ class _StatsScreenState extends State<StatsScreen>
     super.dispose();
   }
 
-  dataload()  {
-     controller.getAllZikrs();
+  dataload() {
+    controller.getAllZikrs();
   }
-
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<CounterController>();
-      TextDirection textDirection = Directionality.of(context);
+    TextDirection textDirection = Directionality.of(context);
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-         statusBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: Color(0xFF2D5016),
         systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
         backgroundColor: const Color(0xFFF8F6F0),
-        appBar:PreferredSize(preferredSize: Size.fromHeight(104), child:  SafeArea(
-          child: AppBar(
-            title: Text(
-              AppLocalizations.of(context)?.statsTitle ?? 'Detaylı İstatistikler 💎',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: emeraldGreen,
-                fontSize: 18,
-              ),
-            ),
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(104),
+          child: SafeArea(
+            child: AppBar(
+              title: Text(
+                AppLocalizations.of(context)?.statsTitle ??
+                    'Detaylı İstatistikler 💎',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: emeraldGreen,
+                  fontSize: 18,
                 ),
               ),
-            ),
-            leading: Container(
-              margin: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                gradient: const RadialGradient(
-                  colors: [lightGold, goldColor],
-                  center: Alignment(-0.2, -0.2),
-                ),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: darkGreen.withAlpha(38),
-                    blurRadius: 6,
-                    offset: const Offset(0, 2),
+              centerTitle: true,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFFFFFDF7), Color(0xFFF8F6F0)],
                   ),
-                ],
-              ),
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                style: ButtonStyle(
-                  padding: WidgetStateProperty.all(EdgeInsets.zero),
-                  overlayColor: WidgetStateProperty.all(Colors.transparent),
                 ),
-                icon: const Icon(Icons.arrow_back, color: emeraldGreen, size: 20),
-                onPressed: () => Get.back(),
               ),
-            ),
-            actions: [
-              // PDF Export Button
-              Container(
-                width: 40,
-                height: 40,
-                margin:textDirection == TextDirection.ltr
-                    ? const EdgeInsets.only(right: 12)
-                    : const EdgeInsets.only(left: 12),
+              leading: Container(
+                margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   gradient: const RadialGradient(
                     colors: [lightGold, goldColor],
                     center: Alignment(-0.2, -0.2),
                   ),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
                       color: darkGreen.withAlpha(38),
@@ -143,79 +112,230 @@ class _StatsScreenState extends State<StatsScreen>
                     padding: WidgetStateProperty.all(EdgeInsets.zero),
                     overlayColor: WidgetStateProperty.all(Colors.transparent),
                   ),
-                  icon: _isExportingPDF
-                      ? SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(
-                            color: emeraldGreen,
-                            strokeWidth: 2,
-                          ),
-                        )
-                      : const Icon(
-                          Icons.picture_as_pdf,
-                          color: emeraldGreen,
-                          size: 20,
-                        ),
-                  onPressed: _isExportingPDF ? null : () {
-                    // Güncel tab index'ine göre period'u belirle
-                    String currentPeriod;
-                    switch (_tabController.index) {
-                      case 0:
-                        currentPeriod = AppLocalizations.of(context)?.statsDaily ?? 'Günlük';
-                        break;
-                      case 1:
-                        currentPeriod = AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık';
-                        break;
-                      case 2:
-                        currentPeriod = AppLocalizations.of(context)?.statsMonthly ?? 'Aylık';
-                        break;
-                      case 3:
-                        currentPeriod = AppLocalizations.of(context)?.statsYearly ?? 'Yıllık';
-                        break;
-                      default:
-                        currentPeriod = AppLocalizations.of(context)?.statsDaily ?? 'Günlük';
-                    }
-                    _exportToPDF(currentPeriod, context);
-                  },
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: emeraldGreen,
+                    size: 20,
+                  ),
+                  onPressed: () => Get.back(),
                 ),
               ),
-            ],
-            bottom: TabBar(
-              controller: _tabController,
-              isScrollable: true,
-              labelColor: emeraldGreen,
-              unselectedLabelColor: emeraldGreen.withAlpha(153),
-              indicatorColor: goldColor,
-              indicatorSize: TabBarIndicatorSize.label,
-              tabAlignment: TabAlignment.center,
-              overlayColor: WidgetStateProperty.all(Colors.transparent),
-              indicatorWeight: 3,
-              labelStyle: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
-              unselectedLabelStyle: const TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 13,
-              ),
-              tabs: [
-                Tab(text: AppLocalizations.of(context)?.statsDaily ?? 'Günlük'),
-                Tab(text: AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık'),
-                Tab(text: AppLocalizations.of(context)?.statsMonthly ?? 'Aylık'),
-                Tab(text: AppLocalizations.of(context)?.statsYearly ?? 'Yıllık'),
+              actions: [
+                // PopupMenu Button
+                Container(
+                  width: 40,
+                  height: 40,
+                  margin: textDirection == TextDirection.ltr
+                      ? const EdgeInsets.only(right: 12)
+                      : const EdgeInsets.only(left: 12),
+                  decoration: BoxDecoration(
+                    gradient: const RadialGradient(
+                      colors: [lightGold, goldColor],
+                      center: Alignment(-0.2, -0.2),
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: darkGreen.withAlpha(38),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: PopupMenuButton<String>(
+                    
+                    padding: EdgeInsets.zero,
+                    icon: const Icon(
+                      Icons.more_vert,
+                      color: emeraldGreen,
+                      size: 20,
+                    ),
+                    color: const Color(0xFFF8F6F0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                        color: goldColor.withAlpha(102),
+                        width: 1.5,
+                      ),
+                    ),
+                    offset: const Offset(0, 50),
+                    itemBuilder: (context) => [
+                      // PDF Export Option
+                      PopupMenuItem<String>(
+                        value: 'pdf',
+                        enabled: !_isExportingPDF,
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(6),
+                              decoration: BoxDecoration(
+                                gradient: const RadialGradient(
+                                  colors: [lightGold, goldColor],
+                                  center: Alignment(-0.2, -0.2),
+                                ),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: const Icon(
+                                Icons.picture_as_pdf,
+                                color: emeraldGreen,
+                                size: 16,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                AppLocalizations.of(context)?.exportPDF ??
+                                    'PDF Olarak Kaydet',
+                                style: const TextStyle(
+                                  color: emeraldGreen,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            if (_isExportingPDF)
+                              const SizedBox(
+                                width: 16,
+                                height: 16,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: emeraldGreen,
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                      // Divider
+                      const PopupMenuDivider(),
+                      // Reset Stats Option
+                      PopupMenuItem<String>(
+                        value: 'reset',
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(6),
+                              decoration: BoxDecoration(
+                                color: Colors.red.withAlpha(51),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: const Icon(
+                                Icons.delete_sweep,
+                                color: Colors.red,
+                                size: 16,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                AppLocalizations.of(context)?.resetStats ??
+                                    'Tüm İstatistikleri Sıfırla',
+                                style: const TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                    onSelected: (value) {
+                      if (value == 'pdf') {
+                        // PDF Export
+                        String currentPeriod;
+                        switch (_tabController.index) {
+                          case 0:
+                            currentPeriod =
+                                AppLocalizations.of(context)?.statsDaily ??
+                                'Günlük';
+                            break;
+                          case 1:
+                            currentPeriod =
+                                AppLocalizations.of(context)?.statsWeekly ??
+                                'Haftalık';
+                            break;
+                          case 2:
+                            currentPeriod =
+                                AppLocalizations.of(context)?.statsMonthly ??
+                                'Aylık';
+                            break;
+                          case 3:
+                            currentPeriod =
+                                AppLocalizations.of(context)?.statsYearly ??
+                                'Yıllık';
+                            break;
+                          default:
+                            currentPeriod =
+                                AppLocalizations.of(context)?.statsDaily ??
+                                'Günlük';
+                        }
+                        _exportToPDF(currentPeriod, context);
+                      } else if (value == 'reset') {
+                        // Reset All Stats
+                        _showResetConfirmDialog();
+                      }
+                    },
+                  ),
+                ),
               ],
+              bottom: TabBar(
+                controller: _tabController,
+                isScrollable: true,
+                labelColor: emeraldGreen,
+                unselectedLabelColor: emeraldGreen.withAlpha(153),
+                indicatorColor: goldColor,
+                indicatorSize: TabBarIndicatorSize.label,
+                tabAlignment: TabAlignment.center,
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
+                indicatorWeight: 3,
+                labelStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+                unselectedLabelStyle: const TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 13,
+                ),
+                tabs: [
+                  Tab(
+                    text: AppLocalizations.of(context)?.statsDaily ?? 'Günlük',
+                  ),
+                  Tab(
+                    text:
+                        AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık',
+                  ),
+                  Tab(
+                    text: AppLocalizations.of(context)?.statsMonthly ?? 'Aylık',
+                  ),
+                  Tab(
+                    text: AppLocalizations.of(context)?.statsYearly ?? 'Yıllık',
+                  ),
+                ],
+              ),
             ),
           ),
-        )),
+        ),
         body: SafeArea(
           child: TabBarView(
             controller: _tabController,
             children: [
-              _buildPeriodStats(AppLocalizations.of(context)?.statsDaily ?? 'Günlük', controller),
-              _buildPeriodStats(AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık', controller),
-              _buildPeriodStats(AppLocalizations.of(context)?.statsMonthly ?? 'Aylık', controller),
-              _buildPeriodStats(AppLocalizations.of(context)?.statsYearly ?? 'Yıllık', controller),
+              _buildPeriodStats(
+                AppLocalizations.of(context)?.statsDaily ?? 'Günlük',
+                controller,
+              ),
+              _buildPeriodStats(
+                AppLocalizations.of(context)?.statsWeekly ?? 'Haftalık',
+                controller,
+              ),
+              _buildPeriodStats(
+                AppLocalizations.of(context)?.statsMonthly ?? 'Aylık',
+                controller,
+              ),
+              _buildPeriodStats(
+                AppLocalizations.of(context)?.statsYearly ?? 'Yıllık',
+                controller,
+              ),
             ],
           ),
         ),
@@ -227,28 +347,26 @@ class _StatsScreenState extends State<StatsScreen>
     return CustomScrollView(
       slivers: [
         // Sticky Banner Ad
-        const SliverToBoxAdapter(
-                child: BannerAdWidget(),
-              ),
+        const SliverToBoxAdapter(child: BannerAdWidget()),
         // Scrollable content
         SliverPadding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           sliver: SliverList(
             delegate: SliverChildListDelegate([
               // Bilgi Kartı - Dönemsel açıklama
-          _buildPeriodInfoCard(period),
-          const SizedBox(height: 10),
+              _buildPeriodInfoCard(period),
+              const SizedBox(height: 10),
 
-          // Özet Kartı
-          _buildSummaryCard(period, controller),
-          const SizedBox(height: 15),
+              // Özet Kartı
+              _buildSummaryCard(period, controller),
+              const SizedBox(height: 15),
 
-          // Grafik Kartı
-          _buildChartCard(period, controller),
-          const SizedBox(height: 15),
+              // Grafik Kartı
+              _buildChartCard(period, controller),
+              const SizedBox(height: 15),
 
-          // Zikir Listesi
-          _buildZikrList(period, controller),
+              // Zikir Listesi
+              _buildZikrList(period, controller),
             ]),
           ),
         ),
@@ -259,7 +377,7 @@ class _StatsScreenState extends State<StatsScreen>
   Widget _buildPeriodInfoCard(String period) {
     String info;
     String emoji;
-    
+
     // Map English period names to Turkish for comparison
     String periodKey = period;
     if (period == 'Daily') {
@@ -271,27 +389,36 @@ class _StatsScreenState extends State<StatsScreen>
     } else if (period == 'Yearly') {
       periodKey = 'Yıllık';
     }
-   
-    
+
     switch (periodKey) {
       case 'Günlük':
-        info = AppLocalizations.of(context)?.statsDailyInfo ?? 'Bugün çekilen zikirlerinizin detayları';
+        info =
+            AppLocalizations.of(context)?.statsDailyInfo ??
+            'Bugün çekilen zikirlerinizin detayları';
         emoji = '📅';
         break;
       case 'Haftalık':
-        info = AppLocalizations.of(context)?.statsWeeklyInfo ?? 'Bu hafta çekilen zikirlerinizin detayları';
+        info =
+            AppLocalizations.of(context)?.statsWeeklyInfo ??
+            'Bu hafta çekilen zikirlerinizin detayları';
         emoji = '📊';
         break;
       case 'Aylık':
-        info = AppLocalizations.of(context)?.statsMonthlyInfo ?? 'Bu ay çekilen zikirlerinizin detayları';
+        info =
+            AppLocalizations.of(context)?.statsMonthlyInfo ??
+            'Bu ay çekilen zikirlerinizin detayları';
         emoji = '📈';
         break;
       case 'Yıllık':
-        info = AppLocalizations.of(context)?.statsYearlyInfo ?? 'Bu yıl çekilen zikirlerinizin detayları';
+        info =
+            AppLocalizations.of(context)?.statsYearlyInfo ??
+            'Bu yıl çekilen zikirlerinizin detayları';
         emoji = '🏆';
         break;
       default:
-         info =  AppLocalizations.of(context)?.widgetStatsTitle ?? 'Widget İstatistikleri';
+        info =
+            AppLocalizations.of(context)?.widgetStatsTitle ??
+            'Widget İstatistikleri';
         emoji = '📋';
     }
 
@@ -323,10 +450,7 @@ class _StatsScreenState extends State<StatsScreen>
               color: goldColor,
               borderRadius: BorderRadius.circular(6),
             ),
-            child: Text(
-              emoji,
-              style: const TextStyle(fontSize: 20),
-            ),
+            child: Text(emoji, style: const TextStyle(fontSize: 20)),
           ),
           const SizedBox(width: 6),
           Expanded(
@@ -334,7 +458,8 @@ class _StatsScreenState extends State<StatsScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                AppLocalizations.of(context)?.statsPeriodStatsFor(period) ?? '$period İstatistikler',
+                  AppLocalizations.of(context)?.statsPeriodStatsFor(period) ??
+                      '$period İstatistikler',
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -358,8 +483,7 @@ class _StatsScreenState extends State<StatsScreen>
   }
 
   Widget _buildSummaryCard(String period, CounterController controller) {
-    Map<String, dynamic>  stats = _calculatePeriodStats(period, controller).obs;
-    
+    Map<String, dynamic> stats = _calculatePeriodStats(period, controller).obs;
 
     return Container(
       width: double.infinity,
@@ -383,7 +507,8 @@ class _StatsScreenState extends State<StatsScreen>
       child: Column(
         children: [
           Text(
-            AppLocalizations.of(context)?.statsPeriodStatsFor(period) ?? '$period İstatistikler',
+            AppLocalizations.of(context)?.statsPeriodStatsFor(period) ??
+                '$period İstatistikler',
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -402,7 +527,8 @@ class _StatsScreenState extends State<StatsScreen>
               ),
               Expanded(
                 child: _buildStatItem(
-                  AppLocalizations.of(context)?.statsMostUsed ?? 'En Çok Çekilen',
+                  AppLocalizations.of(context)?.statsMostUsed ??
+                      'En Çok Çekilen',
                   stats['mostUsed'] ?? '',
                   Icons.star,
                 ),
@@ -414,7 +540,8 @@ class _StatsScreenState extends State<StatsScreen>
             children: [
               Expanded(
                 child: _buildStatItem(
-                  AppLocalizations.of(context)?.statsActiveZikrs ?? 'Aktif Zikir',
+                  AppLocalizations.of(context)?.statsActiveZikrs ??
+                      'Aktif Zikir',
                   '${stats['activeZikrs']}',
                   Icons.list,
                 ),
@@ -456,10 +583,7 @@ class _StatsScreenState extends State<StatsScreen>
           ),
           Text(
             title,
-            style: TextStyle(
-              fontSize: 11,
-              color: emeraldGreen.withAlpha(179),
-            ),
+            style: TextStyle(fontSize: 11, color: emeraldGreen.withAlpha(179)),
             textAlign: TextAlign.center,
           ),
         ],
@@ -511,7 +635,8 @@ class _StatsScreenState extends State<StatsScreen>
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        AppLocalizations.of(context)?.statsNoData ?? 'Henüz $period veri yok',
+                        AppLocalizations.of(context)?.statsNoData ??
+                            'Henüz $period veri yok',
                         style: TextStyle(
                           color: emeraldGreen.withAlpha(179),
                           fontSize: 14,
@@ -532,13 +657,20 @@ class _StatsScreenState extends State<StatsScreen>
                           sections: chartData.asMap().entries.map((entry) {
                             final index = entry.key;
                             final data = entry.value;
-                            final total = chartData.fold<double>(0, (sum, item) => sum + item.y);
-                            final percentage = total > 0 ? (data.y / total * 100) : 0;
-                            
+                            final total = chartData.fold<double>(
+                              0,
+                              (sum, item) => sum + item.y,
+                            );
+                            final percentage = total > 0
+                                ? (data.y / total * 100)
+                                : 0;
+
                             return PieChartSectionData(
                               color: _getChartColor(index),
                               value: data.y,
-                              title: percentage > 5 ? '${percentage.toStringAsFixed(0)}%' : '', // Sadece %5'ten büyükse yüzde göster
+                              title: percentage > 5
+                                  ? '${percentage.toStringAsFixed(0)}%'
+                                  : '', // Sadece %5'ten büyükse yüzde göster
                               radius: 65,
                               titleStyle: const TextStyle(
                                 fontSize: 9,
@@ -557,16 +689,17 @@ class _StatsScreenState extends State<StatsScreen>
                           }).toList(),
                           pieTouchData: PieTouchData(
                             enabled: true,
-                            touchCallback: (FlTouchEvent event, pieTouchResponse) {
-                              // Touch feedback eklenebilir
-                            },
+                            touchCallback:
+                                (FlTouchEvent event, pieTouchResponse) {
+                                  // Touch feedback eklenebilir
+                                },
                           ),
                         ),
                       ),
                     ),
-                    
+
                     const SizedBox(height: 16),
-                    
+
                     // Legend - Sabit yükseklikli iki sütunlu düzen
                     _buildTwoColumnLegend(chartData),
                   ],
@@ -741,12 +874,7 @@ class _StatsScreenState extends State<StatsScreen>
     // Tüm aktif zikirleri ekle (16 zikir de dahil)
     for (final zikr in sortedZikrs) {
       final count = controller.getZikrCountForPeriod(zikr.id, period);
-      chartData.add(
-        ChartData(
-          label: zikr.name,
-          y: count.toDouble(),
-        ),
-      );
+      chartData.add(ChartData(label: zikr.name, y: count.toDouble()));
     }
 
     return chartData;
@@ -785,9 +913,7 @@ class _StatsScreenState extends State<StatsScreen>
             child: Row(
               children: [
                 // Sol sütun
-                Expanded(
-                  child: _buildLegendItem(chartData[i], i),
-                ),
+                Expanded(child: _buildLegendItem(chartData[i], i)),
                 const SizedBox(width: 12),
                 // Sağ sütun (eğer varsa)
                 Expanded(
@@ -909,10 +1035,239 @@ class _StatsScreenState extends State<StatsScreen>
     }
   }
 
+  // Tüm istatistikleri sıfırlama onay dialogu
+  void _showResetConfirmDialog() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(20),
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 320),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+            ),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
+            boxShadow: [
+              BoxShadow(
+                color: darkGreen.withAlpha(51),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: const RadialGradient(
+                          colors: [lightGold, goldColor],
+                          center: Alignment(-0.2, -0.2),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Icon(
+                        Icons.warning_rounded,
+                        color: Colors.red,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        AppLocalizations.of(context)?.resetStatsTitle ??
+                            'İstatistikleri Sıfırla',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: emeraldGreen,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Divider
+              Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      goldColor.withAlpha(77),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+
+              // Content
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                child: Text(
+                  AppLocalizations.of(context)?.resetStatsMessage ??
+                      'Tüm istatistikleri sıfırlamak istediğinizden emin misiniz? Bu işlem geri alınamaz.',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: emeraldGreen.withAlpha(179),
+                    height: 1.4,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+
+              // Divider
+              Container(
+                height: 1,
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      goldColor.withAlpha(77),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+
+              // Actions
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    // İptal butonu
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: goldColor.withAlpha(102),
+                            width: 1,
+                          ),
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(8),
+                            onTap: () => Navigator.of(context).pop(false),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Text(
+                                AppLocalizations.of(
+                                      context,
+                                    )?.resetStatsCancel ??
+                                    'İptal',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: emeraldGreen.withAlpha(179),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    // Sıfırla butonu
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Colors.red, Color(0xFFD32F2F)],
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.red.withAlpha(77),
+                              blurRadius: 4,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(8),
+                            onTap: () => Navigator.of(context).pop(true),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Text(
+                                AppLocalizations.of(
+                                      context,
+                                    )?.resetStatsConfirm ??
+                                    'Sıfırla',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    if (confirmed == true) {
+      try {
+        // StorageService'den istatistikleri temizle
+        final storageService = Get.find<StorageService>();
+        await storageService.clearAllStatistics();
+
+        // Controller'ı güncelle ve sayfayı yenile
+        setState(() {
+          controller = Get.find<CounterController>();
+          dataload();
+        });
+
+        // Başarı mesajı göster
+        IslamicSnackbar.showSuccess(
+          AppLocalizations.of(context)?.resetStatsConfirm ?? 'Sıfırla',
+          AppLocalizations.of(context)?.resetStatsSuccess ??
+              'Tüm istatistikler başarıyla sıfırlandı',
+        );
+      } catch (e) {
+        // Hata durumunda snackbar göster
+        IslamicSnackbar.showError(
+          AppLocalizations.of(context)?.statsError ??
+              'Hata',
+         AppLocalizations.of(context)?.statsError ??
+              'Hata',
+      
+        );
+      }
+    }
+  }
+
   Future<void> _exportToPDF(String period, BuildContext buildContext) async {
     // PDF çıkarma işlemi için tam ekran reklam göster
     AdService.instance.showInterstitialAd();
-    
+
     // Loading state'ini başlat
     setState(() {
       _isExportingPDF = true;
@@ -941,15 +1296,12 @@ class _StatsScreenState extends State<StatsScreen>
 
       pw.Font? cyrillicFont;
 
-
       try {
         // Latin karakterler için
         final regularFontData = await rootBundle.load(
           'assets/fonts/Poppins-Regular.ttf',
         );
         regularFont = pw.Font.ttf(regularFontData);
-
-
 
         // Arapça/İslami metinler için
         final amiriFontData = await rootBundle.load(
@@ -963,8 +1315,6 @@ class _StatsScreenState extends State<StatsScreen>
             'assets/fonts/NotoSansJP-Regular.ttf',
           );
           japaneseFont = pw.Font.ttf(japaneseFontData);
-          
-
         } catch (jpError) {
           debugPrint('Japonca font yüklenemedi: $jpError');
         }
@@ -975,8 +1325,6 @@ class _StatsScreenState extends State<StatsScreen>
             'assets/fonts/NotoSansKR-Regular.ttf',
           );
           koreanFont = pw.Font.ttf(koreanFontData);
-          
-
         } catch (krError) {
           debugPrint('Korece font yüklenemedi: $krError');
         }
@@ -987,8 +1335,6 @@ class _StatsScreenState extends State<StatsScreen>
             'assets/fonts/NotoSansThai-Regular.ttf',
           );
           thaiFont = pw.Font.ttf(thaiFontData);
-          
-
         } catch (thError) {
           debugPrint('Tayca font yüklenemedi: $thError');
         }
@@ -999,12 +1345,11 @@ class _StatsScreenState extends State<StatsScreen>
             'assets/fonts/NotoSansSC-Regular.ttf',
           );
           chineseFont = pw.Font.ttf(chineseFontData);
-          
-
         } catch (cnError) {
-          debugPrint('Çince font yüklenemedi: $cnError - Fallback olarak Latin font kullanılacak');
+          debugPrint(
+            'Çince font yüklenemedi: $cnError - Fallback olarak Latin font kullanılacak',
+          );
           chineseFont = null;
-
         }
 
         // Bengalce için
@@ -1013,8 +1358,6 @@ class _StatsScreenState extends State<StatsScreen>
             'assets/fonts/NotoSansBengali-Regular.ttf',
           );
           bengaliFont = pw.Font.ttf(bengaliFontData);
-          
-
         } catch (bnError) {
           debugPrint('Bengalce font yüklenemedi: $bnError');
         }
@@ -1025,28 +1368,26 @@ class _StatsScreenState extends State<StatsScreen>
             'assets/fonts/NotoSans-cyrillic-Regular.ttf',
           );
           cyrillicFont = pw.Font.ttf(cyrillicFontData);
-
-
         } catch (cyError) {
           debugPrint('Kiril alfabesi font yüklenemedi: $cyError');
         }
-
       } catch (fontError) {
         debugPrint('Font yüklenemedi: $fontError');
         // Font yüklenemezse fallback fontları kullan
         try {
           // En azından temel fontları yüklemeye çalış
           if (regularFont == null) {
-            final fallbackFontData = await rootBundle.load('assets/fonts/Poppins-Regular.ttf');
+            final fallbackFontData = await rootBundle.load(
+              'assets/fonts/Poppins-Regular.ttf',
+            );
             regularFont = pw.Font.ttf(fallbackFontData);
           }
-
         } catch (fallbackError) {
           debugPrint('Fallback fontlar da yüklenemedi: $fallbackError');
           // En son çare olarak built-in fontları kullan
           regularFont = pw.Font.helvetica();
         }
-        
+
         // Diğer fontlar için fallback
         amiriFont ??= regularFont;
         japaneseFont ??= regularFont;
@@ -1064,78 +1405,84 @@ class _StatsScreenState extends State<StatsScreen>
           margin: const pw.EdgeInsets.all(16),
           build: (pw.Context context) {
             final allZikrs = controller.allZikrs;
-            
+
             // Dönemsel istatistikleri doğru hesapla
             final periodStats = _calculatePeriodStats(period, controller);
             final totalCount = periodStats['totalCount'] as int;
             final activeZikrs = periodStats['activeZikrs'] as int;
             final average = periodStats['average'] as int;
-            
+
             final now = DateTime.now();
 
             // En çok kullanılan zikirler (aktif olanlar - max 5)
             final sortedZikrs =
                 allZikrs
                     .where(
-                      (zikr) => controller.getZikrCountForPeriod(zikr.id, period) > 0,
+                      (zikr) =>
+                          controller.getZikrCountForPeriod(zikr.id, period) > 0,
                     ) // Sadece aktif zikirler
                     .toList()
                   ..sort(
                     (a, b) => controller
                         .getZikrCountForPeriod(b.id, period)
-                        .compareTo(controller.getZikrCountForPeriod(a.id, period)),
+                        .compareTo(
+                          controller.getZikrCountForPeriod(a.id, period),
+                        ),
                   );
-            final topZikrs = sortedZikrs.take(10).toList(); // Max 10 zikir göster
+            final topZikrs = sortedZikrs
+                .take(10)
+                .toList(); // Max 10 zikir göster
             TextDirection textDirection = Directionality.of(buildContext);
 
             // Font seçim fonksiyonu - dile göre uygun font döndürür
             pw.Font? selectFontForText(String text, {bool isBold = false}) {
               // Arapça karakterler kontrolü
-              if (RegExp(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]').hasMatch(text)) {
+              if (RegExp(
+                r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]',
+              ).hasMatch(text)) {
                 return amiriFont ?? regularFont ?? pw.Font.helvetica();
               }
-              
+
               // Bengalce karakterler kontrolü
               if (RegExp(r'[\u0980-\u09FF]').hasMatch(text)) {
-                return  (bengaliFont ?? regularFont ?? pw.Font.helvetica());
+                return (bengaliFont ?? regularFont ?? pw.Font.helvetica());
               }
 
               // Tayca karakterler kontrolü
               if (RegExp(r'[\u0E00-\u0E7F]').hasMatch(text)) {
-                return  (thaiFont ?? regularFont ?? pw.Font.helvetica());
+                return (thaiFont ?? regularFont ?? pw.Font.helvetica());
               }
-              
+
               // Çince karakterler kontrolü (Simplified & Traditional)
               if (RegExp(r'[\u4e00-\u9fff]').hasMatch(text)) {
                 debugPrint('Çince karakter tespit edildi: $text');
-                return  (chineseFont ?? japaneseFont ?? regularFont ?? pw.Font.helvetica());
+                return (chineseFont ??
+                    japaneseFont ??
+                    regularFont ??
+                    pw.Font.helvetica());
               }
-              
+
               // Japonca karakterler kontrolü (Hiragana, Katakana, Kanji)
               if (RegExp(r'[\u3040-\u309f\u30a0-\u30ff]').hasMatch(text)) {
-                return  (japaneseFont ?? regularFont ?? pw.Font.helvetica());
+                return (japaneseFont ?? regularFont ?? pw.Font.helvetica());
               }
-              
+
               // Korece karakterler kontrolü
               if (RegExp(r'[\uac00-\ud7af]').hasMatch(text)) {
                 return (koreanFont ?? regularFont ?? pw.Font.helvetica());
               }
-              
+
               // Kiril alfabesi kontrolü (Rusça vb.)
               if (RegExp(r'[\u0400-\u04FF]').hasMatch(text)) {
-              
-                  return cyrillicFont ?? regularFont ?? pw.Font.helvetica();
-                
+                return cyrillicFont ?? regularFont ?? pw.Font.helvetica();
               }
-              
+
               // Varsayılan Latin fontları
               if (textDirection == TextDirection.rtl) {
                 return amiriFont ?? regularFont ?? pw.Font.helvetica();
               }
-              
-          
-                return regularFont ?? pw.Font.helvetica();
-              
+
+              return regularFont ?? pw.Font.helvetica();
             }
 
             return pw.Column(
@@ -1175,7 +1522,8 @@ class _StatsScreenState extends State<StatsScreen>
                           pw.SizedBox(width: 16),
                           pw.Expanded(
                             child: pw.Text(
-                              AppLocalizations.of(buildContext)?.pdfBismillah ?? 'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم',
+                              AppLocalizations.of(buildContext)?.pdfBismillah ??
+                                  'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم',
                               textAlign: pw.TextAlign.center,
                               textDirection: pw.TextDirection.rtl,
                               style: pw.TextStyle(
@@ -1203,13 +1551,16 @@ class _StatsScreenState extends State<StatsScreen>
                       ),
                       pw.SizedBox(height: 12),
                       pw.Text(
-                       '${AppLocalizations.of(buildContext)?.pdfReportTitle ?? 'Tasbee Pro - Detaylı İstatistik Raporu'} ($period)',
+                        '${AppLocalizations.of(buildContext)?.pdfReportTitle ?? 'Tasbee Pro - Detaylı İstatistik Raporu'} ($period)',
                         textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColors.white,
-                          font: selectFontForText('${AppLocalizations.of(buildContext)?.pdfReportTitle ?? 'Tasbee Pro - Detaylı İstatistik Raporu'} ($period)', isBold: true),
+                          font: selectFontForText(
+                            '${AppLocalizations.of(buildContext)?.pdfReportTitle ?? 'Tasbee Pro - Detaylı İstatistik Raporu'} ($period)',
+                            isBold: true,
+                          ),
                         ),
                       ),
                       pw.SizedBox(height: 8),
@@ -1218,7 +1569,9 @@ class _StatsScreenState extends State<StatsScreen>
                         style: pw.TextStyle(
                           fontSize: 12,
                           color: PdfColor.fromHex('#F5E6A8'),
-                          font: selectFontForText('${AppLocalizations.of(buildContext)?.pdfDate ?? 'Tarih'}: ${now.day}/${now.month}/${now.year} - ${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}'),
+                          font: selectFontForText(
+                            '${AppLocalizations.of(buildContext)?.pdfDate ?? 'Tarih'}: ${now.day}/${now.month}/${now.year} - ${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}',
+                          ),
                         ),
                       ),
                     ],
@@ -1232,7 +1585,8 @@ class _StatsScreenState extends State<StatsScreen>
                   children: [
                     pw.Expanded(
                       child: _buildStatCard(
-                        AppLocalizations.of(buildContext)?.pdfTotalZikrCard ?? 'Toplam Zikir',
+                        AppLocalizations.of(buildContext)?.pdfTotalZikrCard ??
+                            'Toplam Zikir',
                         totalCount.toString(),
                         'O',
                         regularFont,
@@ -1249,11 +1603,12 @@ class _StatsScreenState extends State<StatsScreen>
                     pw.SizedBox(width: 12),
                     pw.Expanded(
                       child: _buildStatCard(
-                        AppLocalizations.of(buildContext)?.statsAverage ?? 'Ortalama',
+                        AppLocalizations.of(buildContext)?.statsAverage ??
+                            'Ortalama',
                         average.toString(),
                         '#',
                         regularFont,
-                         textDirection,
+                        textDirection,
                         amiriFont,
                         japaneseFont,
                         koreanFont,
@@ -1266,11 +1621,12 @@ class _StatsScreenState extends State<StatsScreen>
                     pw.SizedBox(width: 12),
                     pw.Expanded(
                       child: _buildStatCard(
-                        AppLocalizations.of(buildContext)?.pdfActiveZikrRatio ?? 'Aktif Zikir',
+                        AppLocalizations.of(buildContext)?.pdfActiveZikrRatio ??
+                            'Aktif Zikir',
                         '$activeZikrs/${allZikrs.length}',
                         '+',
                         regularFont,
-                         textDirection,
+                        textDirection,
                         amiriFont,
                         japaneseFont,
                         koreanFont,
@@ -1306,7 +1662,10 @@ class _StatsScreenState extends State<StatsScreen>
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: selectFontForText('>> ${AppLocalizations.of(buildContext)?.pdfMostUsedZikrs ?? 'En Cok Kullanilan Zikirler'}', isBold: true),
+                          font: selectFontForText(
+                            '>> ${AppLocalizations.of(buildContext)?.pdfMostUsedZikrs ?? 'En Cok Kullanilan Zikirler'}',
+                            isBold: true,
+                          ),
                         ),
                       ),
                       pw.SizedBox(height: 12),
@@ -1314,12 +1673,16 @@ class _StatsScreenState extends State<StatsScreen>
                       // Grafik benzeri çubuklar - sadece aktif zikirler gösterilir
                       if (topZikrs.isNotEmpty) ...[
                         ...topZikrs.map((zikr) {
-                          final count = controller
-                              .getZikrCountForPeriod(zikr.id, period);
+                          final count = controller.getZikrCountForPeriod(
+                            zikr.id,
+                            period,
+                          );
                           final maxCount = topZikrs.isEmpty
                               ? 1
-                              : controller
-                                    .getZikrCountForPeriod(topZikrs.first.id, period);
+                              : controller.getZikrCountForPeriod(
+                                  topZikrs.first.id,
+                                  period,
+                                );
                           final percentage = maxCount > 0
                               ? (count / maxCount) * 100
                               : 0;
@@ -1340,7 +1703,10 @@ class _StatsScreenState extends State<StatsScreen>
                                           fontSize: 11,
                                           fontWeight: pw.FontWeight.bold,
                                           color: PdfColor.fromHex('#2D5016'),
-                                          font: selectFontForText(zikr.name, isBold: true),
+                                          font: selectFontForText(
+                                            zikr.name,
+                                            isBold: true,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -1350,7 +1716,10 @@ class _StatsScreenState extends State<StatsScreen>
                                         fontSize: 11,
                                         fontWeight: pw.FontWeight.bold,
                                         color: PdfColor.fromHex('#D4AF37'),
-                                        font: selectFontForText(count.toString(), isBold: true),
+                                        font: selectFontForText(
+                                          count.toString(),
+                                          isBold: true,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -1394,11 +1763,15 @@ class _StatsScreenState extends State<StatsScreen>
                         }),
                       ] else ...[
                         pw.Text(
-                          AppLocalizations.of(buildContext)?.pdfNoZikrYet ?? 'Henuz hic zikir cekilmemis.',
+                          AppLocalizations.of(buildContext)?.pdfNoZikrYet ??
+                              'Henuz hic zikir cekilmemis.',
                           style: pw.TextStyle(
                             fontSize: 12,
                             color: PdfColor.fromHex('#2D5016'),
-                            font: selectFontForText(AppLocalizations.of(buildContext)?.pdfNoZikrYet ?? 'Henuz hic zikir cekilmemis.'),
+                            font: selectFontForText(
+                              AppLocalizations.of(buildContext)?.pdfNoZikrYet ??
+                                  'Henuz hic zikir cekilmemis.',
+                            ),
                             fontStyle: pw.FontStyle.italic,
                           ),
                         ),
@@ -1430,26 +1803,46 @@ class _StatsScreenState extends State<StatsScreen>
                           borderRadius: pw.BorderRadius.circular(8),
                         ),
                         child: pw.Text(
-                          AppLocalizations.of(buildContext)?.pdfQuranVerse ?? 'وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ',
+                          AppLocalizations.of(buildContext)?.pdfQuranVerse ??
+                              'وَاذْكُرُوا اللَّهَ كَثِيرًا لَعَلَّكُمْ تُفْلِحُونَ',
                           textAlign: pw.TextAlign.center,
                           textDirection: pw.TextDirection.rtl,
-                          style: pw.TextStyle(fontSize: 12, font: amiriFont,color: PdfColor.fromHex('#FFFFFF')),
+                          style: pw.TextStyle(
+                            fontSize: 12,
+                            font: amiriFont,
+                            color: PdfColor.fromHex('#FFFFFF'),
+                          ),
                         ),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
-                        AppLocalizations.of(buildContext)?.pdfQuranTranslation ?? '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
+                        AppLocalizations.of(
+                              buildContext,
+                            )?.pdfQuranTranslation ??
+                            '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
                         textAlign: pw.TextAlign.center,
-                        style: pw.TextStyle(fontSize: 10, font: selectFontForText(AppLocalizations.of(buildContext)?.pdfQuranTranslation ?? '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)')),
+                        style: pw.TextStyle(
+                          fontSize: 10,
+                          font: selectFontForText(
+                            AppLocalizations.of(
+                                  buildContext,
+                                )?.pdfQuranTranslation ??
+                                '"Allah\'ı çok zikredin ki kurtulursunuz." (Enfal: 45)',
+                          ),
+                        ),
                       ),
                       pw.SizedBox(height: 8),
                       pw.Text(
-                        AppLocalizations.of(buildContext)?.pdfAppCredit ?? 'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.',
+                        AppLocalizations.of(buildContext)?.pdfAppCredit ??
+                            'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.',
                         textAlign: pw.TextAlign.center,
                         style: pw.TextStyle(
                           fontSize: 9,
                           color: PdfColor.fromHex('#2D5016'),
-                          font: selectFontForText(AppLocalizations.of(buildContext)?.pdfAppCredit ?? 'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.'),
+                          font: selectFontForText(
+                            AppLocalizations.of(buildContext)?.pdfAppCredit ??
+                                'Bu rapor Tasbee Pro uygulaması tarafından oluşturulmuştur.',
+                          ),
                         ),
                       ),
                     ],
@@ -1473,21 +1866,32 @@ class _StatsScreenState extends State<StatsScreen>
           // Buradan ana directory'ye çıkalım (/storage/emulated/0)
           final mainPath = externalDir.path.split('/Android/data/')[0];
           saveDir = Directory('$mainPath/TasbeePro');
-          saveLocation = buildContext.mounted ? AppLocalizations.of(buildContext)?.pdfMainStoragePath ?? "Ana depolama/TasbeePro" : "Ana depolama/TasbeePro";
+          saveLocation = buildContext.mounted
+              ? AppLocalizations.of(buildContext)?.pdfMainStoragePath ??
+                    "Ana depolama/TasbeePro"
+              : "Ana depolama/TasbeePro";
 
           // Klasör yoksa oluştur
           if (!await saveDir.exists()) {
             await saveDir.create(recursive: true);
           }
         } else {
-          throw Exception(buildContext.mounted ? AppLocalizations.of(buildContext)?.pdfExternalStorageError ?? 'External storage not available' : 'External storage not available');
+          throw Exception(
+            buildContext.mounted
+                ? AppLocalizations.of(buildContext)?.pdfExternalStorageError ??
+                      'External storage not available'
+                : 'External storage not available',
+          );
         }
       } catch (e) {
         // Fallback - App-specific external directory
         final externalDir = await getExternalStorageDirectory();
         if (externalDir != null) {
           saveDir = Directory('${externalDir.path}/TasbeePro_Reports');
-          saveLocation = buildContext.mounted ? AppLocalizations.of(buildContext)?.pdfAppSpecificPath ?? "Uygulamaya özel klasör/TasbeePro_Reports" : "Uygulamaya özel klasör/TasbeePro_Reports";
+          saveLocation = buildContext.mounted
+              ? AppLocalizations.of(buildContext)?.pdfAppSpecificPath ??
+                    "Uygulamaya özel klasör/TasbeePro_Reports"
+              : "Uygulamaya özel klasör/TasbeePro_Reports";
 
           if (!await saveDir.exists()) {
             await saveDir.create(recursive: true);
@@ -1495,7 +1899,10 @@ class _StatsScreenState extends State<StatsScreen>
         } else {
           // Son fallback - Documents directory
           saveDir = await getApplicationDocumentsDirectory();
-          saveLocation = buildContext.mounted ? AppLocalizations.of(buildContext)?.pdfDocumentsPath ?? "Uygulama belgeler klasörü" : "Uygulama belgeler klasörü";
+          saveLocation = buildContext.mounted
+              ? AppLocalizations.of(buildContext)?.pdfDocumentsPath ??
+                    "Uygulama belgeler klasörü"
+              : "Uygulama belgeler klasörü";
         }
       }
 
@@ -1510,13 +1917,9 @@ class _StatsScreenState extends State<StatsScreen>
         await _showPdfOptionsDialog(file.path, fileName, saveLocation);
       } catch (pdfError) {
         debugPrint('PDF kaydetme hatası: $pdfError');
-        
-       
-      
       }
     } catch (e) {
       debugPrint('PDF oluşturma hatası: $e');
-    
     } finally {
       // Loading state'ini sonlandır
       setState(() {
@@ -1580,7 +1983,8 @@ class _StatsScreenState extends State<StatsScreen>
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        AppLocalizations.of(context)?.pdfSuccessTitle ?? 'PDF Başarıyla Oluşturuldu! 📄',
+                        AppLocalizations.of(context)?.pdfSuccessTitle ??
+                            'PDF Başarıyla Oluşturuldu! 📄',
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -1680,7 +2084,9 @@ class _StatsScreenState extends State<StatsScreen>
                         Expanded(
                           child: _buildDialogButton(
                             icon: Icons.open_in_new,
-                            label: AppLocalizations.of(context)?.pdfButtonOpen ?? 'Aç',
+                            label:
+                                AppLocalizations.of(context)?.pdfButtonOpen ??
+                                'Aç',
                             onTap: () async {
                               Get.back();
                               await _openPdf(filePath, context);
@@ -1692,7 +2098,9 @@ class _StatsScreenState extends State<StatsScreen>
                         Expanded(
                           child: _buildDialogButton(
                             icon: Icons.share,
-                            label: AppLocalizations.of(context)?.pdfButtonShare ?? 'Paylaş',
+                            label:
+                                AppLocalizations.of(context)?.pdfButtonShare ??
+                                'Paylaş',
                             onTap: () async {
                               Get.back();
                               await _sharePdf(filePath, context);
@@ -1709,7 +2117,9 @@ class _StatsScreenState extends State<StatsScreen>
                       width: double.infinity,
                       child: _buildDialogButton(
                         icon: Icons.close,
-                        label: AppLocalizations.of(context)?.pdfButtonClose ?? 'Kapat',
+                        label:
+                            AppLocalizations.of(context)?.pdfButtonClose ??
+                            'Kapat',
                         onTap: () => Get.back(),
                         isSecondary: true,
                       ),
@@ -1782,19 +2192,21 @@ class _StatsScreenState extends State<StatsScreen>
     try {
       final result = await OpenFile.open(filePath);
       if (result.type != ResultType.done) {
-        if(buildContext.mounted) {
-        IslamicSnackbar.showError(
-          AppLocalizations.of(buildContext)?.pdfFileCannotOpen ?? 'Dosya Açılamadı',
-          AppLocalizations.of(buildContext)?.pdfFileNotOpen ?? 'PDF dosyası açılamadı. PDF okuyucu uygulaması yüklü olduğundan emin olun.',
-        );
+        if (buildContext.mounted) {
+          IslamicSnackbar.showError(
+            AppLocalizations.of(buildContext)?.pdfFileCannotOpen ??
+                'Dosya Açılamadı',
+            AppLocalizations.of(buildContext)?.pdfFileNotOpen ??
+                'PDF dosyası açılamadı. PDF okuyucu uygulaması yüklü olduğundan emin olun.',
+          );
         }
       }
     } catch (e) {
-      if(buildContext.mounted) {
-      IslamicSnackbar.showError(
-        AppLocalizations.of(buildContext)?.statsError ?? 'Hata', 
-        '${AppLocalizations.of(buildContext)?.statsPdfOpenError ?? 'PDF açılırken bir hata oluştu'}: $e'
-      );
+      if (buildContext.mounted) {
+        IslamicSnackbar.showError(
+          AppLocalizations.of(buildContext)?.statsError ?? 'Hata',
+          '${AppLocalizations.of(buildContext)?.statsPdfOpenError ?? 'PDF açılırken bir hata oluştu'}: $e',
+        );
       }
     }
   }
@@ -1804,15 +2216,19 @@ class _StatsScreenState extends State<StatsScreen>
     try {
       await Share.shareXFiles(
         [XFile(filePath)],
-        text: AppLocalizations.of(buildContext)?.statsPdfShareText ?? 'Tasbee Pro İstatistik Raporum',
-        subject: AppLocalizations.of(buildContext)?.statsPdfShareSubject ?? 'Tasbee Pro - İstatistik Raporu',
+        text:
+            AppLocalizations.of(buildContext)?.statsPdfShareText ??
+            'Tasbee Pro İstatistik Raporum',
+        subject:
+            AppLocalizations.of(buildContext)?.statsPdfShareSubject ??
+            'Tasbee Pro - İstatistik Raporu',
       );
     } catch (e) {
-      if(buildContext.mounted) {
-      IslamicSnackbar.showError(
-        AppLocalizations.of(buildContext)?.statsError ?? 'Hata',
-        '${AppLocalizations.of(buildContext)?.statsPdfShareError ?? 'PDF paylaşılırken bir hata oluştu'}: $e',
-      );
+      if (buildContext.mounted) {
+        IslamicSnackbar.showError(
+          AppLocalizations.of(buildContext)?.statsError ?? 'Hata',
+          '${AppLocalizations.of(buildContext)?.statsPdfShareError ?? 'PDF paylaşılırken bir hata oluştu'}: $e',
+        );
       }
     }
   }
@@ -1835,10 +2251,12 @@ class _StatsScreenState extends State<StatsScreen>
     // Font seçim fonksiyonu - dile göre uygun font döndürür
     pw.Font? selectFontForText(String text, {bool isBold = false}) {
       // Arapça karakterler kontrolü
-      if (RegExp(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]').hasMatch(text)) {
+      if (RegExp(
+        r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]',
+      ).hasMatch(text)) {
         return amiriFont ?? regularFont ?? pw.Font.helvetica();
       }
-      
+
       // Bengalce karakterler kontrolü
       if (RegExp(r'[\u0980-\u09FF]').hasMatch(text)) {
         return (bengaliFont ?? regularFont ?? pw.Font.helvetica());
@@ -1848,32 +2266,32 @@ class _StatsScreenState extends State<StatsScreen>
       if (RegExp(r'[\u0E00-\u0E7F]').hasMatch(text)) {
         return (thaiFont ?? regularFont ?? pw.Font.helvetica());
       }
-      
+
       // Çince karakterler kontrolü (Simplified Chinese)
       if (RegExp(r'[\u4e00-\u9fff]').hasMatch(text)) {
         return (chineseFont ?? regularFont ?? pw.Font.helvetica());
       }
-      
+
       // Japonca karakterler kontrolü (Hiragana, Katakana)
       if (RegExp(r'[\u3040-\u309f\u30a0-\u30ff]').hasMatch(text)) {
-        return  (japaneseFont ?? regularFont ?? pw.Font.helvetica());
+        return (japaneseFont ?? regularFont ?? pw.Font.helvetica());
       }
-      
+
       // Korece karakterler kontrolü
       if (RegExp(r'[\uac00-\ud7af]').hasMatch(text)) {
-        return  (koreanFont ?? regularFont ?? pw.Font.helvetica());
+        return (koreanFont ?? regularFont ?? pw.Font.helvetica());
       }
-      
+
       // Kiril alfabesi kontrolü (Rusça vb.)
       if (RegExp(r'[\u0400-\u04FF]').hasMatch(text)) {
-        return  (cyrillicFont ?? regularFont ?? pw.Font.helvetica());
+        return (cyrillicFont ?? regularFont ?? pw.Font.helvetica());
       }
-      
+
       // Varsayılan Latin fontları
       if (textDirection == TextDirection.rtl) {
         return amiriFont ?? regularFont ?? pw.Font.helvetica();
       }
-      
+
       return (regularFont ?? pw.Font.helvetica());
     }
 
@@ -1917,8 +2335,6 @@ class _StatsScreenState extends State<StatsScreen>
     );
   }
 }
-
-
 
 class ChartData {
   final String label;

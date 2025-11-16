@@ -541,6 +541,13 @@
   },
   "rewardAdPreparing": "آماده کردن تبلیغ",
   "rewardAdNotReadyMessage": "تبلیغ هنوز آماده نیست۔ لطفاً چند ثانیه صبر کنید و دوباره تلاش کنید۔",
-  "widgetAndroid12Warning": "ویجت‌های صفحه اصلی برای عملکرد مناسب حداقل به Android 12 (API 31) نیاز دارند.",
-  "widgetAndroid12WarningTitle": "هشدار نسخه Android"
+  "widgetAndroid12Warning": "ویجت‌های صفحه اصلی برای عملکرد مناسب حداقل به Android 12 (API 31) نیاز دارند۔",
+  "widgetAndroid12WarningTitle": "هشدار نسخه Android",
+  "exportPDF": "ذخیره به عنوان PDF",
+  "resetStats": "بازنشانی تمام آمارها",
+  "resetStatsTitle": "بازنشانی آمارها",
+  "resetStatsMessage": "آیا مطمئن هستید که می‌خواهید تمام آمارها را بازنشانی کنید؟ این عمل قابل بازگشت نیست۔",
+  "resetStatsConfirm": "بازنشانی",
+  "resetStatsCancel": "لغو",
+  "resetStatsSuccess": "تمام آمارها با موفقیت بازنشانی شدند"
 }

@@ -1541,4 +1541,25 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Android 版本警告';
+
+  @override
+  String get exportPDF => '保存为PDF';
+
+  @override
+  String get resetStats => '重置所有统计';
+
+  @override
+  String get resetStatsTitle => '重置统计';
+
+  @override
+  String get resetStatsMessage => '您确定要重置所有统计信息吗？此操作不可撤销。';
+
+  @override
+  String get resetStatsConfirm => '重置';
+
+  @override
+  String get resetStatsCancel => '取消';
+
+  @override
+  String get resetStatsSuccess => '所有统计信息已成功重置';
 }

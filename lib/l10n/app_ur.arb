@@ -542,5 +542,12 @@
     }
   },
   "rewardAdPreparing": "اشتہار تیار ہو رہا ہے",
-  "rewardAdNotReadyMessage": "اشتہار ابھی تیار نہیں ہے۔ کچھ سیکنڈ انتظار کریں اور پھر کوشش کریں۔"
+  "rewardAdNotReadyMessage": "اشتہار ابھی تیار نہیں ہے۔ کچھ سیکنڈ انتظار کریں اور پھر کوشش کریں۔",
+  "exportPDF": "PDF کے طور پر محفوظ کریں",
+  "resetStats": "تمام شماریات ریسیٹ کریں",
+  "resetStatsTitle": "شماریات ریسیٹ کریں",
+  "resetStatsMessage": "کیا آپ واقعی تمام شماریات ریسیٹ کرنا چاہتے ہیں؟ یہ عمل واپس نہیں ہو سکتا۔",
+  "resetStatsConfirm": "ریسیٹ کریں",
+  "resetStatsCancel": "منسوخ کریں",
+  "resetStatsSuccess": "تمام شماریات کامیابی سے ریسیٹ ہو گئیں"
 }

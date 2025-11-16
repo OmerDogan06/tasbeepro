@@ -542,5 +542,12 @@
   "rewardAdPreparing": "広告準備中",
   "rewardAdNotReadyMessage": "広告の準備がまだできていません。数秒お待ちいただき、もう一度お試しください。",
   "widgetAndroid12Warning": "ホーム画面ウィジェットが正常に機能するには、少なくともAndroid 12 (API 31)が必要です。",
-  "widgetAndroid12WarningTitle": "Androidバージョン警告"
+  "widgetAndroid12WarningTitle": "Androidバージョン警告",
+  "exportPDF": "PDFとして保存",
+  "resetStats": "すべての統計をリセット",
+  "resetStatsTitle": "統計をリセット",
+  "resetStatsMessage": "すべての統計をリセットしてもよろしいですか？この操作は元に戻せません。",
+  "resetStatsConfirm": "リセット",
+  "resetStatsCancel": "キャンセル",
+  "resetStatsSuccess": "すべての統計が正常にリセットされました"
 }

@@ -1623,4 +1623,26 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Android ورژن کی خبردار';
+
+  @override
+  String get exportPDF => 'PDF کے طور پر محفوظ کریں';
+
+  @override
+  String get resetStats => 'تمام شماریات ریسیٹ کریں';
+
+  @override
+  String get resetStatsTitle => 'شماریات ریسیٹ کریں';
+
+  @override
+  String get resetStatsMessage =>
+      'کیا آپ واقعی تمام شماریات ریسیٹ کرنا چاہتے ہیں؟ یہ عمل واپس نہیں ہو سکتا۔';
+
+  @override
+  String get resetStatsConfirm => 'ریسیٹ کریں';
+
+  @override
+  String get resetStatsCancel => 'منسوخ کریں';
+
+  @override
+  String get resetStatsSuccess => 'تمام شماریات کامیابی سے ریسیٹ ہو گئیں';
 }

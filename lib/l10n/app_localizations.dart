@@ -3123,6 +3123,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Android Version Warning'**
   String get widgetAndroid12WarningTitle;
+
+  /// PDF export menu option
+  ///
+  /// In en, this message translates to:
+  /// **'Save as PDF'**
+  String get exportPDF;
+
+  /// Reset statistics menu option
+  ///
+  /// In en, this message translates to:
+  /// **'Reset All Statistics'**
+  String get resetStats;
+
+  /// Reset statistics dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Statistics'**
+  String get resetStatsTitle;
+
+  /// Reset statistics dialog message
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to reset all statistics? This action cannot be undone.'**
+  String get resetStatsMessage;
+
+  /// Reset statistics dialog confirm button
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get resetStatsConfirm;
+
+  /// Reset statistics dialog cancel button
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get resetStatsCancel;
+
+  /// Success message after resetting statistics
+  ///
+  /// In en, this message translates to:
+  /// **'All statistics have been reset successfully'**
+  String get resetStatsSuccess;
 }
 
 class _AppLocalizationsDelegate

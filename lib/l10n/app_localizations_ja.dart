@@ -1562,4 +1562,25 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Androidバージョン警告';
+
+  @override
+  String get exportPDF => 'PDFとして保存';
+
+  @override
+  String get resetStats => 'すべての統計をリセット';
+
+  @override
+  String get resetStatsTitle => '統計をリセット';
+
+  @override
+  String get resetStatsMessage => 'すべての統計をリセットしてもよろしいですか？この操作は元に戻せません。';
+
+  @override
+  String get resetStatsConfirm => 'リセット';
+
+  @override
+  String get resetStatsCancel => 'キャンセル';
+
+  @override
+  String get resetStatsSuccess => 'すべての統計が正常にリセットされました';
 }

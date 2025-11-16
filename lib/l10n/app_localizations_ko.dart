@@ -1564,4 +1564,25 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Android 버전 경고';
+
+  @override
+  String get exportPDF => 'PDF로 저장';
+
+  @override
+  String get resetStats => '모든 통계 재설정';
+
+  @override
+  String get resetStatsTitle => '통계 재설정';
+
+  @override
+  String get resetStatsMessage => '모든 통계를 재설정하시겠습니까? 이 작업은 취소할 수 없습니다.';
+
+  @override
+  String get resetStatsConfirm => '재설정';
+
+  @override
+  String get resetStatsCancel => '취소';
+
+  @override
+  String get resetStatsSuccess => '모든 통계가 성공적으로 재설정되었습니다';
 }

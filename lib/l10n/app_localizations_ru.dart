@@ -1634,4 +1634,26 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Предупреждение о версии Android';
+
+  @override
+  String get exportPDF => 'Сохранить как PDF';
+
+  @override
+  String get resetStats => 'Сбросить всю статистику';
+
+  @override
+  String get resetStatsTitle => 'Сброс статистики';
+
+  @override
+  String get resetStatsMessage =>
+      'Вы уверены, что хотите сбросить всю статистику? Это действие невозможно отменить.';
+
+  @override
+  String get resetStatsConfirm => 'Сбросить';
+
+  @override
+  String get resetStatsCancel => 'Отмена';
+
+  @override
+  String get resetStatsSuccess => 'Вся статистика успешно сброшена';
 }

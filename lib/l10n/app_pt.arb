@@ -542,5 +542,12 @@
     }
   },
   "rewardAdPreparing": "Preparando Anúncio",
-  "rewardAdNotReadyMessage": "O anúncio ainda não está pronto. Aguarde alguns segundos e tente novamente."
+  "rewardAdNotReadyMessage": "O anúncio ainda não está pronto. Aguarde alguns segundos e tente novamente.",
+  "exportPDF": "Salvar como PDF",
+  "resetStats": "Redefinir todas as estatísticas",
+  "resetStatsTitle": "Redefinir estatísticas",
+  "resetStatsMessage": "Tem certeza de que deseja redefinir todas as estatísticas? Esta ação não pode ser desfeita.",
+  "resetStatsConfirm": "Redefinir",
+  "resetStatsCancel": "Cancelar",
+  "resetStatsSuccess": "Todas as estatísticas foram redefinidas com sucesso"
 }

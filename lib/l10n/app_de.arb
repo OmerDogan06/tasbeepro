@@ -542,5 +542,12 @@
   "rewardAdPreparing": "Anzeige wird vorbereitet",
   "rewardAdNotReadyMessage": "Die Anzeige ist noch nicht bereit. Bitte warten Sie ein paar Sekunden und versuchen Sie es erneut.",
   "widgetAndroid12Warning": "Home-Screen-Widgets benötigen mindestens Android 12 (API 31) für ordnungsgemäße Funktionalität.",
-  "widgetAndroid12WarningTitle": "Android-Version Warnung"
+  "widgetAndroid12WarningTitle": "Android-Version Warnung",
+  "exportPDF": "Als PDF speichern",
+  "resetStats": "Alle Statistiken zurücksetzen",
+  "resetStatsTitle": "Statistiken zurücksetzen",
+  "resetStatsMessage": "Sind Sie sicher, dass Sie alle Statistiken zurücksetzen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+  "resetStatsConfirm": "Zurücksetzen",
+  "resetStatsCancel": "Abbrechen",
+  "resetStatsSuccess": "Alle Statistiken wurden erfolgreich zurückgesetzt"
 }

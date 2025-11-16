@@ -542,5 +542,12 @@
     }
   },
   "rewardAdPreparing": "Подготовка Рекламы",
-  "rewardAdNotReadyMessage": "Реклама ещё не готова. Подождите несколько секунд и попробуйте снова."
+  "rewardAdNotReadyMessage": "Реклама ещё не готова. Подождите несколько секунд и попробуйте снова.",
+  "exportPDF": "Сохранить как PDF",
+  "resetStats": "Сбросить всю статистику",
+  "resetStatsTitle": "Сброс статистики",
+  "resetStatsMessage": "Вы уверены, что хотите сбросить всю статистику? Это действие невозможно отменить.",
+  "resetStatsConfirm": "Сбросить",
+  "resetStatsCancel": "Отмена",
+  "resetStatsSuccess": "Вся статистика успешно сброшена"
 }

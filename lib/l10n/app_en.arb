@@ -1812,5 +1812,33 @@
     "description": "Message when ad is not ready"
   },
   "widgetAndroid12Warning": "Home screen widgets require at least Android 12 (API 31) for proper functionality.",
-  "widgetAndroid12WarningTitle": "Android Version Warning"
+  "widgetAndroid12WarningTitle": "Android Version Warning",
+  "exportPDF": "Save as PDF",
+  "@exportPDF": {
+    "description": "PDF export menu option"
+  },
+  "resetStats": "Reset All Statistics",
+  "@resetStats": {
+    "description": "Reset statistics menu option"
+  },
+  "resetStatsTitle": "Reset Statistics",
+  "@resetStatsTitle": {
+    "description": "Reset statistics dialog title"
+  },
+  "resetStatsMessage": "Are you sure you want to reset all statistics? This action cannot be undone.",
+  "@resetStatsMessage": {
+    "description": "Reset statistics dialog message"
+  },
+  "resetStatsConfirm": "Reset",
+  "@resetStatsConfirm": {
+    "description": "Reset statistics dialog confirm button"
+  },
+  "resetStatsCancel": "Cancel",
+  "@resetStatsCancel": {
+    "description": "Reset statistics dialog cancel button"
+  },
+  "resetStatsSuccess": "All statistics have been reset successfully",
+  "@resetStatsSuccess": {
+    "description": "Success message after resetting statistics"
+  }
 }

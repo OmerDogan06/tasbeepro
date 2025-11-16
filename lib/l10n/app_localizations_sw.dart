@@ -1645,4 +1645,26 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get widgetAndroid12WarningTitle => 'Onyo la Toleo la Android';
+
+  @override
+  String get exportPDF => 'Hifadhi kama PDF';
+
+  @override
+  String get resetStats => 'Weka Upya Takwimu Zote';
+
+  @override
+  String get resetStatsTitle => 'Weka Upya Takwimu';
+
+  @override
+  String get resetStatsMessage =>
+      'Je, una uhakika unataka kuweka upya takwimu zote? Hatua hii haiwezi kubatilishwa.';
+
+  @override
+  String get resetStatsConfirm => 'Weka Upya';
+
+  @override
+  String get resetStatsCancel => 'Ghairi';
+
+  @override
+  String get resetStatsSuccess => 'Takwimu zote zimewekwa upya kwa mafanikio';
 }

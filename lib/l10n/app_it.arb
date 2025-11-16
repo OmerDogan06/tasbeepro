@@ -542,5 +542,12 @@
   "rewardAdPreparing": "Preparazione Pubblicità",
   "rewardAdNotReadyMessage": "La pubblicità non è ancora pronta. Aspetta qualche secondo e riprova.",
   "widgetAndroid12Warning": "I widget della schermata iniziale richiedono almeno Android 12 (API 31) per il corretto funzionamento.",
-  "widgetAndroid12WarningTitle": "Avviso versione Android"
+  "widgetAndroid12WarningTitle": "Avviso versione Android",
+  "exportPDF": "Salva come PDF",
+  "resetStats": "Reimposta tutte le statistiche",
+  "resetStatsTitle": "Reimposta statistiche",
+  "resetStatsMessage": "Sei sicuro di voler reimpostare tutte le statistiche? Questa azione non può essere annullata.",
+  "resetStatsConfirm": "Reimposta",
+  "resetStatsCancel": "Annulla",
+  "resetStatsSuccess": "Tutte le statistiche sono state reimpostate con successo"
 }

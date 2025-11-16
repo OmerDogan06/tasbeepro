@@ -542,5 +542,12 @@
   "rewardAdPreparing": "الإعلان قيد التحضير",
   "rewardAdNotReadyMessage": "الإعلان غير جاهز بعد. يرجى الانتظار بضع ثوان والمحاولة مرة أخرى.",
   "widgetAndroid12Warning": "تتطلب عناصر الشاشة الرئيسية نظام Android 12 (API 31) على الأقل للعمل بشكل صحيح.",
-  "widgetAndroid12WarningTitle": "تحذير إصدار Android"
+  "widgetAndroid12WarningTitle": "تحذير إصدار Android",
+  "exportPDF": "حفظ كملف PDF",
+  "resetStats": "إعادة تعيين جميع الإحصائيات",
+  "resetStatsTitle": "إعادة تعيين الإحصائيات",
+  "resetStatsMessage": "هل أنت متأكد أنك تريد إعادة تعيين جميع الإحصائيات؟ لا يمكن التراجع عن هذا الإجراء.",
+  "resetStatsConfirm": "إعادة تعيين",
+  "resetStatsCancel": "إلغاء",
+  "resetStatsSuccess": "تم إعادة تعيين جميع الإحصائيات بنجاح"
 }

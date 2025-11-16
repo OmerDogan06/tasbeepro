@@ -19,6 +19,9 @@ class WidgetDatabaseChannel(private val context: Context) : MethodChannel.Method
             "getWidgetStats" -> {
                 getWidgetStats(result)
             }
+            "clearAllRecords" -> {
+                clearAllRecords(result)
+            }
             else -> {
                 result.notImplemented()
             }
@@ -74,6 +77,19 @@ class WidgetDatabaseChannel(private val context: Context) : MethodChannel.Method
             result.success(stats)
         } catch (e: Exception) {
             result.error("DATABASE_ERROR", "Failed to get widget stats: ${e.message}", null)
+        }
+    }
+
+    private fun clearAllRecords(result: MethodChannel.Result) {
+        try {
+            val deletedCount = database.clearAllRecords()
+            result.success(mapOf(
+                "success" to true,
+                "deletedCount" to deletedCount,
+                "message" to "Successfully deleted $deletedCount records"
+            ))
+        } catch (e: Exception) {
+            result.error("DATABASE_ERROR", "Failed to clear records: ${e.message}", null)
         }
     }
 }
