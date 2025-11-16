@@ -1115,6 +1115,30 @@
   "@counterButtonText": {
     "description": "Counter button tap text"
   },
+  "undoModeTitle": "Undo Mode",
+  "@undoModeTitle": {
+    "description": "Undo mode dialog title"
+  },
+  "normalModeTitle": "Normal Mode",
+  "@normalModeTitle": {
+    "description": "Normal mode dialog title"
+  },
+  "undoModeMessage": "Do you want to switch to undo mode?\n\nIn this mode, tapping the button will decrease the counter.",
+  "@undoModeMessage": {
+    "description": "Undo mode dialog message"
+  },
+  "normalModeMessage": "Do you want to switch to normal mode?\n\nIn this mode, tapping the button will increase the counter.",
+  "@normalModeMessage": {
+    "description": "Normal mode dialog message"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "OK button text"
+  },
   "progressBarCompleted": "Masha'Allah! Goal Completed",
   "@progressBarCompleted": {
     "description": "Message shown when the zikr target is reached"

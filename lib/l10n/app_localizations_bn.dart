@@ -864,6 +864,20 @@ class AppLocalizationsBn extends AppLocalizations {
   String get counterButtonText => 'স্পর্শ করুন';
 
   @override
+  String get undoModeTitle => 'পূর্বাবস্থায় ফেরানোর মোড';
+
+  @override
+  String get normalModeTitle => 'সাধারণ মোড';
+
+  @override
+  String get undoModeMessage =>
+      'আপনি কি পূর্বাবস্থায় ফেরানোর মোডে যেতে চান?\n\nএই মোডে, বোতামে ট্যাপ করলে কাউন্টার কমবে।';
+
+  @override
+  String get normalModeMessage =>
+      'আপনি কি সাধারণ মোডে যেতে চান?\n\nএই মোডে, বোতামে ট্যাপ করলে কাউন্টার বাড়বে।';
+
+  @override
   String get progressBarCompleted => 'মাশাআল্লাহ! লক্ষ্য সম্পন্ন হয়েছে';
 
   @override

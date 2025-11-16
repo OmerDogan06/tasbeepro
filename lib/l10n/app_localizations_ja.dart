@@ -835,6 +835,20 @@ class AppLocalizationsJa extends AppLocalizations {
   String get counterButtonText => 'タップ';
 
   @override
+  String get undoModeTitle => '元に戻すモード';
+
+  @override
+  String get normalModeTitle => '通常モード';
+
+  @override
+  String get undoModeMessage =>
+      '元に戻すモードに切り替えますか？\n\nこのモードでは、ボタンをタップするとカウンターが減ります。';
+
+  @override
+  String get normalModeMessage =>
+      '通常モードに切り替えますか？\n\nこのモードでは、ボタンをタップするとカウンターが増えます。';
+
+  @override
   String get progressBarCompleted => 'マーシャーアッラー！目標達成';
 
   @override

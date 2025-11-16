@@ -876,6 +876,20 @@ class AppLocalizationsPt extends AppLocalizations {
   String get counterButtonText => 'Tocar';
 
   @override
+  String get undoModeTitle => 'Modo Desfazer';
+
+  @override
+  String get normalModeTitle => 'Modo Normal';
+
+  @override
+  String get undoModeMessage =>
+      'Deseja mudar para o modo desfazer?\n\nNeste modo, tocar no botão diminuirá o contador.';
+
+  @override
+  String get normalModeMessage =>
+      'Deseja mudar para o modo normal?\n\nNeste modo, tocar no botão aumentará o contador.';
+
+  @override
   String get progressBarCompleted => 'Masha\'Allah! Objetivo Concluído';
 
   @override

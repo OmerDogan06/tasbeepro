@@ -835,7 +835,21 @@ class AppLocalizationsKo extends AppLocalizations {
   String get counterButtonText => '탭';
 
   @override
-  String get progressBarCompleted => '마샤알라! 목표 달성';
+  String get undoModeTitle => '실행 취소 모드';
+
+  @override
+  String get normalModeTitle => '일반 모드';
+
+  @override
+  String get undoModeMessage =>
+      '실행 취소 모드로 전환하시겠습니까?\n\n이 모드에서는 버튼을 탭하면 카운터가 감소합니다.';
+
+  @override
+  String get normalModeMessage =>
+      '일반 모드로 전환하시겠습니까?\n\n이 모드에서는 버튼을 탭하면 카운터가 증가합니다.';
+
+  @override
+  String get progressBarCompleted => '마샬라! 목표 달성';
 
   @override
   String get zikirCardSelectText => '지크르 선택';

@@ -138,7 +138,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get languageChangedMessage => 'تم تغيير لغة التطبيق بنجاح';
 
   @override
-  String get ok => 'حسناً';
+  String get ok => 'حسنا';
 
   @override
   String get cancel => 'إلغاء';
@@ -842,6 +842,20 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get counterButtonText => 'اضغط';
+
+  @override
+  String get undoModeTitle => 'وضع التراجع';
+
+  @override
+  String get normalModeTitle => 'الوضع العادي';
+
+  @override
+  String get undoModeMessage =>
+      'هل تريد التبديل إلى وضع التراجع؟\n\nفي هذا الوضع، سيؤدي النقر على الزر إلى تقليل العداد.';
+
+  @override
+  String get normalModeMessage =>
+      'هل تريد التبديل إلى الوضع العادي؟\n\nفي هذا الوضع، سيؤدي النقر على الزر إلى زيادة العداد.';
 
   @override
   String get progressBarCompleted => 'ما شاء الله! اكتمل الهدف';

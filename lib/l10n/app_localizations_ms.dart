@@ -867,6 +867,20 @@ class AppLocalizationsMs extends AppLocalizations {
   String get counterButtonText => 'Ketik';
 
   @override
+  String get undoModeTitle => 'Mod Batal';
+
+  @override
+  String get normalModeTitle => 'Mod Biasa';
+
+  @override
+  String get undoModeMessage =>
+      'Adakah anda ingin tukar ke mod batal?\n\nDalam mod ini, mengetik butang akan mengurangkan kaunter.';
+
+  @override
+  String get normalModeMessage =>
+      'Adakah anda ingin tukar ke mod biasa?\n\nDalam mod ini, mengetik butang akan menambah kaunter.';
+
+  @override
   String get progressBarCompleted => 'Masya Allah! Sasaran Tercapai';
 
   @override

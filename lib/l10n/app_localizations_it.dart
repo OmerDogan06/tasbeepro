@@ -881,6 +881,20 @@ class AppLocalizationsIt extends AppLocalizations {
   String get counterButtonText => 'Tocca';
 
   @override
+  String get undoModeTitle => 'Modalità Annulla';
+
+  @override
+  String get normalModeTitle => 'Modalità Normale';
+
+  @override
+  String get undoModeMessage =>
+      'Vuoi passare alla modalità annulla?\n\nIn questa modalità, toccando il pulsante diminuirà il contatore.';
+
+  @override
+  String get normalModeMessage =>
+      'Vuoi passare alla modalità normale?\n\nIn questa modalità, toccando il pulsante aumenterà il contatore.';
+
+  @override
   String get progressBarCompleted => 'Masha\'Allah! Obiettivo Completato';
 
   @override

@@ -865,6 +865,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get counterButtonText => 'Коснитесь';
 
   @override
+  String get undoModeTitle => 'Режим отмены';
+
+  @override
+  String get normalModeTitle => 'Обычный режим';
+
+  @override
+  String get undoModeMessage =>
+      'Хотите переключиться в режим отмены?\n\nВ этом режиме нажатие кнопки уменьшит счетчик.';
+
+  @override
+  String get normalModeMessage =>
+      'Хотите переключиться в обычный режим?\n\nВ этом режиме нажатие кнопки увеличит счетчик.';
+
+  @override
   String get progressBarCompleted => 'МашаАллах! Цель выполнена';
 
   @override

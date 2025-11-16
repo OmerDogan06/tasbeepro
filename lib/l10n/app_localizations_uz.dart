@@ -864,6 +864,20 @@ class AppLocalizationsUz extends AppLocalizations {
   String get counterButtonText => 'Bosing';
 
   @override
+  String get undoModeTitle => 'Bekor qilish rejimi';
+
+  @override
+  String get normalModeTitle => 'Oddiy rejim';
+
+  @override
+  String get undoModeMessage =>
+      'Bekor qilish rejimiga o\'tmoqchimisiz?\n\nBu rejimda tugmani bosish hisoblagichni kamaytiradi.';
+
+  @override
+  String get normalModeMessage =>
+      'Oddiy rejimga o\'tmoqchimisiz?\n\nBu rejimda tugmani bosish hisoblagichni oshiradi.';
+
+  @override
   String get progressBarCompleted => 'Mashaalloh! Maqsad bajarildi';
 
   @override

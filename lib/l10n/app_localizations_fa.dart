@@ -139,7 +139,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get languageChangedMessage => 'زبان برنامه با موفقیت تغییر یافت';
 
   @override
-  String get ok => 'تأیید';
+  String get ok => 'باشه';
 
   @override
   String get cancel => 'لغو';
@@ -852,6 +852,20 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get counterButtonText => 'لمس کنید';
+
+  @override
+  String get undoModeTitle => 'حالت لغو';
+
+  @override
+  String get normalModeTitle => 'حالت عادی';
+
+  @override
+  String get undoModeMessage =>
+      'آیا می‌خواهید به حالت لغو بروید?\n\nدر این حالت، ضربه زدن به دکمه شمارنده را کاهش می‌دهد.';
+
+  @override
+  String get normalModeMessage =>
+      'آیا می‌خواهید به حالت عادی بروید?\n\nدر این حالت، ضربه زدن به دکمه شمارنده را افزایش می‌دهد.';
 
   @override
   String get progressBarCompleted => 'ماشاءالله! هدف تکمیل شد';

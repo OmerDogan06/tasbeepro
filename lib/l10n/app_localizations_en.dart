@@ -865,6 +865,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get counterButtonText => 'Tap';
 
   @override
+  String get undoModeTitle => 'Undo Mode';
+
+  @override
+  String get normalModeTitle => 'Normal Mode';
+
+  @override
+  String get undoModeMessage =>
+      'Do you want to switch to undo mode?\n\nIn this mode, tapping the button will decrease the counter.';
+
+  @override
+  String get normalModeMessage =>
+      'Do you want to switch to normal mode?\n\nIn this mode, tapping the button will increase the counter.';
+
+  @override
   String get progressBarCompleted => 'Masha\'Allah! Goal Completed';
 
   @override

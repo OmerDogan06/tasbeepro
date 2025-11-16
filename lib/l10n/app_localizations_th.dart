@@ -859,6 +859,20 @@ class AppLocalizationsTh extends AppLocalizations {
   String get counterButtonText => 'แตะ';
 
   @override
+  String get undoModeTitle => 'โหมดยกเลิก';
+
+  @override
+  String get normalModeTitle => 'โหมดปกติ';
+
+  @override
+  String get undoModeMessage =>
+      'คุณต้องการเปลี่ยนเป็นโหมดยกเลิกหรือไม่?\n\nในโหมดนี้ การแตะปุ่มจะลดตัวนับ';
+
+  @override
+  String get normalModeMessage =>
+      'คุณต้องการเปลี่ยนเป็นโหมดปกติหรือไม่?\n\nในโหมดนี้ การแตะปุ่มจะเพิ่มตัวนับ';
+
+  @override
   String get progressBarCompleted => 'มาชาอัลลาห์! บรรลุเป้าหมายแล้ว';
 
   @override

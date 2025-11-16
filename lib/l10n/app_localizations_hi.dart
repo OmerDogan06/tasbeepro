@@ -861,6 +861,20 @@ class AppLocalizationsHi extends AppLocalizations {
   String get counterButtonText => 'टच करें';
 
   @override
+  String get undoModeTitle => 'पूर्ववत मोड';
+
+  @override
+  String get normalModeTitle => 'सामान्य मोड';
+
+  @override
+  String get undoModeMessage =>
+      'क्या आप पूर्ववत मोड पर स्विच करना चाहते हैं?\n\nइस मोड में, बटन पर टैप करने से काउंटर घट जाएगा।';
+
+  @override
+  String get normalModeMessage =>
+      'क्या आप सामान्य मोड पर स्विच करना चाहते हैं?\n\nइस मोड में, बटन पर टैप करने से काउंटर बढ़ जाएगा।';
+
+  @override
   String get progressBarCompleted => 'माशाअल्लाह! लक्ष्य पूरा हुआ';
 
   @override

@@ -142,7 +142,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'La langue de l\'application a été changée avec succès';
 
   @override
-  String get ok => 'D\'accord';
+  String get ok => 'OK';
 
   @override
   String get cancel => 'Annuler';
@@ -884,6 +884,20 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get counterButtonText => 'Toucher';
+
+  @override
+  String get undoModeTitle => 'Mode Annulation';
+
+  @override
+  String get normalModeTitle => 'Mode Normal';
+
+  @override
+  String get undoModeMessage =>
+      'Voulez-vous passer en mode annulation?\n\nDans ce mode, appuyer sur le bouton diminuera le compteur.';
+
+  @override
+  String get normalModeMessage =>
+      'Voulez-vous passer en mode normal?\n\nDans ce mode, appuyer sur le bouton augmentera le compteur.';
 
   @override
   String get progressBarCompleted => 'Mashallah! Objectif Atteint';

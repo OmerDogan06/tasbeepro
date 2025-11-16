@@ -860,6 +860,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String get counterButtonText => 'Dokun';
 
   @override
+  String get undoModeTitle => 'Geri Alma Modu';
+
+  @override
+  String get normalModeTitle => 'Normal Mod';
+
+  @override
+  String get undoModeMessage =>
+      'Geri alma moduna geçmek istiyor musunuz?\n\nBu modda butona tıkladığınızda sayaç azalacak.';
+
+  @override
+  String get normalModeMessage =>
+      'Normal moda geçmek istiyor musunuz?\n\nBu modda butona tıkladığınızda sayaç artacak.';
+
+  @override
   String get progressBarCompleted => 'Masha\'Allah! Hedef Tamamlandı';
 
   @override

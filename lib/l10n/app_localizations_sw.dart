@@ -870,6 +870,20 @@ class AppLocalizationsSw extends AppLocalizations {
   String get counterButtonText => 'Gusa';
 
   @override
+  String get undoModeTitle => 'Hali ya Kutendua';
+
+  @override
+  String get normalModeTitle => 'Hali ya Kawaida';
+
+  @override
+  String get undoModeMessage =>
+      'Je, ungependa kubadilisha kwenye hali ya kutendua?\n\nKatika hali hii, kubonyeza kitufe kitapunguza kihesabuji.';
+
+  @override
+  String get normalModeMessage =>
+      'Je, ungependa kubadilisha kwenye hali ya kawaida?\n\nKatika hali hii, kubonyeza kitufe kitaongeza kihesabuji.';
+
+  @override
   String get progressBarCompleted => 'Masha\'Allah! Lengo Limekamilika';
 
   @override

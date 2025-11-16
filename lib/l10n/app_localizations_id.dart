@@ -868,7 +868,21 @@ class AppLocalizationsId extends AppLocalizations {
   String get counterButtonText => 'Ketuk';
 
   @override
-  String get progressBarCompleted => 'Masya Allah! Target Tercapai';
+  String get undoModeTitle => 'Mode Batalkan';
+
+  @override
+  String get normalModeTitle => 'Mode Normal';
+
+  @override
+  String get undoModeMessage =>
+      'Apakah Anda ingin beralih ke mode batalkan?\n\nDalam mode ini, mengetuk tombol akan mengurangi penghitung.';
+
+  @override
+  String get normalModeMessage =>
+      'Apakah Anda ingin beralih ke mode normal?\n\nDalam mode ini, mengetuk tombol akan menambah penghitung.';
+
+  @override
+  String get progressBarCompleted => 'Mashallah! Target Tercapai';
 
   @override
   String get zikirCardSelectText => 'Pilih Dzikir';

@@ -141,6 +141,35 @@ class CounterController extends GetxController {
     );
   }
   
+  Future<void> decrement() async {
+    if (_count.value > 0) {
+      _count.value--;
+      
+      // Günlük zikir sayısını azalt
+      final currentDailyCount = _storage.getDailyZikrCount(_currentZikrId.value);
+      if (currentDailyCount > 0) {
+        await _storage.saveDailyZikrCount(_currentZikrId.value, currentDailyCount - 1);
+      }
+      
+      // Toplam günlük sayıyı güncelle
+      _dailyTotal.value = _storage.getTotalDailyCount();
+
+      // Save data
+      final counterData = CounterData(
+        zikrId: _currentZikrId.value,
+        count: _count.value,
+        target: _target.value,
+        lastUpdated: DateTime.now(),
+      );
+      
+      await _storage.saveCounterData(counterData);
+      
+      // Play sound and vibration
+      _sound.playClickSound();
+      await _vibration.vibrate();
+    }
+  }
+
   Future<void> reset() async {
     _count.value = 0;
     

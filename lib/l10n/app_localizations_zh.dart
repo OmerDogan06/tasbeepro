@@ -832,6 +832,18 @@ class AppLocalizationsZh extends AppLocalizations {
   String get counterButtonText => '触摸';
 
   @override
+  String get undoModeTitle => '撤销模式';
+
+  @override
+  String get normalModeTitle => '正常模式';
+
+  @override
+  String get undoModeMessage => '您想切换到撤销模式吗？\n\n在此模式下，点击按钮将减少计数器。';
+
+  @override
+  String get normalModeMessage => '您想切换到正常模式吗？\n\n在此模式下，点击按钮将增加计数器。';
+
+  @override
   String get progressBarCompleted => '真主赞善你！目标已完成';
 
   @override

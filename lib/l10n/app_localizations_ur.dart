@@ -858,6 +858,20 @@ class AppLocalizationsUr extends AppLocalizations {
   String get counterButtonText => 'ٹچ کریں';
 
   @override
+  String get undoModeTitle => 'واپس لینے کا موڈ';
+
+  @override
+  String get normalModeTitle => 'عام موڈ';
+
+  @override
+  String get undoModeMessage =>
+      'کیا آپ واپس لینے کے موڈ میں جانا چاہتے ہیں؟\n\nاس موڈ میں، بٹن پر ٹیپ کرنے سے کاؤنٹر کم ہو جائے گا۔';
+
+  @override
+  String get normalModeMessage =>
+      'کیا آپ عام موڈ میں جانا چاہتے ہیں؟\n\nاس موڈ میں، بٹن پر ٹیپ کرنے سے کاؤنٹر بڑھ جائے گا۔';
+
+  @override
   String get progressBarCompleted => 'ماشاء اللہ! ہدف مکمل ہو گیا';
 
   @override

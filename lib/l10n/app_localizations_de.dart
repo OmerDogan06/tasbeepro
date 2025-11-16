@@ -880,6 +880,20 @@ class AppLocalizationsDe extends AppLocalizations {
   String get counterButtonText => 'Tippen';
 
   @override
+  String get undoModeTitle => 'Rückgängig-Modus';
+
+  @override
+  String get normalModeTitle => 'Normaler Modus';
+
+  @override
+  String get undoModeMessage =>
+      'Möchten Sie in den Rückgängig-Modus wechseln?\n\nIn diesem Modus verringert das Tippen auf die Schaltfläche den Zähler.';
+
+  @override
+  String get normalModeMessage =>
+      'Möchten Sie in den normalen Modus wechseln?\n\nIn diesem Modus erhöht das Tippen auf die Schaltfläche den Zähler.';
+
+  @override
   String get progressBarCompleted => 'Masha\'Allah! Ziel erreicht';
 
   @override

@@ -16,6 +16,7 @@ class _CounterButtonState extends State<CounterButton>
   late AnimationController _pressAnimationController;
   late Animation<double> _pressAnimation;
   bool _isPressed = false;
+  bool _isUndoMode = false; // Geri alma modu
 
   @override
   void initState() {
@@ -39,17 +40,17 @@ class _CounterButtonState extends State<CounterButton>
     super.dispose();
   }
 
-  void _onTapDown(TapDownDetails details) {
+  void _onPointerDown(PointerDownEvent event) {
     setState(() => _isPressed = true);
     _pressAnimationController.forward();
   }
 
-  void _onTapUp(TapUpDetails details) {
+  void _onPointerUp(PointerUpEvent event) {
     setState(() => _isPressed = false);
     _pressAnimationController.reverse();
   }
 
-  void _onTapCancel() {
+  void _onPointerCancel(PointerCancelEvent event) {
     setState(() => _isPressed = false);
     _pressAnimationController.reverse();
   }
@@ -91,14 +92,230 @@ class _CounterButtonState extends State<CounterButton>
           builder: (context, child) {
             return Transform.scale(
               scale: _pressAnimation.value,
-              child: GestureDetector(
-                onTapDown: _onTapDown,
-                onTapUp: _onTapUp,
-                onTapCancel: _onTapCancel,
-                onTap: () {
-                  final completionTitle = AppLocalizations.of(context)?.targetCompletionTitle ?? 'Tebrikler! 🎉';
-                  final completionMessage = AppLocalizations.of(context)?.targetCompletionMessage ?? 'Hedefini tamamladın!';
-                  controller.increment(completionTitle, completionMessage);
+              child: Listener(
+                onPointerDown: _onPointerDown,
+                onPointerUp: _onPointerUp,
+                onPointerCancel: _onPointerCancel,
+                child: GestureDetector(
+                  onTap: () {
+                  if (_isUndoMode) {
+                    // Geri alma modu - decrement
+                    controller.decrement();
+                  } else {
+                    // Normal mod - increment
+                    final completionTitle = AppLocalizations.of(context)?.targetCompletionTitle ?? 'Tebrikler! 🎉';
+                    final completionMessage = AppLocalizations.of(context)?.targetCompletionMessage ?? 'Hedefini tamamladın!';
+                    controller.increment(completionTitle, completionMessage);
+                  }
+                },
+                onLongPress: () async {
+                  // İslami renk paleti - Settings ile aynı
+                  const emeraldGreen = Color(0xFF2D5016);
+                  const goldColor = Color(0xFFD4AF37);
+                  const lightGold = Color(0xFFF5E6A8);
+                  const darkGreen = Color(0xFF1A3409);
+                  
+                  // Dialog ile onay al
+                  final newMode = !_isUndoMode;
+                  final confirmed = await showDialog<bool>(
+                    context: context,
+                    builder: (context) => Dialog(
+                      backgroundColor: Colors.transparent,
+                      insetPadding: const EdgeInsets.all(20),
+                      child: Container(
+                        constraints: const BoxConstraints(maxWidth: 320),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [Color(0xFFF8F6F0), Color(0xFFF0E9D2)],
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: goldColor.withAlpha(102), width: 1.5),
+                          boxShadow: [
+                            BoxShadow(
+                              color: darkGreen.withAlpha(51),
+                              blurRadius: 12,
+                              offset: const Offset(0, 6),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            // Header
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      gradient: const RadialGradient(
+                                        colors: [lightGold, goldColor],
+                                        center: Alignment(-0.2, -0.2),
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Icon(
+                                      newMode ? Icons.undo : Icons.add_circle_outline,
+                                      color: emeraldGreen,
+                                      size: 20,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Expanded(
+                                    child: Text(
+                                      newMode 
+                                        ? (AppLocalizations.of(context)?.undoModeTitle ?? 'Geri Alma Modu')
+                                        : (AppLocalizations.of(context)?.normalModeTitle ?? 'Normal Mod'),
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: emeraldGreen,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            
+                            // Divider
+                            Container(
+                              height: 1,
+                              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.transparent,
+                                    goldColor.withAlpha(77),
+                                    Colors.transparent,
+                                  ],
+                                ),
+                              ),
+                            ),
+                            
+                            // Content
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                              child: Text(
+                                newMode 
+                                  ? (AppLocalizations.of(context)?.undoModeMessage ?? 'Geri alma moduna geçmek istiyor musunuz?\n\nBu modda butona tıkladığınızda sayaç azalacak.')
+                                  : (AppLocalizations.of(context)?.normalModeMessage ?? 'Normal moda geçmek istiyor musunuz?\n\nBu modda butona tıkladığınızda sayaç artacak.'),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: emeraldGreen.withAlpha(179),
+                                  height: 1.4,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            
+                            // Divider
+                            Container(
+                              height: 1,
+                              margin: const EdgeInsets.symmetric(horizontal: 16),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.transparent,
+                                    goldColor.withAlpha(77),
+                                    Colors.transparent,
+                                  ],
+                                ),
+                              ),
+                            ),
+                            
+                            // Actions
+                            Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: Row(
+                                children: [
+                                  // İptal butonu
+                                  Expanded(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                          color: goldColor.withAlpha(102),
+                                          width: 1,
+                                        ),
+                                      ),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: InkWell(
+                                          borderRadius: BorderRadius.circular(8),
+                                          onTap: () => Navigator.of(context).pop(false),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(vertical: 10),
+                                            child: Text(
+                                              AppLocalizations.of(context)?.cancel ?? 'İptal',
+                                              style: const TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w600,
+                                                color: emeraldGreen,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 12),
+                                  // Tamam butonu
+                                  Expanded(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        gradient: RadialGradient(
+                                          colors: [lightGold, goldColor],
+                                          center: const Alignment(-0.3, -0.5),
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: goldColor.withAlpha(77),
+                                            blurRadius: 4,
+                                            offset: const Offset(0, 2),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: InkWell(
+                                          borderRadius: BorderRadius.circular(8),
+                                          onTap: () => Navigator.of(context).pop(true),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(vertical: 10),
+                                            child: Text(
+                                              AppLocalizations.of(context)?.ok ?? 'Tamam',
+                                              style: const TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                                color: emeraldGreen,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                  
+                  // Kullanıcı onayladıysa modu değiştir
+                  if (confirmed == true) {
+                    setState(() {
+                      _isUndoMode = newMode;
+                    });
+                  }
                 },
                 child: CustomPaint(
                   size: Size(buttonSize, buttonSize),
@@ -150,36 +367,56 @@ class _CounterButtonState extends State<CounterButton>
                             ),
                           ),
                           SizedBox(height: buttonSize * 0.04),
-                          Text(
-                            AppLocalizations.of(context)?.counterButtonText ?? 'Dokun',
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: Colors.white, // Beyaz renk - En belirgin olacak
-                              fontSize: (buttonSize * 0.08).clamp(12.0, 18.0), // Responsive font
-                              fontWeight: FontWeight.w800, // Daha da kalın
-                              letterSpacing: 2.0, // Daha geniş karakter aralığı
+                          if (_isUndoMode)
+                            Icon(
+                              Icons.undo,
+                              size: (buttonSize * 0.12).clamp(18.0, 28.0),
+                              color: Colors.white,
                               shadows: [
                                 Shadow(
-                                  color: Colors.black.withAlpha(179), // Daha koyu gölge
+                                  color: Colors.black.withAlpha(179),
                                   offset: const Offset(0, 4),
                                   blurRadius: 8,
                                 ),
                                 Shadow(
-                                  color: const Color(0xFF0A2818).withAlpha(128), // Daha belirgin yeşil gölge
+                                  color: const Color(0xFF0A2818).withAlpha(128),
                                   offset: const Offset(0, 2),
                                   blurRadius: 4,
                                 ),
-                                Shadow(
-                                  color: const Color(0xFFFFD700).withAlpha(77), // Altın parıltı
-                                  offset: const Offset(1, 1),
-                                  blurRadius: 2,
-                                ),
                               ],
+                            )
+                          else
+                            Text(
+                              AppLocalizations.of(context)?.counterButtonText ?? 'Dokun',
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: Colors.white,
+                                fontSize: (buttonSize * 0.08).clamp(12.0, 18.0),
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: 2.0,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black.withAlpha(179),
+                                    offset: const Offset(0, 4),
+                                    blurRadius: 8,
+                                  ),
+                                  Shadow(
+                                    color: const Color(0xFF0A2818).withAlpha(128),
+                                    offset: const Offset(0, 2),
+                                    blurRadius: 4,
+                                  ),
+                                  Shadow(
+                                    color: const Color(0xFFFFD700).withAlpha(77),
+                                    offset: const Offset(1, 1),
+                                    blurRadius: 2,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
                         ],
                       ),
                     ),
                   ),
+                ),
                 ),
               ),
             );

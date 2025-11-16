@@ -388,13 +388,13 @@ abstract class AppLocalizations {
   /// **'App language changed successfully'**
   String get languageChangedMessage;
 
-  /// OK button
+  /// OK button text
   ///
   /// In en, this message translates to:
   /// **'OK'**
   String get ok;
 
-  /// Cancel button
+  /// Cancel button text
   ///
   /// In en, this message translates to:
   /// **'Cancel'**
@@ -1737,6 +1737,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tap'**
   String get counterButtonText;
+
+  /// Undo mode dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Undo Mode'**
+  String get undoModeTitle;
+
+  /// Normal mode dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Normal Mode'**
+  String get normalModeTitle;
+
+  /// Undo mode dialog message
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to switch to undo mode?\n\nIn this mode, tapping the button will decrease the counter.'**
+  String get undoModeMessage;
+
+  /// Normal mode dialog message
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to switch to normal mode?\n\nIn this mode, tapping the button will increase the counter.'**
+  String get normalModeMessage;
 
   /// Message shown when the zikr target is reached
   ///

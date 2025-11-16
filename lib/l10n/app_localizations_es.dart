@@ -875,10 +875,24 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get counterButtonText => 'Tocar';
+  String get counterButtonText => 'Toca';
 
   @override
-  String get progressBarCompleted => '¡Masha\'Allah! Objetivo Completado';
+  String get undoModeTitle => 'Modo Deshacer';
+
+  @override
+  String get normalModeTitle => 'Modo Normal';
+
+  @override
+  String get undoModeMessage =>
+      '¿Quieres cambiar al modo deshacer?\n\nEn este modo, tocar el botón disminuirá el contador.';
+
+  @override
+  String get normalModeMessage =>
+      '¿Quieres cambiar al modo normal?\n\nEn este modo, tocar el botón aumentará el contador.';
+
+  @override
+  String get progressBarCompleted => '¡Masha\'Allah! Objetivo completado';
 
   @override
   String get zikirCardSelectText => 'Seleccionar Dhikr';
