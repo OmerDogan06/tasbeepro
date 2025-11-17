@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.widget.*
 import android.view.View
 import com.skyforgestudios.tasbeepro.R
+import android.content.res.Configuration
+import java.util.Locale
 
 class QuranWidgetConfigActivity : Activity() {
 
@@ -16,6 +18,10 @@ class QuranWidgetConfigActivity : Activity() {
         private const val PREF_NAME = "QuranWidgetPrefs"
         private const val KEY_CURRENT_SURA = "current_sura_"
         private const val KEY_FONT_SIZE = "font_size_"
+        
+        // Desteklenen diller
+        // Not: "id" ve "in" Endonezce için (eski ve yeni ISO kodları)
+        private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "in", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru", "es", "pt", "de", "it", "zh", "sw", "ja", "ko", "th")
     }
 
     private var appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID
@@ -24,6 +30,10 @@ class QuranWidgetConfigActivity : Activity() {
     private lateinit var fontSizeLabel: TextView
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase?.let { getLocalizedContext(it) })
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -287,5 +297,52 @@ class QuranWidgetConfigActivity : Activity() {
         } else {
             "Sura $suraNumber"
         }
+    }
+    
+    private fun getLocalizedContext(context: Context): Context {
+        val currentLocale = context.resources.configuration.locales[0]
+        val currentLanguage = currentLocale.language
+        
+        // "in" kodunu "id" ye dönüştür (Endonezce için eski/yeni kod uyumluluğu)
+        val normalizedLanguage = if (currentLanguage == "in") "id" else currentLanguage
+        
+        val targetLanguage = if (SUPPORTED_LANGUAGES.contains(normalizedLanguage)) {
+            normalizedLanguage
+        } else {
+            "en" // Varsayılan İngilizce
+        }
+        
+        if (normalizedLanguage == targetLanguage) {
+            return context
+        }
+        
+        val locale = when (targetLanguage) {
+            "tr" -> Locale("tr", "TR")
+            "ar" -> Locale("ar", "SA")
+            "id" -> Locale("id", "ID")
+            "ur" -> Locale("ur", "PK")
+            "ms" -> Locale("ms", "MY")
+            "bn" -> Locale("bn", "BD")
+            "fr" -> Locale("fr", "FR")
+            "hi" -> Locale("hi", "IN")
+            "fa" -> Locale("fa", "IR")
+            "uz" -> Locale("uz", "UZ")
+            "ru" -> Locale("ru", "RU")
+            "es" -> Locale("es", "ES")
+            "pt" -> Locale("pt", "BR")
+            "de" -> Locale("de", "DE")
+            "it" -> Locale("it", "IT")
+            "zh" -> Locale("zh", "CN")
+            "sw" -> Locale("sw", "KE")
+            "ja" -> Locale("ja", "JP")
+            "ko" -> Locale("ko", "KR")
+            "th" -> Locale("th", "TH")
+            else -> Locale("en", "GB")
+        }
+        
+        val config = Configuration(context.resources.configuration)
+        config.setLocale(locale)
+        
+        return context.createConfigurationContext(config)
     }
 }

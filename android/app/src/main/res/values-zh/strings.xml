@@ -80,7 +80,8 @@
     <string name="sura_progress">苏拉进度</string>
     <string name="open_quran">打开古兰经</string>
     <string name="previous_ayah">上一节</string>
-    <string name="next_ayah">下一节</string>
+    <string name="next_ayah">下一节经文</string>
+    <string name="sura_number">第%1$d章</string>
 
     <!-- 苏拉名称 - 114章 -->
     <string name="sura_name_001">开端章</string>

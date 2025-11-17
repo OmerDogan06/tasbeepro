@@ -81,6 +81,7 @@
     <string name="open_quran">เปิดอัลกุรอาน</string>
     <string name="previous_ayah">อายะห์ก่อนหน้า</string>
     <string name="next_ayah">อายะห์ถัดไป</string>
+    <string name="sura_number">สูเราะห์ %1$d</string>
 
     <!-- ชื่อซูเราะห์ - 114 บท -->
     <string name="sura_name_001">อัล-ฟาติฮะห์</string>

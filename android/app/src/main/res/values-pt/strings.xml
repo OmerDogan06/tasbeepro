@@ -81,6 +81,7 @@
     <string name="open_quran">Abrir Alcorão</string>
     <string name="previous_ayah">Versículo Anterior</string>
     <string name="next_ayah">Versículo Seguinte</string>
+    <string name="sura_number">Sura %1$d</string>
 
     <!-- Nomes das Suras - 114 Suras -->
     <string name="sura_name_001">Al-Fatiha</string>

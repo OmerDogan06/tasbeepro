@@ -83,6 +83,7 @@
     <string name="open_quran">فتح القرآن</string>
     <string name="previous_ayah">الآية السابقة</string>
     <string name="next_ayah">الآية التالية</string>
+    <string name="sura_number">سورة %1$d</string>
 
     <!-- أسماء السور -->
     <string name="sura_name_001">الفاتحة</string>

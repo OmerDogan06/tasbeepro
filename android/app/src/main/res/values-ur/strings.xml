@@ -81,6 +81,7 @@
     <string name="open_quran">قرآن کھولیں</string>
     <string name="previous_ayah">پچھلی آیت</string>
     <string name="next_ayah">اگلی آیت</string>
+    <string name="sura_number">سورہ %1$d</string>
 
     <!-- سورتوں کے نام - 114 سورتیں -->
     <string name="sura_name_001">الفاتحہ</string>

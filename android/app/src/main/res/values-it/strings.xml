@@ -81,6 +81,7 @@
     <string name="open_quran">Apri Corano</string>
     <string name="previous_ayah">Versetto Precedente</string>
     <string name="next_ayah">Versetto Successivo</string>
+    <string name="sura_number">Sura %1$d</string>
 
     <!-- Nomi delle Sure - 114 Sure -->
     <string name="sura_name_001">La vacca</string>

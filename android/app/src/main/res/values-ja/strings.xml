@@ -81,6 +81,7 @@
     <string name="open_quran">クルアーンを開く</string>
     <string name="previous_ayah">前の節</string>
     <string name="next_ayah">次の節</string>
+    <string name="sura_number">第%1$d章</string>
 
     <!-- スーラ名 - 114章 -->
     <string name="sura_name_001">開端章</string>

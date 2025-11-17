@@ -82,6 +82,7 @@
     <string name="open_quran">Open Quran</string>
     <string name="previous_ayah">Previous Verse</string>
     <string name="next_ayah">Next Verse</string>
+    <string name="sura_number">Sura %1$d</string>
 
 
     <!-- Sura Names - 114 Suras -->

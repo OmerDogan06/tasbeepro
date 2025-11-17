@@ -81,6 +81,7 @@
     <string name="open_quran">Qur\'onni ochish</string>
     <string name="previous_ayah">Oldingi oyat</string>
     <string name="next_ayah">Keyingi oyat</string>
+    <string name="sura_number">Sura %1$d</string>
 
     <!-- Sura nomlari - 114 sura -->
     <string name="sura_name_001">Fotiha</string>

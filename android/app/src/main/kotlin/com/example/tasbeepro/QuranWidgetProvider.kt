@@ -29,50 +29,23 @@ class QuranWidgetProvider : AppWidgetProvider() {
         private const val KEY_FONT_SIZE = "font_size_"
         
         // Desteklenen diller
-        private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru", "es", "pt", "de", "it", "zh", "sw", "ja", "ko", "th")
+        // Not: "id" ve "in" Endonezce için (eski ve yeni ISO kodları)
+        private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "in", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru", "es", "pt", "de", "it", "zh", "sw", "ja", "ko", "th")
         
         fun getSuraName(context: Context, suraNumber: Int): String {
-            val locale = context.resources.configuration.locales[0].language
+            if (suraNumber !in 1..114) {
+                return "Unknown"
+            }
             
-            // Türkçe sure isimleri
-            val turkishSuraNames = arrayOf(
-                "Fatiha", "Bakara", "Âl-i İmrân", "Nisâ", "Mâide", "En'âm", "A'râf", "Enfâl", "Tevbe", "Yûnus",
-                "Hûd", "Yûsuf", "Ra'd", "İbrâhîm", "Hicr", "Nahl", "İsrâ", "Kehf", "Meryem", "Tâhâ",
-                "Enbiyâ", "Hac", "Mü'minûn", "Nûr", "Furkân", "Şuarâ", "Neml", "Kasas", "Ankebût", "Rûm",
-                "Lokmân", "Secde", "Ahzâb", "Sebe'", "Fâtır", "Yâsîn", "Sâffât", "Sâd", "Zümer", "Mü'min",
-                "Fussilet", "Şûrâ", "Zuhruf", "Duhân", "Câsiye", "Ahkâf", "Muhammed", "Fetih", "Hucurât", "Kâf",
-                "Zâriyât", "Tûr", "Necm", "Kamer", "Rahmân", "Vâkıa", "Hadîd", "Mücâdele", "Haşr", "Mümtehine",
-                "Saff", "Cuma", "Münâfikûn", "Teğâbün", "Talâk", "Tahrîm", "Mülk", "Kalem", "Hâkka", "Meâric",
-                "Nûh", "Cin", "Müzzemmil", "Müddessir", "Kıyâme", "İnsân", "Mürselât", "Nebe'", "Nâziât", "Abese",
-                "Tekvîr", "İnfitâr", "Mutaffifîn", "İnşikâk", "Burûc", "Târık", "A'lâ", "Ğâşiye", "Fecr", "Beled",
-                "Şems", "Leyl", "Duhâ", "İnşirâh", "Tîn", "Alak", "Kadr", "Beyyine", "Zelzele", "Âdiyât",
-                "Kâria", "Tekâsür", "Asr", "Hümeze", "Fîl", "Kureyş", "Mâûn", "Kevser", "Kâfirûn", "Nasr",
-                "Mesed", "İhlâs", "Felak", "Nâs"
-            )
-
-            // İngilizce sure isimleri
-            val englishSuraNames = arrayOf(
-                "Al-Fatiha", "Al-Baqarah", "Ali 'Imran", "An-Nisa", "Al-Ma'idah", "Al-An'am", "Al-A'raf", "Al-Anfal", "At-Tawbah", "Yunus",
-                "Hud", "Yusuf", "Ar-Ra'd", "Ibrahim", "Al-Hijr", "An-Nahl", "Al-Isra", "Al-Kahf", "Maryam", "Ta-Ha",
-                "Al-Anbya", "Al-Hajj", "Al-Mu'minun", "An-Nur", "Al-Furqan", "Ash-Shu'ara", "An-Naml", "Al-Qasas", "Al-'Ankabut", "Ar-Rum",
-                "Luqman", "As-Sajdah", "Al-Ahzab", "Saba", "Fatir", "Ya-Sin", "As-Saffat", "Sad", "Az-Zumar", "Ghafir",
-                "Fussilat", "Ash-Shuraa", "Az-Zukhruf", "Ad-Dukhan", "Al-Jathiyah", "Al-Ahqaf", "Muhammad", "Al-Fath", "Al-Hujurat", "Qaf",
-                "Adh-Dhariyat", "At-Tur", "An-Najm", "Al-Qamar", "Ar-Rahman", "Al-Waqi'ah", "Al-Hadid", "Al-Mujadila", "Al-Hashr", "Al-Mumtahanah",
-                "As-Saff", "Al-Jumu'ah", "Al-Munafiqun", "At-Taghabun", "At-Talaq", "At-Tahrim", "Al-Mulk", "Al-Qalam", "Al-Haqqah", "Al-Ma'arij",
-                "Nuh", "Al-Jinn", "Al-Muzzammil", "Al-Muddaththir", "Al-Qiyamah", "Al-Insan", "Al-Mursalat", "An-Naba", "An-Nazi'at", "'Abasa",
-                "At-Takwir", "Al-Infitar", "Al-Mutaffifin", "Al-Inshiqaq", "Al-Buruj", "At-Tariq", "Al-A'la", "Al-Ghashiyah", "Al-Fajr", "Al-Balad",
-                "Ash-Shams", "Al-Layl", "Ad-Duhaa", "Ash-Sharh", "At-Tin", "Al-'Alaq", "Al-Qadr", "Al-Bayyinah", "Az-Zalzalah", "Al-'Adiyat",
-                "Al-Qari'ah", "At-Takathur", "Al-'Asr", "Al-Humazah", "Al-Fil", "Quraysh", "Al-Ma'un", "Al-Kawthar", "Al-Kafirun", "An-Nasr",
-                "Al-Masad", "Al-Ikhlas", "Al-Falaq", "An-Nas"
-            )
-
-            return if (suraNumber in 1..114) {
-                when (locale) {
-                    "tr" -> turkishSuraNames[suraNumber - 1]
-                    else -> englishSuraNames[suraNumber - 1]
-                }
+            // String resource'tan sure adını al (tüm diller için)
+            val resourceName = "sura_name_${suraNumber.toString().padStart(3, '0')}"
+            val resourceId = context.resources.getIdentifier(resourceName, "string", context.packageName)
+            
+            return if (resourceId != 0) {
+                context.getString(resourceId)
             } else {
-                "Unknown"
+                // Fallback: İngilizce sure adı
+                "Sura $suraNumber"
             }
         }
     }
@@ -98,13 +71,16 @@ class QuranWidgetProvider : AppWidgetProvider() {
         val currentLocale = context.resources.configuration.locales[0]
         val currentLanguage = currentLocale.language
         
-        val targetLanguage = if (SUPPORTED_LANGUAGES.contains(currentLanguage)) {
-            currentLanguage
+        // "in" kodunu "id" ye dönüştür (Endonezce için eski/yeni kod uyumluluğu)
+        val normalizedLanguage = if (currentLanguage == "in") "id" else currentLanguage
+        
+        val targetLanguage = if (SUPPORTED_LANGUAGES.contains(normalizedLanguage)) {
+            normalizedLanguage
         } else {
             "en" // Varsayılan İngilizce
         }
         
-        if (currentLanguage == targetLanguage) {
+        if (normalizedLanguage == targetLanguage) {
             return context
         }
         
@@ -209,7 +185,7 @@ class QuranWidgetProvider : AppWidgetProvider() {
             // Sure bilgilerini güncelle
             val suraName = getSuraName(context, currentSura)
             views.setTextViewText(R.id.sura_name, suraName)
-            views.setTextViewText(R.id.sura_info, "$currentSura. Sure")
+            views.setTextViewText(R.id.sura_info, context.getString(R.string.sura_number, currentSura))
             
             // ListView için adapter intent'ini ayarla
             val serviceIntent = Intent(context, QuranListService::class.java).apply {
@@ -386,48 +362,8 @@ class QuranWidgetProvider : AppWidgetProvider() {
     }
 
     private fun getSuraName(context: Context, suraNumber: Int): String {
-        val locale = context.resources.configuration.locales[0].language
-        
-        // Türkçe sure isimleri
-        val turkishSuraNames = arrayOf(
-            "Fatiha", "Bakara", "Âl-i İmrân", "Nisâ", "Mâide", "En'âm", "A'râf", "Enfâl", "Tevbe", "Yûnus",
-            "Hûd", "Yûsuf", "Ra'd", "İbrâhîm", "Hicr", "Nahl", "İsrâ", "Kehf", "Meryem", "Tâhâ",
-            "Enbiyâ", "Hac", "Mü'minûn", "Nûr", "Furkân", "Şuarâ", "Neml", "Kasas", "Ankebût", "Rûm",
-            "Lokmân", "Secde", "Ahzâb", "Sebe'", "Fâtır", "Yâsîn", "Sâffât", "Sâd", "Zümer", "Mü'min",
-            "Fussilet", "Şûrâ", "Zuhruf", "Duhân", "Câsiye", "Ahkâf", "Muhammed", "Fetih", "Hucurât", "Kâf",
-            "Zâriyât", "Tûr", "Necm", "Kamer", "Rahmân", "Vâkıa", "Hadîd", "Mücâdele", "Haşr", "Mümtehine",
-            "Saff", "Cuma", "Münâfikûn", "Teğâbün", "Talâk", "Tahrîm", "Mülk", "Kalem", "Hâkka", "Meâric",
-            "Nûh", "Cin", "Müzzemmil", "Müddessir", "Kıyâme", "İnsân", "Mürselât", "Nebe'", "Nâziât", "Abese",
-            "Tekvîr", "İnfitâr", "Mutaffifîn", "İnşikâk", "Burûc", "Târık", "A'lâ", "Ğâşiye", "Fecr", "Beled",
-            "Şems", "Leyl", "Duhâ", "İnşirâh", "Tîn", "Alak", "Kadr", "Beyyine", "Zelzele", "Âdiyât",
-            "Kâria", "Tekâsür", "Asr", "Hümeze", "Fîl", "Kureyş", "Mâûn", "Kevser", "Kâfirûn", "Nasr",
-            "Mesed", "İhlâs", "Felak", "Nâs"
-        )
-
-        // İngilizce sure isimleri
-        val englishSuraNames = arrayOf(
-            "Al-Fatiha", "Al-Baqarah", "Ali 'Imran", "An-Nisa", "Al-Ma'idah", "Al-An'am", "Al-A'raf", "Al-Anfal", "At-Tawbah", "Yunus",
-            "Hud", "Yusuf", "Ar-Ra'd", "Ibrahim", "Al-Hijr", "An-Nahl", "Al-Isra", "Al-Kahf", "Maryam", "Ta-Ha",
-            "Al-Anbya", "Al-Hajj", "Al-Mu'minun", "An-Nur", "Al-Furqan", "Ash-Shu'ara", "An-Naml", "Al-Qasas", "Al-'Ankabut", "Ar-Rum",
-            "Luqman", "As-Sajdah", "Al-Ahzab", "Saba", "Fatir", "Ya-Sin", "As-Saffat", "Sad", "Az-Zumar", "Ghafir",
-            "Fussilat", "Ash-Shuraa", "Az-Zukhruf", "Ad-Dukhan", "Al-Jathiyah", "Al-Ahqaf", "Muhammad", "Al-Fath", "Al-Hujurat", "Qaf",
-            "Adh-Dhariyat", "At-Tur", "An-Najm", "Al-Qamar", "Ar-Rahman", "Al-Waqi'ah", "Al-Hadid", "Al-Mujadila", "Al-Hashr", "Al-Mumtahanah",
-            "As-Saff", "Al-Jumu'ah", "Al-Munafiqun", "At-Taghabun", "At-Talaq", "At-Tahrim", "Al-Mulk", "Al-Qalam", "Al-Haqqah", "Al-Ma'arij",
-            "Nuh", "Al-Jinn", "Al-Muzzammil", "Al-Muddaththir", "Al-Qiyamah", "Al-Insan", "Al-Mursalat", "An-Naba", "An-Nazi'at", "'Abasa",
-            "At-Takwir", "Al-Infitar", "Al-Mutaffifin", "Al-Inshiqaq", "Al-Buruj", "At-Tariq", "Al-A'la", "Al-Ghashiyah", "Al-Fajr", "Al-Balad",
-            "Ash-Shams", "Al-Layl", "Ad-Duhaa", "Ash-Sharh", "At-Tin", "Al-'Alaq", "Al-Qadr", "Al-Bayyinah", "Az-Zalzalah", "Al-'Adiyat",
-            "Al-Qari'ah", "At-Takathur", "Al-'Asr", "Al-Humazah", "Al-Fil", "Quraysh", "Al-Ma'un", "Al-Kawthar", "Al-Kafirun", "An-Nasr",
-            "Al-Masad", "Al-Ikhlas", "Al-Falaq", "An-Nas"
-        )
-
-        return if (suraNumber in 1..114) {
-            when (locale) {
-                "tr" -> turkishSuraNames[suraNumber - 1]
-                else -> englishSuraNames[suraNumber - 1]
-            }
-        } else {
-            "Unknown"
-        }
+        // Companion object'teki static metodu kullan
+        return Companion.getSuraName(context, suraNumber)
     }
 
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {

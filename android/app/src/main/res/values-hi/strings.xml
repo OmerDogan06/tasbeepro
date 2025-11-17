@@ -81,6 +81,7 @@
     <string name="open_quran">कुरान खोलें</string>
     <string name="previous_ayah">पिछली आयत</string>
     <string name="next_ayah">अगली आयत</string>
+    <string name="sura_number">सूरह %1$d</string>
 
     <!-- सूरा नाम - 114 सूरा -->
     <string name="sura_name_001">अल-फ़ातिहा</string>

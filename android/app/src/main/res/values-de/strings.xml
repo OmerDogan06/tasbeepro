@@ -81,6 +81,7 @@
     <string name="open_quran">Quran öffnen</string>
     <string name="previous_ayah">Vorheriger Vers</string>
     <string name="next_ayah">Nächster Vers</string>
+    <string name="sura_number">Sure %1$d</string>
 
     <!-- Sura Names - 114 Suras -->
     <string name="sura_name_001">Al-Fatiha</string>

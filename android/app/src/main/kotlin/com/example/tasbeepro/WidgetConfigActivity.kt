@@ -40,7 +40,8 @@ class WidgetConfigActivity : Activity() {
     private var soundEnabled = true
     
     // Desteklenen diller - Flutter tarafıyla aynı
-    private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru", "es", "pt", "de", "it", "zh", "sw", "ja", "ko", "th")
+    // Not: "id" ve "in" Endonezce için (eski ve yeni ISO kodları)
+    private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "in", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru", "es", "pt", "de", "it", "zh", "sw", "ja", "ko", "th")
 
     // Zikir ve hedef listelerini Flutter'dan yükle
     private var zikrList = mutableListOf<Triple<String, String, String>>() // id, name, meaning
@@ -361,15 +362,18 @@ class WidgetConfigActivity : Activity() {
         val currentLocale = context.resources.configuration.locales[0]
         val currentLanguage = currentLocale.language
         
+        // "in" kodunu "id" ye dönüştür (Endonezce için eski/yeni kod uyumluluğu)
+        val normalizedLanguage = if (currentLanguage == "in") "id" else currentLanguage
+        
         // Eğer mevcut dil desteklenen diller arasında değilse İngilizce'ye düş
-        val targetLanguage = if (SUPPORTED_LANGUAGES.contains(currentLanguage)) {
-            currentLanguage
+        val targetLanguage = if (SUPPORTED_LANGUAGES.contains(normalizedLanguage)) {
+            normalizedLanguage
         } else {
             "en" // Varsayılan İngilizce
         }
         
         // Eğer zaten doğru dildeyse context'i olduğu gibi döndür
-        if (currentLanguage == targetLanguage) {
+        if (normalizedLanguage == targetLanguage) {
             return context
         }
         

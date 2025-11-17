@@ -81,6 +81,7 @@
     <string name="open_quran">Kuran\'ı Aç</string>
     <string name="previous_ayah">Önceki Ayet</string>
     <string name="next_ayah">Sonraki Ayet</string>
+    <string name="sura_number">%1$d. Sure</string>
 
     <!-- Sure İsimleri -->
     <string name="sura_name_001">Fâtiha</string>

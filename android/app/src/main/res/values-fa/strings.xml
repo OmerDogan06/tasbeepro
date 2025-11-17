@@ -81,8 +81,9 @@
     <string name="open_quran">باز کردن قرآن</string>
     <string name="previous_ayah">آیه قبلی</string>
     <string name="next_ayah">آیه بعدی</string>
+    <string name="sura_number">سوره %1$d</string>
 
-    <!-- نام سوره ها -->
+    <!-- نام سوره‌ها -->
     <string name="sura_name_001">فاتحه</string>
     <string name="sura_name_002">بقره</string>
     <string name="sura_name_003">آل عمران</string>

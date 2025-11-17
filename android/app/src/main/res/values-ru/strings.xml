@@ -81,6 +81,7 @@
     <string name="open_quran">Открыть Коран</string>
     <string name="previous_ayah">Предыдущий аят</string>
     <string name="next_ayah">Следующий аят</string>
+    <string name="sura_number">Сура %1$d</string>
 
     <!-- Названия сур - 114 сур -->
     <string name="sura_name_001">Аль-Фатиха</string>

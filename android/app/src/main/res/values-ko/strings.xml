@@ -81,6 +81,7 @@
     <string name="open_quran">쿠란 열기</string>
     <string name="previous_ayah">이전 구절</string>
     <string name="next_ayah">다음 구절</string>
+    <string name="sura_number">수라 %1$d</string>
 
     <!-- 수라 이름 - 114장 -->
     <string name="sura_name_001">알 파티하</string>

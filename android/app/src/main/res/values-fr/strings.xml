@@ -81,6 +81,7 @@
     <string name="open_quran">Ouvrir le Coran</string>
     <string name="previous_ayah">Verset Précédent</string>
     <string name="next_ayah">Verset Suivant</string>
+    <string name="sura_number">Sourate %1$d</string>
 
     <!-- Noms des Sourates - 114 Sourates -->
     <string name="sura_name_001">Al-Fatiha</string>

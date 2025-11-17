@@ -81,6 +81,7 @@
     <string name="open_quran">Buka Al-Quran</string>
     <string name="previous_ayah">Ayat Sebelum</string>
     <string name="next_ayah">Ayat Seterusnya</string>
+    <string name="sura_number">Surah %1$d</string>
 
     <!-- Nama Surah - 114 Surah -->
     <string name="sura_name_001">Al-Fatihah</string>

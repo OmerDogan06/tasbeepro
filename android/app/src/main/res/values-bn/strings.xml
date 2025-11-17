@@ -81,6 +81,7 @@
     <string name="open_quran">কুরআন খুলুন</string>
     <string name="previous_ayah">পূর্ববর্তী আয়াত</string>
     <string name="next_ayah">পরবর্তী আয়াত</string>
+    <string name="sura_number">সূরা %1$d</string>
 
     <!-- সূরার নাম - ১১৪ সূরা -->
     <string name="sura_name_001">আল-ফাতিহা</string>

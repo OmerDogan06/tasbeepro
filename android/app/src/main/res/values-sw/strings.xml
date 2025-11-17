@@ -81,6 +81,7 @@
     <string name="open_quran">Fungua Qurani</string>
     <string name="previous_ayah">Aya ya Awali</string>
     <string name="next_ayah">Aya ya Ifuatayo</string>
+    <string name="sura_number">Sura %1$d</string>
 
     <!-- Majina ya Sura - Sura 114 -->
     <string name="sura_name_001">Al-Fatiha</string>
