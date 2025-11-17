@@ -35,7 +35,7 @@ class AdService extends GetxService with WidgetsBindingObserver {
     
   static String get _rewardedAdUnitId => kDebugMode 
     ? 'ca-app-pub-3940256099942544/5224354917' // Test ID
-    : 'ca-app-pub-8365973392717077/5052712824'; // TODO: Gerçek Rewarded Ad ID ekle
+    : 'ca-app-pub-8365973392717077/5052712824'; //  Gerçek Rewarded Ad ID ekle
   
   // Getters
   bool get isInterstitialAdReady => _isInterstitialAdReady.value;

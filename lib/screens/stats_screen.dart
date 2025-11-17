@@ -1251,16 +1251,16 @@ class _StatsScreenState extends State<StatsScreen>
 
         // Başarı mesajı göster
         IslamicSnackbar.showSuccess(
-          AppLocalizations.of(context)?.resetStatsConfirm ?? 'Sıfırla',
-          AppLocalizations.of(context)?.resetStatsSuccess ??
+          AppLocalizations.of(context.mounted ? context : Get.context!)?.resetStatsConfirm ?? 'Sıfırla',
+          AppLocalizations.of(context.mounted ? context : Get.context!)?.resetStatsSuccess ??
               'Tüm istatistikler başarıyla sıfırlandı',
         );
       } catch (e) {
         // Hata durumunda snackbar göster
         IslamicSnackbar.showError(
-          AppLocalizations.of(context)?.statsError ??
+          AppLocalizations.of(context.mounted ? context : Get.context!)?.statsError ??
               'Hata',
-         AppLocalizations.of(context)?.statsError ??
+         AppLocalizations.of(context.mounted ? context : Get.context!)?.statsError ??
               'Hata',
       
         );

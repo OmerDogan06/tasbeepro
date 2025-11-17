@@ -322,7 +322,7 @@ class StorageService extends GetxService {
   
   String _getRewardKey(RewardFeatureType featureType, String suffix) {
     final prefix = _getRewardPrefix(featureType);
-    return '${prefix}$suffix';
+    return '$prefix$suffix';
   }
   
   String _getRewardPrefix(RewardFeatureType featureType) {

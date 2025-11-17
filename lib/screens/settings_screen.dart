@@ -746,27 +746,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // Reward feature kontrolü
         bool isRewardFeatureEnabled = true;
         if (rewardFeatureType != null) {
-          print("DEBUG: rewardFeatureType = $rewardFeatureType");
+          debugPrint("DEBUG: rewardFeatureType = $rewardFeatureType");
           switch (rewardFeatureType) {
             case RewardFeatureType.dhikrWidget:
               isRewardFeatureEnabled = subscriptionService.isDhikrWidgetEnabled;
-              print("DEBUG: isDhikrWidgetEnabled = $isRewardFeatureEnabled");
+              debugPrint("DEBUG: isDhikrWidgetEnabled = $isRewardFeatureEnabled");
               break;
             case RewardFeatureType.quranWidget:
               isRewardFeatureEnabled = subscriptionService.isQuranWidgetEnabled;
-              print("DEBUG: isQuranWidgetEnabled = $isRewardFeatureEnabled");
+              debugPrint("DEBUG: isQuranWidgetEnabled = $isRewardFeatureEnabled");
               break;
             case RewardFeatureType.reminders:
               isRewardFeatureEnabled = subscriptionService.areRemindersEnabled;
-              print("DEBUG: areRemindersEnabled = $isRewardFeatureEnabled");
+              debugPrint("DEBUG: areRemindersEnabled = $isRewardFeatureEnabled");
               break;
             case RewardFeatureType.reminderTimes:
               isRewardFeatureEnabled = subscriptionService.areReminderTimesEnabled;
-              print("DEBUG: areReminderTimesEnabled = $isRewardFeatureEnabled");
+              debugPrint("DEBUG: areReminderTimesEnabled = $isRewardFeatureEnabled");
               break;
           }
         } else {
-          print("DEBUG: rewardFeatureType is NULL");
+          debugPrint("DEBUG: rewardFeatureType is NULL");
         }
         
         // Feature kilitli mi? (Premium değil VE reward feature da aktif değil)
@@ -2050,18 +2050,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void _addWidgetToHomeScreen() async {
     try {
       HapticFeedback.lightImpact();
-      print("DEBUG: Tasbih widget ekleme başladı");
+      debugPrint("DEBUG: Tasbih widget ekleme başladı");
 
       // Eski çalışan yaklaşım - parametre yok
       const platform = MethodChannel('com.skyforgestudios.tasbeepro/widget');
-      print("DEBUG: Platform channel oluşturuldu");
+      debugPrint("DEBUG: Platform channel oluşturuldu");
       
       final result = await platform.invokeMethod('openWidgetPicker');
-      print("DEBUG: Platform channel sonucu: $result");
+      debugPrint("DEBUG: Platform channel sonucu: $result");
       
      
     } catch (e) {
-      print("DEBUG: Platform channel hatası: $e");
+      debugPrint("DEBUG: Platform channel hatası: $e");
       
       // Platform channel başarısız olursa manual talimatlar göster
       HapticFeedback.lightImpact();
@@ -2078,18 +2078,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void _addQuranWidgetToHomeScreen() async {
     try {
       HapticFeedback.lightImpact();
-      print("DEBUG: Kur'an widget ekleme başladı");
+      debugPrint("DEBUG: Kur'an widget ekleme başladı");
 
       // Kur'an widget için ayrı method
       const platform = MethodChannel('com.skyforgestudios.tasbeepro/widget');
-      print("DEBUG: Platform channel oluşturuldu");
+      debugPrint("DEBUG: Platform channel oluşturuldu");
       
       final result = await platform.invokeMethod('openQuranWidgetPicker');
-      print("DEBUG: Platform channel sonucu: $result");
+      debugPrint("DEBUG: Platform channel sonucu: $result");
       
      
     } catch (e) {
-      print("DEBUG: Platform channel hatası: $e");
+      debugPrint("DEBUG: Platform channel hatası: $e");
       
       // Platform channel başarısız olursa manual talimatlar göster
       HapticFeedback.lightImpact();
@@ -3218,8 +3218,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       
       if (!success) {
         IslamicSnackbar.showError(
-          AppLocalizations.of(context)?.rewardAdError ?? 'Reklam Hatası',
-          AppLocalizations.of(context)?.rewardAdNotReady ?? 'Reklam şu anda hazırlanmıyor. Lütfen birkaç saniye sonra tekrar deneyin.',
+          AppLocalizations.of(context.mounted ? context : Get.context!)?.rewardAdError ?? 'Reklam Hatası',
+          AppLocalizations.of(context.mounted ? context : Get.context!)?.rewardAdNotReady ?? 'Reklam şu anda hazırlanmıyor. Lütfen birkaç saniye sonra tekrar deneyin.',
         );
       }
     } catch (e) {
@@ -3227,8 +3227,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         debugPrint('Error watching ad for feature: $e');
       }
       IslamicSnackbar.showError(
-        AppLocalizations.of(context)?.rewardError ?? 'Hata',
-        AppLocalizations.of(context)?.rewardAdWatchError ?? 'Reklam izlenirken bir hata oluştu. Lütfen tekrar deneyin.',
+        AppLocalizations.of(context.mounted ? context : Get.context!)?.rewardError ?? 'Hata',
+        AppLocalizations.of(context.mounted ? context : Get.context!)?.rewardAdWatchError ?? 'Reklam izlenirken bir hata oluştu. Lütfen tekrar deneyin.',
       );
     }
   }
