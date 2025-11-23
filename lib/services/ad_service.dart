@@ -395,6 +395,56 @@ class AdService extends GetxService with WidgetsBindingObserver {
     }
   }
   
+  // Network reconnection sonrası reklam yeniden yükleme
+  Future<void> forceReloadAdsAfterReconnection() async {
+    if (kDebugMode) {
+      print('🔄 Force reloading ads after network reconnection...');
+    }
+    
+    try {
+      // Mevcut durumu logla
+      if (kDebugMode) {
+        print('📊 Current ad status:');
+        print('   - Interstitial ready: $_isInterstitialAdReady');
+        print('   - App Open ready: $_isAppOpenAdReady');
+        print('   - Rewarded ready: $_isRewardedAdReady');
+      }
+      
+      // Eğer rewarded ad hazır değilse yeniden yükle
+      if (!_isRewardedAdReady.value) {
+        if (kDebugMode) {
+          print('🎬 Reloading rewarded ad...');
+        }
+        _loadRewardedAd();
+      }
+      
+      // Eğer interstitial ad hazır değilse yeniden yükle
+      if (!_isInterstitialAdReady.value) {
+        if (kDebugMode) {
+          print('📺 Reloading interstitial ad...');
+        }
+        _loadInterstitialAd();
+      }
+      
+      // Eğer app open ad hazır değilse yeniden yükle
+      if (!_isAppOpenAdReady.value) {
+        if (kDebugMode) {
+          print('🚀 Reloading app open ad...');
+        }
+        _loadAppOpenAd();
+      }
+      
+      if (kDebugMode) {
+        print('✅ Ad reload process completed');
+      }
+      
+    } catch (e) {
+      if (kDebugMode) {
+        print('❌ Error during ad reload: $e');
+      }
+    }
+  }
+
   @override
   void onClose() {
     // App lifecycle observer'ı kaldır

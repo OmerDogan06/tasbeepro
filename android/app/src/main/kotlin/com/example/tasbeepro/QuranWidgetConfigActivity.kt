@@ -21,7 +21,7 @@ class QuranWidgetConfigActivity : Activity() {
         
         // Desteklenen diller
         // Not: "id" ve "in" Endonezce için (eski ve yeni ISO kodları)
-        private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "in", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru", "es", "pt", "de", "it", "zh", "sw", "ja", "ko", "th")
+        private val SUPPORTED_LANGUAGES = setOf("tr", "en", "ar", "id", "in", "ur", "ms", "bn", "fr", "hi", "fa", "uz", "ru", "es", "pt", "de", "it", "zh", "sw", "ja", "ko", "th", "nl", "pl", "sv")
     }
 
     private var appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID
@@ -337,6 +337,9 @@ class QuranWidgetConfigActivity : Activity() {
             "ja" -> Locale("ja", "JP")
             "ko" -> Locale("ko", "KR")
             "th" -> Locale("th", "TH")
+            "nl" -> Locale("nl", "NL")
+            "pl" -> Locale("pl", "PL")
+            "sv" -> Locale("sv", "SE")
             else -> Locale("en", "GB")
         }
         

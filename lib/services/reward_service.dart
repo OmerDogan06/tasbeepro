@@ -200,13 +200,26 @@ class RewardService extends GetxService {
     try {
       final adService = Get.find<AdService>();
       
+      if (kDebugMode) {
+        debugPrint('🎬 Attempting to show rewarded ad for: $featureType');
+        debugPrint('🎬 AdService ready status: ${adService.isRewardedAdReady}');
+      }
+      
       // AdService'den reklam göster
       final success = await adService.showRewardedAd((amount, type) {
         // Ödül kazanıldığında bu callback çağrılır
         _handleRewardEarned(featureType);
       });
       
+      if (kDebugMode) {
+        debugPrint('🎬 Rewarded ad show result: $success');
+      }
+      
       if (!success) {
+        if (kDebugMode) {
+          debugPrint('❌ Rewarded ad failed to show - showing error message to user');
+        }
+        
         IslamicSnackbar.showError(
           _localizations?.rewardAdPreparing ?? 'Reklam Hazırlanıyor',
           _localizations?.rewardAdNotReadyMessage ?? 'Reklam henüz hazır değil. Lütfen birkaç saniye bekleyip tekrar deneyin.',
@@ -217,6 +230,7 @@ class RewardService extends GetxService {
     } catch (e) {
       if (kDebugMode) {
         debugPrint('❌ Error showing rewarded ad: $e');
+        debugPrint('❌ Error type: ${e.runtimeType}');
       }
       
       IslamicSnackbar.showError(

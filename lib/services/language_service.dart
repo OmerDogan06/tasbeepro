@@ -29,7 +29,7 @@ class LanguageService extends GetxService {
         String deviceLanguage = WidgetsBinding.instance.platformDispatcher.locale.languageCode;
         
         // Desteklenen diller listesi
-        const supportedLanguages = ['tr', 'en', 'ar', 'id', 'ur', 'ms', 'bn', 'fr', 'hi', 'fa', 'uz', 'ru', 'es', 'pt', 'de', 'it', 'zh', 'sw', 'ja', 'ko', 'th'];
+        const supportedLanguages = ['tr', 'en', 'ar', 'id', 'ur', 'ms', 'bn', 'fr', 'hi', 'fa', 'uz', 'ru', 'es', 'pt', 'de', 'it', 'zh', 'sw', 'ja', 'ko', 'th', 'nl', 'pl', 'sv'];
         
         // Eğer cihaz dili desteklenen diller arasında varsa onu kullan, yoksa İngilizce
         savedLanguage = supportedLanguages.contains(deviceLanguage) ? deviceLanguage : 'en';
@@ -111,6 +111,15 @@ class LanguageService extends GetxService {
         case 'th':
           newLocale = const Locale('th', 'TH');
           break;
+        case 'nl':
+          newLocale = const Locale('nl', 'NL');
+          break;
+        case 'pl':
+          newLocale = const Locale('pl', 'PL');
+          break;
+        case 'sv':
+          newLocale = const Locale('sv', 'SE');
+          break;
         default:
           newLocale = const Locale('en', 'GB');
       }
@@ -173,6 +182,12 @@ class LanguageService extends GetxService {
         return '한국어';
       case 'th':
         return 'ไทย';
+      case 'nl':
+        return 'Nederlands';
+      case 'pl':
+        return 'Polski';
+      case 'sv':
+        return 'Svenska';
       default:
         return 'English';
     }
@@ -200,5 +215,8 @@ class LanguageService extends GetxService {
     {'code': 'ja', 'name': '日本語', 'flag': '🇯🇵'},
     {'code': 'ko', 'name': '한국어', 'flag': '🇰🇷'},
     {'code': 'th', 'name': 'ไทย', 'flag': '🇹🇭'},
+    {'code': 'nl', 'name': 'Nederlands', 'flag': '🇳🇱'},
+    {'code': 'pl', 'name': 'Polski', 'flag': '🇵🇱'},
+    {'code': 'sv', 'name': 'Svenska', 'flag': '🇸🇪'},
   ];
 }

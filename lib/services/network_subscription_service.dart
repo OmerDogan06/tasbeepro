@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'subscription_service.dart';
+import 'ad_service.dart';
 
 /// NetworkSubscriptionService
 /// 
@@ -93,11 +94,18 @@ class NetworkSubscriptionService extends GetxService {
     // Bu servisin amacı: Kullanıcı internetsiz açtı -> sonra internet geldi -> kontrol yap
     if (_wasDisconnected && !isCurrentlyDisconnected) {
       if (kDebugMode) {
-        print('🌐 ✅ RECONNECTION DETECTED! User was offline, now online. Checking premium status...');
+        print('🌐 ✅ RECONNECTION DETECTED! User was offline, now online.');
+        print('🌐 🎯 Actions to perform:');
+        print('🌐    1. Check premium subscription status');
+        print('🌐    2. Reload ad services (rewarded ads)');
+        print('🌐 🚀 Starting reconnection process...');
       }
       
       // Premium durumu kontrol et
       await _checkPremiumStatusOnReconnect();
+      
+      // Reklam servislerini yeniden başlat
+      await _reloadAdServicesOnReconnect();
     } else if (!_wasDisconnected && !isCurrentlyDisconnected) {
       if (kDebugMode) {
         print('🌐 ℹ️ Still online - no action needed (SubscriptionService handles initial checks)');
@@ -206,7 +214,63 @@ class NetworkSubscriptionService extends GetxService {
     }
   }
 
-  // Manuel kontrol için public metod (test amaçlı)
+  Future<void> _reloadAdServicesOnReconnect() async {
+    try {
+      if (kDebugMode) {
+        print('🎯 Reloading ad services after network reconnection...');
+      }
+      
+      // AdService'i bul ve yeniden başlat
+      if (Get.isRegistered<AdService>()) {
+        final adService = Get.find<AdService>();
+        
+        if (kDebugMode) {
+          print('🔄 Force reloading rewarded ads after reconnection...');
+        }
+        
+        // Rewarded ad'leri yeniden yükle - public metod gerekli
+        // AdService'e public metod eklenecek
+        await _forceReloadRewardedAd(adService);
+        
+        if (kDebugMode) {
+          print('✅ Ad services reloaded successfully after network reconnection');
+        }
+      } else {
+        if (kDebugMode) {
+          print('⚠️ AdService not found during network reconnection');
+        }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('❌ Error reloading ad services on reconnect: $e');
+      }
+    }
+  }
+
+  Future<void> _forceReloadRewardedAd(AdService adService) async {
+    try {
+      if (kDebugMode) {
+        print('🎬 Current rewarded ad ready status: ${adService.isRewardedAdReady}');
+      }
+      
+      // AdService'in yeni public metodunu kullan
+      await adService.forceReloadAdsAfterReconnection();
+      
+      // Kısa bir bekleme süresi - reklamların yüklenmesi için
+      await Future.delayed(const Duration(seconds: 3));
+      
+      if (kDebugMode) {
+        print('🔍 Rewarded ad status after reload: ${adService.isRewardedAdReady}');
+      }
+      
+    } catch (e) {
+      if (kDebugMode) {
+        print('❌ Error in force reload rewarded ad: $e');
+      }
+    }
+  }
+
+  // Manual kontrol için public metod (test amaçlı)
   Future<void> forceCheckPremiumStatus() async {
     if (kDebugMode) {
       print('🔄 Force checking premium status (manual trigger)...');
@@ -221,6 +285,23 @@ class NetworkSubscriptionService extends GetxService {
     }
     
     await _checkPremiumStatusOnReconnect();
+  }
+
+  // Manuel reklam yeniden yükleme için public metod
+  Future<void> forceReloadAds() async {
+    if (kDebugMode) {
+      print('🔄 Force reloading ads (manual trigger)...');
+    }
+    
+    final connectivityResult = await _connectivity.checkConnectivity();
+    if (_isDisconnected(connectivityResult)) {
+      if (kDebugMode) {
+        print('❌ No internet connection for manual ad reload');
+      }
+      return;
+    }
+    
+    await _reloadAdServicesOnReconnect();
   }
 
   // Test için internet durumu bilgisi
