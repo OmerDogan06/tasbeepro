@@ -107,235 +107,237 @@ class _AddCustomZikrScreenState extends State<AddCustomZikrScreen> {
                 padding: const EdgeInsets.all(8),
                 child: Form(
                   key: _formKey,
-                  child: Column(
-                    children: [
-                      // Banner Ad at top
-                      const BannerAdWidget(),
-                      const SizedBox(height: 10),
-                      
-                      // Info Card
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [lightGold, Colors.white],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: goldColor, width: 1),
-                          boxShadow: [
-                            BoxShadow(
-                              color: goldColor.withAlpha(51),
-                              blurRadius: 8,
-                              offset: const Offset(0, 2),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        // Banner Ad at top
+                        const BannerAdWidget(),
+                        const SizedBox(height: 10),
+                        
+                        // Info Card
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [lightGold, Colors.white],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
                             ),
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: goldColor,
-                                borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: goldColor, width: 1),
+                            boxShadow: [
+                              BoxShadow(
+                                color: goldColor.withAlpha(51),
+                                blurRadius: 8,
+                                offset: const Offset(0, 2),
                               ),
-                              child: const Icon(
-                                Icons.diamond,
-                                color: Colors.white,
-                                size: 20,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: Text(
-                                AppLocalizations.of(
-                                      context,
-                                    )?.addCustomZikirDescription ??
-                                    'Kendi özel zikirlerinizi oluşturun ve listeye ekleyin',
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  color: emeraldGreen,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-              
-                      const SizedBox(height: 15),
-              
-                      // Zikir Adı
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withAlpha(5),
-                              blurRadius: 10,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: TextFormField(
-                          controller: _nameController,
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                              vertical: 15,
-                              horizontal: 10,
-                            ),
-                            hintText:
-                                AppLocalizations.of(
-                                  context,
-                                )?.addCustomZikirNameHint ??
-                                'Örn: Allahu Akbar',
-                            prefixIcon: const Icon(
-                              Icons.mosque,
-                              color: emeraldGreen,
-                            ),
-              
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: goldColor.withAlpha(77),
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: goldColor.withAlpha(77),
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: emeraldGreen,
-                                width: 2,
-                              ),
-                            ),
-                            filled: true,
-                            fillColor: Colors.white,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.trim().isEmpty) {
-                              return AppLocalizations.of(
-                                    context,
-                                  )?.addCustomZikirNameRequired ??
-                                  'Zikir adı gereklidir';
-                            }
-                            if (value.trim().length < 2) {
-                              return AppLocalizations.of(
-                                    context,
-                                  )?.addCustomZikirNameMinLength ??
-                                  'Zikir adı en az 2 karakter olmalıdır';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-              
-                      const SizedBox(height: 20),
-              
-                      // Anlamı (Opsiyonel)
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withAlpha(13),
-                              blurRadius: 10,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: TextFormField(
-                          controller: _meaningController,
-                          maxLines: 3,
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                              vertical: 15,
-                              horizontal: 10,
-                            ),
-                            hintText:
-                                AppLocalizations.of(
-                                  context,
-                                )?.addCustomZikirMeaningHint ??
-                                'Zikrin anlamını yazabilirsiniz',
-                            prefixIcon: const Icon(
-                              Icons.description,
-                              color: emeraldGreen,
-                            ),
-              
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: goldColor.withAlpha(77),
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                color: goldColor.withAlpha(77),
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: emeraldGreen,
-                                width: 2,
-                              ),
-                            ),
-                            filled: true,
-                            fillColor: Colors.white,
-                          ),
-                        ),
-                      ),
-              
-                      SizedBox(height: 30),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: _addCustomZikr,
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 5,
-                              horizontal: 10,
-                            ),
-                            backgroundColor: emeraldGreen,
-                            foregroundColor: Colors.white,
-                            elevation: 4,
-                            shadowColor: darkGreen.withAlpha(77),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                            ],
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Icon(Icons.add_circle_outline, size: 20),
+                              Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: goldColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: const Icon(
+                                  Icons.diamond,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                              ),
                               const SizedBox(width: 8),
-                              Text(
-                                AppLocalizations.of(
-                                      context,
-                                    )?.addCustomZikirButton ??
-                                    'Zikir Ekle',
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(
+                                        context,
+                                      )?.addCustomZikirDescription ??
+                                      'Kendi özel zikirlerinizi oluşturun ve listeye ekleyin',
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    color: emeraldGreen,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-              
-                      const SizedBox(height: 20),
-                    ],
+                                  
+                        const SizedBox(height: 15),
+                                  
+                        // Zikir Adı
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withAlpha(5),
+                                blurRadius: 10,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            controller: _nameController,
+                            decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.symmetric(
+                                vertical: 15,
+                                horizontal: 10,
+                              ),
+                              hintText:
+                                  AppLocalizations.of(
+                                    context,
+                                  )?.addCustomZikirNameHint ??
+                                  'Örn: Allahu Akbar',
+                              prefixIcon: const Icon(
+                                Icons.mosque,
+                                color: emeraldGreen,
+                              ),
+                                  
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                  color: goldColor.withAlpha(77),
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                  color: goldColor.withAlpha(77),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(
+                                  color: emeraldGreen,
+                                  width: 2,
+                                ),
+                              ),
+                              filled: true,
+                              fillColor: Colors.white,
+                            ),
+                            validator: (value) {
+                              if (value == null || value.trim().isEmpty) {
+                                return AppLocalizations.of(
+                                      context,
+                                    )?.addCustomZikirNameRequired ??
+                                    'Zikir adı gereklidir';
+                              }
+                              if (value.trim().length < 2) {
+                                return AppLocalizations.of(
+                                      context,
+                                    )?.addCustomZikirNameMinLength ??
+                                    'Zikir adı en az 2 karakter olmalıdır';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                                  
+                        const SizedBox(height: 20),
+                                  
+                        // Anlamı (Opsiyonel)
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withAlpha(13),
+                                blurRadius: 10,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            controller: _meaningController,
+                            maxLines: 3,
+                            decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.symmetric(
+                                vertical: 15,
+                                horizontal: 10,
+                              ),
+                              hintText:
+                                  AppLocalizations.of(
+                                    context,
+                                  )?.addCustomZikirMeaningHint ??
+                                  'Zikrin anlamını yazabilirsiniz',
+                              prefixIcon: const Icon(
+                                Icons.description,
+                                color: emeraldGreen,
+                              ),
+                                  
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                  color: goldColor.withAlpha(77),
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                  color: goldColor.withAlpha(77),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(
+                                  color: emeraldGreen,
+                                  width: 2,
+                                ),
+                              ),
+                              filled: true,
+                              fillColor: Colors.white,
+                            ),
+                          ),
+                        ),
+                                  
+                        SizedBox(height: 30),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child: ElevatedButton(
+                            onPressed: _addCustomZikr,
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 5,
+                                horizontal: 10,
+                              ),
+                              backgroundColor: emeraldGreen,
+                              foregroundColor: Colors.white,
+                              elevation: 4,
+                              shadowColor: darkGreen.withAlpha(77),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(Icons.add_circle_outline, size: 20),
+                                const SizedBox(width: 8),
+                                Text(
+                                  AppLocalizations.of(
+                                        context,
+                                      )?.addCustomZikirButton ??
+                                      'Zikir Ekle',
+                                  style: const TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                                  
+                        const SizedBox(height: 20),
+                      ],
+                    ),
                   ),
                 ),
               ),
